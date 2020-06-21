@@ -1,0 +1,2 @@
+#!/bin/bash
+mpv "~/Downloads/$(ls ~/Downloads/*mkv| sed 's/^.*\///g' | dmenu -l 30)"

@@ -1,0 +1,8 @@
+[Desktop Entry]
+	Encoding=UTF-8
+	Version=1.0
+	Type=Application
+	Terminal=false	
+	Exec=mate-terminal -e "sh /home/solus/Documents/myScripts/todoist.sh"
+	Name=Todoist
+	Icon=/home/solus/Pictures/todoist.png
