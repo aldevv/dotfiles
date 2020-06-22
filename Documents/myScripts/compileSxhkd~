@@ -1,4 +1,0 @@
-#!/bin/bash
-
-ps -e|grep "sxhkd"| awk '{print $1}' | xargs kill;
-sxhkd
