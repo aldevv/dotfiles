@@ -4,15 +4,15 @@
 
 alt + w
 	sh ~/Documents/myScripts/toggle_chat.sh
-alt + g
+alt + d
 	dmenu_run
 alt + h
 	st -e htop
-alt + m
+alt + p
 	st -e pydoc "$($HOME/Documents/myScripts/python_documentation.sh)"
-alt + r
+alt + g
 	st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
-alt + o
+alt + e
 	mpv "$($HOME/Documents/myScripts/run_episode2.sh)"
 alt + i
     emacs $HOME/Documents/org/wiki/wiki.org

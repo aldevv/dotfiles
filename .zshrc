@@ -59,7 +59,7 @@ source $ZSH/oh-my-zsh.sh
 #dotrepo config --local status.showUntrackedFiles no
 
 # Aliases 
-alias station="~/Downloads/Station-1.64.1-x86_64.AppImage"\
+alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	vim="nvim"\
 	todoist="cd ~/Downloads/P/todoist && make up"\
     dotrepo="git --git-dir=$HOME/Documents/DotFilesRepository/ --work-tree=$HOME"\
@@ -98,7 +98,11 @@ alias station="~/Downloads/Station-1.64.1-x86_64.AppImage"\
 	dev='cd ~/dev'\
 	ven='wine .wine/drive_c/Program\ Files/Vensim/venPLE32.exe'\
 	work='cd ~/dev/Work'\
-	restartx='sh ~/Documents/myScripts/compileSxhkd '
+	ds='dotrepo status'\
+	daa='dotrepo add'\
+	dau='dotrepo add -u'\
+	dc='dotrepo commit -m'\
+	dgp='dotrepo push origin master'\
 	
 	#python='python3'\
 
