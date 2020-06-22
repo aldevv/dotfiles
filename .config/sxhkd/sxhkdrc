@@ -12,7 +12,7 @@ alt + p
 	st -e pydoc "$($HOME/Documents/myScripts/python_documentation.sh)"
 alt + g
 	st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
-alt + e
+alt + f
 	mpv "$($HOME/Documents/myScripts/run_episode2.sh)"
 alt + i
     emacs $HOME/Documents/org/wiki/wiki.org

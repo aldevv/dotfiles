@@ -1,6 +1,7 @@
 /*transparency from 0 to 255*/
 *.alpha: .92
-*.font: FiraCode-11
+*.font:  FiraCode:style=regular:size=14
+/**.font:  FiraCode:style=bold:size=14*/
 
 /*Dracula*/
 
