@@ -14,7 +14,7 @@ alt + r
 	st -e pydoc "$(~/Documents/myScripts/python_general.sh)"
 alt + o
 	st -e "$(~/Documents/myScripts/run_episode2.sh)"
-alt + d
-	station
+#alt + d
+#	station
 
 
