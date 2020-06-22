@@ -1,0 +1,13 @@
+#!/bin/sh
+# Config locations
+folders="$HOME/.config/shortcuts/folders"
+configs="$HOME/.config/shortcuts/dotFiles"
+
+# Output locations
+shell_shortcuts="$HOME/.aliases"
+ranger_shortcuts="$HOME/.config/ranger/shortcuts.conf"
+
+shellrc="$HOME/.zshrc"
+
+[[ ! -f $folders ]] && curl https://raw.githubusercontent.com/LukeSmithxyz/shortcut-sync/master/folders > "$folders"
+[[ ! -f $configs ]] && curl https://raw.githubusercontent.com/LukeSmithxyz/shortcut-sync/master/configs > "$configs"
