@@ -1,0 +1,20 @@
+# the keys are put in qwerty layout positions, also
+# unless sxhkd starts from xinit or .profile, it cannot read
+# environment variables, not even inside the scripts
+
+alt + w
+	sh ~/Documents/myScripts/toggle_chat.sh
+alt + g
+	dmenu_run
+alt + h
+	st -e htop
+alt + m
+	st -e pydoc "$(~/Documents/myScripts/python_documentation.sh)"
+alt + r
+	st -e pydoc "$(~/Documents/myScripts/python_general.sh)"
+alt + o
+	st -e "$(~/Documents/myScripts/run_episode2.sh)"
+alt + d
+	station
+
+
