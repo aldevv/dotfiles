@@ -24,12 +24,13 @@ noremap  <leader>wE <c-w>K
 let mapleader = " "
 syntax on
 set noerrorbells
+set ignorecase 
+set smartcase 
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
 set nowrap
-"set smartcase
 set noswapfile
 set nobackup
 set undodir=~/.config/nvim/undodir
@@ -86,7 +87,7 @@ map <F6> :e ~/.config/nvim/init.vim<cr>
 map <F3> :e ~/.zshrc<cr>
 map <C-&> <C-^>
 
-" utilities
+" Utilities
 " auto save if is a python file
     autocmd BufReadPost *.py :call Autosaving()
 
@@ -94,7 +95,10 @@ map <C-&> <C-^>
     autocmd BufWritePost config.h,config.def.h !sudo make clean install
 
 " auto compile xresources
-    autocmd BufWritePost .Xresources !xrdb .Xresources
+    autocmd BufWritePost *.Xresources !xrdb ~/.Xresources
+
+" auto compile sxhkd
+    autocmd BufWritePost *sxhkdrc !pkill sxhkd; setsid sxhkd &
 
 " functions
 function Autosaving()

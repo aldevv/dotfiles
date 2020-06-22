@@ -9,11 +9,13 @@ alt + g
 alt + h
 	st -e htop
 alt + m
-	st -e pydoc "$(~/Documents/myScripts/python_documentation.sh)"
+	st -e pydoc "$($HOME/Documents/myScripts/python_documentation.sh)"
 alt + r
-	st -e pydoc "$(~/Documents/myScripts/python_general.sh)"
+	st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
 alt + o
-	st -e "$(~/Documents/myScripts/run_episode2.sh)"
+	st -e "$($HOME/Documents/myScripts/run_episode2.sh)"
+alt + i
+    emacs $HOME/Documents/org/wiki/wiki.org
 #alt + d
 #	station
 

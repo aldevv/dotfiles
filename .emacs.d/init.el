@@ -2,7 +2,7 @@
 
 
 
-;; dont forget to do M-x all-the-font-install
+;; dont forget to do M-x all-the-icons-install font
 ;; install from internet
 
 ;;company
@@ -139,6 +139,7 @@
 (use-package doom-modeline
   :ensure t  ; ensure makes sure a package is installed , if not , it installs it yet another way to install packages
   :hook (after-init . doom-modeline-mode))
+
 
 (use-package xclip
   :ensure t
@@ -347,6 +348,12 @@
 (define-key evil-motion-state-map "j" 'evil-fordward-word-end)
 (define-key evil-motion-state-map "k" 'evil-ex-search-next)
 (define-key evil-motion-state-map "K" 'evil-ex-search-previous)
+(define-key evil-normal-state-map (kbd "C-w j") nil)
+(define-key evil-normal-state-map (kbd "C-w k") nil)
+(define-key evil-normal-state-map (kbd "C-w i") nil)
+(define-key evil-normal-state-map (kbd "C-w n") 'evil-window-down)
+(define-key evil-normal-state-map (kbd "C-w e") 'evil-window-up)
+(define-key evil-motion-state-map (kbd "C-w i") 'evil-window-right)
 
 
 ;; Defines most org-mode navigation bindings
@@ -470,6 +477,11 @@
        (format "cd '%s'\n" current-dir)))))
 
 ;;=======================
+; so opening links doesnt open in other window, default find-file-other-window
+
+;is an association list (alist)
+(setq org-link-frame-setup '((file . find-file)))  
+;;
 
 ;;sets leader key
 
@@ -495,7 +507,7 @@
   "<f4>" '(lambda() (interactive)(find-file "~/org/Spain.org"))
   "d" 'diff-buffer-with-file
   "r" 'dired
-  "l" (if (bound-and-true-p org-mode) 'org-open-at-point 'Info-history-back)
+  "l" 'org-open-at-point
   "ms" 'org-stored-links
   "ml" 'org-insert-link
   "oo" 'org-insert-heading-respect-content
@@ -558,19 +570,19 @@
 ;this lets me switch windows with Ctrl and vim directions
 
 
-(eval-after-load "evil"
-  '(progn
-     (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-     (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-     (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-     (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)))
+;;(eval-after-load "evil"
+;  '(progn
+;     (define-key evil-normal-state-map (kbd "C-w j") nil)
+;     (define-key evil-normal-state-map (kbd "C-w k") nil)
+;     (define-key evil-normal-state-map (kbd "C-w n") 'evil-window-down)
+;     (define-key evil-normal-state-map (kbd "C-w e") 'evil-window-up)
 
-(eval-after-load "evil"
-  '(progn
-     (define-key evil-motion-state-map (kbd "C-h") 'evil-window-left)
-     (define-key evil-motion-state-map (kbd "C-j") 'evil-window-down)
-     (define-key evil-motion-state-map (kbd "C-k") 'evil-window-up)
-     (define-key evil-motion-state-map (kbd "C-l") 'evil-window-right)))
+;(eval-after-load "evil"
+;  '(progn
+;     (define-key evil-motion-state-map (kbd "C-h") 'evil-window-left)
+;     (define-key evil-motion-state-map (kbd "C-j") 'evil-window-down)
+;     (define-key evil-motion-state-map (kbd "C-k") 'evil-window-up)
+;     (define-key evil-motion-state-map (kbd "C-l") 'evil-window-right)))
 
 
 
