@@ -78,6 +78,7 @@ alias station="~/Downloads/Station-1.64.1-x86_64.AppImage"\
 	cfz='vim ~/.zshrc'\
 	cfp='vim ~/.zprofile'\
 	cfb='vim ~/.bashrc'\
+	cfx='vim ~/.Xresources'\
 	cfv='vim ~/.config/nvim/init.vim'\
 	cfk='vim ~/.config/sxhkd/sxhkdrc'\
 	pydocs='~/Documents/myScripts/python_documentation.sh'\

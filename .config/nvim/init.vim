@@ -6,6 +6,7 @@ noremap i l
 noremap k n
 noremap K N
 noremap N J
+vnoremap L I
 noremap <c-w>i <c-w>l
 noremap <c-w>n <c-w>j
 noremap <c-w>e <c-w>k
@@ -87,9 +88,13 @@ map <C-&> <C-^>
 
 " utilities
 " auto save if is a python file
-"
-autocmd BufReadPost *.py :call Autosaving()
-autocmd BufWritePost config.h,config.def.h !sudo make clean install
+    autocmd BufReadPost *.py :call Autosaving()
+
+" auto compile suckless programs
+    autocmd BufWritePost config.h,config.def.h !sudo make clean install
+
+" auto compile xresources
+    autocmd BufWritePost .Xresources !xrdb .Xresources
 
 " functions
 function Autosaving()
