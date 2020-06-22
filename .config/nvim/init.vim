@@ -9,6 +9,12 @@ noremap N J
 noremap <c-w>i <c-w>l
 noremap <c-w>n <c-w>j
 noremap <c-w>e <c-w>k
+nnoremap <leader>wi <c-w>l
+nnoremap <leader>wh <c-w>h
+nnoremap <leader>we <c-w>k
+nnoremap <leader>wn <c-w>j
+nnoremap <leader>wt <c-w>t
+noremap  <leader>wE <c-w>K
 
 "to install python3 in checkhelath
 "python3 -m pip install --user --upgrade pynvim
@@ -78,7 +84,6 @@ map <leader>r :!python3 %<cr>
 map <F6> :e ~/.config/nvim/init.vim<cr>
 map <F3> :e ~/.zshrc<cr>
 map <C-&> <C-^>
-nnoremap <leader>w <c-w>
 
 " utilities
 " auto save if is a python file
