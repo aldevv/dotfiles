@@ -80,8 +80,11 @@ map <F3> :e ~/.zshrc<cr>
 map <C-&> <C-^>
 nnoremap <leader>w <c-w>
 
+" utilities
 " auto save if is a python file
+"
 autocmd BufReadPost *.py :call Autosaving()
+autocmd BufWritePost config.h,config.def.h !sudo make clean install
 
 " functions
 function Autosaving()
