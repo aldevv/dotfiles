@@ -1,2 +1,3 @@
 #!/bin/bash
-mpv "/home/solus/Downloads/$(ls ~/Downloads/*mkv| sed 's/^.*\///g' | dmenu -l 30)"
+mpv "$HOME/Downloads/$(ls $HOME/Downloads/*mkv  | sed 's/^.*\///g' | dmenu -l 30)" 2>some.log
+
