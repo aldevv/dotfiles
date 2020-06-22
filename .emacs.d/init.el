@@ -323,6 +323,9 @@
 
 (define-key input-decode-map "^O" [C-<S-o>]) ;; defines my escape key for shift
 
+;; backup folder
+;;(setq backup-directory-alist `(("." . "~/.saves")))
+
 ;; COLEMAK
 
 (define-key evil-normal-state-map "i" nil)
@@ -503,10 +506,10 @@
   "td" 'dired-open-term
   "tn" 'newBuffer-ansi-term
   "tp" 'org-cut-special
-  "f" 'find-file
+  "p" 'find-file
   "ee" 'eval-last-sexp
   "eb" 'eval-buffer
-  "p" 'helm-bookmarks
+  "f" 'helm-bookmarks
   "sa" 'save-some-buffers
   "st" 'org-set-tags-command
   "ss" 'flyspell-mode
@@ -729,7 +732,7 @@ scroll-down-aggressively 0.01)
 ;; my Bookmarks
 
 (global-set-key (kbd "<f2>") (lambda() (interactive)(find-file "~/org/Monthly.org")))
-(global-set-key (kbd "<f3>") (lambda() (interactive)(find-file "~/org/wiki/Linux/Linux.org")))
+(global-set-key (kbd "<f3>") (lambda() (interactive)(find-file "~/Documents/org/wiki/linux.org")))
 (global-set-key (kbd "<f4>") (lambda() (interactive)(find-file "~/org/wiki/Apps/Apps.org")))
 (global-set-key (kbd "<f5>") (lambda() (interactive)(find-file "~/org/wiki/Semestre5/Semestre_5.org")))
 (global-set-key (kbd "<f6>") (lambda() (interactive)(find-file "~/.emacs.d/init.el")))
@@ -769,9 +772,10 @@ scroll-down-aggressively 0.01)
  ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
  ;;(set-frame-parameter (selected-frame) 'alpha <both>)
 
+;; change the first value after alpha to change it
 (if (display-graphic-p)
- (set-frame-parameter (selected-frame) 'alpha '(85 . 50))
- (add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+ (set-frame-parameter (selected-frame) 'alpha '(95 . 50))
+ (add-to-list 'default-frame-alist '(alpha . (95 . 50)))
 
  (defun toggle-transparency ()
    (interactive)

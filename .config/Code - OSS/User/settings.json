@@ -54,16 +54,17 @@
     "vim.easymotionMarkerHeight":18,
     "vim.easymotionMarkerBackgroundColor":"blue",
     "vim.handleKeys": {
-        "<C-o>": false, // used by vscode
+        // "<C-o>": false, // used by vscode
         "<C-c>": false, // used by vscode
         "<C-n>": false, //
         "<C-w>": false,
+        "<C-i>": true, // changing file
+        "<C-o>": true,
         "<C-d>": true,
         "<C-u>": true, // used by vim
         "<C-y>": true, // used by vim
         "<C-e>": true,
         "<C-h>": true,
-        "<C-i>": true,
         "<C-b>": true,
     },
     "vim.easymotionKeys": "hneiomluykjtsrapfwqvbd,",
@@ -326,6 +327,10 @@
             "commands": ["extension.vim_ctrl+w"]
         },
         {
+            "before": ["<C-&>"],
+            "after": ["<C-^>"]
+        },
+        {
             "before": ["<leader>", "%"],
             "commands": [
                 {
@@ -347,10 +352,6 @@
         // "before": ["<C-d>"],
         // "after": ["1","5","n","z","z"]
         // },
-        {
-            "before": ["<C-i>"],
-            "commands": ["extension.vim_ctrl+e"]
-        }
     ],
     "window.zoomLevel": -1,
     "editor.largeFileOptimizations": false,

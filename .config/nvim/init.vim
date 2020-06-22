@@ -26,6 +26,7 @@ set nowrap
 set noswapfile
 set nobackup
 set undodir=~/.config/nvim/undodir
+"persistent undo
 set undofile
 set incsearch
 set relativenumber
@@ -48,20 +49,19 @@ endif
 
 call plug#begin()
 
-Plug 'morhetz/gruvbox'
 "CocInstall coc-marketplace
 "CocList marketplace
+Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  }
-Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'https://github.com/vim-airline/vim-airline'
-"Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
-"Plug 'https://github.com/dracula/vim', {'as': 'dracula'}
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'https://github.com/mbbill/undotree'
-"need both
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+"Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
+"Plug 'https://github.com/dracula/vim', {'as': 'dracula'}
+"need both
 call plug#end()
 
 " Theme
@@ -75,7 +75,10 @@ hi Normal guibg=NONE ctermbg=NONE
 
 " Keybindings
 map <leader>r :!python3 %<cr>
-map <F3> :e ~/.config/nvim/init.vim<cr>
+map <F6> :e ~/.config/nvim/init.vim<cr>
+map <F3> :e ~/.zshrc<cr>
+map <C-&> <C-^>
+nnoremap <leader>w <c-w>
 
 " auto save if is a python file
 autocmd BufReadPost *.py :call Autosaving()
@@ -85,8 +88,11 @@ function Autosaving()
     autocmd TextChanged,TextChangedI <buffer> silent write
 endfunction
 
+" UndoTreeToggle
+map <leader>u :UndotreeToggle<CR>
+
 " NERDTreeToggle
-map <leader>k :NERDTreeToggle<CR>
+map <leader>se :NERDTreeToggle<CR>
 let NERDTreeMenuUp   = 'e'
 let NERDTreeMenuDown = 'n'
 let NERDTreeMapOpenExpl = 'k'
@@ -95,8 +101,8 @@ let NERDTreeMapOpenExpl = 'k'
     nnoremap <F5> :UndotreeToggle<cr>
 
 " fzf
-    nnoremap <leader>f :Files<cr> 
-    nnoremap <leader>gf :GFiles<cr> 
+    nnoremap <leader>p :Files<cr> 
+    nnoremap <leader>gp :GFiles<cr> 
 
     
 " GoTo code navigation.
@@ -115,16 +121,3 @@ nnoremap <leader>cr :CocRestart
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
-
-"" for ctrl p plugin
-
-	let g:ctrlp_map = '<leader>p'
-	let g:ctrlp_cmd = 'CtrlP'
-	nnoremap <leader>b :CtrlPBuffer<CR>
-	nnoremap <leader>t :CtrlPTag<CR>
-	let g:ctrlp_prompt_mappings = {
-	\ 'PrtSelectMove("j")': ['<c-n>', '<down>'],
-	\ 'PrtSelectMove("k")': ['<c-e>', '<up>'],
-	\ 'PrtHistory(-1)':       ['<c-j>'],
-        \ 'PrtCurEnd()':          ['<c-k>'],
-	\}
