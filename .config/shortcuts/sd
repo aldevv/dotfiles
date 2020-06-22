@@ -1,0 +1,9 @@
+sf  ~/.config/shortcuts/sf
+sd  ~/.config/shortcuts/sd
+cfe ~/.emacs.d/init.el
+cfz ~/.zshrc
+cfp ~/.zprofile
+cfb ~/.bashrc
+cfx ~/.Xresources
+cfv ~/.config/nvim/init.vim
+cfk ~/.config/sxhkd/sxhkdrc

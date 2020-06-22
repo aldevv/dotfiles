@@ -100,6 +100,9 @@ map <C-&> <C-^>
 " auto compile sxhkd
     autocmd BufWritePost *sxhkdrc !pkill sxhkd; setsid sxhkd &
 
+" auto shortcuts 
+    autocmd BufWritePost,TextChanged sf,sd !$HOME/.local/bin/Utilities/shortcut_maker
+
 " functions
 function Autosaving()
     autocmd TextChanged,TextChangedI <buffer> silent write
