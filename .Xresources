@@ -4,7 +4,7 @@
 /**.font:  FiraCode:style=bold:size=14*/
 
 /*Dracula*/
-
+/*
 *.color0:        #000000
 *.color1:        #ff5555
 *.color2:        #50fa7b
@@ -23,6 +23,7 @@
 *.color15:       #ffffff
 *.background:    #282a36
 *.foreground:    #f8f8f2
+*/
 
 
 
@@ -80,7 +81,7 @@
 st.alpha: 0.9 
 */
 !! brogrammer: */
-/*
+
 *.foreground:  #d6dbe5 
 *.background:  #131313 
 *.color0:      #1f1f1f 
@@ -100,7 +101,7 @@ st.alpha: 0.9
 *.color7:      #d6dbe5 
 *.color15:     #ffffff 
 *.colorBD:     #d6dbe5 
-*/
+
 ! base16 */
 /*
 *.color0:       #181818 
