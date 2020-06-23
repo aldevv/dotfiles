@@ -20,7 +20,7 @@ default-column-order=['name', 'size', 'type', 'date_modified', 'date_accessed', 
 default-visible-columns=['name', 'size', 'type', 'date_modified']
 
 [caja/window-state]
-geometry='683x719+232+80'
+geometry='683x719+222+111'
 maximized=false
 sidebar-width=127
 start-with-location-bar=true
@@ -127,7 +127,8 @@ vertical-two-finger-scrolling=true
 
 [desktop/session]
 idle-delay=6
-session-start=1592513225
+session-start=1592874440
+show-hidden-apps=false
 
 [desktop/sound]
 event-sounds=false
@@ -275,7 +276,7 @@ tree-view=true
 virtual-root='file:///home/solus/Documents/Learn/myos4/chmaquina/backend'
 
 [power-manager]
-brightness-ac=93.0
+brightness-ac=76.0
 info-history-type='charge'
 info-last-device='/org/freedesktop/UPower/devices/line_power_AC0'
 info-stats-type='discharge-accuracy'

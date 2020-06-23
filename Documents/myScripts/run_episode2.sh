@@ -1,4 +1,6 @@
 #!/bin/bash
-mpv "$HOME/Downloads/$(ls $HOME/Downloads/*mkv  | sed 's/^.*\///g' | dmenu -l 30)" 2>/dev/null
+video=$(ls $HOME/Downloads/*mkv  | sed 's/^.*\///g' | dmenu -l 30)
+[[ -z "$video" ]] || mpv "$HOME/Downloads/$video" 2>/dev/null
+
 
 
