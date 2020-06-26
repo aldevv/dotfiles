@@ -116,7 +116,7 @@
         },
         {
             "before":["<leader>", "p"],
-            "commands": ["workbench.action.quickOpen"]
+            "after": ["a","p","r","i","n","t","(","f"]
         },
         {
             "before":["<leader>", "P"],
@@ -325,10 +325,6 @@
         {
             "before": ["<leader>","w"],
             "commands": ["extension.vim_ctrl+w"]
-        },
-        {
-            "before": ["<C-&>"],
-            "after": ["<C-^>"]
         },
         {
             "before": ["<leader>", "%"],
