@@ -263,7 +263,7 @@
             "commands": ["breadcrumbs.focusAndSelect"]
         },
         {
-            "before": [";"],
+            "before": ["<leader>", "<leader>", ","],
             "after": ["g","_","a",";","<ESC>"]
         },
         {

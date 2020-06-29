@@ -79,7 +79,7 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	daa='dotrepo add'\
 	dau='dotrepo add -u'\
 	dc='dotrepo commit -m'\
-	dgp='dotrepo push origin master'\
+	dgp='dotrepo push origin solus'\
 	
 	#python='python3'\
 
