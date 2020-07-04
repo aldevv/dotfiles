@@ -67,6 +67,10 @@ Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'https://github.com/mbbill/undotree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'lervag/vimtex'
+Plug 'scrooloose/syntastic'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 "Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'https://github.com/dracula/vim', {'as': 'dracula'}
 "need both
@@ -87,9 +91,13 @@ map <F6> :e ~/.config/nvim/init.vim<cr>
 map <F3> :e ~/.zshrc<cr>
 map <C-&> <C-^>
 
+""
+"bufwritepost  is when you save them
+"bufreadpost  is when you open them
+
 " Utilities
 " auto save if is a python file
-    autocmd BufReadPost *.py :call Autosaving()
+   " autocmd BufReadPost *.py :call Autosaving()
 
 " auto compile suckless programs
     autocmd BufWritePost config.h,config.def.h !sudo make clean install
@@ -105,7 +113,7 @@ map <C-&> <C-^>
 
 " functions
 function Autosaving()
-    autocmd TextChanged,TextChangedI <buffer> silent write
+    autocmd TextChanged,TextChangedI <buffer> silent! write
 endfunction
 
 " UndoTreeToggle
@@ -141,3 +149,9 @@ nnoremap <leader>cr :CocRestart
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]

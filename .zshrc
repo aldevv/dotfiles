@@ -37,7 +37,7 @@ unset __conda_setup
 
 #functions
 #to open man in vim
-function man(){
+function man() {
     for arg in "$@"; do
         nvim -c 'execute "normal! :let no_man_maps = 1\<cr>:runtime ftplugin/man.vim\<cr>:Man '"${arg}"'\<cr>:wincmd o\<cr>"'
     done
@@ -88,7 +88,6 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 # so you can use backspace after esc
 bindkey -v '^?' backward-delete-char
 
-bindkey -v
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line
 # Vi style:

@@ -1,12 +1,12 @@
 #something
 books       ~/Documents/Learn/Must_Read
+lc         ~/Documents/classes/
 utilities   ~/.local/bin/Utilities
-dl          ~/Documents/Learn
-dlt         ~/Documents/Learn/typing
-dls         ~/Documents/Learn/C/Suckless
-dcl         ~/Documents/classes
-dlo         ~/Documents/Learn/myos4/chmaquina
-dlw         ~/Documents/Learn/Web/course/test
+ll         ~/Documents/Learn
+lt         ~/Documents/Learn/typing
+lss        ~/Documents/Learn/C/Suckless
+lo         ~/Documents/Learn/myos4/chmaquina
+lw         ~/Documents/Learn/Web/course/test
 cf          ~/.config
 ms          ~/Documents/myScripts/
 dev         ~/dev
