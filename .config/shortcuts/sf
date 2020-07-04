@@ -8,6 +8,7 @@ lss        ~/Documents/Learn/C/Suckless
 lo         ~/Documents/Learn/myos4/chmaquina
 lw         ~/Documents/Learn/Web/course/test
 cf          ~/.config
+snippets    ~/.config/nvim/my_snippets
 ms          ~/Documents/myScripts/
 dev         ~/dev
 work        ~/dev/Work

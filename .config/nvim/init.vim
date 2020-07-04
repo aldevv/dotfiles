@@ -20,6 +20,10 @@ noremap  <leader>wE <c-w>K
 "to install python3 in checkhelath
 "python3 -m pip install --user --upgrade pynvim
 
+setlocal spell
+"set spelllang=en_us
+set spelllang=es
+
 " no plugin
 let mapleader = " "
 syntax on
@@ -59,6 +63,9 @@ call plug#begin()
 
 "CocInstall coc-marketplace
 "CocList marketplace
+"CocInstall coc-python and pip install jedi
+"CocInstall coc-snippets 
+"CocList marketplace texlab
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  }
@@ -70,20 +77,27 @@ Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'honza/vim-snippets'
+Plug 'lervag/vimtex'
+Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
+Plug 'dylanaraps/wal'
 "Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'https://github.com/dracula/vim', {'as': 'dracula'}
 "need both
 call plug#end()
 
 " Theme
-	"colorscheme onehalfdark
-	"colorscheme dracula
+"colorscheme onehalfdark
+"colorscheme dracula
 colorscheme gruvbox
+"colorscheme wal
+"set background=dark
 	"for transparent
 hi Normal guibg=NONE ctermbg=NONE
-	"let g:airline_theme='onehalfdark'
-	"let g:airline_theme='gruvbox'
+
+" airline
+"let g:airline_theme='onehalfdark'
+"let g:airline_theme='gruvbox'
 
 " Keybindings
 map <leader>r :!python3 %<cr>
@@ -151,7 +165,32 @@ nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
 
 " ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger='<c-l>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
+
+"Coc-snippets
+"to scroll with tab
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+let g:coc_snippet_next = '<TAB>'
+let g:coc_snippet_prev = '<S-TAB>'
+"imap <C-l> <Plug>(coc-snippets-expand)
+
+
+
+
+
+
+
+" vimtex
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+
+"tex conceal
+set conceallevel=1
+let g:tex_conceal='abdmg'
+hi Conceal ctermbg=none
+
