@@ -77,10 +77,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'
 Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
-Plug 'dylanaraps/wal'
+Plug 'preservim/nerdcommenter'
+"Plug 'dylanaraps/wal'
 "Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'https://github.com/dracula/vim', {'as': 'dracula'}
 "need both
@@ -112,6 +113,12 @@ map <C-&> <C-^>
 " Utilities
 " auto save if is a python file
    " autocmd BufReadPost *.py :call Autosaving()
+   "
+" commenting in python
+"    autocmd FileType python     nnoremap <buffer> gcc I#<esc>
+
+" commenting in c,cpp
+"    autocmd FileType c,cpp     nnoremap <buffer> gcc I//<esc>
 
 " auto compile suckless programs
     autocmd BufWritePost config.h,config.def.h !sudo make clean install
@@ -185,11 +192,6 @@ let g:coc_snippet_prev = '<S-TAB>'
 "imap <C-l> <Plug>(coc-snippets-expand)
 
 
-
-
-
-
-
 " vimtex
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
@@ -200,3 +202,6 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 hi Conceal ctermbg=none
 
+" nerdcommenter
+nnoremap gc :call NERDComment(0,"toggle")<CR>
+vnoremap gc :call NERDComment(0,"toggle")<CR>
