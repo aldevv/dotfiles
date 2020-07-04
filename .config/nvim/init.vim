@@ -116,6 +116,12 @@ map <C-&> <C-^>
 " auto compile suckless programs
     autocmd BufWritePost config.h,config.def.h !sudo make clean install
 
+" auto compile latex
+    autocmd BufWritePost *.tex !pdflatex %
+
+" auto compile vim
+    autocmd BufWritePost *.vim source %
+
 " auto compile xresources
     autocmd BufWritePost *.Xresources !xrdb ~/.Xresources
 

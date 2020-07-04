@@ -5,6 +5,8 @@
 # only source if you dont login from a terminal
 source ~/.zprofile
 
+# wal -i [picture]
+
 export ZSH="/home/solus/.oh-my-zsh"
 export TERM="st"
 # Set name of the theme to load --- if set to "random", it will
