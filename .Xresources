@@ -1,8 +1,8 @@
 /*transparency from 0 to 255*/
 *.alpha: .90
 !*.font: monospace:size=10
-*.font:	Liberation Mono:pixelsize=14:antialias=true:autohint=true;
-!*.font:	    FiraCode:pixelsize=14:antialias=true:autohint=true;
+!*.font:	Liberation Mono:pixelsize=14:antialias=true:autohint=true;
+*.font:	    FiraCode:pixelsize=14:antialias=true:autohint=true;
 !*.font: Bitstream Vera Sans Mono:pixelsize=11:antialias=true:autohint=true;
 ! this one messes with colors
 !*.font:  FiraCode:style=regular:size=14
