@@ -16,9 +16,11 @@ nnoremap <leader>we <c-w>k
 nnoremap <leader>wn <c-w>j
 nnoremap <leader>wt <c-w>t
 noremap  <leader>wE <c-w>K
+noremap  <leader>ww :w<CR>
 
 "to install python3 in checkhelath
 "python3 -m pip install --user --upgrade pynvim
+"pip3 install neovim-remote
 
 setlocal spell
 "set spelllang=en_us
@@ -26,6 +28,10 @@ set spelllang=es
 
 " no plugin
 let mapleader = " "
+let maplocalleader = "\<Space>"
+" whichkey
+set timeoutlen=500
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 syntax on
 set noerrorbells
 set ignorecase 
@@ -81,6 +87,7 @@ Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'
 Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
 Plug 'preservim/nerdcommenter'
+Plug 'liuchengxu/vim-which-key'
 "Plug 'dylanaraps/wal'
 "Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'https://github.com/dracula/vim', {'as': 'dracula'}
@@ -124,7 +131,7 @@ map <C-&> <C-^>
     autocmd BufWritePost config.h,config.def.h !sudo make clean install
 
 " auto compile latex
-    autocmd BufWritePost *.tex !pdflatex %
+"    autocmd BufWritePost *.tex !pdflatex %
 
 " auto compile vim
     autocmd BufWritePost *.vim source %
@@ -196,6 +203,18 @@ let g:coc_snippet_prev = '<S-TAB>'
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
+let g:vimtex_mappings_enabled=1
+let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_toc_config = {
+      \ 'name' : 'TOC',
+      \ 'layers' : ['content', 'todo', 'include'],
+      \ 'resize' : 1,
+      \ 'split_width' : 50,
+      \ 'todo_sorted' : 0,
+      \ 'show_help' : 1,
+      \ 'show_numbers' : 1,
+      \ 'mode' : 2,
+      \}
 
 "tex conceal
 set conceallevel=1
