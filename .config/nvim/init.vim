@@ -91,7 +91,7 @@ Plug 'lervag/vimtex'
 Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
 Plug 'preservim/nerdcommenter'
 Plug 'liuchengxu/vim-which-key'
-"Plug 'dylanaraps/wal'
+Plug 'dylanaraps/wal'
 "Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'https://github.com/dracula/vim', {'as': 'dracula'}
 "need both
