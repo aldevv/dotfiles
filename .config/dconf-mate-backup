@@ -12,7 +12,7 @@ show-toolbar=false
 sidebar-page='links'
 sidebar-size=386
 sizing-mode='free'
-window-ratio=(2.2103559870550162, 0.81193693693693691)
+window-ratio=(1.4229166666666666, 1.4222222222222223)
 zoom=2.2718567271141419
 
 [caja/list-view]
@@ -20,7 +20,7 @@ default-column-order=['name', 'size', 'type', 'date_modified', 'date_accessed', 
 default-visible-columns=['name', 'size', 'type', 'date_modified']
 
 [caja/window-state]
-geometry='683x719+222+111'
+geometry='683x719+339+18'
 maximized=false
 sidebar-width=127
 start-with-location-bar=true
@@ -73,7 +73,7 @@ exec='st'
 
 [desktop/background]
 color-shading-type='solid'
-picture-filename='/home/solus/Pictures/wallpapers/wc/Konachan.com - 226339 sample.jpg'
+picture-filename='/home/solus/Pictures/wallpapers/wo/1574019542040.jpg'
 picture-options='stretched'
 primary-color='rgb(0,0,0)'
 secondary-color='rgb(0,0,0)'
@@ -127,7 +127,7 @@ vertical-two-finger-scrolling=true
 
 [desktop/session]
 idle-delay=6
-session-start=1592874440
+session-start=1593963996
 show-hidden-apps=false
 
 [desktop/sound]
@@ -173,21 +173,34 @@ use-background-color=true
 
 [marco/general]
 button-layout=':minimize,maximize,close'
+num-workspaces=10
 theme='Material-Black-Mango'
 
 [marco/global-keybindings]
 run-command-terminal='<Mod4>Return'
 switch-to-workspace-1='<Mod4>1'
+switch-to-workspace-10='<Mod4>0'
 switch-to-workspace-2='<Mod4>2'
 switch-to-workspace-3='<Mod4>3'
 switch-to-workspace-4='<Mod4>4'
+switch-to-workspace-5='<Mod4>5'
+switch-to-workspace-6='<Mod4>6'
+switch-to-workspace-7='<Mod4>7'
+switch-to-workspace-8='<Mod4>8'
+switch-to-workspace-9='<Mod4>9'
 
 [marco/window-keybindings]
 close='<Mod4>q'
 move-to-workspace-1='<Shift><Mod4>exclam'
+move-to-workspace-10='<Primary><Shift>equal'
 move-to-workspace-2='<Shift><Mod4>quotedbl'
 move-to-workspace-3='<Shift><Mod4>numbersign'
 move-to-workspace-4='<Shift><Mod4>dollar'
+move-to-workspace-5='<Primary><Shift>percent'
+move-to-workspace-6='<Primary><Shift>ampersand'
+move-to-workspace-7='<Primary><Shift>slash'
+move-to-workspace-8='<Primary><Shift>parenleft'
+move-to-workspace-9='<Primary><Shift>parenright'
 toggle-fullscreen='disabled'
 toggle-maximized='<Mod4>f'
 
@@ -197,16 +210,9 @@ theme='slate'
 
 [panel/general]
 history-mate-run=['/usr/bin/caja --no-desktop --browser ', 'dev/corona/get_info']
-object-id-list=['brisk-menu', 'window-list', 'notification-area', 'clock', 'separator', 'object-0']
+object-id-list=['window-list', 'notification-area', 'clock', 'separator', 'object-0']
 show-program-list=true
 toplevel-id-list=['bottom']
-
-[panel/objects/brisk-menu]
-applet-iid='BriskMenuFactory::BriskMenu'
-locked=true
-object-type='applet'
-position=0
-toplevel-id='bottom'
 
 [panel/objects/clock]
 applet-iid='ClockAppletFactory::ClockApplet'
@@ -254,6 +260,7 @@ position=10
 toplevel-id='bottom'
 
 [panel/toplevels/bottom]
+auto-hide=false
 expand=true
 orientation='top'
 screen=0
@@ -294,8 +301,8 @@ last-save-directory='file:///home/solus/Pictures'
 
 [settings-daemon/plugins/media-keys]
 calculator='<Mod4>a'
-home='<Mod4>r'
-screensaver='<Mod4>l'
+home='<Mod4>bar'
+screensaver=''
 www='<Mod4>w'
 
 [terminal/keybindings]

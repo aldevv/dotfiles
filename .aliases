@@ -1,4 +1,5 @@
-alias books="cd ~/Documents/Learn/Must_Read && ls -a"
+alias h="cd ~ && ls -a"
+alias bk="cd ~/Documents/Learn/Must_Read && ls -a"
 alias lc="cd ~/Documents/classes/ && ls -a"
 alias utilities="cd ~/.local/bin/Utilities && ls -a"
 alias ll="cd ~/Documents/Learn && ls -a"

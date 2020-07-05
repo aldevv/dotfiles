@@ -19,15 +19,18 @@ nnoremap <leader>we <c-w>k
 nnoremap <leader>wn <c-w>j
 nnoremap <leader>wt <c-w>t
 noremap  <leader>wE <c-w>K
+noremap  <leader>w- <c-w>-
+noremap  <leader>w+ <c-w>+
 noremap  <leader>ww :w<CR>
+noremap  <F7> :set spell!<CR>
 
 "to install python3 in checkhelath
 "python3 -m pip install --user --upgrade pynvim
 "pip3 install neovim-remote
 
-setlocal spell
-"set spelllang=en_us
+"setlocal spell
 set spelllang=es
+"set spelllang=en_us
 
 " whichkey
 set timeoutlen=500
@@ -94,13 +97,17 @@ Plug 'liuchengxu/vim-which-key'
 "need both
 call plug#end()
 
+" fix colors for highlighting spelling mistakes
+"autocmd ColorScheme gruvbox hi SpellBad cterm=reverse ctermfg=214 ctermbg=235 gui=reverse guifg=#fabd2f guibg=#282828
+
 " Theme
 "colorscheme onehalfdark
 "colorscheme dracula
 colorscheme gruvbox
 "colorscheme wal
 "set background=dark
-	"for transparent
+"
+"for transparent vim
 hi Normal guibg=NONE ctermbg=NONE
 
 " airline
@@ -229,3 +236,4 @@ hi Conceal ctermbg=none
 " nerdcommenter
 nnoremap gc :call NERDComment(0,"toggle")<CR>
 vnoremap gc :call NERDComment(0,"toggle")<CR>
+

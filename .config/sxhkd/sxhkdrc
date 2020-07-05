@@ -1,20 +1,23 @@
 # the keys are put in qwerty layout positions, also
 # unless sxhkd starts from xinit or .profile, it cannot read
 # environment variables, not even inside the scripts
+# super and shift works, but super alone doesnt
 
 alt + w
 	sh ~/Documents/myScripts/toggle_chat.sh
-alt + p
+super + p
 	dmenu_run
-alt + h
+super + h
 	st -e htop
-alt + shift + p
+alt + p
 	st -e pydoc "$($HOME/Documents/myScripts/python_documentation.sh)"
-alt + j
+alt + g
 	st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
-alt + f
+super + shift + p
 	mpv "$($HOME/Documents/myScripts/run_episode2.sh)"
-alt + y
+super + y
     emacs $HOME/Documents/org/wiki/wiki.org
+super + r
+    st -e ranger >/dev/null 2>&1
 
 

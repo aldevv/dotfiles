@@ -96,6 +96,10 @@ autoload -U edit-command-line
 # Vi style:
 zle -N edit-command-line
 bindkey -v
+
+#to fix the backspace problem
+bindkey "^?" backward-delete-char
+
 # Colemak.
 bindkey -M vicmd "h" backward-char
 bindkey -M vicmd "n" down-line-or-history
