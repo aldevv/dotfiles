@@ -1,9 +1,11 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 # only source if you dont login from a terminal
 source ~/.zprofile
+
+#COLEMAK DOTFILES
+#!  https://rgoswami.me/posts/colemak-dots-refactor/
 
 # wal -i [picture]
 
@@ -88,13 +90,32 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 # User configuration
 
 # so you can use backspace after esc
-bindkey -v '^?' backward-delete-char
 
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line
 # Vi style:
 zle -N edit-command-line
+bindkey -v
+# Colemak.
+bindkey -M vicmd "h" backward-char
+bindkey -M vicmd "n" down-line-or-history
+bindkey -M vicmd "e" up-line-or-history
+bindkey -M vicmd "i" forward-char
+bindkey -M vicmd "l" vi-insert
+bindkey -M vicmd "L" vi-insert-bol
+bindkey -M vicmd "k" vi-repeat-search
+bindkey -M vicmd "K" vi-rev-repeat-search
+bindkey -M vicmd "0" beginning-of-line
+bindkey -M vicmd "$" end-of-line
+bindkey -M vicmd "j" vi-forward-word-end
+bindkey -M vicmd "J" vi-forward-blank-word-end
 bindkey -M vicmd v edit-command-line
+
+# Sane Undo, Redo, Backspace, Delete.
+bindkey -M vicmd "u" undo
+bindkey -M vicmd "U" redo
+bindkey -M vicmd "^?" backward-delete-char
+bindkey -M vicmd "^[[3~" delete-char
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
