@@ -7,6 +7,9 @@ noremap k n
 noremap K N
 noremap N J
 vnoremap L I
+let mapleader = " "
+let maplocalleader = "\<Space>"
+set updatetime=1500 " this is for autosave in tex files(every cursorhold event)
 noremap <c-w>i <c-w>l
 noremap <c-w>n <c-w>j
 noremap <c-w>e <c-w>k
@@ -26,9 +29,6 @@ setlocal spell
 "set spelllang=en_us
 set spelllang=es
 
-" no plugin
-let mapleader = " "
-let maplocalleader = "\<Space>"
 " whichkey
 set timeoutlen=500
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
@@ -130,8 +130,13 @@ map <C-&> <C-^>
 " auto compile suckless programs
     autocmd BufWritePost config.h,config.def.h !sudo make clean install
 
-" auto compile latex
-"    autocmd BufWritePost *.tex !pdflatex %
+" auto compile latex if no vimtex
+    autocmd BufWritePost,CursorHold,CursorHoldI *.tex :call CompileTex()
+
+    function CompileTex()
+        :w | silent exec "!latexmk -pdf %"
+    endfunction
+
 
 " auto compile vim
     autocmd BufWritePost *.vim source %
