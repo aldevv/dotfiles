@@ -19,3 +19,4 @@ visual-column	https://github.com/joostkremers/visual-fill-column
 writeroom-mod	https://github.com/joostkremers/writeroom-mode
 nlinum-relative https://github.com/xcodebuild/nlinum-relative
 dracula		https://github.com/dracula/emacs
+evil-emacs-basics   https://github.com/wbolster/evil-colemak-basics

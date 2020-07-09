@@ -329,31 +329,35 @@
 
 ;; COLEMAK
 
-(define-key evil-normal-state-map "i" nil)
-(define-key evil-visual-state-map "I" nil)
-(define-key evil-visual-state-map "i" nil)
-(define-key evil-motion-state-map "j" nil)
-(define-key evil-motion-state-map "k" nil)
-(define-key evil-motion-state-map "K" nil)
-(define-key evil-motion-state-map "l" nil)
-(define-key evil-motion-state-map "e" nil)
-(define-key evil-motion-state-map "n" nil)
-(define-key evil-motion-state-map "N" nil)
-(define-key evil-normal-state-map "l" 'evil-insert)
-(define-key evil-visual-state-map "L" 'evil-insert)
-(define-key evil-visual-state-map "l" 'evil-inner-text-objects-map)
-(define-key evil-motion-state-map "n" 'evil-next-line)
-(define-key evil-motion-state-map "e" 'evil-previous-line)
-(define-key evil-motion-state-map "i" 'evil-forward-char)
-(define-key evil-motion-state-map "j" 'evil-fordward-word-end)
-(define-key evil-motion-state-map "k" 'evil-ex-search-next)
-(define-key evil-motion-state-map "K" 'evil-ex-search-previous)
-(define-key evil-normal-state-map (kbd "C-w j") nil)
-(define-key evil-normal-state-map (kbd "C-w k") nil)
-(define-key evil-normal-state-map (kbd "C-w i") nil)
-(define-key evil-normal-state-map (kbd "C-w n") 'evil-window-down)
-(define-key evil-normal-state-map (kbd "C-w e") 'evil-window-up)
-(define-key evil-motion-state-map (kbd "C-w i") 'evil-window-right)
+(use-package evil-colemak-basics ;; for jumping around like f in vimium
+  :load-path "~/.emacs.d/evil-colemak-basics"
+  :config
+    (global-evil-colemak-basics-mode))
+;;(define-key evil-normal-state-map "i" nil)
+;;(define-key evil-visual-state-map "I" nil)
+;;(define-key evil-visual-state-map "i" nil)
+;;(define-key evil-motion-state-map "j" nil)
+;;(define-key evil-motion-state-map "k" nil)
+;;(define-key evil-motion-state-map "K" nil)
+;;(define-key evil-motion-state-map "l" nil)
+;;(define-key evil-motion-state-map "e" nil)
+;;(define-key evil-motion-state-map "n" nil)
+;;(define-key evil-motion-state-map "N" nil)
+;;(define-key evil-normal-state-map "l" 'evil-insert)
+;;(define-key evil-visual-state-map "L" 'evil-insert)
+;;(define-key evil-visual-state-map "i" 'evil-forward-char)
+;;(define-key evil-motion-state-map "n" 'evil-next-line)
+;;(define-key evil-motion-state-map "e" 'evil-previous-line)
+;;(define-key evil-motion-state-map "i" 'evil-forward-char)
+;;(define-key evil-motion-state-map "j" 'evil-fordward-word-end)
+;;(define-key evil-motion-state-map "k" 'evil-ex-search-next)
+;;(define-key evil-motion-state-map "K" 'evil-ex-search-previous)
+;;(define-key evil-normal-state-map (kbd "C-w j") nil)
+;;(define-key evil-normal-state-map (kbd "C-w k") nil)
+;;(define-key evil-normal-state-map (kbd "C-w i") nil)
+;;(define-key evil-normal-state-map (kbd "C-w n") 'evil-window-down)
+;;(define-key evil-normal-state-map (kbd "C-w e") 'evil-window-up)
+;;(define-key evil-motion-state-map (kbd "C-w i") 'evil-window-right)
 
 
 ;; Defines most org-mode navigation bindings
@@ -823,7 +827,7 @@ scroll-down-aggressively 0.01)
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-ref nlinum-relative flycheck xclip evil-magit magit diff-hl))))
+    (evil-colemak-basics org-ref nlinum-relative flycheck xclip evil-magit magit diff-hl))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

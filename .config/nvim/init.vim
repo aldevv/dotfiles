@@ -92,13 +92,14 @@ Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
 Plug 'preservim/nerdcommenter'
 Plug 'liuchengxu/vim-which-key'
 Plug 'dylanaraps/wal'
+Plug 'junegunn/goyo.vim'
 "Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'https://github.com/dracula/vim', {'as': 'dracula'}
 "need both
 call plug#end()
 
 " fix colors for highlighting spelling mistakes
-"autocmd ColorScheme gruvbox hi SpellBad cterm=reverse ctermfg=214 ctermbg=235 gui=reverse guifg=#fabd2f guibg=#282828
+autocmd ColorScheme gruvbox hi SpellBad cterm=reverse ctermfg=214 ctermbg=235 gui=reverse guifg=#fabd2f guibg=#282828
 
 " Theme
 "colorscheme onehalfdark
@@ -236,4 +237,10 @@ hi Conceal ctermbg=none
 " nerdcommenter
 nnoremap gc :call NERDComment(0,"toggle")<CR>
 vnoremap gc :call NERDComment(0,"toggle")<CR>
+
+" Goyo
+
+nnoremap <leader>gg :Goyo \| set wrap \| set linebreak<CR>
+nnoremap <leader>gd :Goyo! \| :set wrap! \| :set linebreak!<CR>
+
 

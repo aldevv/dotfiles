@@ -1,5 +1,5 @@
 /*transparency from 0 to 255*/
-*.alpha: .90
+*.alpha: .80
 !*.font: monospace:size=10
 !*.font:	Liberation Mono:pixelsize=14:antialias=true:autohint=true;
 !*.font:	    FiraCode:pixelsize=14:antialias=true:autohint=true;

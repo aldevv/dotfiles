@@ -9,6 +9,8 @@ source ~/.zprofile
 
 # wal -i [picture]
 
+export EDITOR=nvim
+export VISUAL=nvim
 export ZSH="/home/solus/.oh-my-zsh"
 export TERM="st"
 # Set name of the theme to load --- if set to "random", it will
@@ -17,7 +19,6 @@ export TERM="st"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="agnoster"
 ZSH_THEME="amuse"
-#ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
