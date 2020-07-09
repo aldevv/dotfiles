@@ -328,7 +328,8 @@
 ;;(setq backup-directory-alist `(("." . "~/.saves")))
 
 ;; COLEMAK
-
+;; it breaks evil snipe, too lazy to fix now
+;; https://github.com/wbolster/evil-colemak-basics
 (use-package evil-colemak-basics ;; for jumping around like f in vimium
   :load-path "~/.emacs.d/evil-colemak-basics"
   :config

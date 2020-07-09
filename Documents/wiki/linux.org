@@ -1,0 +1,106 @@
+#+TITLE: Linux
+
+-[[file:~/Documents/org/wiki/wiki.org][Index]]
+
+* Format USB
+df and find partition of usb you want to format
+sudo umount /dev/sdb1 or the one you have
+sudo mkfs.vfat -n 'TV' -I /dev/sdb1
+* Multi-Boot
+- Use refind boot manager
+  its well automated and it accepts themes
+- also you need to mount the boot partition in /boot/efi
+  for every OS you install, this worked on Solus/Void/Arch
+* Arch
+** Hardware
+*** Mouse
+
+esto habilita el tap del touchpad
+
+Section "InputClass"
+	Identifier "mytouchpad"
+	driver "libinput"
+	option "Tapping" "on"
+	option "Clickmethod" "clickfinger"
+	EndSection
+
+*** Keyboard-Layout
+
+ put this in a file named /etc/X11/xorg.conf.d/00-keyboard.conf 
+
+Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbLayout" "latam"
+        Option "XkbModel" "pc104"
+        Option "XkbVariant" "colemak"
+        Option "XkbOptions" "caps:escape"
+EndSection
+
+in order to have multiple keyboards you need to make sure you make a script
+you run when you connect it,
+
+this script would go more or less like this
+
+**** setxkbmap -layout latam, us -model pc104 -options caps:super, grp:win_space_toggle
+
+also , always search for individual configuration for the respective keyboard
+
+my logitech k400 had an utility called solaar which let you switch the fn state
+
+could have saved many hours
+
+*** External-keyboard-Settings
+use solaar for logitech
+for deactivating the on state for the fn keys
+solaar config 1 fn-swap False
+*** Keyboard-codes
+xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
+** Software
+*** Pacman
+**** lock_database
+failed to synchronise (locked database error)
+do this
+
+rm /var/lib/pacman/db.lck
+*** [[file:Apps.org::Emacs][Emacs]]
+**** Dictionaries
+Must install from 
+
+sudo pacman -S aspell-es; sudo pacman -S aspell-en
+[[file:Semestre_5.org][uni]]
+[[file:Apps.org][appi]]
+[[file:Apps.org][appi]]
+[[file:Apps.org][appi]]
+[[file:Apps.org][appi]]  
+* Solus
+** Install Packages
+sudo eopkg install
+sudo eopkg search
+** Backup MATE
+dconf dump /org/mate/ > ~/.config/dconf-mate-backup
+** Load MATE
+dconf load / < dconf-full-backup
+** media keybindings
+in dconf-editor 
+org/mate/settings-daemon/plugins/media-keys
+** keyboard colemak
+https://github.com/nhermosilla14/latam-colemak
+** Fix loginscreen layout
+localectl set-x11-keymap latam pc104 colemak
+or try to use 
+in vim /etc/X11/xorg.conf.d/00-keyboard.conf
+Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbLayout" "latam"
+        Option "XkbModel" "pc104"
+        Option "XkbVariant" "colemak"
+EndSection
+* Tile Window Managers
+** I3
++ i3 size 
+  width 1950
+  height 1100
+** DWM
+* [[file:~/org/wiki/Semestre5/Semestre_5.org][Universidad]]

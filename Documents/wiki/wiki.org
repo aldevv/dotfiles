@@ -1,0 +1,22 @@
+#+TITLE: WIKI CONTENTS
+
+* [[file:linux.org][Linux]]
+* [[file:apps.org][Apps]]
+* places to eat
+ costilla de adam
+ + muy poco saludable
+   costilla a la plancha
+* [[file:plans.org][Plans]]
+* small TODO
+https://rgoswami.me/
+[x] create line runners for the other algorithms
+[x] create a place for the step by step, that is not the monitor
+[x] reset printer on clean button
+[x] fix bug when changing algorithms
+[x] make return work
+[x] make errors enter error list
+[x] make errors appear in monitor
+[x] ~~make program stop running after error, and reset memory if start again after error
+[x] Quantummmm
+[x] multithread
+ 

@@ -1,0 +1,194 @@
+#+TITLE: Apps
+
+[[file:~/Documents/org/wiki/wiki.org][Index]]
+
+* Emacs
+** Lisp
+*** Binding
+**** Global
+They change keys for all modes
+- (global-set-key (kbd "½") 'shrink-window)
+**** Local
+they change key for an specified mode, usually 
+
+- name-mode-map
+  + (define-key org-mode-map (kbd "½") 'org-metadown)
+
+- name-state-map
+  + (define-key evil-normal-state-map (kbd "ø") 'enter-func)
+*** Variables
+variables dont have brackets ()
+- example
+  major-mode is a variable
+  (major-mode) is a void function
+**** let
+(let (list of pairs of var value) (function))
+(let* ((y 1)
+      (z y))    ; Use the just-established value of y.
+      (list y z))
+      ⇒ (1 1)
+**** setq
+sets global variable
+same as 
+(set 'x (4 3 1))
+(setq x (4 3 1))
+*** Functions 
+** Use-package
++ :init : executes code before package is loaded (loaded as in require)
+  (use-package foo
+  :init
+  (setq foo-variable t))
++ :config : execute code after package is loaded!
+  (use-package foo
+  :init
+  (setq foo-variable t)
+  :config
+  (foo-mode 1))
+** Troubleshooting
+*** for Org-mode heading manipulation
+ you have to put the "onehalf" to the altgr + j key so that
+ you can do correct window and org-mode manipulation,
+ this is done via de ~/.Xmodmap file which is created via the
+
+ + xmodmap -pke > ~/.Xmodmap
+   the keycode for j in my asus laptop is 44
+   so it looks like this
+   + keycode  44 = j J j J onehalf dead_horn
+
+ after doing all of this you finally have to initialize it in the
+ .xinitrc
+
+ + [ -f "$HOME/.xprofile" ] && . ~/.xprofile
+  just put this inside the ~/.xinitrc file 
+
+*** spellchecking
+ - you use hunspell for spellchecking, you download the dictionary from the system
+ - you use f12 to auto-correct last word
+ - you use f8 to change between dictionaries :
+*** Evil-Guide
+ https://juanjoalvarez.net/es/detail/2014/sep/19/vim-emacsevil-chaotic-migration-guide/
+*** Evil-completion
+ Hi :) I recently moved to emacs for vim and I use evil mode, something that I have very much missed from vim is the word/line completion. 
+ In vim you can start typing a word and press C-x X-n to complete the word from words only after this and C-x C-p to only complete from words before this.
+ And you can also complete entire lines with C-x C-l.
+ I have recently found out that evil has those implemented and bound by default. 
+ Only when you are in insert mode:
+
+ C-n complete word from words after this
+ C-p complete word from words before this
+ C-x C-n complete line from lines after this
+ C-x C-p complete line from lines after this
+** Save all buffers
+do space + sa !
+or C-x s !
+** org-mode
+*** Links
+
+- to insert a link use space + ml (make link)
+  - put a word and it will link to its respective heading
+    like [[Vim][Vim]] 
+  - put file <RET> and it will prompt you to enter a file in the same directory
+    - it should look somthing like file: ~/org/wiki/Semestre_5.el or [[file:Semestre_5.org][Universidad]]
+  - put file: ~/org/wiki/Semestre_5.el::20 to go to that line [[file:Semestre_5.org::15][Uni15]]
+  - put file: ~/org/wiki/Semestre_5.el::Algoritmos to go that file and that heading [[file:Semestre_5.org::An%C3%A1lisis%20y%20dise%C3%B1o%20de%20Algoritmos][Algoritmos]] (not for words)
+- to insert a link to an actual website do
+
+[[https://www.youtube.com/watch?v=BRqjaN4-gGQ][Zaiste video about links]]
+
+you can use it for links:
+
+]
+
++ you can link to shell outputs
+  like "link shell: ls *.org" [[shell:%20ls%20*.org][myNotes]]
+
++ like a script "link elisp:() etc [[elisp:(+%202%202)][2 + 2]]  dont forget to not put an space 
+  after elisp:
+
++ You can use it for your agenda since is a function, use elisp once again
+  [[elisp:org-agenda][myAgenda]] link: elisp: org-agenda # again, without the space after elisp
+
+** [[https://orgmode.org][Orgmode.org]] # this is the main web-page
+
+  + [[https://orgmode.org/manual/index.html#SEC_Contents][Table-of-Contents]]
+
+  + [[https://orgmode.org/manual/External-Links.html#External-Links][External-Links]]
+** Latex
+
+you MUST HAVE texlive-latexextra installed or it wont export!!!
+
+remember the commands
++ c-c c-e l o  which pretty much exports and opens the pdf
+*** Bibliographies 
+you need to put a file with your bibliographies like this 
+
+bibliography: something without the space
+
+then you must choose the bibliography style like this!
+
+bibliographystlye: something
+
+ [[https://www.overleaf.com/learn/latex/Bibtex%2520bibliography%2520styles#Biblatex_styles][BibliographyStyles]] 
+** Org-ref
+refer to the [[https://github.com/jkitchin/org-ref/blob/master/org-ref.org][manual]]
+* Vim
+** Navigation
+- ^ lets you go to the first character in a line
+- g_ lets you go to the last character in a line
+- gi lets you go to insert mode in the last place you did it
+- zz lets you put in the middle of the screen wherever the cursor is
+- zt same but on top
+- zb same but on bottom
+- M go to middle
+- H go top
+- L go bottom
+- % find match for something like "" () []
+- * / # lets you find the next or previous occurrence
+- m lets you mark and ' lets you go to the beggining of the line for that mark
+- df, lets you delete until it finds something, maybe a simple ,
+- dt, lets you delete until it finds something but saves that something
+- dW deletes until end of long word like something-or-someother-thingy,  
+- diW deletes a long word like something-or-someother-thingy,  
+- ctrl-y scroll up 1 line
+- ctrl-e scroll down 1 line
+- ; lets you keep searching for the thing you searched for with f or t
+- , lets you do the same but backwards
+* Latex 
+** maketitle
+\title{}
+\author{}
+\date{}
+** Tables
+to move left, put this \hskip-4.0cm before the \begin{tabular}
+** Sizes 
+\tiny
+\scriptsize
+\footnotesize
+\small
+\normalsize
+\large
+\Large
+\LARGE
+\huge
+\HUGE
+* Bibtex
+**[[http://www.easybib.com/guides/citation-guides/apa-format/how-to-cite-a-parenthetical-citations-apa/][Apa]]
+* Course 
+Algoritmos: https://www.coursera.org/learn/algorithms-part1/home/welcome
+Android: https://courses.edx.org/courses/course-v1:HKUSTx+COMP107x+3T2016/course/
+* Angular
+start here: https://angular.io/tutorial
+curso vence sep 30!!: https://courses.edx.org/courses/course-v1:Microsoft+DEV314x+1T2019a/course/
+ecommerce fast: https://www.youtube.com/watch?v=gLa2LxMdAPs
+ecommerce: https://www.youtube.com/watch?v=9K15zC0gN2I
+best ecommerce: https://medium.com/javascript-in-plain-english/how-to-create-an-app-using-angular-and-firebase-part-1-debb80f928ad
+* CSS
+curso: https://courses.edx.org/courses/course-v1:W3Cx+CSS.0x+3T2018/course/
+* React 
+ecommerce: https://www.youtube.com/watch?v=wPQ1-33teR4
+* Javascript
+* PHP
+* Dermapen
+set to 1.5ml of biotin and 4 dutasteride capsules 
+
++ machine must be set to 1 .
