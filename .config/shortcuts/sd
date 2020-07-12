@@ -8,3 +8,5 @@ cfb ~/.bashrc
 cfx ~/.Xresources
 cfv ~/.config/nvim/init.vim
 cfk ~/.config/sxhkd/sxhkdrc
+cfn ~/.config/newsboat/urls
+ai  ~/Documents/myScripts/solus/autoInstall

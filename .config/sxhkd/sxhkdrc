@@ -20,4 +20,7 @@ super + y
 super + r
     st -e ranger >/dev/null 2>&1
 
+super + u
+    st -e newsboat 
+
 

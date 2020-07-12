@@ -192,3 +192,6 @@ ecommerce: https://www.youtube.com/watch?v=wPQ1-33teR4
 set to 1.5ml of biotin and 4 dutasteride capsules 
 
 + machine must be set to 1 .
+* Youtube-viewer
+for credentials go to https://console.developers.google.com/apis/
+you can create new ones, and activate the youtube api 3

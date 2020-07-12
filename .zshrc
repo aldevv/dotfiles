@@ -65,6 +65,7 @@ source $ZSH/oh-my-zsh.sh
 # Aliases 
 alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	v="nvim"\
+	yt="youtube-viewer"\
 	rr="ranger"\
 	todoist="cd ~/Downloads/P/todoist && make up"\
     dotrepo="git --git-dir=$HOME/Documents/DotFilesRepository/ --work-tree=$HOME"\
