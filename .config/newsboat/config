@@ -1,4 +1,7 @@
 #show-read-feeds no
+# create folder in ~/.local/share/newsboat
+# create folder in ~/Documents/Articles
+save-path ~/Documents/Articles/
 auto-reload yes
 
 external-url-viewer "urlscan -dc -r 'firefox {}'"
@@ -9,7 +12,6 @@ external-url-viewer "urlscan -dc -r 'firefox {}'"
 #bind-key k prev articlelist
 #bind-key J next-feed articlelist
 #bind-key K prev-feed articlelist
-save-path ~/Documents/Articles/
 
 bind-key n down
 bind-key e up
@@ -40,8 +42,8 @@ color article white default bold
 browser firefox
 macro , open-in-browser
 #macro t set browser "qndl" ; open-in-browser ; set browser firefox
-macro a set browser "youtube-dl --add-metadata -xic -f bestaudio/best" ; open-in-browser ; set browser firefox
-macro A set browser "youtube-dl --add-metadata -ic -f best" ; open-in-browser ; set browser firefox
+macro A set browser "youtube-dl --add-metadata -xic -f bestaudio/best" ; open-in-browser ; set browser firefox
+macro a set browser "youtube-dl --add-metadata -ic -f best" ; open-in-browser ; set browser firefox
 macro v set browser "setsid -f mpv" ; open-in-browser ; set browser firefox
 #macro w set browser "lynx" ; open-in-browser ; set browser firefox
 #macro p set browser "dmenuhandler" ; open-in-browser ; set browser firefox
