@@ -9,8 +9,6 @@ source ~/.zprofile
 
 # wal -i [picture]
 
-export EDITOR=nvim
-export VISUAL=nvim
 export ZSH="/home/solus/.oh-my-zsh"
 export TERM="st"
 # Set name of the theme to load --- if set to "random", it will
@@ -43,7 +41,7 @@ unset __conda_setup
 
 #functions
 #to open man in vim
-function man() {
+function manv() {
     for arg in "$@"; do
         nvim -c 'execute "normal! :let no_man_maps = 1\<cr>:runtime ftplugin/man.vim\<cr>:Man '"${arg}"'\<cr>:wincmd o\<cr>"'
     done
@@ -66,7 +64,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases 
 alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
-	vim="nvim"\
+	v="nvim"\
+	rr="ranger"\
 	todoist="cd ~/Downloads/P/todoist && make up"\
     dotrepo="git --git-dir=$HOME/Documents/DotFilesRepository/ --work-tree=$HOME"\
 	ma="make && sleep 0.5 ./a.out"\
@@ -146,5 +145,6 @@ bindkey -M vicmd "^[[3~" delete-char
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
 source /home/solus/Programs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.aliases

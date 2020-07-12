@@ -749,7 +749,7 @@ scroll-down-aggressively 0.01)
 ;; my Bookmarks
 
 (global-set-key (kbd "<f2>") (lambda() (interactive)(find-file "~/org/Monthly.org")))
-(global-set-key (kbd "<f3>") (lambda() (interactive)(find-file "~/Documents/org/wiki/linux.org")))
+(global-set-key (kbd "<f3>") (lambda() (interactive)(find-file "~/Documents/wiki/linux.org")))
 (global-set-key (kbd "<f4>") (lambda() (interactive)(find-file "~/org/wiki/Apps/Apps.org")))
 (global-set-key (kbd "<f5>") (lambda() (interactive)(find-file "~/org/wiki/Semestre5/Semestre_5.org")))
 (global-set-key (kbd "<f6>") (lambda() (interactive)(find-file "~/.emacs.d/init.el")))

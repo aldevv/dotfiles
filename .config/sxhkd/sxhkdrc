@@ -16,7 +16,7 @@ alt + g
 super + shift + p
 	mpv "$($HOME/Documents/myScripts/run_episode2.sh)"
 super + y
-    emacs $HOME/Documents/org/wiki/wiki.org
+    emacs $HOME/Documents/wiki/wiki.org
 super + r
     st -e ranger >/dev/null 2>&1
 

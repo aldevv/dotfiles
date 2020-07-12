@@ -97,6 +97,10 @@ Section "InputClass"
         Option "XkbModel" "pc104"
         Option "XkbVariant" "colemak"
 EndSection
+** make xinitrc work
+creating xinitrc in $HOME didnt work
+editing /etc/X11/xinit/xinitrc didnt work
+using solus start up doesnt work with env variables
 * Tile Window Managers
 ** I3
 + i3 size 

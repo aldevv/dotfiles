@@ -22,7 +22,7 @@ noremap  <leader>wE <c-w>K
 noremap  <leader>w- <c-w>-
 noremap  <leader>w+ <c-w>+
 noremap  <leader>ww :w<CR>
-noremap  <F7> :set spell!<CR>
+noremap  <F7> :set spell! \| set wrap<CR>
 
 "to install python3 in checkhelath
 "python3 -m pip install --user --upgrade pynvim
@@ -45,7 +45,8 @@ set expandtab
 set smartindent
 set nowrap
 set noswapfile
-set nobackup
+set backup
+set backupdir=~/.config/nvim/backups
 set undodir=~/.config/nvim/undodir
 "persistent undo
 set undofile
@@ -198,7 +199,7 @@ nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
 
 " ultisnips
-let g:UltiSnipsExpandTrigger='<c-l>'
+let g:UltiSnipsExpandTrigger='<c-l>' " TO USE SNIPPETS
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
