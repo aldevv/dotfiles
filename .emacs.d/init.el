@@ -1,9 +1,10 @@
 ;; My Configs!!!
 
-
-
-;; dont forget to do M-x all-the-icons-install font
-;; install from internet
+;; if first time:
+;;      * install from internet:
+;;          dont forget to do M-x all-the-icons-install font
+;;      * change evil-colemak-basics u and U with l and L, and l with u
+;; 
 
 ;;company
 ;;company-irony

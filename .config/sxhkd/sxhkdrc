@@ -5,22 +5,29 @@
 
 alt + w
 	sh ~/Documents/myScripts/toggle_chat.sh
+
 super + p
 	dmenu_run
+
 super + h
 	st -e htop
-alt + p
+
+super + F2
 	st -e pydoc "$($HOME/Documents/myScripts/python_documentation.sh)"
-alt + g
+
+super + shift + F2
 	st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
+
 super + shift + p
 	mpv "$($HOME/Documents/myScripts/run_episode2.sh)"
+
 super + y
     emacs $HOME/Documents/wiki/wiki.org
+
 super + r
     st -e ranger >/dev/null 2>&1
 
-super + u
+super + k
     st -e newsboat 
 
 

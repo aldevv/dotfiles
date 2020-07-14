@@ -3,11 +3,11 @@
 # Path to your oh-my-zsh installation.
 # only source if you dont login from a terminal
 source ~/.zprofile
-
 #COLEMAK DOTFILES
 #!  https://rgoswami.me/posts/colemak-dots-refactor/
 
 # wal -i [picture]
+#export GTK_IM_MODULE=fcitx 
 
 export ZSH="/home/solus/.oh-my-zsh"
 export TERM="st"
@@ -65,6 +65,12 @@ source $ZSH/oh-my-zsh.sh
 # Aliases 
 alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	v="nvim"\
+    rick="curl -s -L http://bit.ly/10hA8iC | bash"\
+	cheat="$UTILITIES/sheetmaker.sh"\
+	dic="$UTILITIES/dictionary.sh"\
+	par="curl parrot.live"\
+	wtt="$UTILITIES/weather.sh"\
+	ssr="simplescreenrecorder"\
 	yt="youtube-viewer"\
 	rr="ranger"\
 	todoist="cd ~/Downloads/P/todoist && make up"\

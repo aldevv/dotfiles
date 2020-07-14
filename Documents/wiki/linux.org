@@ -108,3 +108,12 @@ using solus start up doesnt work with env variables
   height 1100
 ** DWM
 * [[file:~/org/wiki/Semestre5/Semestre_5.org][Universidad]]
+
+* Japanese
+Install fcitx, fcitx-mozc, fcitx-configtool mozc fcitx-gtk3 fcitx-qt5
+then logout and login again
+
+change input layout of japanese to colemak
+Go to mozc configuration and make sure is in romaji
+go to fcitx config and global make sure input key  is super + space
+
