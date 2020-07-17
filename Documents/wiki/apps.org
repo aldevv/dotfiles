@@ -193,8 +193,16 @@ set to 1.5ml of biotin and 4 dutasteride capsules
 
 + machine must be set to 1 .
 * Youtube-viewer
+** web page 
 for credentials go to https://console.developers.google.com/apis/
 you can create new ones, and activate the youtube api 3
+** if [500 Can't connect to www.googleapis.com:443 (Name or service not known)]
+https://stackoverflow.com/questions/28366402/failed-to-connect-to-www-googleapis-com-port-443-network-unreachable
++ steps
+  + curl -v https://www.googleapis.com
+  + #/etc/hosts
+    output from curl(trying part) www.googleapis.com
+   
 * Screenrecorder
 simplescreenrecorder
 * Linux
