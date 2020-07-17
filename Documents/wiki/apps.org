@@ -197,3 +197,13 @@ for credentials go to https://console.developers.google.com/apis/
 you can create new ones, and activate the youtube api 3
 * Screenrecorder
 simplescreenrecorder
+* Linux
+** expect
+** awk
+** sed
+** screen
+http://go2linux.garron.me/linux/2010/04/linux-screen-command-tutorial-740/
+** setsid
+http://go2linux.garron.me/linux/2010/12/setsid-how-execute-commands-after-you-exit-shell-prompt-866/
+** nohup
+http://go2linux.garron.me/nohup-run-programs-ignoring-hangup-signal/

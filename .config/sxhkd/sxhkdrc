@@ -21,7 +21,7 @@ super + shift + F2
 super + shift + p
 	mpv "$($HOME/Documents/myScripts/run_episode2.sh)"
 
-super + y
+super + e
     emacs $HOME/Documents/wiki/wiki.org
 
 super + r
@@ -30,4 +30,5 @@ super + r
 super + k
     st -e newsboat 
 
-
+super + y
+    st -e "$($UTILITIES/youtube/YT.tcl)"

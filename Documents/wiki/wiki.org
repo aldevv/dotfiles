@@ -2,13 +2,16 @@
 
 * [[file:linux.org][Linux]]
 * [[file:apps.org][Apps]]
+* Win
+** recovery
+hetman partition recovery
+recuva
 * places to eat
  costilla de adam
  + muy poco saludable
    costilla a la plancha
 * [[file:plans.org][Plans]]
-* small TODO
-https://rgoswami.me/
+* Done
 [x] create line runners for the other algorithms
 [x] create a place for the step by step, that is not the monitor
 [x] reset printer on clean button
@@ -19,4 +22,9 @@ https://rgoswami.me/
 [x] ~~make program stop running after error, and reset memory if start again after error
 [x] Quantummmm
 [x] multithread
+* small TODO
+[] fix statistics
+[] finish thread management
+[] do Conclusions
+[] hacer resumen
  

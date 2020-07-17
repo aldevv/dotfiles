@@ -1,1 +1,1 @@
--o ~/Videos/youtube/%(title)s-%(id)s.%(ext)s
+-o ~/Videos/Youtube/%(title)s-%(id)s.%(ext)s

@@ -1,6 +1,6 @@
 #+TITLE: Linux
 
--[[file:~/Documents/org/wiki/wiki.org][Index]]
+-[[file:~/Documents/wiki/wiki.org][index]]
 
 * Format USB
 df and find partition of usb you want to format

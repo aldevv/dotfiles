@@ -65,9 +65,16 @@ source $ZSH/oh-my-zsh.sh
 # Aliases 
 alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	v="nvim"\
+	あ="ls"\
+	re="mpv 'http://www.youtube.com/watch?v=w-RUTZBbGwM'"\
     rick="curl -s -L http://bit.ly/10hA8iC | bash"\
 	cheat="$UTILITIES/sheetmaker.sh"\
+	ytu="$UTILITIES/youtube/YT.tcl"\
+	yta="$UTILITIES/youtube/downloadAudio.sh"\
+	ytv="$UTILITIES/youtube/downloadVideo.sh"\
 	dic="$UTILITIES/dictionary.sh"\
+	conv="$UTILITIES/MkvToMp4.sh"\
+	url="$UTILITIES/urlShortener.sh"\
 	par="curl parrot.live"\
 	wtt="$UTILITIES/weather.sh"\
 	ssr="simplescreenrecorder"\
