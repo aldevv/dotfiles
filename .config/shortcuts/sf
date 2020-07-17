@@ -11,7 +11,7 @@ lo         ~/Documents/Learn/myos4/chmaquina
 lw         ~/Documents/Learn/Web/course/test
 cf         ~/.config
 snippets   ~/.config/nvim/my_snippets
-ms         ~/Documents/myScripts/
+mss        ~/Documents/myScripts/
 msu        ~/Documents/myScripts/utilities
 dev        ~/dev
 work       ~/dev/Work

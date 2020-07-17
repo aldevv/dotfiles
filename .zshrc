@@ -99,6 +99,8 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	dau='dotrepo add -u'\
 	dc='dotrepo commit -m'\
 	dgp='dotrepo push origin solus'\
+	m='ncmpcpp'\
+	restartx='sudo systemctl restart display-manager'\
 	
 	#python='python3'\
 

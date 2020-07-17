@@ -27,6 +27,9 @@ super + e
 super + r
     st -e ranger >/dev/null 2>&1
 
+super + Return
+    st >/dev/null 2>&1
+
 super + k
     st -e newsboat 
 
