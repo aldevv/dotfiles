@@ -137,7 +137,7 @@ map <C-&> <C-^>
 "    autocmd FileType c,cpp     nnoremap <buffer> gcc I//<esc>
 
 " auto compile suckless programs
-    autocmd BufWritePost config.h,config.def.h !sudo make clean install
+    autocmd BufWritePost config.h,config.def.h !cd % 2>$1; sudo make clean install /home/solus/%
 
 " auto compile latex if no vimtex
     autocmd BufWritePost,CursorHold,CursorHoldI *.tex :call CompileTex()
@@ -157,7 +157,7 @@ map <C-&> <C-^>
     autocmd BufWritePost *sxhkdrc !pkill sxhkd; setsid sxhkd &
 
 " auto shortcuts 
-    autocmd BufWritePost,TextChanged sf,sd !$HOME/.local/bin/Utilities/shortcut_maker
+    autocmd BufWritePost,TextChanged sf,sd !$AUTOMATION/shortcut_maker
 
 " functions
 function Autosaving()

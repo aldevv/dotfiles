@@ -16,7 +16,7 @@ super + shift + F2
 	st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
 
 super + shift + p
-	mpv "$($HOME/Documents/myScripts/run_episode2.sh)"
+	mpv "$($UTILITIES/run_episode2.sh)"
 
 #super + e
 #    emacs $HOME/Documents/wiki/wiki.org
