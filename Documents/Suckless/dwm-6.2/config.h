@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <X11/XF86keysym.h>
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -68,9 +69,9 @@ static const char *firefox[]  = { "firefox", NULL };
 static Key keys[] = {
 
     /* volume */
-    { 0,                            XK_XF86AudioLowerVolume,    spawn,      {.v = downvol } },
-    { 0,                            XK_XF86AudioMute,           spawn,      {.v = mutevol } },
-    { 0,                            XK_XF86AudioRaiseVolume,    spawn,      {.v = upvol   } },
+    { 0,                            XF86XK_AudioLowerVolume,    spawn,      {.v = downvol } },
+    { 0,                            XF86XK_AudioMute,           spawn,      {.v = mutevol } },
+    { 0,                            XF86XK_AudioRaiseVolume,    spawn,      {.v = upvol   } },
 
 	/* modifier                     key             function        argument */
 	{ MODKEY,                       XK_p,           spawn,          {.v = dmenucmd } },

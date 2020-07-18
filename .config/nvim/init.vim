@@ -137,7 +137,7 @@ map <C-&> <C-^>
 "    autocmd FileType c,cpp     nnoremap <buffer> gcc I//<esc>
 
 " auto compile suckless programs
-    autocmd BufWritePost config.h,config.def.h !cd % 2>$1; sudo make clean install /home/solus/%
+    autocmd BufWritePost config.h !cd $(compileSuckless %); sudo make clean install 
 
 " auto compile latex if no vimtex
     autocmd BufWritePost,CursorHold,CursorHoldI *.tex :call CompileTex()
