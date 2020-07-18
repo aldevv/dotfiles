@@ -1,4 +1,4 @@
-#+TITLE: WIKI CONTENTS
+#+Title: WIKI CONTENTS
 
 * [[file:linux.org][Linux]]
 * [[file:apps.org][Apps]]

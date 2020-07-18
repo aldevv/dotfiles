@@ -15,7 +15,7 @@ sudo mkfs.vfat -n 'TV' -I /dev/sdb1
 ** Hardware
 *** Mouse
 
-esto habilita el tap del touchpad
+ put this in a file named /etc/X11/xorg.conf.d/30-touchpad.conf
 
 Section "InputClass"
 	Identifier "mytouchpad"
@@ -74,6 +74,59 @@ sudo pacman -S aspell-es; sudo pacman -S aspell-en
 [[file:Apps.org][appi]]
 [[file:Apps.org][appi]]  
 * Solus
+** Hardware
+*** Mouse
+doing the same as arch, freezes keyboard and mouse, the fix is to do the following
+put in .xprofile the following line: 
+    synclient TapButton1=1
+    synclient TapButton2=3
+    synclient TapButton3=2
+    
+or add the following to: /usr/share/X11/xorg.conf.d/50-synaptics.conf
+
+
+this is the first input class of the file    
+
+    Section "InputClass"
+        Identifier "touchpad catchall"
+        Driver "synaptics"
+        MatchIsTouchpad "on"
+        >>>>>>>>>>>>>>>>>>>>>>>
+	      Option "TapButton1" "1"
+	      Option "TapButton2" "3"
+	      Option "TapButton3" "2"
+	      Option "VertTwoFingerScroll" "1"
+	      Option "HorizTwoFingerScroll" "1"
+        <<<<<<<<<<<<<<<<<<<<<<<<
+# This option is recommend on all Linux systems using evdev, but cannot be
+# enabled by default. See the following link for details:
+# http://who-t.blogspot.com/2010/11/how-to-ignore-configuration-errors.html
+#       MatchDevicePath "/dev/input/event*"
+EndSection
+
+*** layout colemak 
+**** install colemak in solus
+
+https://github.com/nhermosilla14/latam-colemak
+
+**** enable it
+then put this in /etc/X11/xorg.conf.d/00-keyboard.conf
+
+Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbLayout" "latam"
+        Option "XkbModel" "pc104"
+        Option "XkbVariant" "colemak"
+        Option "XkbOptions" "caps:escape"
+EndSection
+**** make it work in loginscreen
+localectl set-x11-keymap latam pc104 colemak
+
+** sudo eopkg up failure 
+sudo usysconf run -f ssl-certs
+** scripts
+most stuff is already done in scripts
 ** Source .xprofile and .profile by default in lightdm
 edit /usr/bin/lightdm-wrapper and source the others
 #!/bin/bash
@@ -111,19 +164,6 @@ dconf load / < dconf-full-backup
 ** media keybindings
 in dconf-editor 
 org/mate/settings-daemon/plugins/media-keys
-** keyboard colemak
-https://github.com/nhermosilla14/latam-colemak
-** Fix loginscreen layout
-localectl set-x11-keymap latam pc104 colemak
-or try to use 
-in vim /etc/X11/xorg.conf.d/00-keyboard.conf
-Section "InputClass"
-        Identifier "system-keyboard"
-        MatchIsKeyboard "on"
-        Option "XkbLayout" "latam"
-        Option "XkbModel" "pc104"
-        Option "XkbVariant" "colemak"
-EndSection
 ** make xinitrc work
 creating xinitrc in $HOME didnt work
 editing /etc/X11/xinit/xinitrc didnt work

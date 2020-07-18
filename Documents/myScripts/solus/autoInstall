@@ -1,7 +1,8 @@
-sudo eopkg install xdotool sxhkd pywal zathura w3m highlight font-firacode-ttf powerline-fonts font-symbola-ttf font-droid-ttf newsbeuter youtube-viewer fzf dmenu ibus-anthy lynx expect tcl-devel sudo eopkg it ncmpcpp mpd libxinerama-devel
+sudo eopkg -y install git xdotool sxhkd pywal zathura w3m highlight font-firacode-ttf powerline-fonts font-symbola-ttf font-droid-ttf newsbeuter youtube-viewer fzf dmenu ibus-anthy lynx expect tcl-devel sudo eopkg it ncmpcpp mpd asciidoc feh sxiv
+#dependencies for dwm (only first) and compton
+sudo eopkg -y install  libxinerama-devel libxcomposite-devel libxdamage-devel libxrandr-devel libconfig-devel libglu-devel libdrm-devel
 
+sudo pip3 install neovim-remote ranger-fm ueberzug pynvim
 
 # for japanese font-droid-ttf
 # for unicode symbola
-pip3 install neovim-remote
-# pip3 install pynvim

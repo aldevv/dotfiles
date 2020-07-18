@@ -4,10 +4,13 @@ sa  ~/Documents/myScripts/solus/autoInstall
 cfe ~/.emacs.d/init.el
 cfz ~/.zshrc
 cfp ~/.zprofile
+cfr ~/.config/ranger/rc.conf
 cfb ~/.bashrc
-cfx ~/.Xresources
+cfxx ~/.Xresources
+cfxp ~/.xprofile
 cfv ~/.config/nvim/init.vim
 cfk ~/.config/sxhkd/sxhkdrc
+cfm ~/.xmonad/xmonad.hs
 cfi ~/.xinitrc
 cfn ~/.config/newsboat/urls
 cfy ~/.config/youtube-dl/config

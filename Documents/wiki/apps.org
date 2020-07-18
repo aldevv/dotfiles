@@ -215,3 +215,21 @@ http://go2linux.garron.me/linux/2010/04/linux-screen-command-tutorial-740/
 http://go2linux.garron.me/linux/2010/12/setsid-how-execute-commands-after-you-exit-shell-prompt-866/
 ** nohup
 http://go2linux.garron.me/nohup-run-programs-ignoring-hangup-signal/
+* Display managers
+** Xmonad
+# if having problems
+    uninstall all xmonad related packages
+    do sudo eopkg rmo to uninstall all orphans
+# system packages (assuming you have the system.devel packages group installed)
+sudo eopkg install haskell-cabal-install ghc-devel libx11-devel libxrandr-devel libxscrnsaver-devel libxinerama-devel
+
+
+cabal update
+
+cabal install xmonad xmonad-contrib
+
+# binaries show up in $HOME/.cabal/bin
+
+xmonad --recompile # works now!
+*** cant find import xmonad
+sudo ghc-pkg recache

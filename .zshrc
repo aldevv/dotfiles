@@ -65,7 +65,7 @@ source $ZSH/oh-my-zsh.sh
 # Aliases 
 alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	v="nvim"\
-	あ="ls"\
+	xmonad="$HOME/.cabal/bin/xmonad"\
 	re="mpv 'http://www.youtube.com/watch?v=w-RUTZBbGwM'"\
     rick="curl -s -L http://bit.ly/10hA8iC | bash"\
 	cheat="$UTILITIES/sheetmaker.sh"\

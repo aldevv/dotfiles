@@ -9,9 +9,6 @@ alt + w
 super + p
 	dmenu_run
 
-super + h
-	st -e htop
-
 super + F2
 	st -e pydoc "$($HOME/Documents/myScripts/python_documentation.sh)"
 
@@ -21,8 +18,8 @@ super + shift + F2
 super + shift + p
 	mpv "$($HOME/Documents/myScripts/run_episode2.sh)"
 
-super + e
-    emacs $HOME/Documents/wiki/wiki.org
+#super + e
+#    emacs $HOME/Documents/wiki/wiki.org
 
 super + r
     st -e ranger >/dev/null 2>&1
