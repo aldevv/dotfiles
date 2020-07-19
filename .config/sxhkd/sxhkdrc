@@ -15,11 +15,11 @@ super + F2
 super + shift + F2
 	st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
 
-super + shift + p
-	mpv "$($UTILITIES/run_episode2.sh)"
+#super + alt + p
+#	mpv "$($UTILITIES/run_episode2.sh)"
 
-#super + e
-#    emacs $HOME/Documents/wiki/wiki.org
+super + shift + w
+    emacs $HOME/Documents/wiki/wiki.org
 
 super + r
     st -e ranger >/dev/null 2>&1

@@ -4,7 +4,6 @@ sudo eopkg -y install xbacklight
 #dependencies for dwm (only first) and compton
 sudo eopkg -y install  libxinerama-devel libxcomposite-devel libxdamage-devel libxrandr-devel libconfig-devel libglu-devel libdrm-devel
 
-sudo pip3 install neovim-remote ranger-fm ueberzug pynvim
-
+sudo pip3 install neovim-remote ranger-fm ueberzug pynvim 
 # for japanese font-droid-ttf
 # for unicode symbola

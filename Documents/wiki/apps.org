@@ -233,3 +233,21 @@ cabal install xmonad xmonad-contrib
 xmonad --recompile # works now!
 *** cant find import xmonad
 sudo ghc-pkg recache
+* ST
+** font
+it wont work until the patch for color emojis comes to solus, these emojis are color only
+
+download from (MACOS)
+https://www.joypixels.com/fonts
+(direct link)
+https://d3qhp42p4neron.cloudfront.net/products/assets/2O8jVmgprmvY6gow63EFwHcfqUvhLayq/joypixels-6.0-free-fonts.zip?Expires=1595135033&Signature=HRSpIiTBqlOSSpTwTmhixh0LO3nfcp3cvTen3CCVSCInml6UNU2BQLrZGfgpbxRz97D~JQ9ztfKYYi64G07FvIPauDObo1jmIgIvqr05JZ2DMd4cbprTPhtU2DXSJ3fz-Tcne77f~L4m5rYH2Ic6vmNJ6bM0b61dirjZf3G9hJEykFxz396eq0TaEnR6LbzWQlvZ1sDv1fzrVdJGThX6uc-zG84HPCMoWo93h2mtlojvgKBEAfXRlb50NtrGlS7gqLOFl6-ctImXbaMhzzfFXwXLwRRwBI4Cy-B3m4DKBIqwwvFVoEea01gm6gL25e276H6gTQaowdE3atjF5jICpQ__&Key-Pair-Id=APKAIRGCVGOY7DOKYTJA
+
+download the font and put it in ~/.fonts
+then run: 
+
+   sudo usysconf run -f
+   
+check used fonts
+lsof -p id_st_process | grep font
+
+
