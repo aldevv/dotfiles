@@ -4,7 +4,7 @@
 # super and shift works, but super alone doesnt
 
 alt + w
-	sh ~/Documents/myScripts/toggle_chat.sh
+	sh "$UTILITIES/toggle_chat.sh"
 
 super + p
 	dmenu_run
