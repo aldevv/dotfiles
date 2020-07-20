@@ -12,6 +12,10 @@ sudo mkfs.vfat -n 'TV' -I /dev/sdb1
 - also you need to mount the boot partition in /boot/efi
   for every OS you install, this worked on Solus/Void/Arch
 * Arch
+** install
+follow videos
+ON PACSTRAP /mnt linux
+or it wont load the kernel!!!
 ** Hardware
 *** Mouse
 
@@ -183,4 +187,15 @@ then logout and login again
 change input layout of japanese to colemak
 Go to mozc configuration and make sure is in romaji
 go to fcitx config and global make sure input key  is super + space
+
+* bash
+** show errors in scripts
+# at the beggining
+set -e
+
+err_report() {
+    echo "Error on line $1"
+}
+
+trap 'err_report $LINENO' ERR
 
