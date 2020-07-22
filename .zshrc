@@ -5,6 +5,8 @@
 source ~/.zprofile
 #COLEMAK DOTFILES
 #!  https://rgoswami.me/posts/colemak-dots-refactor/
+#autoload -U colors && colors	# Load colors
+#PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 # wal -i [picture]
 #export GTK_IM_MODULE=fcitx 
@@ -38,6 +40,8 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+#
+#
 
 #functions
 #to open man in vim
@@ -46,6 +50,26 @@ function manv() {
         nvim -c 'execute "normal! :let no_man_maps = 1\<cr>:runtime ftplugin/man.vim\<cr>:Man '"${arg}"'\<cr>:wincmd o\<cr>"'
     done
 }
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 
 
@@ -68,6 +92,7 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	xmonad="$HOME/.cabal/bin/xmonad"\
 	re="mpv 'http://www.youtube.com/watch?v=w-RUTZBbGwM'"\
     rick="curl -s -L http://bit.ly/10hA8iC | bash"\
+    bt="curl rate.sx"\
 	cheat="$UTILITIES/sheetmaker.sh"\
 	ytu="$UTILITIES/youtube/YT.tcl"\
 	yta="$UTILITIES/youtube/downloadAudio.sh"\
@@ -76,7 +101,7 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	conv="$UTILITIES/MkvToMp4.sh"\
 	url="$UTILITIES/urlShortener.sh"\
 	par="curl parrot.live"\
-	wtt="$UTILITIES/weather.sh"\
+	wtr="$UTILITIES/weather.sh"\
 	ssr="simplescreenrecorder"\
 	yt="youtube-viewer"\
 	rr="ranger"\
@@ -104,10 +129,9 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	
 	#python='python3'\
 
-# User configuration
+# Keybindings
 
 # so you can use backspace after esc
-
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line
 # Vi style:
@@ -131,12 +155,18 @@ bindkey -M vicmd "$" end-of-line
 bindkey -M vicmd "j" vi-forward-word-end
 bindkey -M vicmd "J" vi-forward-blank-word-end
 bindkey -M vicmd v edit-command-line
-
 # Sane Undo, Redo, Backspace, Delete.
 bindkey -M vicmd "u" undo
 bindkey -M vicmd "U" redo
 bindkey -M vicmd "^?" backward-delete-char
 bindkey -M vicmd "^[[3~" delete-char
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'e' vi-up-line-or-history
+bindkey -M menuselect 'i' vi-forward-char
+bindkey -M menuselect 'n' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -162,5 +192,7 @@ bindkey -M vicmd "^[[3~" delete-char
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+#completion and highlighting
+fpath=(/home/solus/Programs/zsh-completions/src $fpath)
 source /home/solus/Programs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.aliases

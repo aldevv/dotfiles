@@ -32,3 +32,25 @@ super + k
 
 super + y
     st -e "$($UTILITIES/youtube/YT.tcl)"
+
+super + v
+    st -e code-oss
+
+XF86AudioMute
+     pactl set-sink-mute 0 toggle
+
+XF86AudioRaiseVolume
+     pactl set-sink-volume 0 +5%
+
+XF86AudioLowerVolume
+     pactl set-sink-volume 0 -5%
+
+XF86MonBrightnessUp
+    xbacklight -inc 10
+
+XF86MonBrightnessDown
+    xbacklight -dec 10
+
+XF86Touchpad{Off,On}
+	synclient TouchpadOff={1,0}
+

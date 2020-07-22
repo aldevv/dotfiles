@@ -233,6 +233,32 @@ cabal install xmonad xmonad-contrib
 xmonad --recompile # works now!
 *** cant find import xmonad
 sudo ghc-pkg recache
+** Xmobar
+# install stack
+curl -sSL https://get.haskellstack.org/ | sh
+
+# download xmobar from github
+git clone "https://github.com/jaor/xmobar" xmobar-git
+# enter the folder
+# dependencies 
+sudo eopkg -y install alsa-lib-devel libxpm-devel
+# do
+stack install
+
+** dwm
+*** install order
+1. scratchpad
+2. xresources
+3. vanityGaps
+4. swallow
+5. sticky
+6. stacker
+7. noborder
+8. actualFullscreen
+9. fibonacci
+10. centeredMaster
+11. bottom # broken is defined 2 times, delete one
+11. deck # problems
 * ST
 ** font
 it wont work until the patch for color emojis comes to solus, these emojis are color only

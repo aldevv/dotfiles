@@ -108,7 +108,8 @@ ResourcePref resources[] = {
 
 /* basics */
 static const char *brightup[]   = { "/usr/bin/xbacklight", "-inc", "10", NULL };
-static const char *brightdown[] = { "/usr/bin/xbacklight", "-dec", "10", NULL };static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
+static const char *brightdown[] = { "/usr/bin/xbacklight", "-dec", "10", NULL };
+static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[]    = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[]    = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
 /* commands */
@@ -117,11 +118,11 @@ static const char *firefox[]  = { "firefox", NULL };
 static Key keys[] = {
 
     /* volume */
-    { 0,                            XF86XK_AudioLowerVolume,    spawn,      {.v = downvol } },
-    { 0,                            XF86XK_AudioMute,           spawn,      {.v = mutevol } },
-    { 0,                            XF86XK_AudioRaiseVolume,    spawn,      {.v = upvol   } },
-    { 0,                            0x1008ff02,                 spawn,      {.v = brightup } },
-    { 0,                            0x1008ff03,                 spawn,      {.v = brightdown } },
+    //{ 0,                            XF86XK_AudioLowerVolume,    spawn,      {.v = downvol } },
+    //{ 0,                            XF86XK_AudioMute,           spawn,      {.v = mutevol } },
+    //{ 0,                            XF86XK_AudioRaiseVolume,    spawn,      {.v = upvol   } },
+    //{ 0,                            0x1008ff02,                 spawn,      {.v = brightup } },
+    //{ 0,                            0x1008ff03,                 spawn,      {.v = brightdown } },
 
 	/* modifier                     key        function        argument */
 	//{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },

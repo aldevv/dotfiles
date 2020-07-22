@@ -4,6 +4,11 @@ sudo eopkg -y install git xdotool sxhkd pywal zathura w3m highlight font-firacod
 #dependencies for dwm (only first) and compton
 sudo eopkg -y install  libxinerama-devel libxcomposite-devel libxdamage-devel libxrandr-devel libconfig-devel libglu-devel libdrm-devel
 
+#dependencies xmobar
+sudo eopkg -y install alsa-lib-devel libxpm-devel
+
+
+
 sudo pip3 install neovim-remote ranger-fm ueberzug pynvim 
 
 #for making dwm work with light 
@@ -12,6 +17,14 @@ sudo eopkg -y install xbacklight
 # for drag and drop (dragon)
 sudo eopkg -y install libgtk-3-devel
 git clone https://github.com/mwh/dragon $HOME/Documents/Suckless
+
+#zsh
+#install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# install completions
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+# install highlight
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 # for japanese font-droid-ttf
 # for unicode symbola
