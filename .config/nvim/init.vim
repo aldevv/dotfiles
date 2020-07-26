@@ -1,3 +1,6 @@
+
+" to make coc work with javascript install the coc-tsserver, and coc-css
+
 noremap n j
 noremap e k
 noremap j e
@@ -196,6 +199,7 @@ command! -bang -nargs=? -complete=dir Files
 command! PFiles execute 'Files' s:find_current_root()
 
 function! s:find_current_root()
+    execute ':lcd %:p:h'
     return system('git status') =~ '^fatal:' ? 
                 \ expand("%:p:h") : system("git rev-parse --show-toplevel 2> /dev/null")[:-2]
 endfunction
@@ -216,7 +220,8 @@ command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 
     
 " GoTo code navigation.
-nmap <leader>gd <Plug>(coc-definition)
+"nmap <leader>gd <Plug>(coc-definition)
+nmap gd <Plug>(coc-definition)
 nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gr <Plug>(coc-references)
@@ -276,7 +281,7 @@ vnoremap gc :call NERDComment(0,"toggle")<CR>
 " Goyo
 
 nnoremap <leader>gg :Goyo \| set wrap \| set linebreak<CR>
-nnoremap <leader>gd :Goyo! \| :set wrap! \| :set linebreak!<CR>
+"nnoremap <leader>gd :Goyo! \| :set wrap! \| :set linebreak!<CR>
 
 
 " Haskell-vim
