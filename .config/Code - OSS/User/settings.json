@@ -59,7 +59,8 @@
         "<C-n>": false, //
         "<C-w>": false,
         "<C-i>": true, // changing file
-        "<C-o>": true,
+        // "<C-o>": true, // for vim move files
+        "<C-o>": false,
         "<C-d>": true,
         "<C-u>": true, // used by vim
         "<C-y>": true, // used by vim

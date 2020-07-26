@@ -2,6 +2,8 @@
 
 * [[file:linux.org][Linux]]
 * [[file:apps.org][Apps]]
+* [[file:technologies.org][Technologies]]
+* [[file:plans.org][Plans]]
 * Win
 ** recovery
 hetman partition recovery
@@ -10,7 +12,6 @@ recuva
  costilla de adam
  + muy poco saludable
    costilla a la plancha
-* [[file:plans.org][Plans]]
 * Done
 [x] create line runners for the other algorithms
 [x] create a place for the step by step, that is not the monitor
@@ -28,3 +29,59 @@ recuva
 [] do Conclusions
 [] hacer resumen
  
+* Japanese
+** n
+- yukiyoshi mamizu = young son
+- aiue oka
+- engawa suguru = ane gyaru
+- diisuke = urami
+- kakao
+- pochi
+- meme50
+** unit 6
+speakers pronounce it nanka which is informal and casual, often used between friends and people of an equal status.
+Unit 6
+Particles
+When speaking English with non-native speakers, you can usually guess their fluency by their familiarity with idiomatic expressions.
+For example, when someone says, "John is engaged with Beth" instead of "engaged to" you can guess that the person is not a native
+speaker of English. The same is true of the Japanese language. There are many one-syllable words or particles that you need to be able
+to use properly in order to convey your ideas accurately to the listener. wa, ga, de, ni, mo, ka, no, and to are some examples of these
+particles. wa is often used to indicate that the preceding words are the main topic of a sentence: for example, watashi
+wa nihonjin desu. ga is often used the same way, as in, nihongo ga jozu desu. de indicates a place, as in anata no tokoro
+de. ni is equivalent to the English "at" when accompanied by a word indicating time, as in ni ji ni, "at two o'clock." mo is "also," as
+in anata mo - "you too." ka is put at the end of a sentence to make it a question. no is possessive, as in anata no nihongo (your
+Japanese). to is approximately equivalent to "with" in English, as in anato to tabetai desu - "(1) want to eat with you." Though they
+may he confusing at times, learning to use these particles properly will greatly contribute to your fluency in Japanese.
+** unit 7 o
+Cognates and "Borrowed English Loan Words"
+No language is free from words borrowed from other languages, and Japanese is no exception. Many English words have been adopted
+in Japanese, although the Japanese often pronounce them so differently that English speakers can hardly recognize that they were
+originally English. resutoran and biiru illustrate this point. You need to pronounce these and other words with English origins as the
+Japanese do, so that you can make yourself understood.
+Often, the Japanese have changed not only the pronunciation, but also the form and meanings of these originally English words.
+Japanese speakers often prefer to shorten or abbreviate loan words: for example, waapuro for "word processor," pasokon for "personal
+computer," and terebi for "television." There are as well some English words used in Japanese whose meanings have changed to a
+greater or lesser extent. For example, there are many apartment complexes that are called "mansions" in Japan, usually referring to
+condominiums. You may find a pair of socks marked "free size," which really means "one size fits all." In a restaurant, you may be
+served mikkusu sando, or "mixed sandwiches." "Mixed" in this context means "assorted," and you will find various
+kinds of sandwiches on one plate.
+** unit 8
+*** Counters
+**** Hon
+Long things (bottles)
+**** mai 
+flat materials (paper, plates)
+**** dai 
+machinery (computers, cars, phones)
+**** ken 
+for houses and shops
+**** nin 
+for people
+hitori one,
+futari two people >> only for people
+three people san nin
+** unit 11 
+masen ka
+** unit 12 
+How about: 'wa' at the end
+isn't: 'ne' at the end

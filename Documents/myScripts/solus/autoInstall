@@ -2,7 +2,7 @@ sudo eopkg -y install git xdotool sxhkd pywal zathura w3m highlight font-firacod
 
 
 #dependencies for dwm (only first) and compton
-sudo eopkg -y install  libxinerama-devel libxcomposite-devel libxdamage-devel libxrandr-devel libconfig-devel libglu-devel libdrm-devel
+sudo eopkg -y install  libxinerama-devel libxcomposite-devel libxdamage-devel libxrandr-devel libconfig-devel libglu-devel libdrm-devel xsetroot
 
 #dependencies xmobar
 sudo eopkg -y install alsa-lib-devel libxpm-devel

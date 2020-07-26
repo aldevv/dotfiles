@@ -9,8 +9,8 @@ alt + w
 super + p
 	dmenu_run
 
-super + F2
-	st -e pydoc "$($HOME/Documents/myScripts/python_documentation.sh)"
+#super + F2
+	#st -e pydoc "$($HOME/Documents/myScripts/python_documentation.sh)"
 
 super + shift + F2
 	st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
@@ -27,14 +27,26 @@ super + r
 super + Return
     st >/dev/null 2>&1
 
-super + k
+super +  k
     st -e newsboat 
 
 super + y
     st -e "$($UTILITIES/youtube/YT.tcl)"
 
-super + v
+super + shift + v
     st -e code-oss
+
+super + F1
+    "$UTILITIES/japSearch"
+
+super + F2
+    "$UTILITIES/hiraganaTable"
+
+super + F3
+    "$UTILITIES/katakanaTable"
+
+super + F4
+    "$UTILITIES/notesJap"
 
 XF86AudioMute
      pactl set-sink-mute 0 toggle

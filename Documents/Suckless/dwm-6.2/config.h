@@ -71,11 +71,11 @@ static const Layout layouts[] = {
 #define STACKKEYS(MOD,ACTION) \
 	{ MOD, XK_n,     ACTION##stack, {.i = INC(+1) } }, \
 	{ MOD, XK_e,     ACTION##stack, {.i = INC(-1) } }, \
-	{ MOD, XK_g,     ACTION##stack, {.i = PREVSEL } }, \
-	{ MOD, XK_q,     ACTION##stack, {.i = 0 } }, \
-	{ MOD, XK_a,     ACTION##stack, {.i = 1 } }, \
-	{ MOD, XK_z,     ACTION##stack, {.i = 2 } }, \
-	{ MOD, XK_x,     ACTION##stack, {.i = -1 } },
+	{ MOD, XK_v,     ACTION##stack, {.i = 0 } }, \
+	//{ MOD, XK_g,     ACTION##stack, {.i = PREVSEL } }, \
+	//{ MOD, XK_a,     ACTION##stack, {.i = 1 } }, \
+	//{ MOD, XK_z,     ACTION##stack, {.i = 2 } }, \
+	//{ MOD, XK_x,     ACTION##stack, {.i = -1 } },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -155,7 +155,7 @@ static Key keys[] = {
 	//{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} },
 	//{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
 	//{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
+	//{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
