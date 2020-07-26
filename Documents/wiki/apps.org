@@ -259,6 +259,9 @@ stack install
 10. centeredMaster
 11. bottom # broken is defined 2 times, delete one
 11. deck # problems
+    
+*** stack
+used to change the hirerarchy of windows, and select a direct window based on is index in the array
 * ST
 ** font
 it wont work until the patch for color emojis comes to solus, these emojis are color only

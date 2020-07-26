@@ -1,0 +1,8 @@
+#!/bin/sh
+
+sourceVal=$( echo \
+    'Cpp:
+    Vim:
+    React:' | dmenu -i
+)
+zeal "$sourceVal"

@@ -176,11 +176,43 @@ let NERDTreeMenuDown = 'n'
 let NERDTreeMapOpenExpl = 'k'
 
 " Undo tree
-    nnoremap <F5> :UndotreeToggle<cr>
+nnoremap <F5> :UndotreeToggle<cr>
 
 " fzf
-    nnoremap <leader>p :Files<cr> 
-    nnoremap <leader>gp :GFiles<cr> 
+nnoremap <c-p> :PFiles<cr> 
+nnoremap <leader>b :Buffers<cr> 
+nnoremap <leader>gp :GFiles<cr> 
+nnoremap <leader>gl :BCommits<cr> 
+nnoremap <leader>f :Rg<cr>
+nnoremap <F4> :Course<cr>
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+
+" gives a preview window to Files
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+" to start fzf at root of project
+command! PFiles execute 'Files' s:find_current_root()
+
+function! s:find_current_root()
+    return system('git status') =~ '^fatal:' ? 
+                \ expand("%:p:h") : system("git rev-parse --show-toplevel 2> /dev/null")[:-2]
+endfunction
+
+
+" for ripgrep
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'dir': s:find_current_root()}), <bang>0)
+
+"search in specific folder"
+command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
+
+"Or, if you want to override the command with different fzf options, just pass a custom spec to the function.
+"command! -bang -nargs=? -complete=dir Files
+"   \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
 
     
 " GoTo code navigation.

@@ -1,0 +1,4 @@
+while true; do
+	xsetroot -name "$(date +'%d/%m/%y')"
+	sleep 60
+done

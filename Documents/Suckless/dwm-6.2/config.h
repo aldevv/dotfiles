@@ -12,12 +12,12 @@ static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
 static char selfgcolor[]            = "#eeeeee";
-static char selbordercolor[]        = "#005577";
+static char selbordercolor[]        = "#eeeeee"; //border of selected window
 static char selbgcolor[]            = "#005577";
-static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappih    = 20; // def 10     /* horiz inner gap between windows */
+static const unsigned int gappiv    = 10; // def 10     /* vert inner gap between windows */
+static const unsigned int gappoh    = 10; // def 10     /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 30; // def 10     /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static char *colors[][3] = {
@@ -37,6 +37,7 @@ static const Rule rules[] = {
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
+	{ "Code",    NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
@@ -107,11 +108,12 @@ ResourcePref resources[] = {
 };
 
 /* basics */
-static const char *brightup[]   = { "/usr/bin/xbacklight", "-inc", "10", NULL };
-static const char *brightdown[] = { "/usr/bin/xbacklight", "-dec", "10", NULL };
-static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
-static const char *downvol[]    = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
-static const char *mutevol[]    = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+//static const char *brightup[]   = { "/usr/bin/xbacklight", "-inc", "10", NULL };
+//static const char *brightdown[] = { "/usr/bin/xbacklight", "-dec", "10", NULL };
+//static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
+//static const char *downvol[]    = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
+//static const char *mutevol[]    = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+//
 /* commands */
 static const char *firefox[]  = { "firefox", NULL };
 

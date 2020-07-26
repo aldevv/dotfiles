@@ -48,6 +48,9 @@ super + F3
 super + F4
     "$UTILITIES/notesJap"
 
+super + F5
+    "$UTILITIES/searchDocs"
+
 XF86AudioMute
      pactl set-sink-mute 0 toggle
 
