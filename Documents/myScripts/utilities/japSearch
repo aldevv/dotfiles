@@ -1,0 +1,3 @@
+#!/bin/sh
+word=$(dmenu)
+firefox https://jisho.org/search/$word
