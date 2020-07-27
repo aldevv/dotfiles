@@ -1,0 +1,16 @@
+
+* Angular
+start here: https://angular.io/tutorial
+curso vence sep 30!!: https://courses.edx.org/courses/course-v1:Microsoft+DEV314x+1T2019a/course/
+ecommerce fast: https://www.youtube.com/watch?v=gLa2LxMdAPs
+ecommerce: https://www.youtube.com/watch?v=9K15zC0gN2I
+best ecommerce: https://medium.com/javascript-in-plain-english/how-to-create-an-app-using-angular-and-firebase-part-1-debb80f928ad
+* CSS
+curso: https://courses.edx.org/courses/course-v1:W3Cx+CSS.0x+3T2018/course/
+* React 
+ecommerce: https://www.youtube.com/watch?v=wPQ1-33teR4
+* Javascript
+* PHP
+* Nodejs
+** --dev-save
+it creates/appends the package to devdependencies in package.json

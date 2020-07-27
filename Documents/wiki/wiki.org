@@ -4,9 +4,15 @@
 * [[file:apps.org][Apps]]
 * [[file:technologies.org][Technologies]]
 * [[file:plans.org][Plans]]
-* Win
+* Life
+** Dermapen
+set to 1.5ml of biotin and 4 dutasteride capsules
+
++ machine must be set to 1 .
+
+* Windows
 ** recovery
-hetman partition recovery
+hetman partition recovery (for hdd recovery)
 recuva
 * places to eat
  costilla de adam

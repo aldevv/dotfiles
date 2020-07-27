@@ -1,6 +1,6 @@
 #+TITLE: Apps
 
-[[file:~/Documents/org/wiki/wiki.org][Index]]
+[[file:~/Documents/wiki/wiki.org][Index]]
 
 * Emacs
 ** Lisp
@@ -176,22 +176,6 @@ to move left, put this \hskip-4.0cm before the \begin{tabular}
 * Course 
 Algoritmos: https://www.coursera.org/learn/algorithms-part1/home/welcome
 Android: https://courses.edx.org/courses/course-v1:HKUSTx+COMP107x+3T2016/course/
-* Angular
-start here: https://angular.io/tutorial
-curso vence sep 30!!: https://courses.edx.org/courses/course-v1:Microsoft+DEV314x+1T2019a/course/
-ecommerce fast: https://www.youtube.com/watch?v=gLa2LxMdAPs
-ecommerce: https://www.youtube.com/watch?v=9K15zC0gN2I
-best ecommerce: https://medium.com/javascript-in-plain-english/how-to-create-an-app-using-angular-and-firebase-part-1-debb80f928ad
-* CSS
-curso: https://courses.edx.org/courses/course-v1:W3Cx+CSS.0x+3T2018/course/
-* React 
-ecommerce: https://www.youtube.com/watch?v=wPQ1-33teR4
-* Javascript
-* PHP
-* Dermapen
-set to 1.5ml of biotin and 4 dutasteride capsules 
-
-+ machine must be set to 1 .
 * Youtube-viewer
 ** web page 
 for credentials go to https://console.developers.google.com/apis/
