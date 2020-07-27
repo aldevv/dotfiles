@@ -373,6 +373,8 @@
 (define-key evil-motion-state-map (kbd "C-w i") 'evil-window-right)
 
 
+(evil-define-key 'visual org-mode-map (kbd "ir") nil)
+;; #' is simply good practice
 (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
 (evil-define-key 'insert org-mode-map (kbd "<tab>") #'tab-to-tab-stop)
 (setq-default indent-tabs-mode nil)
@@ -525,10 +527,10 @@
   "/t" 'org-tags-sparse-tree
   "b" 'switch-to-buffer
   "ob" 'bookmark-bmenu-list
-  "<f1>" '(lambda() (interactive)(find-file "~/org/TODO.org"))
-  "<f2>" '(lambda() (interactive)(find-file "~/org/Personal.org"))
-  "<f3>" '(lambda() (interactive)(find-file "~/org/Watchlist.org"))
-  "<f4>" '(lambda() (interactive)(find-file "~/org/Spain.org"))
+  "<f1>" '(lambda() (interactive)(find-file "~/Documents/wiki/technologies.org"))
+  "<f2>" '(lambda() (interactive)(find-file "~/Documents/wiki/apps.org"))
+;  "<f3>" '(lambda() (interactive)(find-file "~/Documents/wiki/Watchlist.org"))
+;  "<f4>" '(lambda() (interactive)(find-file "~/Documents/wiki/Spain.org"))
   "d" 'diff-buffer-with-file
   "r" 'dired
   "l" 'org-open-at-point

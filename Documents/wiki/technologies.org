@@ -22,7 +22,6 @@ const element = React.createElement(
     {className: 'greeting'},
     'Hello, World'
 
-    
 * Javascript
 * PHP
 * Nodejs

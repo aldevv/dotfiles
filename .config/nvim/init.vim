@@ -30,7 +30,12 @@ noremap  <F7> :set spell! \| set wrap<CR>
 "to install python3 in checkhelath
 "python3 -m pip install --user --upgrade pynvim
 "pip3 install neovim-remote
-
+"
+"javascript
+let g:indentLine_enabled = 0
+" enable vertical lines in javascript and typescript files
+autocmd BufReadPost,BufNewFile *.js,*.ts :IndentLinesToggle
+autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter * IndentLinesReset
 "setlocal spell
 set spelllang=es
 "set spelllang=en_us
@@ -61,12 +66,6 @@ set cmdheight=1
 set noshowmode
 set clipboard=unnamedplus
 
-" sets 24 bit term colors for vim
-	if exists('+termguicolors')
-  	 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  	 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  	 set termguicolors
-	endif
 
 "detect root in git repo
 if executable('rg')
@@ -99,6 +98,9 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'dylanaraps/wal'
 Plug 'junegunn/goyo.vim'
 Plug 'neovimhaskell/haskell-vim'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'yggdroot/indentLine'
 "Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'https://github.com/dracula/vim', {'as': 'dracula'}
 "need both
@@ -116,6 +118,25 @@ colorscheme gruvbox
 "
 "for transparent vim
 hi Normal guibg=NONE ctermbg=NONE
+
+" sets 24 bit term colors for vim
+set termguicolors
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+		  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+		  \,sm:block-blinkwait175-blinkoff150-blinkon175
+
+"if &term =~ "st-256color"
+    " bright red in normal mode
+    "let &t_SI = "\<Esc>[121m"
+    "reset to normal for insert mode
+    "let &t_EI = "\<Esc>[130m"
+    " make sure it resets when you exit vim
+    "autocmd VimLeave * silent !echo -ne "\033[130m"
+"endif
+
+"Cursor highlight groups
+"Cursor CursorIM CursorColumn CursorLine
+
 
 " airline
 "let g:airline_theme='onehalfdark'
