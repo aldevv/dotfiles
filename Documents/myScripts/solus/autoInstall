@@ -7,8 +7,10 @@ sudo eopkg -y install  libxinerama-devel libxcomposite-devel libxdamage-devel li
 #dependencies xmobar
 sudo eopkg -y install alsa-lib-devel libxpm-devel
 
+#for emacs
+mkdir -p ~/.emacs.d/undo ~/.emacs.d/.trash
 
-
+# for vim and ranger
 sudo pip3 install neovim-remote ranger-fm ueberzug pynvim 
 
 #for making dwm work with light 

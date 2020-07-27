@@ -11,7 +11,10 @@
 ;;irony
 ;;writeroom
 ;;doom-mode
-
+;backup dir
+(setq backup-directory-alist            '((".*" . "~/.emacs.d/.trash")))
+; disable lockfiles
+(setq create-lockfiles nil)
 ;; dependencies to install
 
 ;; clang for company
@@ -325,8 +328,10 @@
 
 (define-key input-decode-map "^O" [C-<S-o>]) ;; defines my escape key for shift
 
-;; backup folder
-;;(setq backup-directory-alist `(("." . "~/.saves")))
+;persistent undo
+(global-undo-tree-mode)
+(setq undo-tree-auto-save-history t)
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 
 ;; COLEMAK
 ;; it breaks evil snipe, too lazy to fix now
