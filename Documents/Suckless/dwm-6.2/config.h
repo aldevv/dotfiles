@@ -179,7 +179,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	//TAGKEYS(                        XK_0,                      9)
-	{ MODKEY|ShiftMask,             XK_q,       quit,        {0} },
+	{ MODKEY|ControlMask,             XK_q,       quit,        {0} },
 
     /* Gaps */
 	//{ MODKEY|Mod4Mask|ShiftMask,    XK_h,      incrogaps,      {.i = +1 } },

@@ -83,7 +83,8 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-which-key")
 (require 'which-key)
 
-(add-hook 'org-mode-hook 'evil-org-mode)
+; evil org is broken, cant move right in visual mode
+;(add-hook 'org-mode-hook 'evil-org-mode)
 (evil-org-set-key-theme '(navigation insert textobjects additional calendar shift))
 (require 'evil-org-agenda)
 (evil-org-agenda-set-keys)
@@ -336,36 +337,48 @@
 ;; COLEMAK
 ;; it breaks evil snipe, too lazy to fix now
 ;; https://github.com/wbolster/evil-colemak-basics
-(use-package evil-colemak-basics ;; for jumping around like f in vimium
-  :load-path "~/.emacs.d/evil-colemak-basics"
-  :config
-    (global-evil-colemak-basics-mode))
-;;(define-key evil-normal-state-map "i" nil)
-;;(define-key evil-visual-state-map "I" nil)
-;;(define-key evil-visual-state-map "i" nil)
-;;(define-key evil-motion-state-map "j" nil)
-;;(define-key evil-motion-state-map "k" nil)
-;;(define-key evil-motion-state-map "K" nil)
-;;(define-key evil-motion-state-map "l" nil)
-;;(define-key evil-motion-state-map "e" nil)
-;;(define-key evil-motion-state-map "n" nil)
-;;(define-key evil-motion-state-map "N" nil)
-;;(define-key evil-normal-state-map "l" 'evil-insert)
-;;(define-key evil-visual-state-map "L" 'evil-insert)
-;;(define-key evil-visual-state-map "i" 'evil-forward-char)
-;;(define-key evil-motion-state-map "n" 'evil-next-line)
-;;(define-key evil-motion-state-map "e" 'evil-previous-line)
-;;(define-key evil-motion-state-map "i" 'evil-forward-char)
-;;(define-key evil-motion-state-map "j" 'evil-fordward-word-end)
-;;(define-key evil-motion-state-map "k" 'evil-ex-search-next)
-;;(define-key evil-motion-state-map "K" 'evil-ex-search-previous)
-;;(define-key evil-normal-state-map (kbd "C-w j") nil)
-;;(define-key evil-normal-state-map (kbd "C-w k") nil)
-;;(define-key evil-normal-state-map (kbd "C-w i") nil)
-;;(define-key evil-normal-state-map (kbd "C-w n") 'evil-window-down)
-;;(define-key evil-normal-state-map (kbd "C-w e") 'evil-window-up)
-;;(define-key evil-motion-state-map (kbd "C-w i") 'evil-window-right)
+;(use-package evil-colemak-basics ;; for jumping around like f in vimium
+;  :load-path "~/.emacs.d/evil-colemak-basics"
+;  :config
+;    (global-evil-colemak-basics-mode))
+;;(eval-after-load 'org
+ ;; (progn
+  ;;  (key-chord-define evil-visual-state-map "ir" nil)))
+(define-key evil-normal-state-map "i" nil)
+(define-key evil-visual-state-map "I" nil)
+(define-key evil-visual-state-map "i" nil)
 
+(define-key evil-motion-state-map "j" nil)
+(define-key evil-motion-state-map "k" nil)
+(define-key evil-motion-state-map "K" nil)
+(define-key evil-motion-state-map "l" nil)
+(define-key evil-motion-state-map "e" nil)
+(define-key evil-motion-state-map "n" nil)
+(define-key evil-motion-state-map "N" nil)
+
+(define-key evil-normal-state-map "l" 'evil-insert)
+(define-key evil-visual-state-map "L" 'evil-insert)
+(define-key evil-visual-state-map "i" 'evil-forward-char)
+(define-key evil-motion-state-map "n" 'evil-next-line)
+(define-key evil-motion-state-map "e" 'evil-previous-line)
+(define-key evil-motion-state-map "i" 'evil-forward-char)
+(define-key evil-motion-state-map "j" 'evil-fordward-word-end)
+(define-key evil-motion-state-map "k" 'evil-ex-search-next)
+(define-key evil-motion-state-map "K" 'evil-ex-search-previous)
+(define-key evil-normal-state-map (kbd "C-w j") nil)
+(define-key evil-normal-state-map (kbd "C-w k") nil)
+(define-key evil-normal-state-map (kbd "C-w i") nil)
+(define-key evil-normal-state-map (kbd "C-w n") 'evil-window-down)
+(define-key evil-normal-state-map (kbd "C-w e") 'evil-window-up)
+(define-key evil-motion-state-map (kbd "C-w i") 'evil-window-right)
+
+
+(evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
+(evil-define-key 'insert org-mode-map (kbd "<tab>") #'tab-to-tab-stop)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-always-indent nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
 
 ;; Defines most org-mode navigation bindings
 (defun org-nav-hjkl ()
@@ -841,3 +854,4 @@ scroll-down-aggressively 0.01)
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+

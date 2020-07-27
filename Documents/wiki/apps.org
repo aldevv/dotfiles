@@ -2,6 +2,9 @@
 
 [[file:~/Documents/wiki/wiki.org][Index]]
 
+* drive
++ drive push (push folder contents to drive)
++ drive open name_file (opens file in browser)
 * Emacs
 ** Lisp
 *** Binding

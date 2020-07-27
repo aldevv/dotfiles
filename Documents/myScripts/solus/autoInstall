@@ -7,7 +7,7 @@ sudo eopkg -y install  libxinerama-devel libxcomposite-devel libxdamage-devel li
 #dependencies xmobar
 sudo eopkg -y install alsa-lib-devel libxpm-devel
 
-#for emacs
+#for emacs (might not need to make them manually)
 mkdir -p ~/.emacs.d/undo ~/.emacs.d/.trash
 
 # for vim and ranger

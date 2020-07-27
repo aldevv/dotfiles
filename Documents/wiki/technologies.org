@@ -9,6 +9,20 @@ best ecommerce: https://medium.com/javascript-in-plain-english/how-to-create-an-
 curso: https://courses.edx.org/courses/course-v1:W3Cx+CSS.0x+3T2018/course/
 * React 
 ecommerce: https://www.youtube.com/watch?v=wPQ1-33teR4
+** react elements
++ theres html  like syntax (jsx)
+const element = (
+   <h1 className="greetings">
+      hello, world!
+   </h1>
+);
+gets mapped to 
+const element = React.createElement(
+    'h1',
+    {className: 'greeting'},
+    'Hello, World'
+
+    
 * Javascript
 * PHP
 * Nodejs

@@ -1,10 +1,20 @@
 #+Title: WIKI CONTENTS
-
+# <s for code block
 * [[file:linux.org][Linux]]
 * [[file:apps.org][Apps]]
 * [[file:technologies.org][Technologies]]
-* [[file:plans.org][Plans]]
+* Classes
+to put video courses from shared to your own drive, simply select the videos, and drag and drop them where you want them WHILE holding ctrl or shift + z
+** 2020-1
+*** Financiera
+TN = tasa nominal, tasa de interes mas usada
+IP = interes periodico, se calcula del TN dividiendolo por el numero de cuotas (trimestral, semestral etc)
+TEA = tasa efectiva anual, es calculable 
+**** usura
+limite de tea que se puede tener legalmente en colombia por una compra en prestamo
+** 2020-2
 * Life
+** [[file:plans.org][Plans]]
 ** Dermapen
 set to 1.5ml of biotin and 4 dutasteride capsules
 
