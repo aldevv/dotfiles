@@ -1,4 +1,4 @@
-sudo eopkg -y install git xdotool sxhkd pywal zathura w3m highlight font-firacode-ttf powerline-fonts font-symbola-ttf font-droid-ttf newsbeuter youtube-viewer fzf dmenu ibus-anthy lynx expect tcl-devel ncmpcpp mpd asciidoc feh sxiv  zeal rg fzf
+sudo eopkg -y install git nodejs python3 xdotool sxhkd pywal zathura w3m highlight font-firacode-ttf powerline-fonts font-symbola-ttf font-droid-ttf newsbeuter youtube-viewer fzf dmenu ibus-anthy lynx expect tcl-devel ncmpcpp mpd asciidoc feh sxiv  zeal rg fzf
 
 
 #dependencies for dwm (only first) and compton

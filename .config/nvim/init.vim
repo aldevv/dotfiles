@@ -1,6 +1,6 @@
 
-" to make coc work with javascript install the coc-tsserver, and coc-css
 
+" to make coc work with javascript install the coc-tsserver, and coc-css
 noremap n j
 noremap e k
 noremap j e
@@ -31,11 +31,9 @@ noremap  <F7> :set spell! \| set wrap<CR>
 "python3 -m pip install --user --upgrade pynvim
 "pip3 install neovim-remote
 "
-"javascript
-let g:indentLine_enabled = 0
-" enable vertical lines in javascript and typescript files
-autocmd BufReadPost,BufNewFile *.js,*.ts :IndentLinesToggle
-autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter * IndentLinesReset
+set encoding=utf-8
+scriptencoding utf-8
+
 "setlocal spell
 set spelllang=es
 "set spelllang=en_us
@@ -45,12 +43,12 @@ set timeoutlen=500
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 syntax on
 filetype plugin indent on
+set expandtab "makes tab work as spaces
 set noerrorbells
 set ignorecase 
 set smartcase 
 set tabstop=4 softtabstop=4
 set shiftwidth=4
-set expandtab
 set smartindent
 set nowrap
 set noswapfile
@@ -79,11 +77,12 @@ call plug#begin()
 "CocInstall coc-python and pip install jedi
 "CocInstall coc-snippets 
 "CocList marketplace texlab
+"
+"
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  }
 Plug 'https://github.com/vim-airline/vim-airline'
-Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'https://github.com/mbbill/undotree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -93,7 +92,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'
 Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
-Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'liuchengxu/vim-which-key'
 Plug 'dylanaraps/wal'
 Plug 'junegunn/goyo.vim'
@@ -101,6 +100,12 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'yggdroot/indentLine'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+"
+"
+"Plug ‘ludovicchabant/vim-gutentags’
 "Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'https://github.com/dracula/vim', {'as': 'dracula'}
 "need both
@@ -121,18 +126,6 @@ hi Normal guibg=NONE ctermbg=NONE
 
 " sets 24 bit term colors for vim
 set termguicolors
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-		  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-		  \,sm:block-blinkwait175-blinkoff150-blinkon175
-
-"if &term =~ "st-256color"
-    " bright red in normal mode
-    "let &t_SI = "\<Esc>[121m"
-    "reset to normal for insert mode
-    "let &t_EI = "\<Esc>[130m"
-    " make sure it resets when you exit vim
-    "autocmd VimLeave * silent !echo -ne "\033[130m"
-"endif
 
 "Cursor highlight groups
 "Cursor CursorIM CursorColumn CursorLine
@@ -296,8 +289,8 @@ let g:tex_conceal='abdmg'
 hi Conceal ctermbg=none
 
 " nerdcommenter
-nnoremap gc :call NERDComment(0,"toggle")<CR>
-vnoremap gc :call NERDComment(0,"toggle")<CR>
+"nnoremap gc :call NERDComment(0,"toggle")<CR>
+"vnoremap gc :call NERDComment(0,"toggle")<CR>
 
 " Goyo
 
@@ -313,3 +306,23 @@ let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
 let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+
+"IndentLine
+"
+"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_char = '┆'
+let g:indentLine_enabled = 0
+
+" enable vertical lines in javascript and typescript files
+function VerticalLines()
+    :IndentLinesToggle
+    set shiftwidth=2
+endfunction
+autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.js,*.ts :call VerticalLines()
+"these 2 only work with real tabs, not expanded tabs"
+"set listchars=tab:┆.,trail:.,extends:>,precedes:<
+"set list
+set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+
+" prettier
+nmap <Leader>p <Plug>(Prettier)
