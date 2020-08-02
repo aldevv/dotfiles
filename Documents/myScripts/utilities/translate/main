@@ -3,6 +3,7 @@ text=$(echo "" | dmenu -p "translate" -fn 'Droid Sans Japanese:pixelsize=19')
 
 while [[ ! -z $text ]]
 do 
+notify-send -t 500 "Translating..."
 translated=$(echo $text | python3 "$UTILITIES/translate/translate_text.py")
 #saves to clipboard
 echo $translated | xclip -sel clip

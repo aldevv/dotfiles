@@ -1,3 +1,5 @@
 #!/bin/sh
 word=$(dmenu -p "search in dictionary")
-[[ ! -z $word ]] && [[ $(echo $word | wc -w) -eq 1 ]] && firefox https://jisho.org/search/$word || firefox https://jisho.org/search/$(echo $word | awk '{print $1}')
+[[ ! -z $word ]] || exit && [[ $(echo $word | wc -w) -eq 1 ]] \
+    && firefox https://jisho.org/search/$word \
+    || firefox https://jisho.org/search/$(echo $word | awk '{print $1}')

@@ -26,7 +26,8 @@ def main():
     if (len(sys.argv) > 3):
         src = sys.argv[3]
     else:
-        src = "auto"
+        # src = "auto"
+        src = "en"
     print(translate(text, dest, src))
     return (0)
 

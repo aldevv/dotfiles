@@ -7,7 +7,8 @@ from mtranslate import translate
 def main():
     to_translate = input()
     # to_translate = 'Bonjour comment allez vous?'
-    print(translate(to_translate, 'ja'))
+    # print(translate(to_translate, 'ja', 'auto'))
+    print(translate(to_translate, 'ja', 'en'))
     # print(translate(to_translate))
     # print(translate(to_translate, 'ar'))
     # print(translate(to_translate, 'ru'))

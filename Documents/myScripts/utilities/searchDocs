@@ -5,4 +5,4 @@ sourceVal=$( echo \
     Vim:
     React:' | dmenu -i
 )
-zeal "$sourceVal"
+[[ ! -z $sourceVal ]] && zeal "$sourceVal"

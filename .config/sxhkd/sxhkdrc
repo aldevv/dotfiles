@@ -12,8 +12,8 @@ super + p
 #super + F2
 	#st -e pydoc "$($HOME/Documents/myScripts/python_documentation.sh)"
 
-super + shift + F2
-	st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
+# super + shift + F2
+	# st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
 
 #super + alt + p
 #	mpv "$($UTILITIES/run_episode2.sh)"
@@ -56,6 +56,10 @@ super + F5
 
 super + F6
     "$UTILITIES/searchDocs"
+
+
+super + shift + F1
+	 st -e zathura "$SCRIPTS/cheatsheet/sheet.pdf" 2>/dev/null
 
 XF86AudioMute
      pactl set-sink-mute 0 toggle
