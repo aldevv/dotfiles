@@ -22,6 +22,32 @@ const element = React.createElement(
     {className: 'greeting'},
     'Hello, World'
 
+** react Components
+
+you always extend the component, always create a constructor and a render, and always export it,
+
+class Menu extends Component {
+  constructor(props) {
+    super(props);
+
+  }
+  
+  render() {
+    return (
+        //jsx
+    );
+
+  }
+  export default Menu
+** react router
+yarn add react-router-dom
+
+import { BrowserRouter } from 'react-router-dom';
+<BrowserRouter>
+      <div className="App">
+        <Main />
+      </div>
+    </BrowserRouter>
 * Javascript
 * PHP
 * Nodejs

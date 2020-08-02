@@ -136,7 +136,8 @@ set termguicolors
 "let g:airline_theme='gruvbox'
 
 " Keybindings
-map <leader>r :!python3 %<cr>
+map <leader>rp :!python3 %<cr>
+"map <leader>rj :!st -e "npm start"<cr>
 map <F6> :e ~/.config/nvim/init.vim<cr>
 map <F3> :e ~/.zshrc<cr>
 map <C-&> <C-^>
@@ -312,6 +313,7 @@ let g:haskell_backpack = 1                " to enable highlighting of backpack k
 "let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_char = '┆'
 let g:indentLine_enabled = 0
+
 
 " enable vertical lines in javascript and typescript files
 function VerticalLines()

@@ -13,6 +13,18 @@ TEA = tasa efectiva anual, es calculable
 **** usura
 limite de tea que se puede tener legalmente en colombia por una compra en prestamo
 ** 2020-2
+*** work
+**** Modbus
+protocol for data transfer for connecting industrial electronic devices (is open source)
+Modbus supports communication to and from multiple devices connected to the same cable or Ethernet network. 
+For example, a device that measures temperature and a different device to measure humidity, both of which communicates the measurements to a computer. 
+*** RTU (Remote Terminal Unit)
+electronic device that interfaces physical world objects to a control system (SCADA)
+*** TCP (Transmission Control Protocol)
+TCP is connection-oriented, and a connection between client and server is established before data can be sent.
+ The server must be listening (passive open) for connection requests from clients before a connection is established.
+*** UDP
+like TCP but is connectionless, meaning that it sacrifices reliability to gain time (more time efficient, less secure)
 * Life
 ** [[file:plans.org][Plans]]
 ** Dermapen
@@ -49,6 +61,7 @@ recuva
 ** n
 - yukiyoshi mamizu = young son
 - aiue oka
+- Fueta kishi
 - engawa suguru = ane gyaru
 - diisuke = urami
 - kakao

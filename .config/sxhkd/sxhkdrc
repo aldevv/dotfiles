@@ -30,6 +30,9 @@ super + Return
 super +  k
     st -e newsboat 
 
+super +  a
+    st -e mate-calculator
+
 super + y
     st -e "$($UTILITIES/youtube/YT.tcl)"
 
@@ -49,6 +52,9 @@ super + F4
     "$UTILITIES/notesJap"
 
 super + F5
+    "$UTILITIES/translate/main"
+
+super + F6
     "$UTILITIES/searchDocs"
 
 XF86AudioMute

@@ -15,7 +15,7 @@ snippets   ~/.config/nvim/my_snippets
 mss        ~/Documents/myScripts/
 msu        ~/Documents/myScripts/utilities
 dev        ~/dev
-work       ~/dev/Work
+wk         ~/dev/Work
 doc        /usr/share/doc
 apps       /usr/share/applications
 cs         ~/Documents/classes

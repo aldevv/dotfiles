@@ -7,7 +7,7 @@
  */
 //static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
 //static char *font = "Mono:pixelsize=12:antialias=true:autohint=true";
-static char *font = "Fira Code:size=14:antialias=true:autohint=true";
+static char *font = "Fira Code:size=10:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
     "Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", 
