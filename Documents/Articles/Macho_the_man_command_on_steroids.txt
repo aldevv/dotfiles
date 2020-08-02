@@ -1,0 +1,10 @@
+Feed: HiPhish's Workshop: Blog
+Title: Macho, the man command on steroids
+Date: Sat, 30 May 2020 19:00:00 -0500
+Link: https://hiphish.github.io/blog/2020/05/31/macho-man-command-on-steroids/
+ 
+The Unix man command can open a manual page if you know its name, and the 
+apropos command can search through the manuals if you are looking for a specific
+word. Let's put the two to work together into a command I like to call macho: 
+the man command on steroids.
+
