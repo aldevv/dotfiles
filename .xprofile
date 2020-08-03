@@ -2,6 +2,6 @@
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 ~/Documents/myScripts/dwm/status &
 sxhkd &
-dunst &
+# dunst &
 compton &
 wal -R &

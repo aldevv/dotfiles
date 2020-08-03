@@ -62,16 +62,16 @@ super + shift + F1
 	 st -e zathura "$SCRIPTS/cheatsheet/sheet.pdf" 2>/dev/null
 
 XF86AudioMute
-     $SCRIPTS/shared/volume.sh mute 
-     # pactl set-sink-mute 0 toggle
+     pactl set-sink-mute 0 toggle
+     # $SCRIPTS/shared/volume.sh mute 
 
 XF86AudioRaiseVolume
-     $SCRIPTS/shared/volume.sh up 
-     # pactl set-sink-volume 0 +5%
+     pactl set-sink-volume 0 +5%
+     # $SCRIPTS/shared/volume.sh up 
 
 XF86AudioLowerVolume
-     $SCRIPTS/shared/volume.sh down 
-     # pactl set-sink-volume 0 -5%
+     pactl set-sink-volume 0 -5%
+     # $SCRIPTS/shared/volume.sh down 
 
 XF86MonBrightnessUp
     xbacklight -inc 10
@@ -79,6 +79,6 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
     xbacklight -dec 10
 
-XF86TouchpadToggle
-	synclient TouchpadOff={1,0}
+# XF86TouchpadToggle
+# 	synclient TouchpadOff={1,0}
 

@@ -79,3 +79,28 @@ cargo doc --open
 have defined functions and work like this
 (0..10).sum
 
+** match (same as case)
+
+the underscore _ means anything else
+
+match variable {
+
+    0=>0,
+    1=>1,
+    _=> final,
+
+}
+** loops
+there are for and while,
+
+there are also loop, which can be used in expressions like this:
+
+    let mut result = 1;
+    result = loop {
+        result += 1;
+        if result == 10 {
+            break result * 2
+        }
+    };
+    /// result = 20
+
