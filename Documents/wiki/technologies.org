@@ -9,6 +9,7 @@ best ecommerce: https://medium.com/javascript-in-plain-english/how-to-create-an-
 curso: https://courses.edx.org/courses/course-v1:W3Cx+CSS.0x+3T2018/course/
 * React 
 ecommerce: https://www.youtube.com/watch?v=wPQ1-33teR4
+npx create-react-app
 ** react elements
 + theres html  like syntax (jsx)
 const element = (
@@ -53,3 +54,28 @@ import { BrowserRouter } from 'react-router-dom';
 * Nodejs
 ** --dev-save
 it creates/appends the package to devdependencies in package.json
+* Rust
+** docs
+rustup doc
+** compile
+rustc filename
+** create project
+cargo new name_app --bin
+** unit tests
+cargo test
+
+to create a test:
+
+#[test]
+fn add() {
+
+    assert_eq!(2+2, 4);
+}
+
+** project docs
+cargo doc --open
+
+** iterators
+have defined functions and work like this
+(0..10).sum
+
