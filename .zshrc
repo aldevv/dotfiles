@@ -120,12 +120,14 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	sac='source env/bin/activate'\
 	ven='wine .wine/drive_c/Program\ Files/Vensim/venPLE32.exe'\
 	ds='dotrepo status'\
-	daa='dotrepo add'\
+	da='dotrepo add'\
 	dau='dotrepo add -u'\
 	dc='dotrepo commit -m'\
 	dgp='dotrepo push origin solus'\
 	m='$AUTOMATION/ncmpcppStart.sh'\
 	restartx='sudo systemctl restart display-manager'\
+	flat='flatpak --installation=extra'\
+	spot='flatpak --installation=extra run com.spotify.Client'\
 	
 	#python='python3'\
 

@@ -2,7 +2,30 @@
 
 [[file:~/Documents/wiki/wiki.org][Index]]
 
-* drive
+* Flatpak
+flatpak lets you choose where to install software, unlike snap
+
+source: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-installation
+
+edit this in: /etc/flatpak/installations.d/extra.conf
+
+you could try using envsubst < file > newfile
+with environment variables
+
+[Installation "extra"]
+Path=/home/solus/Programs/flatpak
+DisplayName=Extra Installation
+StorageType=sdcard
+
+then add the remote with this command:
+flatpak --installation=extra remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
+
+then keep using this or use an alias
+flatpak --installation=extra install flathub org.inkscape.Inkscape
+
+the alias is flat
+
+* Google Drive
 + drive push (push folder contents to drive)
 + drive open name_file (opens file in browser)
 * Emacs

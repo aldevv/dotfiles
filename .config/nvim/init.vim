@@ -1,5 +1,4 @@
 
-
 " to make coc work with javascript install the coc-tsserver, and coc-css
 noremap n j
 noremap e k
@@ -24,7 +23,8 @@ nnoremap <leader>wt <c-w>t
 noremap  <leader>wE <c-w>K
 noremap  <leader>w- <c-w>-
 noremap  <leader>w+ <c-w>+
-noremap  <leader>ww :w<CR>
+" noremap  <leader>ww :w<CR>
+noremap  <leader>ww :w !sudo tee %<CR>
 noremap  <F7> :set spell! \| set wrap<CR>
 
 "to install python3 in checkhelath

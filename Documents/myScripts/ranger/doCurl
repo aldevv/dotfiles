@@ -1,0 +1,2 @@
+#!/bin/sh
+clear; echo "Enter Filename: "; read -r name && curl -o $name $(xclip -out -sel clip)
