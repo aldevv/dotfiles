@@ -64,6 +64,12 @@ super + shift + F1
 super + shift + s
 	 flatpak --installation=extra run com.spotify.Client 2>/dev/null
 
+super + shift + j
+	 st -e joplin 2>/dev/null
+
+super + alt + j
+	 $HOME/.joplin/Joplin.AppImage 2>/dev/null
+
 XF86AudioMute
      $SCRIPTS/shared/volume.sh mute 
      # pactl set-sink-mute 0 toggle
