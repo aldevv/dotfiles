@@ -21,8 +21,8 @@ nnoremap <leader>we <c-w>k
 nnoremap <leader>wn <c-w>j
 nnoremap <leader>wt <c-w>t
 noremap  <leader>wE <c-w>K
-noremap  <leader>w- <c-w>-
-noremap  <leader>w+ <c-w>+
+noremap  <leader>w- 5<c-w>-
+noremap  <leader>w+ 5<c-w>+
 " noremap  <leader>ww :w<CR>
 noremap  <leader>ww :w !sudo tee %<CR>
 noremap  <F7> :set spell! \| set wrap<CR>
@@ -83,6 +83,7 @@ Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  }
 Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/mbbill/undotree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -134,6 +135,16 @@ set termguicolors
 " airline
 "let g:airline_theme='onehalfdark'
 "let g:airline_theme='gruvbox'
+"show buffers active on top
+"let g:airline#extensions#tabline#enabled = 1
+"
+"
+"Themes
+"https://github.com/vim-airline/vim-airline/wiki/Screenshots
+"
+let g:airline_theme='luna'
+let g:airline_powerline_fonts = 1
+"https://ncona.com/2019/02/the-vim-statusline/
 
 " Keybindings
 map <leader>rp :!python3 %<cr>
