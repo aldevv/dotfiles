@@ -128,6 +128,7 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	restartx='sudo systemctl restart display-manager'\
 	flat='flatpak --installation=extra'\
 	spot='flatpak --installation=extra run com.spotify.Client'\
+	jopg='~/.joplin/Joplin.AppImage'\
 	
 	#python='python3'\
 

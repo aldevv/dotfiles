@@ -5,6 +5,14 @@ sudo eopkg -y install git nodejs python3 xdotool sxhkd pywal zathura w3m highlig
 #dependencies for dwm (only first) and compton
 sudo eopkg -y install  libxinerama-devel libxcomposite-devel libxdamage-devel libxrandr-devel libconfig-devel libglu-devel libdrm-devel xsetroot
 
+# joplin install 
+wget -O - https://raw.githubusercontent.com/laurent22/joplin/master/Joplin_install_and_update.sh | bash
+# joplin terminal
+NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin
+sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin
+#sync terminal joplin https://joplinapp.org/terminal/    if it fails, delete the joplin directory in .config
+:config sync.target 7
+:sync
 
 
 #for emacs (might not need to make them manually)
