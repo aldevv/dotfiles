@@ -11,6 +11,7 @@ export BROWSER=firefox
 export SCRIPTS="$HOME/Documents/myScripts"
 export UTILITIES="$HOME/Documents/myScripts/utilities"
 export AUTOMATION="$HOME/Documents/myScripts/automation"
+export WIKI="$HOME/Documents/wiki"
 export READER=zathura
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"

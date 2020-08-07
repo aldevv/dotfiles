@@ -27,6 +27,7 @@ the alias is flat
 
 * Google Drive
 + drive push (push folder contents to drive)
+    drive push -destination [destination_folder] [file/folder]...
 + drive open name_file (opens file in browser)
 * Emacs
 ** Lisp
@@ -290,3 +291,48 @@ check used fonts
 lsof -p id_st_process | grep font
 
 
+* irssi
++ Changing navigation
+
+    Personally, I like my home and end keys not to go to the beginning and end of the text line, but to the beginning and end of the buffer. I have accomplished this by doing the following:
+
+    /bind end command /sb end
+    /bind home command /sb home
+
+-------------------------------------
+    /bind meta-a change_window 21
+    /bind meta-s change_window 22
+    /bind meta-[ active_window
+
+/alias w /window goto
+
+/help
+
+/connect irc.oftc.net
+/join channel
+/join #channel password
+/part #linode
+/whois user
+/hilight word # search
+/set nick user
+/msg	Sends a private message to a user
+/names	Lists the users in the current channel
+/query	Opens a query window with a user or closes a current query window
+/topic	Displays/edits the current topic
+** start vim mode
+git clone https://github.com/shabble/irssi-scripts 
+put the vim mode in ~/.irssi/scripts
+/script load vim-mode/vim_mode.pl
+** Adding Default Networks
+
+To automatically join a network when Irssi starts, run:
+
+/server add -auto -network OFTC irc.oftc.net 6667
+
+
+    The -auto flag tells Irssi to connect to the server on startup.
+    The -network flag associates the server with a specific network. This is useful if you want to add multiple servers on the same network. Here I’ve associated irc.oftc.net with the network name OFTC
+    Next we provide the server address we’re connecting to, irc.oftc.net
+    Finally we specify a port to connect to the server on. You can leave this blank to use the default port, but if there’s an encrypted option we suggest using it.
+
+Note that you may add as many channels as you like.

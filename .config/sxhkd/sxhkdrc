@@ -58,8 +58,11 @@ super + F6
     "$UTILITIES/searchDocs"
 
 
+# super + shift + F1
+# 	 st -e zathura "$SCRIPTS/cheatsheet/sheet.pdf" 2>/dev/null
+
 super + shift + F1
-	 st -e zathura "$SCRIPTS/cheatsheet/sheet.pdf" 2>/dev/null
+	 $UTILITIES/cheatsheet/browseCheatsheets
 
 super + shift + s
 	 flatpak --installation=extra run com.spotify.Client 2>/dev/null

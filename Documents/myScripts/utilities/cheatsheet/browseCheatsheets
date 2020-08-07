@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# path="$WIKI/cheatsheets"
+# folder=$(ls $path  | dmenu -i -p "choose")
+# path="${path}/${folder}/${folder} cheatsheet.pdf"
+# zathura "$path"
+
+path="$WIKI/cheatsheets"
+folder=$(ls $path  | dmenu -i -p "choose")
+file=$(ls "${path}/${folder}/" | dmenu -i -l 5 -p "choose file")
+filePath="${path}/${folder}/$file"
+if [[ ! -z $file ]]; then
+    echo "$filePath" | $AUTOMATION/open_with
+else
+    exit
+fi
+

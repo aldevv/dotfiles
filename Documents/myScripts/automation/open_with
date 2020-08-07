@@ -1,0 +1,25 @@
+#!/bin/sh
+read -r fullfile
+if [[ -z $fullfile ]]; then
+    fullfile=$1
+fi
+if [[ -z $fullfile ]]; then
+    exit
+fi
+filename=$(basename -- "$fullfile")
+extension="${filename##*.}"
+
+case $extension in
+    pdf)
+        zathura "$fullfile"
+        ;;
+    mp4 | mkv)
+        mpv "$fullfile"
+        ;;
+    png | jpg)
+        sxiv "$fullfile"
+        ;;
+    *)
+        st -e nvim "$fullfile" 2>/dev/null
+        ;;
+esac
