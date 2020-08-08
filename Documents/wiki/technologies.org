@@ -104,3 +104,16 @@ there are also loop, which can be used in expressions like this:
     };
     /// result = 20
 
+* awk
+make colon be treated as a space
+
+    awk -F: '{print $1}' /etc/group | head -4
+
+* pdfgrep
+it has most of the same settings as grep, it uses regex
+-- means end of options similar to grep -e
+so pdfgrep -- -v
+insensitive
+pdfgrep -i
+* sed
+is better to use sed -r because it groups with () instead of \( \) which means you can use normal parenthesis like \( \) 

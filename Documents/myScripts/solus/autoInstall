@@ -14,6 +14,9 @@ sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin
 :config sync.target 7
 :sync
 
+#pdfgrep dependencies, download the tar https://pdfgrep.org/download.html
+sudo eopkg -y install libgcrypt-devel poppler-devel
+
 
 #for emacs (might not need to make them manually)
 mkdir -p ~/.emacs.d/undo ~/.emacs.d/.trash

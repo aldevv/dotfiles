@@ -132,7 +132,7 @@ static Key keys[] = {
 	//{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = firefox} },
-	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY|ShiftMask,             XK_Tab,    togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
@@ -144,8 +144,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_0,      defaultgaps,    {0} },
 	{ MODKEY|Mod1Mask,              XK_z,      incrgaps,       {.i = +1 } },
 	{ MODKEY|Mod1Mask,              XK_x,      incrgaps,       {.i = -1 } },
-	{ MODKEY,                       XK_Tab,    zoom,           {0} },
-	{ MODKEY,                       XK_t,      view,           {0} },
+	{ MODKEY,                       XK_t,      zoom,           {0} },
+	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY|Mod1Mask,              XK_1,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|Mod1Mask,              XK_2,      setlayout,      {.v = &layouts[1]} },

@@ -74,15 +74,15 @@ super + alt + j
 	 $HOME/.joplin/Joplin.AppImage 2>/dev/null
 
 XF86AudioMute
-     $SCRIPTS/shared/volume.sh mute 
+     $SCRIPTS/shared/volume.sh mute; $SCRIPTS/dwm/refreshVolume
      # pactl set-sink-mute 0 toggle
 
 XF86AudioRaiseVolume
-     $SCRIPTS/shared/volume.sh up 
+     $SCRIPTS/shared/volume.sh up; $SCRIPTS/dwm/refreshVolume
      # pactl set-sink-volume 0 +5%
 
 XF86AudioLowerVolume
-     $SCRIPTS/shared/volume.sh down 
+     $SCRIPTS/shared/volume.sh down; $SCRIPTS/dwm/refreshVolume 
      # pactl set-sink-volume 0 -5%
 
 XF86MonBrightnessUp
