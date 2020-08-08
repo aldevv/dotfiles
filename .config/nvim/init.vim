@@ -1,4 +1,3 @@
-
 " to make coc work with javascript install the coc-tsserver, and coc-css
 noremap n j
 noremap e k
@@ -173,8 +172,15 @@ map <C-&> <C-^>
 " auto compile latex if no vimtex
     autocmd BufWritePost,CursorHold,CursorHoldI *.tex :call CompileTex()
 
+" auto compile markdown
+    autocmd BufWritePost *.md :call CompileMd()
+
     function CompileTex()
         :w | silent exec "!latexmk -pdf %"
+    endfunction
+
+    function CompileMd()
+        :w | silent exec "!pandoc %  -s -o ~/Documents/Learn/classes/2020-2/current/test1.pdf; [[ -z $(pgrep zathura) ]] && setsid zathura '~/Documents/Learn/classes/2020-2/current/test1.pdf' 2>/dev/null"
     endfunction
 
 

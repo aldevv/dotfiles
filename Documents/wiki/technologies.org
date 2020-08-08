@@ -116,4 +116,11 @@ so pdfgrep -- -v
 insensitive
 pdfgrep -i
 * sed
-is better to use sed -r because it groups with () instead of \( \) which means you can use normal parenthesis like \( \) 
+is better to use sed -r because it groups with () instead of \( \) 
+which means you can use normal parenthesis like \( \) 
+
+capture the entire line with &
+
+    seq 15 | sed 's/.*/& sucks/'
+
+
