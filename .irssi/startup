@@ -1,3 +1,4 @@
 SCRIPT LOAD vim-mode/vim_mode.pl
+SCRIPT LOAD irssi-libnotify/notify.pl
 statusbar window add vim_mode
 statusbar window add vim_windows

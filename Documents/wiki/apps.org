@@ -292,6 +292,9 @@ lsof -p id_st_process | grep font
 
 
 * irssi
+** notifications
+https://github.com/stickster/irssi-libnotify
+** misc
 + Changing navigation
 
     Personally, I like my home and end keys not to go to the beginning and end of the text line, but to the beginning and end of the buffer. I have accomplished this by doing the following:
@@ -307,6 +310,9 @@ lsof -p id_st_process | grep font
 /alias w /window goto
 
 /help
+
+# to see a all about keybindings
+/help bind
 
 /connect irc.oftc.net
 /join channel
