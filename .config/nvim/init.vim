@@ -147,12 +147,16 @@ let g:airline_powerline_fonts = 1
 
 " Keybindings
 map <leader>rp :!python3 %<cr>
-"map <leader>rj :!st -e "npm start"<cr>
 map <F6> :e ~/.config/nvim/init.vim<cr>
 map <F3> :e ~/.zshrc<cr>
 map <C-&> <C-^>
 
-""
+"----------
+"AUTOMATION
+"----------
+
+map <leader>ra :!setsid st ranger $(dirname %) 2</dev/null<cr>
+
 "bufwritepost  is when you save them
 "bufreadpost  is when you open them
 

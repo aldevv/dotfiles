@@ -43,12 +43,71 @@ class Menu extends Component {
 ** react router
 yarn add react-router-dom
 
+-- in app.js
 import { BrowserRouter } from 'react-router-dom';
 <BrowserRouter>
       <div className="App">
         <Main />
       </div>
     </BrowserRouter>
+    
+-- in mainComponent
+
+
+    render() {
+    const HomePage = () => {
+      return (
+        <Home
+          dish={this.state.dishes.filter(dish => dish.featured)[0]}
+          promotion={this.state.promotions.filter(promo => promo.featured)[0]}
+          leader={this.state.leaders.filter(leader => leader.featured)[0]}
+        />
+      );
+    };
+    // can be { match , location , history }
+
+    const DishWithId = ({ match }) => {
+      return (
+        <DishDetail
+          dish={
+            this.state.dishes.filter(dish => dish.id === parseInt(match.params.dishId, 10))[0]
+          }
+          comments={this.state.comments.filter(
+            comment => comment.dishId === parseInt(match.params.dishId, 10)
+          )}
+        />
+      );
+    };
+
+    return (
+      <div>
+        <Header />
+        <Switch>
+          <Route path="/home" component={HomePage} />
+          <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes}/>}/>
+          <Route path="/menu/:dishId" component={DishWithId} />
+          <Route exact path="/contactus" component={Contact} />
+          <Redirect to="/home" />
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
+
+*** links
+the link is in backticks, and it sends the parameter dish.id as a prop, and is recieved in mainComponent in <Route path="/menu/:dishId">
+
+
+    <Card>
+      <Link to={`/menu/${dish.id}`}>
+        <CardImg width="100%" src={dish.image} alt={dish.name} />
+        <CardImgOverlay>
+          <CardTitle>{dish.name}</CardTitle>
+        </CardImgOverlay>
+      </Link>
+    </Card>
+
+
 * Javascript
 * PHP
 * Nodejs

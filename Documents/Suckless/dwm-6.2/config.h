@@ -1,8 +1,6 @@
 /* See LICENSE file for copyright and license details. */
-#include <X11/XF86keysym.h>
 
 /* appearance */
-static unsigned int borderpx  = 1;        /* border pixel of windows */
 static unsigned int snap      = 32;       /* snap pixel */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
@@ -12,7 +10,9 @@ static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
 static char selfgcolor[]            = "#eeeeee";
-static char selbordercolor[]        = "#eeeeee"; //border of selected window
+/* static char selbordercolor[]        = "#eeeeee"; //border of selected window */
+static char selbordercolor[]        = "#770000"; //border of selected window
+static unsigned int borderpx  = 3;        /* border pixel of windows */
 static char selbgcolor[]            = "#005577";
 static const unsigned int gappih    = 20; // def 10     /* horiz inner gap between windows */
 static const unsigned int gappiv    = 20; // def 10     /* vert inner gap between windows */
@@ -109,6 +109,7 @@ ResourcePref resources[] = {
 		{ "mfact",      	 	FLOAT,   &mfact },
 };
 
+//#include <X11/XF86keysym.h>
 /* basics */
 //static const char *brightup[]   = { "/usr/bin/xbacklight", "-inc", "10", NULL };
 //static const char *brightdown[] = { "/usr/bin/xbacklight", "-dec", "10", NULL };

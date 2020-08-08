@@ -23,4 +23,9 @@ D          ~/Downloads
 d          ~/Documents
 p          ~/Pictures
 wi         ~/Documents/wiki
+re         /etc
+ru         /usr
+rv         /var
+rb         /bin
+rm         /mnt
 
