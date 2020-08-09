@@ -40,7 +40,7 @@ super + shift + v
     st -e code-oss
 
 super + F1
-    "$UTILITIES/japanese/japSearch"
+    "$UTILITIES/searchDocs"
 
 super + F2
     "$UTILITIES/japanese/hiraganaTable"
@@ -55,7 +55,7 @@ super + F5
     "$UTILITIES/translate/main"
 
 super + F6
-    "$UTILITIES/searchDocs"
+    "$UTILITIES/japanese/japSearch"
 
 
 # super + shift + F1

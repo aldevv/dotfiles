@@ -14,6 +14,7 @@ cf         ~/.config
 snippets   ~/.config/nvim/my_snippets
 mss        ~/Documents/myScripts/
 msu        ~/Documents/myScripts/utilities
+msa        ~/Documents/myScripts/automation
 dev        ~/dev
 wk         ~/dev/Work
 doc        /usr/share/doc

@@ -127,18 +127,13 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	dc='dotrepo commit'\
 	dl='dotrepo log --oneline'\
 	dgp='dotrepo push origin HEAD'\
-    prorepo="git --git-dir=$HOME/Documents/ProjectsRepository/ --work-tree=$PROJECTS"\
-	pst='prorepo status'\
-	paa='prorepo add'\
-	pau='prorepo add -u'\
-	pc=' prorepo commit'\
-	pl='prorepo log --oneline'\
-	pgp='prorepo push origin HEAD'\
+	pgp='uploadProjects'\
 	m='$AUTOMATION/ncmpcppStart.sh'\
 	restartx='sudo systemctl restart display-manager'\
 	flat='flatpak --installation=extra'\
 	spot='flatpak --installation=extra run com.spotify.Client'\
 	zealu='zeal-user-contrib'\
+
 	
 	#python='python3'\
 

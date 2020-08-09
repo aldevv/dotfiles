@@ -26,9 +26,34 @@ flatpak --installation=extra install flathub org.inkscape.Inkscape
 the alias is flat
 
 * Google Drive
+https://github.com/odeke-em/drive
 + drive push (push folder contents to drive)
     drive push -destination [destination_folder] [file/folder]...
 + drive open name_file (opens file in browser)
+
+** Ignore items
+
+Excluding and Including Objects
+
+drive allows you to specify a '.driveignore' file similar to your .gitignore, in the root directory of the mounted drive. Blank lines and those prefixed by '#' are considered as comments and skipped.
+
+For example:
+
+cat << $ >> .driveignore
+> # My drive ignore file
+> \.gd$
+> \.so$
+> \.swp$
+> $
+
+Note:
+
+    Pattern matching and suffixes are done by regular expression matching so make sure to use a valid regular expression suffix.
+
+* zip
+exclude multiple files
+    zip -r projects.zip . -x "**/node_modules/*" -x "\.gd/*"
+
 * Emacs
 ** Lisp
 *** Binding
