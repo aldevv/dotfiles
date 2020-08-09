@@ -1,8 +1,19 @@
 #!/bin/sh
 
-sourceVal=$( echo \
-    'Cpp:
-    Vim:
-    React:' | dmenu -i
-)
+docsets=$(ls $HOME/.local/share/Zeal/Zeal/docsets)
+all=""
+for doc in $docsets; do
+    if [[ $doc == "C++.docset" ]]; then
+        all=$(echo "Cpp:;${all}")
+    else
+        all="$(echo $doc | sed -r 's/(.+)\..+/\1:/g');${all}"
+    fi
+done
+sourceVal=$(echo $all | sed 's/;/\n/g'  | dmenu -i)
+
+# sourceVal=$( echo \
+#     'Cpp:
+#     Vim:
+#     React:' | dmenu -i
+# )
 [[ ! -z $sourceVal ]] && zeal "$sourceVal"

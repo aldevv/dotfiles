@@ -9,7 +9,6 @@ lt         ~/Documents/Learn/typing
 lp         ~/Documents/Learn/Projects
 jp         ~/Documents/Learn/Must_Read/japanese/pimsleur/pimsleur-Japones/Pimsleur-JP
 lss        ~/Documents/Suckless
-lo         ~/Documents/Learn/myos4/chmaquina
 lw         ~/Documents/Learn/Web/course/test
 cf         ~/.config
 snippets   ~/.config/nvim/my_snippets
@@ -23,6 +22,7 @@ D          ~/Downloads
 d          ~/Documents
 p          ~/Pictures
 wi         ~/Documents/wiki
+lo         ~/.local
 re         /etc
 ru         /usr
 rv         /var

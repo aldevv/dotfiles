@@ -1,4 +1,79 @@
 
+* Machine Learning
+** Types of machine learning
+*** Supervised
+training: when you have data and you know the output
+*** Unsupervised
+training: when you have data but no output (group data in clusters)
+*** Reinforcement
+when you give positive points to something that gets you closer to your goal/flag
+** Fundamental Algorithms
+*** Linear Regression
+*** Classification
+*** Clustering
+*** Hidden Markov Models
+
+
+* Tensorflow
+** Main components
+*** Graphs
+an equation definition
+*** Sessions
+Executes certain parts of the graph
+** Tensor
+generalization of vectors and matrixes in potentially higher dimensions
+
+Each tensor represents a partially defined computation that will eventually produce a value, which means that
+tensors can be executed and you can get results from them
+*** Types of Tensors
+all are immutable except variables
++ Variables
++ Constants
++ Placeholder
++ SparseTensor
+*** Evaluating Tensors/Getting value of a tensor
+to get the value of a Tensor you need to create a session, like this
+
+with tf.Session() as sess: # creates a session using the default graph
+    name_of_my_tensor.eval()  
+
+*** Rank/Degree
+the deepest level of a nested list
+
++ Rank 1
+    rank1_tensor = tf.Variable(["Test"], tf.string) 
++ Rank 2
+    rank2_tensor = tf.Variable([["test", "ok"], ["test", "yes"]], tf.string)
+    
+tf.rank(rank2_tensor)
+<tf.Tensor: shape=(), dtype=int32, numpy=2>
+
+the numpy=2 means is of rank 2
+*** example
+string = tf.Variable("this is a string", tf.string) 
+number = tf.Variable(324, tf.int16)
+floating = tf.Variable(3.567, tf.float64)
+*** Shape
+all tensors have the attribute .shape
+represents the number of items that exist in each dimension
+
+rank2_tensor = tf.Variable([["test", "ok", "hey"], ["test", "yes", "why"]], tf.string)
++ rank2_tensor.shape 
+
+  Tensorshape([2, 3]) which means, 2 lists, and each list has 3 elements
+*** Change Shape
+is possible to change shape as long as the number of elements corresponds to the current shape and the desired one
+
+tensor1 = tf.ones([1,2,3])  # tf.ones() creates a shape [1,2,3] tensor full of ones
+tensor2 = tf.reshape(tensor1, [2,3,1])  # reshape existing data to shape [2,3,1]
+tensor3 = tf.reshape(tensor2, [3, -1])  # -1 tells the tensor to calculate the size of the dimension in that place
+                                        # this will reshape the tensor to [3,3]
+                                                                             
+# The numer of elements in the reshaped tensor MUST match the number in the original
+
+** Functions
+tf.ones([shape,shape,...])
+tf.zeros([shape,shape,...])
 * Angular
 start here: https://angular.io/tutorial
 curso vence sep 30!!: https://courses.edx.org/courses/course-v1:Microsoft+DEV314x+1T2019a/course/
@@ -107,7 +182,12 @@ the link is in backticks, and it sends the parameter dish.id as a prop, and is r
       </Link>
     </Card>
 
+* Falcon
+    https://www.alibabacloud.com/blog/building-very-fast-app-backends-with-falcon-web-framework-on-pypy_594282
 
+* Docker-Compose
+    https://gist.github.com/emmettna/b78f54a6683b06a2a2da21db7580a8d6
+    https://www.youtube.com/watch?v=dVEjSmKFUVI
 * Javascript
 * PHP
 * Nodejs

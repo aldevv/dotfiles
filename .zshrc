@@ -84,7 +84,9 @@ source $ZSH/oh-my-zsh.sh
 # setup dotrepo
 #
 #git init --bare $HOME/Documents/DotFilesRepository
+#git init --bare $HOME/Documents/ProjectsRepository
 #dotrepo config --local status.showUntrackedFiles no
+#prorepo config --local status.showUntrackedFiles no
 
 # Aliases 
 alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
@@ -106,7 +108,6 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	yt="youtube-viewer"\
 	rr="ranger"\
 	todoist="cd ~/Downloads/P/todoist && make up"\
-    dotrepo="git --git-dir=$HOME/Documents/DotFilesRepository/ --work-tree=$HOME"\
 	ma="make && sleep 0.5 ./a.out"\
 	uncompress='tar xvzf'\
 	code='code-oss'\
@@ -119,16 +120,25 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	tord='/home/solus/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads'\
 	sac='source env/bin/activate'\
 	ven='wine .wine/drive_c/Program\ Files/Vensim/venPLE32.exe'\
-	ds='dotrepo status'\
+    dotrepo="git --git-dir=$HOME/Documents/DotFilesRepository/ --work-tree=$HOME"\
+	dst='dotrepo status'\
 	daa='dotrepo add'\
 	dau='dotrepo add -u'\
 	dc='dotrepo commit'\
-	dgp='dotrepo push origin solus'\
+	dl='dotrepo log --oneline'\
+	dgp='dotrepo push origin HEAD'\
+    prorepo="git --git-dir=$HOME/Documents/ProjectsRepository/ --work-tree=$PROJECTS"\
+	pst='prorepo status'\
+	paa='prorepo add'\
+	pau='prorepo add -u'\
+	pc=' prorepo commit'\
+	pl='prorepo log --oneline'\
+	pgp='prorepo push origin HEAD'\
 	m='$AUTOMATION/ncmpcppStart.sh'\
 	restartx='sudo systemctl restart display-manager'\
 	flat='flatpak --installation=extra'\
 	spot='flatpak --installation=extra run com.spotify.Client'\
-	jopg='~/.joplin/Joplin.AppImage'\
+	zealu='zeal-user-contrib'\
 	
 	#python='python3'\
 

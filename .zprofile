@@ -8,6 +8,7 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=firefox
+export PROJECTS="$HOME/Documents/Learn/Projects"
 export SCRIPTS="$HOME/Documents/myScripts"
 export UTILITIES="$HOME/Documents/myScripts/utilities"
 export AUTOMATION="$HOME/Documents/myScripts/automation"
