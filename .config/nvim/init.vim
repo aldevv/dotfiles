@@ -1,4 +1,8 @@
 " to make coc work with javascript install the coc-tsserver, and coc-css
+"expand('%:p:h')  for directory of file
+"shellescape: has 2 uses, in system() and in :!. pass 1 for :! commands so it escapes the quotes, and dont pass anything for system()
+"commands
+" the system("echo " . expand(bla bla)) the dot is used to concatenate!
 noremap n j
 noremap e k
 noremap j e
@@ -186,7 +190,14 @@ map <leader>ra :!setsid st ranger $(dirname %) 2</dev/null<cr>
     endfunction
 
     function CompileMd()
-        :w | silent exec "!pandoc %  -s -o ~/Documents/Learn/classes/2020-2/current/test1.pdf; [[ -z $(pgrep zathura) ]] && setsid zathura '~/Documents/Learn/classes/2020-2/current/test1.pdf' 2>/dev/null"
+        let fileToCreate = expand('%:p:h') . "/test.pdf"
+         " :let files = system("ls " .  shellescape(expand('%:h')))
+        " :echo fileToCreate
+        let runPandoc = '!pandoc %  -s -o ' . shellescape(fileToCreate, 1)
+        " to delete the quotes
+        let runPandoc = substitute(runPandoc, "\'", "", "g")
+        let runZathura = "![[ -z $(pgrep zathura) ]] && setsid zathura " . shellescape(fileToCreate, 1) . " 2>/dev/null"
+        :w |  exec runPandoc | silent exec runZathura
     endfunction
 
 

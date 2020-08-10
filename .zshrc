@@ -125,13 +125,14 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	daa='dotrepo add'\
 	dau='dotrepo add -u'\
 	dc='dotrepo commit'\
-	dl='dotrepo log --oneline'\
+	dlg='dotrepo log --oneline'\
 	dgp='dotrepo push origin HEAD'\
 	pgp='uploadProjects'\
 	m='$AUTOMATION/ncmpcppStart.sh'\
 	restartx='sudo systemctl restart display-manager'\
 	flat='flatpak --installation=extra'\
 	spot='flatpak --installation=extra run com.spotify.Client'\
+	glv='git log --oneline --decorate --all --graph'\
 	zealu='zeal-user-contrib'\
 
 	

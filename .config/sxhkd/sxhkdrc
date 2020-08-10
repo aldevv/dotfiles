@@ -2,6 +2,8 @@
 # unless sxhkd starts from xinit or .profile, it cannot read
 # environment variables, not even inside the scripts
 # super and shift works, but super alone doesnt
+#
+# you can use chords Shift + a; shift + b
 
 alt + w
 	sh "$UTILITIES/toggle_chat.sh"
@@ -61,7 +63,10 @@ super + F6
 # super + shift + F1
 # 	 st -e zathura "$SCRIPTS/cheatsheet/sheet.pdf" 2>/dev/null
 
-super + shift + F1
+# super + shift + F1
+# 	 $UTILITIES/cheatsheet/browseCheatsheets
+
+super + Escape
 	 $UTILITIES/cheatsheet/browseCheatsheets
 
 super + shift + s

@@ -1,5 +1,13 @@
 
 * Statistics
+** Correlation
+pueden ser negativos tambien, los rangos aplican igual 
+R=1 o R=-1      correlacion Perfecta
+0.9 <= R < 1    correlacion Excelente
+0.8 <= R < 0.9  correlacion aceptable
+0.6 <= R < 0.8  correlacion regular
+0.3 <= R < 0.6  correlacion minima
+0.0 <= R < 0.3  correlacion no hay
 ** Hipothesis test
 1-alptha = confidence
 alpha = 0.05 investigations
@@ -63,10 +71,13 @@ In statistics, a contingency table (also known as a cross tabulation or crosstab
  business intelligence, engineering and scientific research.
    
 ** Anova
-se debe de verificar
+se debe de verificar 
     1. Independencia de las variables
     2. Shapiro-wilk test (normality)
     3. bartlet test (homocedasticity)
+    4. (correlacion )? 
+       
+si no cumple, usar tukey o duncan para encontrar cual es la media diferente
 
 * Machine Learning
 ** Types of machine learning
@@ -78,17 +89,23 @@ training: when you have data but no output (group data in clusters)
 when you give positive points to something that gets you closer to your goal/flag
 ** Fundamental Algorithms
 *** Linear Regression
+The requirement to do a model is ANOVA
 **** Analysis
 
 
-1. First, linear regression needs the relationship between the independent and dependent variables to be linear (correlation).
-  It is also important to check for outliers since linear regression is sensitive to outlier effects
-
-2. Secondly, the linear regression analysis requires all variables to be multivariate normal.Secondly,
- the linear regression analysis requires all variables to be multivariate normal.
-Normality can be tested with the Shapiro-Wilk test or be checked with a histogram or a Q-Q-Plot.  
-
+***** 1 Normalidad 
+    se analiza si los valores de y siguen una distribucion normal en cada valor de x
+    It is also important to check for outliers since linear regression is sensitive to outlier effects
     +  When the data is not normally distributed, a non-linear transformation (e.g., log-transformation) might fix this issue.
+
+***** 2. Homocedasticidad
+la variacion en torno a la recta de regresion es constante para todo x, sin importar el valor que tome, de todas formas la variacion 
+debe ser la misma
+
+***** 3. Independencia del error
+establece que el error de estimacion es independiente para cada valor de x (cada error es diferente)
+
+
 
 **** Correlation
 is r and r2 (squared)

@@ -367,3 +367,10 @@ To automatically join a network when Irssi starts, run:
     Finally we specify a port to connect to the server on. You can leave this blank to use the default port, but if there’s an encrypted option we suggest using it.
 
 Note that you may add as many channels as you like.
+* git
+** disable pager
+git config --global pager.diff false
+** special log
+	git log --oneline --decorate --all --graph
+** undo reset
+https://coderwall.com/p/e8oqzg/git-undo-git-reset
