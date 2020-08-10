@@ -22,6 +22,8 @@ nnoremap <leader>wt <c-w>t
 noremap  <leader>wE <c-w>K
 noremap  <leader>w- 5<c-w>-
 noremap  <leader>w+ 5<c-w>+
+noremap  <leader>w< 5<c-w><
+noremap  <leader>w> 5<c-w>>
 " noremap  <leader>ww :w<CR>
 noremap  <leader>ww :w !sudo tee %<CR>
 noremap  <F7> :set spell! \| set wrap<CR>

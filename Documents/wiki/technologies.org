@@ -1,4 +1,73 @@
 
+* Statistics
+** Hipothesis test
+1-alptha = confidence
+alpha = 0.05 investigations
+alpha = 0.01 prove quality
+alpha = 0.10 stuff that has to do with humans(volatility)
+
+populations < 30 you do a t-student test
+else a Z (normality) test
+*** Scores
+
+they are used to prove if an hypothesis is right or wrong, using the alphas => 1-alpha
+https://www.simplypsychology.org/z-score.html
+https://www.statisticshowto.com/standardized-test-statistic/
+Z-scores for normal samples
+T-scores for normal samples population is less than 30
+*** Parametric tests
+y   ou use the scores (using the formulas)
+*** non parametric tests
+**** prueba del signo
+    se hacen diferencias entre los datos, solo interesa el signo de la diferencia, se cuentan los positivos y negativos y se saca el z-score 
+    
+**** correlacion por rangos  (menor a 25 usar t student)
+
+    se ordenan de menor a mayor, se sacan rangos usando la posicion ordenada (inicial - final)/2 de un numero repetido, si no esta repetido, entonces
+    su rango es su posicion. Se sacan diferencias de los rangos de los 2 grupos y se usa la formula al final, a este resultado se le llama Rs y se sustituye
+    en la formula para hallar t-student o z-score (ajustada para esta variable Rs)
+    
+**** Wilcoxon (menor 24 usar t-student)
+  
+    se usa para parejas de datos como (esposa esposo)
+    
+**** Man whitney (t-student si menor a 20)
+las muestras no tienen que ser de mismo tamaño!
+se sacan rangos igual que correlacion por rangos, luego se suman los rangos de cada muestra , quedando con los 2 valores del rango para ambas muestras
+
+finalmente se escoje el rango mas pequeño de los 2 y se substituye en la formula para encontrar un U, luego se encuentra el z-score o t-score (modificados para usar U)
+y se prueba la hipotesis
+
+**** Kruskal watts (muestras independientes, puedens ser mas de 2)
+  se juntan todos los datos de todas las muestras, se ordenan, se encuentran los rangos igual que en el correlacion por rangos
+  luego de encontrar los rangos, se separan los datos como estaban y se suman los rangos totales para cada muestra, quedamos con que cada muestra tiene un rango total
+  encontramos H con la formula que usa los rangos, este es el H-score, se calcula la grafica usando xi cuadrado , el error es: Xi(alpha, k-1) donde k es el numero de muestras 
+el resultado de Xi dara el punto donde comienza el error
+
+**** Xi cuadrado
+  para verificar si los datos son consistentes con el modelo
+  chi-square test is used to determine whether there is a statistically significant difference between the expected frequencies and the observed
+  frequencies in one or more categories of a contingency table. 
+  
+**** Correccion de yates
+ is used in certain situations when testing for independence in a contingency table.
+ It aims at correcting the error introduced by assuming that the discrete probabilities of frequencies in the table
+ can be approximated by a continuous distribution (chi-squared).
+ In some cases, Yates's correction may adjust too far, and so its current use is limited. 
+ 
+se utiliza Xi cuadrado para encontrar donde inicia el error, se usan las formulas para encontrar el Xi-score
+ 
+***** a contingency table
+In statistics, a contingency table (also known as a cross tabulation or crosstab) is a type of table in a matrix format that
+ displays the (multivariate) frequency distribution of the variables. They are heavily used in survey research,
+ business intelligence, engineering and scientific research.
+   
+** Anova
+se debe de verificar
+    1. Independencia de las variables
+    2. Shapiro-wilk test (normality)
+    3. bartlet test (homocedasticity)
+
 * Machine Learning
 ** Types of machine learning
 *** Supervised
@@ -9,6 +78,34 @@ training: when you have data but no output (group data in clusters)
 when you give positive points to something that gets you closer to your goal/flag
 ** Fundamental Algorithms
 *** Linear Regression
+**** Analysis
+
+
+1. First, linear regression needs the relationship between the independent and dependent variables to be linear (correlation).
+  It is also important to check for outliers since linear regression is sensitive to outlier effects
+
+2. Secondly, the linear regression analysis requires all variables to be multivariate normal.Secondly,
+ the linear regression analysis requires all variables to be multivariate normal.
+Normality can be tested with the Shapiro-Wilk test or be checked with a histogram or a Q-Q-Plot.  
+
+    +  When the data is not normally distributed, a non-linear transformation (e.g., log-transformation) might fix this issue.
+
+**** Correlation
+is r and r2 (squared)
+for example, R2 = 0.8234 means that the linear model explains 82.34% of the variance
+between the 2 variables
++ Pearson
+  measures correlation
++ Spearman
+  measures correlation using ranks, specially for ordinal variables
+
+the correlation is done by drawind a line of best fit
+
+***** line of best fit
+can be calculated using the least square method: https://www.youtube.com/watch?v=JvS2triCgOY
+
+line that gets as close as possible to most points
+the line of best fit is used to predict future values
 *** Classification
 *** Clustering
 *** Hidden Markov Models
@@ -255,6 +352,7 @@ so pdfgrep -- -v
 insensitive
 pdfgrep -i
 * sed
+** Backreferences
 is better to use sed -r because it groups with () instead of \( \) 
 which means you can use normal parenthesis like \( \) 
 
@@ -263,3 +361,4 @@ capture the entire line with &
     seq 15 | sed 's/.*/& sucks/'
 
 
+    

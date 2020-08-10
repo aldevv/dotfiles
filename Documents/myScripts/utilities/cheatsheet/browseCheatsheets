@@ -6,12 +6,14 @@
 # zathura "$path"
 
 path="$WIKI/cheatsheets"
-folder=$(ls $path  | dmenu -i -p "choose")
-file=$(ls "${path}/${folder}/" | dmenu -i -l 5 -p "choose file")
-filePath="${path}/${folder}/$file"
-if [[ ! -z $file ]]; then
-    echo "$filePath" | $AUTOMATION/open_with
-else
+folder=$(ls $path  | dmenu -i -p "Cheatsheet:")
+if [[ -z $folder ]]; then
     exit
 fi
+file=$(ls "${path}/${folder}/" | dmenu -i -l 5 -p "Cheatsheet:")
+filePath="${path}/${folder}/$file"
+if [[ -z $file ]]; then
+    exit
+fi
+echo "$filePath" | $AUTOMATION/open_with
 

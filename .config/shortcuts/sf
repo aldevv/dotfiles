@@ -1,5 +1,6 @@
 #something
 h          ~
+wo         ~/dev/Work/PPE
 bk         ~/Documents/Learn/Must_Read
 lc         ~/Documents/Learn/classes/
 utilities  ~/.local/bin/Utilities
@@ -22,6 +23,8 @@ apps       /usr/share/applications
 D          ~/Downloads
 d          ~/Documents
 p          ~/Pictures
+mu         ~/Music
+vi         ~/Videos
 wi         ~/Documents/wiki
 lo         ~/.local
 re         /etc

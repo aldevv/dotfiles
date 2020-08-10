@@ -11,15 +11,14 @@ extension="${filename##*.}"
 
 case $extension in
     pdf)
-        zathura "$fullfile"
-        ;;
+        zathura "$fullfile";;
+
     mp4 | mkv)
-        mpv "$fullfile"
-        ;;
+        mpv "$fullfile";;
+
     png | jpg)
-        sxiv "$fullfile"
-        ;;
+        sxiv "$fullfile";;
+
     *)
-        st -e nvim "$fullfile" 2>/dev/null
-        ;;
+        firefox $(cat "$fullfile") 2>/dev/null;;
 esac

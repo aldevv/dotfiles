@@ -5,11 +5,12 @@ all=""
 for doc in $docsets; do
     if [[ $doc == "C++.docset" ]]; then
         all=$(echo "Cpp:;${all}")
-    else
-        all="$(echo $doc | sed -r 's/(.+)\..+/\1:/g');${all}"
+        continue
     fi
+    doc=$(echo ${doc} | sed -E 's/(_|-).*\././g')
+    all="$(echo $doc | sed -r 's/(.+)\..+/\1:/g');${all}"
 done
-sourceVal=$(echo $all | sed 's/;/\n/g'  | dmenu -i)
+sourceVal=$(echo $all | sed 's/;/\n/g'  | dmenu -i -p "Docs:")
 
 # sourceVal=$( echo \
 #     'Cpp:
