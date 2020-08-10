@@ -133,7 +133,8 @@ static Key keys[] = {
 	//{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = firefox} },
-	{ MODKEY|ShiftMask,             XK_Tab,    togglescratch,  {.v = scratchpadcmd } },
+	/* { MODKEY|ShiftMask,             XK_Tab,    togglescratch,  {.v = scratchpadcmd } }, */
+	{ MODKEY,                       XK_c,    togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)

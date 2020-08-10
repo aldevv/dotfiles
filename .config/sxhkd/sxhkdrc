@@ -69,6 +69,9 @@ super + F6
 super + Escape
 	 $UTILITIES/cheatsheet/browseCheatsheets
 
+super + g
+    searchBrowser
+
 super + shift + s
 	 flatpak --installation=extra run com.spotify.Client 2>/dev/null
 

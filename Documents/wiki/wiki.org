@@ -3,6 +3,9 @@
 * [[file:linux.org][Linux]]
 * [[file:apps.org][Apps]]
 * [[file:technologies.org][Technologies]]
+good page for cheatsheets
+https://www.datacamp.com
+
 * Classes
 to put video courses from shared to your own drive, simply select the videos, and drag and drop them where you want them WHILE holding ctrl or shift + z
 ** 2020-1
@@ -114,3 +117,6 @@ masen ka
 ** unit 12 
 How about: 'wa' at the end
 isn't: 'ne' at the end
+
+* Tolearn
+https://www.datacamp.com/community/tutorials/finance-python-trading

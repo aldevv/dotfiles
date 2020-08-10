@@ -70,3 +70,6 @@ sudo eopkg -y install fcitx mozc fcitx-mozc fcitx-configtool
 #
 # put usable nvim for root (working)
 sudo cp -r ~/.config/nvim /root/.config; sudo rm /root/.config/nvim/init.vim; sudo mv /root/.config/nvim/init_root.vim /root/.config/nvim/init.vim;
+
+#install teamviewer
+#sudo eopkg install qt5-quickcontrols
