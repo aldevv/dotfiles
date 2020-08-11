@@ -35,8 +35,8 @@ super +  k
 super +  a
     st -e mate-calculator
 
-super + y
-    st -e "$($UTILITIES/youtube/YT.tcl)"
+# super + y
+#     st -e "$($UTILITIES/youtube/YT.tcl)"
 
 super + shift + v
     st -e code-oss
