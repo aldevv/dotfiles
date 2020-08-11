@@ -88,11 +88,18 @@ shift + Print
 @Print
 	 allScreen
 
+alt + a
+	 $UTILITIES/misc/calcDmenu
+
 alt + b
 	 $UTILITIES/search/searchBook
 
-alt + a
-	 $UTILITIES/misc/calcDmenu
+alt + c
+	 $UTILITIES/classes/searchClass
+
+#using a task spooler
+super + d
+	 ts sh -c $AUTOMATION/drive/uploadToDrive
 
 alt + shift + b
  	 $UTILITIES/search/searchBookFolder

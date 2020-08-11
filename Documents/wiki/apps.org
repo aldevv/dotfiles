@@ -2,6 +2,17 @@
 
 [[file:~/Documents/wiki/wiki.org][Index]]
 
+* Android SDK
+** windows
+The path must not have any spaces (BUG)
+
+https://stackoverflow.com/questions/60440509/android-command-line-tools-sdkmanager-always-shows-warning-could-not-create-se
+    Download latest Command line tools from android i.e. commandlinetools-win-6200805_latest.zip
+    Unzip the downloaded file
+    Create directory for storing commandline tools somewhere on your disk, with following path included: android/cmdline-tools/latest Basically when You unzip this Cmd line tools, just rename tools directory to latest and make sure You put this latest folder in android/cmdline-tools directory somewhere on your disk
+    Create ANDROID_HOME environment variable for directory that stores the cmdline tools directory location like: C:\YourLocationWhereYouStoreTheDirectory\android\cmdline-tools\latest
+    Create new entry in Path environment variable as %ANDROID_HOME%\bin
+
 * Flatpak
 flatpak lets you choose where to install software, unlike snap
 

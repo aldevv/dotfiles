@@ -1,0 +1,1 @@
+remove config.def.h, then copy config.h into config.def.h, then patch, and make config.def.h into config.h

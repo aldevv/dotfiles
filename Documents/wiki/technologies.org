@@ -1,4 +1,5 @@
 
+
 [[file:index.org][index]]
 
 * Statistics
@@ -528,3 +529,17 @@ capture the entire line with &
 
 
     
+* Bash
+** Command substitution resets \n
+http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_04.html
+3.4.5. Command substitution
+
+Command substitution allows the output of a command to replace the command itself. Command substitution occurs when a command is enclosed like this:
+
+$(command)
+
+or like this using backticks:
+
+`command`
+
+Bash performs the expansion by executing COMMAND and replacing the command substitution with the standard output of the command, with any trailing newlines deleted. Embedded newlines are not deleted, but they may be removed during word splitting.

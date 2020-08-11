@@ -153,6 +153,7 @@ let g:airline_powerline_fonts = 1
 
 " Keybindings
 map <leader>rp :!python3 %<cr>
+map <leader>rs :!./%<cr>
 map <F6> :e ~/.config/nvim/init.vim<cr>
 map <F3> :e ~/.zshrc<cr>
 map <C-&> <C-^>
