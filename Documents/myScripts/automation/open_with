@@ -25,6 +25,5 @@ case $extension in
         sxiv "$fullfile";;
 
     *)
-        echo "entered *"
         firefox $(cat "$fullfile") 2>/dev/null;;
 esac

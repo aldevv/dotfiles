@@ -88,8 +88,14 @@ shift + Print
 @Print
 	 allScreen
 
-alt + Escape
+alt + b
 	 $UTILITIES/search/searchBook
+
+alt + a
+	 $UTILITIES/misc/calcDmenu
+
+alt + shift + b
+ 	 $UTILITIES/search/searchBookFolder
 
 XF86AudioMute
      $SCRIPTS/shared/volume.sh mute; $APPS/dwm/refreshVolume
