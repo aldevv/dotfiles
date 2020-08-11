@@ -1,6 +1,35 @@
 #!/bin/sh
 
+
+#有難うございますputo
+
+isBookmark() {
+ARRAY=( "l:b-ok.cc"
+        "reg:www.debuggex.com/"
+        "h:horriblesubs.info/")
+
+    # regex in these conditions cant be in quotes
+    # if [[ $1 =~ !.+ ]]; then
+    word=$(echo $1 |tr -d "!")
+    for item in "${ARRAY[@]}" ; do
+        shortcut="${item%%:*}"
+        page="${item##*:}"
+        if [[ $word == $shortcut ]]; then
+            firefox --new-tab $page
+            return 0
+        fi
+    done
+    return 1
+}
+
+
 words=$(dmenu -p "search")
+# words="!l"
+[[ -z $words ]] && exit
+if isBookmark $words; then
+    exit
+fi
 words=$(echo $words | tr " " "+")
 page="https://www.google.com/search?client=firefox-b-d&q=${words}"
 firefox --new-tab $page
+
