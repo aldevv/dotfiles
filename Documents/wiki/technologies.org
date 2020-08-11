@@ -1,4 +1,6 @@
 
+[[file:index.org][index]]
+
 * Statistics
 ** Correlation
 pueden ser negativos tambien, los rangos aplican igual 
@@ -80,12 +82,126 @@ se debe de verificar
 si no cumple, usar tukey o duncan para encontrar cual es la media diferente
 
 * Machine Learning
+
+book hands on machine learning
+there are 2 aproaches of generalization, instance based and model based
+** Instance based
+can make a square be a triangle because the closest ones in the training were triangles,
+it learns the training instances by heart
+*** example K nearest neighbors
+
+is the same as the linear model, but with this change 
+
+model = sklearn.linear_model.()
+
+becomes 
+
+model = sklearn.neighbors.KNeighborsRegressor(n_neighbors=3)
+ 
+page 22 
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import sklearn.linear_model
+
+# Load the data
+oecd_bli = pd.read_csv("oecd_bli_2015.csv", thousands=',')
+gdp_per_capita = pd.read_csv("gdp_per_capita.csv",thousands=',',delimiter='\t',
+encoding='latin1', na_values="n/a")
+
+# Prepare the data
+country_stats = prepare_country_stats(oecd_bli, gdp_per_capita)
+X = np.c_[country_stats["GDP per capita"]]
+y = np.c_[country_stats["Life satisfaction"]]
+
+# Visualize the data
+country_stats.plot(kind='scatter', x="GDP per capita", y='Life satisfaction')
+plt.show()
+# Select a linear model
+model = sklearn.neighbors.KNeighborsRegressor(n_neighbors=3)
+# Train the model
+model.fit(X, y)
+# Make a prediction for Cyprus
+X_new = [[22587]] # Cyprus' GDP per capita
+print(model.predict(X_new)) # outputs [[ 5.96242338]]
+6 The prepare_country_stats() function’s definition is not shown here (see this chapter’s Jupyter notebook
+
+** Model based
+linear model (linear regression) : W + B * X
+*** example linear regression
+
+page 22 
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import sklearn.linear_model
+
+# Load the data
+oecd_bli = pd.read_csv("oecd_bli_2015.csv", thousands=',')
+gdp_per_capita = pd.read_csv("gdp_per_capita.csv",thousands=',',delimiter='\t',
+encoding='latin1', na_values="n/a")
+
+# Prepare the data
+country_stats = prepare_country_stats(oecd_bli, gdp_per_capita)
+X = np.c_[country_stats["GDP per capita"]]
+y = np.c_[country_stats["Life satisfaction"]]
+
+# Visualize the data
+country_stats.plot(kind='scatter', x="GDP per capita", y='Life satisfaction')
+plt.show()
+# Select a linear model
+model = sklearn.linear_model.LinearRegression()
+# Train the model
+model.fit(X, y)
+# Make a prediction for Cyprus
+X_new = [[22587]] # Cyprus' GDP per capita
+print(model.predict(X_new)) # outputs [[ 5.96242338]]
+6 The prepare_country_stats() function’s definition is not shown here (see this chapter’s Jupyter notebook
+** instances
+also called samples
+there are training instances which are simply data instances of that training
+see page 12-13 
 ** Types of machine learning
 *** Supervised
-training: when you have data and you know the output
+
+training: when you have data and you know the output (labels)
+
+some of the most important are
+
+**** k-Nearest Neighbors
+**** Linear Regression
+**** Logistic Regression   //predict 1 of 2 values (like buy or not 2 buy) 
+**** Support Vector Machines (SVMs)
+**** Decision Trees and Random Forests
+**** Neural networks
+
 *** Unsupervised
 training: when you have data but no output (group data in clusters)
+
+
+
+**** Clustering Algorithms
+***** K-means
+***** DBSCAN
+***** Hierarchical Cluster Analysis (HCA)
+**** Anomaly detection and novelty detection
+***** One class SVM
+***** Isolation forest
+**** others
+• Visualization and dimensionality reduction
+    — Principal Component Analysis (PCA)
+    — Kernel PCA
+    — Locally-Linear Embedding (LLE)
+    — t-distributed Stochastic Neighbor Embedding (t-SNE)
+• Association rule learning
+    — Apriori
+    — Ecla
+*** Semisupervised
+deep belief networks (DBNs)
 *** Reinforcement
+the learning system called an agent observes the environment, performs actions and gets rewards or penalties in return
 when you give positive points to something that gets you closer to your goal/flag
 ** Fundamental Algorithms
 *** Linear Regression
@@ -129,11 +245,44 @@ the line of best fit is used to predict future values
 
 
 * Tensorflow
+** types of problems
+*** regression
+    https://www.tensorflow.org/tutorials/keras/regression
+we aim to predict the output of a continuous value, like a price or a probability.
+*** classification
+ classification problem, we aim to select a class from a list of classes (for example, where a picture contains an apple or an orange,
+ recognizing which fruit is in the picture).
+** Official examples
+*** linear 
+https://www.tensorflow.org/tutorials/estimator/linear
 ** Main components
 *** Graphs
-an equation definition
+an equation definition (what is gonna be done)
+*** fitness or cost function
+functions that calculate the current cost using a bias and weights (and data)
+*** Optimizer
+recieves a learning rate, it tries to minimize or maximize something (the c ost)
 *** Sessions
-Executes certain parts of the graph
+Executes certain parts of the graph (computation)
+this is where training happens
+** Training
+first understand the data.
+you are going to feed data into the model
+*** Encoding data
+tensorflow can transform categorical data like(male, female) into encodings, look up the methods
+https://www.youtube.com/watch?v=tPYj3fFJGjk&t=4600 minute 1:35:00
+*** Epoch
+
+start with little amount of epochs, then you keep on increasing, to avoid overfeeding 
+
+an epoc is a stream of the entire dataset. the number of epochs we define is the amount of times our model will see the entire dataset,
+ we use multiple epochs in hope that after seeing the same data multiple times the model will better determine how to estimate it.
+
+Ex. if we have 10 ephocs, our model will see the same dataset 10 times. 
+**** overfeeding
+overfeeding happens when you use too many Epochs, the model becomes very good at classifying the data we fed it, but because
+it memorized the data points, once we feed different data is gonna fail
+
 ** Tensor
 generalization of vectors and matrixes in potentially higher dimensions
 

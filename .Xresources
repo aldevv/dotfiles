@@ -1,6 +1,9 @@
 /*transparency from 0 to 255*/
 *.alpha: .80
 *.font: monospace:size=10
+/* sxiv.font: Iosevka:size=10 */ 
+/* Sxiv.foreground: #282a36 */
+/* Sxiv.background: #f8f8f2 */
 !*.font:	Liberation Mono:pixelsize=14:antialias=true:autohint=true;
 !*.font:	    FiraCode:pixelsize=14:antialias=true:autohint=true;
 !*.font:	Inconsolata for Powerline:pixelsize=20:antialias=true:autohint=true;

@@ -7,6 +7,9 @@ https://github.com/nhermosilla14/latam-colemak
 #dependencies for dwm (only first) and compton
 sudo eopkg -y install  libxinerama-devel libxcomposite-devel libxdamage-devel libxrandr-devel libconfig-devel libglu-devel libdrm-devel xsetroot
 
+# dependencies sxiv
+sudo eopkg -y install imlib2-devel libexif-devel giflib-devel
+
 # latex
 sudo eopkg -y install texlive
 

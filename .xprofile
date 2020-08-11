@@ -4,5 +4,5 @@ dunst &
 fcitx & # for languages
 compton &
 sxhkd &
-~/Documents/myScripts/dwm/status &
+$APPS/dwm/status &
 wal -R &

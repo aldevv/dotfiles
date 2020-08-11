@@ -190,16 +190,13 @@ map <leader>ra :!setsid st ranger $(dirname %) 2</dev/null<cr>
     endfunction
 
     function CompileMd()
-        let fileToCreate = expand('%:p:h') . "/test.pdf"
-         " :let files = system("ls " .  shellescape(expand('%:h')))
-        " :echo fileToCreate
-        let runPandoc = '!pandoc %  -s -o ' . shellescape(fileToCreate, 1)
-        " to delete the quotes
-        let runPandoc = substitute(runPandoc, "\'", "", "g")
-        let runZathura = "![[ -z $(pgrep zathura) ]] && setsid zathura " . shellescape(fileToCreate, 1) . " 2>/dev/null"
-        :w |  exec runPandoc | silent exec runZathura
+        let destination = expand('%:p:h') . "/test.pdf"
+        let run = system("compileMd ".shellescape(expand('%'))." ".shellescape(destination))
+        if v:shell_error == 1
+            "has to run from here or zathura will overwrite the terminal window
+            :silent exec "!setsid zathura ".shellescape(destination)." 2>/dev/null"
+        endif
     endfunction
-
 
 " auto compile vim
     autocmd BufWritePost *.vim source %
