@@ -31,5 +31,7 @@ re         /etc
 ru         /usr
 rv         /var
 rb         /bin
-rm         /mnt
+mnt        /mnt
+sc         ~/Pictures/screenshots
+
 

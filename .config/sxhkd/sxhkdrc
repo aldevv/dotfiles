@@ -81,6 +81,16 @@ super + shift + j
 super + alt + j
 	 $HOME/.joplin/Joplin.AppImage 2>/dev/null
 
+shift + Print
+	 windowScreen
+
+# works on release
+@Print
+	 allScreen
+
+alt + Escape
+	 $UTILITIES/search/searchBook
+
 XF86AudioMute
      $SCRIPTS/shared/volume.sh mute; $APPS/dwm/refreshVolume
      # pactl set-sink-mute 0 toggle
