@@ -326,6 +326,16 @@ then run:
 check used fonts
 lsof -p id_st_process | grep font
 
+** Command in new window
+
+$the shell at the end, makes it so it doesnt close
+
+st -e bash -c "echo \"hello\"; $SHELL"
+
+$TERMINAL -e bash -c "man -P cat curl 2>/dev/null | grep -E -- \"\s-s\" 2>/dev/null;$SHELL"
+
+st -t scratchpad -g 120x34 -e bash -c "man -P cat curl 2>/dev/null | grep -E -- \"\s-s\" 2>/dev/null;$SHELL" &
+
 
 * irssi
 ** notifications

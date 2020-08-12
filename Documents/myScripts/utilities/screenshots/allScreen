@@ -8,3 +8,4 @@ while [[ -e "$HOME/Pictures/screenshots/$fname" ]]; do
     printf -v fname '%s-%02d.png' "$today" "$(( ++number ))"
 done
 import -window root ~/Pictures/screenshots/${fname}
+xclip -selection clipboard -target image/png -i ~/Pictures/screenshots/${fname}

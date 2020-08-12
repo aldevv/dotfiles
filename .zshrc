@@ -101,7 +101,6 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	ytv="$UTILITIES/youtube/downloadVideo.sh"\
 	dic="$UTILITIES/dictionary.sh"\
 	conv="$UTILITIES/MkvToMp4.sh"\
-	url="$UTILITIES/urlShortener.sh"\
 	par="curl parrot.live"\
 	wtr="$UTILITIES/weather.sh"\
 	ssr="simplescreenrecorder"\

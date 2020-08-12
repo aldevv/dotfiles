@@ -1,12 +1,14 @@
 # the keys are put in qwerty layout positions, also
-# unless sxhkd starts from xinit or .profile, it cannot read
+# unless sxhkd starts from xinit or .xprofile, it cannot read
 # environment variables, not even inside the scripts
 # super and shift works, but super alone doesnt
 #
+#
+#st -t scratchpad -g 120x34 -e bash -c "man -P cat curl 2>/dev/null | grep -E -- \"\s-s\" 2>/dev/null;$SHELL"
 # you can use chords Shift + a; shift + b
 
 alt + w
-	sh "$UTILITIES/toggle_chat.sh"
+	sh "$UTILITIES/misc/toggle_chat.sh"
 
 super + p
 	dmenu_run
@@ -94,12 +96,23 @@ alt + a
 alt + b
 	 $UTILITIES/search/searchBook
 
-alt + c
+super + control + c
 	 $UTILITIES/classes/searchClass
+
+super + control + u
+ 	 ts $UTILITIES/api/urlShortener
 
 #using a task spooler
 super + d
 	 ts sh -c $AUTOMATION/drive/uploadToDrive
+
+mode_switch + e
+    $UTILITIES/misc/saveImage
+
+mode_switch + m
+    ts st -e bash -c "$UTILITIES/misc/sectionManPage;$SHELL"
+    # st -e $UTILITIES/misc/runCommand $(dmenu -p "prompt:")
+	 # dunstify $(sh -c "$(dmenu -i -p "prompt:")")
 
 alt + shift + b
  	 $UTILITIES/search/searchBookFolder
