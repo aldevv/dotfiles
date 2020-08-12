@@ -1,0 +1,13 @@
+0.2.0 - May 23, 2001
+* Added specfile
+* Fixed STDIN stuff (John Coiner)
+
+0.1.2 - Jun 6, 2000
+* Added protection against console apps by redirecting STDIN to /dev/null
+
+0.1.1 - Apr 21, 2000
+* Added help and version messages
+* Improved README
+
+0.1.0 - Apr 16, 2000
+* Initial version

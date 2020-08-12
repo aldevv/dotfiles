@@ -26,6 +26,25 @@ static char *colors[][3] = {
        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
+typedef struct {
+	const char *name;
+	const void *cmd;
+} Sp;
+const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
+const char *spcmd3[] = {"st", "-n", "spsec", "-f", "monospace:size=16", "-g", "50x20", "-e", "bash", "-c", "sectionManPage;$SHELL",  NULL };
+const char *spcmd4[] = {"st", "-n", "spman", "-f", "monospace:size=12", "-g", "120x34", "-e", "bash", "-c", "openManPage;$SHELL",  NULL };
+const char *spcmd5[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
+static Sp scratchpads[] = {
+	/* name          cmd  */
+	{"spterm",      spcmd1},
+	{"spranger",    spcmd2},
+	{"spmsec",      spcmd3},
+	{"spman",       spcmd4},
+	{"spcalc",      spcmd5},
+};
+
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
 
@@ -41,6 +60,12 @@ static const Rule rules[] = {
 	{ "Station", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	{ NULL,		  "spterm",		NULL,	SPTAG(0),		1,			 -1 },
+	{ NULL,		  "spfm",		NULL,	SPTAG(1),		1,			 -1 },
+	{ NULL,		  "spsec",     NULL,	SPTAG(2),		1,			 -1 },
+	{ NULL,		  "spman",		NULL,	SPTAG(3),		1,			 -1 },
+	{ NULL,		  "spcalc",		NULL,	SPTAG(4),		1,			 -1 },
+	/* { NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 }, */
 	//{ "Station", NULL,     NULL,         (1 << 8)-1,    0,          0,          -1,        -1 }, selects all tags except the 9th
 };
 
@@ -87,8 +112,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+/* static const char scratchpadname[] = "scratchpad"; */
+/* static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL }; */
 
 /*
  * Xresources preferences to load at startup
@@ -133,8 +158,14 @@ static Key keys[] = {
 	//{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = firefox} },
+	{ MODKEY,            			XK_c,  	   togglescratch,  {.ui = 0 } },
+	{ MODKEY|ShiftMask,    			XK_c,	   togglescratch,  {.ui = 1 } },
+    // this is alt-gr
+	{ Mod5Mask,     			    XK_m,	   togglescratch,  {.ui = 2 } },
+	{ Mod5Mask|ShiftMask,           XK_m,      togglescratch,  {.ui = 3 } },
+	{ MODKEY,   		            XK_a,      togglescratch,  {.ui = 4 } },
 	/* { MODKEY|ShiftMask,             XK_Tab,    togglescratch,  {.v = scratchpadcmd } }, */
-	{ MODKEY,                       XK_c,    togglescratch,  {.v = scratchpadcmd } },
+	/* { MODKEY,                       XK_c,    togglescratch,  {.v = scratchpadcmd } }, */
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
@@ -209,7 +240,7 @@ static Button buttons[] = {
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+	{ ClkClientWin,         MODKEY,         Button1,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },

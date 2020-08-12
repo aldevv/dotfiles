@@ -336,7 +336,8 @@ $TERMINAL -e bash -c "man -P cat curl 2>/dev/null | grep -E -- \"\s-s\" 2>/dev/n
 
 st -t scratchpad -g 120x34 -e bash -c "man -P cat curl 2>/dev/null | grep -E -- \"\s-s\" 2>/dev/null;$SHELL" &
 
-
+* dmenu
+use dmenu -p "something" </dev/null, to have a clean input
 * irssi
 ** notifications
 https://github.com/stickster/irssi-libnotify

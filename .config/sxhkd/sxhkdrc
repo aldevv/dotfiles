@@ -34,8 +34,8 @@ super + Return
 super +  k
     st -e newsboat 
 
-super +  a
-    st -e mate-calculator
+# super +  a
+#     st -e mate-calculator
 
 # super + y
 #     st -e "$($UTILITIES/youtube/YT.tcl)"
@@ -90,8 +90,6 @@ shift + Print
 @Print
 	 allScreen
 
-alt + a
-	 $UTILITIES/misc/calcDmenu
 
 alt + b
 	 $UTILITIES/search/searchBook
@@ -106,11 +104,14 @@ super + control + u
 super + d
 	 ts sh -c $AUTOMATION/drive/uploadToDrive
 
+mode_switch + a
+	 $UTILITIES/misc/calcDmenu
+
 mode_switch + e
     $UTILITIES/misc/saveImage
 
-mode_switch + m
-    ts st -e bash -c "$UTILITIES/misc/sectionManPage;$SHELL"
+# mode_switch + m
+#     ts st -e bash -c "$UTILITIES/misc/sectionManPage;$SHELL"
     # st -e $UTILITIES/misc/runCommand $(dmenu -p "prompt:")
 	 # dunstify $(sh -c "$(dmenu -i -p "prompt:")")
 
