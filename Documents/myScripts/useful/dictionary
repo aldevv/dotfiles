@@ -1,19 +1,9 @@
+#!/bin/bash
 
-isBookmark() {
-ARRAY=( "l:b-ok.cc"
-        "reg:www.debuggex.com/"
-        "h:horriblesubs.info/")
+declare -A libraries
+libraries["plt"]=matplotlib.pyplot
+libraries["mpl"]=matplotlib
+libraries["pd"]=pandas
+libraries["np"]=numpy
 
-    # regex in these conditions cant be in quotes
-    # if [[ $1 =~ !.+ ]]; then
-    word=$(echo $1 |tr -d "!")
-    for item in "${ARRAY[@]}" ; do
-        shortcut="${item%%:*}"
-        page="${item##*:}"
-        if [[ $word == $shortcut ]]; then
-            firefox --new-tab $page
-            return 0
-        fi
-    done
-    return 1
-}
+commandImport="import ${libraries[$1]} as $1;"

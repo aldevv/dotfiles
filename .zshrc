@@ -133,6 +133,7 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	spot='flatpak --installation=extra run com.spotify.Client'\
 	glv='git log --oneline --decorate --all --graph'\
 	zealu='zeal-user-contrib'\
+    ph='python_help'\
 
 	
 	#python='python3'\

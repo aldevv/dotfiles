@@ -41,7 +41,7 @@ super +  k
 #     st -e "$($UTILITIES/youtube/YT.tcl)"
 
 super + shift + v
-    st -e code-oss
+    bash -c code-oss
 
 super + F1
     "$UTILITIES/searchDocs"

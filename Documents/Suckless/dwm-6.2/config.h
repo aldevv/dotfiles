@@ -32,7 +32,7 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
-const char *spcmd3[] = {"st", "-n", "spsec", "-f", "monospace:size=16", "-g", "50x20", "-e", "bash", "-c", "sectionManPage;$SHELL",  NULL };
+const char *spcmd3[] = {"st", "-n", "spsec", "-f", "monospace:size=10", "-g", "100x25", "-e", "bash", "-c", "sectionManPage;$SHELL",  NULL };
 const char *spcmd4[] = {"st", "-n", "spman", "-f", "monospace:size=12", "-g", "120x34", "-e", "bash", "-c", "openManPage;$SHELL",  NULL };
 const char *spcmd5[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
 static Sp scratchpads[] = {
