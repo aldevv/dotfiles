@@ -78,24 +78,24 @@ static int resizehints = 0;    /* 1 means respect size hints in tiled resizals *
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 	{ "[D]",      deck },
- 	{ "[@]",      spiral },
- 	{ "[\\]",      dwindle },
 	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
+ 	{ "[\\]",      dwindle },
+ 	{ "[@]",      spiral },
 	{ "TTT",      bstack },
-	{ "===",      bstackhoriz },
+	{ "><>",      NULL },    /* no layout function means floating behavior */
+	/* { "===",      bstackhoriz }, */
 };
 
 /* key definitions */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ Mod1Mask,                     KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ Mod1Mask|ShiftMask,           KEY,      toggletag,      {.ui = 1 << TAG} },
 #define STACKKEYS(MOD,ACTION) \
 	{ MOD, XK_n,     ACTION##stack, {.i = INC(+1) } }, \
 	{ MOD, XK_e,     ACTION##stack, {.i = INC(-1) } }, \
@@ -180,19 +180,16 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY|Mod1Mask,              XK_1,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|Mod1Mask,              XK_2,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY|Mod1Mask,              XK_3,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|Mod1Mask,              XK_4,      setlayout,      {.v = &layouts[3]} },
-    { MODKEY|Mod1Mask,              XK_5,      setlayout,      {.v = &layouts[4]} },
-	{ MODKEY|Mod1Mask,              XK_6,      setlayout,      {.v = &layouts[5]} },
-	{ MODKEY|Mod1Mask,              XK_7,      setlayout,      {.v = &layouts[6]} },
-	{ MODKEY|Mod1Mask,              XK_8,      setlayout,      {.v = &layouts[7]} },
-	{ MODKEY|Mod1Mask,              XK_9,      setlayout,      {.v = &layouts[8]} },
-	{ MODKEY|Mod1Mask,              XK_0,      setlayout,      {.v = &layouts[9]} },
-	//{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} },
-	//{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
-	//{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[3]} },
+	{ Mod5Mask,                     XK_1,      setlayout,      {.v = &layouts[0]} },
+	{ Mod5Mask,                     XK_2,      setlayout,      {.v = &layouts[1]} },
+	{ Mod5Mask,                     XK_3,      setlayout,      {.v = &layouts[2]} },
+	{ Mod5Mask,                     XK_4,      setlayout,      {.v = &layouts[3]} },
+    { Mod5Mask,                     XK_5,      setlayout,      {.v = &layouts[4]} },
+	{ Mod5Mask,                     XK_6,      setlayout,      {.v = &layouts[5]} },
+	{ Mod5Mask,                     XK_7,      setlayout,      {.v = &layouts[6]} },
+	{ Mod5Mask,                     XK_8,      setlayout,      {.v = &layouts[7]} },
+	{ Mod5Mask,                     XK_9,      setlayout,      {.v = &layouts[8]} },
+	/* { MODKEY|Mod1Mask,              XK_0,      setlayout,      {.v = &layouts[9]} }, */
 	//{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
