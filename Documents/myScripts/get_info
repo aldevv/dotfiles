@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 [ "$(stat -c %y ~/dev/corona/info > 2/dev/null | cut -d ' ' -f 1)" != "$(date '+%Y-%m-%d')" ] && 
 	curl -s https://corona-stats.online\?source\=2 > ~/dev/corona/info
 

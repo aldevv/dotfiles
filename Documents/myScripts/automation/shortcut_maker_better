@@ -20,9 +20,9 @@ rm -f $shell_shortcuts $ranger_shortcuts
 (grep "source $HOME/.config/ranger/shortcuts.conf" $HOME/.config/ranger/rc.conf)>/dev/null || echo "source $HOME/.config/ranger/shortcuts.conf" >> $HOME/.config/ranger/rc.conf
 
 # directory shortcuts
-sed "/^#/d; /^$/d" $folders | awk '{print "alias "$1"=\"cd "$2" && ls -a\""}' >> $shell_shortcuts
-sed "/^#/d; /^$/d" $folders | awk '{print "map g"$1" cd "$2"\nmap t"$1" tab_new "$2"\nmap m"$1" shell mv -v %s "$2"\nmap Y"$1" shell cp -rv %s "$2}' >> $ranger_shortcuts
+sed "/^#/d; /^$/d" $folders | tee >(awk '{print "alias "$1"=\"cd "$2" && ls -a\""}' >> $shell_shortcuts) \
+    >(awk '{print "map g"$1" cd "$2"\nmap t"$1" tab_new "$2"\nmap m"$1" shell mv -v %s "$2"\nmap Y"$1" shell cp -rv %s "$2}' >> $ranger_shortcuts) >/dev/null
 
 # dotfile shortcuts
-sed "/^#/d; /^$/d" $dotfiles | awk '{print "alias "$1"=\"$EDITOR "$2"\""}' >> $shell_shortcuts
-sed "/^#/d; /^$/d" $dotfiles | awk '{print "map "$1" shell $EDITOR "$2}' >> $ranger_shortcuts
+sed "/^#/d; /^$/d" $dotfiles |tee >(awk '{print "alias "$1"=\"$EDITOR "$2"\""}' >> $shell_shortcuts) \
+    >(awk '{print "map "$1" shell $EDITOR "$2}' >> $ranger_shortcuts) >/dev/null

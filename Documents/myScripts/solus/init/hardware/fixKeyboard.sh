@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo \
 '# Written by systemd-localed(8), read by systemd-localed and Xorg. It"s
 # probably wise not to edit this file manually. Use localectl(1) to

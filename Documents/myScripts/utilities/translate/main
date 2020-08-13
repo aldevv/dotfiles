@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 text=$(echo "" | dmenu -p "translate" -fn 'Droid Sans Japanese:pixelsize=19')
 
 while [[ ! -z $text ]]

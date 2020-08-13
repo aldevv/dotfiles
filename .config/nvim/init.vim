@@ -209,7 +209,7 @@ map <leader>ra :!setsid st ranger $(dirname %) 2</dev/null<cr>
     autocmd BufWritePost *sxhkdrc !pkill sxhkd; setsid sxhkd &
 
 " auto shortcuts 
-    autocmd BufWritePost,TextChanged sf,sd !$AUTOMATION/shortcut_maker
+    autocmd BufWritePost,TextChanged sf,sd !$AUTOMATION/shortcut_maker_better
 
 " functions
 function Autosaving()

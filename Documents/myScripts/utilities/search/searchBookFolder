@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 # cut from end to beggining change the -f7 to the number you need

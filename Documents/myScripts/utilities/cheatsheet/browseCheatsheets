@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # path="$WIKI/cheatsheets"
 # folder=$(ls $path  | dmenu -i -p "choose")

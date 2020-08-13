@@ -1,3 +1,3 @@
-#!/bin/sh
+#!/bin/bash
 ./fixMouse.sh
 ./fixKeyboard.sh

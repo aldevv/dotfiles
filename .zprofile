@@ -2,9 +2,9 @@ export C_INCLUDE_PATH=.:~/Documents/mlibs
 export EPISODES=~/Downloads
 export TERMINAL=st
 export PATH="$HOME/.symfony/bin:$PATH"
+# you can source sxhkd & here if you login from console
 export SI=https://meet.google.com/ixe-gxnu-ovp
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
-# you can source sxhkd & here if you login from console
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=firefox
@@ -21,7 +21,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 #for cargo
 export PATH="$HOME/.cargo/bin:$PATH"
-#these add all files in these directories to the PATH
+#add all files in these directories to the PATH
 export PATH="$(du $SHARED | cut -f2 | tr '\n' ':')$PATH"
 export PATH="$(du $APPS | cut -f2 | tr '\n' ':')$PATH"
 export PATH="$(du $UTILITIES  | cut -f2 | tr '\n' ':')$PATH"

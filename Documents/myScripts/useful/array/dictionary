@@ -1,7 +1,3 @@
-#!/bin/bash
-
-
-#有難うございますputo
 
 isBookmark() {
 ARRAY=( "l:b-ok.cc"
@@ -21,15 +17,3 @@ ARRAY=( "l:b-ok.cc"
     done
     return 1
 }
-
-
-words=$(dmenu -p "search")
-# words="!l"
-[[ -z $words ]] && exit
-if isBookmark $words; then
-    exit
-fi
-words=$(echo $words | tr " " "+")
-page="https://www.google.com/search?client=firefox-b-d&q=${words}"
-firefox --new-tab $page
-

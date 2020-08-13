@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # this is for lightdm
 echo \
 '[Desktop Entry]

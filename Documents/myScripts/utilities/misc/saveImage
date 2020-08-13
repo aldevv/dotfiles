@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 xdotool click 3
 xdotool key Up
 xdotool key Up

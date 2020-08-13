@@ -6,6 +6,9 @@
 #
 #st -t scratchpad -g 120x34 -e bash -c "man -P cat curl 2>/dev/null | grep -E -- \"\s-s\" 2>/dev/null;$SHELL"
 # you can use chords Shift + a; shift + b
+#
+# button1; button1; button2
+# 	notify-send "works"
 
 alt + w
 	sh "$UTILITIES/misc/toggle_chat.sh"
