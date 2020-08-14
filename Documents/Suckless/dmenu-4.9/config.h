@@ -5,7 +5,9 @@ static int topbar = 1;                      /* -b  option; if 0, dmenu appears a
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
     /* "JoyPixels:pixelsize=15:antialias=true:autohint=true" //not working in solus */
-    "Symbola:pixelsize=16:antialias=true:autohint=true", // Unicode (emojis)
+    "Hack Nerd Font Mono:pixelsize=14:antialias=true:autohint=true", // Powerline
+    /* "Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */  
+    /* "Symbola:pixelsize=16:antialias=true:autohint=true", // Unicode (emojis) */
     /* "Noto Sans Emoji:pixelsize=13:antialias=true:autohint=true", // Unicode (emojis) */
     /* "Noto Sans Emoji:pixelsize=13:antialias=true:autohint=true", // Unicode (emojis) */
 	"monospace:size=12"

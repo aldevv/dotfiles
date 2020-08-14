@@ -106,7 +106,8 @@ struct Client {
 	unsigned int tags;
 	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, isterminal, noswallow, issticky;
 	pid_t pid;
-	int floatborderpx;
+	int floatborderpx, oldfloatborderpx; // i added the oldfloatborder
+    int oldxfloat, oldyfloat; // this too
 	Client *next;
 	Client *snext;
 	Client *swallowing;
@@ -366,16 +367,19 @@ applyrules(Client *c)
 			c->isfloating = r->isfloating;
 			c->tags |= r->tags;
 			c->floatborderpx = r->floatborderpx;
+
 			if (r->isfloating) {
 				c->x = r->floatx;
 				c->y = r->floaty;
 				c->w = r->floatw;
 				c->h = r->floath;
 			}
-			if ((r->tags & SPTAGMASK) && r->isfloating) {
-				c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
-				c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2);
-			}
+            /* I COMMENTED THIS */
+			/* if ((r->tags & SPTAGMASK) && r->isfloating) { */
+			/* 	c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2); */
+			/* 	c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2); */
+			/* } */
+
 
 			for (m = mons; m && m->num != r->monitor; m = m->next);
 			if (m)
@@ -1668,6 +1672,8 @@ setfullscreen(Client *c, int fullscreen)
 		c->oldbw = c->bw;
 		c->bw = 0;
 		c->isfloating = 1;
+		c->oldfloatborderpx = c->floatborderpx;
+		c->floatborderpx = 0;
 		resizeclient(c, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
 		XRaiseWindow(dpy, c->win);
 	} else if (!fullscreen && c->isfullscreen){
@@ -1680,6 +1686,7 @@ setfullscreen(Client *c, int fullscreen)
 		c->y = c->oldy;
 		c->w = c->oldw;
 		c->h = c->oldh;
+		c->floatborderpx = c->oldfloatborderpx;
 		resizeclient(c, c->x, c->y, c->w, c->h);
 		arrange(c->mon);
 	}
@@ -1830,10 +1837,11 @@ showhide(Client *c)
 	if (!c)
 		return;
 	if (ISVISIBLE(c)) {
-		if ((c->tags & SPTAGMASK) && c->isfloating) {
-			c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
-			c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2);
-		}
+        /* I COMMENTED THIS: this resizes the window when you change sizes */
+		/* if ((c->tags & SPTAGMASK) && c->isfloating) { */
+		/* 	c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2); */
+		/* 	c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2); */
+		/* } */
 		/* show clients top down */
 		XMoveWindow(dpy, c->win, c->x, c->y);
 		if ((!c->mon->lt[c->mon->sellt]->arrange || c->isfloating) && !c->isfullscreen)
@@ -1983,6 +1991,13 @@ togglesticky(const Arg *arg)
 		return;
 	selmon->sel->issticky = !selmon->sel->issticky;
 	arrange(selmon);
+}
+
+void
+togglefullscr(const Arg *arg)
+{
+  if(selmon->sel)
+    setfullscreen(selmon->sel, !selmon->sel->isfullscreen);
 }
 
 void
