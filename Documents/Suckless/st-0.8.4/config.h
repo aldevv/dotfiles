@@ -17,7 +17,7 @@ static char *font2[] = {
     /* "JoyPixels:pixelsize=14:antialias=true:autohint=true" //not working in solus */
     /* "Symbola:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis) */
     /* "Hack Nerd Font Mono:pixelsize=14:antialias=true:autohint=true", // Powerline */
-    /* "Droid Sans Japanese:pixelsize=14:antialias=true:autohint=true", // Japanese */
+    "Droid Sans Japanese:pixelsize=14:antialias=true:autohint=true", // Japanese
     /* "Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */  
     /* "JoyPixels:pixelsize=14:antialias=true:autohint=true" //not working in solus */
 };

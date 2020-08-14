@@ -229,6 +229,9 @@ let NERDTreeMapOpenExpl = 'k'
 nnoremap <F5> :UndotreeToggle<cr>
 
 " fzf
+" for rg
+let g:rg_derive_root='true'
+set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 nnoremap <c-p> :PFiles<cr> 
 nnoremap <leader>b :Buffers<cr> 
 nnoremap <leader>gp :GFiles<cr> 

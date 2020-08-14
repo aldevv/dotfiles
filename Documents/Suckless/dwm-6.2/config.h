@@ -23,6 +23,7 @@ static const unsigned int gappoh    = 20; // def 10     /* horiz outer gap betwe
 static const unsigned int gappov    = 20; // def 10     /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
+//#include "/home//.cache/wal/colors-wal-dwm.h"
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
@@ -33,9 +34,9 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-n", "spterm", "-f", "monospace:size=15", NULL };
+const char *spcmd1[] = {"st", "-n", "spterm", "-f", "monospace:size=10", NULL };
 const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
-const char *spcmd3[] = {"st", "-n", "spman", "-f", "monospace:size=12", "-e", "bash", "-c", "openManPage;$SHELL",  NULL };
+const char *spcmd3[] = {"st", "-n", "spman", "-f", "monospace:size=10", "-e", "bash", "-c", "openManPage;$SHELL",  NULL };
 const char *spcmd4[] = {"st", "-n", "sptab", "-f", "monospace:size=10", "-e", "bash", "-c", "tableContents;$SHELL",  NULL };
 const char *spcmd5[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-e", "bc", "-lq", NULL };
 static Sp scratchpads[] = {
@@ -58,18 +59,18 @@ static const Rule rules[] = {
 	 */
 /* layout(s) */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor   float x,y,w,h  floatborderpx*/
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1,       50,50,500,500,     0 },
+	/* { "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1,       50,50,500,500,     0 }, */
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,           0,        -1,       50,50,500,500,     0 },
 	{ "Code",    NULL,     NULL,           1 << 2,    0,          0,           0,        -1,       50,50,500,500,     0 },
 	{ "Station", NULL,     NULL,           1 << 0,    0,          0,           0,        -1,       50,50,500,500,     0 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1,       50,50,500,500,     0 },
-	{ "Code",     NULL,     NULL,           0,        0,          0,           0,        -1,       50,50,500,500,    0 },
+	{ "Code",     NULL,     NULL,           0,        0,          0,           0,        -1,       60,50,500,500,    0 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1,       50,50,500,500,     0 }, /* xev */
-	{ NULL,		  "spterm",		NULL,	SPTAG(0),	  1,		  1,           0,        -1,       50,50,700,540,     1 },
-	{ NULL,		  "spfm",		NULL,	SPTAG(1),	  0,		  1,           0,        -1,       50,50,500,500,     1 },
-	{ NULL,		  "spman",     NULL,	SPTAG(2),	  1,		  1,           0,        -1,       50,50,500,500,     1 },
-	{ NULL,		  "sptab",		NULL,	SPTAG(3),	  1,		  1,           0,        -1,       50,50,500,500,     1 },
-	{ NULL,		  "spcalc",		NULL,	SPTAG(4),	  1,		  1,           0,        -1,       50,50,500,500,     1 },
+	{ NULL,		  "spterm",		NULL,	SPTAG(0),	  1,		  1,           0,        -1,       330,125,700,540,     3 },
+	{ NULL,		  "spfm",		NULL,	SPTAG(1),	  0,		  1,           0,        -1,       330,125,500,500,     3 },
+	{ NULL,		  "spman",     NULL,	SPTAG(2),	  1,		  1,           0,        -1,       330,125,700,540,     3 },
+	{ NULL,		  "sptab",		NULL,	SPTAG(3),	  1,		  1,           0,        -1,       1050,25,300,400,    3 },
+	{ NULL,		  "spcalc",		NULL,	SPTAG(4),	  1,		  1,           0,        -1,       330,125,500,500,     3 },
 	/* { NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 }, */                   
 	//{ "Station", NULL,     NULL,         (1 << 8)-1,    0,          0,          -1,        -1 }, selects all tags except the 9th
 };
@@ -123,6 +124,7 @@ static const char *termcmd[]  = { "st", NULL };
 /*
  * Xresources preferences to load at startup
  */
+// only uncomment if you are gonna manually set them in Xresources file
 ResourcePref resources[] = {
 		{ "normbgcolor",        STRING,  &normbgcolor },
 		{ "normbordercolor",    STRING,  &normbordercolor },

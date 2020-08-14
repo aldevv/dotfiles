@@ -36,8 +36,8 @@ export XMODIFIERS=@im='ibus'
 #fzf
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
-export FZF_DEFAULT_COMMAND="rg --files --hidden --follow -g '!{node_modules,.git,miniconda3,env,envs,__pycache__, libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache}'"
-
+export FZF_DEFAULT_COMMAND="rg --files --follow -g '!{**/node_modules/*,.git,miniconda3,env,envs,__pycache__, libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache}'"
+export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 #colors less
 #export  LESS_TERMCAP_mb=$'\e[1;31m'
 #export  LESS_TERMCAP_md=$'\e[1;31m'
