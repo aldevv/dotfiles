@@ -108,6 +108,9 @@ mode_switch + a
 	 $UTILITIES/misc/calcDmenu
 
 mode_switch + e
+    $SCRIPTS/useful/fun/emojiSelect
+
+mode_switch + i
     $UTILITIES/misc/saveImage
 
 # mode_switch + m

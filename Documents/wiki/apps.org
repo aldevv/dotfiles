@@ -310,6 +310,17 @@ stack install
 *** stack
 used to change the hirerarchy of windows, and select a direct window based on is index in the array
 * ST
+** libxft-bgra
+https://www.reddit.com/r/suckless/comments/euwhff/libxft_add_support_for_bgra_glyphs_and_scaling/
+
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxft.git
+cd libxft
+wget -qO- 'https://gitlab.freedesktop.org/xorg/lib/libxft/merge_requests/1.patch' | patch -p1
+./autogen.sh
+./configure --prefix=/usr --sysconfdir=/etc --disable-static
+make
+make install
 ** font
 it wont work until the patch for color emojis comes to solus, these emojis are color only
 

@@ -4,7 +4,10 @@
 static unsigned int snap      = 32;       /* snap pixel */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
+static const char *fonts[]          = { 
+    "Noto Sans Emoji:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis)
+	"monospace:size=10"
+ };
 static const char dmenufont[]       = "monospace:size=10";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
@@ -30,11 +33,11 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd1[] = {"st", "-n", "spterm", "-f", "monospace:size=15", NULL };
 const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
-const char *spcmd3[] = {"st", "-n", "spman", "-f", "monospace:size=12", "-g", "120x34", "-e", "bash", "-c", "openManPage;$SHELL",  NULL };
-const char *spcmd4[] = {"st", "-n", "sptab", "-f", "monospace:size=10", "-g", "100x25", "-e", "bash", "-c", "tableContents;$SHELL",  NULL };
-const char *spcmd5[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
+const char *spcmd3[] = {"st", "-n", "spman", "-f", "monospace:size=12", "-e", "bash", "-c", "openManPage;$SHELL",  NULL };
+const char *spcmd4[] = {"st", "-n", "sptab", "-f", "monospace:size=10", "-e", "bash", "-c", "tableContents;$SHELL",  NULL };
+const char *spcmd5[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-e", "bc", "-lq", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
@@ -53,19 +56,21 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "Code",    NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
-	{ "Station", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
-	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
-	{ NULL,		  "spterm",		NULL,	SPTAG(0),		1,			 -1 },
-	{ NULL,		  "spfm",		NULL,	SPTAG(1),		1,			 -1 },
-	{ NULL,		  "spman",     NULL,	SPTAG(2),		1,			 -1 },
-	{ NULL,		  "sptab",		NULL,	SPTAG(3),		1,			 -1 },
-	{ NULL,		  "spcalc",		NULL,	SPTAG(4),		1,			 -1 },
-	/* { NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 }, */
+/* layout(s) */
+	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor   float x,y,w,h  floatborderpx*/
+	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1,       50,50,500,500,     0 },
+	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,           0,        -1,       50,50,500,500,     0 },
+	{ "Code",    NULL,     NULL,           1 << 2,    0,          0,           0,        -1,       50,50,500,500,     0 },
+	{ "Station", NULL,     NULL,           1 << 0,    0,          0,           0,        -1,       50,50,500,500,     0 },
+	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1,       50,50,500,500,     0 },
+	{ "Code",     NULL,     NULL,           0,         0,          0,           0,        -1,       50,50,500,500,     0 },
+	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1,       50,50,500,500,     0 }, /* xev */
+	{ NULL,		  "spterm",		NULL,	SPTAG(0),		1,		  1,           0,        -1,       50,50,700,540,     0 },
+	{ NULL,		  "spfm",		NULL,	SPTAG(1),		0,		  1,           0,        -1,       50,50,500,500,     1 },
+	{ NULL,		  "spman",     NULL,	SPTAG(2),		1,		  1,           0,        -1,       50,50,500,500,     1 },
+	{ NULL,		  "sptab",		NULL,	SPTAG(3),		1,		  1,           0,        -1,       50,50,500,500,     1 },
+	{ NULL,		  "spcalc",		NULL,	SPTAG(4),		1,		  1,           0,        -1,       50,50,500,500,     1 },
+	/* { NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 }, */                   
 	//{ "Station", NULL,     NULL,         (1 << 8)-1,    0,          0,          -1,        -1 }, selects all tags except the 9th
 };
 
@@ -93,7 +98,7 @@ static const Layout layouts[] = {
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ Mod1Mask,                     KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ Mod1Mask|Mod5Mask,            KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ Mod1Mask|ShiftMask,           KEY,      toggletag,      {.ui = 1 << TAG} },
 #define STACKKEYS(MOD,ACTION) \
@@ -180,17 +185,17 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ Mod5Mask,                     XK_1,      setlayout,      {.v = &layouts[0]} },
-	{ Mod5Mask,                     XK_2,      setlayout,      {.v = &layouts[1]} },
-	{ Mod5Mask,                     XK_3,      setlayout,      {.v = &layouts[2]} },
-	{ Mod5Mask,                     XK_4,      setlayout,      {.v = &layouts[3]} },
-    { Mod5Mask,                     XK_5,      setlayout,      {.v = &layouts[4]} },
-	{ Mod5Mask,                     XK_6,      setlayout,      {.v = &layouts[5]} },
-	{ Mod5Mask,                     XK_7,      setlayout,      {.v = &layouts[6]} },
-	{ Mod5Mask,                     XK_8,      setlayout,      {.v = &layouts[7]} },
-	{ Mod5Mask,                     XK_9,      setlayout,      {.v = &layouts[8]} },
+	{ Mod1Mask,                     XK_1,      setlayout,      {.v = &layouts[0]} },
+	{ Mod1Mask,                     XK_2,      setlayout,      {.v = &layouts[1]} },
+	{ Mod1Mask,                     XK_3,      setlayout,      {.v = &layouts[2]} },
+	{ Mod1Mask,                     XK_4,      setlayout,      {.v = &layouts[3]} },
+    { Mod1Mask,                     XK_5,      setlayout,      {.v = &layouts[4]} },
+	{ Mod1Mask,                     XK_6,      setlayout,      {.v = &layouts[5]} },
+	{ Mod1Mask,                     XK_7,      setlayout,      {.v = &layouts[6]} },
+	{ Mod1Mask,                     XK_8,      setlayout,      {.v = &layouts[7]} },
+	{ Mod1Mask,                     XK_9,      setlayout,      {.v = &layouts[8]} },
 	/* { MODKEY|Mod1Mask,              XK_0,      setlayout,      {.v = &layouts[9]} }, */
-	//{ MODKEY,                       XK_space,  setlayout,      {0} },
+	{ Mod1Mask,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
