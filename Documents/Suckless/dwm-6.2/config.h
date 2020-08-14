@@ -32,15 +32,15 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
-const char *spcmd3[] = {"st", "-n", "spsec", "-f", "monospace:size=10", "-g", "100x25", "-e", "bash", "-c", "sectionManPage;$SHELL",  NULL };
-const char *spcmd4[] = {"st", "-n", "spman", "-f", "monospace:size=12", "-g", "120x34", "-e", "bash", "-c", "openManPage;$SHELL",  NULL };
+const char *spcmd3[] = {"st", "-n", "spman", "-f", "monospace:size=12", "-g", "120x34", "-e", "bash", "-c", "openManPage;$SHELL",  NULL };
+const char *spcmd4[] = {"st", "-n", "sptab", "-f", "monospace:size=10", "-g", "100x25", "-e", "bash", "-c", "tableContents;$SHELL",  NULL };
 const char *spcmd5[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"spranger",    spcmd2},
-	{"spmsec",      spcmd3},
-	{"spman",       spcmd4},
+	{"spman",       spcmd3},
+	{"sptab",       spcmd4},
 	{"spcalc",      spcmd5},
 };
 
@@ -62,8 +62,8 @@ static const Rule rules[] = {
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 	{ NULL,		  "spterm",		NULL,	SPTAG(0),		1,			 -1 },
 	{ NULL,		  "spfm",		NULL,	SPTAG(1),		1,			 -1 },
-	{ NULL,		  "spsec",     NULL,	SPTAG(2),		1,			 -1 },
-	{ NULL,		  "spman",		NULL,	SPTAG(3),		1,			 -1 },
+	{ NULL,		  "spman",     NULL,	SPTAG(2),		1,			 -1 },
+	{ NULL,		  "sptab",		NULL,	SPTAG(3),		1,			 -1 },
 	{ NULL,		  "spcalc",		NULL,	SPTAG(4),		1,			 -1 },
 	/* { NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 }, */
 	//{ "Station", NULL,     NULL,         (1 << 8)-1,    0,          0,          -1,        -1 }, selects all tags except the 9th
