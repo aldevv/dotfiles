@@ -63,13 +63,13 @@ static const Rule rules[] = {
 	{ "Code",    NULL,     NULL,           1 << 2,    0,          0,           0,        -1,       50,50,500,500,     0 },
 	{ "Station", NULL,     NULL,           1 << 0,    0,          0,           0,        -1,       50,50,500,500,     0 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1,       50,50,500,500,     0 },
-	{ "Code",     NULL,     NULL,           0,         0,          0,           0,        -1,       50,50,500,500,     0 },
+	{ "Code",     NULL,     NULL,           0,        0,          0,           0,        -1,       50,50,500,500,    0 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1,       50,50,500,500,     0 }, /* xev */
-	{ NULL,		  "spterm",		NULL,	SPTAG(0),		1,		  1,           0,        -1,       50,50,700,540,     0 },
-	{ NULL,		  "spfm",		NULL,	SPTAG(1),		0,		  1,           0,        -1,       50,50,500,500,     1 },
-	{ NULL,		  "spman",     NULL,	SPTAG(2),		1,		  1,           0,        -1,       50,50,500,500,     1 },
-	{ NULL,		  "sptab",		NULL,	SPTAG(3),		1,		  1,           0,        -1,       50,50,500,500,     1 },
-	{ NULL,		  "spcalc",		NULL,	SPTAG(4),		1,		  1,           0,        -1,       50,50,500,500,     1 },
+	{ NULL,		  "spterm",		NULL,	SPTAG(0),	  1,		  1,           0,        -1,       50,50,700,540,     1 },
+	{ NULL,		  "spfm",		NULL,	SPTAG(1),	  0,		  1,           0,        -1,       50,50,500,500,     1 },
+	{ NULL,		  "spman",     NULL,	SPTAG(2),	  1,		  1,           0,        -1,       50,50,500,500,     1 },
+	{ NULL,		  "sptab",		NULL,	SPTAG(3),	  1,		  1,           0,        -1,       50,50,500,500,     1 },
+	{ NULL,		  "spcalc",		NULL,	SPTAG(4),	  1,		  1,           0,        -1,       50,50,500,500,     1 },
 	/* { NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 }, */                   
 	//{ "Station", NULL,     NULL,         (1 << 8)-1,    0,          0,          -1,        -1 }, selects all tags except the 9th
 };

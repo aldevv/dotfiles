@@ -106,6 +106,7 @@ struct Client {
 	unsigned int tags;
 	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, isterminal, noswallow, issticky;
 	pid_t pid;
+	int floatborderpx;
 	Client *next;
 	Client *snext;
 	Client *swallowing;
@@ -161,6 +162,8 @@ typedef struct {
 	int isterminal;
 	int noswallow;
 	int monitor;
+	int floatx, floaty, floatw, floath;
+	int floatborderpx;
 } Rule;
 
 /* Xresources preferences */
@@ -362,6 +365,13 @@ applyrules(Client *c)
 			c->noswallow  = r->noswallow;
 			c->isfloating = r->isfloating;
 			c->tags |= r->tags;
+			c->floatborderpx = r->floatborderpx;
+			if (r->isfloating) {
+				c->x = r->floatx;
+				c->y = r->floaty;
+				c->w = r->floatw;
+				c->h = r->floath;
+			}
 			if ((r->tags & SPTAGMASK) && r->isfloating) {
 				c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
 				c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2);
@@ -1448,7 +1458,10 @@ resizeclient(Client *c, int x, int y, int w, int h)
 	c->oldy = c->y; c->y = wc.y = y;
 	c->oldw = c->w; c->w = wc.width = w;
 	c->oldh = c->h; c->h = wc.height = h;
-	wc.border_width = c->bw;
+	if (c->isfloating)
+		wc.border_width = c->floatborderpx;
+	else
+		wc.border_width = c->bw;
 	if (((nexttiled(c->mon->clients) == c && !nexttiled(c->next))
 	    || &monocle == c->mon->lt[c->mon->sellt]->arrange)
 	    && !c->isfullscreen && !c->isfloating
@@ -1970,13 +1983,6 @@ togglesticky(const Arg *arg)
 		return;
 	selmon->sel->issticky = !selmon->sel->issticky;
 	arrange(selmon);
-}
-
-void
-togglefullscr(const Arg *arg)
-{
-  if(selmon->sel)
-    setfullscreen(selmon->sel, !selmon->sel->isfullscreen);
 }
 
 void

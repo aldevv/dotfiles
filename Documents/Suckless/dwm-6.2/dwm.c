@@ -106,7 +106,7 @@ struct Client {
 	unsigned int tags;
 	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, isterminal, noswallow, issticky;
 	pid_t pid;
-	int floatborderpx;
+	int floatborderpx, oldfloatborderpx;
 	Client *next;
 	Client *snext;
 	Client *swallowing;
@@ -366,6 +366,7 @@ applyrules(Client *c)
 			c->isfloating = r->isfloating;
 			c->tags |= r->tags;
 			c->floatborderpx = r->floatborderpx;
+
 			if (r->isfloating) {
 				c->x = r->floatx;
 				c->y = r->floaty;
@@ -1668,6 +1669,8 @@ setfullscreen(Client *c, int fullscreen)
 		c->oldbw = c->bw;
 		c->bw = 0;
 		c->isfloating = 1;
+		c->oldfloatborderpx = c->floatborderpx;
+		c->floatborderpx = 0;
 		resizeclient(c, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
 		XRaiseWindow(dpy, c->win);
 	} else if (!fullscreen && c->isfullscreen){
@@ -1680,6 +1683,7 @@ setfullscreen(Client *c, int fullscreen)
 		c->y = c->oldy;
 		c->w = c->oldw;
 		c->h = c->oldh;
+		c->floatborderpx = c->oldfloatborderpx;
 		resizeclient(c, c->x, c->y, c->w, c->h);
 		arrange(c->mon);
 	}
