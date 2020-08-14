@@ -1,0 +1,4 @@
+#!/bin/sh
+prog=$(dmenu -p "table of contents for:" </dev/null)
+[ -z "$prog" ] && exit
+awk '/\.SH/{if ($2) {print $0} else {getline; print "",toupper($0)}  }' "$(man -w "$prog")" | sed 's/\.SH//; s/\"//g' | nl -w2 -s " "

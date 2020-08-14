@@ -1,0 +1,5 @@
+#!/bin/bash
+while IFS=, read -r name code; do
+  # do something... Don't forget to skip the header line!
+  [[ "$name" != "Name" ]] && echo "$name"
+done < 1067fabb-6c5e-48b7-a4ed-be7663308407.csv
