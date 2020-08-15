@@ -107,6 +107,9 @@ super + d
 mode_switch + a
 	 $UTILITIES/misc/calcDmenu
 
+# mode_switch + b
+# 	dwmc togglefullscr
+
 mode_switch + e
     $SCRIPTS/useful/fun/emojiSelect
 
