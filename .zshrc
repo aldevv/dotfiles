@@ -18,7 +18,8 @@ export TERM="st"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="agnoster"
-ZSH_THEME="amuse"
+# ZSH_THEME="amuse"
+ZSH_THEME="af-magic"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -134,6 +135,8 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	glv='git log --oneline --decorate --all --graph'\
 	zealu='zeal-user-contrib'\
     ph='python_help'\
+    trc='transmission-remote-cli'\
+    py='python3'\
 
 	
 	#python='python3'\

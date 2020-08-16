@@ -1,10 +1,12 @@
 #to import env variables to dbus
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+transmission-daemon &
 dunst &
 fcitx & # for languages
 compton &
 sxhkd &
 $APPS/dwm/status &
 # wal -R &
+setupMonitors
 lastScheme=$(ls -t "$HOME/.cache/wal/schemes" | sed 1q)
 wal -f "$HOME/.cache/wal/schemes/${lastScheme}"

@@ -7,8 +7,8 @@
 #st -t scratchpad -g 120x34 -e bash -c "man -P cat curl 2>/dev/null | grep -E -- \"\s-s\" 2>/dev/null;$SHELL"
 # you can use chords Shift + a; shift + b
 #
-alt + w
-	"$UTILITIES/misc/toggle_chat"
+# alt + w
+# 	"$UTILITIES/misc/toggle_chat"
 
 super + p
 	dmenu_run

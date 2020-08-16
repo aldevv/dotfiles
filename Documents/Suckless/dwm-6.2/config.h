@@ -40,11 +40,12 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-n", "spterm", "-f", "monospace:size=10", NULL };
+const char *spcmd1[] = {"st", "-n", "spterm", "-f", "monospace:size=8", NULL };
 const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
 const char *spcmd3[] = {"st", "-n", "spman", "-f", "monospace:size=10", "-e", "bash", "-c", "openManPage;$SHELL",  NULL };
 const char *spcmd4[] = {"st", "-n", "sptab", "-f", "monospace:size=10", "-e", "bash", "-c", "tableContents;$SHELL",  NULL };
 const char *spcmd5[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-e", "bc", "-lq", NULL };
+const char *spcmd6[] = {"sttion", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
@@ -52,6 +53,7 @@ static Sp scratchpads[] = {
 	{"spman",       spcmd3},
 	{"sptab",       spcmd4},
 	{"spcalc",      spcmd5},
+	{"spstat",      spcmd6},
 };
 
 /* tagging */
@@ -69,12 +71,11 @@ static const Rule rules[] = {
 	{ "Code",    NULL,     NULL,           1 << 2,    0,          0,           0,        -1,       50,50,500,500,     0 },
 	{ "Station", NULL,     NULL,           1 << 0,    0,          0,           0,        -1,       50,50,500,500,     0 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1,       50,50,500,500,     0 },
-	{ "Code",     NULL,     NULL,           0,        0,          0,           0,        -1,       60,50,500,500,    0 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1,       50,50,500,500,     0 }, /* xev */
 	{ NULL,		  "spterm",		NULL,	SPTAG(0),	  1,		  1,           0,        -1,       330,125,700,540,     3 },
 	{ NULL,		  "spfm",		NULL,	SPTAG(1),	  0,		  1,           0,        -1,       330,125,500,500,     3 },
 	{ NULL,		  "spman",     NULL,	SPTAG(2),	  1,		  1,           0,        -1,       330,125,700,540,     3 },
-	{ NULL,		  "sptab",		NULL,	SPTAG(3),	  1,		  1,           0,        -1,       1050,25,300,400,    3 },
+	{ NULL,		  "sptab",		NULL,	SPTAG(3),	  1,		  1,           0,        -1,       1060,22,300,400,    3 },
 	{ NULL,		  "spcalc",		NULL,	SPTAG(4),	  1,		  1,           0,        -1,       330,125,500,500,     3 },
 	/* { NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 }, */                   
 	//{ "Station", NULL,     NULL,         (1 << 8)-1,    0,          0,          -1,        -1 }, selects all tags except the 9th
@@ -176,6 +177,7 @@ static Key keys[] = {
 	{ Mod5Mask,     			    XK_m,	   togglescratch,  {.ui = 2 } },
 	{ Mod5Mask|ShiftMask,           XK_m,      togglescratch,  {.ui = 3 } },
 	{ MODKEY,   		            XK_a,      togglescratch,  {.ui = 4 } },
+	{ MODKEY,   		            XK_w,      togglescratch,  {.ui = 5 } },
 	/* { MODKEY|ShiftMask,             XK_Tab,    togglescratch,  {.v = scratchpadcmd } }, */
 	/* { MODKEY,                       XK_c,    togglescratch,  {.v = scratchpadcmd } }, */
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -208,10 +210,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	/* { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } }, */
-	/* { MODKEY,                       XK_period, focusmon,       {.i = +1 } }, */
-	/* { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } }, */
-	/* { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, */
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

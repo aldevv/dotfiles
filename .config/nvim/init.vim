@@ -319,10 +319,18 @@ let g:vimtex_toc_config = {
       \ 'mode' : 2,
       \}
 
+
 "tex conceal
 set conceallevel=1
 let g:tex_conceal='abdmg'
 hi Conceal ctermbg=none
+
+"COC
+map <leader>,p :CocCommand python.setInterpreter<cr>
+ " call coc#config('python', {
+ "  \   'jediEnabled': v:false,
+ "  \   'pythonPath': split(execute('!which python3'), '\n')[-1]
+ "  \ })
 
 " nerdcommenter
 "nnoremap gc :call NERDComment(0,"toggle")<CR>

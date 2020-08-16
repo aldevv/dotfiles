@@ -244,7 +244,16 @@ the line of best fit is used to predict future values
 *** Clustering
 *** Hidden Markov Models
 
+* PyQt
+** Qdialog and QWidget
+they are the same, 
 
+Qdialog shows messages or ask for input
+    also, it has no X or minimiza button
+
+Qwidget is more global
+** layouts
+    http://zetcode.com/gui/pyqt5/layout/
 * Tensorflow
 ** types of problems
 *** regression

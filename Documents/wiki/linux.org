@@ -2,6 +2,13 @@
 
 -[[file:~/Documents/wiki/wiki.org][index]]
 
+* Fonts
+put them in .local/share/fonts
+do fc-list to check if they are there and finally do
+fc-cache to reload
+
+    + fc-list
+    + fc-cache
 * Format USB
 df and find partition of usb you want to format
 sudo umount /dev/sdb1 or the one you have

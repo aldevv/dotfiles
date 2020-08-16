@@ -12,11 +12,10 @@ upload() {
 
 
 options=($BOOKS $PROJECTS $SCRIPTS $APPS)
-excluded=("**/springer/*" "**/\.gd/*" "**/japanese/*" "**/node_modules/*")
+excluded=('**/springer/*' '**/\.gd/*' '**/japanese/*' '**/node_modules/*')
 folderNames=""
-for folder in ${options[@]}; do
-    foldName=
-   printf -v folderNames "%s\n" "${folderNames}$(basename ${folder})"
+for folder in "${options[@]}"; do
+    printf -v folderNames "%s\n" "${folderNames}$(basename ${folder})"
 done
 repoName=$(echo "$folderNames"| dmenu -i -p "Choose Repo:")
 if [[ -z $repoName ]]; then
@@ -24,7 +23,7 @@ if [[ -z $repoName ]]; then
 fi
 repo=$(eval echo "$(echo -e "\$$repoName" | awk '{ print toupper($0) }')")
 echo $repo
-upload "$repo" ${excluded[@]}
+upload "$repo" "${excluded[@]}"
 
 
 
