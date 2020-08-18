@@ -14,6 +14,7 @@ export SCRIPTS="$HOME/Documents/myScripts"
 export SHARED="$HOME/Documents/myScripts/shared"
 export UTILITIES="$HOME/Documents/myScripts/utilities"
 export AUTOMATION="$HOME/Documents/myScripts/automation"
+export PROGRAMS="$HOME/.local/Programs"
 export APPS="$HOME/Documents/myScripts/apps"
 export WIKI="$HOME/Documents/wiki"
 export READER=zathura

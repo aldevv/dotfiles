@@ -105,7 +105,8 @@ super + d
 	 ts sh -c $AUTOMATION/drive/uploadToDrive
 
 mode_switch + a
-	 $UTILITIES/misc/calcDmenu
+	st -e bash -c "cd $HOME/Programs/todoist-linux && make up"
+	 # $UTILITIES/misc/calcDmenu
 
 # mode_switch + b
 # 	dwmc togglefullscr

@@ -3,10 +3,23 @@
 -[[file:~/Documents/wiki/wiki.org][index]]
 
 * Fonts
+** libxft bgra
+https://gitlab.freedesktop.org/xorg/lib/libxft/-/merge_requests/1
 put them in .local/share/fonts
 do fc-list to check if they are there and finally do
 fc-cache to reload
 
+https://www.reddit.com/r/suckless/comments/euwhff/libxft_add_support_for_bgra_glyphs_and_scaling/
+
+
+git clone https://gitlab.freedesktop.org/xorg/lib/libxft.git
+cd libxft
+wget -qO- 'https://gitlab.freedesktop.org/xorg/lib/libxft/merge_requests/1.patch' | patch -p1
+./autogen.sh
+./configure --prefix=/usr --sysconfdir=/etc --disable-static
+make
+make install
+** font folder
     + fc-list
     + fc-cache
 * Format USB
