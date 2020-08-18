@@ -1,6 +1,6 @@
 sf  ~/.config/shortcuts/sf
 sd  ~/.config/shortcuts/sd
-au  ~/Documents/myScripts/solus/autoInstall
+cai  ~/Documents/myScripts/solus/autoInstall
 cfe ~/.emacs.d/init.el
 cfz ~/.zshrc
 cfp ~/.zprofile

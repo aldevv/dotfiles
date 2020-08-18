@@ -1,0 +1,10 @@
+#!/bin/sh
+
+var=$(cat lastRan)
+cat lastRan
+if [ -z "$var" ]; then
+    exit
+fi
+dwmc togglefullscr
+man "$var"
+dwmc togglefullscr

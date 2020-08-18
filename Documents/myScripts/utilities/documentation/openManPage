@@ -1,0 +1,4 @@
+#!/bin/bash
+program=$(dmenu -p "Program:" </dev/null)
+# st -e man $program;$SHELL
+man $program 2>/dev/null;$SHELL

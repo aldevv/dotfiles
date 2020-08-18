@@ -18,6 +18,50 @@ sudo mkfs.vfat -n 'TV' -I /dev/sdb1
   its well automated and it accepts themes
 - also you need to mount the boot partition in /boot/efi
   for every OS you install, this worked on Solus/Void/Arch
+* Keyboard
+** logitech k400 
+
+cant make it have colemak in login, unless you login with the normal keyboard first
+
+Touch tap
+
+Press the Fn key and the left mouse button to toggle between touch tap disable and enabled.
+
+You can also press the left mouse click button at the top-left of the keyboard to perform a click or comfortable two-handed navigation.
+
+You can also tap the touchpad surface to perform a click.
+
+Scrolling
+
+Scroll with two fingers, up or down.
+
+You can also press the Fn key and slide one finger anywhere on the touchpad simultaneously to scroll for comfortable two-handed navigation.
+Receiver storage
+When you are not using K400 Plus, store the Receiver in the battery compartment so that you never lose it.
+
+use xinput to find your device, in my case
+    MatchProduct    "Logitech K400 Plus"
+** external keyboard and layout
+# Written by systemd-localed(8), read by systemd-localed and Xorg. It's
+# probably wise not to edit this file manually. Use localectl(1) to
+# instruct systemd-localed to update it.
+Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbLayout" "latam"
+        Option "XkbModel" "pc104"
+        Option "XkbVariant" "colemak"
+        Option "XkbOptions" "caps:escape"
+EndSection
+Section "InputClass"
+    Identifier      "Logitech K400r"
+    MatchProduct    "Logitech K400 Plus"
+    Option "XkbLayout" "latam"
+    Option "XkbVariant" "colemak"
+    Option "XkbOptions" "caps:escape"
+    Option "Emulate3Buttons" "yes"
+EndSection
+
 * Arch
 ** install
 follow videos

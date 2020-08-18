@@ -13,7 +13,7 @@ shellrc="$HOME/.zshrc"
 #[[ ! -f $dotfiles ]] && curl https://raw.githubusercontent.com/LukeSmithxyz/shortcut-sync/master/configs > "$dotfiles"
 
 # Remove
-rm -f $shell_shortcuts $ranger_shortcuts
+rm -f "$shell_shortcuts" "$ranger_shortcuts"
 
 #source them if not sourced
 (grep "source ~/.aliases"  $shellrc)>/dev/null || echo "source ~/.aliases" >> $shellrc
