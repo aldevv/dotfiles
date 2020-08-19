@@ -1,5 +1,0 @@
-#!/bin/sh
-cd "$SUCKLESS/st-0.8.4"
-make clean
-make 
-make install

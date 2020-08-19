@@ -1,7 +1,0 @@
-#!/bin/sh
-eopkg -y install emacs
-
-#for emacs (might not need to make them manually)
-mkdir -p ~/.emacs.d/undo ~/.emacs.d/.trash
-cd "$HOME/.emacs.d"
-awk '{print $2 }' "$APPS/emacs/emacsDependencies" | xargs -n 1 git clone

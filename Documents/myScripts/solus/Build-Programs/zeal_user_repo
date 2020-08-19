@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# zeal user docsets
-npm install --global zeal-user-contrib

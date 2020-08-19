@@ -205,6 +205,6 @@ bindkey -v '^?' backward-delete-char
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 #completion and highlighting
-fpath=($HOME/zsh-completions/src $fpath)
-source $HOME/Programs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fpath=($PROGRAMS/zsh-completions/src $fpath)
+source $PROGRAMS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.aliases
