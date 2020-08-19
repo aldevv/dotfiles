@@ -1,0 +1,11 @@
+#!/bin/bash
+text=$(echo "" | dmenu -p "translate" -fn 'Droid Sans Japanese:pixelsize=19')
+
+while [[ ! -z $text ]]
+do 
+dunstify -t 800 "Translating..."
+translated=$(echo $text | python3 "$UTILITIES/translate/translate_text.py")
+#saves to clipboard
+echo $translated | xclip -sel clip
+text=$(echo $translated | dmenu -p "translate" -fn 'Droid Sans Japanese:pixelsize=19')
+done

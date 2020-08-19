@@ -19,6 +19,7 @@ servers = (
     port = "6697";
     use_tls = "yes";
     tls_verify = "yes";
+    autoconnect = "yes";
   },
   {
     address = "irc.gamesurge.net";
@@ -89,6 +90,7 @@ chatnets = {
     max_kicks = "1";
     max_msgs = "4";
     max_whois = "1";
+    autosendcmd = "/msg nickserv identify akuseru ninja";
   };
   GameSurge = {
     type = "IRC";
@@ -145,8 +147,7 @@ channels = (
   { name = "#ircsource"; chatnet = "IRCSource"; autojoin = "No"; },
   { name = "#netfuze"; chatnet = "NetFuze"; autojoin = "No"; },
   { name = "#oftc"; chatnet = "OFTC"; autojoin = "No"; },
-  { name = "silc"; chatnet = "SILC"; autojoin = "No"; },
-  { name = "#solus"; chatnet = "Freenode"; autojoin = "yes"; }
+  { name = "silc"; chatnet = "SILC"; autojoin = "No"; }
 );
 
 aliases = {
@@ -252,6 +253,8 @@ statusbar = {
         act = { priority = "10"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
+        vim_mode = { };
+        vim_windows = { };
       };
     };
 
@@ -303,5 +306,14 @@ statusbar = {
 };
 settings = {
   "fe-text" = { actlist_sort = "refnum"; };
-  core = { real_name = "Alejandro"; user_name = "solus"; nick = "solus"; };
+  core = { 
+    real_name = "Alejandro";
+    user_name = "solus";
+    nick = "akuseru";
+  };
+  "fe-common/core" = {
+    autolog_path = "~/irclogs/%Y/$tag/$0.%m-%d.log";
+    autolog = "yes";
+  };
 };
+logs = { };

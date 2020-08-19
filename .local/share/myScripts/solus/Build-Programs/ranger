@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# for vim and ranger
+sudo pip3 install neovim-remote ranger-fm ueberzug pynvim 

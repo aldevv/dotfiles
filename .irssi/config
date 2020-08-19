@@ -253,6 +253,8 @@ statusbar = {
         act = { priority = "10"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
+        vim_mode = { };
+        vim_windows = { };
       };
     };
 
@@ -309,4 +311,10 @@ settings = {
     user_name = "solus";
     nick = "akuseru";
   };
+  "fe-common/core" = {
+    autolog_path = "~/irclogs/%Y//.%m-%d.log";
+    autolog = "yes";
+  };
 };
+keyboard = ( { key = "meta-k"; id = "scroll_forward"; data = ""; } );
+logs = { };

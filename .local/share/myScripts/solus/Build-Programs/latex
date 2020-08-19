@@ -1,0 +1,3 @@
+#!/bin/sh
+# latex
+eopkg -y install texlive

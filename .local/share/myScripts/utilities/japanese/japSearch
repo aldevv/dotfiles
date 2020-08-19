@@ -1,0 +1,11 @@
+#!/bin/bash
+word=$(dmenu -p "search in dictionary")
+if [[ ! -z $word ]];then
+    if [[ $(echo $word | wc -w) -eq 1 ]]; then
+        firefox https://jisho.org/search/$word
+    else
+        firefox https://jisho.org/search/$(echo $word | awk '{print $1}')
+    fi
+else 
+    exit       
+fi

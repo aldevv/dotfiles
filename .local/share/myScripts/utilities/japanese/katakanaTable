@@ -1,0 +1,3 @@
+#!/bin/bash
+
+zathura "$HOME/Documents/Learn/Must_Read/japanese/tables/katakana_table.pdf"

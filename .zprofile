@@ -1,6 +1,10 @@
 export C_INCLUDE_PATH=.:~/Documents/mlibs
 export EPISODES=~/Downloads
 export TERMINAL=st
+export COLORTERM=truecolor
+export TERM=st
+export BAT_THEME=OneHalfDark
+export SHELL=/bin/zsh
 export PATH="$HOME/.symfony/bin:$PATH"
 # you can source sxhkd & here if you login from console
 export SI=https://meet.google.com/ixe-gxnu-ovp

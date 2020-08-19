@@ -1,0 +1,15 @@
+
+install extension goto-documentation
+
+    Install nodejs and npm
+    sudo apt install nodejs npm
+    Goto ~/.vscode/extensions/cxfksword.goto-documentation-0.0.1 and install node.js 'opn' package:
+    npm install opn
+    Edit ~/.vscode/extensions/cxfksword.goto-documentation-0.0.1/out/src/document.js:
+    add at the top:
+    const opn = require('opn')
+    then comment out line:
+    this.platform === 'darwin' ? open_darwin(url) : open(url);
+    and insert right after:
+    opn(url);
+    Restart vscode and now try Ctrl+Alt+H (if you don't have any different bindings to this - I had and I had to remove it first) - it should work. The first time is always very slow, but later it works as expected :)
