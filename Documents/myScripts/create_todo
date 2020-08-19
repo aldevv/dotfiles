@@ -1,0 +1,13 @@
+create automating installing for
+
+ttf-joybox
+ttf-symbola
+latam-colemak
+sxiv
+zsh-completions
+zsh-syntax-highlighting
+
+
+#not for solus
+
+ttf-noto-sans-emoji

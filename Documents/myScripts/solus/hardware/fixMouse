@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 echo \
 '
 # Example xorg.conf.d snippet that assigns the touchpad driver
