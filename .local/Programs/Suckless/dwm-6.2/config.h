@@ -5,7 +5,8 @@ static unsigned int snap      = 32;       /* snap pixel */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
-    "Hack Nerd Font Mono:pixelsize=14:antialias=true:autohint=true", // Powerline
+    /* "Hack Nerd Font Mono:pixelsize=14:antialias=true:autohint=true", // Powerline */
+    "Symbola:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis)
     /* "Noto Sans Emoji:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis) */
 	"monospace:size=10"
  };

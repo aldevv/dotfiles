@@ -177,9 +177,25 @@ map <leader>ra :!setsid st ranger $(dirname %) 2</dev/null<cr>
 " commenting in c,cpp
 "    autocmd FileType c,cpp     nnoremap <buffer> gcc I//<esc>
 
-" auto compile suckless programs
-    autocmd BufWritePost config.h !cd $(compileSuckless %); sudo make clean install 
+" auto compile suckless programs MODIFY TO GET BORDER
+    " autocmd BufWritePost config.h !cd $(compileSuckless %); sudo make clean install 
+    autocmd BufWritePost config.h :call CompileSuck()
 
+    function CompileSuck()
+        let path = expand('%:p:h') 
+        let name = system('basename '.shellescape(path))
+        " exec 'echo '.shellescape(name)
+        silent exec '!cd ' . shellescape(path)
+        if name =~ "dwm-6.2"
+            echo name
+            :exec '!changeWallpaperKeepBorders'
+        else
+            :exec '!sudo make clean install'
+        endif
+
+
+
+    endfunction
 " auto compile latex if no vimtex
     autocmd BufWritePost,CursorHold,CursorHoldI *.tex :call CompileTex()
 

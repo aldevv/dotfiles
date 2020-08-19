@@ -1,6 +1,6 @@
 sf  ~/.config/shortcuts/sf
 sd  ~/.config/shortcuts/sd
-cai  ~/Documents/myScripts/solus/autoInstall
+cai  ~/.local/share/myScripts/solus/autoInstall
 cfe ~/.emacs.d/init.el
 cfz ~/.zshrc
 cfp ~/.zprofile
@@ -14,4 +14,4 @@ cfm ~/.xmonad/xmonad.hs
 cfi ~/.xinitrc
 cfn ~/.config/newsboat/urls
 cfy ~/.config/youtube-dl/config
-cfd ~/Documents/Suckless/dwm-6.2/config.h
+cfd ~/.local/Programs/Suckless/dwm-6.2/config.h

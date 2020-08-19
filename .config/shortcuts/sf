@@ -21,7 +21,8 @@ doc        /usr/share/doc
 map         ~/.local/share/myScripts/apps
 D          ~/Downloads
 d          ~/Documents
-p          ~/Pictures
+pp          ~/Pictures
+pr          ~/.local/Programs
 vi         ~/Videos
 wi         ~/.local/share/wiki
 lo         ~/.local
