@@ -1,0 +1,3 @@
+#!/bin/sh
+cd "$HOME/.local/share/fonts"
+git clone https://github.com/Akuseru1/joypixels .

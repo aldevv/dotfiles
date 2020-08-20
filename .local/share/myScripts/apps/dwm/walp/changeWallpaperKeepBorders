@@ -1,5 +1,7 @@
 #!/bin/sh
-# wal -i "$1"
+if [ ! -z "$1" ]; then
+    wal -i "$1"
+fi
 walFolder="$HOME/.cache/wal/colors-wal-dwm.h"
 sleep 2
 borderColor="#770000"

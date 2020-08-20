@@ -1,0 +1,14 @@
+#!/bin/sh
+
+snap install newsboat
+
+# for make version
+
+# newsboat dependencies theres also snap version
+# you need rust, cargo (change installation folder in makefile if you want)
+# eopkg -y install json-c-devel stfl-devel curl-devel sqlite3-devel
+#cd "$PROGRAMS"
+#git clone https://github.com/newsboat/newsboat
+#make 
+#make install
+

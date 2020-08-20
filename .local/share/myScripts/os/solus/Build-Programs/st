@@ -1,0 +1,5 @@
+#!/bin/sh
+cd "$SUCKLESS/dmenu"
+make clean
+make 
+make install

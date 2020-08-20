@@ -1,0 +1,2 @@
+#!/bin/sh
+sed -i "s/exec \S$/exec \/usr\/local\/bin\/dwm/" "/usr/bin/x-session-manager"

@@ -1,12 +1,13 @@
 #!/bin/bash
 
 
-#有難うございますputo
+#有難うございます
 
 isBookmark() {
 ARRAY=( "l:b-ok.cc"
         "reg:www.debuggex.com/"
-        "h:horriblesubs.info/")
+        "h:horriblesubs.info/"
+        "s:snipboard.io/")
 
     # regex in these conditions cant be in quotes
     # if [[ $1 =~ !.+ ]]; then
