@@ -1,4 +1,0 @@
-#!/bin/sh
-
-#markdown to pdf
-eopkg -y install pandoc texlive-fonts-extra

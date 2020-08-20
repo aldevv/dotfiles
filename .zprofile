@@ -7,7 +7,7 @@ export BAT_THEME=OneHalfDark
 export SHELL=/bin/zsh
 export PATH="$HOME/.symfony/bin:$PATH"
 # you can source sxhkd & here if you login from console
-export SI=https://meet.google.com/ixe-gxnu-ovp
+# export SI=https://meet.google.com/ixe-gxnu-ovp
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export EDITOR=nvim
 export VISUAL=nvim
@@ -43,7 +43,7 @@ export XMODIFIERS=@im='ibus'
 #fzf
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
-export FZF_DEFAULT_COMMAND="rg --files --follow -g '!{**/node_modules/*,.git,miniconda3,env,envs,__pycache__, libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache}'"
+export FZF_DEFAULT_COMMAND="rg --files --follow -g '!{**/node_modules/*,.git,miniconda3,env,envs,__pycache__, libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}'"
 export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 #colors less
 #export  LESS_TERMCAP_mb=$'\e[1;31m'
@@ -56,10 +56,10 @@ export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 
 export MANPAGER='less -s -M +Gg'
 export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;47;34m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
+export LESS_TERMCAP_mb=$( printf '\E[01;31m')
+export LESS_TERMCAP_md=$( printf '\E[01;31m')
+export LESS_TERMCAP_me=$( printf '\E[0m')
+export LESS_TERMCAP_se=$( printf '\E[0m')
+export LESS_TERMCAP_so=$( printf '\E[01;47;34m')
+export LESS_TERMCAP_ue=$( printf '\E[0m')
+export LESS_TERMCAP_us=$( printf '\E[01;32m')

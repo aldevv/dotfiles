@@ -1,3 +1,8 @@
+"install plugs
+"sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+"       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+"
+"
 " to make coc work with javascript install the coc-tsserver, and coc-css
 "expand('%:p:h')  for directory of file
 "shellescape: has 2 uses, in system() and in :!. pass 1 for :! commands so it escapes the quotes, and dont pass anything for system()
@@ -109,6 +114,9 @@ Plug 'yggdroot/indentLine'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
+"
 "
 "
 "Plug ‘ludovicchabant/vim-gutentags’
@@ -387,3 +395,9 @@ set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 " prettier
 nmap <Leader>p <Plug>(Prettier)
+
+" easymotion
+nmap s <Plug>(easymotion-s)
+let g:EasyMotion_smartcase = 1
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)

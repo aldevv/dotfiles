@@ -6,8 +6,8 @@ static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
     /* "Hack Nerd Font Mono:pixelsize=14:antialias=true:autohint=true", // Powerline */
-    "Symbola:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis)
-    /* "Noto Sans Emoji:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis) */
+    "Noto Sans Emoji:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis)
+    /* "Symbola:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis) */
 	"monospace:size=10"
  };
 static const char dmenufont[]       = "Fira Code:size=10";

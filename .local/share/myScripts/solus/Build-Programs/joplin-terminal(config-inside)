@@ -1,7 +1,0 @@
-#!/bin/sh
-NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin
-ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin
-
-#sync terminal joplin https://joplinapp.org/terminal/    if it fails, delete the joplin directory in .config
-#:config sync.target 7
-#:sync

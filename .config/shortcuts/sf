@@ -13,6 +13,7 @@ lw         ~/Documents/Learn/Web/course/test
 cf         ~/.config
 snippets   ~/.config/nvim/my_snippets
 ms        ~/.local/share/myScripts/
+mo        ~/.local/share/myScripts/os
 mu        ~/.local/share/myScripts/utilities
 maa        ~/.local/share/myScripts/automation
 dev        ~/dev
