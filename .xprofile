@@ -2,11 +2,14 @@
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 # transmission-daemon &
 dunst &
+
 fcitx & # for languages
-compton &
+DISPLAY=":0" picom -b
+# compton &
 sxhkd &
 $APPS/dwm/status &
 wal -R &
-setupMonitors
+#setup monitors
+cm
 # lastScheme=$(ls -t "$HOME/.cache/wal/schemes" | sed 1q)
 # wal -f "$HOME/.cache/wal/schemes/${lastScheme}"

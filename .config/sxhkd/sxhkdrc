@@ -104,18 +104,18 @@ super + control + u
 super + d
 	 ts sh -c $AUTOMATION/drive/uploadToDrive
 
-# mode_switch + a
-# 	st -e bash -c "cd $HOME/Programs/todoist-linux && make up"
+mode_switch + a
+	st -e bash -c "cd $HOME/Programs/todoist-linux && make up"
 	 # $UTILITIES/misc/calcDmenu
 
-# mode_switch + b
-# 	dwmc togglefullscr
+mode_switch + b
+	dwmc togglefullscr
 
-# mode_switch + e
-#     $SCRIPTS/useful/fun/emojiSelect
+mode_switch + e
+    $SCRIPTS/useful/fun/emojiSelect
 
-# mode_switch + i
-#     $UTILITIES/misc/saveImage
+mode_switch + i
+    $UTILITIES/misc/saveImage
 
 # mode_switch + m
 #     ts st -e bash -c "$UTILITIES/misc/sectionManPage;$SHELL"

@@ -1,8 +1,8 @@
 export C_INCLUDE_PATH=.:~/Documents/mlibs
 export EPISODES=~/Downloads
 export TERMINAL=st
-export COLORTERM=truecolor
 export TERM=st
+export COLORTERM=truecolor
 export BAT_THEME=OneHalfDark
 export SHELL=/bin/zsh
 export PATH="$HOME/.symfony/bin:$PATH"
