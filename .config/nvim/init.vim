@@ -8,6 +8,7 @@
 "shellescape: has 2 uses, in system() and in :!. pass 1 for :! commands so it escapes the quotes, and dont pass anything for system()
 "commands
 " the system("echo " . expand(bla bla)) the dot is used to concatenate!
+set shell=/bin/bash
 noremap n j
 noremap e k
 noremap j e
@@ -217,11 +218,16 @@ map <leader>ra :!setsid st ranger $(dirname %) 2</dev/null<cr>
     endfunction
 
     function CompileMd()
-        let destination = expand('%:p:h') . "/test.pdf"
-        let run = system("compileMd ".shellescape(expand('%'))." ".shellescape(destination))
+        " the space at the end .pdf " is caused by the \n character
+        let file = expand('%:p')
+
+        let destinationFile = system("printf \"$(basename ". file. " .md).pdf\"")
+        let destinationPath = expand('%:p:h')
+        let destination = destinationPath .'/'. destinationFile
+
+        let run = system("compileMd ".file." ".destination)
         if v:shell_error == 1
-            "has to run from here or zathura will overwrite the terminal window
-            :silent exec "!setsid zathura ".shellescape(destination)." 2>/dev/null"
+            :silent exec "!setsid zathura " . shellescape(destination)
         endif
     endfunction
 

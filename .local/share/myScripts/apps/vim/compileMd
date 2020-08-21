@@ -1,15 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 
 # $1 file name
 # $2 destination
 
-pandoc $1 -s -o $2
-[[ $? == 1 ]] && exit
+pandoc "$1" -o "$2"
+if [[ $? == 1 ]]; then
+    pandoc --pdf-engine=xelatex "$1" -o "$2"
+    [[ $? == 1 ]] &&  exit
+fi
 zathuraInstance=$(ps auxww | rg zathura | awk '{print $(NF)}' | head)
-# echo "$zathuraInstance"
+echo "$zathuraInstance"
 for instance in $zathuraInstance; do
-    echo ${instance}
-    if [[ ${instance} == $2 ]]; then
+    echo "${instance}"
+    if [[ "${instance}" == "$2" ]]; then
         exit 0
     fi
 done

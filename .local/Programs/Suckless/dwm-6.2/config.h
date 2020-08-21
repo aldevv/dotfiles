@@ -69,6 +69,7 @@ static const Rule rules[] = {
 	 */
 /* layout(s) */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor     floatpos     */
+    /* https://github.com/bakkeby/patches/wiki/floatpos */
 	/* { "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1,       0 }, */
 	{ "Firefox", NULL,     NULL,           1 << 8,       0,          0,           0,        -1,   "50% 50% 800W 800H"    },
 	{ "Code",    NULL,     NULL,           1 << 2,       0,          0,           0,        -1,   "50% 50% 800W 800H"    },
@@ -78,7 +79,7 @@ static const Rule rules[] = {
 	{ NULL,		  "spterm",		NULL,	SPTAG(0),	     1,		     1,           0,        -1,  "50% 50% 200W 200H"      },
 	{ NULL,		  "spfm",		NULL,	SPTAG(1),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"      },
 	{ NULL,		  "spman",      NULL,	SPTAG(2),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"      },
-	{ NULL,		  "sptab",		NULL,	SPTAG(3),	     1,		     1,           0,        -1,  "20% 20% 300W 300H"      },
+	{ NULL,		  "sptab",		NULL,	SPTAG(3),	     1,		     1,           0,        -1,  "99% 0% 300W 400H"      },
 	{ NULL,		  "spcalc",		NULL,	SPTAG(4),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"     },
 	/* { NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 }, */                   
 	//{ "Station", NULL,     NULL,         (1 << 8)-1,    0,          0,          -1,        -1 }, selects all tags except the 9th
@@ -211,44 +212,56 @@ static Key keys[] = {
 
 
 	/* Client position is limited to monitor window area */
-	{ Mod4Mask,                     XK_u,      floatpos,       {.v = "-26x -26y" } }, // ↖
-	{ Mod4Mask,                     XK_i,      floatpos,       {.v = "  0x -26y" } }, // ↑
-	{ Mod4Mask,                     XK_o,      floatpos,       {.v = " 26x -26y" } }, // ↗
-	{ Mod4Mask,                     XK_j,      floatpos,       {.v = "-26x   0y" } }, // ←
-	{ Mod4Mask,                     XK_l,      floatpos,       {.v = " 26x   0y" } }, // →
-	{ Mod4Mask,                     XK_m,      floatpos,       {.v = "-26x  26y" } }, // ↙
-	{ Mod4Mask,                     XK_comma,  floatpos,       {.v = "  0x  26y" } }, // ↓
-	{ Mod4Mask,                     XK_period, floatpos,       {.v = " 26x  26y" } }, // ↘
-	/* Absolute positioning (allows moving windows between monitors) */
-	{ Mod4Mask|ControlMask,         XK_u,      floatpos,       {.v = "-26a -26a" } }, // ↖
-	{ Mod4Mask|ControlMask,         XK_i,      floatpos,       {.v = "  0a -26a" } }, // ↑
-	{ Mod4Mask|ControlMask,         XK_o,      floatpos,       {.v = " 26a -26a" } }, // ↗
-	{ Mod4Mask|ControlMask,         XK_j,      floatpos,       {.v = "-26a   0a" } }, // ←
-	{ Mod4Mask|ControlMask,         XK_l,      floatpos,       {.v = " 26a   0a" } }, // →
-	{ Mod4Mask|ControlMask,         XK_m,      floatpos,       {.v = "-26a  26a" } }, // ↙
-	{ Mod4Mask|ControlMask,         XK_comma,  floatpos,       {.v = "  0a  26a" } }, // ↓
-	{ Mod4Mask|ControlMask,         XK_period, floatpos,       {.v = " 26a  26a" } }, // ↘
-	/* Resize client, client center position is fixed which means that client expands in all directions */
-	{ Mod4Mask|ShiftMask,           XK_u,      floatpos,       {.v = "-26w -26h" } }, // ↖
-	{ Mod4Mask|ShiftMask,           XK_i,      floatpos,       {.v = "  0w -26h" } }, // ↑
-	{ Mod4Mask|ShiftMask,           XK_o,      floatpos,       {.v = " 26w -26h" } }, // ↗
-	{ Mod4Mask|ShiftMask,           XK_j,      floatpos,       {.v = "-26w   0h" } }, // ←
-	{ Mod4Mask|ShiftMask,           XK_k,      floatpos,       {.v = "800W 800H" } }, // ·
-	{ Mod4Mask|ShiftMask,           XK_l,      floatpos,       {.v = " 26w   0h" } }, // →
-	{ Mod4Mask|ShiftMask,           XK_m,      floatpos,       {.v = "-26w  26h" } }, // ↙
-	{ Mod4Mask|ShiftMask,           XK_comma,  floatpos,       {.v = "  0w  26h" } }, // ↓
-	{ Mod4Mask|ShiftMask,           XK_period, floatpos,       {.v = " 26w  26h" } }, // ↘
-	/* Client is positioned in a floating grid, movement is relative to client's current position */
-	{ Mod4Mask|Mod1Mask,            XK_u,      floatpos,       {.v = "-1p -1p" } }, // ↖
-	{ Mod4Mask|Mod1Mask,            XK_i,      floatpos,       {.v = " 0p -1p" } }, // ↑
-	{ Mod4Mask|Mod1Mask,            XK_o,      floatpos,       {.v = " 1p -1p" } }, // ↗
-	{ Mod4Mask|Mod1Mask,            XK_j,      floatpos,       {.v = "-1p  0p" } }, // ←
-	{ Mod4Mask|Mod1Mask,            XK_k,      floatpos,       {.v = " 0p  0p" } }, // ·
-	{ Mod4Mask|Mod1Mask,            XK_l,      floatpos,       {.v = " 1p  0p" } }, // →
-	{ Mod4Mask|Mod1Mask,            XK_m,      floatpos,       {.v = "-1p  1p" } }, // ↙
-	{ Mod4Mask|Mod1Mask,            XK_comma,  floatpos,       {.v = " 0p  1p" } }, // ↓
-	{ Mod4Mask|Mod1Mask,            XK_period, floatpos,       {.v = " 1p  1p" } }, // ↘
+	/* { Mod5Mask,                     XK_a,      floatpos,       {.v = "-26x -26y" } }, // ↖ */
+	/* { Mod5Mask,                     XK_r,      floatpos,       {.v = "  0x -26y" } }, // ↑ */
+	/* { Mod5Mask,                     XK_s,      floatpos,       {.v = " 26x -26y" } }, // ↗ */
+	/* { Mod5Mask,                     XK_t,      floatpos,       {.v = "-26x   0y" } }, // ← */
+	/* { Mod5Mask,                     XK_d,      floatpos,       {.v = " 26x   0y" } }, // → */
+	/* { Mod5Mask,                     XK_h,      floatpos,       {.v = "-26x  26y" } }, // ↙ */
+	/* { Mod5Mask,                     XK_n,      floatpos,       {.v = "  0x  26y" } }, // ↓ */
+	/* { Mod5Mask,                     XK_e,      floatpos,       {.v = " 26x  26y" } }, // ↘ */
 
+	/* Absolute positioning (allows moving windows between monitors) */
+	/* { Mod4Mask|ControlMask,         XK_u,      floatpos,       {.v = "-26a -26a" } }, // ↖ */
+	/* { Mod4Mask|ControlMask,         XK_i,      floatpos,       {.v = "  0a -26a" } }, // ↑ */
+	/* { Mod4Mask|ControlMask,         XK_o,      floatpos,       {.v = " 26a -26a" } }, // ↗ */
+	/* { Mod4Mask|ControlMask,         XK_j,      floatpos,       {.v = "-26a   0a" } }, // ← */
+	/* { Mod4Mask|ControlMask,         XK_l,      floatpos,       {.v = " 26a   0a" } }, // → */
+	/* { Mod4Mask|ControlMask,         XK_m,      floatpos,       {.v = "-26a  26a" } }, // ↙ */
+	/* { Mod4Mask|ControlMask,         XK_comma,  floatpos,       {.v = "  0a  26a" } }, // ↓ */
+	/* { Mod4Mask|ControlMask,         XK_period, floatpos,       {.v = " 26a  26a" } }, // ↘ */
+
+	/* Resize client, client center position is fixed which means that client expands in all directions */
+	/* { Mod5Mask|ShiftMask,           XK_a,      floatpos,       {.v = "-26w -26h" } }, // ↖ */
+	/* { Mod5Mask|ShiftMask,           XK_r,      floatpos,       {.v = "  0w -26h" } }, // ↑ */
+	/* { Mod5Mask|ShiftMask,           XK_s,      floatpos,       {.v = " 26w -26h" } }, // ↗ */
+	/* { Mod5Mask|ShiftMask,           XK_t,      floatpos,       {.v = "-26w   0h" } }, // ← */
+	/* { Mod5Mask|ShiftMask,           XK_d,      floatpos,       {.v = "800W 800H" } }, // · */
+	/* { Mod5Mask|ShiftMask,           XK_h,      floatpos,       {.v = " 26w   0h" } }, // → */
+	/* { Mod5Mask|ShiftMask,           XK_n,      floatpos,       {.v = "-26w  26h" } }, // ↙ */
+	/* { Mod5Mask|ShiftMask,           XK_e,      floatpos,       {.v = "  0w  26h" } }, // ↓ */
+	/* { Mod5Mask|ShiftMask,           XK_i,      floatpos,       {.v = " 26w  26h" } }, // ↘ */
+
+	/* Client is positioned in a floating grid, movement is relative to client's current position */
+	/* { Mod5Mask|ShiftMask,            XK_a,      floatpos,       {.v = "-1p -1p" } }, // ↖ */
+	/* { Mod5Mask|ShiftMask,            XK_r,      floatpos,       {.v = " 0p -1p" } }, // ↑ */
+	/* { Mod5Mask|ShiftMask,            XK_s,      floatpos,       {.v = " 1p -1p" } }, // ↗ */
+	/* { Mod5Mask|ShiftMask,            XK_t,      floatpos,       {.v = "-1p  0p" } }, // ← */
+	/* { Mod5Mask|ShiftMask,            XK_d,      floatpos,       {.v = " 0p  0p" } }, // · */
+	/* { Mod5Mask|ShiftMask,            XK_h,      floatpos,       {.v = " 1p  0p" } }, // → */
+	/* { Mod5Mask|ShiftMask,            XK_n,      floatpos,       {.v = "-1p  1p" } }, // ↙ */
+	/* { Mod5Mask|ShiftMask,            XK_e,      floatpos,       {.v = " 0p  1p" } }, // ↓ */
+	/* { Mod5Mask|ShiftMask,            XK_i,      floatpos,       {.v = " 1p  1p" } }, // ↘ */
+
+    { Mod5Mask|ShiftMask,            XK_a,        floatpos,   {.v = " 0Z  0Z   0%   0%" } }, // ↖
+    { Mod5Mask|ShiftMask,            XK_r,        floatpos,   {.v = " 0x  0Z   0%   0%" } }, // ↑
+    { Mod5Mask|ShiftMask,            XK_s,        floatpos,   {.v = "-1S  0Z 100%   0%" } }, // ↗
+    { Mod5Mask|ShiftMask,            XK_t,        floatpos,   {.v = " 0Z  0y   0%   0%" } }, // ←
+    { Mod5Mask|ShiftMask,            XK_d,        floatpos,   {.v = "50% 50%  50%  50%" } }, // ·
+    { Mod5Mask|ShiftMask,            XK_h,        floatpos,   {.v = "-1S  0y 100%   0%" } }, // →
+    { Mod5Mask|ShiftMask,            XK_n,        floatpos,   {.v = " 0Z -1S   0% 100%" } }, // ↙
+    { Mod5Mask|ShiftMask,            XK_e,        floatpos,   {.v = " 0x -1S   0% 100%" } }, // ↓
+    { Mod5Mask|ShiftMask,            XK_i,        floatpos,   {.v = "-1S -1S 100% 100%" } }, // ↘
 
 
 
