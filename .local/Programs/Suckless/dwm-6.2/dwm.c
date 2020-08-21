@@ -97,7 +97,7 @@ typedef struct {
 typedef struct Monitor Monitor;
 typedef struct Client Client;
 struct Client {
-	char name[256];
+	char name[256], *instanceOf;
 	float mina, maxa;
 	int x, y, w, h;
 	int oldx, oldy, oldw, oldh;
@@ -107,7 +107,7 @@ struct Client {
 	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, isterminal, noswallow, issticky;
 	pid_t pid;
 	int floatborderpx, oldfloatborderpx; // i added the oldfloatborder
-    int oldxfloat, oldyfloat; // this too
+    int oldxfloat, oldyfloat; // i added this too
 	Client *next;
 	Client *snext;
 	Client *swallowing;
@@ -377,16 +377,18 @@ applyrules(Client *c)
 			c->floatborderpx = r->floatborderpx;
 
 			if (r->isfloating) {
+                c->instanceOf = r->instance;
 				c->x = r->floatx;
 				c->y = r->floaty;
 				c->w = r->floatw;
 				c->h = r->floath;
 			}
             /* I COMMENTED THIS */
-			/* if ((r->tags & SPTAGMASK) && r->isfloating) { */
-			/* 	c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2); */
-			/* 	c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2); */
-			/* } */
+            /* if(strstr(r->instance,"spterm")) { */
+			    /* if ((r->tags & SPTAGMASK) && r->isfloating) { */
+				    /* c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2); */
+				    /* c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2); */
+			    /* } */
 
 
 			for (m = mons; m && m->num != r->monitor; m = m->next);
@@ -1884,17 +1886,33 @@ seturgent(Client *c, int urg)
 	XFree(wmh);
 }
 
+void loger(Client *c);
+void
+loger(Client *c)
+{
+    FILE *log = NULL;
+
+    if (!(log = fopen("/home/solus/.local/Programs/Suckless/debug", "w"))) {
+    /* The file couldn't be opened; handle this error. */
+        printf("cant open file");
+    }
+    fprintf(log, "im in dwm\n");
+}
+
 void
 showhide(Client *c)
 {
 	if (!c)
 		return;
 	if (ISVISIBLE(c)) {
+        /* loger(c); */
+        // i added this
+        /* if (!strstr(c->instanceOf, "spterm")) */
         /* I COMMENTED THIS: this resizes the window when you change sizes */
-		/* if ((c->tags & SPTAGMASK) && c->isfloating) { */
-		/* 	c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2); */
-		/* 	c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2); */
-		/* } */
+		    /* if ((c->tags & SPTAGMASK) && c->isfloating) { */
+			    /* c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2); */
+			    /* c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2); */
+		    /* } */
 		/* show clients top down */
 		XMoveWindow(dpy, c->win, c->x, c->y);
 		if ((!c->mon->lt[c->mon->sellt]->arrange || c->isfloating) && !c->isfullscreen)

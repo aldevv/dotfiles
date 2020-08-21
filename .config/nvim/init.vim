@@ -35,6 +35,7 @@ noremap  <leader>w< 5<c-w><
 noremap  <leader>w> 5<c-w>>
 " noremap  <leader>ww :w<CR>
 noremap  <leader>ww :w !sudo tee %<CR>
+noremap  ! :!
 noremap  <F7> :set spell! \| set wrap<CR>
 
 "to install python3 in checkhelath
@@ -161,6 +162,7 @@ let g:airline_powerline_fonts = 1
 
 " Keybindings
 map <leader>rp :!python3 %<cr>
+map <leader>rc :!gcc % -o a.out && ./a.out<cr>
 map <leader>rs :!./%<cr>
 map <F6> :e ~/.config/nvim/init.vim<cr>
 map <F3> :e ~/.zshrc<cr>

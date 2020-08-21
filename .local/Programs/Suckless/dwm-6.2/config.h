@@ -50,7 +50,7 @@ const char *spcmd6[] = {"sttion", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
-	{"spranger",    spcmd2},
+	{"spfm",        spcmd2},
 	{"spman",       spcmd3},
 	{"sptab",       spcmd4},
 	{"spcalc",      spcmd5},
@@ -74,8 +74,8 @@ static const Rule rules[] = {
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1,       50,50,500,500,     0 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1,       50,50,500,500,     0 }, /* xev */
 	{ NULL,		  "spterm",		NULL,	SPTAG(0),	  1,		  1,           0,        -1,       330,125,700,540,     3 },
-	{ NULL,		  "spfm",		NULL,	SPTAG(1),	  0,		  1,           0,        -1,       330,125,500,500,     3 },
-	{ NULL,		  "spman",     NULL,	SPTAG(2),	  1,		  1,           0,        -1,       330,125,700,540,     3 },
+	{ NULL,		  "spfm",		NULL,	SPTAG(1),	  1,		  1,           0,        -1,       330,125,500,500,     3 },
+	{ NULL,		  "spman",      NULL,	SPTAG(2),	  1,		  1,           0,        -1,       330,125,700,540,     3 },
 	{ NULL,		  "sptab",		NULL,	SPTAG(3),	  1,		  1,           0,        -1,       1060,22,300,400,    3 },
 	{ NULL,		  "spcalc",		NULL,	SPTAG(4),	  1,		  1,           0,        -1,       330,125,500,500,     3 },
 	/* { NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 }, */                   
