@@ -4,15 +4,18 @@
 static unsigned int snap      = 32;       /* snap pixel */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
+static int floatposgrid_x           = 5;        /* float grid columns */
+static int floatposgrid_y           = 5;        /* float grid rows */
 static const char *fonts[]          = { 
-    "Hack Nerd Font Mono:pixelsize=14:antialias=true:autohint=true", // Powerline
-    /* "Noto Sans Emoji:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis) */
+    /* "Hack Nerd Font Mono:pixelsize=14:antialias=true:autohint=true", // Powerline */
+    "Noto Sans Emoji:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis)
+    /* "Symbola:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis) */
 	"monospace:size=10"
  };
 static const char dmenufont[]       = "Fira Code:size=10";
 /* static char selbordercolor[]        = "#eeeeee"; //border of selected window */
-static char selbordercolor[]        = "#770000"; //border of selected window
 static unsigned int borderpx  = 3;        /* border pixel of windows */
+static char selbordercolor[]        = "#770000"; //border of selected window
 static char selbgcolor[]            = "#005577";
 static const unsigned int gappih    = 20; // def 10     /* horiz inner gap between windows */
 static const unsigned int gappiv    = 20; // def 10     /* vert inner gap between windows */
@@ -40,18 +43,20 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-n", "spterm", "-f", "monospace:size=10", NULL };
+const char *spcmd1[] = {"st", "-n", "spterm", "-f", "monospace:size=8", NULL };
 const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
 const char *spcmd3[] = {"st", "-n", "spman", "-f", "monospace:size=10", "-e", "bash", "-c", "openManPage;$SHELL",  NULL };
 const char *spcmd4[] = {"st", "-n", "sptab", "-f", "monospace:size=10", "-e", "bash", "-c", "tableContents;$SHELL",  NULL };
 const char *spcmd5[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-e", "bc", "-lq", NULL };
+const char *spcmd6[] = {"sttion", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
-	{"spranger",    spcmd2},
+	{"spfm",        spcmd2},
 	{"spman",       spcmd3},
 	{"sptab",       spcmd4},
 	{"spcalc",      spcmd5},
+	{"spstat",      spcmd6},
 };
 
 /* tagging */
@@ -63,27 +68,51 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 /* layout(s) */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor   float x,y,w,h  floatborderpx*/
-	/* { "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1,       50,50,500,500,     0 }, */
-	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,           0,        -1,       50,50,500,500,     0 },
-	{ "Code",    NULL,     NULL,           1 << 2,    0,          0,           0,        -1,       50,50,500,500,     0 },
-	{ "Station", NULL,     NULL,           1 << 0,    0,          0,           0,        -1,       50,50,500,500,     0 },
-	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1,       50,50,500,500,     0 },
-	{ "Code",     NULL,     NULL,           0,        0,          0,           0,        -1,       60,50,500,500,    0 },
-	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1,       50,50,500,500,     0 }, /* xev */
-	{ NULL,		  "spterm",		NULL,	SPTAG(0),	  1,		  1,           0,        -1,       330,125,700,540,     3 },
-	{ NULL,		  "spfm",		NULL,	SPTAG(1),	  0,		  1,           0,        -1,       330,125,500,500,     3 },
-	{ NULL,		  "spman",     NULL,	SPTAG(2),	  1,		  1,           0,        -1,       330,125,700,540,     3 },
-	{ NULL,		  "sptab",		NULL,	SPTAG(3),	  1,		  1,           0,        -1,       1050,25,300,400,    3 },
-	{ NULL,		  "spcalc",		NULL,	SPTAG(4),	  1,		  1,           0,        -1,       330,125,500,500,     3 },
+	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor     floatpos     */
+	/* { "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1,       0 }, */
+	{ "Firefox", NULL,     NULL,           1 << 8,       0,          0,           0,        -1,   "50% 50% 800W 800H"    },
+	{ "Code",    NULL,     NULL,           1 << 2,       0,          0,           0,        -1,   "50% 50% 800W 800H"    },
+	{ "Station", NULL,     NULL,           1 << 0,       0,          0,           0,        -1,   "50% 50% 800W 800H"     },
+	{ "meh",      NULL,     NULL,           0,           1,          1,            1,          -1,   "100% 100% 100W 700H"   },
+	{ NULL,      NULL,     "Event Tester", 0,            0,          0,           1,        -1,   "50% 50% 800W 800H"     }, 
+	{ NULL,		  "spterm",		NULL,	SPTAG(0),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"      },
+	{ NULL,		  "spfm",		NULL,	SPTAG(1),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"      },
+	{ NULL,		  "spman",      NULL,	SPTAG(2),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"      },
+	{ NULL,		  "sptab",		NULL,	SPTAG(3),	     1,		     1,           0,        -1,  "20% 20% 300W 300H"      },
+	{ NULL,		  "spcalc",		NULL,	SPTAG(4),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"     },
 	/* { NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 }, */                   
 	//{ "Station", NULL,     NULL,         (1 << 8)-1,    0,          0,          -1,        -1 }, selects all tags except the 9th
 };
+/* example */
+/* class      instance    title       tags mask     isfloating   floatpos                 monitor */
+/* { "e1",       NULL,       NULL,       0,            1,           "0x 0y 800W 800H",       -1 }, */
+/* { "e2",       NULL,       NULL,       0,            1,           "9999X 0y 800W 800H",    -1 }, */
+/* { "e3",       NULL,       NULL,       0,            1,           "0x 9999y 800W 800H",    -1 }, */
+/* { "e4",       NULL,       NULL,       0,            1,           "9999x 9999y 800W 800H", -1 }, */
+/* { "e5",       NULL,       NULL,       0,            1,           "-1x -1y 9999W 800H",    -1 }, */
+/* { "e6",       NULL,       NULL,       0,            1,           "-1x 9999y 9999W 800H",  -1 }, */
+/* { "e7",       NULL,       NULL,       0,            1,           "-1x -1y 800W 9999H",    -1 }, */
+/* { "e8",       NULL,       NULL,       0,            1,           "9999x -1y 800W 9999H",  -1 }, */
+/* { "e9",       NULL,       NULL,       0,            1,           "50% 50% 800W 800H",     -1 }, */
+/* { "e10",      NULL,       NULL,       0,            1,           "-1x -1y 50% 50%",       -1 }, */
+/* { "e11",      NULL,       NULL,       0,            1,           "0% 0% 800W 800H",       -1 }, */
+/* { "e12",      NULL,       NULL,       0,            1,           "100% 0% 800W 800H",     -1 }, */
+/* { "e13",      NULL,       NULL,       0,            1,           "0% 100% 800W 800H",     -1 }, */
+/* { "e14",      NULL,       NULL,       0,            1,           "100% 100% 800W 800H",   -1 }, */
+/* { "e15",      NULL,       NULL,       0,            1,           "-1x -1y 100% 800H",     -1 }, */
+/* { "e16",      NULL,       NULL,       0,            1,           "-1x 100% 100% 800H",    -1 }, */
+/* { "e17",      NULL,       NULL,       0,            1,           "-1x -1y 800W 100%",     -1 }, */
+/* { "e18",      NULL,       NULL,       0,            1,           "100% -1y 800W 100%",    -1 }, */
+/* { "e19",      NULL,       NULL,       0,            1,           "50% 50% 50% 50%",       -1 }, */
+/* { "e20",      NULL,       NULL,       0,            1,           NULL,                    -1 }, */
+
+
+
 
 /* layout(s) */
 static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static int nmaster     = 1;    /* number of clients in master area */
-static int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
 #include "vanitygaps.c"
 static const Layout layouts[] = {
@@ -176,8 +205,54 @@ static Key keys[] = {
 	{ Mod5Mask,     			    XK_m,	   togglescratch,  {.ui = 2 } },
 	{ Mod5Mask|ShiftMask,           XK_m,      togglescratch,  {.ui = 3 } },
 	{ MODKEY,   		            XK_a,      togglescratch,  {.ui = 4 } },
+	{ MODKEY,   		            XK_w,      togglescratch,  {.ui = 5 } },
 	/* { MODKEY|ShiftMask,             XK_Tab,    togglescratch,  {.v = scratchpadcmd } }, */
 	/* { MODKEY,                       XK_c,    togglescratch,  {.v = scratchpadcmd } }, */
+
+
+	/* Client position is limited to monitor window area */
+	{ Mod4Mask,                     XK_u,      floatpos,       {.v = "-26x -26y" } }, // ↖
+	{ Mod4Mask,                     XK_i,      floatpos,       {.v = "  0x -26y" } }, // ↑
+	{ Mod4Mask,                     XK_o,      floatpos,       {.v = " 26x -26y" } }, // ↗
+	{ Mod4Mask,                     XK_j,      floatpos,       {.v = "-26x   0y" } }, // ←
+	{ Mod4Mask,                     XK_l,      floatpos,       {.v = " 26x   0y" } }, // →
+	{ Mod4Mask,                     XK_m,      floatpos,       {.v = "-26x  26y" } }, // ↙
+	{ Mod4Mask,                     XK_comma,  floatpos,       {.v = "  0x  26y" } }, // ↓
+	{ Mod4Mask,                     XK_period, floatpos,       {.v = " 26x  26y" } }, // ↘
+	/* Absolute positioning (allows moving windows between monitors) */
+	{ Mod4Mask|ControlMask,         XK_u,      floatpos,       {.v = "-26a -26a" } }, // ↖
+	{ Mod4Mask|ControlMask,         XK_i,      floatpos,       {.v = "  0a -26a" } }, // ↑
+	{ Mod4Mask|ControlMask,         XK_o,      floatpos,       {.v = " 26a -26a" } }, // ↗
+	{ Mod4Mask|ControlMask,         XK_j,      floatpos,       {.v = "-26a   0a" } }, // ←
+	{ Mod4Mask|ControlMask,         XK_l,      floatpos,       {.v = " 26a   0a" } }, // →
+	{ Mod4Mask|ControlMask,         XK_m,      floatpos,       {.v = "-26a  26a" } }, // ↙
+	{ Mod4Mask|ControlMask,         XK_comma,  floatpos,       {.v = "  0a  26a" } }, // ↓
+	{ Mod4Mask|ControlMask,         XK_period, floatpos,       {.v = " 26a  26a" } }, // ↘
+	/* Resize client, client center position is fixed which means that client expands in all directions */
+	{ Mod4Mask|ShiftMask,           XK_u,      floatpos,       {.v = "-26w -26h" } }, // ↖
+	{ Mod4Mask|ShiftMask,           XK_i,      floatpos,       {.v = "  0w -26h" } }, // ↑
+	{ Mod4Mask|ShiftMask,           XK_o,      floatpos,       {.v = " 26w -26h" } }, // ↗
+	{ Mod4Mask|ShiftMask,           XK_j,      floatpos,       {.v = "-26w   0h" } }, // ←
+	{ Mod4Mask|ShiftMask,           XK_k,      floatpos,       {.v = "800W 800H" } }, // ·
+	{ Mod4Mask|ShiftMask,           XK_l,      floatpos,       {.v = " 26w   0h" } }, // →
+	{ Mod4Mask|ShiftMask,           XK_m,      floatpos,       {.v = "-26w  26h" } }, // ↙
+	{ Mod4Mask|ShiftMask,           XK_comma,  floatpos,       {.v = "  0w  26h" } }, // ↓
+	{ Mod4Mask|ShiftMask,           XK_period, floatpos,       {.v = " 26w  26h" } }, // ↘
+	/* Client is positioned in a floating grid, movement is relative to client's current position */
+	{ Mod4Mask|Mod1Mask,            XK_u,      floatpos,       {.v = "-1p -1p" } }, // ↖
+	{ Mod4Mask|Mod1Mask,            XK_i,      floatpos,       {.v = " 0p -1p" } }, // ↑
+	{ Mod4Mask|Mod1Mask,            XK_o,      floatpos,       {.v = " 1p -1p" } }, // ↗
+	{ Mod4Mask|Mod1Mask,            XK_j,      floatpos,       {.v = "-1p  0p" } }, // ←
+	{ Mod4Mask|Mod1Mask,            XK_k,      floatpos,       {.v = " 0p  0p" } }, // ·
+	{ Mod4Mask|Mod1Mask,            XK_l,      floatpos,       {.v = " 1p  0p" } }, // →
+	{ Mod4Mask|Mod1Mask,            XK_m,      floatpos,       {.v = "-1p  1p" } }, // ↙
+	{ Mod4Mask|Mod1Mask,            XK_comma,  floatpos,       {.v = " 0p  1p" } }, // ↓
+	{ Mod4Mask|Mod1Mask,            XK_period, floatpos,       {.v = " 1p  1p" } }, // ↘
+
+
+
+
+
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
@@ -208,18 +283,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	/* { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } }, */
-<<<<<<<
-	/* { MODKEY,                       XK_period, focusmon,       {.i = +1 } }, */
-	/* { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } }, */
-	/* { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, */
-=======
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|Mod4Mask|ControlMask,  XK_comma,  tagswapmon,     {.i = +1 } },
-	{ MODKEY|Mod4Mask|ControlMask,  XK_period, tagswapmon,     {.i = -1 } },
->>>>>>>
+	{ Mod5Mask,                     XK_comma,  tagswapmon,     {.i = +1 } },
+	{ Mod5Mask,                     XK_period, tagswapmon,     {.i = -1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -330,6 +399,7 @@ static Signal signals[] = {
 	{ "toggletag",      tag },
 	{ "toggletagex",    toggletagex },
 	{ "killclient",     killclient },
+	{ "togglefullscr",  togglefullscr},
 	{ "quit",           quit },
 	{ "setlayout",      setlayout },
 	{ "setlayoutex",    setlayoutex },
