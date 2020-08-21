@@ -3,17 +3,19 @@
 # $1 file name
 # $2 destination
 
+echo "first try!!!!!!"
 pandoc "$1" -o "$2"
-if [[ $? == 1 ]]; then
+if [[ ! -e $2 ]]; then
+    echo "second try!!!!!!"
     pandoc --pdf-engine=xelatex "$1" -o "$2"
-    [[ $? == 1 ]] &&  exit
+    [[ ! -e $2 ]] && exit 1
 fi
 zathuraInstance=$(ps auxww | rg zathura | awk '{print $(NF)}' | head)
 echo "$zathuraInstance"
 for instance in $zathuraInstance; do
     echo "${instance}"
     if [[ "${instance}" == "$2" ]]; then
-        exit 0
+        exit 1
     fi
 done
-exit 1
+exit 0

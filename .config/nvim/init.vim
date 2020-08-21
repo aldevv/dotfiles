@@ -226,8 +226,8 @@ map <leader>ra :!setsid st ranger $(dirname %) 2</dev/null<cr>
         let destination = destinationPath .'/'. destinationFile
 
         let run = system("compileMd ".file." ".destination)
-        if v:shell_error == 1
-            :silent exec "!setsid zathura " . shellescape(destination)
+        if v:shell_error == 0
+            :exec "!setsid zathura " . shellescape(destination)
         endif
     endfunction
 
