@@ -14,14 +14,6 @@ servers = (
     tls_verify = "yes";
   },
   {
-    address = "chat.freenode.net";
-    chatnet = "Freenode";
-    port = "6697";
-    use_tls = "yes";
-    tls_verify = "yes";
-    autoconnect = "yes";
-  },
-  {
     address = "irc.gamesurge.net";
     chatnet = "GameSurge";
     port = "6667";
@@ -63,6 +55,15 @@ servers = (
     address = "irc.undernet.org";
     chatnet = "Undernet";
     port = "6667";
+  },
+  {
+    address = "irc.freenode.net";
+    chatnet = "Freenode";
+    port = "6667";
+    use_tls = "no";
+    tls_verify = "no";
+    password = "ninja";
+    autoconnect = "yes";
   }
 );
 
@@ -90,7 +91,7 @@ chatnets = {
     max_kicks = "1";
     max_msgs = "4";
     max_whois = "1";
-    autosendcmd = "/msg nickserv identify akuseru ninja";
+    autosendcmd = "/msg nickserv identify ninja";
   };
   GameSurge = {
     type = "IRC";
@@ -147,7 +148,9 @@ channels = (
   { name = "#ircsource"; chatnet = "IRCSource"; autojoin = "No"; },
   { name = "#netfuze"; chatnet = "NetFuze"; autojoin = "No"; },
   { name = "#oftc"; chatnet = "OFTC"; autojoin = "No"; },
-  { name = "silc"; chatnet = "SILC"; autojoin = "No"; }
+  { name = "silc"; chatnet = "SILC"; autojoin = "No"; },
+  { name = "#solus-chat"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#suckless"; chatnet = "Freenode"; autojoin = "yes"; },
 );
 
 aliases = {

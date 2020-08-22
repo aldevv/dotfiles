@@ -1,5 +1,6 @@
 #!/bin/sh
-cd "$SUCKLESS/st-0.8.4"
+cd "$SUCKLESS/dmenu"
+eopkg -y install libxft-devel libxinerama-devel 
 make clean
 make 
 make install
