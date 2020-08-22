@@ -266,6 +266,7 @@ alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
 alias yta-wav="youtube-dl --extract-audio --audio-format wav "
 alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
+alias du="du -hd 1"
 #
 #completion and highlighting
 fpath=($PROGRAMS/zsh-completions/src $fpath)
