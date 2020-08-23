@@ -2,7 +2,6 @@
 mkdir "$BACKUPS"
 mkdir "$PROGRAMS"
 
-
 # install packages
 packages=$(awk '{printf "%s ", $0}' packages)
 eopkg -y $packages

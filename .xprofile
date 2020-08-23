@@ -9,7 +9,10 @@ DISPLAY=":0" picom -b
 sxhkd &
 $APPS/dwm/status &
 wal -R &
-#setup monitors
+# setup monitors
 cm
+
+# custom scripts
+startupScripts
 # lastScheme=$(ls -t "$HOME/.cache/wal/schemes" | sed 1q)
 # wal -f "$HOME/.cache/wal/schemes/${lastScheme}"

@@ -4,6 +4,7 @@ map h scroll left
 map n scroll down
 map e scroll up
 map i scroll right
+map G scroll bottom
 
 map N scroll half-down
 map E scroll half-up

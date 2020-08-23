@@ -22,16 +22,17 @@ super + p
 super + alt + p
 	mpv "$($UTILITIES/anime/run_episode2.sh)"
 
-super + shift + w
+mode_switch + w
     emacs $WIKI/wiki.org
 
 super + r
     st -e ranger >/dev/null 2>&1
 
-super + Return
+mode_switch + Return
     st >/dev/null 2>&1
 
-super +  k
+# menu button
+mode_switch +  k
     st -e newsboat 
 
 # super +  a
@@ -40,7 +41,7 @@ super +  k
 # super + y
 #     st -e "$($UTILITIES/youtube/YT.tcl)"
 
-super + shift + v
+ mode_switch + v
     bash -c code-oss
 
 super + F1
@@ -71,16 +72,16 @@ super + F6
 super + Escape
 	 $UTILITIES/cheatsheet/browseCheatsheets
 
-super + g
+mode_switch + g
     searchBrowser
 
-super + shift + s
-	 flatpak --installation=extra run com.spotify.Client 2>/dev/null
+# super + shift + s
+# 	 flatpak --installation=extra run com.spotify.Client 2>/dev/null
 
-super + shift + j
+mode_switch + j
 	 st -e joplin 2>/dev/null
 
-super + alt + j
+mode_switch + shift + j
 	 $HOME/.joplin/Joplin.AppImage 2>/dev/null
 
 shift + Print
@@ -91,25 +92,25 @@ shift + Print
 	 allScreen
 
 
-alt + b
+mode_switch + b
 	 $UTILITIES/search/searchBook
 
-super + control + c
+mode_switch + c
 	 $UTILITIES/classes/searchClass
 
-super + control + u
+mode_switch + u
  	 ts $UTILITIES/api/urlShortener
 
 #using a task spooler
-super + d
+mode_switch + shift + u
 	 ts sh -c $AUTOMATION/drive/uploadToDrive
 
 mode_switch + a
 	st -e bash -c "cd $HOME/Programs/todoist-linux && make up"
 	 # $UTILITIES/misc/calcDmenu
 
-mode_switch + b
-	dwmc togglefullscr
+# mode_switch + b
+# 	dwmc togglefullscr
 
 mode_switch + e
     $SCRIPTS/useful/fun/emojiSelect
@@ -122,7 +123,7 @@ mode_switch + i
     # st -e $UTILITIES/misc/runCommand $(dmenu -p "prompt:")
 	 # dunstify $(sh -c "$(dmenu -i -p "prompt:")")
 
-alt + shift + b
+mode_switch + shift + b
  	 $UTILITIES/search/searchBookFolder
 
 XF86AudioMute
