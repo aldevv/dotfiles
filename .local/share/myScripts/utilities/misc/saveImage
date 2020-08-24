@@ -9,7 +9,7 @@ xdotool key Up
 xdotool key Up
 xdotool key Up
 xdotool key Up
-xdotool key Up
+# xdotool key Up
 xdotool key Return 
 sleep 0.1
 xdotool search --name Save key Return
