@@ -1,0 +1,6 @@
+#!/bin/sh
+
+device=$(lsblk | sed -E "s/[└─├─]//g" | awk '/sd[b-zB-Z][1-9]/{print $1,$4}'\
+| dmenu -p "Choose device" | cut -d " " -f 1)
+
+sudo mount "/dev/$device" /mnt

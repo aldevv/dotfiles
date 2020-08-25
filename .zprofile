@@ -14,6 +14,7 @@ export VISUAL=nvim
 export BROWSER=firefox
 export BOOKS="$HOME/Documents/Learn/Books"
 export PROJECTS="$HOME/Documents/Learn/Projects"
+export CLASSES="$HOME/Documents/Learn/classes/2020-2/clases"
 export SCRIPTS="$HOME/.local/share/myScripts"
 export SHARED="$SCRIPTS/shared"
 export UTILITIES="$SCRIPTS/utilities"

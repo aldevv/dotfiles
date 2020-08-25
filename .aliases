@@ -1,7 +1,7 @@
 alias h="cd ~ && ls -a"
 alias wo="cd ~/dev/Work/PPE && ls -a"
 alias bk="cd ~/Documents/Learn/Books && ls -a"
-alias lc="cd ~/Documents/Learn/classes/ && ls -a"
+alias lc="cd ~/Documents/Learn/classes/2020-2/clases && ls -a"
 alias ll="cd ~/Documents/Learn && ls -a"
 alias tt="cd ~/.local/share/Trash/files && ls -a"
 alias lt="cd ~/Documents/Learn/typing && ls -a"

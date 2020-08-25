@@ -1,0 +1,14 @@
+#!/bin/sh
+# man
+xset r rate 300 50
+
+# map the menu button to left hyper
+xmodmap -e 'keycode 135 = Hyper_L'
+
+# makes hyper do something different
+xmodmap -e "remove mod4 = Hyper_L" -e "add mod3 = Hyper_L"
+
+# get escape on caps press
+killall xcape 2>/dev/null
+xcape -e "Shift_L=bracketleft"
+xcape -e "Shift_R=bracketright"

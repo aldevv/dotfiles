@@ -106,7 +106,7 @@ mode_switch + shift + u
 	 ts sh -c $AUTOMATION/drive/uploadToDrive
 
 mode_switch + a
-	st -e bash -c "cd $HOME/Programs/todoist-linux && make up"
+	st -e bash -c "cd $HOME/.local/Programs/todoist-linux && make up"
 	 # $UTILITIES/misc/calcDmenu
 
 # mode_switch + b
@@ -125,6 +125,12 @@ mode_switch + i
 
 mode_switch + shift + b
  	 $UTILITIES/search/searchBookFolder
+
+super + F9
+ 	 $UTILITIES/mount/mountD
+
+super + shift + F9
+ 	 $UTILITIES/mount/umountD
 
 XF86AudioMute
      $SCRIPTS/shared/volume.sh mute; $APPS/dwm/refreshVolume
