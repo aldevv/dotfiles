@@ -12,6 +12,7 @@ while true; do
     volume="$(amixer sget Master | awk -F"[][]" '/\[[0-9]/{ print $2 }' | sed 1q | tr -d "%")音"
     if [[ -z "$checked" ]]; then
         checked="true" 
+        sudo eopkg ur
         packages="📦$(sudo eopkg lu | wc -l)"
         if [[ $packages == "📦1" ]]; then
             packages=""

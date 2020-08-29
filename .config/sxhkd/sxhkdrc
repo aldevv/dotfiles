@@ -92,7 +92,7 @@ shift + Print
 	 allScreen
 
 
-mode_switch + b
+mode_switch + shift + b
 	 $UTILITIES/search/searchBook
 
 mode_switch + c
@@ -123,8 +123,9 @@ mode_switch + i
     # st -e $UTILITIES/misc/runCommand $(dmenu -p "prompt:")
 	 # dunstify $(sh -c "$(dmenu -i -p "prompt:")")
 
-mode_switch + shift + b
- 	 $UTILITIES/search/searchBookFolder
+mode_switch + b
+ 	 $UTILITIES/search/searchClassBook
+ 	 # $UTILITIES/search/searchBookFolder
 
 super + F9
  	 $UTILITIES/mount/mountD

@@ -24,18 +24,13 @@ set updatetime=1500 " this is for autosave in tex files(every cursorhold event)
 noremap <c-w>i <c-w>l
 noremap <c-w>n <c-w>j
 noremap <c-w>e <c-w>k
-nnoremap <leader>wi <c-w>l
-nnoremap <leader>wh <c-w>h
-nnoremap <leader>we <c-w>k
-nnoremap <leader>wn <c-w>j
-nnoremap <leader>wt <c-w>t
-noremap  <leader>wE <c-w>K
-noremap  <leader>w- 5<c-w>-
-noremap  <leader>w+ 5<c-w>+
-noremap  <leader>w< 5<c-w><
-noremap  <leader>w> 5<c-w>>
+noremap  <leader>- 5<c-w>-
+noremap  <leader>+ 5<c-w>+
+noremap  <leader>< 5<c-w><
+noremap  <leader>> 5<c-w>>
 " noremap  <leader>ww :w<CR>
-noremap  <leader>ww :w !sudo tee %<CR>
+noremap  <leader>q :w !sudo tee %<CR>
+noremap  <leader>w :w<CR>
 noremap  ! :!
 noremap  <F7> :set spell! \| set wrap<CR>
 

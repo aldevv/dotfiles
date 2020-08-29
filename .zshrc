@@ -267,6 +267,7 @@ alias yta-wav="youtube-dl --extract-audio --audio-format wav "
 alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
 alias du="du -hd 1"
+alias pk="$PROGRAMS/PacketTracer-AppImage/out/Cisco_Packet_Tracer-7.2.1.glibc2.15-x86_64.AppImage"
 #
 #completion and highlighting
 fpath=($PROGRAMS/zsh-completions/src $fpath)
