@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 
 # drive list -shared | grep -i "$1"
 # i: id
@@ -12,7 +12,7 @@ selection=$(echo "$fullInfo" | awk ' $2 == "video/mp4" {for(i=6;i<=NF;i++){print
 if [ -z "$selection" ]; then 
     exit 
 fi
-selection=$(echo "${fullInfo}" | grep -i "${selection}") 
+selection=$(echo "${fullInfo}" | grep -i "${selection}" | grep -i "video/mp4") 
 id=$(echo "${selection}" | sort -r -k3 | awk '{print $1}' | head -n 1)
 firefox --new-tab "https://drive.google.com/file/d/${id}/view"
 

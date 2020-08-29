@@ -7,17 +7,21 @@ subject_names=""
 IFS=$'\n'
 for path in $folder_paths; do
     folder_name=$(cut -d "/" -f 9 <(echo "$path"))
+    echo $folder_name
     folders["$folder_name"]="$path"
     if [[ ! -z "$subject_names" ]]; then
-        printf -v subject_names "%s\\n%s" $subject_names "$folder_name"
+        echo "first"
+        printf -v subject_names "%s\n%s" "$subject_names" "$folder_name"
     else
+        echo "second"
         printf -v subject_names "%s" "$folder_name"
     fi
 done
 
 # subject_names=$(cut -d "/" -f 9 <(echo "$folder_paths"))
-chosen=$(echo "$subject_names" | dmenu -i -p "choose subject")
-book=$(ls "${folders["$chosen"]}" | dmenu -i -p "choose book")
+chosen=$(echo "$subject_names" | dmenu -i -l 7 -p "choose subject")
+[[ -z "$chosen" ]] && exit
+book=$(ls "${folders["$chosen"]}" | dmenu -i -l 5 -p "choose book")
 
 [[ -z "$book" ]] && exit
 

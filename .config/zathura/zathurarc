@@ -5,6 +5,10 @@ map n scroll down
 map e scroll up
 map i scroll right
 map G scroll bottom
+map bb focus_inputbar ":bmark \""
+map bl focus_inputbar :blist
+map bd focus_inputbar ":bdelete "
+map t recolor
 
 map N scroll half-down
 map E scroll half-up

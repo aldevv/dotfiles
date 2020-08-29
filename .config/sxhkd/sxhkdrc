@@ -98,6 +98,9 @@ mode_switch + shift + b
 mode_switch + c
 	 $UTILITIES/classes/searchClass
 
+mode_switch + shift c
+	 searchDocs
+
 mode_switch + u
  	 ts $UTILITIES/api/urlShortener
 
