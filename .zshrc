@@ -102,11 +102,13 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Add wisely, as too many plugins slow down shell startup.
 # # in archlinux put the archlinux plugin!
-plugins=(git colemak lol z node npm vscode extract systemd)
-#should add docker if i use it someday
-#https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode
 
+#should add docker if i use it someday
+plugins=(colemak z extract)
+# z is a command that takes you to the most probable folder
 source $ZSH/oh-my-zsh.sh
+. $XDG_CONFIG_HOME/zshPlugAlias
+#https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode
 
 # setup dotrepo
 #
@@ -151,7 +153,7 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	daa='dotrepo add'\
 	dau='dotrepo add -u'\
 	dc='dotrepo commit'\
-	dlg='dotrepo log --oneline'\
+	dlg='dotrepo log --oneline --reverse'\
 	dgp='dotrepo push origin HEAD'\
 	pgp='uploadProjects'\
 	m='$AUTOMATION/ncmpcppStart.sh'\
