@@ -31,6 +31,9 @@ super + r
 mode_switch + Return
     st >/dev/null 2>&1
 
+mode_switch + shift + Return
+    $PROGRAMS/Cool-Retro-Term-1.1.1-x86_64.AppImage 2>/dev/null
+
 # menu button
 mode_switch +  k
     st -e newsboat 
