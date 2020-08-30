@@ -1,6 +1,7 @@
 #!/bin/bash
 xdotool click 3
-xdotool key Up
+xdotool key --delay 100 Up
+xdotool key --delay 100 Up
 xdotool key Up
 xdotool key Up
 xdotool key Up

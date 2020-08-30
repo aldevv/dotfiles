@@ -22,7 +22,7 @@ doc        /usr/share/doc
 map         ~/.local/share/myScripts/apps
 D          ~/Downloads
 d          ~/Documents
-pp          ~/Pictures
+pi          ~/Pictures
 pr          ~/.local/Programs
 vi         ~/Videos
 wi         ~/.local/share/wiki

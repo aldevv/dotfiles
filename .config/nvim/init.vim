@@ -113,6 +113,8 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
+Plug 'ryanoasis/vim-devicons'
+Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 "
 "
 "
@@ -404,3 +406,8 @@ nmap s <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+" devicons
+" let g:webdevicons_enable = 1
+" let g:DevIconsEnableFoldersOpenClose = 1
+" let g:DevIconsEnableFolderExtensionPatternMatching = 1

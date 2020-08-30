@@ -6,7 +6,7 @@
 /* Sxiv.foreground: #282a36 */
 /* Sxiv.background: #f8f8f2 */
 !*.font:	Liberation Mono:pixelsize=14:antialias=true:autohint=true;
-!*.font:	    FiraCode:pixelsize=14:antialias=true:autohint=true;
+!*.font:	    FiraCode Nerd Font:pixelsize=14:antialias=true:autohint=true;
 !*.font:	Inconsolata for Powerline:pixelsize=20:antialias=true:autohint=true;
 !*.font: Bitstream Vera Sans Mono:pixelsize=11:antialias=true:autohint=true;
 ! this one messes with colors
