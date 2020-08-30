@@ -315,7 +315,7 @@ settings = {
     nick = "akuseru";
   };
   "fe-common/core" = {
-    autolog_path = "~/irclogs/%Y//.%m-%d.log";
+    autolog_path = "~/Documents/irclogs/%Y//.%m-%d.log";
     autolog = "yes";
   };
 };
