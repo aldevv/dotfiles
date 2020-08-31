@@ -7,7 +7,7 @@
 #!  https://rgoswami.me/posts/colemak-dots-refactor/
 #autoload -U colors && colors	# Load colors
 #PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-
+#test
 # wal -i [picture]
 #export GTK_IM_MODULE=fcitx 
 
