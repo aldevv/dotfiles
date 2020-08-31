@@ -119,6 +119,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases 
 alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
+	j="joplin"\
 	v="nvim"\
 	xmonad="$HOME/.cabal/bin/xmonad"\
 	rz="mpv 'http://www.youtube.com/watch?v=w-RUTZBbGwM'"\
@@ -234,7 +235,7 @@ bindkey -v '^?' backward-delete-char
 #
 # MORE ALIAS
 #
-# Changing "ls" to "exa"
+# Changing "ls" to "exa", do colour=automatic when piping 
 alias ls='exa -a --color=always --group-directories-first' # my preferred listing
 alias l='exa -al --color=always --group-directories-first' # my preferred listing
 alias la='exa -a --color=always --group-directories-first'  # all files and dirs
