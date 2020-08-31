@@ -7,13 +7,10 @@ subject_names=""
 IFS=$'\n'
 for path in $folder_paths; do
     folder_name=$(cut -d "/" -f 9 <(echo "$path"))
-    echo $folder_name
     folders["$folder_name"]="$path"
     if [[ ! -z "$subject_names" ]]; then
-        echo "first"
         printf -v subject_names "%s\n%s" "$subject_names" "$folder_name"
     else
-        echo "second"
         printf -v subject_names "%s" "$folder_name"
     fi
 done

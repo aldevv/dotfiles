@@ -131,7 +131,7 @@ autocmd ColorScheme gruvbox hi SpellBad cterm=reverse ctermfg=214 ctermbg=235 gu
 "colorscheme onehalfdark
 "colorscheme dracula
 colorscheme gruvbox
-"colorscheme wal
+" colorscheme wal
 "set background=dark
 "
 "for transparent vim
