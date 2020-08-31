@@ -217,7 +217,7 @@ function ggu() {
 compdef _git ggu=git-checkout
 
 alias ggpur='ggu'
-alias ggpull='git pull origin "$(git_current_branch)"'
+alias ggpu='git pull origin "$(git_current_branch)"'
 alias ggpush='git push origin "$(git_current_branch)"'
 
 alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
@@ -232,8 +232,9 @@ alias git-svn-dcommit-push='git svn dcommit && git push github $(git_main_branch
 alias gk='\gitk --all --branches'
 alias gke='\gitk --all $(git log -g --pretty=%h)'
 
-alias gl='git pull'
-alias glg='git log --stat'
+# alias gl='git pull'
+alias glg="git log --reverse --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr)'"
+alias glgs='git log --stat'
 alias glgp='git log --stat -p'
 alias glgg='git log --graph'
 alias glgga='git log --graph --decorate --all'
@@ -260,7 +261,7 @@ alias gpd='git push --dry-run'
 alias gpf='git push --force-with-lease'
 alias gpf!='git push --force'
 alias gpoat='git push origin --all && git push origin --tags'
-alias gpu='git push upstream'
+# alias gpu='git push upstream'
 alias gpv='git push -v'
 
 alias gr='git remote'
