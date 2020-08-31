@@ -131,9 +131,6 @@ mode_switch + i
     # st -e $UTILITIES/misc/runCommand $(dmenu -p "prompt:")
 	 # dunstify $(sh -c "$(dmenu -i -p "prompt:")")
 
-mode_switch + b
- 	 $UTILITIES/search/searchClassBook
- 	 # $UTILITIES/search/searchBookFolder
 
 super + F9
  	 $UTILITIES/mount/mountD
