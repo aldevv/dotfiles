@@ -1,4 +1,6 @@
 alias h="cd ~ && ls -a"
+alias ob="cd ~/dev/Work/PPE/tensorflow-api && ls -a"
+alias obd="cd ~/dev/Work/PPE/tensorflow-api/models/research/object_detection && ls -a"
 alias wo="cd ~/dev/Work/PPE && ls -a"
 alias bk="cd ~/Documents/Learn/Books && ls -a"
 alias lc="cd ~/Documents/Learn/classes/2020-2/clases && ls -a"

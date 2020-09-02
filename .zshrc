@@ -119,6 +119,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases 
 alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
+    xc="xclip -selection clipboard"\
 	j="joplin"\
 	v="nvim"\
 	xmonad="$HOME/.cabal/bin/xmonad"\
@@ -242,6 +243,7 @@ alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias l.='exa -a | egrep "^\."'
+alias lg='exa -a | grep '
 #
 #
 # adding flags
