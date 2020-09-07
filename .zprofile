@@ -1,3 +1,4 @@
+#
 export C_INCLUDE_PATH=.:~/Documents/mlibs
 export EPISODES=~/Downloads
 export TERMINAL=st
@@ -40,6 +41,13 @@ export PATH="$(du $HOME/.local/bin | cut -f2 | tr '\n' ':')$PATH"
 export GTK_IM_MODULE='ibus'
 export QT_IM_MODULE='ibus'
 export XMODIFIERS=@im='ibus'
+
+#======================================
+# work
+export WORK="$HOME/dev/Work"
+export PYTHONPATH="$WORK/PPE/tensorflow-api/models/research:$WORK/PPE/tensorflow-api/models/research/slim:$WORK/PPE/tensorflow-api/models:$PYTHONPATH"
+
+#======================================
 
 #fzf
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "

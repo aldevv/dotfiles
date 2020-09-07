@@ -4,15 +4,15 @@
 # the sum of 20% is always more because there can be more than one tag in a single picture
 default="\"image\",\"xmin\",\"ymin\",\"xmax\",\"ymax\",\"label\""
 [[ ! -e "test" ]] && mkdir "test"
-[[ ! -e "training" ]] && mkdir "training" 
-echo "$default" > "training/train.csv"
+[[ ! -e "training" ]] && mkdir "train" 
+echo "$(sed 1q "$1")" > "test/test.csv"
 
 # copy original to new file
 csv=$1
 path=$(dirname "$csv")
-cp "$csv" "test/test.csv"
-cp ${path}/*.jpg "test/"
-csv="test/test.csv"
+cp "$csv" "train/train.csv"
+cp ${path}/*.jpg "train/"
+csv="train/train.csv"
 
 
 # gets 20% of all tags
@@ -84,12 +84,12 @@ while [[ $(instancesLeft) -gt 0 ]]; do
         changed=1
         unset tags[$tag]
         tags[$tag]=$(( $elementsLeft - $numOcurrences ))
-        grep "$image_name" "$csv" | grep "$tag" >> "training/train.csv"
+        grep "$image_name" "$csv" | grep "$tag" >> "test/test.csv"
         iter=$(( iter + 1 ))
     done
     if [[ "$changed" == 1 ]]; then
         sed -i "/$image_name/d" "$csv"
         image_path=$(echo "$image_name" | cut -d '"' -f 2 )
-        mv "test/$image_path" "training/"
+        mv "train/$image_path" "test/"
     fi
 done

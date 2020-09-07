@@ -1,6 +1,5 @@
 #!/bin/bash
 #change to dash
-checked=""
 while true; do
     time=$(date +'%H:%M')
     # battery="🔋$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | awk '/percentage/{print $2}' | tr -d "%")"

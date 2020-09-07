@@ -273,6 +273,10 @@ alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
 alias du="du -hd 1"
 alias pk="$PROGRAMS/PacketTracer-AppImage/out/Cisco_Packet_Tracer-7.2.1.glibc2.15-x86_64.AppImage"
+
+alias ampl="/home/solus/Downloads/amplide.linux64/amplide/amplide"
+alias tv="/home/solus/.local/Programs/teamviewer/teamviewer"
+
 #
 #completion and highlighting
 fpath=($PROGRAMS/zsh-completions/src $fpath)
