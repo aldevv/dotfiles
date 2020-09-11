@@ -2,10 +2,11 @@
 
 # the csv has to be in the same folder as all the pictures for this script to work correctly
 # the sum of 20% is always more because there can be more than one tag in a single picture
-default="\"image\",\"xmin\",\"ymin\",\"xmax\",\"ymax\",\"label\""
 [[ ! -e "test" ]] && mkdir "test"
 [[ ! -e "training" ]] && mkdir "train" 
-echo "$(sed 1q "$1")" > "test/test.csv"
+first_line=$(sed 1q "$1")
+modified_first_line=$(sed -n 1's/image/filename/g;s/label/class/gp')
+echo "$modified_first_line" > "test/test.csv"
 
 # copy original to new file
 csv=$1
@@ -32,10 +33,10 @@ for tag in "${!tags[@]}"; do
 done
     printf "_______________________\n"
     printf "%22s\n" "$sumAll"
-echo "${tags["Vest"]}"
-echo "${tags["Glasses"]}"
-echo "${tags["Gloves"]}"
-echo "${tags["Helmet"]}"
+# echo "${tags["Vest"]}"
+# echo "${tags["Glasses"]}"
+# echo "${tags["Gloves"]}"
+# echo "${tags["Helmet"]}"
 
 instancesLeft() 
 {

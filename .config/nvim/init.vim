@@ -17,6 +17,7 @@ noremap i l
 noremap k n
 noremap K N
 noremap N J
+noremap L I
 vnoremap L I
 let mapleader = " "
 let maplocalleader = "\<Space>"
