@@ -187,6 +187,9 @@ map <leader>ra :!setsid st ranger $(dirname %) 2</dev/null<cr>
 " commenting in c,cpp
 "    autocmd FileType c,cpp     nnoremap <buffer> gcc I//<esc>
 
+" auto compile status bar dwm
+    autocmd BufWritePost dwmstatus :!killall dwmstatus; setsid dwmstatus &
+
 " auto compile suckless programs MODIFY TO GET BORDER
     " autocmd BufWritePost config.h !cd $(compileSuckless %); sudo make clean install 
     autocmd BufWritePost config.h :call CompileSuck()

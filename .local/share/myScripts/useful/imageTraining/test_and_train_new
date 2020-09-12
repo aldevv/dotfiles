@@ -4,14 +4,14 @@
 # the sum of 20% is always more because there can be more than one tag in a single picture
 [[ ! -e "test" ]] && mkdir "test"
 [[ ! -e "training" ]] && mkdir "train" 
-first_line=$(sed 1q "$1")
-modified_first_line=$(sed -n 1's/image/filename/g;s/label/class/gp')
+modified_first_line=$(sed -n '1s/image/filename/g;s/label/class/gp' "$1")
 echo "$modified_first_line" > "test/test.csv"
 
 # copy original to new file
 csv=$1
 path=$(dirname "$csv")
 cp "$csv" "train/train.csv"
+sed -i '1s/image/filename/g;s/label/class/' "train/train.csv"
 cp ${path}/*.jpg "train/"
 csv="train/train.csv"
 
@@ -94,3 +94,5 @@ while [[ $(instancesLeft) -gt 0 ]]; do
         mv "train/$image_path" "test/"
     fi
 done
+mv "test/test.csv" .
+mv "train/train.csv" .

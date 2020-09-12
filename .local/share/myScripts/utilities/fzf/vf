@@ -1,0 +1,4 @@
+#!/bin/bash
+
+name=$(fzf --layout=reverse)
+[ ! -z "$name" ] && nvim "$name"

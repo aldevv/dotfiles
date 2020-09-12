@@ -7,7 +7,7 @@ fcitx & # for languages
 DISPLAY=":0" picom -b
 # compton &
 sxhkd &
-$APPS/dwm/status &
+dwmstatus &
 wal -R &
 # setup monitors
 cm

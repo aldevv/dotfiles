@@ -1,0 +1,4 @@
+#!/bin/sh
+cd "$SCRIPTS"
+name=$(fzf --layout=reverse)
+[ ! -z "$name" ] && nvim "$name"
