@@ -8,16 +8,20 @@
 "shellescape: has 2 uses, in system() and in :!. pass 1 for :! commands so it escapes the quotes, and dont pass anything for system()
 "commands
 " the system("echo " . expand(bla bla)) the dot is used to concatenate!
+"
 set shell=/bin/bash
+" see operator pending mappings (omap) for keybinding mappings
 noremap n j
 noremap e k
 noremap j e
-noremap l i
-noremap i l
+nnoremap l i
+vnoremap l i
+nnoremap i l
+vnoremap i l
 noremap k n
 noremap K N
 noremap N J
-noremap L I
+nnoremap L I
 vnoremap L I
 let mapleader = " "
 let maplocalleader = "\<Space>"
@@ -36,6 +40,17 @@ noremap  <leader>q :wq<CR>
 noremap  ! :!
 noremap  <F7> :set spell! \| set wrap<CR>
 
+" Ctrl-O lets you do just one command in insert mode
+
+inoremap <C-j> <Left>
+inoremap <C-l> <Down>
+inoremap <C-u> <Up>
+inoremap <C-y> <Right>
+cnoremap <C-j> <Left>
+cnoremap <C-l> <Down>
+cnoremap <C-u> <Up>
+cnoremap <C-y> <Right>
+
 "to install python3 in checkhelath
 "python3 -m pip install --user --upgrade pynvim
 "pip3 install neovim-remote
@@ -48,7 +63,7 @@ set spelllang=es
 "set spelllang=en_us
 
 " whichkey
-set timeoutlen=500
+set timeoutlen=2500
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 syntax on
 filetype plugin indent on
@@ -117,9 +132,23 @@ Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vwxyutarooo/nerdtree-devicons-syntax'
+"to learn
+"
+
+"    gS to split a one-liner into multiple lines
+"    gJ (with the cursor on the first line of a block) to join a block into a single-line statement.
+Plug 'AndrewRadev/splitjoin.vim'
+" good guide for dev nvim
+"https://hanspinckaers.com/posts/2020/01/vim-python-ide/
+"https://github.com/wellle/targets.vim
+" goooooooooood!!, more text objects!!
+Plug 'wellle/targets.vim'
+
 "
 "
 "
+" for c++ 
+"Plug 'preservim/tagbar'
 "Plug ‘ludovicchabant/vim-gutentags’
 "Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'https://github.com/dracula/vim', {'as': 'dracula'}
@@ -161,17 +190,34 @@ let g:airline_powerline_fonts = 1
 "https://ncona.com/2019/02/the-vim-statusline/
 
 " Keybindings
-map <leader>rp :!python3 %<cr>
-map <leader>rc :!gcc % -o a.out && ./a.out<cr>
 map <leader>rs :!./%<cr>
+map <leader>rr :call Runner()<cr>
 map <F6> :e ~/.config/nvim/init.vim<cr>
 map <F3> :e ~/.zshrc<cr>
 map <C-&> <C-^>
 
+function Runner()
+    let extension = expand('%:e') 
+
+    if extension == "c"
+         exec 'silent w | :!gcc %  && ./a.out'
+    endif
+
+    if extension == "cpp"
+         exec 'silent w | :!g++  % && ./a.out'
+    endif
+
+    if extension == "py"
+            exec 'silent w | :!python3 %'
+    endif
+endfunction
 "----------
 "AUTOMATION
 "----------
+" Vertically center document when entering insert mode
+autocmd InsertEnter * norm zz
 
+" open browser in current file folder
 map <leader>ra :!setsid st ranger $(dirname %) 2</dev/null<cr>
 
 "bufwritepost  is when you save them
@@ -306,15 +352,19 @@ command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 " GoTo code navigation.
 "nmap <leader>gd <Plug>(coc-definition)
 nmap gd <Plug>(coc-definition)
+nmap gr <Plug>(coc-references)
+nmap gi <Plug>(coc-implementation)
 nmap <leader>gy <Plug>(coc-type-definition)
-nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gr <Plug>(coc-references)
-nmap <leader>rr <Plug>(coc-rename)
 nmap <leader>g[ <Plug>(coc-diagnostic-prev)
 nmap <leader>g] <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
 nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
 nnoremap <leader>cr :CocRestart
+nnoremap <silent> <leader>+ :call CocAction('doHover')<cr>
+
+" Symbol renaming.
+nmap <F2> <Plug>(coc-rename)
+
 
 " Sweet Sweet FuGITive
 nmap <leader>gh :diffget //3<CR>
@@ -322,7 +372,7 @@ nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
 
 " ultisnips
-let g:UltiSnipsExpandTrigger='<c-l>' " TO USE SNIPPETS
+let g:UltiSnipsExpandTrigger='<c-s>' " TO USE SNIPPETS
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
@@ -404,9 +454,23 @@ autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.js,*.ts :call V
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 " prettier
-nmap <Leader>p <Plug>(Prettier)
+" nmap <Leader>p <Plug>(Prettier)
+nmap <Leader>p :call Formatting()<cr>
 
-" easymotion
+function Formatting()
+" the [:-2] is to take away the last new line character
+    let extension = expand('%:e') 
+    if extension =~ "js"
+        :Prettier
+    else
+        if extension =~ "py"
+            echo worked
+            :call CocAction('format')
+        endif
+    endif
+endfunction
+
+" easymotion"
 nmap s <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
 map <Leader>j <Plug>(easymotion-j)
@@ -416,3 +480,12 @@ map <Leader>k <Plug>(easymotion-k)
 " let g:webdevicons_enable = 1
 " let g:DevIconsEnableFoldersOpenClose = 1
 " let g:DevIconsEnableFolderExtensionPatternMatching = 1
+
+" targets plugin
+"
+
+let g:targets_aiAI = 'alAL'
+let g:targets_mapped_aiAI = 'aiAI'
+let g:targets_nl = 'ni'
+" let g:targets_aiAI = ['<Space>a', '<Space>l', '<Space>A', '<Space>L']
+" let g:targets_mapped_aiAI = ['<Space>a', '<Space>l', '<Space>A', '<Space>L']

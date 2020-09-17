@@ -1,0 +1,16 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["python"],
+
+  // python config
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+   "python.formatting.provider": "autopep8",
+
+  "snippets.ultisnips.directories":
+
+  [
+    "UltiSnips",
+    "~/.config/nvim/my_snippets"
+  ]
+
+}
