@@ -26,9 +26,9 @@ vnoremap L I
 let mapleader = " "
 let maplocalleader = "\<Space>"
 set updatetime=1500 " this is for autosave in tex files(every cursorhold event)
-noremap <c-w>i <c-w>l
-noremap <c-w>n <c-w>j
-noremap <c-w>e <c-w>k
+map <c-w>i <c-w>l
+map <c-w>n <c-w>j
+map <c-w>e <c-w>k
 noremap  <leader>- 5<c-w>-
 noremap  <leader>+ 5<c-w>+
 noremap  <leader>< 5<c-w><
@@ -39,6 +39,8 @@ noremap  <leader>w :w<CR>
 noremap  <leader>q :wq<CR>
 noremap  ! :!
 noremap  <F7> :set spell! \| set wrap<CR>
+
+map ñ <c-w>
 
 " Ctrl-O lets you do just one command in insert mode
 
@@ -197,18 +199,19 @@ map <F3> :e ~/.zshrc<cr>
 map <C-&> <C-^>
 
 function Runner()
+    exec 'silent w'
     let extension = expand('%:e') 
 
     if extension == "c"
-         exec 'silent w | :!gcc %  && ./a.out'
+         :!gcc %  && ./a.out
     endif
 
     if extension == "cpp"
-         exec 'silent w | :!g++  % && ./a.out'
+         :!g++  % && ./a.out
     endif
 
     if extension == "py"
-            exec 'silent w | :!python3 %'
+        :!python3 %
     endif
 endfunction
 "----------
