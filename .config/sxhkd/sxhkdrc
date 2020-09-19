@@ -44,7 +44,7 @@ mode_switch +  k
 # super + y
 #     st -e "$($UTILITIES/youtube/YT.tcl)"
 
- mode_switch + v
+ super + v
     bash -c code-oss
 
 super + F1
@@ -93,6 +93,9 @@ shift + Print
 # works on release
 @Print
 	 allScreen
+
+control + Print
+	 allScreen2
 
 mode_switch + b
  	 searchClassBook

@@ -11,6 +11,7 @@ ARRAY=( "l:b-ok.cc"
         "s:snipboard.io/"
         "t:github.com/wellle/targets.vim/"
         "tt:barbarianmeetscoding.com/blog/2019/08/11/exploring-vim-plugins-improve-and-extend-your-text-objects-with-targets-vim/"
+        "ttt:medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db"
     )
 
     # regex in these conditions cant be in quotes

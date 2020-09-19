@@ -1,4 +1,10 @@
 {
+    //main vim has argument text objects, and will implement targets.vim in the future
+    // waiting for a release of this, to switch to main vim extension:  https://github.com/VSCodeVim/Vim/pull/4735 (so i can use
+    // operator pending non recursive keybindings)
+    // in colemak theres only commands in visual and in normal
+    // for targets.vim support, waiting for this PR
+    // https://github.com/VSCodeVim/Vim/issues/601
     "workbench.iconTheme": "vscode-icons",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -74,6 +80,20 @@
     "vim.debug.loggingLevelForAlert":"error",
     "bookmarks.navigateThroughAllFiles": true,
     "vim.visualModeKeyBindingsNonRecursive": [
+        // colemak
+        // {
+        //     "before": ["l"],
+        //     "after": ["i"]
+        // },
+        // {
+        //     "before": ["i"],
+        //     "after": ["l"]
+        // },
+        // {
+        //     "before": ["L"],
+        //     "after": ["I"]
+        // },
+        // end colemak
         {
             "before": ["<leader>", "r"],
             "commands": ["python.refactorExtractMethod"]
@@ -91,6 +111,44 @@
         }
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
+        // colemak
+        // {
+        //     "before": ["n"],
+        //     "after": ["j"]
+        // },
+        // {
+        //     "before": ["e"],
+        //     "after": ["k"]
+        // },
+        // {
+        //     "before": ["j"],
+        //     "after": ["e"]
+        // },
+        // {
+        //     "before": ["l"],
+        //     "after": ["i"]
+        // },
+        // {
+        //     "before": ["i"],
+        //     "after": ["l"]
+        // },
+        // {
+        //     "before": ["k"],
+        //     "after": ["n"]
+        // },
+        // {
+        //     "before": ["K"],
+        //     "after": ["N"]
+        // },
+        // {
+        //     "before": ["N"],
+        //     "after": ["J"]
+        // },
+        // {
+        //     "before": ["L"],
+        //     "after": ["I"]
+        // },
+        // end colemak
         {
         "before": ["<leader>", "m"],
             "commands": ["bookmarks.toggle"]
@@ -490,7 +548,24 @@
         "/home/solus/Documents/Learn/testing",
     ],
 // "styleMeter.musicFilepath": "/home/solus/Music/code/dmc.mp3"
-"styleMeter.defaultEnabled": false,
+// "styleMeter.defaultEnabled": false,
 "java.semanticHighlighting.enabled": true,
 "diffEditor.ignoreTrimWhitespace": false,
+"vim.vimrc.path": "$HOME/.config/nvim/init.vim",
+
+"vim.operatorPendingModeKeyBindingsNonRecursive": [
+        {
+            "before": ["n"],
+            "after": ["j"]
+        },
+        {
+            "before": ["e"],
+            "after": ["k"]
+        },
+        {
+            "before": ["i"],
+            "after": ["l"]
+        },
+    ],
+
 }

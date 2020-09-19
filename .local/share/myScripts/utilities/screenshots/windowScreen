@@ -13,4 +13,5 @@ if [[ -z $(pgrep copyq) ]]; then
 fi
 import "$HOME/Pictures/screenshots/${fname}"
 copyq write image/png - <  "$HOME/Pictures/screenshots/${fname}" && copyq select 0
+dunstify "screenshot taken 🚵"
 # xclip -selection clipboard -target image/png -i ~/Pictures/screenshots/${fname}
