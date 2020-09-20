@@ -3,11 +3,12 @@
     // waiting for a release of this, to switch to main vim extension:  https://github.com/VSCodeVim/Vim/pull/4735 (so i can use
     // operator pending non recursive keybindings)
     // in colemak theres only commands in visual and in normal
-    // for targets.vim support, waiting for this PR
+    // for targets.vim support, waiting for this P x
     // https://github.com/VSCodeVim/Vim/issues/601
     "workbench.iconTheme": "vscode-icons",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    
     "sync.gist": "76de89b87e88ad71c6fd080543451029",
     "files.exclude": {
         "**/**.meta": true,
@@ -24,7 +25,6 @@
     "sync.forceUpload": true,
     "editor.lineNumbers": "relative",
     "workbench.activityBar.visible": false,
-    "workbench.colorTheme": "Dracula",
     "vim.useSystemClipboard": true,
     //"window.menuBarVisibility": "default",
     "window.menuBarVisibility": "toggle",
@@ -426,16 +426,61 @@
     ],
     "workbench.startupEditor": "bruh",
     "editor.minimap.enabled": false,
-    "editor.fontSize": 16,
+    "editor.fontSize": 18,
     "terminal.integrated.fontFamily": "monospace, PowerLineSymbols",
     // "editor.fontFamily": "'Fira Code'",
+    "editor.fontFamily": "Fira Code iScript",
     "editor.fontLigatures": true,
-    "editor.fontFamily": "Fira Code Retina, Fira Code",
+    "workbench.colorTheme": "Dracula Italics",
+    
+"editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          //following will be in italics (=Pacifico)
+          "comment",
+          "entity.name.type.class", //class names
+          "keyword", //import, export, return…
+          //"support.class.builtin.js", //String, Number, Boolean…, this, super
+          "storage.modifier", //static keyword
+          "storage.type.class.js", //class keyword
+          "storage.type.function.js", // function keyword
+          "storage.type.js", // Variable declarations
+          "keyword.control.import.js", // Imports
+          "keyword.control.from.js", // From-Keyword
+          //"entity.name.type.js", // new … Expression
+          "keyword.control.flow.js", // await
+          "keyword.control.conditional.js", // if
+          "keyword.control.loop.js", // for
+          "keyword.operator.new.js", // new
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": [
+          //following will be excluded from italics (My theme (Monokai dark) has some defaults I don't want to be in italics)
+          "invalid",
+          "keyword.operator",
+          "constant.numeric.css",
+          "keyword.other.unit.px.css",
+          "constant.numeric.decimal.js",
+          "constant.numeric.json",
+          "entity.name.type.class.js"
+        ],
+        "settings": {
+          "fontStyle": ""
+        }
+      }
+    ]
+},
+
     // "files.autoSave": "afterDelay" doesnt let you undo
 //    "editor.fontWeight": "300" // Light
 //    "editor.fontWeight": "400" // Regular
-//    "editor.fontWeight": "500", // Medium
-   "editor.fontWeight": "600", // Bold
+   "editor.fontWeight": "500", // Medium
+//    "editor.fontWeight": "600", // Bold
 //!these are made for better comments!
     "editor.cursorSurroundingLines":4,
     "better-comments.tags": [

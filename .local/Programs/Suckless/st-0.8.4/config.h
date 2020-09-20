@@ -10,19 +10,22 @@
 //
 // current
 /* static char *font = "Fira Code:size=10:antialias=true:autohint=true"; */
-static char *font = "FiraCode Nerd Font:size=10:antialias=true:autohint=true";
+/* static char *font = "FiraCode Nerd Font:size=11:antialias=true:autohint=true"; */
+static char *font = "FiraCode Nerd Font Mono:size=11:antialias=true:autohint=true";
+/* static char *font = "monospace:pixelsize=15:antialias=true:autohint=true"; */
+/* static char *font = "VictorMono Nerd Font Mono:size=10:antialias=true:autohint=true"; */
 /* static char *font = "Source Code Pro:pixelsize=14:antialias=true:autohint=true"; // Unicode (emojis) */
 ;
 /* static char *font = "mono:size=10:antialias=true:autohint=true"; */
 /* Spare fonts */
 static char *font2[] = {
-    "Noto Sans Emoji:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis)
-    "Droid Sans Japanese:pixelsize=14:antialias=true:autohint=true", // Japanese
+    "Noto Sans Emoji:pixelsize=11:antialias=true:autohint=true", // Unicode (emojis)
+    "Droid Sans Japanese:pixelsize=11:antialias=true:autohint=true", // Japanese
     /* "Hack Nerd Font Mono:pixelsize=14:antialias=true:autohint=true", // Powerline */
     /* "Source Code Pro:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis) */
     /* "JoyPixels:pixelsize=14:antialias=true:autohint=true" //not working in solus */
     /* "Symbola:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis) */
-    /* "Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */  
+    /* "Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
     /* "JoyPixels:pixelsize=14:antialias=true:autohint=true" //not working in solus */
 };
 

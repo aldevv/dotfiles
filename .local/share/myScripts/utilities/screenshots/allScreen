@@ -9,8 +9,7 @@ done
 if [[ -z $(pgrep copyq) ]]; then
     copyq &
 fi
-import -display :0 -window root "$HOME/Pictures/screenshots/${fname}"
+import -window root "$HOME/Pictures/screenshots/${fname}"
 copyq write image/png - <  "$HOME/Pictures/screenshots/${fname}" && copyq select 0
-dunstify "screenshot taken 🚵"
 # for something like pdf
 #copyq write application/pdf - < file.pdf && copyq select 0

@@ -1,5 +1,5 @@
-
 #!/bin/bash
+
 today=$( date +%d%m%Y )   # or: printf -v today '%(%Y%m%d)T' -1
 number=0
 

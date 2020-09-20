@@ -15,6 +15,8 @@
 ":verbose nmap <localleader>
 ":verbose xmap <leader>
 "
+"
+syntax enable
 set shell=/bin/bash
 let mapleader = " "
 let maplocalleader = ','
@@ -37,8 +39,8 @@ set spelllang=en_us
 set timeoutlen=1500
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
-syntax on
 filetype plugin indent on
+" set signcolumn=yes
 " set foldmethod=indent
 set foldmethod=manual
 " set foldcolumn=1
@@ -78,44 +80,16 @@ endif
 "================
 source ~/.config/nvim/modules/plugins.vim
 
-" fix colors for highlighting spelling mistakes
-autocmd ColorScheme gruvbox hi SpellBad cterm=reverse ctermfg=214 ctermbg=235 gui=reverse guifg=#fabd2f guibg=#282828
+"================
+" APPEARANCE
+"================
 
-" Theme
-"colorscheme onehalfdark
-"colorscheme dracula
-colorscheme gruvbox
-"try codedark
-" colorscheme wal
-"set background=dark
-"
-"for transparent vim
-hi Normal guibg=NONE ctermbg=NONE
-
-" sets 24 bit term colors for vim
-set termguicolors
-
-"Cursor highlight groups
-"Cursor CursorIM CursorColumn CursorLine
-
-
-" airline
-"let g:airline_theme='onehalfdark'
-"let g:airline_theme='gruvbox'
-"show buffers active on top
-"let g:airline#extensions#tabline#enabled = 1
-"
-"
-"Themes
-"https://github.com/vim-airline/vim-airline/wiki/Screenshots
-"
-let g:airline_theme='luna'
-let g:airline_powerline_fonts = 1
-"https://ncona.com/2019/02/the-vim-statusline/
+source ~/.config/nvim/modules/appearance.vim
 
 "=====================
 " KEYBINDINGS
 "=====================
+
 
 noremap n j
 noremap e k
@@ -136,13 +110,13 @@ noremap z[ [z
 noremap z] ]z
 
 "" Guide navigation
-noremap <localleader><Tab> <Esc>/<++><Enter>"_c4l
-inoremap <localleader><Tab> <Esc>/<++><Enter>"_c4l
-vnoremap <localleader><Tab> <Esc>/<++><Enter>"_c4l
+noremap <a-k> <Esc>/<++><Enter>"_c4l
+inoremap <a-k> <Esc>/<++><Enter>"_c4l
+vnoremap <a-k> <Esc>/<++><Enter>"_c4l
 
 " general insert commands
 " inoremap ;g <++>
-inoremap <localleader>g <++>
+inoremap <a-m> <++>
 
 " shell
 noremap <leader>rb i#!/bin/sh<CR><CR>
@@ -154,10 +128,10 @@ cmap w!! w !sudo tee > /dev/null %
 
 map <leader>rs :!./%<cr>
 noremap <c-n> <c-y>
-map  <c-w>+ 5<c-w>-
-map  <c-w>- 5<c-w>+
-map  <c-w>< 5<c-w>>
-map  <c-w>> 5<c-w><
+noremap  N 5<c-w>-
+noremap  E 5<c-w>+
+noremap  + 5<c-w>>
+noremap  - 5<c-w><
 nnoremap <leader>h <c-w>h
 nnoremap <leader>n <c-w>j
 nnoremap <leader>e <c-w>k
@@ -210,13 +184,16 @@ endfunction
 "AUTOMATION
 "----------
 
+" fix color signcolumn
+autocmd ColorScheme * highlight! link SignColumn LineNr
+
 " Remove trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 " Vertically center document when entering insert mode
 autocmd InsertEnter * norm zz
 
 " open browser in current file folder
-map <leader>ra :!setsid st ranger $(dirname %) 2>/dev/null <cr>
+map <leader>ra :!setsid st -e ranger $(dirname %) 2>/dev/null <cr>
 
 "bufwritepost  is when you save them
 "bufreadpost  is when you open them
@@ -298,10 +275,51 @@ endfunction
 map <leader>u :UndotreeToggle<CR>
 
 " NERDTreeToggle
+" check mappings here
+"https://github.com/preservim/nerdtree/blob/master/doc/NERDTree.txt
 map <leader>se :NERDTreeToggle<CR>
+map <leader>lb :Bookmark<CR>
+
 let NERDTreeMenuUp   = 'e'
 let NERDTreeMenuDown = 'n'
 let NERDTreeMapOpenExpl = 'k'
+" enable line numbers
+let NERDTreeShowLineNumbers=1
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
+
+" close vim if only nerdtree is open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+" to avoid crashes with vim-plug functions while cursor in nerdtree
+let NERDTreeShowHidden=1
+let g:plug_window = 'noautocmd vertical topleft new'
+
+let NERDTreeMapOpenSplit = "s"
+let NERDTreeMapPreviewSplit = "gs"
+let NERDTreeMapOpenVSplit = "l"
+let NERDTreeMapPreviewVSplit = "gl"
+let NERDTreeMapJumpFirstChild = "E"
+let NERDTreeMapJumpLastChild = "N"
+let NERDTreeMapJumpPrevSibling = "<C-E>"
+let NERDTreeMapJumpNextSibling = "<C-N>"
+let NERDTreeMapToggleHidden = "<BS>"
+
+let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'➕',
+                \ 'Untracked' :'✭ ',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
 
 " Undo tree
 nnoremap <F5> :UndotreeToggle<cr>
@@ -362,29 +380,55 @@ nnoremap <leader>cr :CocRestart
 nnoremap <silent> <leader>+ :call CocAction('doHover')<cr>
 nmap <F2> <Plug>(coc-rename)
 
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+   \ pumvisible() ? "\<C-n>" :
+   \ <SID>check_back_space() ? "\<TAB>" :
+   \ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics (errors)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+"Coc-snippets
+"to scroll with tab
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+let g:coc_snippet_next = '<TAB>'
+let g:coc_snippet_prev = '<S-TAB>'
+"imap <C-l> <Plug>(coc-snippets-expand)
+
 
     " \ 'coc-html',
     " \ 'coc-prettier',
     " \ 'coc-json',
- let g:coc_global_extensions = [
-    \ 'coc-marketplace',
-    \ 'coc-snippets',
-    \ 'coc-pairs',
-    \ 'coc-tsserver',
-    \ 'coc-css',
-    \ 'coc-vimtex',
-    \ 'coc-python',
-    \ 'coc-sh',
-    \ 'coc-tslint-plugin',
-    \ ]
+let g:coc_global_extensions = [
+   \ 'coc-marketplace',
+   \ 'coc-snippets',
+   \ 'coc-pairs',
+   \ 'coc-tsserver',
+   \ 'coc-css',
+   \ 'coc-vimtex',
+   \ 'coc-python',
+   \ 'coc-sh',
+   \ 'coc-tslint-plugin',
+   \ ]
 
- " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-  " Coc only does snippet and additional edit on confirm.
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
- " Use `[g` and `]g` to navigate diagnostics (errors)
-  nmap <silent> [g <Plug>(coc-diagnostic-prev)
-  nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Sweet Sweet FuGITive
 nmap <leader>gh :diffget //3<CR>
@@ -397,13 +441,6 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 
-"Coc-snippets
-"to scroll with tab
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-let g:coc_snippet_next = '<TAB>'
-let g:coc_snippet_prev = '<S-TAB>'
-"imap <C-l> <Plug>(coc-snippets-expand)
 
 
 " vimtex
@@ -590,3 +627,42 @@ let g:closetag_close_shortcut = '<leader>>'
 "   autocmd BufWinLeave * mkview
 "   autocmd BufWinEnter * silent! loadview
 " augroup END
+"
+" Emmet
+" enable just for desired filetypes
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,js,jsx,ts EmmetInstall
+let g:user_emmet_leader_key='<C-Y>'
+" alt-gr s
+let g:user_emmet_expandabbr_key = 'ß'
+ "  let g:user_emmet_expandword_key = '<C-y>;'
+ "  let g:user_emmet_update_tag = '<C-y>u'
+ "  "highlight tag groups"
+ "  let g:user_emmet_balancetaginward_key = '<C-y>d'
+ "  let g:user_emmet_balancetagoutward_key = '<C-y>D'
+ "  "this is the next edit point"
+ "  let g:user_emmet_next_key = '<C-y>n'
+ "  let g:user_emmet_prev_key = '<C-y>N'
+ "  let g:user_emmet_imagesize_key = '<C-y>i'
+ "  "this comments a whole tag group"
+ "  let g:user_emmet_togglecomment_key = '<C-y>/'
+ "  let g:user_emmet_splitjointag_key = '<C-y>j'
+ "  let g:user_emmet_removetag_key = '<C-y>k'
+ "  "with a link it creates a <a tag"
+ "  let g:user_emmet_anchorizeurl_key = '<C-y>a'
+ "  "good for citation (gives an automatic description of the website)"
+ "  let g:user_emmet_anchorizesummary_key = '<C-y>A'
+ "  let g:user_emmet_mergelines_key = '<C-y>m'
+ "  let g:user_emmet_codepretty_key = '<C-y>c'
+
+ " vim git gutter"
+ "
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+nmap ) <Plug>(GitGutterNextHunk)
+nmap ( <Plug>(GitGutterPrevHunk)
+let g:gitgutter_enabled = 1
+" disable all by default
+let g:gitgutter_map_keys = 0
+let g:gitgutter_highlight_linenrs = 1

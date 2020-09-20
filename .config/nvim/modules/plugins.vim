@@ -4,7 +4,6 @@ call plug#begin()
 "
  Plug 'morhetz/gruvbox'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
- Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  }
  Plug 'https://github.com/vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  Plug 'https://github.com/mbbill/undotree'
@@ -19,18 +18,22 @@ call plug#begin()
  Plug 'tpope/vim-commentary'
  Plug 'liuchengxu/vim-which-key'
  Plug 'junegunn/goyo.vim'
- Plug 'neovimhaskell/haskell-vim'
  Plug 'yuezk/vim-js'
  Plug 'maxmellon/vim-jsx-pretty'
  Plug 'yggdroot/indentLine'
+ Plug 'tpope/vim-fugitive'
  Plug 'prettier/vim-prettier', {
    \ 'do': 'npm install',
    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
  Plug 'tpope/vim-surround'
  Plug 'easymotion/vim-easymotion'
- Plug 'ryanoasis/vim-devicons'
- Plug 'vwxyutarooo/nerdtree-devicons-syntax'
+ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  } |
+             \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+             \ Plug 'ryanoasis/vim-devicons' |
+             \ Plug 'vwxyutarooo/nerdtree-devicons-syntax' |
 
+ Plug 'mattn/emmet-vim'
+ Plug 'airblade/vim-gitgutter'
 "to learn
 "
 "
@@ -46,6 +49,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 "https://github.com/wellle/targets.vim
 " goooooooooood!!, more text objects!!
 Plug 'wellle/targets.vim'
+ Plug 'neovimhaskell/haskell-vim'
 
 "
 "

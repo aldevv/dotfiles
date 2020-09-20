@@ -6,13 +6,13 @@ static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static int floatposgrid_x           = 5;        /* float grid columns */
 static int floatposgrid_y           = 5;        /* float grid rows */
-static const char *fonts[]          = { 
+static const char *fonts[]          = {
     /* "Hack Nerd Font Mono:pixelsize=14:antialias=true:autohint=true", // Powerline */
     "Noto Sans Emoji:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis)
     /* "Symbola:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis) */
 	"monospace:size=10"
  };
-static const char dmenufont[]       = "Fira Code:size=10";
+static const char dmenufont[]       = "Fira Code Nerd Font:size=10";
 /* static char selbordercolor[]        = "#eeeeee"; //border of selected window */
 static unsigned int borderpx  = 3;        /* border pixel of windows */
 static char selbordercolor[]        = "#770000"; //border of selected window
@@ -75,13 +75,13 @@ static const Rule rules[] = {
 	{ "Code",    NULL,     NULL,           1 << 2,       0,          0,           0,        -1,  "50% 50% 800W 800H"    },
 	{ "Station", NULL,     NULL,           1 << 0,       0,          0,           0,        -1,  "50% 50% 800W 800H"     },
 	{ "meh",      NULL,     NULL,           0,           1,          1,           1,        -1,  "100% 100% 100W 700H"   },
-	{ NULL,      NULL,     "Event Tester", 0,            0,          0,           1,        -1,  "50% 50% 800W 800H"     }, 
+	{ NULL,      NULL,     "Event Tester", 0,            0,          0,           1,        -1,  "50% 50% 800W 800H"     },
 	{ NULL,		  "spterm",		NULL,	SPTAG(0),	     1,		     1,           0,        -1,  "50% 50% 800W 500H"      },
 	{ NULL,		  "spfm",		NULL,	SPTAG(1),	     1,		     1,           0,        -1,  "0% 0% 500W 500H"      },
 	{ NULL,		  "spman",      NULL,	SPTAG(2),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"      },
 	{ NULL,		  "sptab",		NULL,	SPTAG(3),	     1,		     1,           0,        -1,  "100% 0% 300W 400H"      },
 	{ NULL,		  "spcalc",		NULL,	SPTAG(4),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"     },
-	/* { NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 }, */                   
+	/* { NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 }, */
 	//{ "Station", NULL,     NULL,         (1 << 8)-1,    0,          0,          -1,        -1 }, selects all tags except the 9th
 };
 /* example */
