@@ -34,7 +34,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$(du $SHARED | cut -f2 | tr '\n' ':')$PATH"
 export PATH="$(du $APPS | cut -f2 | tr '\n' ':')$PATH"
 export PATH="$(du $UTILITIES  | cut -f2 | tr '\n' ':')$PATH"
-export PATH="$(du $AUTOMATION | cut -f2 | tr '\n' ':')$PATH" 
+export PATH="$(du $AUTOMATION | cut -f2 | tr '\n' ':')$PATH"
 export PATH="$(du $HOME/.local/bin | cut -f2 | tr '\n' ':')$PATH"
 
 # Settings for Japanese input
@@ -52,15 +52,15 @@ export PYTHONPATH="$WORK/PPE/tensorflow-api/models/research:$WORK/PPE/tensorflow
 #fzf
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
-export FZF_DEFAULT_COMMAND="rg --files --follow -g '!{**/node_modules/*,.git,miniconda3,env,envs,__pycache__, libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}'"
+export FZF_DEFAULT_COMMAND="rg --files --follow -g '!{**/node_modules/*,**/.git/*,miniconda3/*,backups/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}'"
 export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 #colors less
 #export  LESS_TERMCAP_mb=$'\e[1;31m'
 #export  LESS_TERMCAP_md=$'\e[1;31m'
 #export  LESS_TERMCAP_me=$'\e[0m'
-#export  LESS_TERMCAP_se=$'\e[0m' 
-#export  LESS_TERMCAP_so=$'\e[1;44;33m' 
-#export  LESS_TERMCAP_ue=$'\e[0m' 
+#export  LESS_TERMCAP_se=$'\e[0m'
+#export  LESS_TERMCAP_so=$'\e[1;44;33m'
+#export  LESS_TERMCAP_ue=$'\e[0m'
 #export  LESS_TERMCAP_us=$'\e[1;32m'
 
 export MANPAGER='less -s -M +Gg'

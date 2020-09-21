@@ -36,7 +36,7 @@ let NERDTreeMapToggleHidden = "<BS>"
 
 let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
+                \ 'Modified'  :'✹ ',
                 \ 'Staged'    :'➕',
                 \ 'Untracked' :'✭ ',
                 \ 'Renamed'   :'➜',

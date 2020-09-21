@@ -39,6 +39,7 @@
 "python3 -m pip install --user --upgrade pynvim
 "pip3 install neovim-remote
 "
+"
 "==================
 " SETTINGS
 "==================

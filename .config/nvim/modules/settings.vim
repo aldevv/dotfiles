@@ -1,4 +1,6 @@
 syntax enable
+" disable compatibility to vi, to activate vim improvements
+set nocompatible
 set shell=/bin/bash
 let mapleader = " "
 let maplocalleader = ','
@@ -18,7 +20,11 @@ nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 filetype plugin indent on
 " set signcolumn=yes
 " set foldmethod=indent
+
+let &t_8f = '\<esc>[38;2;%lu;%lu;%lum'
+let &t_8b = '\<esc>[48;2;%lu;%lu;%lum'
 set foldmethod=manual
+set splitbelow
 " set foldcolumn=1
 set wildmode=longest,list,full
 set expandtab "makes tab work as spaces

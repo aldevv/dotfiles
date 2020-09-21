@@ -16,6 +16,15 @@ noremap zD zE
 noremap z[ [z
 noremap z] ]z
 
+nnoremap gñ :SyntaxQuery<CR>
+nnoremap <C-t> : call Toggle_transparent()<CR>
+
+" open terminal
+map <Leader>tt :new term://zsh \| resize 10<CR>
+
+"To map <Esc> to exit terminal-mode:
+tnoremap <a-m> <C-\><C-n>
+
 "" Guide navigation
 noremap <a-k> <Esc>/<++><Enter>"_c4l
 inoremap <a-k> <Esc>/<++><Enter>"_c4l

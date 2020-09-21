@@ -1,30 +1,47 @@
 call plug#begin()
 
 "
-"
+" themes
  Plug 'morhetz/gruvbox'
- Plug 'neoclide/coc.nvim', {'branch': 'release'}
- Plug 'https://github.com/vim-airline/vim-airline'
+ Plug 'fcpg/vim-fahrenheit'
+ Plug 'tomasiser/vim-code-dark'
+ Plug 'dracula/vim'
+ Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
- Plug 'https://github.com/mbbill/undotree'
- Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
- Plug 'tpope/vim-repeat'
- Plug 'junegunn/fzf.vim'
- Plug 'lervag/vimtex'
+ " programming
+ Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'scrooloose/syntastic'
  Plug 'SirVer/ultisnips'
  Plug 'honza/vim-snippets'
- Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
  Plug 'tpope/vim-commentary'
- Plug 'liuchengxu/vim-which-key'
- Plug 'junegunn/goyo.vim'
- Plug 'yuezk/vim-js'
- Plug 'maxmellon/vim-jsx-pretty'
+ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+ Plug 'junegunn/fzf.vim'
+ " Plug 'yuezk/vim-js'
+ " Plug 'maxmellon/vim-jsx-pretty'
  Plug 'yggdroot/indentLine'
- Plug 'tpope/vim-fugitive'
  Plug 'prettier/vim-prettier', {
    \ 'do': 'npm install',
    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+ Plug 'mattn/emmet-vim'
+ Plug 'airblade/vim-gitgutter' |
+    \ Plug 'tpope/vim-fugitive'
+ " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+ Plug 'sheerun/vim-polyglot'
+ " to see hex colors"
+ Plug 'ap/vim-css-color'
+Plug  'alvan/vim-closetag'
+"    gS to split a one-liner into multiple lines
+"    gJ (with the cursor on the first line of a block) to join a block into a single-line statement.
+Plug 'AndrewRadev/splitjoin.vim'
+" goooooooooood!!, more text objects!!
+Plug 'wellle/targets.vim'
+ " misc
+ Plug 'mbbill/undotree'
+ Plug 'tpope/vim-repeat'
+ Plug 'lervag/vimtex'
+ Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
+ Plug 'liuchengxu/vim-which-key'
+ Plug 'junegunn/goyo.vim'
  Plug 'tpope/vim-surround'
  Plug 'easymotion/vim-easymotion'
  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  } |
@@ -32,27 +49,10 @@ call plug#begin()
              \ Plug 'ryanoasis/vim-devicons' |
              \ Plug 'vwxyutarooo/nerdtree-devicons-syntax' |
 
- Plug 'mattn/emmet-vim'
- Plug 'airblade/vim-gitgutter'
-"to learn
-"
-"
- "Plug 'dylanaraps/wal'
- "close html and jsx tags
-Plug  'alvan/vim-closetag'
-
-"    gS to split a one-liner into multiple lines
-"    gJ (with the cursor on the first line of a block) to join a block into a single-line statement.
-Plug 'AndrewRadev/splitjoin.vim'
 " good guide for dev nvim
 "https://hanspinckaers.com/posts/2020/01/vim-python-ide/
 "https://github.com/wellle/targets.vim
-" goooooooooood!!, more text objects!!
-Plug 'wellle/targets.vim'
- Plug 'neovimhaskell/haskell-vim'
 
-"
-"
 "
 " for c++
 "Plug 'preservim/tagbar'
