@@ -16,7 +16,7 @@
 "     |VVV/'++/#/+/#/ /#/ /#/
 "     'V/'  /##//##//##//###/
 "              ++
-
+set t_Co=256
 "cgn change <highlighted item>, useful when you searched something
 "install plugs
 "sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \

@@ -95,4 +95,10 @@ function Runner()
     if extension == "py"
         :!python3 %
     endif
+    if extension == "js"
+        :!node %
+    endif
 endfunction
+
+" open browser in current file folder
+map <leader>ra :silent !setsid st -e ranger $(dirname %) 2>&1 &<cr>

@@ -13,9 +13,14 @@ set pumblend=15
 " set background=dark
 " colorscheme gruvbox
 "try codedark
+" gruvbox
+let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_contrast_light = "soft"
+" let g:gruvbox_improved_strings = 1
+let g:gruvbox_improved_warnings = 1
 "
 set background=dark
-let current_colorscheme = 2
+let current_colorscheme = 1
 if current_colorscheme == 1
     colorscheme gruvbox
 endif
@@ -36,17 +41,20 @@ if custom_highlights == 1
     autocmd FileType javascript call MyJsHighlights()
 endif
 
+"===================
 "for transparent vim
+"===================
+
+ " hi! Normal ctermbg=none guibg=NONE
+ " hi! CursorLineNr gui=bold guifg=#fabd2f guibg=NONE
+ " hi! folded guifg=none guibg=NONE
 "
- hi! Normal ctermbg=none guibg=NONE
- hi! CursorLineNr gui=bold guifg=#fabd2f guibg=NONE
- hi! folded guifg=none guibg=NONE
-"
-" if g:colors_name == "gruvbox"
+if g:colors_name == "gruvbox"
+    "soft, medium and hard.
 "      hi! Normal ctermbg=none guibg=NONE
 "      hi! CursorLineNr gui=bold guifg=#fabd2f guibg=NONE
 "      hi! folded ctermbg=yellow cterm=bold guifg=none guibg=NONE
-" endif
+endif
 
 " if g:colors_name == "fahrenheit"
 "      hi! Normal ctermbg=none guibg=NONE
@@ -60,7 +68,7 @@ endif
 " highlight CursorLineNr guifg=#050505
 highlight clear SignColumn
 
-" set cursorline
+set cursorline
 " set cursorcolumn
 " highlight! CursorLine guibg=none
 
@@ -115,7 +123,8 @@ endfunction
 "Themes
 "https://github.com/vim-airline/vim-airline/wiki/Screenshots
 "
-let g:airline_theme='luna'
+" let g:airline_theme='luna'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 "https://ncona.com/2019/02/the-vim-statusline/
 "let g:airline_theme='onehalfdark'

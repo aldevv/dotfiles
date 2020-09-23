@@ -3,8 +3,6 @@ autocmd BufWritePre * %s/\s\+$//e
 " Vertically center document when entering insert mode
 autocmd InsertEnter * norm zz
 
-" open browser in current file folder
-map <leader>ra :!setsid st -e ranger $(dirname %) 2>/dev/null <cr>
 
 "bufwritepost  is when you save them
 "bufreadpost  is when you open them

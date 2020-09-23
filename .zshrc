@@ -9,7 +9,7 @@
 #PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 #test
 # wal -i [picture]
-#export GTK_IM_MODULE=fcitx 
+#export GTK_IM_MODULE=fcitx
 
 export ZSH="$HOME/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
@@ -69,7 +69,7 @@ ex ()
       *.7z)        7z x $1      ;;
       *.deb)       ar x $1      ;;
       *.tar.xz)    tar xf $1    ;;
-      *.tar.zst)   unzstd $1    ;;      
+      *.tar.zst)   unzstd $1    ;;
       *)           echo "'$1' cannot be extracted via ex()" ;;
     esac
   else
@@ -117,7 +117,7 @@ source $ZSH/oh-my-zsh.sh
 #dotrepo config --local status.showUntrackedFiles no
 #prorepo config --local status.showUntrackedFiles no
 
-# Aliases 
+# Aliases
 alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
     xc="xclip -selection clipboard"\
 	j="joplin"\
@@ -168,7 +168,7 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
     trc='transmission-remote-cli'\
     py='python3'\
 
-	
+
 	#python='python3'\
 
 # Keybindings
@@ -236,7 +236,7 @@ bindkey -v '^?' backward-delete-char
 #
 # MORE ALIAS
 #
-# Changing "ls" to "exa", do colour=automatic when piping 
+# Changing "ls" to "exa", do colour=automatic when piping
 alias ls='exa -a --color=always --group-directories-first' # my preferred listing
 alias l='exa -al --color=always --group-directories-first' # my preferred listing
 alias la='exa -a --color=always --group-directories-first'  # all files and dirs
@@ -249,10 +249,10 @@ alias lg='exa -a | grep '
 # adding flags
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
-alias free='free -m' 
+alias free='free -m'
 
 # navigation
-alias ..='cd ..' 
+alias ..='cd ..'
 alias ...='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../..'
@@ -280,6 +280,7 @@ alias zoom="/home/solus/.local/Programs/zoom/ZoomLauncher"
 
 #
 #completion and highlighting
+source ~/.config/completion_fzf.zsh
 fpath=($PROGRAMS/zsh-completions/src $fpath)
 source $PROGRAMS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.aliases
