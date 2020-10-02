@@ -103,10 +103,10 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap gr <Plug>(coc-references)
 nmap gi <Plug>(coc-implementation)
 nmap <leader>gy <Plug>(coc-type-definition)
-nmap <leader>g[ <Plug>(coc-diagnostic-prev)
-nmap <leader>g] <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
-nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
+nmap g{ <Plug>(coc-diagnostic-prev)
+nmap g} <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>,, <Plug>(coc-diagnostic-prev-error)
+nmap <silent> <leader>; <Plug>(coc-diagnostic-next-error)
 nnoremap <leader>cr :CocRestart
 nnoremap <silent> <leader>+ :call CocAction('doHover')<cr>
 nmap <F2> <Plug>(coc-rename)
@@ -414,3 +414,30 @@ let g:gitgutter_enabled = 1
 " disable all by default
 let g:gitgutter_map_keys = 0
 let g:gitgutter_highlight_linenrs = 1
+
+" JUPYTER-VIM
+"Set let g:jupyter_mapkeys = 0 in your .vimrc to prevent the default keybindings from being made.
+"
+"
+" Run current file
+" nnoremap <buffer> <silent> <localleader>R :JupyterRunFile<CR>
+" nnoremap <buffer> <silent> <localleader>I :PythonImportThisFile<CR>
+
+" Change to directory of current file
+" nnoremap <buffer> <silent> <localleader>d :JupyterCd %:p:h<CR>
+
+" Send a selection of lines
+" nnoremap <buffer> <silent> <localleader>X :JupyterSendCell<CR>
+" nnoremap <buffer> <silent> <localleader>E :JupyterSendRange<CR>
+" nmap     <buffer> <silent> <localleader>e <Plug>JupyterRunTextObj
+autocmd FileType python nmap     <buffer> <silent> <localleader>c :JupyterConnect<cr>
+" vmap     <buffer> <silent> <localleader>e <Plug>JupyterRunVisual
+
+" nnoremap <buffer> <silent> <localleader>U :JupyterUpdateShell<CR>
+
+" Debugging maps
+" nnoremap <buffer> <silent> <localleader>b :PythonSetBreak<CR>
+
+" polyglot
+" removes annoying red highlight from every space you put
+let g:python_highlight_space_errors = 0

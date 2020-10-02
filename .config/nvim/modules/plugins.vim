@@ -9,6 +9,7 @@ call plug#begin()
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  " programming
+ Plug 'sheerun/vim-polyglot'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'scrooloose/syntastic'
  Plug 'SirVer/ultisnips'
@@ -16,8 +17,6 @@ call plug#begin()
  Plug 'tpope/vim-commentary'
  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
  Plug 'junegunn/fzf.vim'
- " Plug 'yuezk/vim-js'
- " Plug 'maxmellon/vim-jsx-pretty'
  Plug 'yggdroot/indentLine'
  Plug 'prettier/vim-prettier', {
    \ 'do': 'npm install',
@@ -25,8 +24,6 @@ call plug#begin()
  Plug 'mattn/emmet-vim'
  Plug 'airblade/vim-gitgutter' |
     \ Plug 'tpope/vim-fugitive'
- " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
- Plug 'sheerun/vim-polyglot'
  " to see hex colors"
  Plug 'ap/vim-css-color'
 Plug  'alvan/vim-closetag'
@@ -48,6 +45,7 @@ Plug 'wellle/targets.vim'
              \ Plug 'Xuyuanp/nerdtree-git-plugin' |
              \ Plug 'ryanoasis/vim-devicons' |
              \ Plug 'vwxyutarooo/nerdtree-devicons-syntax' |
+Plug 'jupyter-vim/jupyter-vim'
 
 " good guide for dev nvim
 "https://hanspinckaers.com/posts/2020/01/vim-python-ide/

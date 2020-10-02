@@ -41,13 +41,19 @@ mode_switch + shift + Return
 mode_switch +  k
     st -e newsboat
 
+mode_switch + n
+    typenet
+
+mode_switch + shift + n
+    typemask
+
 # super +  a
 #     st -e mate-calculator
 
 # super + y
 #     st -e "$($UTILITIES/youtube/YT.tcl)"
 
- super + v
+mode_switch + v
     bash -c code-oss
 
 super + F1
@@ -126,8 +132,11 @@ mode_switch + a
 # mode_switch + b
 # 	dwmc togglefullscr
 
-mode_switch + e
-    $SCRIPTS/useful/fun/emojiSelect
+#mode_switch + e
+#    $SCRIPTS/useful/fun/emojiSelect
+
+mode_switch +  e
+    bash -c xdotool sleep 0.3 type '192.168. '
 
 mode_switch + i
     $UTILITIES/misc/saveImage

@@ -1,3 +1,6 @@
+" testing inclusiveness (these work)
+" nnoremap db dvb
+" nnoremap dB dvB
 noremap n j
 noremap e k
 noremap j e
@@ -6,6 +9,7 @@ nnoremap i l
 noremap k n
 noremap K N
 noremap N J
+noremap J E
 nnoremap L I
 vnoremap i l
 vnoremap L I
@@ -17,7 +21,10 @@ noremap z[ [z
 noremap z] ]z
 
 nnoremap gñ :SyntaxQuery<CR>
-nnoremap <C-t> : call Toggle_transparent()<CR>
+nnoremap <C-t> :silent call Toggle_transparent()<CR>
+function Toggle_transparent()
+    exec ":!toggleTrans"
+endfunction
 
 " open terminal
 map <Leader>tt :new term://zsh \| resize 10<CR>
@@ -44,8 +51,8 @@ cmap w!! w !sudo tee > /dev/null %
 
 map <leader>rs :!./%<cr>
 noremap <c-n> <c-y>
-noremap  N 5<c-w>-
-noremap  E 5<c-w>+
+" noremap  N 5<c-w>-
+" noremap  E 5<c-w>+
 noremap  + 5<c-w>>
 noremap  - 5<c-w><
 nnoremap <leader>h <c-w>h
@@ -97,6 +104,10 @@ function Runner()
     endif
     if extension == "js"
         :!node %
+    endif
+    if extension == ""
+        : !chmod +x %; ./%
+
     endif
 endfunction
 

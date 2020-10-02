@@ -7,6 +7,7 @@ xmodmap -e 'keycode 135 = Hyper_L'
 
 # makes hyper do something different
 xmodmap -e "remove mod4 = Hyper_L" -e "add mod3 = Hyper_L"
+xmodmap -e "keycode  48 = braceleft bracketleft braceleft bracketleft asciicircum braceleft asciicircum "
 
 # get escape on caps press
 killall xcape 2>/dev/null

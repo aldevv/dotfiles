@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cd "$XDG_CONFIG_HOME/picom"
+if [ "$(grep ".St..];" picom.conf)" = "\"95:class_g = 'St'\"];" ]; then
+    sed -i 's/"95:class_g = .St."];/"100:class_g = '"'"'St'"'"'"];/g' picom.conf
+else
+    sed -i 's/"100:class_g = .St."];/"95:class_g = '"'"'St'"'"'"];/g' picom.conf
+fi

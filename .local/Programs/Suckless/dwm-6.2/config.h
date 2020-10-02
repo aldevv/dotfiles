@@ -22,7 +22,7 @@ static const unsigned int gappiv    = 20; // def 10     /* vert inner gap betwee
 static const unsigned int gappoh    = 20; // def 10     /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 20; // def 10     /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
-static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
+static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
@@ -217,11 +217,12 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_l,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_i,      setmfact,       {.f = +0.05} },
-	{ MODKEY|Mod1Mask,              XK_t,      togglegaps,     {0} },
+	{ MODKEY,						XK_t,      togglegaps,     {0} },
+	/* { MODKEY|ControlMask,           XK_0,      efaultgaps,    {0} }, */
 	{ MODKEY|ControlMask,           XK_0,      defaultgaps,    {0} },
-	{ MODKEY|Mod1Mask,              XK_z,      incrgaps,       {.i = +1 } },
-	{ MODKEY|Mod1Mask,              XK_x,      incrgaps,       {.i = -1 } },
-	{ MODKEY,                       XK_t,      zoom,           {0} },
+	{ MODKEY,						XK_z,      incrgaps,       {.i = +1 } },
+	{ MODKEY,						XK_x,      incrgaps,       {.i = -1 } },
+	/* { MODKEY,                       XK_t,      zoom,           {0} }, */
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ Mod1Mask,                     XK_1,      setlayout,      {.v = &layouts[0]} },

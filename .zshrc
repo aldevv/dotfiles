@@ -237,11 +237,11 @@ bindkey -v '^?' backward-delete-char
 # MORE ALIAS
 #
 # Changing "ls" to "exa", do colour=automatic when piping
-alias ls='exa -a --color=always --group-directories-first' # my preferred listing
-alias l='exa -al --color=always --group-directories-first' # my preferred listing
-alias la='exa -a --color=always --group-directories-first'  # all files and dirs
-alias ll='exa -l --color=always --group-directories-first'  # long format
-alias lt='exa -aT --color=always --group-directories-first' # tree listing
+alias ls='exa -a --color=automatic --group-directories-first' # my preferred listing
+alias l='exa -al --color=automatic --group-directories-first' # my preferred listing
+alias la='exa -a --color=automatic --group-directories-first'  # all files and dirs
+alias ll='exa -l --color=automatic --group-directories-first'  # long format
+alias lt='exa -aT --color=automatic --group-directories-first' # tree listing
 alias l.='exa -a | egrep "^\."'
 alias lg='exa -a | grep '
 #
