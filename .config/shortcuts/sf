@@ -33,6 +33,6 @@ re         /etc
 ru         /usr
 rv         /var
 rb         /bin
-rt         /tmp
-mnt        /mnt
+rt         /root
+rm         /mnt
 sc         ~/Pictures/screenshots

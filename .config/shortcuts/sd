@@ -15,3 +15,4 @@ cfi ~/.xinitrc
 cfn ~/.config/newsboat/urls
 cfy ~/.config/youtube-dl/config
 cfd ~/.local/Programs/Suckless/dwm-6.2/config.h
+cn  ~/.local/share/myScripts/utilities/classes/network/typenet

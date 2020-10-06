@@ -112,4 +112,6 @@ function Runner()
 endfunction
 
 " open browser in current file folder
-map <leader>ra :silent !setsid st -e ranger $(dirname %) 2>&1 &<cr>
+map <leader>ra :call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
+"old
+" map <leader>ra :silent !setsid st -e ranger $(dirname %) 2>&1 &<cr>

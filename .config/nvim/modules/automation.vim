@@ -1,7 +1,7 @@
 " Remove trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 " Vertically center document when entering insert mode
-autocmd InsertEnter * norm zz
+" autocmd InsertEnter * norm zz
 
 
 "bufwritepost  is when you save them

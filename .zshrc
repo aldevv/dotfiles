@@ -277,6 +277,8 @@ alias pk="$PROGRAMS/PacketTracer-AppImage/out/Cisco_Packet_Tracer-7.2.1.glibc2.1
 alias ampl="/home/solus/Downloads/amplide.linux64/amplide/amplide"
 alias tv="/home/solus/.local/Programs/teamviewer/teamviewer"
 alias zoom="/home/solus/.local/Programs/zoom/ZoomLauncher"
+alias nmone="nmcli d wifi connect HYPERION "
+alias nmtwo="nmcli d wifi connect Hyperion_R "
 
 #
 #completion and highlighting

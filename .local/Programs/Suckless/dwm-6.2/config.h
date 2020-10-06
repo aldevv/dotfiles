@@ -48,7 +48,8 @@ const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL
 const char *spcmd3[] = {"st", "-n", "spman", "-f", "monospace:size=10", "-e", "bash", "-c", "openManPage;$SHELL",  NULL };
 const char *spcmd4[] = {"st", "-n", "sptab", "-f", "monospace:size=10", "-e", "bash", "-c", "tableContents;$SHELL",  NULL };
 const char *spcmd5[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-e", "bc", "-lq", NULL };
-const char *spcmd6[] = {"sttion", NULL };
+const char *spcmd6[] = {"st", "-n", "sppydoc", "-f", "monospace:size=12", "-e", "bash", "-c", "python_docs;$SHELL", NULL };
+/* const char *spcmd6[] = {"station", NULL }; */
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
@@ -56,7 +57,8 @@ static Sp scratchpads[] = {
 	{"spman",       spcmd3},
 	{"sptab",       spcmd4},
 	{"spcalc",      spcmd5},
-	{"spstat",      spcmd6},
+	{"sppydoc",      spcmd6},
+	/* {"spstat",      spcmd6}, */
 };
 
 /* tagging */
@@ -81,6 +83,7 @@ static const Rule rules[] = {
 	{ NULL,		  "spman",      NULL,	SPTAG(2),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"      },
 	{ NULL,		  "sptab",		NULL,	SPTAG(3),	     1,		     1,           0,        -1,  "100% 0% 300W 400H"      },
 	{ NULL,		  "spcalc",		NULL,	SPTAG(4),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"     },
+	{ NULL,		  "sppydoc",	NULL,	SPTAG(5),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"     },
 	/* { NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 }, */
 	//{ "Station", NULL,     NULL,         (1 << 8)-1,    0,          0,          -1,        -1 }, selects all tags except the 9th
 };
@@ -207,9 +210,7 @@ static Key keys[] = {
 	{ Mod5Mask,     			    XK_m,	   togglescratch,  {.ui = 2 } },
 	{ Mod5Mask|ShiftMask,           XK_m,      togglescratch,  {.ui = 3 } },
 	{ MODKEY,   		            XK_a,      togglescratch,  {.ui = 4 } },
-	{ MODKEY,   		            XK_w,      togglescratch,  {.ui = 5 } },
-	/* { MODKEY|ShiftMask,             XK_Tab,    togglescratch,  {.v = scratchpadcmd } }, */
-	/* { MODKEY,                       XK_c,    togglescratch,  {.v = scratchpadcmd } }, */
+	{ Mod5Mask,   		            XK_p,      togglescratch,  {.ui = 5 } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)

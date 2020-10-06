@@ -16,6 +16,9 @@
 "     |VVV/'++/#/+/#/ /#/ /#/
 "     'V/'  /##//##//##//###/
 "              ++
+"
+"run in the background use jobstart
+"map <leader>ra :call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
 set t_Co=256
 "cgn change <highlighted item>, useful when you searched something
 "install plugs

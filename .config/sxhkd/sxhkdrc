@@ -13,8 +13,8 @@ alt + w
 super + p
 	dmenu_run
 
-#super + F2
-	#st -e pydoc "$($HOME/Documents/myScripts/python_documentation.sh)"
+#mode_switch + p
+# 	python_docs
 
 # super + shift + F2
 	# st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
