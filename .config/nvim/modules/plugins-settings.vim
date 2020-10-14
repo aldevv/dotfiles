@@ -493,16 +493,27 @@ vmap <silent> ae	<Plug>(textobj-entire-a)
 omap <silent> ae	<Plug>(textobj-entire-a)
 
 " python text objects
+let g:textobj_python_no_default_key_mappings = 1
+silent! TextobjPythonDefaultKeyMappings!
     " af: a function
     " lf: inner function
     " ac: a class
     " lc: inner class
-xmap af <Plug>(textobj-python-function-a)
-omap af <Plug>(textobj-python-function-a)
-xmap lf <Plug>(textobj-python-function-i)
-omap lf <Plug>(textobj-python-function-i)
-
-xmap ac <Plug>(textobj-python-class-a)
-omap ac <Plug>(textobj-python-class-a)
-xmap lc <Plug>(textobj-python-class-i)
-omap lc <Plug>(textobj-python-class-i)
+    " [f previous function
+    " ]f next function
+    " [c previous class
+    " ]c next class
+call textobj#user#map('python', {
+  \   'class': {
+  \     'select-a': '<buffer>ac',
+  \     'select-i': '<buffer>lc',
+  \     'move-n': '<buffer>]c',
+  \     'move-p': '<buffer>[c',
+  \   },
+  \   'function': {
+  \     'select-a': '<buffer>af',
+  \     'select-i': '<buffer>lf',
+  \     'move-n': '<buffer>]f',
+  \     'move-p': '<buffer>[f',
+  \   }
+  \ })
