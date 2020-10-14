@@ -467,18 +467,42 @@ let g:textobj_indent_no_default_key_mappings = 1
 silent! TextobjIndentDefaultKeyMappings!
 vmap li	<Plug>(textobj-indent-i)
 omap li	<Plug>(textobj-indent-i)
+vmap ai	<Plug>(textobj-indent-a)
+omap ai	<Plug>(textobj-indent-a)
 vmap lI	<Plug>(textobj-indent-same-i)
 omap lI	<Plug>(textobj-indent-same-i)
+vmap aI	<Plug>(textobj-indent-same-a)
+omap aI	<Plug>(textobj-indent-same-a)
 "
 " line text object
+" only use for selecting, not for other stuff, has bugs
 
 let g:textobj_line_no_default_key_mappings = 1
 silent! TextobjLineDefaultKeyMappings!
 vmap <silent> ll <Plug>(textobj-line-i)
 omap <silent> ll <Plug>(textobj-line-i)
+vmap <silent> al <Plug>(textobj-line-a)
+omap <silent> al <Plug>(textobj-line-a)
 
 " entire text object
 let g:textobj_entire_no_default_key_mappings = 1
 silent! TextobjEntireDefaultKeyMappings!
 vmap <silent> le	<Plug>(textobj-entire-i)
 omap <silent> le	<Plug>(textobj-entire-i)
+vmap <silent> ae	<Plug>(textobj-entire-a)
+omap <silent> ae	<Plug>(textobj-entire-a)
+
+" python text objects
+    " af: a function
+    " lf: inner function
+    " ac: a class
+    " lc: inner class
+xmap af <Plug>(textobj-python-function-a)
+omap af <Plug>(textobj-python-function-a)
+xmap lf <Plug>(textobj-python-function-i)
+omap lf <Plug>(textobj-python-function-i)
+
+xmap ac <Plug>(textobj-python-class-a)
+omap ac <Plug>(textobj-python-class-a)
+xmap lc <Plug>(textobj-python-class-i)
+omap lc <Plug>(textobj-python-class-i)

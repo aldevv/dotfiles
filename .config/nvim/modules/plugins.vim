@@ -53,8 +53,8 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-entire'
+Plug 'bps/vim-textobj-python'
 " can change this now that i have textobj-user
-" Plug 'Akuseru1/vim-indent-object'
 
 " good guide for dev nvim
 "https://hanspinckaers.com/posts/2020/01/vim-python-ide/
