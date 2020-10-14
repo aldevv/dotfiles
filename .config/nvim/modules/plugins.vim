@@ -9,6 +9,7 @@ call plug#begin()
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  " programming
+Plug 'bkad/CamelCaseMotion'
  Plug 'sheerun/vim-polyglot'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'scrooloose/syntastic'
@@ -46,9 +47,14 @@ Plug 'wellle/targets.vim'
              \ Plug 'ryanoasis/vim-devicons' |
              \ Plug 'vwxyutarooo/nerdtree-devicons-syntax' |
 Plug 'jupyter-vim/jupyter-vim'
-Plug 'bkad/CamelCaseMotion'
+
 Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'Akuseru1/vim-indent-object'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-entire'
+" can change this now that i have textobj-user
+" Plug 'Akuseru1/vim-indent-object'
 
 " good guide for dev nvim
 "https://hanspinckaers.com/posts/2020/01/vim-python-ide/

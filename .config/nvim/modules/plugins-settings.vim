@@ -463,19 +463,20 @@ xmap gp  <Plug>ReplaceWithRegisterVisual
 "{Visual}["x]gr		Replace the selection with the contents of register x.
 
 " indent text object
+" it uses my own repository
+silent! TextobjIndentDefaultKeyMappings!
+vmap li	<Plug>(textobj-indent-i)
+omap li	<Plug>(textobj-indent-i)
+vmap lI	<Plug>(textobj-indent-same-i)
+omap lI	<Plug>(textobj-indent-same-i)
 "
-" Mappings excluding line below.
-" autocmd VimEnter * onoremap <silent>li :<C-u>cal <Sid>HandleTextObjectMapping(1, 0, 0, [line("."), line("."), col("."), col(".")])<CR>
-" autocmd VimEnter * vnoremap <silent>li :<C-u>cal <Sid>HandleTextObjectMapping(1, 0, 1, [line("'<"), line("'>"), col("'<"), col("'>")])<CR><Esc>gv
-"" Mappings including line below.
-" autocmd VimEnter * onoremap <silent>iI :<C-u>cal <Sid>HandleTextObjectMapping(1, 1, 0, [line("."), line("."), col("."), col(".")])<CR>
-" autocmd VimEnter * vnoremap <silent>iI :<C-u>cal <Sid>HandleTextObjectMapping(1, 1, 1, [line("'<"), line("'>"), col("'<"), col("'>")])<CR><Esc>gv
-"
-"
-"g:textobj_indent_no_default_key_mappings
-"
-" vmap li <Plug>(textobj-indent-i)
-" omap l <Plug>(textobj-indent-i)
+" line text object
 
-" vmap lI	<Plug>(textobj-indent-same-i)
-" omap l <Plug>(textobj-indent-i)
+silent! TextobjLineDefaultKeyMappings!
+vmap <silent> ll <Plug>(textobj-line-i)
+omap <silent> ll <Plug>(textobj-line-i)
+
+" entire text object
+silent! TextobjEntireDefaultKeyMappings!
+vmap <silent> le	<Plug>(textobj-entire-i)
+omap <silent> le	<Plug>(textobj-entire-i)

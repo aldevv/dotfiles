@@ -17,6 +17,11 @@
 "     'V/'  /##//##//##//###/
 "              ++
 "
+"fzf choose folder with :File <myfolder>
+"
+"create your own text objects
+"https://github.com/kana/vim-textobj-user
+"
 "run in the background use jobstart
 "map <leader>ra :call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
 set t_Co=256
