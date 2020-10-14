@@ -20,10 +20,14 @@ noremap zD zE
 noremap z[ [z
 noremap z] ]z
 
-" noremap gs !python -c "import sys; print ' '.join(sorted(sys.stdin.read().split()))"
-vnoremap <silent> gs !python3 -c "import sys; items = sys.stdin.read().replace('\t', '').replace('[','').replace(']','').replace('\n','').replace(' ', '');items = items.split(','); items = [ int(items[i]) for i in range(len(items)-1) ];items = sorted(items); print(items, sep=', ')"<cr>
+" noremap gss !python2 -c "import sys; print(sys.stdin.read())"<cr>
+"https://stackoverflow.com/questions/40072761/vim-send-visual-block-to-external-command
+"added B and S (vis plugin)
+"B for applying commands to the visually selected area and only to that visual area
+"S is for searching stuff ONLY in the visually selected area
+vnoremap <silent> gss :B !sortList.py <cr>t]xT[
+vnoremap <silent> gsr :B !sortListR.py <cr>t]xT[
 
-" vnoremap <silent> gs !python -c "print ' '.join(str(sorted(list(input()[0])))).split(,'')"<cr>
 
 nnoremap gñ :SyntaxQuery<CR>
 nnoremap <C-t> :silent call Toggle_transparent()<CR>

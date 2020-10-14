@@ -60,7 +60,7 @@ let g:fzf_action = {
 let g:rg_derive_root='true'
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 nnoremap <c-p> :PFiles<cr>
-nnoremap <leader>b :Buffers<cr>
+nnoremap <leader><leader>b :Buffers<cr>
 nnoremap <leader>gp :GFiles<cr>
 nnoremap <leader>gl :BCommits<cr>
 nnoremap <leader>f :Rg<cr>

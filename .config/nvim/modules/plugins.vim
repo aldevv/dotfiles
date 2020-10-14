@@ -56,6 +56,7 @@ Plug 'kana/vim-textobj-entire'
 Plug 'bps/vim-textobj-python'
 Plug 'tommcdo/vim-exchange' "
 Plug 'glts/vim-textobj-comment'
+Plug 'vim-scripts/vis'
 " Plug 'christoomey/vim-sort-motion'
 
 " can change this now that i have textobj-user
