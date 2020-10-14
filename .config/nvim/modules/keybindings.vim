@@ -11,7 +11,6 @@ noremap k n
 noremap K N
 noremap N J
 noremap J E
-nnoremap L I
 vnoremap i l
 vnoremap L I
 "fold
@@ -20,6 +19,11 @@ noremap zn zj
 noremap zD zE
 noremap z[ [z
 noremap z] ]z
+
+" noremap gs !python -c "import sys; print ' '.join(sorted(sys.stdin.read().split()))"
+vnoremap <silent> gs !python3 -c "import sys; items = sys.stdin.read().replace('\t', '').replace('[','').replace(']','').replace('\n','').replace(' ', '');items = items.split(','); items = [ int(items[i]) for i in range(len(items)-1) ];items = sorted(items); print(items, sep=', ')"<cr>
+
+" vnoremap <silent> gs !python -c "print ' '.join(str(sorted(list(input()[0])))).split(,'')"<cr>
 
 nnoremap gñ :SyntaxQuery<CR>
 nnoremap <C-t> :silent call Toggle_transparent()<CR>
