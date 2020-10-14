@@ -4,6 +4,7 @@
 noremap n j
 noremap e k
 noremap j e
+noremap gj ge
 nnoremap l i
 nnoremap i l
 noremap k n
@@ -27,7 +28,7 @@ function Toggle_transparent()
 endfunction
 
 " open terminal
-map <Leader>tt :new term://zsh \| resize 10<CR>
+map <Leader>st :new term://zsh \| resize 10<CR>
 
 "To map <Esc> to exit terminal-mode:
 tnoremap <a-m> <C-\><C-n>
@@ -50,21 +51,22 @@ nnoremap <A-s> :%s//gI<Left><Left><Left>
 cmap w!! w !sudo tee > /dev/null %
 
 map <leader>rs :!./%<cr>
+map <silent> <F11> /\A\zs\a<cr>
 noremap <c-n> <c-y>
 " noremap  N 5<c-w>-
 " noremap  E 5<c-w>+
-noremap  + 5<c-w>>
-noremap  - 5<c-w><
+" noremap  + 5<c-w>>
+" noremap  - 5<c-w><
 nnoremap <leader>h <c-w>h
 nnoremap <leader>n <c-w>j
 nnoremap <leader>e <c-w>k
 nnoremap <leader>i <c-w>l
-nnoremap <leader>s <c-w>s
-nnoremap <leader>v <c-w>v
+nnoremap <leader>ss <c-w>s
+nnoremap <leader>sv <c-w>v
 " map <leader>i :setlocal autoindent<cr>
 " map <leader>I :setlocal noautoindent<cr>
-map  <leader>W :w !sudo tee %<CR>
-map  <leader>w :w<CR>
+map  <leader>T :w !sudo tee %<CR>
+map  <leader>t :w<CR>
 map  <leader>q :wq<CR>
 map <F6> :e ~/.config/nvim/init.vim<cr>
 map <F3> :e ~/.zshrc<cr>
@@ -112,6 +114,6 @@ function Runner()
 endfunction
 
 " open browser in current file folder
-map <leader>ra :call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
+map <silent> <leader>ra :silent call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
 "old
 " map <leader>ra :silent !setsid st -e ranger $(dirname %) 2>&1 &<cr>

@@ -280,7 +280,7 @@ alias zoom="/home/solus/.local/Programs/zoom/ZoomLauncher"
 alias nmone="nmcli d wifi connect HYPERION "
 alias nmtwo="nmcli d wifi connect Hyperion_R "
 
-#
+#pdfgrep
 #completion and highlighting
 source ~/.config/completion_fzf.zsh
 fpath=($PROGRAMS/zsh-completions/src $fpath)

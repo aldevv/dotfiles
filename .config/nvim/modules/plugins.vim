@@ -46,6 +46,9 @@ Plug 'wellle/targets.vim'
              \ Plug 'ryanoasis/vim-devicons' |
              \ Plug 'vwxyutarooo/nerdtree-devicons-syntax' |
 Plug 'jupyter-vim/jupyter-vim'
+Plug 'bkad/CamelCaseMotion'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'Akuseru1/vim-indent-object'
 
 " good guide for dev nvim
 "https://hanspinckaers.com/posts/2020/01/vim-python-ide/

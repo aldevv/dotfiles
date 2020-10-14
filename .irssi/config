@@ -151,6 +151,7 @@ channels = (
   { name = "silc"; chatnet = "SILC"; autojoin = "No"; },
   { name = "#solus-chat"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#suckless"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#subsplease"; chatnet = "Rizon"; autojoin = "yes"; }
 );
 
 aliases = {

@@ -309,8 +309,8 @@ endfunction
 " easymotion"
 nmap s <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+" map <Leader>j <Plug>(easymotion-j)
+" map <Leader>k <Plug>(easymotion-k)
 
 " devicons
 " let g:webdevicons_enable = 1
@@ -441,3 +441,41 @@ autocmd FileType python nmap     <buffer> <silent> <localleader>c :JupyterConnec
 " polyglot
 " removes annoying red highlight from every space you put
 let g:python_highlight_space_errors = 0
+
+" camelcase motion
+let g:camelcasemotion_key = '<leader>'
+map <silent> <leader>j <Plug>CamelCaseMotion_e
+map <silent> <leader>gj <Plug>CamelCaseMotion_ge
+
+" replace with register
+nmap gp  <Plug>ReplaceWithRegisterOperator
+nmap gpp <Plug>ReplaceWithRegisterLine
+xmap gp  <Plug>ReplaceWithRegisterVisual
+"USAGE						   *ReplaceWithRegister-usage*
+"
+"							     *gr* *grr* *v_gr*
+"[count]["x]gr{motion}	Replace {motion} text with the contents of register x.
+"			Especially when using the unnamed register, this is
+"			quicker than "_d{motion}P or "_c{motion}<C-R>"
+"[count]["x]grr		Replace [count] lines with the contents of register x.
+"			To replace from the cursor position to the end of the
+"			line use ["x]gr$
+"{Visual}["x]gr		Replace the selection with the contents of register x.
+
+" indent text object
+"
+" Mappings excluding line below.
+" autocmd VimEnter * onoremap <silent>li :<C-u>cal <Sid>HandleTextObjectMapping(1, 0, 0, [line("."), line("."), col("."), col(".")])<CR>
+" autocmd VimEnter * vnoremap <silent>li :<C-u>cal <Sid>HandleTextObjectMapping(1, 0, 1, [line("'<"), line("'>"), col("'<"), col("'>")])<CR><Esc>gv
+"" Mappings including line below.
+" autocmd VimEnter * onoremap <silent>iI :<C-u>cal <Sid>HandleTextObjectMapping(1, 1, 0, [line("."), line("."), col("."), col(".")])<CR>
+" autocmd VimEnter * vnoremap <silent>iI :<C-u>cal <Sid>HandleTextObjectMapping(1, 1, 1, [line("'<"), line("'>"), col("'<"), col("'>")])<CR><Esc>gv
+"
+"
+"g:textobj_indent_no_default_key_mappings
+"
+" vmap li <Plug>(textobj-indent-i)
+" omap l <Plug>(textobj-indent-i)
+
+" vmap lI	<Plug>(textobj-indent-same-i)
+" omap l <Plug>(textobj-indent-i)

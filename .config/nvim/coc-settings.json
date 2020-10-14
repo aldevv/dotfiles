@@ -1,6 +1,6 @@
 {
     "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
-    "coc.preferences.formatOnSaveFiletypes": ["python"],
+    //"coc.preferences.formatOnSaveFiletypes": ["python"],
 
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
