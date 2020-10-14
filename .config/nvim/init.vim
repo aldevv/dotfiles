@@ -17,6 +17,7 @@
 "     'V/'  /##//##//##//###/
 "              ++
 "
+"\v magic : makes it work like grep -E
 "fzf choose folder with :File <myfolder>
 "
 "create your own text objects

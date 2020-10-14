@@ -54,6 +54,9 @@ Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-entire'
 Plug 'bps/vim-textobj-python'
+Plug 'tommcdo/vim-exchange' "
+Plug 'glts/vim-textobj-comment'
+
 " can change this now that i have textobj-user
 
 " good guide for dev nvim

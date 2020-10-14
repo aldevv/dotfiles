@@ -184,7 +184,8 @@ nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
 
 " ultisnips
-let g:UltiSnipsExpandTrigger='<c-s>' " TO USE SNIPPETS
+" let g:UltiSnipsExpandTrigger='<c-s>' " TO USE SNIPPETS
+let g:UltiSnipsExpandTrigger='ß' "
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
@@ -443,9 +444,18 @@ autocmd FileType python nmap     <buffer> <silent> <localleader>c :JupyterConnec
 let g:python_highlight_space_errors = 0
 
 " camelcase motion
-let g:camelcasemotion_key = '<leader>'
+" let g:camelcasemotion_key = '<leader>'
 map <silent> <leader>j <Plug>CamelCaseMotion_e
 map <silent> <leader>gj <Plug>CamelCaseMotion_ge
+map <silent> <leader>w <Plug>CamelCaseMotion_w
+map <silent> <leader>b <Plug>CamelCaseMotion_b
+
+" omap <silent> lw <Plug>CamelCaseMotion_iw
+" xmap <silent> lw <Plug>CamelCaseMotion_iw
+" omap <silent> lb <Plug>CamelCaseMotion_ib
+" xmap <silent> lb <Plug>CamelCaseMotion_ib
+" omap <silent> le <Plug>CamelCaseMotion_ie
+" xmap <silent> le <Plug>CamelCaseMotion_ie
 
 " replace with register
 nmap gp  <Plug>ReplaceWithRegisterOperator
@@ -494,7 +504,7 @@ omap <silent> ae	<Plug>(textobj-entire-a)
 
 " python text objects
 let g:textobj_python_no_default_key_mappings = 1
-silent! TextobjPythonDefaultKeyMappings!
+" silent! TextobjPythonDefaultKeyMappings!
     " af: a function
     " lf: inner function
     " ac: a class
@@ -505,10 +515,10 @@ silent! TextobjPythonDefaultKeyMappings!
     " ]c next class
 call textobj#user#map('python', {
   \   'class': {
-  \     'select-a': '<buffer>ac',
-  \     'select-i': '<buffer>lc',
-  \     'move-n': '<buffer>]c',
-  \     'move-p': '<buffer>[c',
+  \     'select-a': '<buffer>ax',
+  \     'select-i': '<buffer>lx',
+  \     'move-n': '<buffer>]x',
+  \     'move-p': '<buffer>[x',
   \   },
   \   'function': {
   \     'select-a': '<buffer>af',
@@ -517,3 +527,18 @@ call textobj#user#map('python', {
   \     'move-p': '<buffer>[f',
   \   }
   \ })
+
+" text object comments
+" silent! TextobjCommentDefaultKeyMappings!
+let g:textobj_comment_no_default_key_mappings = 1
+vmap ac	<Plug>(textobj-comment-a)
+omap ac	<Plug>(textobj-comment-a)
+vmap lc <Plug>(textobj-comment-i)
+omap lc <Plug>(textobj-comment-i)
+" a big comment
+" whitespace after the comment, or if there isn't any,
+"			whitespace before the comment.
+"			Select linewise for full-line comments, characterwise
+"			for inline and end-of-line comments.
+vmap aC <Plug>(textobj-comment-big-a)
+omap aC <Plug>(textobj-comment-big-a)

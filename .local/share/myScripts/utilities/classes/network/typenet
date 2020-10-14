@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# sleep 0.5 && xdotool type '192.168.'
-sleep 0.5 && xdotool type '172.16.'

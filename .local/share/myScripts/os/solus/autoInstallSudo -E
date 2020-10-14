@@ -8,12 +8,12 @@ eopkg -y $packages
 
 #install window manager
 if [ "$1" == "dwm" ]; then
-   WM/dwm 
+   WM/dwm
    DisplayManager/setupDwm
 fi
 
 if [ "$1" == "xmonad" ]; then
-   WM/xmonad 
+   WM/xmonad
    DisplayManager/setupXmonad
 fi
 
