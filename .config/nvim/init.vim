@@ -22,6 +22,9 @@
 "create your own text objects
 "https://github.com/kana/vim-textobj-user
 "
+" for popular text objects
+"https://github.com/kana/vim-textobj-user/wiki
+"
 "run in the background use jobstart
 "map <leader>ra :call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
 set t_Co=256

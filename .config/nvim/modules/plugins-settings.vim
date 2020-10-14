@@ -322,7 +322,7 @@ let g:EasyMotion_smartcase = 1
 
 let g:targets_aiAI = 'alAL'
 let g:targets_mapped_aiAI = 'aiAI'
-let g:targets_nl = 'ni'
+let g:targets_nl = 'nN'
 " let g:targets_aiAI = ['<Space>a', '<Space>l', '<Space>A', '<Space>L']
 " let g:targets_mapped_aiAI = ['<Space>a', '<Space>l', '<Space>A', '<Space>L']
 "
@@ -463,7 +463,7 @@ xmap gp  <Plug>ReplaceWithRegisterVisual
 "{Visual}["x]gr		Replace the selection with the contents of register x.
 
 " indent text object
-" it uses my own repository
+let g:textobj_indent_no_default_key_mappings = 1
 silent! TextobjIndentDefaultKeyMappings!
 vmap li	<Plug>(textobj-indent-i)
 omap li	<Plug>(textobj-indent-i)
@@ -472,11 +472,13 @@ omap lI	<Plug>(textobj-indent-same-i)
 "
 " line text object
 
+let g:textobj_line_no_default_key_mappings = 1
 silent! TextobjLineDefaultKeyMappings!
 vmap <silent> ll <Plug>(textobj-line-i)
 omap <silent> ll <Plug>(textobj-line-i)
 
 " entire text object
+let g:textobj_entire_no_default_key_mappings = 1
 silent! TextobjEntireDefaultKeyMappings!
 vmap <silent> le	<Plug>(textobj-entire-i)
 omap <silent> le	<Plug>(textobj-entire-i)
