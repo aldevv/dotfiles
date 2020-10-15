@@ -1,25 +1,16 @@
 #!/bin/sh
-
-set -e
-
-err_report() {
-    echo "Error on line $1"
-}
-
-trap 'err_report $LINENO' ERR
-
 url=$(dragon -t -x)
 
 #if [ -n "$url" ]; then
 #    printf "File Name: "
 #    name=""
 #    while [ -z $name ] || [ -e $name ]
-#    do 
+#    do
 #        read -r name
 #        if [ -e "$name" ]; then
 #            printf "File already exists, overwrite (y|n): "
 #            read -r ans
-#            
+#
 #            if [ "$ans" = "y" ]; then
 #                break
 #            else

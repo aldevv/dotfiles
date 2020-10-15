@@ -474,7 +474,7 @@ xmap gp  <Plug>ReplaceWithRegisterVisual
 
 " indent text object
 let g:textobj_indent_no_default_key_mappings = 1
-silent! TextobjIndentDefaultKeyMappings!
+" let g:indent_object_except_first_level = 0
 vmap li	<Plug>(textobj-indent-i)
 omap li	<Plug>(textobj-indent-i)
 vmap ai	<Plug>(textobj-indent-a)
@@ -488,7 +488,6 @@ omap aI	<Plug>(textobj-indent-same-a)
 " only use for selecting, not for other stuff, has bugs
 
 let g:textobj_line_no_default_key_mappings = 1
-silent! TextobjLineDefaultKeyMappings!
 vmap <silent> ll <Plug>(textobj-line-i)
 omap <silent> ll <Plug>(textobj-line-i)
 vmap <silent> al <Plug>(textobj-line-a)
@@ -496,7 +495,6 @@ omap <silent> al <Plug>(textobj-line-a)
 
 " entire text object
 let g:textobj_entire_no_default_key_mappings = 1
-silent! TextobjEntireDefaultKeyMappings!
 vmap <silent> le	<Plug>(textobj-entire-i)
 omap <silent> le	<Plug>(textobj-entire-i)
 vmap <silent> ae	<Plug>(textobj-entire-a)

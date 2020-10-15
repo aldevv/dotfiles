@@ -32,23 +32,24 @@ Plug  'alvan/vim-closetag'
 "    gJ (with the cursor on the first line of a block) to join a block into a single-line statement.
 Plug 'AndrewRadev/splitjoin.vim'
 " goooooooooood!!, more text objects!!
-Plug 'wellle/targets.vim'
  " misc
- Plug 'mbbill/undotree'
- Plug 'tpope/vim-repeat'
- Plug 'lervag/vimtex'
- Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
- Plug 'liuchengxu/vim-which-key'
- Plug 'junegunn/goyo.vim'
- Plug 'tpope/vim-surround'
- Plug 'easymotion/vim-easymotion'
- Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  } |
+Plug 'mbbill/undotree'
+Plug 'lervag/vimtex'
+Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
+Plug 'liuchengxu/vim-which-key'
+Plug 'junegunn/goyo.vim'
+"essential
+Plug 'wellle/targets.vim'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  } |
              \ Plug 'Xuyuanp/nerdtree-git-plugin' |
              \ Plug 'ryanoasis/vim-devicons' |
              \ Plug 'vwxyutarooo/nerdtree-devicons-syntax' |
 Plug 'jupyter-vim/jupyter-vim'
-
-Plug 'vim-scripts/ReplaceWithRegister'
+" text objects
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
@@ -56,6 +57,7 @@ Plug 'kana/vim-textobj-entire'
 Plug 'bps/vim-textobj-python'
 Plug 'tommcdo/vim-exchange' "
 Plug 'glts/vim-textobj-comment'
+" to do operations on visual mode
 Plug 'vim-scripts/vis'
 " Plug 'christoomey/vim-sort-motion'
 
