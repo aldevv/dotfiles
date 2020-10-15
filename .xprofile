@@ -4,6 +4,10 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 dunst &
 
 fcitx & # for languages
+
+# custom scripts
+startupScripts
+
 DISPLAY=":0" picom -b
 # compton &
 sxhkd &
@@ -12,7 +16,5 @@ wal -R &
 # setup monitors
 cm
 
-# custom scripts
-startupScripts
 # lastScheme=$(ls -t "$HOME/.cache/wal/schemes" | sed 1q)
 # wal -f "$HOME/.cache/wal/schemes/${lastScheme}"
