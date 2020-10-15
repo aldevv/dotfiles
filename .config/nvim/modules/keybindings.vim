@@ -15,8 +15,11 @@ noremap k n
 noremap K N
 noremap N J
 noremap J E
-" vnoremap i l
-" vnoremap L I
+
+vnoremap l k
+
+vnoremap e l
+vnoremap L I
 
 "fold
 noremap ze zk
@@ -24,6 +27,12 @@ noremap zn zj
 noremap zD zE
 noremap z[ [z
 noremap z] ]z
+
+"useful
+nnoremap Y y$
+nnoremap V v$
+nnoremap D d$
+nnoremap C c$
 
 " noremap gss !python2 -c "import sys; print(sys.stdin.read())"<cr>
 "https://stackoverflow.com/questions/40072761/vim-send-visual-block-to-external-command
