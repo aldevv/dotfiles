@@ -131,21 +131,21 @@ autocmd CursorHold * :call <SID>show_hover_doc()
 " Use c-n for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 
-inoremap <silent><expr> <C-n>
-   \ pumvisible() ? "\<C-n>" :
-   \ <SID>check_back_space() ? "\<TAB>" :
-   \ coc#refresh()
-
-inoremap <expr><C-e> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-" inoremap <silent><expr> <TAB>
+" inoremap <silent><expr> <C-n>
 "    \ pumvisible() ? "\<C-n>" :
 "    \ <SID>check_back_space() ? "\<TAB>" :
 "    \ coc#refresh()
 
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <expr><C-e> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+   \ pumvisible() ? "\<C-n>" :
+   \ <SID>check_back_space() ? "\<TAB>" :
+   \ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
     let col = col('.') - 1
@@ -331,8 +331,8 @@ let g:EasyMotion_smartcase = 1
 " targets plugin
 "
 
-" let g:targets_aiAI = 'alAL'
-let g:targets_aiAI = 'aiAi'
+let g:targets_aiAI = 'alAL'
+" let g:targets_aiAI = 'aiAi'
 let g:targets_mapped_aiAI = 'aiAI'
 let g:targets_nl = 'nN'
 " let g:targets_aiAI = ['<Space>a', '<Space>l', '<Space>A', '<Space>L']
@@ -486,12 +486,12 @@ xmap gp  <Plug>ReplaceWithRegisterVisual
 " indent text object
 let g:textobj_indent_no_default_key_mappings = 1
 " let g:indent_object_except_first_level = 0
-vmap ii	<Plug>(textobj-indent-i)
-omap ii	<Plug>(textobj-indent-i)
+vmap li	<Plug>(textobj-indent-i)
+omap li	<Plug>(textobj-indent-i)
 vmap ai	<Plug>(textobj-indent-a)
 omap ai	<Plug>(textobj-indent-a)
-vmap iI	<Plug>(textobj-indent-same-i)
-omap iI	<Plug>(textobj-indent-same-i)
+vmap lI	<Plug>(textobj-indent-same-i)
+omap lI	<Plug>(textobj-indent-same-i)
 vmap aI	<Plug>(textobj-indent-same-a)
 omap aI	<Plug>(textobj-indent-same-a)
 "
@@ -499,8 +499,8 @@ omap aI	<Plug>(textobj-indent-same-a)
 " only use for selecting, not for other stuff, has bugs
 
 let g:textobj_line_no_default_key_mappings = 1
-vmap <silent> il <Plug>(textobj-line-i)
-omap <silent> il <Plug>(textobj-line-i)
+vmap <silent> ll <Plug>(textobj-line-i)
+omap <silent> ll <Plug>(textobj-line-i)
 vmap <silent> al <Plug>(textobj-line-a)
 omap <silent> al <Plug>(textobj-line-a)
 
@@ -508,8 +508,8 @@ omap <silent> al <Plug>(textobj-line-a)
 let g:textobj_entire_no_default_key_mappings = 1
 " vmap <silent> le	<Plug>(textobj-entire-i)
 " omap <silent> le	<Plug>(textobj-entire-i)
-vmap <silent> ie	<Plug>(textobj-entire-i)
-omap <silent> ie	<Plug>(textobj-entire-i)
+vmap <silent> le	<Plug>(textobj-entire-i)
+omap <silent> le	<Plug>(textobj-entire-i)
 vmap <silent> ae	<Plug>(textobj-entire-a)
 omap <silent> ae	<Plug>(textobj-entire-a)
 
@@ -527,13 +527,13 @@ let g:textobj_python_no_default_key_mappings = 1
 call textobj#user#map('python', {
   \   'class': {
   \     'select-a': '<buffer>ax',
-  \     'select-i': '<buffer>ix',
+  \     'select-i': '<buffer>lx',
   \     'move-n': '<buffer>]x',
   \     'move-p': '<buffer>[x',
   \   },
   \   'function': {
   \     'select-a': '<buffer>af',
-  \     'select-i': '<buffer>if',
+  \     'select-i': '<buffer>lf',
   \     'move-n': '<buffer>]f',
   \     'move-p': '<buffer>[f',
   \   }
@@ -544,8 +544,8 @@ call textobj#user#map('python', {
 let g:textobj_comment_no_default_key_mappings = 1
 vmap ac	<Plug>(textobj-comment-a)
 omap ac	<Plug>(textobj-comment-a)
-vmap ic <Plug>(textobj-comment-i)
-omap ic <Plug>(textobj-comment-i)
+vmap lc <Plug>(textobj-comment-i)
+omap lc <Plug>(textobj-comment-i)
 " vmap lc <Plug>(textobj-comment-i)
 " omap lc <Plug>(textobj-comment-i)
 " a big comment

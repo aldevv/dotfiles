@@ -16,9 +16,11 @@ noremap K N
 noremap N J
 noremap J E
 
-vnoremap l k
-
-vnoremap e l
+" vnoremap l k
+" vnoremap e l
+" vnoremap o l
+vnoremap i l
+vnoremap l i
 vnoremap L I
 
 "fold
