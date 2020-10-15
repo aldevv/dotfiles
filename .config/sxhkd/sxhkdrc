@@ -42,10 +42,16 @@ mode_switch +  k
     st -e newsboat
 
 mode_switch + n
-    typenet
+    nw
 
 mode_switch + shift + n
-    typemask
+    mk
+
+hyper + n
+    retrieveip
+
+hyper + shift + n
+    retrievemask
 
 # super +  a
 #     st -e mate-calculator
