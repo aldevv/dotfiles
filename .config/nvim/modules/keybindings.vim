@@ -1,18 +1,23 @@
 " testing inclusiveness (these work)
 " nnoremap db dvb
 " nnoremap dB dvB
+"
 noremap n j
 noremap e k
 noremap j e
 noremap gj ge
 nnoremap l i
 nnoremap i l
+
+"onoremap l something is open for configuration
+
 noremap k n
 noremap K N
 noremap N J
 noremap J E
-vnoremap i l
-vnoremap L I
+" vnoremap i l
+" vnoremap L I
+
 "fold
 noremap ze zk
 noremap zn zj

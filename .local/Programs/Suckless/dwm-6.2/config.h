@@ -47,7 +47,7 @@ const char *spcmd1[] = {"st", "-n", "spterm", "-f", "monospace:size=8", NULL };
 const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
 const char *spcmd3[] = {"st", "-n", "spman", "-f", "monospace:size=10", "-e", "bash", "-c", "openManPage;$SHELL",  NULL };
 const char *spcmd4[] = {"st", "-n", "sptab", "-f", "monospace:size=10", "-e", "bash", "-c", "tableContents;$SHELL",  NULL };
-const char *spcmd5[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-e", "bc", "-lq", NULL };
+const char *spcmd5[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-e", "bc", "-liq", NULL };
 const char *spcmd6[] = {"st", "-n", "sppydoc", "-f", "monospace:size=12", "-e", "bash", "-c", "python_docs;$SHELL", NULL };
 /* const char *spcmd6[] = {"station", NULL }; */
 static Sp scratchpads[] = {

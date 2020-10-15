@@ -59,6 +59,7 @@ Plug 'tommcdo/vim-exchange' "
 Plug 'glts/vim-textobj-comment'
 " to do operations on visual mode
 Plug 'vim-scripts/vis'
+Plug 'matze/vim-move'
 " Plug 'christoomey/vim-sort-motion'
 
 " can change this now that i have textobj-user

@@ -321,7 +321,8 @@ let g:EasyMotion_smartcase = 1
 " targets plugin
 "
 
-let g:targets_aiAI = 'alAL'
+" let g:targets_aiAI = 'alAL'
+let g:targets_aiAI = 'aiAi'
 let g:targets_mapped_aiAI = 'aiAI'
 let g:targets_nl = 'nN'
 " let g:targets_aiAI = ['<Space>a', '<Space>l', '<Space>A', '<Space>L']
@@ -475,12 +476,12 @@ xmap gp  <Plug>ReplaceWithRegisterVisual
 " indent text object
 let g:textobj_indent_no_default_key_mappings = 1
 " let g:indent_object_except_first_level = 0
-vmap li	<Plug>(textobj-indent-i)
-omap li	<Plug>(textobj-indent-i)
+vmap ii	<Plug>(textobj-indent-i)
+omap ii	<Plug>(textobj-indent-i)
 vmap ai	<Plug>(textobj-indent-a)
 omap ai	<Plug>(textobj-indent-a)
-vmap lI	<Plug>(textobj-indent-same-i)
-omap lI	<Plug>(textobj-indent-same-i)
+vmap iI	<Plug>(textobj-indent-same-i)
+omap iI	<Plug>(textobj-indent-same-i)
 vmap aI	<Plug>(textobj-indent-same-a)
 omap aI	<Plug>(textobj-indent-same-a)
 "
@@ -488,15 +489,17 @@ omap aI	<Plug>(textobj-indent-same-a)
 " only use for selecting, not for other stuff, has bugs
 
 let g:textobj_line_no_default_key_mappings = 1
-vmap <silent> ll <Plug>(textobj-line-i)
-omap <silent> ll <Plug>(textobj-line-i)
+vmap <silent> il <Plug>(textobj-line-i)
+omap <silent> il <Plug>(textobj-line-i)
 vmap <silent> al <Plug>(textobj-line-a)
 omap <silent> al <Plug>(textobj-line-a)
 
 " entire text object
 let g:textobj_entire_no_default_key_mappings = 1
-vmap <silent> le	<Plug>(textobj-entire-i)
-omap <silent> le	<Plug>(textobj-entire-i)
+" vmap <silent> le	<Plug>(textobj-entire-i)
+" omap <silent> le	<Plug>(textobj-entire-i)
+vmap <silent> ie	<Plug>(textobj-entire-i)
+omap <silent> ie	<Plug>(textobj-entire-i)
 vmap <silent> ae	<Plug>(textobj-entire-a)
 omap <silent> ae	<Plug>(textobj-entire-a)
 
@@ -514,13 +517,13 @@ let g:textobj_python_no_default_key_mappings = 1
 call textobj#user#map('python', {
   \   'class': {
   \     'select-a': '<buffer>ax',
-  \     'select-i': '<buffer>lx',
+  \     'select-i': '<buffer>ix',
   \     'move-n': '<buffer>]x',
   \     'move-p': '<buffer>[x',
   \   },
   \   'function': {
   \     'select-a': '<buffer>af',
-  \     'select-i': '<buffer>lf',
+  \     'select-i': '<buffer>if',
   \     'move-n': '<buffer>]f',
   \     'move-p': '<buffer>[f',
   \   }
@@ -531,8 +534,10 @@ call textobj#user#map('python', {
 let g:textobj_comment_no_default_key_mappings = 1
 vmap ac	<Plug>(textobj-comment-a)
 omap ac	<Plug>(textobj-comment-a)
-vmap lc <Plug>(textobj-comment-i)
-omap lc <Plug>(textobj-comment-i)
+vmap ic <Plug>(textobj-comment-i)
+omap ic <Plug>(textobj-comment-i)
+" vmap lc <Plug>(textobj-comment-i)
+" omap lc <Plug>(textobj-comment-i)
 " a big comment
 " whitespace after the comment, or if there isn't any,
 "			whitespace before the comment.
@@ -540,3 +545,13 @@ omap lc <Plug>(textobj-comment-i)
 "			for inline and end-of-line comments.
 vmap aC <Plug>(textobj-comment-big-a)
 omap aC <Plug>(textobj-comment-big-a)
+
+
+" visual mode move
+let g:move_key_modifier = 'C'
+   " disable default bindings"
+ let g:move_map_keys = 0
+vmap <C-n> <Plug>MoveBlockDown
+vmap <C-e> <Plug>MoveBlockUp
+vmap <C-h> <Plug>MoveBlockLeft
+vmap <C-i> <Plug>MoveBlockRight
