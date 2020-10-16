@@ -103,10 +103,10 @@ map ñ :
 
 " Ctrl-O lets you do just one command in insert mode
 
-inoremap <C-j> <Left>
-inoremap <C-l> <Down>
-inoremap <C-u> <Up>
-inoremap <C-y> <Right>
+inoremap <C-h> <Left>
+inoremap <C-n> <Down>
+inoremap <C-e> <Up>
+inoremap <C-i> <Right>
 cnoremap <C-j> <Left>
 cnoremap <C-l> <Down>
 cnoremap <C-u> <Up>
