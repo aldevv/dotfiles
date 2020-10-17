@@ -1,24 +1,17 @@
 " testing inclusiveness (these work)
 " nnoremap db dvb
 " nnoremap dB dvB
-"
+" colemak movement
 noremap n j
 noremap e k
 noremap j e
 noremap gj ge
 nnoremap l i
 nnoremap i l
-
-"onoremap l something is open for configuration
-
 noremap k n
 noremap K N
 noremap N J
 noremap J E
-
-" vnoremap l k
-" vnoremap e l
-" vnoremap o l
 vnoremap i l
 vnoremap l i
 vnoremap L I
@@ -34,6 +27,8 @@ noremap z] ]z
 nnoremap Y y$
 nnoremap V v$
 nnoremap gl gi
+nnoremap , ;
+nnoremap ; ,
 
 " noremap gss !python2 -c "import sys; print(sys.stdin.read())"<cr>
 "https://stackoverflow.com/questions/40072761/vim-send-visual-block-to-external-command

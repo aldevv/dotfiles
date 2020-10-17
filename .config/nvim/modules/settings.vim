@@ -3,7 +3,11 @@ syntax enable
 set nocompatible
 set shell=/bin/bash
 let mapleader = " "
-let maplocalleader = ','
+"======================
+"set local leader
+autocmd FileType tex let maplocalleader=','
+autocmd FileType tex nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+"======================
 set updatetime=1500 " this is for autosave in tex files(every cursorhold event)
 set encoding=utf-8
 scriptencoding utf-8
@@ -16,7 +20,6 @@ set spelllang=en_us
 " whichkey
 set timeoutlen=1500
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 filetype plugin indent on
 " set signcolumn=yes
 " set foldmethod=indent
