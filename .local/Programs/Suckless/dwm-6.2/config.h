@@ -69,16 +69,17 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
+    /* https://github.com/bakkeby/patches/wiki/floatpos */
 /* layout(s) */                                             //this allows swallowing(is terminal)
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor     floatpos     */
-    /* https://github.com/bakkeby/patches/wiki/floatpos */
-	/* { "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1,       0 }, */
-	{ "Firefox", NULL,     NULL,           1 << 8,       0,          0,           0,        -1,  "50% 50% 800W 800H"    },
-	{ "Code",    NULL,     NULL,           1 << 2,       0,          0,           0,        -1,  "50% 50% 800W 800H"    },
-	{ "St",      NULL,     NULL,              0,         0,          1,           0,        -1,  "50% 50% 800W 800H"    },
-	{ "Station", NULL,     NULL,           1 << 0,       0,          0,           0,        -1,  "50% 50% 800W 800H"     },
+	/* { "Gimp",    NULL,   NULL,           0,           1,          0,           0,        -1,       0 }, */
+	{ "Firefox",  NULL,     NULL,           1 << 8,      0,          0,           0,        -1,  "50% 50% 800W 800H"    },
+	{ "Code",     NULL,     NULL,           1 << 2,      0,          0,           0,        -1,  "50% 50% 800W 800H"    },
+	{ "St",       NULL,     NULL,              0,        0,          1,           0,        -1,  "50% 50% 800W 800H"    },
+	{ "Station",  NULL,     NULL,           1 << 0,      0,          0,           0,        -1,  "50% 50% 800W 800H"     },
 	{ "meh",      NULL,     NULL,           0,           1,          1,           1,        -1,  "100% 100% 100W 700H"   },
-	{ NULL,      NULL,     "Event Tester", 0,            0,          0,           1,        -1,  "50% 50% 800W 800H"     },
+	{ "copyq",    NULL,     NULL,	        0,	         1,		     0,           1,        -1,  "20% 20% 500W 500H"      },
+	{ NULL,       NULL,     "Event Tester", 0,           0,          0,           1,        -1,  "50% 50% 800W 800H"     },
 	{ NULL,		  "spterm",		NULL,	SPTAG(0),	     1,		     1,           0,        -1,  "50% 50% 800W 500H"      },
 	{ NULL,		  "spfm",		NULL,	SPTAG(1),	     1,		     1,           0,        -1,  "0% 0% 500W 500H"      },
 	{ NULL,		  "spman",      NULL,	SPTAG(2),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"      },

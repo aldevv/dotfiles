@@ -125,9 +125,7 @@ endfunction
 "
 " let g:airline_theme='luna'
 let g:airline_theme='gruvbox'
-let g:airline_powerline_fonts = 1
 "https://ncona.com/2019/02/the-vim-statusline/
 "let g:airline_theme='onehalfdark'
 "let g:airline_theme='gruvbox'
 "show buffers active on top
-"let g:airline#extensions#tabline#enabled = 1

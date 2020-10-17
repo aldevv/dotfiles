@@ -61,6 +61,7 @@ let g:rg_derive_root='true'
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 nnoremap <c-p> :PFiles<cr>
 nnoremap <leader>sb :Buffers<cr>
+nnoremap <leader>, :Buffers<cr>
 nnoremap <leader>gp :GFiles<cr>
 nnoremap <leader>gl :BCommits<cr>
 nnoremap <leader>f :Rg<cr>
@@ -573,3 +574,10 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR>
+
+"Airline
+
+let g:airline_powerline_fonts = 1
+autocmd Filetype java let g:airline#extensions#tabline#enabled = 1
+autocmd Filetype javascript let g:airline#extensions#tabline#enabled = 1
+" autocmd Filetype python let g:airline#extensions#tabline#enabled = 1

@@ -2,7 +2,7 @@
 
 cd "$PROGRAMS"
  Clone the repo
-git clone https://github.com/sdushantha/fontpreview
+git clone --depth=1 https://github.com/sdushantha/fontpreview
 
 # Change your current directory to fontpreview
 cd fontpreview

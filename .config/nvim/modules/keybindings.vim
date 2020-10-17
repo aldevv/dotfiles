@@ -72,6 +72,11 @@ map <leader>rs :!./%<cr>
 map <silent> <F11> /\A\zs\a<cr>
 noremap <c-n> <c-e>
 noremap <c-e> <c-y>
+
+noremap  <Down> 5<c-w>-
+noremap  <Up> 5<c-w>+
+noremap  <Right> 5<c-w>>
+noremap  <Left> 5<c-w><
 " noremap  N 5<c-w>-
 " noremap  E 5<c-w>+
 " noremap  + 5<c-w>>

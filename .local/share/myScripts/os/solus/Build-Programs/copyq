@@ -1,0 +1,18 @@
+#!/bin/sh
+
+cd "$PROGRAMS"
+git clone --depth=1 https://github.com/Akuseru1/CopyQ
+
+# cmake and git have to be installed
+eopkg it cmake
+
+eopkg it \
+    qt5-script-devel \
+    qt5-tools-devel \
+    qt5-svg-devel \
+    qt5-x11extras-devel \
+    libxtst-devel
+
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local .
+make
+make install

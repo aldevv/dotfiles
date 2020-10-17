@@ -53,6 +53,10 @@ hyper + n
 hyper + shift + n
     retrievemask
 
+# fn + c
+XF86Launch1
+	copyq toggle
+
 # super +  a
 #     st -e mate-calculator
 

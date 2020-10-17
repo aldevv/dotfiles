@@ -13,6 +13,7 @@ DISPLAY=":0" picom -b
 sxhkd &
 dwmstatus &
 wal -R &
+copyq &
 # setup monitors
 cm
 
