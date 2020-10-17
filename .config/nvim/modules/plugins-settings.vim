@@ -64,7 +64,7 @@ nnoremap <leader>sb :Buffers<cr>
 nnoremap <leader>, :Buffers<cr>
 nnoremap <leader>lgp :GFiles<cr>
 nnoremap <leader>gl :BCommits<cr>
-nnoremap <leader>f :Rg<cr>
+nnoremap <leader>f7 :Rg<cr>
 nnoremap <F4> :Course<cr>
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
@@ -95,6 +95,56 @@ command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 "Or, if you want to override the command with different fzf options, just pass a custom spec to the function.
 "command! -bang -nargs=? -complete=dir Files
 "   \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
+"
+autocmd FileType c,python :call ListMyOwnFunctions()
+autocmd FileType c,python :call ListMyOwnClasses()
+
+function ListMyOwnFunctions()
+    let extension = expand('%:e')
+    let nameFile = expand('%')
+
+    if extension == "c"
+        " execute ':g/\v^\S+\(\S+\)\n\{'
+         " command! -bang -nargs=* Cfunc
+      " \     call fzf#vim#grep(
+      " \     'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>). ' .', 1,
+      " \     fzf#vim#with_preview(), <bang>0)
+
+        command! -bang -nargs=* FFunc
+      \ call fzf#vim#grep(
+      \     'rg --column --line-number --no-heading --color=always --smart-case -- "^\S+\(\S+\).*$"', 1,
+      \     fzf_preview#p(<bang>0, {'options': '--delimiter : --nth 3..'}),
+      \     <bang>0)
+      " \     fzf#vim#with_preview({'dir': s:find_current_root()}), <bang>0)
+      " the commented one is for searching the whole project
+
+        " execute '%s/\v^\S+\(\S+\).*$//gn'
+    endif
+
+    if extension == "py"
+       " execute ':g/\v^def\s\S+\(\S*\):'
+         command! -bang -nargs=* FFunc
+      \     call fzf#vim#grep(
+      \     'rg --column --line-number --no-heading --color=always --smart-case -- "^def\s\S+\(\S*\):"', 1,
+      \     fzf#vim#with_preview(), <bang>0)
+      " \     fzf#vim#with_preview({'dir': s:find_current_root()}), <bang>0)
+        execute '%s/\v^def\s\S+\(\S*\)://gn'
+    endif
+
+    " :Cfunc
+endfunction
+
+function ListMyOwnClasses()
+    let extension = expand('%:e')
+    if extension == "py"
+       " execute ':g/\v^class\s\S+(\(\S+\))?:'
+         command! -bang -nargs=* FClass
+      \     call fzf#vim#grep(
+      \     'rg --column --line-number --no-heading --color=always --smart-case -- "^class\s\S+(\(\S+\))?:"', 1,
+      \     fzf#vim#with_preview(), <bang>0)
+    endif
+endfunction
+
 
 
 " GoTo code navigation.
@@ -581,3 +631,4 @@ let g:airline_powerline_fonts = 1
 autocmd Filetype java let g:airline#extensions#tabline#enabled = 1
 autocmd Filetype javascript let g:airline#extensions#tabline#enabled = 1
 " autocmd Filetype python let g:airline#extensions#tabline#enabled = 1
+

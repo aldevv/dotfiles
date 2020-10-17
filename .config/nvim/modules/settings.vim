@@ -36,6 +36,7 @@ set ignorecase
 set smartcase
 set tabstop=4 softtabstop=4
 set shiftwidth=4
+
 set smartindent
 set nowrap
 set noswapfile
@@ -49,9 +50,10 @@ set incsearch
 set relativenumber
 set laststatus=0
 set cmdheight=1
-set noshowmode
 " to  select and move cursor
 set mouse=a
+" to show stuff under the modeline
+set noshowmode
 
 
 "detect root in git repo

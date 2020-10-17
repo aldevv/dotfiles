@@ -45,6 +45,7 @@ nnoremap V v$
 nnoremap gl gi
 nnoremap , ;
 nnoremap ; ,
+nnoremap <leader>ct :!ctags -R
 
 " noremap gss !python2 -c "import sys; print(sys.stdin.read())"<cr>
 "https://stackoverflow.com/questions/40072761/vim-send-visual-block-to-external-command
@@ -56,7 +57,7 @@ vnoremap <silent> gsr :B !sortListR.py <cr>t]xT[
 
 
 nnoremap gñ :SyntaxQuery<CR>
-nnoremap <C-t> :silent call Toggle_transparent()<CR>
+nnoremap <leader>lt :silent call Toggle_transparent()<CR>
 function Toggle_transparent()
     exec ":!toggleTrans"
 endfunction
@@ -119,10 +120,10 @@ map ñ :
 
 " Ctrl-O lets you do just one command in insert mode
 
-inoremap <C-h> <Left>
+inoremap <a-h> <Left>
 inoremap <C-n> <Down>
 inoremap <C-e> <Up>
-inoremap <C-i> <Right>
+inoremap <a-i> <Right>
 cnoremap <C-j> <Left>
 cnoremap <C-l> <Down>
 cnoremap <C-u> <Up>
@@ -157,3 +158,27 @@ endfunction
 map <silent> <leader>ra :silent call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
 "old
 " map <leader>ra :silent !setsid st -e ranger $(dirname %) 2>&1 &<cr>
+
+" list functions
+nnoremap <leader>ff :FFunc<CR>
+" from https://github.com/
+nnoremap <leader>fs :FZFBTags<CR>
+nnoremap <leader>fc :FClass<CR>
+nnoremap <leader>fb :Buffers<CR>
+
+
+" com F5 call fzf#run({'sing': 'e', 'window': '30vnew'})
+" for opening to the right
+"'window': '30vnew'}
+" com -nargs=0 FF call fzf#run({'source' : split(execute(':call ListMyFunctions()'), "\n"), 'sink':'"'})
+" com -nargs=0 FF4 call fzf#run({
+"             \ 'source' : split(execute(':call ListMyFunctions()'), "\n"), 'sink':'"',
+            " \ fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0})
+
+" command! -bang -nargs=0 FF1
+"   \ call fzf#vim#grep(
+"   " \   'git grep --line-number -- '.shellescape(execute(':call ListMyFunctions()'). ' ' .shellescape(expand('%'))), 0,
+"   " \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+"
+"
+"

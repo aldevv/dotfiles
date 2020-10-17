@@ -61,6 +61,7 @@ Plug 'glts/vim-textobj-comment'
 Plug 'vim-scripts/vis'
 " move blocks in visual
 Plug 'matze/vim-move'
+Plug 'chengzeyi/fzf-preview.vim'
 " Plug 'christoomey/vim-sort-motion'
 
 " can change this now that i have textobj-user
