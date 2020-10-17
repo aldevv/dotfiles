@@ -62,7 +62,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 nnoremap <c-p> :PFiles<cr>
 nnoremap <leader>sb :Buffers<cr>
 nnoremap <leader>, :Buffers<cr>
-nnoremap <leader>gp :GFiles<cr>
+nnoremap <leader>lgp :GFiles<cr>
 nnoremap <leader>gl :BCommits<cr>
 nnoremap <leader>f :Rg<cr>
 nnoremap <F4> :Course<cr>
