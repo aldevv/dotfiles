@@ -60,6 +60,7 @@ Plug 'glts/vim-textobj-comment'
 " to do operations on visual mode
 Plug 'vim-scripts/vis'
 Plug 'matze/vim-move'
+Plug 'terryma/vim-smooth-scroll'
 " Plug 'christoomey/vim-sort-motion'
 
 " can change this now that i have textobj-user

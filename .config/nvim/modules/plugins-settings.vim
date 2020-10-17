@@ -60,7 +60,7 @@ let g:fzf_action = {
 let g:rg_derive_root='true'
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 nnoremap <c-p> :PFiles<cr>
-nnoremap <leader><leader>b :Buffers<cr>
+nnoremap <leader>sb :Buffers<cr>
 nnoremap <leader>gp :GFiles<cr>
 nnoremap <leader>gl :BCommits<cr>
 nnoremap <leader>f :Rg<cr>
@@ -102,6 +102,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap gr <Plug>(coc-references)
 nmap gi <Plug>(coc-implementation)
+" nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gy <Plug>(coc-type-definition)
 nmap g{ <Plug>(coc-diagnostic-prev)
 nmap g} <Plug>(coc-diagnostic-next)
@@ -565,3 +566,10 @@ vmap <C-n> <Plug>MoveBlockDown
 vmap <C-e> <Plug>MoveBlockUp
 vmap <C-h> <Plug>MoveBlockLeft
 vmap <C-i> <Plug>MoveBlockRight
+
+" smooth scroll
+" change the second parameter to change the duration of the scroll
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR>

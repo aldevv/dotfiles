@@ -33,8 +33,7 @@ noremap z] ]z
 "useful
 nnoremap Y y$
 nnoremap V v$
-nnoremap D d$
-nnoremap C c$
+nnoremap gl gi
 
 " noremap gss !python2 -c "import sys; print(sys.stdin.read())"<cr>
 "https://stackoverflow.com/questions/40072761/vim-send-visual-block-to-external-command
@@ -76,7 +75,8 @@ cmap w!! w !sudo tee > /dev/null %
 
 map <leader>rs :!./%<cr>
 map <silent> <F11> /\A\zs\a<cr>
-noremap <c-n> <c-y>
+noremap <c-n> <c-e>
+noremap <c-e> <c-y>
 " noremap  N 5<c-w>-
 " noremap  E 5<c-w>+
 " noremap  + 5<c-w>>
