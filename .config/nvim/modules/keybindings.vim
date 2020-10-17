@@ -16,6 +16,21 @@ vnoremap i l
 vnoremap l i
 vnoremap L I
 
+" clipboard
+" "*p pastes what is highlighted by the mouse
+" ""p and "0p are the default registers
+"
+" set clipboard=unnamedplus
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+y$
+nnoremap  <leader>y  "+y
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+" copy default register into the main clipboard
+nnoremap <silent> <leader>. :let @+ = @"<cr>
+
 "fold
 noremap ze zk
 noremap zn zj

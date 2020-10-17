@@ -301,7 +301,7 @@ set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 " prettier
 " nmap <Leader>p <Plug>(Prettier)
-nmap <Leader>p :call Formatting()<cr>
+nmap <Leader>lf :call Formatting()<cr>
 
 function Formatting()
 " the [:-2] is to take away the last new line character
@@ -570,10 +570,10 @@ vmap <C-i> <Plug>MoveBlockRight
 
 " smooth scroll
 " change the second parameter to change the duration of the scroll
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR>
+" noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 2)<CR>
+" noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
+" noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 5, 4)<CR>
+" noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 5, 4)<CR>
 
 "Airline
 

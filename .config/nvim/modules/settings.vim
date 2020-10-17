@@ -50,7 +50,6 @@ set relativenumber
 set laststatus=0
 set cmdheight=1
 set noshowmode
-set clipboard=unnamedplus
 " to  select and move cursor
 set mouse=a
 
