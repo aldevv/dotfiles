@@ -192,6 +192,8 @@ ResourcePref resources[] = {
 //
 /* commands */
 static const char *firefox[]  = { "firefox", NULL };
+static const char *mountUsb[]  = { "mountDrive", NULL };
+static const char *umountUsb[]  = { "umountDrive", NULL };
 
 static Key keys[] = {
 
@@ -206,6 +208,8 @@ static Key keys[] = {
 	//{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = firefox} },
+	{ MODKEY,                       XK_F9,     spawn,          {.v = mountUsb} },
+	{ MODKEY,                       XK_F10,    spawn,          {.v = umountUsb} },
 	{ MODKEY,            			XK_c,  	   togglescratch,  {.ui = 0 } },
 	{ MODKEY|ShiftMask,    			XK_c,	   togglescratch,  {.ui = 1 } },
     // this is alt-gr

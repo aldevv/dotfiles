@@ -19,9 +19,11 @@ Plug 'bkad/CamelCaseMotion'
  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
  Plug 'junegunn/fzf.vim'
  Plug 'yggdroot/indentLine'
+ " explicitly put the release/1.x, because Master was failing"
  Plug 'prettier/vim-prettier', {
    \ 'do': 'npm install',
-   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] ,
+   \ 'branch': 'release/1.x'}
  Plug 'mattn/emmet-vim'
  Plug 'airblade/vim-gitgutter' |
     \ Plug 'tpope/vim-fugitive'
@@ -62,7 +64,8 @@ Plug 'vim-scripts/vis'
 " move blocks in visual
 Plug 'matze/vim-move'
 Plug 'chengzeyi/fzf-preview.vim'
-" Plug 'christoomey/vim-sort-motion'
+" still not working correctly for neovim
+" Plug 'puremourning/vimspector'
 
 " can change this now that i have textobj-user
 

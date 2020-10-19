@@ -34,5 +34,5 @@ ru         /usr
 rv         /var
 rb         /bin
 rt         /root
-rm         /mnt
+rmn        /mnt
 sc         ~/Pictures/screenshots

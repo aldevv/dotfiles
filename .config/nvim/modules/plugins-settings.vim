@@ -61,7 +61,6 @@ let g:rg_derive_root='true'
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 nnoremap <c-p> :PFiles<cr>
 nnoremap <leader>sb :Buffers<cr>
-nnoremap <leader>, :Buffers<cr>
 nnoremap <leader>lgp :GFiles<cr>
 nnoremap <leader>gl :BCommits<cr>
 nnoremap <leader>f7 :Rg<cr>
@@ -128,7 +127,7 @@ function ListMyOwnFunctions()
       \     'rg --column --line-number --no-heading --color=always --smart-case -- "^def\s\S+\(\S*\):"', 1,
       \     fzf#vim#with_preview(), <bang>0)
       " \     fzf#vim#with_preview({'dir': s:find_current_root()}), <bang>0)
-        execute '%s/\v^def\s\S+\(\S*\)://gn'
+        " execute '%s/\v^def\s\S+\(\S*\)://gn'
     endif
 
     " :Cfunc
@@ -157,7 +156,7 @@ nmap gi <Plug>(coc-implementation)
 nmap <leader>gy <Plug>(coc-type-definition)
 nmap g{ <Plug>(coc-diagnostic-prev)
 nmap g} <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>,, <Plug>(coc-diagnostic-prev-error)
+nmap <silent> <leader>, <Plug>(coc-diagnostic-prev-error)
 nmap <silent> <leader>; <Plug>(coc-diagnostic-next-error)
 nnoremap <leader>cr :CocRestart
 nnoremap <silent> <leader>+ :call CocAction('doHover')<cr>
@@ -167,18 +166,24 @@ nnoremap <silent> <space>dd :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <space>ds :<C-u>CocList -I symbols<cr>
 nmap <leader>da <Plug>(coc-codeaction)
 
-function! ShowDocIfNoDiagnostic(timer_id)
-  if (coc#util#has_float() == 0)
-    silent call CocActionAsync('doHover')
+
+function s:show_hover_doc()
+  if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ "\\S"
+    silent! call timer_start(300, 'ShowDocIfNoDiagnostic')
   endif
 endfunction
 
-function! s:show_hover_doc()
-  call timer_start(500, 'ShowDocIfNoDiagnostic')
+function! ShowDocIfNoDiagnostic(timer_id)
+  if (coc#util#has_float() == 0)
+    silent! call CocActionAsync('doHover')
+  endif
 endfunction
 
-autocmd CursorHoldI * :call <SID>show_hover_doc()
-autocmd CursorHold * :call <SID>show_hover_doc()
+function Activate_hover()
+    autocmd CursorHoldI * silent! call <SID>show_hover_doc()
+    autocmd CursorHold  * silent! call<SID>show_hover_doc()
+endfunction
+autocmd FileType python,cpp,javascript,c :call Activate_hover()
 
 " Use c-n for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -192,10 +197,15 @@ autocmd CursorHold * :call <SID>show_hover_doc()
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-   \ pumvisible() ? "\<C-n>" :
-   \ <SID>check_back_space() ? "\<TAB>" :
-   \ coc#refresh()
+"
+"this one lets you use tab to open popup menu when character before cursor
+" inoremap <silent><expr> <TAB>
+"    \ pumvisible() ? "\<C-n>" :
+"    \ <SID>check_back_space() ? "\<TAB>" :
+"    \ coc#refresh()
+
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <silent><expr> <c-e> pumvisible() ? "\<C-p>" : "\<c-e>"
 
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
@@ -209,27 +219,35 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+inoremap <silent><expr> <CR> pumvisible() && coc#rpc#request('hasSelected', []) ? "\<C-y>" : "\<CR>"
+
+" disable <c-n> for scrolling the menu
+" inoremap <expr><C-n> UltiSnips#JumpForwards()
+" inoremap <expr> <C-n> pumvisible() ? "<Nop>" : "\<C-n>"
+
 
 " Use `[g` and `]g` to navigate diagnostics (errors)
 nmap <silent> g[ <Plug>(coc-diagnostic-prev)
 nmap <silent> g] <Plug>(coc-diagnostic-next)
 
 "Coc-snippets
+let g:coc_snippet_next = '<TAB>'
+let g:coc_snippet_prev = '<S-TAB>'
 "to scroll with tab
 " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-let g:coc_snippet_next = '<TAB>'
-let g:coc_snippet_prev = '<S-TAB>'
 "imap <C-l> <Plug>(coc-snippets-expand)
+"
 
 
     " \ 'coc-html',
-    " \ 'coc-prettier',
     " \ 'coc-json',
 let g:coc_global_extensions = [
    \ 'coc-marketplace',
    \ 'coc-snippets',
+   \ 'coc-tag',
    \ 'coc-pairs',
    \ 'coc-tsserver',
    \ 'coc-css',
@@ -237,8 +255,11 @@ let g:coc_global_extensions = [
    \ 'coc-python',
    \ 'coc-sh',
    \ 'coc-tslint-plugin',
+   \ 'coc-prettier',
    \ ]
 
+
+au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
 
 " Sweet Sweet FuGITive
 nmap <leader>gh :diffget //3<CR>
@@ -248,8 +269,10 @@ nmap <leader>gs :G<CR>
 " ultisnips
 " let g:UltiSnipsExpandTrigger='<c-s>' " TO USE SNIPPETS
 let g:UltiSnipsExpandTrigger='ß' "
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+" let g:UltiSnipsJumpForwardTrigger = '<tab>'
+" let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsJumpForwardTrigger = '<c-l>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-u>'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 
 
@@ -343,7 +366,7 @@ function VerticalLines()
     :IndentLinesToggle
     set shiftwidth=2
 endfunction
-autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.js,*.ts :call VerticalLines()
+autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.js,*.ts,*.json,*.jsx :call VerticalLines()
 "these 2 only work with real tabs, not expanded tabs"
 "set listchars=tab:┆.,trail:.,extends:>,precedes:<
 "set list
@@ -351,13 +374,13 @@ set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 " prettier
 " nmap <Leader>p <Plug>(Prettier)
-nmap <Leader>lf :call Formatting()<cr>
+" nmap <Leader>lp :call Formatting()<cr>
+nmap <Leader>lp <Plug>(Prettier)
 
 function Formatting()
 " the [:-2] is to take away the last new line character
     let extension = expand('%:e')
     if extension =~ "js"
-        :Prettier
         return
     else
     if extension =~ "py"
@@ -632,3 +655,41 @@ autocmd Filetype java let g:airline#extensions#tabline#enabled = 1
 autocmd Filetype javascript let g:airline#extensions#tabline#enabled = 1
 " autocmd Filetype python let g:airline#extensions#tabline#enabled = 1
 
+" vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
+" packadd! vimspector
+nmap <leader>dd :call vimspector#Launch()<CR>
+nmap <leader>dw :VimspectorWatch
+autocmd Filetype java nmap <leader>dd :CocCommand java.debug.vimspector.start<cr>
+"enable python debugging
+" :VimspectorInstall vscode-python
+    " <Plug>VimspectorContinue
+    " <Plug>VimspectorStop
+    " <Plug>VimspectorRestart
+    " <Plug>VimspectorPause
+    " <Plug>VimspectorToggleBreakpoint
+    " <Plug>VimspectorToggleConditionalBreakpoint
+    " <Plug>VimspectorAddFunctionBreakpoint
+    " <Plug>VimspectorStepOver
+    " <Plug>VimspectorStepInto
+    " <Plug>VimspectorStepOut
+"{
+"  "configurations": {
+"    "univisal: Launch": {
+"      "adapter": "debugpy",
+"      "configuration": {
+"        "name": "Launch",
+"        "type": "python",
+"        "request": "launch",
+"        "cwd": "${workspaceRoot}",
+"        "stopOnEntry": true,
+"        "console": "externalTerminal",
+"        "debugOptions": [],
+"        "program": "${file}"
+"      }
+"    }
+"  }
+"}
+
+" vim-commentary
+autocmd FileType json setlocal commentstring=//%s

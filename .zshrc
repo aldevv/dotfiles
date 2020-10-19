@@ -10,7 +10,7 @@
 #test
 # wal -i [picture]
 #export GTK_IM_MODULE=fcitx
-
+export SXHKD_SHELL="/usr/bin/sh"
 export ZSH="$HOME/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -104,7 +104,7 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # # in archlinux put the archlinux plugin!
 
 #should add docker if i use it someday
-plugins=(colemak z extract)
+plugins=(z extract)
 # z is a command that takes you to the most probable folder
 source $ZSH/oh-my-zsh.sh
 . $XDG_CONFIG_HOME/zshPlugAlias
@@ -149,6 +149,7 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	corona='/home/solus/dev/corona/get_info'\
 	tord='/home/solus/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads'\
 	sac='source env/bin/activate'\
+	sacr='source env/bin/activate && pip install -r requirements.txt'\
 	ven='wine .wine/drive_c/Program\ Files/Vensim/venPLE32.exe'\
     dotrepo="git --git-dir=$HOME/Documents/DotFilesRepository/ --work-tree=$HOME"\
 	dst='dotrepo status'\
@@ -279,6 +280,11 @@ alias tv="/home/solus/.local/Programs/teamviewer/teamviewer"
 alias zoom="/home/solus/.local/Programs/zoom/ZoomLauncher"
 alias nmone="nmcli d wifi connect HYPERION "
 alias nmtwo="nmcli d wifi connect Hyperion_R "
+alias nvmls="nvm ls-remote"
+alias nvmch=". $SCRIPTS/useful/node/nvmch"
+
+# less keybindings
+lesskey $XDG_CONFIG_HOME/colemak-less
 
 #pdfgrep
 #completion and highlighting
@@ -286,3 +292,8 @@ source ~/.config/completion_fzf.zsh
 fpath=($PROGRAMS/zsh-completions/src $fpath)
 source $PROGRAMS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.aliases
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+

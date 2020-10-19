@@ -81,3 +81,4 @@ source ~/.config/nvim/modules/automation.vim
 " PLUGINS SETTINGS
 "==================
 source ~/.config/nvim/modules/plugins-settings.vim
+

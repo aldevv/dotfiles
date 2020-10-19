@@ -67,3 +67,12 @@ let g:python3_host_prog = '/usr/bin/python3'
 " if exists("python_highlight_all")
 "   let python_space_error_highlight = 1
 "  endif
+let g:termdebug_popup = 0
+let g:termdebug_wide = 163
+
+" share registers between vim instances
+augroup SHADA
+    autocmd!
+    autocmd CursorHold,TextYankPost,FocusGained,FocusLost *
+                \ if exists(':rshada') | rshada | wshada | endif
+augroup END

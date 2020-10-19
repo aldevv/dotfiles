@@ -16,6 +16,9 @@ vnoremap i l
 vnoremap l i
 vnoremap L I
 
+noremap - /
+noremap / -
+
 " clipboard
 " "*p pastes what is highlighted by the mouse
 " ""p and "0p are the default registers
@@ -46,6 +49,7 @@ nnoremap gl gi
 nnoremap , ;
 nnoremap ; ,
 nnoremap <leader>ct :!ctags -R
+
 
 " noremap gss !python2 -c "import sys; print(sys.stdin.read())"<cr>
 "https://stackoverflow.com/questions/40072761/vim-send-visual-block-to-external-command
@@ -109,8 +113,8 @@ nnoremap <leader>sv <c-w>v
 map  <leader>T :w !sudo tee %<CR>
 map  <leader>t :w<CR>
 map  <leader>q :wq<CR>
-map <F6> :e ~/.config/nvim/init.vim<cr>
-map <F3> :e ~/.zshrc<cr>
+map <leader><F1> :e ~/.config/nvim/init.vim<cr>
+map <leader><F2> :e ~/.zshrc<cr>
 map <C-&> <C-^>
 " noremap  <leader>ww :w<CR>
 noremap  ! :!
@@ -121,8 +125,8 @@ map ñ :
 " Ctrl-O lets you do just one command in insert mode
 
 inoremap <a-h> <Left>
-inoremap <C-n> <Down>
-inoremap <C-e> <Up>
+" inoremap <C-n> <Down>
+" inoremap <C-e> <Up>
 inoremap <a-i> <Right>
 cnoremap <C-j> <Left>
 cnoremap <C-l> <Down>
@@ -180,5 +184,16 @@ nnoremap <leader>fb :Buffers<CR>
 "   " \   'git grep --line-number -- '.shellescape(execute(':call ListMyFunctions()'). ' ' .shellescape(expand('%'))), 0,
 "   " \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 "
-"
-"
+"debugging python, needs pip install ipdb
+ func! s:SetBreakpoint()
+    cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'import ipdb; ipdb.set_trace()')
+endf
+
+func! s:RemoveBreakpoint()
+    exe 'silent! g/^\s*import\sipdb\;\?\n*\s*ipdb.set_trace()/d'
+endf
+
+func! s:ToggleBreakpoint()
+    if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
+endf
+nnoremap <F6> :call <SID>ToggleBreakpoint()<CR>

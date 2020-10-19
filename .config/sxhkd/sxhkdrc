@@ -156,13 +156,6 @@ mode_switch + i
     # st -e $UTILITIES/misc/runCommand $(dmenu -p "prompt:")
 	 # dunstify $(sh -c "$(dmenu -i -p "prompt:")")
 
-
-super + F9
- 	 $UTILITIES/mount/mountD
-
-super + shift + F9
- 	 $UTILITIES/mount/umountD
-
 XF86AudioMute
      $SCRIPTS/shared/volume.sh mute; $APPS/dwm/refreshVolume
      # pactl set-sink-mute 0 toggle
