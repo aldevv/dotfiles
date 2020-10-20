@@ -1,0 +1,6 @@
+#!/bin/sh
+
+filename=$(basename -- "$1")
+extension="${filename##*.}"
+ffmpeg -i "$1" "$filename.mp3"
+

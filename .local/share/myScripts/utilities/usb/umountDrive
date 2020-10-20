@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo umount -l "/mnt" && notify-send "unmounted" || notify-send "nothing to unmount"

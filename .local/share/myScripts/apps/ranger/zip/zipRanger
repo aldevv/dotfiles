@@ -1,0 +1,9 @@
+#!/bin/sh
+
+
+echo "zip name: "
+read -r message
+if [ -z "$message" ]; then
+    message="default.zip"
+fi
+zip -r "$message" "$1"

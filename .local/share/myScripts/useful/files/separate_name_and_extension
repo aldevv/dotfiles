@@ -7,5 +7,7 @@ if [[ -z $fullfile ]]; then
     echo failed
     exit
 fi
+
 filename=$(basename -- "$fullfile")
+filename_no_ext=${fname%.*}
 extension="${filename##*.}"

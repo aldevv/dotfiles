@@ -24,9 +24,10 @@ doc        /usr/share/doc
 map        ~/.local/share/myScripts/apps
 D          ~/Downloads
 d          ~/Documents
-pi         ~/Pictures
+pp         ~/Pictures
 pr         ~/.local/Programs
-vi         ~/Videos
+vv         ~/Videos
+mm         ~/Music
 wi         ~/.local/share/wiki
 lo         ~/.local
 re         /etc
