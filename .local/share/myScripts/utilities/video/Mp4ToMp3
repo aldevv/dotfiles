@@ -1,6 +1,12 @@
 #!/bin/sh
 
-filename=$(basename -- "$1")
-extension="${filename##*.}"
-ffmpeg -i "$1" "$filename.mp3"
+fname=$(basename -- "$1")
+extension="${fname##*.}"
+filename_no_ext=${fname%.*}
+
+ffmpeg -i "$1" "$filename_no_ext.mp3"
+
+#!/bin/bash
+
+
 

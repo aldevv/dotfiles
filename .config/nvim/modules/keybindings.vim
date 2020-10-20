@@ -15,6 +15,9 @@ noremap J E
 vnoremap i l
 vnoremap l i
 vnoremap L I
+nnoremap <CR> o<Esc>
+nnoremap <S-CR> O<Esc>
+nnoremap [13;2u o
 
 noremap - /
 noremap / -
