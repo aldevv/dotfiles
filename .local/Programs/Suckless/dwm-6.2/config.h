@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static unsigned int snap      = 32;       /* snap pixel */
+static unsigned int snap      = 3;       /* snap pixel */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static int floatposgrid_x           = 5;        /* float grid columns */
@@ -14,6 +14,7 @@ static const char *fonts[]          = {
  };
 static const char dmenufont[]       = "Fira Code Nerd Font:size=10";
 /* static char selbordercolor[]        = "#eeeeee"; //border of selected window */
+/* in order to change border opacity, change frame-opacity in picom settings */
 static unsigned int borderpx  = 3;        /* border pixel of windows */
 static char selbordercolor[]        = "#770000"; //border of selected window
 static char selbgcolor[]            = "#005577";
