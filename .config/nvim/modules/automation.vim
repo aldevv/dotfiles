@@ -40,10 +40,10 @@ autocmd BufWritePre * %s/\s\+$//e
 
     endfunction
 " auto compile latex if no vimtex
-    autocmd BufWritePost,CursorHold,CursorHoldI *.tex :call CompileTex()
+    autocmd BufWritePost,CursorHold,CursorHoldI *.tex :silent call CompileTex()
 
 " auto compile markdown
-    autocmd BufWritePost *.md :call CompileMd()
+    autocmd BufWritePost *.md :silent call CompileMd()
 
     function CompileTex()
         :w | silent exec "!latexmk -pdf %"
@@ -67,7 +67,7 @@ autocmd BufWritePre * %s/\s\+$//e
     autocmd BufWritePost *.vim source %
 
 " auto compile xresources
-    autocmd BufWritePost *.Xresources !xrdb ~/.Xresources
+    autocmd BufWritePost *.Xresources !xrdb -merge ~/.Xresources
 
 " auto compile sxhkd
     autocmd BufWritePost *sxhkdrc !pkill sxhkd; setsid sxhkd &

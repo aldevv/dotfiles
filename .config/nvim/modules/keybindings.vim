@@ -155,6 +155,9 @@ function Runner()
     if extension == "js"
         :!node %
     endif
+    if extension == "java"
+        execute "!javac % && java ".expand('%:t:r')
+    endif
     if extension == ""
         : !chmod +x %; ./%
 
