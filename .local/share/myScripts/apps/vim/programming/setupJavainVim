@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cd "$HOME/.config/coc/extensions/coc-java-data/server"
+curl -O "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz" && rm -rf .
+tar kvvxf *
+rm -rf *.tar.gz
+
+
