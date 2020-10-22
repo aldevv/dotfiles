@@ -20,6 +20,7 @@ Plug 'bkad/CamelCaseMotion'
  Plug 'junegunn/fzf.vim'
  Plug 'yggdroot/indentLine'
  " explicitly put the release/1.x, because Master was failing"
+ Plug 'psf/black', { 'branch': 'stable' }
  Plug 'prettier/vim-prettier', {
    \ 'do': 'npm install',
    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] ,

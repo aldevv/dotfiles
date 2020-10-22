@@ -4,7 +4,8 @@
 
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
-    "python.formatting.provider": "autopep8",
+    // "python.formatting.provider": "autopep8",
+    "python.formatting.provider": "black",
     // this is for removing [A] predictions from popup menu
     //"coc.source.around.enable":false,
 

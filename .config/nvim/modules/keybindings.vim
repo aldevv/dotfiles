@@ -15,6 +15,7 @@ noremap J E
 vnoremap i l
 vnoremap l i
 vnoremap L I
+noremap gn J
 nnoremap <CR> o<Esc>
 nnoremap <S-CR> O<Esc>
 nnoremap [13;2u o
@@ -38,8 +39,8 @@ noremap / -
 
 noremap <leader>n <s-n>
 noremap <leader>sd :bd<cr>
-noremap N :bprevious<cr>
-noremap E :bnext<cr>
+noremap <silent>N :bprevious<cr>
+noremap <silent>E :bnext<cr>
 
 " clipboard
 " "*p pastes what is highlighted by the mouse
@@ -78,14 +79,14 @@ nnoremap <leader>ct :!ctags -R
 "added B and S (vis plugin)
 "B for applying commands to the visually selected area and only to that visual area
 "S is for searching stuff ONLY in the visually selected area
-vnoremap <silent> gss :B !sortList.py <cr>t]xT[
-vnoremap <silent> gsr :B !sortListR.py <cr>t]xT[
+vnoremap <silent><leader> gs :B !sortList.py <cr>t]xT[
+vnoremap <silent><leader> gr :B !sortListR.py <cr>t]xT[
 
 
 nnoremap gñ :SyntaxQuery<CR>
 nnoremap <leader>lt :silent call Toggle_transparent()<CR>
 function Toggle_transparent()
-    exec ":!toggleTrans"
+exec ":!toggleTrans"
 endfunction
 
 " open terminal
@@ -107,7 +108,7 @@ inoremap <a-m> <++>
 noremap <leader>rb i#!/bin/sh<CR><CR>
 
 " Alias replace all to
-nnoremap <A-s> :%s//gI<Left><Left><Left>
+nnoremap <A-s> :%s///gI<Left><Left><Left><Left>
 " save with no permission using w!!, could be cnoremap
 cmap w!! w !sudo tee > /dev/null %
 
@@ -157,30 +158,33 @@ cnoremap <C-y> <Right>
 
 map <silent> <leader>rr :call Runner()<cr>
 function Runner()
-    exec 'silent w'
-    let extension = expand('%:e')
+exec 'silent w'
+let extension = expand('%:e')
 
-    if extension == "c"
-         :!gcc %  && ./a.out
-    endif
+if extension == "c"
+     :!gcc %  && ./a.out
+endif
 
-    if extension == "cpp"
-         :!g++  % && ./a.out
-    endif
+if extension == "cpp"
+     :!g++  % && ./a.out
+endif
 
-    if extension == "py"
-        :!python3 %
-    endif
-    if extension == "js"
-        :!node %
-    endif
-    if extension == "java"
-        execute "!javac % && java ".expand('%:t:r')
-    endif
-    if extension == ""
-        : !chmod +x %; ./%
+if extension == "py"
+    :!python3 %
+endif
+if extension == "js"
+    :!node %
+endif
+if extension == "ts"
+    :!node %
+endif
+if extension == "java"
+    execute "!javac % && java ".expand('%:t:r')
+endif
+if extension == ""
+    : !chmod +x %; ./%
 
-    endif
+endif
 endfunction
 
 " open browser in current file folder
@@ -202,7 +206,7 @@ nnoremap <leader>fb :Buffers<CR>
 " com -nargs=0 FF call fzf#run({'source' : split(execute(':call ListMyFunctions()'), "\n"), 'sink':'"'})
 " com -nargs=0 FF4 call fzf#run({
 "             \ 'source' : split(execute(':call ListMyFunctions()'), "\n"), 'sink':'"',
-            " \ fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0})
+        " \ fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0})
 
 " command! -bang -nargs=0 FF1
 "   \ call fzf#vim#grep(
@@ -210,15 +214,15 @@ nnoremap <leader>fb :Buffers<CR>
 "   " \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 "
 "debugging python, needs pip install ipdb
- func! s:SetBreakpoint()
-    cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'import ipdb; ipdb.set_trace()')
+func! s:SetBreakpoint()
+cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'import ipdb; ipdb.set_trace()')
 endf
 
 func! s:RemoveBreakpoint()
-    exe 'silent! g/^\s*import\sipdb\;\?\n*\s*ipdb.set_trace()/d'
+exe 'silent! g/^\s*import\sipdb\;\?\n*\s*ipdb.set_trace()/d'
 endf
 
 func! s:ToggleBreakpoint()
-    if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
+if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
 endf
 nnoremap <F6> :call <SID>ToggleBreakpoint()<CR>

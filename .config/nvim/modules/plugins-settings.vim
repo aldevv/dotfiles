@@ -13,7 +13,8 @@ function s:UpdateNerd() " updates the  tree when a new file is saved
     endif
     g:nerdFirsttime = 1
 endfunction
-map <leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
+" map <leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
+noremap ge :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
 function s:FileName()
     call inputsave()
     let g:createdFile = input("File name: ")
@@ -389,20 +390,41 @@ autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.js,*.ts,*.json,
 "set list
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
-" prettier
+" prettier and black
+"======================
+"black
+"======================
+"
+"(defaults to 0)
+let g:black_fast = 0
+"(defaults to 88)
+let g:black_linelength = 88
+" (defaults to 0)
+let g:black_skip_string_normalization = 0
+"======================
+"prettier
+"======================
+" let g:prettier#config#print_width = 'auto'
+let g:prettier#config#print_width = 95
+"(defaults to ~/.vim/black or ~/.local/share/nvim/black)
+"let g:black_virtualenv ="~/.local/share/nvim/black"
+autocmd BufWritePre *.py :Black
+autocmd BufWritePre *.js,*.json,*.jsx,*.ts :Prettier
 " nmap <Leader>p <Plug>(Prettier)
-" nmap <Leader>lp :call Formatting()<cr>
-nmap <Leader>lp <Plug>(Prettier)
+nmap <silent><Leader>lp :call Formatting()<cr>
+" nmap <Leader>lp <Plug>(Prettier)
 
 function Formatting()
 " the [:-2] is to take away the last new line character
     let extension = expand('%:e')
-    if extension =~ "js"
+    if extension =~ '\v(j|t)s'
+        :execute "normal \<Plug>(Prettier)"
         return
     else
     if extension =~ "py"
         echo worked
-        :call CocAction('format')
+        " :call CocAction('format')
+        :Black
         return
     endif
     :!clear && shellcheck %<CR>
@@ -709,3 +731,10 @@ autocmd Filetype java nmap <leader>dd :CocCommand java.debug.vimspector.start<cr
 
 " vim-commentary
 autocmd FileType json setlocal commentstring=//%s
+
+" splitjoin
+let g:splitjoin_split_mapping = 'gs'
+let g:splitjoin_join_mapping = 'gS'
+
+" nmap gs :SplitjoinSplit<cr>
+" nmap gS :SplitjoinJoin<cr>
