@@ -28,8 +28,6 @@ export WIKI="$HOME/.local/share/wiki"
 export READER=zathura
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
-#for cargo
-export PATH="$HOME/.cargo/bin:$PATH"
 #add all files in these directories to the PATH
 export PATH="$(du $SHARED | cut -f2 | tr '\n' ':')$PATH"
 export PATH="$(du $APPS | cut -f2 | tr '\n' ':')$PATH"
@@ -46,13 +44,17 @@ export XMODIFIERS=@im='ibus'
 # work
 export WORK="$HOME/dev/Work"
 export PYTHONPATH="$WORK/PPE/tensorflow-api/models/research:$WORK/PPE/tensorflow-api/models/research/slim:$WORK/PPE/tensorflow-api/models:$PYTHONPATH"
+export JDK_HOME="/usr/lib64/openjdk-11"
+export JAVA_HOME="$JDK_HOME"
+#for cargo
+export PATH="$PATH:$JAVA_HOME/bin:$HOME/.cargo/bin"
 
 #======================================
 
 #fzf
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
-export FZF_DEFAULT_COMMAND="rg --files --follow -g '!{**/node_modules/*,**/.git/*,miniconda3/*,backups/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}'"
+export FZF_DEFAULT_COMMAND="rg --files --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,backups/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}'"
 export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type directory"
 # alt r -> cd into selected dir

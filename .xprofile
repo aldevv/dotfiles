@@ -13,6 +13,7 @@ DISPLAY=":0" picom -b
 sxhkd &
 dwmstatus &
 wal -R &
+xrdb -merge ~/.Xresources
 copyq &
 # setup monitors
 cm

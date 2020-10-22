@@ -282,6 +282,10 @@ alias nmone="nmcli d wifi connect HYPERION "
 alias nmtwo="nmcli d wifi connect Hyperion_R "
 alias nvmls="nvm ls-remote"
 alias nvmch=". $SCRIPTS/useful/node/nvmch"
+alias mydot="git clone --depth=1 https://www.github.com/akuseru1/dotfiles"
+alias r="sudo rm -rf dwm"
+alias i="sudo -E ./prog"
+alias ri="r && i"
 
 # less keybindings
 lesskey $XDG_CONFIG_HOME/colemak-less

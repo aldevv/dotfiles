@@ -22,6 +22,12 @@ nnoremap [13;2u o
 noremap - /
 noremap / -
 
+noremap <leader>sn :e 
+noremap <leader>n <s-n>
+noremap <leader>sd :bd<cr>
+noremap N :bprevious<cr>
+noremap E :bnext<cr>
+
 " clipboard
 " "*p pastes what is highlighted by the mouse
 " ""p and "0p are the default registers

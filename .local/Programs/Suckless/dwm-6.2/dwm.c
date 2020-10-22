@@ -952,7 +952,8 @@ floatpos(const Arg *arg)
 		return;
 
 	setfloatpos(c, (char *)arg->v);
-	resizeclient(c, c->x, c->y, c->w, c->h);
+	/* resizeclient(c, c->x, c->y, c->w, c->h); */
+	resize(c, c->x, c->y, c->w, c->h, 1);
 
 	XRaiseWindow(dpy, c->win);
 	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w/2, c->h/2);
@@ -1255,7 +1256,7 @@ incnmaster(const Arg *arg)
 	for(i=0; i<LENGTH(tags); ++i)
 		if(selmon->tagset[selmon->seltags] & 1<<i)
 			selmon->pertag->nmasters[i+1] = selmon->nmaster;
-	
+
 	if(selmon->pertag->curtag == 0)
 	{
 		selmon->pertag->nmasters[0] = selmon->nmaster;
@@ -1392,6 +1393,7 @@ manage(Window w, XWindowAttributes *wa)
 	XSetWindowBorder(dpy, w, scheme[SchemeNorm][ColBorder].pixel);
 	configure(c); /* propagates border_width, if size doesn't change */
 	updatewindowtype(c);
+	/* updatesizehints(c); */
 	updatewmhints(c);
 	XSelectInput(dpy, w, EnterWindowMask|FocusChangeMask|PropertyChangeMask|StructureNotifyMask);
 	grabbuttons(c, 0);
@@ -1925,13 +1927,13 @@ setlayout(const Arg *arg)
 	for(i=0; i<LENGTH(tags); ++i)
 		if(selmon->tagset[selmon->seltags] & 1<<i)
 		{
-			selmon->pertag->ltidxs[i+1][selmon->sellt] = selmon->lt[selmon->sellt]; 
+			selmon->pertag->ltidxs[i+1][selmon->sellt] = selmon->lt[selmon->sellt];
 			selmon->pertag->sellts[i+1] = selmon->sellt;
 		}
-	
+
 	if(selmon->pertag->curtag == 0)
 	{
-		selmon->pertag->ltidxs[0][selmon->sellt] = selmon->lt[selmon->sellt]; 
+		selmon->pertag->ltidxs[0][selmon->sellt] = selmon->lt[selmon->sellt];
 		selmon->pertag->sellts[0] = selmon->sellt;
 	}
 

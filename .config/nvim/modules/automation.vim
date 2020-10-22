@@ -1,5 +1,8 @@
 " Remove trailing whitespace on save
-autocmd BufWritePre * %s/\s\+$//e
+let ext = expand('%:e')
+if ext != "vim"
+   autocmd BufWritePre * %s/\s\+$//e
+endif
 " Vertically center document when entering insert mode
 " autocmd InsertEnter * norm zz
 
