@@ -73,7 +73,7 @@ endif
     autocmd BufWritePost *.Xresources !xrdb -merge ~/.Xresources
 
 " auto compile sxhkd
-    autocmd BufWritePost *sxhkdrc !pkill sxhkd; setsid sxhkd &
+    autocmd BufWritePost *sxhkdrc :!killall -s SIGUSR1 sxhkd
 
 " auto shortcuts
     autocmd BufWritePost,TextChanged sf,sd !$AUTOMATION/shortcut_maker_better

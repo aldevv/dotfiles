@@ -1,6 +1,6 @@
 #!/bin/bash
-https://www.reddit.com/r/unixporn/comments/6p40ic/volume_notifications_with_dunst/
-https://gist.github.com/sebastiencs/5d7227f388d93374cebdf72e783fbd6a
+#https://www.reddit.com/r/unixporn/comments/6p40ic/volume_notifications_with_dunst/
+#https://gist.github.com/sebastiencs/5d7227f388d93374cebdf72e783fbd6a
 
 # You can call this script like this:
 # $./volume.sh up

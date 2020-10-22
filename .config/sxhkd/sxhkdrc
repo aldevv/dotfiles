@@ -10,8 +10,8 @@
 alt + w
 	"$UTILITIES/misc/toggle_chat"
 
-super + p
-	dmenu_run
+#super + p
+#	dmenu_run
 
 #mode_switch + p
 # 	python_docs
@@ -27,6 +27,9 @@ mode_switch + w
 
 super + r
     st -e ranger >/dev/null 2>&1
+
+super + m
+    setsid st -e "$AUTOMATION/ncmpcppStart"
 
 mode_switch + Return
     st >/dev/null 2>&1
@@ -56,6 +59,12 @@ hyper + shift + n
 # fn + c
 XF86Launch1
 	copyq toggle
+
+button8
+	xclip -out -selection primary | xclip -selection clipboard
+
+#button9
+#	xclip -out -selection clipboard
 
 # super +  a
 #     st -e mate-calculator
@@ -157,15 +166,15 @@ mode_switch + i
 	 # dunstify $(sh -c "$(dmenu -i -p "prompt:")")
 
 XF86AudioMute
-     $SCRIPTS/shared/volume.sh mute; $APPS/dwm/refreshVolume
+     $SCRIPTS/shared/volume mute; $APPS/dwm/refreshVolume
      # pactl set-sink-mute 0 toggle
 
 XF86AudioRaiseVolume
-     $SCRIPTS/shared/volume.sh up; $APPS/dwm/refreshVolume
+     $SCRIPTS/shared/volume up; $APPS/dwm/refreshVolume
      # pactl set-sink-volume 0 +5%
 
 XF86AudioLowerVolume
-     $SCRIPTS/shared/volume.sh down; $APPS/dwm/refreshVolume
+     $SCRIPTS/shared/volume down; $APPS/dwm/refreshVolume
      # pactl set-sink-volume 0 -5%
 
 XF86MonBrightnessUp

@@ -8,6 +8,7 @@ export BAT_THEME=OneHalfDark
 export SHELL=/bin/zsh
 export PATH="$HOME/.symfony/bin:$PATH"
 # you can source sxhkd & here if you login from console
+export SXHKD_SHELL="/bin/zsh"
 # export SI=https://meet.google.com/ixe-gxnu-ovp
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export EDITOR=nvim

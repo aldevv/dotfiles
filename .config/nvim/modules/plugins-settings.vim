@@ -731,6 +731,7 @@ autocmd Filetype java nmap <leader>dd :CocCommand java.debug.vimspector.start<cr
 
 " vim-commentary
 autocmd FileType json setlocal commentstring=//%s
+autocmd FileType sxhkdrc setlocal commentstring=#%s
 
 " splitjoin
 let g:splitjoin_split_mapping = 'gs'
