@@ -4,7 +4,24 @@ map <leader>u :UndotreeToggle<CR>
 " NERDTreeToggle
 " check mappings here
 "https://github.com/preservim/nerdtree/blob/master/doc/NERDTree.txt
-map <leader>se :NERDTreeToggle<CR>
+let g:nerdFirsttime = 0
+function s:UpdateNerd() " updates the  tree when a new file is saved
+    if g:nerdFirsttime == 0
+        if exists("g:NERDTree") && g:NERDTree.IsOpen()
+            autocmd BufWritePost * :NERDTreeRefreshRoot
+        endif
+    endif
+    g:nerdFirsttime = 1
+endfunction
+map <leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
+function s:FileName()
+    call inputsave()
+    let g:createdFile = input("File name: ")
+    call inputrestore()
+endfunction
+" nnoremap <F1> oHello, <C-\><C-o>:call <SID>FileName()<CR><C-r>=createdFile<CR>. nice name.<ESC>
+nnoremap <leader>sn  :call <SID>FileName()<CR>:e <C-r>=createdFile<CR><CR>:w<CR>
+
 map <leader>lb :Bookmark<CR>
 
 let NERDTreeMenuUp   = 'e'
@@ -651,8 +668,7 @@ vmap <C-i> <Plug>MoveBlockRight
 "Airline
 
 let g:airline_powerline_fonts = 1
-autocmd Filetype java let g:airline#extensions#tabline#enabled = 1
-autocmd Filetype javascript let g:airline#extensions#tabline#enabled = 1
+autocmd Filetype java,javascript,python let g:airline#extensions#tabline#enabled = 1
 " autocmd Filetype python let g:airline#extensions#tabline#enabled = 1
 
 " vimspector

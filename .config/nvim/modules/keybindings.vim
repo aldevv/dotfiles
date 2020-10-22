@@ -22,7 +22,20 @@ nnoremap [13;2u o
 noremap - /
 noremap / -
 
-noremap <leader>sn :e 
+
+" this didnt work because it needs to be put down lower, but is a good example
+" of how to obtain input for a command
+"
+" function s:FileName()
+"     call inputsave()
+"     let g:createdFile = input("File name: ")
+"     call inputrestore()
+"     :e <C-r>=createdFile<CR>
+"     :NERDTreeRefreshRoot<CR>
+" endfunction
+" " nnoremap <F1> oHello, <C-\><C-o>:call <SID>FileName()<CR><C-r>=createdFile<CR>. nice name.<ESC>
+" nnoremap <leader>sn  :call <SID>FileName()<CR> :e <C-r>=createdFile<CR>
+
 noremap <leader>n <s-n>
 noremap <leader>sd :bd<cr>
 noremap N :bprevious<cr>

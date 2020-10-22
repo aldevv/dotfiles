@@ -124,7 +124,9 @@ endfunction
 "https://github.com/vim-airline/vim-airline/wiki/Screenshots
 "
 " let g:airline_theme='luna'
-let g:airline_theme='gruvbox'
+" let g:airline_theme='gruvbox'
+let g:airline_theme='minimalist'
+ 
 "https://ncona.com/2019/02/the-vim-statusline/
 "let g:airline_theme='onehalfdark'
 "let g:airline_theme='gruvbox'

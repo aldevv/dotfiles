@@ -1,6 +1,7 @@
 #!/bin/sh
 
-git clone --depth=1 https://git.suckless.org/dwm
+# git clone --depth=1 https://git.suckless.org/dwm
+cp -r dwmOriginal dwm
 cd dwm
 wget -qO- "https://raw.githubusercontent.com/bakkeby/patches/master/dwm/dwm-floatpos-6.2.diff" > floatpos-6.2.diff
 wget -qO- "https://dwm.suckless.org/patches/pertag/dwm-pertag-perseltag-6.2.diff" > pertag-perseltag-6.2.diff
@@ -23,14 +24,17 @@ patch --merge < pertag-perseltag-6.2.diff
 sed -i '/<<<\+$/d;/>>>\+$/d;/===\+$/d' dwm.c
 patch --merge < xresources-6.2.diff
 sed -i '/<<<\+$/d;/===\+$/,+5d' config.def.h
-patch --merge < scratchpads.diff
-patch --merge < swallow.diff
-patch --merge < stacker.diff
-patch --merge < hide_vacant_tags.diff
-patch --merge < noborderfloatingfix.diff
-patch --merge < fullscreen.diff
-patch --merge < tagswapmon.diff
-patch --merge < vanitygaps.diff
+# patch --merge < scratchpads.diff
+# sed -i '/<<<\+$/,+4d;/===\+$/d;/>>>\+$/d' config.def.h
+# patch --merge < swallow.diff
+# sed -i '/<<<\+$/d;/===\+$/d;/>>>\+$/d' dwm.c
+# sed -i '/<<<\+$/,+7d;/>>>\+$/d' config.def.h
+# patch --merge < stacker.diff
+# patch --merge < hide_vacant_tags.diff
+# patch --merge < noborderfloatingfix.diff
+# patch --merge < fullscreen.diff
+# patch --merge < tagswapmon.diff
+# patch --merge < vanitygaps.diff
 patch --merge < fixborders.diff
 make
-# make install
+make install
