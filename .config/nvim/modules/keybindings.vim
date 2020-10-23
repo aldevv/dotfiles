@@ -6,6 +6,7 @@ noremap n j
 noremap e k
 noremap j e
 noremap gj ge
+noremap gJ gE
 nnoremap l i
 nnoremap i l
 noremap k n
@@ -136,7 +137,8 @@ nnoremap <leader>sv <c-w>v
 map  <leader>T :w !sudo tee %<CR>
 map  <leader>t :w<CR>
 map  <leader>q :wq<CR>
-map <leader><F1> :e ~/.config/nvim/init.vim<cr>
+" map <leader><F1> :e ~/.config/nvim/init.vim<cr>
+nnoremap <F6> :e $HOME/.config/nvim/init.vim<cr>
 map <leader><F2> :e ~/.zshrc<cr>
 map <C-&> <C-^>
 " noremap  <leader>ww :w<CR>
@@ -192,27 +194,7 @@ map <silent> <leader>ra :silent call jobstart('setsid st -e ranger $(dirname %) 
 "old
 " map <leader>ra :silent !setsid st -e ranger $(dirname %) 2>&1 &<cr>
 
-" list functions
-nnoremap <leader>ff :FFunc<CR>
-" from https://github.com/
-nnoremap <leader>fs :FZFBTags<CR>
-nnoremap <leader>fc :FClass<CR>
-nnoremap <leader>fb :Buffers<CR>
 
-
-" com F5 call fzf#run({'sing': 'e', 'window': '30vnew'})
-" for opening to the right
-"'window': '30vnew'}
-" com -nargs=0 FF call fzf#run({'source' : split(execute(':call ListMyFunctions()'), "\n"), 'sink':'"'})
-" com -nargs=0 FF4 call fzf#run({
-"             \ 'source' : split(execute(':call ListMyFunctions()'), "\n"), 'sink':'"',
-        " \ fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0})
-
-" command! -bang -nargs=0 FF1
-"   \ call fzf#vim#grep(
-"   " \   'git grep --line-number -- '.shellescape(execute(':call ListMyFunctions()'). ' ' .shellescape(expand('%'))), 0,
-"   " \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-"
 "debugging python, needs pip install ipdb
 func! s:SetBreakpoint()
 cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'import ipdb; ipdb.set_trace()')
@@ -225,4 +207,4 @@ endf
 func! s:ToggleBreakpoint()
 if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
 endf
-nnoremap <F6> :call <SID>ToggleBreakpoint()<CR>
+" nnoremap <F6> :call <SID>ToggleBreakpoint()<CR>

@@ -12,6 +12,7 @@ call plug#begin()
 Plug 'bkad/CamelCaseMotion'
  Plug 'sheerun/vim-polyglot'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+ Plug 'liuchengxu/vista.vim'
  Plug 'scrooloose/syntastic'
  Plug 'SirVer/ultisnips'
  Plug 'honza/vim-snippets'

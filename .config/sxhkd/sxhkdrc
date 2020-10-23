@@ -61,10 +61,10 @@ XF86Launch1
 	copyq toggle
 
 button8
-	xclip -out -selection primary | xclip -selection clipboard
+	xdotool key ctrl+v
 
-#button9
-#	xclip -out -selection clipboard
+button9
+	xclip -out -selection primary | xclip -selection clipboard
 
 # super +  a
 #     st -e mate-calculator
@@ -137,7 +137,7 @@ mode_switch + c
 mode_switch + shift c
 	 searchDocs
 
-mode_switch + u
+hyper + u
  	 ts $UTILITIES/api/urlShortener
 
 #using a task spooler

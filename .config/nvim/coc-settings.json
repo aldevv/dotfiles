@@ -1,17 +1,10 @@
 {
-    "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
-    //"coc.preferences.formatOnSaveFiletypes": ["python"],
+  "__coc.preferences.formatOnSaveFiletypes": ["python"],
+  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
 
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
-    // "python.formatting.provider": "autopep8",
-    "python.formatting.provider": "black",
-    // this is for removing [A] predictions from popup menu
-    //"coc.source.around.enable":false,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.formatting.provider": "black",
 
-    "snippets.ultisnips.directories": [
-            "UltiSnips",
-            "~/.config/nvim/my_snippets"
-        ]
-
+  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/my_snippets"]
 }

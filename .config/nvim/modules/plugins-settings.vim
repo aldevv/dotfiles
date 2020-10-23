@@ -14,14 +14,14 @@ function s:UpdateNerd() " updates the  tree when a new file is saved
     g:nerdFirsttime = 1
 endfunction
 " map <leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
-noremap ge :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
+noremap <leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
 function s:FileName()
     call inputsave()
     let g:createdFile = input("File name: ")
     call inputrestore()
 endfunction
 " nnoremap <F1> oHello, <C-\><C-o>:call <SID>FileName()<CR><C-r>=createdFile<CR>. nice name.<ESC>
-nnoremap <leader>sn  :call <SID>FileName()<CR>:e <C-r>=createdFile<CR><CR>:w<CR>
+nnoremap <leader>sn  :call <SID>FileName()<cr> <bar>:e <C-r>=createdFile <cr> <bar> startinsert<cr> <c-o>:w <cr>  
 
 map <leader>lb :Bookmark<CR>
 
@@ -78,10 +78,9 @@ let g:fzf_action = {
 let g:rg_derive_root='true'
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 nnoremap <c-p> :PFiles<cr>
-nnoremap <leader>sb :Buffers<cr>
+nnoremap <leader>s, :Buffers<cr>
 nnoremap <leader>lgp :GFiles<cr>
-nnoremap <leader>gl :BCommits<cr>
-nnoremap <leader>f7 :Rg<cr>
+let g:vista_default_executive = 'ctags'
 nnoremap <F4> :Course<cr>
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
@@ -113,6 +112,12 @@ command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 "command! -bang -nargs=? -complete=dir Files
 "   \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
 "
+" list functions
+" nnoremap <leader>ff :FFunc<CR>
+" from https://github.com/
+" nnoremap <leader>fs :FZFBTags<CR>
+" nnoremap <leader>fc :FClass<CR>
+
 autocmd FileType c,python :call ListMyOwnFunctions()
 autocmd FileType c,python :call ListMyOwnClasses()
 
@@ -121,34 +126,19 @@ function ListMyOwnFunctions()
     let nameFile = expand('%')
 
     if extension == "c"
-        " execute ':g/\v^\S+\(\S+\)\n\{'
-         " command! -bang -nargs=* Cfunc
-      " \     call fzf#vim#grep(
-      " \     'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>). ' .', 1,
-      " \     fzf#vim#with_preview(), <bang>0)
-
         command! -bang -nargs=* FFunc
       \ call fzf#vim#grep(
       \     'rg --column --line-number --no-heading --color=always --smart-case -- "^\S+\(\S+\).*$"', 1,
       \     fzf_preview#p(<bang>0, {'options': '--delimiter : --nth 3..'}),
       \     <bang>0)
-      " \     fzf#vim#with_preview({'dir': s:find_current_root()}), <bang>0)
-      " the commented one is for searching the whole project
-
-        " execute '%s/\v^\S+\(\S+\).*$//gn'
     endif
 
     if extension == "py"
-       " execute ':g/\v^def\s\S+\(\S*\):'
          command! -bang -nargs=* FFunc
       \     call fzf#vim#grep(
       \     'rg --column --line-number --no-heading --color=always --smart-case -- "^def\s\S+\(\S*\):"', 1,
       \     fzf#vim#with_preview(), <bang>0)
-      " \     fzf#vim#with_preview({'dir': s:find_current_root()}), <bang>0)
-        " execute '%s/\v^def\s\S+\(\S*\)://gn'
     endif
-
-    " :Cfunc
 endfunction
 
 function ListMyOwnClasses()
@@ -168,21 +158,33 @@ endfunction
 "nmap <leader>gd <Plug>(coc-definition)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gD <Plug>(coc-type-declaration)
 nmap gr <Plug>(coc-references)
-nmap gi <Plug>(coc-implementation)
+nmap gR <Plug>(coc-implementation)
 " nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gy <Plug>(coc-type-definition)
 nmap g{ <Plug>(coc-diagnostic-prev)
 nmap g} <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>, <Plug>(coc-diagnostic-prev-error)
 nmap <silent> <leader>; <Plug>(coc-diagnostic-next-error)
-nnoremap <leader>cr :CocRestart
+nnoremap <leader>ccr :CocRestart
 nnoremap <silent> <leader>+ :call CocAction('doHover')<cr>
 nmap <F2> <Plug>(coc-rename)
 
-nnoremap <silent> <space>dd :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <space>ds :<C-u>CocList -I symbols<cr>
-nmap <leader>da <Plug>(coc-codeaction)
+nnoremap <silent> <space>cd :<C-u>CocList diagnostics<cr>
+" nmap <leader>ca <Plug>(coc-codeaction)
+nmap <leader>ca <Plug>(coc-codeaction-line)
+vmap <leader>ca <Plug>(coc-codeaction-selected)
+" Use `[g` and `]g` to navigate diagnostics (errors)
+nmap <silent> c[ <Plug>(coc-diagnostic-prev)
+nmap <silent> c] <Plug>(coc-diagnostic-next)
+nmap <silent> c, <Plug>(coc-fix-current)
+nmap <silent> cr <Plug>(coc-refactor)
+" nnoremap <silent> <space>cs :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>cs :call CocAction('documentSymbols')<cr>
+
+
+" nnoremap <leader>h :call CocActionAsync('showSignatureHelp')
 
 
 function s:show_hover_doc()
@@ -201,8 +203,9 @@ function Activate_hover()
     autocmd CursorHoldI * silent! call <SID>show_hover_doc()
     autocmd CursorHold  * silent! call<SID>show_hover_doc()
 endfunction
-autocmd FileType python,cpp,javascript,c :call Activate_hover()
+autocmd FileType python,cpp,javascript,c,java :call Activate_hover()
 
+let g:coc_force_debug = 1
 " Use c-n for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 
@@ -224,7 +227,6 @@ autocmd FileType python,cpp,javascript,c :call Activate_hover()
 
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <silent><expr> <c-e> pumvisible() ? "\<C-p>" : "\<c-e>"
-
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
@@ -246,9 +248,6 @@ inoremap <silent><expr> <CR> pumvisible() && coc#rpc#request('hasSelected', []) 
 " inoremap <expr> <C-n> pumvisible() ? "<Nop>" : "\<C-n>"
 
 
-" Use `[g` and `]g` to navigate diagnostics (errors)
-nmap <silent> g[ <Plug>(coc-diagnostic-prev)
-nmap <silent> g] <Plug>(coc-diagnostic-next)
 
 "Coc-snippets
 let g:coc_snippet_next = '<TAB>'
@@ -289,8 +288,8 @@ nmap <leader>gs :G<CR>
 let g:UltiSnipsExpandTrigger='ß' "
 " let g:UltiSnipsJumpForwardTrigger = '<tab>'
 " let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsJumpForwardTrigger = '<c-l>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-u>'
+let g:UltiSnipsJumpForwardTrigger = 'ł'
+let g:UltiSnipsJumpBackwardTrigger = '‹'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 
 
@@ -694,11 +693,11 @@ autocmd Filetype java,javascript,python let g:airline#extensions#tabline#enabled
 " autocmd Filetype python let g:airline#extensions#tabline#enabled = 1
 
 " vimspector
-let g:vimspector_enable_mappings = 'HUMAN'
+" let g:vimspector_enable_mappings = 'HUMAN'
 " packadd! vimspector
-nmap <leader>dd :call vimspector#Launch()<CR>
-nmap <leader>dw :VimspectorWatch
-autocmd Filetype java nmap <leader>dd :CocCommand java.debug.vimspector.start<cr>
+" nmap <leader>dd :call vimspector#Launch()<CR>
+" nmap <leader>dw :VimspectorWatch
+" autocmd Filetype java nmap <leader>dd :CocCommand java.debug.vimspector.start<cr>
 "enable python debugging
 " :VimspectorInstall vscode-python
     " <Plug>VimspectorContinue
@@ -739,3 +738,21 @@ let g:splitjoin_join_mapping = 'gS'
 
 " nmap gs :SplitjoinSplit<cr>
 " nmap gS :SplitjoinJoin<cr>
+"
+" vista
+"
+" defaultwhen running :Vista
+let g:vista_default_executive = 'coc'
+let g:vista_fzf_preview = ['right:50%']
+let g:vista_sidebar_width = 30                                     
+let g:vista_sidebar_position ="vertical topleft"
+let g:vista_ctags_cmd = {
+  \ 'c': 'ctags -R',
+  \ 'cpp': 'ctags -R',
+  \}
+
+let g:vista_finder_alternative_executives = ['ctags']
+
+nmap <leader>cv :Vista coc
+nmap <leader>f :Vista finder<cr>
+

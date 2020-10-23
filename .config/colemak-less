@@ -6,3 +6,4 @@ K    reverse-search
 \eK  reverse-search-all
 -    forw-search
 /    toggle-option
+ñ    quit
