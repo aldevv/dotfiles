@@ -391,6 +391,8 @@ autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.js,*.ts,*.json,
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 " prettier and black
+autocmd BufWritePre *.py :Black
+autocmd BufWritePre *.js,*.json,*.jsx,*.ts :Prettier
 "======================
 "black
 "======================
@@ -408,8 +410,6 @@ let g:black_skip_string_normalization = 0
 let g:prettier#config#print_width = 95
 "(defaults to ~/.vim/black or ~/.local/share/nvim/black)
 "let g:black_virtualenv ="~/.local/share/nvim/black"
-autocmd BufWritePre *.py :Black
-autocmd BufWritePre *.js,*.json,*.jsx,*.ts :Prettier
 " nmap <Leader>p <Plug>(Prettier)
 nmap <silent><Leader>lp :call Formatting()<cr>
 " nmap <Leader>lp <Plug>(Prettier)
