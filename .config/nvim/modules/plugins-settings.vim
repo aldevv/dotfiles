@@ -21,7 +21,7 @@ function s:FileName()
     call inputrestore()
 endfunction
 " nnoremap <F1> oHello, <C-\><C-o>:call <SID>FileName()<CR><C-r>=createdFile<CR>. nice name.<ESC>
-nnoremap <leader>sn  :call <SID>FileName()<cr> <bar>:e <C-r>=createdFile <cr> <bar> startinsert<cr> <c-o>:w <cr>  
+nnoremap <leader>sn  :call <SID>FileName()<cr> <bar>:e <C-r>=createdFile <cr> <bar> startinsert<cr> <c-o>:w <cr>
 
 map <leader>lb :Bookmark<CR>
 
@@ -180,8 +180,8 @@ nmap <silent> c[ <Plug>(coc-diagnostic-prev)
 nmap <silent> c] <Plug>(coc-diagnostic-next)
 nmap <silent> c, <Plug>(coc-fix-current)
 nmap <silent> cr <Plug>(coc-refactor)
-" nnoremap <silent> <space>cs :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <leader>cs :call CocAction('documentSymbols')<cr>
+nnoremap <silent> <space>cs :<C-u>CocList -I symbols<cr>
+" nnoremap <silent> <leader>cs :call CocAction('documentSymbols')<cr>
 
 
 " nnoremap <leader>h :call CocActionAsync('showSignatureHelp')
@@ -273,6 +273,7 @@ let g:coc_global_extensions = [
    \ 'coc-sh',
    \ 'coc-tslint-plugin',
    \ 'coc-prettier',
+   \ 'coc-clangd',
    \ ]
 
 
@@ -744,8 +745,9 @@ let g:splitjoin_join_mapping = 'gS'
 " defaultwhen running :Vista
 let g:vista_default_executive = 'coc'
 let g:vista_fzf_preview = ['right:50%']
-let g:vista_sidebar_width = 30                                     
-let g:vista_sidebar_position ="vertical topleft"
+let g:vista_sidebar_width = 30
+" let g:vista_sidebar_position ="vertical topleft"
+let g:vista_sidebar_position ="vertical botright"
 let g:vista_ctags_cmd = {
   \ 'c': 'ctags -R',
   \ 'cpp': 'ctags -R',
@@ -753,6 +755,7 @@ let g:vista_ctags_cmd = {
 
 let g:vista_finder_alternative_executives = ['ctags']
 
-nmap <leader>cv :Vista coc
+" nmap <leader>cv :Vista coc<cr>
+nmap <leader>cv :Vista!!<cr>
 nmap <leader>f :Vista finder<cr>
 

@@ -1,4 +1,6 @@
 " Remove trailing whitespace on save
+"
+"
 let ext = expand('%:e')
 if ext != "vim"
    autocmd BufWritePre * %s/\s\+$//e
@@ -82,3 +84,8 @@ endif
 function Autosaving()
     autocmd TextChanged,TextChangedI <buffer> silent! write
 endfunction
+
+"automatic ctags
+" au FileType {c,cpp} au BufWritePost <buffer> silent ! [ -e tags ] &&
+"     \ ( awk -F'\t' '$2\!="%:gs/'/'\''/"{print}' tags ; ctags -f- '%:gs/'/'\''/' )
+"     \ | sort -t$'\t' -k1,1 -o tags.new && mv tags.new tags
