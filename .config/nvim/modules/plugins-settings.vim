@@ -746,16 +746,34 @@ let g:splitjoin_join_mapping = 'gS'
 let g:vista_default_executive = 'coc'
 let g:vista_fzf_preview = ['right:50%']
 let g:vista_sidebar_width = 30
-" let g:vista_sidebar_position ="vertical topleft"
-let g:vista_sidebar_position ="vertical botright"
-let g:vista_ctags_cmd = {
-  \ 'c': 'ctags -R',
-  \ 'cpp': 'ctags -R',
-  \}
+" " let g:vista_sidebar_position ="vertical topleft"
+" let g:vista_sidebar_position ="vertical botright"
+" let g:vista_ctags_cmd = {
+"   \ 'c': 'ctags -R',
+"   \ 'cpp': 'ctags -R',
+"   \}
 
-let g:vista_finder_alternative_executives = ['ctags']
+" let g:vista_finder_alternative_executives = ['ctags']
 
-" nmap <leader>cv :Vista coc<cr>
-nmap <leader>cv :Vista!!<cr>
+" " nmap <leader>cv :Vista coc<cr>
+" nmap <leader>cv :Vista!!<cr>
 nmap <leader>f :Vista finder<cr>
 
+
+" Tagbar
+nmap <leader>cv :TagbarToggle<CR>
+" let g:tagbar_position = 'rightbelow'
+
+" so it opens focused
+let g:tagbar_autofocus = 1
+let g:tagbar_width = 30
+
+let g:tagbar_map_nexttag = '<c-n>'
+let g:tagbar_map_prevtag = '<c-e>'
+
+let g:tagbar_map_showproto = 'd'
+let g:tagbar_map_openfold = 'zo'
+let g:tagbar_map_closefold = 'zc'
+let g:tagbar_map_openallfolds = 'zR'
+let g:tagbar_map_closeallfolds = 'zM'
+let g:tagbar_map_hidenonpublic = 'h' 
