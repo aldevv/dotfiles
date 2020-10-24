@@ -8,3 +8,5 @@ if [ -z "$drive" ]; then
 fi
 size=$(echo "$drivePlusSize" | awk '{print$2}')
 sudo mount "/dev/$drive" /mnt && notify-send "mounted drive: $size"
+memoryAvailiable=$(df -H | awk '/sd[b-z][0-9]/{print $4}' | awk '/[0-9]/{print $1}')
+notify-send "memory availiable: ${memoryAvailiable}"
