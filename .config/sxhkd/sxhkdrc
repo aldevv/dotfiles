@@ -28,6 +28,9 @@ mode_switch + w
 super + r
     st -e ranger >/dev/null 2>&1
 
+super + R
+    st -e sudo ranger >/dev/null 2>&1
+
 super + m
     setsid st -e "$AUTOMATION/ncmpcppStart"
 

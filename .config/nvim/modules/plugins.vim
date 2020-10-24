@@ -1,6 +1,7 @@
 call plug#begin()
 
-"
+" basic editor stuff (mkdir, move etc)
+" Plug 'tpope/vim-eunuch'
 " themes
  Plug 'morhetz/gruvbox'
  Plug 'fcpg/vim-fahrenheit'
@@ -67,6 +68,9 @@ Plug 'vim-scripts/vis'
 " move blocks in visual
 Plug 'matze/vim-move'
 Plug 'chengzeyi/fzf-preview.vim'
+Plug 'francoiscabrol/ranger.vim' |
+         \ Plug 'rbgrouleff/bclose.vim'
+'
 " still not working correctly for neovim
 " Plug 'puremourning/vimspector'
 
@@ -84,3 +88,4 @@ Plug 'chengzeyi/fzf-preview.vim'
 "Plug 'https://github.com/dracula/vim', {'as': 'dracula'}
 "need both
 call plug#end()
+

@@ -119,7 +119,8 @@ source $ZSH/oh-my-zsh.sh
 #prorepo config --local status.showUntrackedFiles no
 
 # Aliases
-alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
+alias pkg='sudo eopkg'\
+	station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
     xc="xclip -selection clipboard"\
 	j="joplin"\
 	v="nvim"\
@@ -143,7 +144,6 @@ alias station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
 	uncompress='tar xvzf'\
 	code='code-oss'\
 	pydocs='~/Documents/myScripts/python_documentation.sh'\
-	pkg='sudo eopkg'\
 	xi='sudo vim /etc/X11/xinit/xinitrc'\
 	xa='sudo /opt/lampp/manager-linux-x64.run'\
 	djan='cd /home/solus/dev/trydjango/src'\
@@ -286,6 +286,8 @@ alias mydot="git clone --depth=1 https://www.github.com/akuseru1/dotfiles"
 alias r="sudo rm -rf dwm"
 alias i="sudo -E ./prog"
 alias ri="r && i"
+alias su="sudo su -" # the - lets you have env variables in root
+alias sudo="sudo -E" # this enables env variables in sudo
 
 # less keybindings
 lesskey $XDG_CONFIG_HOME/colemak-less

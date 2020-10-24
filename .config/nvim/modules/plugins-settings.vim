@@ -25,9 +25,6 @@ nnoremap <leader>sn  :call <SID>FileName()<cr> <bar>:e <C-r>=createdFile <cr> <b
 
 map <leader>lb :Bookmark<CR>
 
-let NERDTreeMenuUp   = 'e'
-let NERDTreeMenuDown = 'n'
-let NERDTreeMapOpenExpl = 'k'
 " enable line numbers
 let NERDTreeShowLineNumbers=1
 " make sure relative line numbers are used
@@ -42,15 +39,21 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let NERDTreeShowHidden=1
 let g:plug_window = 'noautocmd vertical topleft new'
 
+let NERDTreeMenuUp   = 'e'
+let NERDTreeMenuDown = 'n'
+
+let NERDTreeMapOpenExpl = 'k'
 let NERDTreeMapOpenSplit = "s"
+let NERDTreeMapOpenVSplit = "v"
 let NERDTreeMapPreviewSplit = "gs"
-let NERDTreeMapOpenVSplit = "l"
 let NERDTreeMapPreviewVSplit = "gl"
 let NERDTreeMapJumpFirstChild = "E"
 let NERDTreeMapJumpLastChild = "N"
 let NERDTreeMapJumpPrevSibling = "<C-E>"
 let NERDTreeMapJumpNextSibling = "<C-N>"
 let NERDTreeMapToggleHidden = "<BS>"
+" you can open with o
+let NERDTreeMapCustomOpen = "i"
 
 let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
 let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -757,8 +760,7 @@ let g:vista_sidebar_width = 30
 
 " " nmap <leader>cv :Vista coc<cr>
 " nmap <leader>cv :Vista!!<cr>
-nmap <leader>f :Vista finder<cr>
-
+autocmd Filetype python,c,cpp,java,javascript,go,haskell nmap <leader>f :Vista finder<cr>
 
 " Tagbar
 nmap <leader>cv :TagbarToggle<CR>
@@ -777,3 +779,24 @@ let g:tagbar_map_closefold = 'zc'
 let g:tagbar_map_openallfolds = 'zR'
 let g:tagbar_map_closeallfolds = 'zM'
 let g:tagbar_map_hidenonpublic = 'h' 
+
+" ranger.vim
+let g:ranger_map_keys = 0
+let g:NERDTreeHijackNetrw = 0
+let g:ranger_map_keys = 0
+nmap <leader>f :Ranger<cr>
+
+" bclose
+let g:bclose_no_plugin_maps=1
+
+" eunuch (Basic filesystem settings)
+" map <leader>sm :Move 
+" map <leader>sr :Rename 
+" map <leader>sc :Chmod 
+" map <leader>sm :Mkdir 
+" map <leader>sd :Delete 
+" map <leader>sw :Delete 
+
+" vis settings
+map <Nop> <Plug>SaveWinPosn
+map <Nop> <Plug>RestoreWinPosn

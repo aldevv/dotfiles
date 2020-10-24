@@ -1,4 +1,5 @@
-#
+export EDITOR=nvim
+export VISUAL=nvim
 export C_INCLUDE_PATH=.:~/Documents/mlibs
 export EPISODES=~/Downloads
 export TERMINAL=st
@@ -11,17 +12,10 @@ export PATH="$HOME/.symfony/bin:$PATH"
 export SXHKD_SHELL="/bin/zsh"
 # export SI=https://meet.google.com/ixe-gxnu-ovp
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
-export EDITOR=nvim
-export VISUAL=nvim
 export BROWSER=firefox
 export BOOKS="$HOME/Documents/Learn/Books"
 export PROJECTS="$HOME/Documents/Learn/Projects"
 export CLASSES="$HOME/Documents/Learn/classes/2020-2/clases"
-export SCRIPTS="$HOME/.local/share/myScripts"
-export SHARED="$SCRIPTS/shared"
-export UTILITIES="$SCRIPTS/utilities"
-export AUTOMATION="$SCRIPTS/automation"
-export APPS="$SCRIPTS/apps"
 export SUCKLESS="$HOME/.local/Programs/Suckless"
 export BACKUPS="$HOME/.backups"
 export PROGRAMS="$HOME/.local/Programs"
@@ -29,6 +23,12 @@ export WIKI="$HOME/.local/share/wiki"
 export READER=zathura
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
+
+export SCRIPTS="$HOME/.local/share/myScripts"
+export SHARED="$SCRIPTS/shared"
+export UTILITIES="$SCRIPTS/utilities"
+export AUTOMATION="$SCRIPTS/automation"
+export APPS="$SCRIPTS/apps"
 #add all files in these directories to the PATH
 export PATH="$(du $SHARED | cut -f2 | tr '\n' ':')$PATH"
 export PATH="$(du $APPS | cut -f2 | tr '\n' ':')$PATH"

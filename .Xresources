@@ -5,6 +5,8 @@
 /* *.font: Fira Code Nerd Font Mono:size=10 */
 *.font: Fira Code Nerd Font:pixelsize=13:antialias=true:autohint=true
 .Xft.rgba: vrgb
+*background:        #ffff90
+/* *.background:       #080416 */
 /* sxiv.font: Iosevka:size=10 */
 /* Sxiv.foreground: #282a36 */
 /* Sxiv.background: #f8f8f2 */
@@ -35,6 +37,7 @@
 /* *.color15:       #ffffff */
 /* *.background:    #282a36 */
 /* *.foreground:    #f8f8f2 */
+#080416
 
 /* name		dark	light */
 /* black	0	8 */
