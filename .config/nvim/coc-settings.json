@@ -8,5 +8,10 @@
 
   "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/my_snippets"],
   "clangd.path": "/home/solus/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
-  "clangd.disableDiagnostics": true
+  "clangd.disableDiagnostics": true,
+  "__suggest.noselect.comment": "this is for not choosing first item when pressing TAB",
+  "suggest.noselect": false,
+  "__suggest.trigger.comment": "edit this 2 for better sugestions",
+  "suggest.triggerCompletionWait": 100,
+  "signature.triggerSignatureWait": 100
 }

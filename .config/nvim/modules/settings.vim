@@ -54,6 +54,10 @@ set cmdheight=1
 set mouse=a
 " to show stuff under the modeline
 set noshowmode
+" change buffers without saving
+set hidden
+" ask to save when not saved
+set confirm
 
 
 "detect root in git repo

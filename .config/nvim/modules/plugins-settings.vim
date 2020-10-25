@@ -183,9 +183,24 @@ nmap <silent> c[ <Plug>(coc-diagnostic-prev)
 nmap <silent> c] <Plug>(coc-diagnostic-next)
 nmap <silent> c, <Plug>(coc-fix-current)
 nmap <silent> cr <Plug>(coc-refactor)
-nnoremap <silent> <space>cs :<C-u>CocList -I symbols<cr>
 " nnoremap <silent> <leader>cs :call CocAction('documentSymbols')<cr>
-
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <leader>ccd  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <leader>cce  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <leader>ccc  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <leader>ccs  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <leader>cs  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <leader>cn  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <leader>ce  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <leader>cl  :<C-u>CocListResume<CR>
 
 " nnoremap <leader>h :call CocActionAsync('showSignatureHelp')
 
@@ -206,7 +221,21 @@ function Activate_hover()
     autocmd CursorHoldI * silent! call <SID>show_hover_doc()
     autocmd CursorHold  * silent! call<SID>show_hover_doc()
 endfunction
+
 autocmd FileType python,cpp,javascript,c,java :call Activate_hover()
+
+function s:RefreshPopMenu()
+  if !<SID>check_back_space()
+     call timer_start(100, 'coc#refresh')
+  endif
+endfunction
+
+function Activate_refresh()
+    autocmd CursorHoldI *  call <SID>RefreshPopMenu()
+    autocmd CursorHold  *  call<SID>RefreshPopMenu()
+endfunction
+
+autocmd FileType python,cpp,javascript,c,java :call Activate_refresh()
 
 let g:coc_force_debug = 1
 " Use c-n for trigger completion with characters ahead and navigate.
@@ -246,9 +275,6 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 inoremap <silent><expr> <CR> pumvisible() && coc#rpc#request('hasSelected', []) ? "\<C-y>" : "\<CR>"
 
-" disable <c-n> for scrolling the menu
-" inoremap <expr><C-n> UltiSnips#JumpForwards()
-" inoremap <expr> <C-n> pumvisible() ? "<Nop>" : "\<C-n>"
 
 
 
@@ -266,6 +292,7 @@ let g:coc_snippet_prev = '<S-TAB>'
     " \ 'coc-json',
 let g:coc_global_extensions = [
    \ 'coc-marketplace',
+   \ 'coc-json',
    \ 'coc-snippets',
    \ 'coc-tag',
    \ 'coc-pairs',
@@ -287,9 +314,24 @@ nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
 
-" ultisnips
-" let g:UltiSnipsExpandTrigger='<c-s>' " TO USE SNIPPETS
-let g:UltiSnipsExpandTrigger='ß' "
+"=====================
+"   ULTISNIPS
+"=====================
+"
+" Set <space> as primary trigger
+inoremap <silent><space> <C-R>=ExpandUsingSpace()<CR>
+let g:ulti_expand_res = 0
+function! ExpandUsingSpace()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res
+        return ''
+    else
+        return ' '
+endfunction
+
+let g:UltiSnipsExpandTrigger='ß' 
+" let g:UltiSnipsExpandTrigger=''
+let g:UltiSnipsListSnippets='<c-tab>'
 " let g:UltiSnipsJumpForwardTrigger = '<tab>'
 " let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsJumpForwardTrigger = 'ł'
@@ -778,7 +820,7 @@ let g:tagbar_map_openfold = 'zo'
 let g:tagbar_map_closefold = 'zc'
 let g:tagbar_map_openallfolds = 'zR'
 let g:tagbar_map_closeallfolds = 'zM'
-let g:tagbar_map_hidenonpublic = 'h' 
+let g:tagbar_map_hidenonpublic = 'h'
 
 " ranger.vim
 let g:ranger_map_keys = 0
@@ -790,12 +832,12 @@ nmap <leader>f :Ranger<cr>
 let g:bclose_no_plugin_maps=1
 
 " eunuch (Basic filesystem settings)
-" map <leader>sm :Move 
-" map <leader>sr :Rename 
-" map <leader>sc :Chmod 
-" map <leader>sm :Mkdir 
-" map <leader>sd :Delete 
-" map <leader>sw :Delete 
+" map <leader>sm :Move
+" map <leader>sr :Rename
+" map <leader>sc :Chmod
+" map <leader>sm :Mkdir
+" map <leader>sd :Delete
+" map <leader>sw :Delete
 
 " vis settings
 map <Nop> <Plug>SaveWinPosn

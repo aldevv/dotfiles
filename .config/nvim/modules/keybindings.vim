@@ -208,3 +208,13 @@ func! s:ToggleBreakpoint()
 if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
 endf
 " nnoremap <F6> :call <SID>ToggleBreakpoint()<CR>
+
+"====================
+" ABBREVIATIONS
+"====================
+autocmd FileType python,java,js,jsx,ts iabbrev <buffer> im import
+autocmd FileType python,java,js,jsx,ts iabbrev <buffer> rt return
+autocmd FileType python,java,js,jsx,ts iabbrev <buffer> fa False
+autocmd FileType python,java,js,jsx,ts iabbrev <buffer> tr True
+autocmd FileType python,java,js,jsx,ts iabbrev <buffer> br Break
+

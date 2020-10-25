@@ -70,7 +70,11 @@ Plug 'matze/vim-move'
 Plug 'chengzeyi/fzf-preview.vim'
 Plug 'francoiscabrol/ranger.vim' |
          \ Plug 'rbgrouleff/bclose.vim'
-'
+
+"TODO
+"switch.vim// on the ¿ key, ¡ is also free
+"quickfix reflector
+"sneak(?) // to maybe free up the , and ; keys
 " still not working correctly for neovim
 " Plug 'puremourning/vimspector'
 
