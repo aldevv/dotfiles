@@ -1,7 +1,4 @@
 " sets 24 bit term colors for vim
-set termguicolors
- set t_8f=\[[38;2;%lu;%lu;%lum
- set t_8b=\[[48;2;%lu;%lu;%lum
 
 " fix colors for highlighting spelling mistakes
 autocmd ColorScheme gruvbox hi! SpellBad cterm=reverse ctermfg=214 ctermbg=235 gui=reverse guifg=#fabd2f guibg=#282828
@@ -15,10 +12,16 @@ set pumblend=15
 "try codedark
 " gruvbox
 let g:gruvbox_contrast_dark = "hard"
-let g:gruvbox_contrast_light = "soft"
+" let g:gruvbox_contrast_light = "soft"
 " let g:gruvbox_improved_strings = 1
 let g:gruvbox_improved_warnings = 1
-"
+
+set termguicolors
+if exists('+termguicolors')
+ set t_8f=\[[38;2;%lu;%lu;%lum
+ set t_8b=\[[48;2;%lu;%lu;%lum
+endif   
+let g:gruvbox_invert_selection = '0'
 set background=dark
 let current_colorscheme = 1
 if current_colorscheme == 1

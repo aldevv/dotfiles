@@ -38,15 +38,18 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " to avoid crashes with vim-plug functions while cursor in nerdtree
 let NERDTreeShowHidden=1
 let g:plug_window = 'noautocmd vertical topleft new'
+let NERDTreeShowHidden=0
 
 let NERDTreeMenuUp   = 'e'
 let NERDTreeMenuDown = 'n'
 
 let NERDTreeMapOpenExpl = 'k'
 let NERDTreeMapOpenSplit = "s"
+let NERDTreeMapPreview = "o"
+let NERDTreeMapActivateNode = "go"
 let NERDTreeMapOpenVSplit = "v"
 let NERDTreeMapPreviewSplit = "gs"
-let NERDTreeMapPreviewVSplit = "gl"
+let NERDTreeMapPreviewVSplit = "gv"
 let NERDTreeMapJumpFirstChild = "E"
 let NERDTreeMapJumpLastChild = "N"
 let NERDTreeMapJumpPrevSibling = "<C-E>"
@@ -166,15 +169,18 @@ nmap gr <Plug>(coc-references)
 nmap gR <Plug>(coc-implementation)
 " nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gy <Plug>(coc-type-definition)
-nmap g{ <Plug>(coc-diagnostic-prev)
-nmap g} <Plug>(coc-diagnostic-next)
+nmap g, <Plug>(coc-diagnostic-prev)
+nmap g; <Plug>(coc-diagnostic-next)
+" g{ and g} are usable
 nmap <silent> <leader>, <Plug>(coc-diagnostic-prev-error)
 nmap <silent> <leader>; <Plug>(coc-diagnostic-next-error)
-nnoremap <leader>ccr :CocRestart
 nnoremap <silent> <leader>+ :call CocAction('doHover')<cr>
 nmap <F2> <Plug>(coc-rename)
+nmap <leader>cp :CocSearch <C-R>=expand('<cword>')<cr><cr>
 
-nnoremap <silent> <space>cd :<C-u>CocList diagnostics<cr>
+":CocRebuild						*:CocRebuild*
+" use when you upgrade nodejs
+
 " nmap <leader>ca <Plug>(coc-codeaction)
 nmap <leader>ca <Plug>(coc-codeaction-line)
 vmap <leader>ca <Plug>(coc-codeaction-selected)
@@ -187,6 +193,7 @@ nmap <silent> cr <Plug>(coc-refactor)
 " Mappings for CoCList
 " Show all diagnostics.
 nnoremap <silent><nowait> <leader>ccd  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <leader>cd  :<C-u>CocDiagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <leader>cce  :<C-u>CocList extensions<cr>
 " Show commands.
@@ -200,9 +207,27 @@ nnoremap <silent><nowait> <leader>cn  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent><nowait> <leader>ce  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <leader>cl  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <leader>ccl  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <leader>ccr  :<C-u>CocRestart<cr>
+nnoremap <silent><nowait> <leader>cl  :<C-u>CocOpenLog<CR>
 
-" nnoremap <leader>h :call CocActionAsync('showSignatureHelp')
+" CocSearch is very powerful, so you should use it with the many options it has available
+" more info in man rg
+"
+"	`-F` `--fixed-strings`: treat search pattern as fixed string.
+"    `-e` `--regexp`: treat search pattern as regexp.
+"	`-L` `--follow`: follow symbolic links while traversing directories.
+"	`-g` `--glob` {GLOB}: Include or exclude files and directories for
+"	searching that match the given glob.
+"	`--hidden`: Search hidden files and directories.
+"	`--no-ignore-vcs`:  Don't respect version control ignore files
+"	(.gitignore, etc.).
+"	`--no-ignore`: Don't respect ignore files (.gitignore, .ignore, etc.).
+"	`-w` `--word-regexp`: Only show matches surrounded by word boundaries.
+"	`-S` `--smart-case`: Searches case insensitively if the pattern is all
+"	lowercase. Search case sensitively otherwise.
+"	`--no-config`: Never read configuration files.
+"	`-x` `--line-regexp`: Only show matches surrounded by line boundaries.
 
 
 function s:show_hover_doc()
@@ -223,19 +248,6 @@ function Activate_hover()
 endfunction
 
 autocmd FileType python,cpp,javascript,c,java :call Activate_hover()
-
-function s:RefreshPopMenu()
-  if !<SID>check_back_space()
-     call timer_start(100, 'coc#refresh')
-  endif
-endfunction
-
-function Activate_refresh()
-    autocmd CursorHoldI *  call <SID>RefreshPopMenu()
-    autocmd CursorHold  *  call<SID>RefreshPopMenu()
-endfunction
-
-autocmd FileType python,cpp,javascript,c,java :call Activate_refresh()
 
 let g:coc_force_debug = 1
 " Use c-n for trigger completion with characters ahead and navigate.
@@ -319,23 +331,23 @@ nmap <leader>gs :G<CR>
 "=====================
 "
 " Set <space> as primary trigger
-inoremap <silent><space> <C-R>=ExpandUsingSpace()<CR>
-let g:ulti_expand_res = 0
-function! ExpandUsingSpace()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res
-        return ''
-    else
-        return ' '
-endfunction
+" inoremap <silent><cr> <C-R>=ExpandUsingSpace()<CR>
+" let g:ulti_expand_res = 0
+" function! ExpandUsingSpace()
+"     call UltiSnips#ExpandSnippet()
+"     if g:ulti_expand_res
+"         return ''
+"     else
+"         return ' '
+" endfunction
 
-let g:UltiSnipsExpandTrigger='ß' 
+let g:UltiSnipsExpandTrigger='þ'
 " let g:UltiSnipsExpandTrigger=''
 let g:UltiSnipsListSnippets='<c-tab>'
 " let g:UltiSnipsJumpForwardTrigger = '<tab>'
 " let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsJumpForwardTrigger = 'ł'
-let g:UltiSnipsJumpBackwardTrigger = '‹'
+let g:UltiSnipsJumpForwardTrigger = '‹'
+let g:UltiSnipsJumpBackwardTrigger = 'ł'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 
 
@@ -802,7 +814,7 @@ let g:vista_sidebar_width = 30
 
 " " nmap <leader>cv :Vista coc<cr>
 " nmap <leader>cv :Vista!!<cr>
-autocmd Filetype python,c,cpp,java,javascript,go,haskell nmap <leader>f :Vista finder<cr>
+autocmd Filetype python,c,cpp,java,javascript,go,haskell nmap <leader>cf :Vista finder<cr>
 
 " Tagbar
 nmap <leader>cv :TagbarToggle<CR>
@@ -823,9 +835,9 @@ let g:tagbar_map_closeallfolds = 'zM'
 let g:tagbar_map_hidenonpublic = 'h'
 
 " ranger.vim
+let g:ranger_replace_netrw = 1 
 let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0
-let g:ranger_map_keys = 0
 nmap <leader>f :Ranger<cr>
 
 " bclose
@@ -842,3 +854,111 @@ let g:bclose_no_plugin_maps=1
 " vis settings
 map <Nop> <Plug>SaveWinPosn
 map <Nop> <Plug>RestoreWinPosn
+
+" switch.vim
+" there are many options, lists, dicts, dicts of dicts, and custom mappings
+" separate from the global ones
+"https://github.com/AndrewRadev/switch.vim
+"
+let g:switch_mapping = "¿"
+" autocmd FileType eruby let b:switch_custom_definitions =
+"     \ [
+"     \   {
+"     \     ':\(\k\+\)\s\+=>': '\1:',
+"     \     '\<\(\k\+\):':     ':\1 =>',
+"     \   },
+"     \ ]
+" if the plugin encounters "foo" under the cursor, it will be changed to "bar".
+" If it sees "bar", it will change it to "baz", and "baz" would be turned into "foo".
+" let g:switch_custom_definitions =
+"     \ [
+"     \   ['foo', 'bar', 'baz']
+"     \ ]
+"-------------------------------------------------
+
+
+let b:switch_custom_definitions = [
+      \   {
+      \     '\(\k\+=\){\([[:keyword:].]\+\)}':      '\1{`${\2}`}',
+      \     '\(\k\+=\){`${\([[:keyword:].]\+\)}`}': '\1{\2}',
+      \   }
+      \ ]
+" it does this
+"<Thing foo={data} />
+"<Thing foo={`${data}`} />
+
+autocmd FileType tex,plaintex let b:switch_custom_definitions =
+    \ [
+    \    [ '\\tiny', '\\scriptsize', '\\footnotesize', '\\small', '\\normalsize', '\\large', '\\Large', '\\LARGE', '\\huge', '\\Huge' ],
+    \    [ '\\displaystyle', '\\scriptstyle', '\\scriptscriptstyle', '\\textstyle' ],
+    \    [ '\\part', '\\chapter', '\\section', '\\subsection', '\\subsubsection', '\\paragraph', '\\subparagraph' ],
+    \    [ 'part:', 'chap:', 'sec:', 'subsec:', 'subsubsec:' ],
+    \    [ 'article', 'report', 'book', 'letter', 'slides' ],
+    \    [ 'a4paper', 'a5paper', 'b5paper', 'executivepaper', 'legalpaper', 'letterpaper', 'beamer', 'subfiles', 'standalone' ],
+    \    [ 'onecolumn', 'twocolumn' ],
+    \    [ 'oneside', 'twoside' ],
+    \    [ 'draft', 'final' ],
+    \    [ 'AnnArbor', 'Antibes', 'Bergen', 'Berkeley',
+    \      'Berlin', 'Boadilla', 'CambridgeUS', 'Copenhagen', 'Darmstadt',
+    \      'Dresden', 'Frankfurt', 'Goettingen', 'Hannover', 'Ilmenau',
+    \      'JuanLesPins', 'Luebeck', 'Madrid', 'Malmoe', 'Marburg',
+    \      'Montpellier', 'PaloAlto', 'Pittsburgh', 'Rochester', 'Singapore',
+    \      'Szeged', 'Warsaw' ]
+    \ ]
+" map <--> noremap
+" wrapscan <--> nowrapscan
+" set inccommand=
+"  "<Bar> <--> \|
+autocmd FileType vim let b:switch_custom_definitions = [
+      \ { '\<\([invoxtcl]\?\)noremap\>': '\1map'},
+      \ { '\<\([invoxtcl]\?\)map\>': '\1noremap'},
+      \ { '\<\(allowrevins\|ari\|autochdir\|acd\|arabic\|arab\|arabicshape\|arshape\|autoindent\|ai\|autoread\|ar\|autowrite\|aw\|autowriteall\|awa\|backup\|bk\|ballooneval\|beval\|binary\|bin\|bomb\|buflisted\|bl\|cindent\|cin\|confirm\|cf\|copyindent\|ci\|cscoperelative\|csre\|cscopetag\|cst\|cursorbind\|crb\|cursorcolumn\|cuc\|cursorline\|cul\|delcombine\|deco\|diff\|digraph\|dg\|endofline\|eol\|equalalways\|ea\|errorbells\|eb\|expandtab\|et\|fileignorecase\|fic\|fixendofline\|fixeol\|foldenable\|fen\|gdefault\|gd\|hidden\|hid\|hkmap\|hk\|hkmapp\|hkp\|hlsearch\|hls\|icon\|ignorecase\|ic\|imcmdline\|imc\|imdisable\|imd\|incsearch\|is\|infercase\|inf\|insertmode\|im\|joinspaces\|js\|langremap\|lrm\|lazyredraw\|lz\|linebreak\|lbr\|lisp\|list\|lpl\|loadplugins\|magic\|modeline\|ml\|modelineexpr\|mle\|modifiable\|ma\|modified\|mod\|more\|mousefocus\|mousef\|mousehide\|mh\|number\|nu\|opendevice\|odev\|paste\|preserveindent\|pi\|previewwindow\|pvw\|prompt\|readonly\|ro\|relativenumber\|rnu\|remap\|revins\|ri\|rightleft\|rl\|ruler\|ru\|scrollbind\|scb\|secure\|shellslash\|ssl\|shelltemp\|stmp\|shiftround\|sr\|showcmd\|sc\|showfulltag\|sft\|showmatch\|sm\|showmode\|smd\|smartcase\|scs\|smartindent\|si\|smarttab\|sta\|spell\|splitbelow\|sb\|splitright\|sr\|startofline\|sol\|swapfile\|swf\|tagbsearch\|tbs\|tagrelative\|tr\|tagstack\|tgst\|termbidi\|tbidi\|terse\|tildeop\|top\|timeout\|to\|ttimeout\|title\|ttyfast\|tf\|undofile\|udf\|visualbell\|vb\|warn\|wildignorecase\|wic\|wildmenu\|wmnu\|winfixheight\|wfh\|winfixwidth\|wfw\|wrap\|wrapscan\|ws\|write\|writeany\|wa\|writebackup\|wb\)\>': 'no\1'},
+      \ { '\<no\(allowrevins\|ari\|autochdir\|acd\|arabic\|arab\|arabicshape\|arshape\|autoindent\|ai\|autoread\|ar\|autowrite\|aw\|autowriteall\|awa\|backup\|bk\|ballooneval\|beval\|binary\|bin\|bomb\|buflisted\|bl\|cindent\|cin\|confirm\|cf\|copyindent\|ci\|cscoperelative\|csre\|cscopetag\|cst\|cursorbind\|crb\|cursorcolumn\|cuc\|cursorline\|cul\|delcombine\|deco\|diff\|digraph\|dg\|endofline\|eol\|equalalways\|ea\|errorbells\|eb\|expandtab\|et\|fileignorecase\|fic\|fixendofline\|fixeol\|foldenable\|fen\|gdefault\|gd\|hidden\|hid\|hkmap\|hk\|hkmapp\|hkp\|hlsearch\|hls\|icon\|ignorecase\|ic\|imcmdline\|imc\|imdisable\|imd\|incsearch\|is\|infercase\|inf\|insertmode\|im\|joinspaces\|js\|langremap\|lrm\|lazyredraw\|lz\|linebreak\|lbr\|lisp\|list\|lpl\|loadplugins\|magic\|modeline\|ml\|modelineexpr\|mle\|modifiable\|ma\|modified\|mod\|more\|mousefocus\|mousef\|mousehide\|mh\|number\|nu\|opendevice\|odev\|paste\|preserveindent\|pi\|previewwindow\|pvw\|prompt\|readonly\|ro\|relativenumber\|rnu\|remap\|revins\|ri\|rightleft\|rl\|ruler\|ru\|scrollbind\|scb\|secure\|shellslash\|ssl\|shelltemp\|stmp\|shiftround\|sr\|showcmd\|sc\|showfulltag\|sft\|showmatch\|sm\|showmode\|smd\|smartcase\|scs\|smartindent\|si\|smarttab\|sta\|spell\|splitbelow\|sb\|splitright\|sr\|startofline\|sol\|swapfile\|swf\|tagbsearch\|tbs\|tagrelative\|tr\|tagstack\|tgst\|termbidi\|tbidi\|terse\|tildeop\|top\|timeout\|to\|ttimeout\|title\|ttyfast\|tf\|undofile\|udf\|visualbell\|vb\|warn\|wildignorecase\|wic\|wildmenu\|wmnu\|winfixheight\|wfh\|winfixwidth\|wfw\|wrap\|wrapscan\|ws\|write\|writeany\|wa\|writebackup\|wb\)\>': '\1'},
+      \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)$': '\1split' },
+      \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)split\>': '\1nosplit' },
+      \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)nosplit\>': '\1' },
+      \ { '\c<Bar>': '\\|' },
+      \ { '\\|': '<Bar>' }
+      \]
+
+" sneak (eye candy and vertical movement)
+
+    " 2-character Sneak (default)
+    nmap <Nop> <Plug>Sneak_s
+    nmap <Nop> <Plug>Sneak_S
+    "
+    "" visual-mode
+    xmap <Nop> <Plug>Sneak_s
+    xmap <Nop> <Plug>Sneak_S
+    "
+    "" operator-pending-mode
+    omap <Nop> <Plug>Sneak_s
+    omap <Nop> <Plug>Sneak_S
+    "
+    "" repeat motion
+    map , <Plug>Sneak_;
+    map ; <Plug>Sneak_,
+
+    "" 1-character enhanced "'f'
+    nmap f <Plug>Sneak_f
+    nmap F <Plug>Sneak_F
+    xmap f <Plug>Sneak_f
+    xmap F <Plug>Sneak_F
+    omap f <Plug>Sneak_f
+    omap F <Plug>Sneak_F
+    ""
+    "1-character enhanced 't'
+    nmap t  <Plug>Sneak_t
+    nmap T  <Plug>Sneak_T
+    """
+    "visual-mode
+    xmap t  <Plug>Sneak_t
+    xmap T  <Plug>Sneak_T
+    ""
+    "operator-pending-mode
+    omap t  <Plug>Sneak_t
+    omap T  <Plug>Sneak_T
+
+    "label-mode
+    nmap <leader>Ss  <Plug>SneakLabel_s
+    nmap <leader>SS  <Plug>SneakLabel_S

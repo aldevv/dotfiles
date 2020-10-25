@@ -5,6 +5,7 @@
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
   "python.formatting.provider": "black",
+  "python.pythonPath": "/usr/bin/python3",
 
   "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/my_snippets"],
   "clangd.path": "/home/solus/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",

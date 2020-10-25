@@ -70,6 +70,8 @@ Plug 'matze/vim-move'
 Plug 'chengzeyi/fzf-preview.vim'
 Plug 'francoiscabrol/ranger.vim' |
          \ Plug 'rbgrouleff/bclose.vim'
+Plug 'AndrewRadev/switch.vim'
+Plug 'justinmk/vim-sneak'
 
 "TODO
 "switch.vim// on the ¿ key, ¡ is also free

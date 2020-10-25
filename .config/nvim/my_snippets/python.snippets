@@ -1,14 +1,23 @@
-snippet def2
-def something(self):
-	"hey hey"
-	"${1}"
-	some${2}
-	return ${3:Description}
+priority 1
+
+snippet fi "for item in items" Ab
+for ${1:item} in ${2:items}:
+	$3
+endsnippet
+
+snippet fr "for i in range" Ab
+for ${1:i} in range(${2:num}):
+	$3
 endsnippet
 
 
 #print("${1:${VISUAL}}")
-snippet print "enclose with print" Ab
+snippet prn "enclose with print" Ab
 print(f"${VISUAL}${1}")
 endsnippet
 
+# edit so it goes to the end of the file
+snippet main "create main" Ab
+if __name__ == "__main__":
+	$1
+endsnippet

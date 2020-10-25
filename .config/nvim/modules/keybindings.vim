@@ -16,8 +16,9 @@ noremap J E
 vnoremap i l
 vnoremap l i
 vnoremap L I
-noremap gn J
-nnoremap <CR> o<Esc>
+noremap ge J
+noremap gn i<cr><esc>k$
+" nnoremap <CR> o<Esc>
 nnoremap <S-CR> O<Esc>
 nnoremap [13;2u o
 
@@ -40,6 +41,7 @@ noremap / -
 
 noremap <leader>n <s-n>
 noremap <leader>sd :bd<cr>
+noremap <c-w> :bd<cr>
 noremap <silent>N :bprevious<cr>
 noremap <silent>E :bnext<cr>
 

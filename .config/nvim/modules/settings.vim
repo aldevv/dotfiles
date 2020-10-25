@@ -26,6 +26,7 @@ filetype plugin indent on
 
 let &t_8f = '\<esc>[38;2;%lu;%lu;%lum'
 let &t_8b = '\<esc>[48;2;%lu;%lu;%lum'
+set textwidth=95
 set foldmethod=manual
 set splitbelow
 " set foldcolumn=1
