@@ -73,8 +73,27 @@ Plug 'francoiscabrol/ranger.vim' |
 Plug 'AndrewRadev/switch.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'rhysd/clever-f.vim'
+Plug 'osyo-manga/vim-brightest'
+Plug 'pseewald/vim-anyfold'
+
+"not working because of conflict with polyglot
+" Plug 'wellle/context.vim'
+
+" check https://github.com/mattboehm/dotfiles/blob/master/vim/vimrc
+" for letting a single extension take care of formatting
+"Plug 'sbdchd/neoformat'
+" for commits
+"Plug 'junegunn/gv.vim'
+" for sending commands to terminal
+"Plug 'kassio/neoterm'
+" context to where you are in the code
 
 "TODO
+"
+"look at 
+"https://github.com/mattboehm/dotfiles/blob/master/vim/vimrc
+"for more
+"
 " still not working correctly for neovim
 " Plug 'puremourning/vimspector'
 

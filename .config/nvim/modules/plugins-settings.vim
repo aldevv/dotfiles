@@ -297,6 +297,55 @@ au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
+" nnoremap <leader>gs :Gstatus<CR>
+" nnoremap <leader>gc :Gcommit<CR>
+" nnoremap <leader>gd :Gdiff<CR>
+" nnoremap <leader>gw :Gwrite<CR>
+" nnoremap <leader>gr :Gread<CR>
+" nnoremap <leader>gl :Glog --reverse<CR>
+" nnoremap <leader>gp :Git push<CR>
+" nnoremap <leader>gb :Gblame<CR>
+" nnoremap <leader>gB :Gbrowse<CR>
+" nnoremap <leader>ga :tab sp \| Gvedit :1 \| windo diffthis<CR>
+"
+""Fugitive extensions
+    "nnoremap <silent> <leader>gm :tab sp<CR>:Glistmod<CR>
+    "nnoremap <silent> ]d :call g:DiffNextLoc()<CR>
+    "nnoremap <silent> [d :call g:DiffPrevLoc()<CR>
+    "function! g:ViewCommits(num_commits)
+    "    let commit=0
+    "    while commit < a:num_commits
+    "        execute "Gedit HEAD~".commit
+    "        topleft vsp
+    "        let commit += 1
+    "    endwhile
+    "    q
+    "endfunction
+
+    "command! Glistmod only | call g:ListModified() | Gdiff
+    "function! g:ListModified()
+    "    let old_makeprg=&makeprg
+    "    "let &makeprg = "git diff --cached --name-only"
+    "    let &makeprg = "git ls-files -m"
+    "    let old_errorformat=&errorformat
+    "    let &errorformat="%f"
+    "    lmake
+    "    let &makeprg=old_makeprg
+    "    let &errorformat=old_errorformat
+    "endfunction
+
+    "function! g:DiffNextLoc()
+    "    windo set nodiff
+    "    only
+    "    lnext
+    "    Gdiff
+    "endfunction
+    "function! g:DiffPrevLoc()
+    "    windo set nodiff
+    "    only
+    "    lprevious
+    "    Gdiff
+    "endfunction
 
 "=====================
 "   ULTISNIPS
@@ -925,3 +974,39 @@ let g:clever_f_mark_char =0
 let g:clever_f_mark_char_color = "Search"
 " it can search あ with this 
 let g:clever_f_use_migemo = 1
+
+" brightest
+" highlights all instances of a the word under the cursor in the buffer
+let g:brightest#highlight = {
+\   "group" : "BrightestUnderline"
+\}
+let g:brightest#pattern = '\k\+'
+let g:brightest#enable_filetypes = {
+\	""   : 0,
+\	"vim" : 1,
+\	"cpp" : 1,
+\	"python" : 1,
+\	"javascript" : 1,
+\	"java" : 1,
+\	"typescript" : 1,
+\}
+
+"==========
+" Ripgrep
+"==========
+nnoremap <leader>a :Rg<space>
+
+"==========
+"Anyfold
+"==========
+autocmd Filetype * AnyFoldActivate
+let g:anyfold_fold_comments=1
+" let anyfold_fold_toplevel = 1
+"
+"==========
+"Context
+"==========
+"
+let g:context_filetype_blacklist = ["vim","tex"]
+let g:context_enabled = 0
+

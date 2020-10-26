@@ -29,7 +29,27 @@ filetype plugin indent on
 let &t_8f = '\<esc>[38;2;%lu;%lu;%lum'
 let &t_8b = '\<esc>[48;2;%lu;%lu;%lum'
 set textwidth=95
-set foldmethod=manual
+set nofoldenable
+" set foldmethod=indent
+set viewoptions=folds,cursor
+set sessionoptions=folds
+" set foldmethod=manual
+" autocmd FileType * set foldmethod=syntax
+" autocmd FileType python set foldmethod=indent
+" autocmd FileType vim set foldmethod=mark
+set foldlevel=4
+set foldnestmax=1
+set foldlevelstart=2
+augroup AutoSaveFolds
+  autocmd!
+  " view files are about 500 bytes
+  " bufleave but not bufwinleave captures closing 2nd tab
+  " nested is needed by bufwrite* (if triggered via other autocmd)
+  autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
+  autocmd BufWinEnter ?* silent! loadview
+augroup end
+
+
 set splitbelow
 " set foldcolumn=1
 set wildmode=longest,list,full

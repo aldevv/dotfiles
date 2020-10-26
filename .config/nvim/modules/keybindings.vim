@@ -28,6 +28,16 @@ noremap / -
 " Make double-<Esc> clear search highlights
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 
+nnoremap <silent> <leader>z :call ToggleFMethod()<cr>
+function ToggleFMethod()
+  let method=&foldmethod
+  if method == "expr"
+    set foldmethod=manual
+  else
+    set foldmethod=expr
+  endif
+endfunction
+
 " this didnt work because it needs to be put down lower, but is a good example
 " of how to obtain input for a command
 "
