@@ -21,6 +21,7 @@ set spelllang=en_us
 " set timeoutlen=1500
 set timeoutlen=700
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+" nnoremap <silent> <leader><space>   :<c-u>WhichKey '<leader><leader>'<CR>
 filetype plugin indent on
 " set signcolumn=yes
 " set foldmethod=indent

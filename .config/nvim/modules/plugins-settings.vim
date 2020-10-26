@@ -84,8 +84,8 @@ let g:fzf_action = {
 let g:rg_derive_root='true'
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 nnoremap <c-p> :PFiles<cr>
-nnoremap <leader>s, :Buffers<cr>
-nnoremap <leader>lgp :GFiles<cr>
+nnoremap <leader>sb :Buffers<cr>
+nnoremap <leader>,p :GFiles<cr>
 let g:vista_default_executive = 'ctags'
 nnoremap <F4> :Course<cr>
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -130,42 +130,6 @@ command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 " nnoremap <leader>fs :FZFBTags<CR>
 " nnoremap <leader>fc :FClass<CR>
 
-autocmd FileType c,python :call ListMyOwnFunctions()
-autocmd FileType c,python :call ListMyOwnClasses()
-
-function ListMyOwnFunctions()
-    let extension = expand('%:e')
-    let nameFile = expand('%')
-
-    if extension == "c"
-        command! -bang -nargs=* FFunc
-      \ call fzf#vim#grep(
-      \     'rg --column --line-number --no-heading --color=always --smart-case -- "^\S+\(\S+\).*$"', 1,
-      \     fzf_preview#p(<bang>0, {'options': '--delimiter : --nth 3..'}),
-      \     <bang>0)
-    endif
-
-    if extension == "py"
-         command! -bang -nargs=* FFunc
-      \     call fzf#vim#grep(
-      \     'rg --column --line-number --no-heading --color=always --smart-case -- "^def\s\S+\(\S*\):"', 1,
-      \     fzf#vim#with_preview(), <bang>0)
-    endif
-endfunction
-
-function ListMyOwnClasses()
-    let extension = expand('%:e')
-    if extension == "py"
-       " execute ':g/\v^class\s\S+(\(\S+\))?:'
-         command! -bang -nargs=* FClass
-      \     call fzf#vim#grep(
-      \     'rg --column --line-number --no-heading --color=always --smart-case -- "^class\s\S+(\(\S+\))?:"', 1,
-      \     fzf#vim#with_preview(), <bang>0)
-    endif
-endfunction
-
-
-
 " GoTo code navigation.
 "nmap <leader>gd <Plug>(coc-definition)
 nmap <silent> gd <Plug>(coc-definition)
@@ -178,8 +142,8 @@ nmap <leader>gy <Plug>(coc-type-definition)
 nmap g, <Plug>(coc-diagnostic-prev)
 nmap g; <Plug>(coc-diagnostic-next)
 " g{ and g} are usable
-nmap <silent> <leader>, <Plug>(coc-diagnostic-prev-error)
-nmap <silent> <leader>; <Plug>(coc-diagnostic-next-error)
+nmap <silent> , <Plug>(coc-diagnostic-prev-error)
+nmap <silent> ; <Plug>(coc-diagnostic-next-error)
 nnoremap <silent> <leader>+ :call CocAction('doHover')<cr>
 nmap <F2> <Plug>(coc-rename)
 nmap <leader>cp :CocSearch <C-R>=expand('<cword>')<cr><cr>
@@ -195,6 +159,8 @@ nmap <silent> c[ <Plug>(coc-diagnostic-prev)
 nmap <silent> c] <Plug>(coc-diagnostic-next)
 nmap <silent> c, <Plug>(coc-fix-current)
 nmap <silent> cr <Plug>(coc-refactor)
+cnoreabbrev CS CocSearch
+
 " nnoremap <silent> <leader>cs :call CocAction('documentSymbols')<cr>
 " Mappings for CoCList
 " Show all diagnostics.
@@ -496,6 +462,7 @@ endfunction
 
 " easymotion"
 let g:Easymotion_do_mapping = 0
+map // <Plug>(easymotion-prefix)
 nmap s <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
 " map <Leader>j <Plug>(easymotion-j)
@@ -933,43 +900,28 @@ autocmd FileType vim let b:switch_custom_definitions = [
       \]
 
 " sneak (eye candy and vertical movement)
-
-    " 2-character Sneak (default)
-    nmap <Nop> <Plug>Sneak_s
-    nmap <Nop> <Plug>Sneak_S
-    "
-    "" visual-mode
-    xmap <Nop> <Plug>Sneak_s
-    xmap <Nop> <Plug>Sneak_S
-    "
-    "" operator-pending-mode
-    omap <Nop> <Plug>Sneak_s
-    omap <Nop> <Plug>Sneak_S
-    "
-    "" repeat motion
-    map , <Plug>Sneak_;
-    map ; <Plug>Sneak_,
-
-    "" 1-character enhanced "'f'
-    nmap f <Plug>Sneak_f
-    nmap F <Plug>Sneak_F
-    xmap f <Plug>Sneak_f
-    xmap F <Plug>Sneak_F
-    omap f <Plug>Sneak_f
-    omap F <Plug>Sneak_F
-    ""
-    "1-character enhanced 't'
-    nmap t  <Plug>Sneak_t
-    nmap T  <Plug>Sneak_T
-    """
-    "visual-mode
-    xmap t  <Plug>Sneak_t
-    xmap T  <Plug>Sneak_T
-    ""
-    "operator-pending-mode
-    omap t  <Plug>Sneak_t
-    omap T  <Plug>Sneak_T
-
-    "label-mode
-    nmap <leader>Ss  <Plug>SneakLabel_s
-    nmap <leader>SS  <Plug>SneakLabel_S
+" let g:sneak#s_next = 1    
+" let g:sneak#label = 0
+" map f <Plug>Sneak_f
+" map F <Plug>Sneak_F
+" map t <Plug>Sneak_t
+" map T <Plug>Sneak_T
+" highlight link Sneak None
+" " Needed if a plugin sets the colorscheme dynamically:
+" autocmd User SneakLeave highlight clear Sneak
+"
+" clever f
+"controls to search a character across multi lines or not. Please set it to 1 in your vimrc to
+"search a character only in current line.
+"
+let g:clever_f_across_no_line = 1
+let g:clever_f_ignore_case = 0
+let g:clever_f_timeout_ms=3000
+" let g:clever_f_show_prompt=1
+let g:clever_f_chars_match_any_signs=','
+" by default is <cr> but the remap doesnt work
+let g:clever_f_repeat_last_char_inputs=["\<CR>"]
+let g:clever_f_mark_char =0
+let g:clever_f_mark_char_color = "Search"
+" it can search あ with this 
+let g:clever_f_use_migemo = 1

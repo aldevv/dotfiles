@@ -25,6 +25,8 @@ nnoremap [13;2u o
 noremap - /
 noremap / -
 
+" Make double-<Esc> clear search highlights
+nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 
 " this didnt work because it needs to be put down lower, but is a good example
 " of how to obtain input for a command
@@ -220,3 +222,13 @@ autocmd FileType python,java,js,jsx,ts iabbrev <buffer> fa False
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> tr True
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> br Break
 
+" use * in visual mode
+function! s:VSetSearch()
+  let temp = @@
+  norm! gvy
+  let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+  let @@ = temp
+endfunction
+
+vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR><c-o>
+vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>

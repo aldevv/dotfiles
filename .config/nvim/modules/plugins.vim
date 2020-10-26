@@ -71,13 +71,10 @@ Plug 'chengzeyi/fzf-preview.vim'
 Plug 'francoiscabrol/ranger.vim' |
          \ Plug 'rbgrouleff/bclose.vim'
 Plug 'AndrewRadev/switch.vim'
-Plug 'justinmk/vim-sneak'
 Plug 'jremmen/vim-ripgrep'
+Plug 'rhysd/clever-f.vim'
 
 "TODO
-"switch.vim// on the ¿ key, ¡ is also free
-"quickfix reflector
-"sneak(?) // to maybe free up the , and ; keys
 " still not working correctly for neovim
 " Plug 'puremourning/vimspector'
 
@@ -87,7 +84,7 @@ Plug 'jremmen/vim-ripgrep'
 "https://hanspinckaers.com/posts/2020/01/vim-python-ide/
 "https://github.com/wellle/targets.vim
 
-"
+" deleted
 " for c++
 "Plug 'preservim/tagbar'
 "Plug ‘ludovicchabant/vim-gutentags’
