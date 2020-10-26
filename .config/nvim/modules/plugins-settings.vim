@@ -60,26 +60,26 @@ let NERDTreeMapCustomOpen = "i"
 
 let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹ ',
-                \ 'Staged'    :'➕',
-                \ 'Untracked' :'✭ ',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
+            \ 'Modified'  :'✹ ',
+            \ 'Staged'    :'➕',
+            \ 'Untracked' :'✭ ',
+            \ 'Renamed'   :'➜',
+            \ 'Unmerged'  :'═',
+            \ 'Deleted'   :'✖',
+            \ 'Dirty'     :'✗',
+            \ 'Ignored'   :'☒',
+            \ 'Clean'     :'✔︎',
+            \ 'Unknown'   :'?',
+            \ }
 
 " Undo tree
 nnoremap <F5> :UndotreeToggle<cr>
 
 " fzf
-      " \ 'ctrl-t': 'tab split',
+" \ 'ctrl-t': 'tab split',
 let g:fzf_action = {
-      \ 'ctrl-s': 'split',
-      \ 'ctrl-v': 'vsplit' }
+            \ 'ctrl-s': 'split',
+            \ 'ctrl-v': 'vsplit' }
 " for rg
 let g:rg_derive_root='true'
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
@@ -93,7 +93,7 @@ let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %
 
 " gives a preview window to Files
 command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 " to start fzf at root of project
 command! PFiles execute 'Files' s:find_current_root()
@@ -112,9 +112,9 @@ endfunction
 
 " for ripgrep
 command! -bang -nargs=* Rgfzf
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(expand('<cword>')), 1,
-  \   fzf#vim#with_preview({'dir': s:find_current_root()}), <bang>0)
+            \ call fzf#vim#grep(
+            \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(expand('<cword>')), 1,
+            \   fzf#vim#with_preview({'dir': s:find_current_root()}), <bang>0)
 map <leader>sf :Rgfzf<cr>
 
 "search in specific folder"
@@ -148,7 +148,7 @@ nnoremap <silent> <leader>+ :call CocAction('doHover')<cr>
 nmap <F2> <Plug>(coc-rename)
 nmap <leader>cp :CocSearch <C-R>=expand('<cword>')<cr><cr>
 
-":CocRebuild						*:CocRebuild*
+":CocRebuild                        *:CocRebuild*
 " use when you upgrade nodejs
 
 " nmap <leader>ca <Plug>(coc-codeaction)
@@ -186,32 +186,32 @@ nnoremap <silent><nowait> <leader>cl  :<C-u>CocOpenLog<CR>
 " CocSearch is very powerful, so you should use it with the many options it has available
 " more info in man rg
 "
-"	`-F` `--fixed-strings`: treat search pattern as fixed string.
+"   `-F` `--fixed-strings`: treat search pattern as fixed string.
 "    `-e` `--regexp`: treat search pattern as regexp.
-"	`-L` `--follow`: follow symbolic links while traversing directories.
-"	`-g` `--glob` {GLOB}: Include or exclude files and directories for
-"	searching that match the given glob.
-"	`--hidden`: Search hidden files and directories.
-"	`--no-ignore-vcs`:  Don't respect version control ignore files
-"	(.gitignore, etc.).
-"	`--no-ignore`: Don't respect ignore files (.gitignore, .ignore, etc.).
-"	`-w` `--word-regexp`: Only show matches surrounded by word boundaries.
-"	`-S` `--smart-case`: Searches case insensitively if the pattern is all
-"	lowercase. Search case sensitively otherwise.
-"	`--no-config`: Never read configuration files.
-"	`-x` `--line-regexp`: Only show matches surrounded by line boundaries.
+"   `-L` `--follow`: follow symbolic links while traversing directories.
+"   `-g` `--glob` {GLOB}: Include or exclude files and directories for
+"   searching that match the given glob.
+"   `--hidden`: Search hidden files and directories.
+"   `--no-ignore-vcs`:  Don't respect version control ignore files
+"   (.gitignore, etc.).
+"   `--no-ignore`: Don't respect ignore files (.gitignore, .ignore, etc.).
+"   `-w` `--word-regexp`: Only show matches surrounded by word boundaries.
+"   `-S` `--smart-case`: Searches case insensitively if the pattern is all
+"   lowercase. Search case sensitively otherwise.
+"   `--no-config`: Never read configuration files.
+"   `-x` `--line-regexp`: Only show matches surrounded by line boundaries.
 
 
 function s:show_hover_doc()
-  if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ "\\S"
-    silent! call timer_start(300, 'ShowDocIfNoDiagnostic')
-  endif
+    if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ "\\S"
+        silent! call timer_start(300, 'ShowDocIfNoDiagnostic')
+    endif
 endfunction
 
 function! ShowDocIfNoDiagnostic(timer_id)
-  if (coc#util#has_float() == 0)
-    silent! call CocActionAsync('doHover')
-  endif
+    if (coc#util#has_float() == 0)
+        silent! call CocActionAsync('doHover')
+    endif
 endfunction
 
 function Activate_hover()
@@ -272,23 +272,23 @@ let g:coc_snippet_prev = '<S-TAB>'
 "
 
 
-    " \ 'coc-html',
-    " \ 'coc-json',
+" \ 'coc-html',
+" \ 'coc-json',
 let g:coc_global_extensions = [
-   \ 'coc-marketplace',
-   \ 'coc-json',
-   \ 'coc-snippets',
-   \ 'coc-tag',
-   \ 'coc-pairs',
-   \ 'coc-tsserver',
-   \ 'coc-css',
-   \ 'coc-vimtex',
-   \ 'coc-python',
-   \ 'coc-sh',
-   \ 'coc-tslint-plugin',
-   \ 'coc-prettier',
-   \ 'coc-clangd',
-   \ ]
+            \ 'coc-marketplace',
+            \ 'coc-json',
+            \ 'coc-snippets',
+            \ 'coc-tag',
+            \ 'coc-pairs',
+            \ 'coc-tsserver',
+            \ 'coc-css',
+            \ 'coc-vimtex',
+            \ 'coc-python',
+            \ 'coc-sh',
+            \ 'coc-tslint-plugin',
+            \ 'coc-prettier',
+            \ 'coc-clangd',
+            \ ]
 
 
 au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
@@ -309,43 +309,43 @@ nmap <leader>gs :G<CR>
 " nnoremap <leader>ga :tab sp \| Gvedit :1 \| windo diffthis<CR>
 "
 ""Fugitive extensions
-    "nnoremap <silent> <leader>gm :tab sp<CR>:Glistmod<CR>
-    "nnoremap <silent> ]d :call g:DiffNextLoc()<CR>
-    "nnoremap <silent> [d :call g:DiffPrevLoc()<CR>
-    "function! g:ViewCommits(num_commits)
-    "    let commit=0
-    "    while commit < a:num_commits
-    "        execute "Gedit HEAD~".commit
-    "        topleft vsp
-    "        let commit += 1
-    "    endwhile
-    "    q
-    "endfunction
+"nnoremap <silent> <leader>gm :tab sp<CR>:Glistmod<CR>
+"nnoremap <silent> ]d :call g:DiffNextLoc()<CR>
+"nnoremap <silent> [d :call g:DiffPrevLoc()<CR>
+"function! g:ViewCommits(num_commits)
+"    let commit=0
+"    while commit < a:num_commits
+"        execute "Gedit HEAD~".commit
+"        topleft vsp
+"        let commit += 1
+"    endwhile
+"    q
+"endfunction
 
-    "command! Glistmod only | call g:ListModified() | Gdiff
-    "function! g:ListModified()
-    "    let old_makeprg=&makeprg
-    "    "let &makeprg = "git diff --cached --name-only"
-    "    let &makeprg = "git ls-files -m"
-    "    let old_errorformat=&errorformat
-    "    let &errorformat="%f"
-    "    lmake
-    "    let &makeprg=old_makeprg
-    "    let &errorformat=old_errorformat
-    "endfunction
+"command! Glistmod only | call g:ListModified() | Gdiff
+"function! g:ListModified()
+"    let old_makeprg=&makeprg
+"    "let &makeprg = "git diff --cached --name-only"
+"    let &makeprg = "git ls-files -m"
+"    let old_errorformat=&errorformat
+"    let &errorformat="%f"
+"    lmake
+"    let &makeprg=old_makeprg
+"    let &errorformat=old_errorformat
+"endfunction
 
-    "function! g:DiffNextLoc()
-    "    windo set nodiff
-    "    only
-    "    lnext
-    "    Gdiff
-    "endfunction
-    "function! g:DiffPrevLoc()
-    "    windo set nodiff
-    "    only
-    "    lprevious
-    "    Gdiff
-    "endfunction
+"function! g:DiffNextLoc()
+"    windo set nodiff
+"    only
+"    lnext
+"    Gdiff
+"endfunction
+"function! g:DiffPrevLoc()
+"    windo set nodiff
+"    only
+"    lprevious
+"    Gdiff
+"endfunction
 
 "=====================
 "   ULTISNIPS
@@ -380,21 +380,21 @@ let g:vimtex_quickfix_mode=0
 let g:vimtex_mappings_enabled=1
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_toc_config = {
-      \ 'name' : 'TOC',
-      \ 'layers' : ['content', 'todo', 'include'],
-      \ 'resize' : 1,
-      \ 'split_width' : 50,
-      \ 'todo_sorted' : 0,
-      \ 'show_help' : 1,
-      \ 'show_numbers' : 1,
-      \ 'mode' : 2,
-      \}
+            \ 'name' : 'TOC',
+            \ 'layers' : ['content', 'todo', 'include'],
+            \ 'resize' : 1,
+            \ 'split_width' : 50,
+            \ 'todo_sorted' : 0,
+            \ 'show_help' : 1,
+            \ 'show_numbers' : 1,
+            \ 'mode' : 2,
+            \}
 
 let g:vimtex_mappings_disable= {
-        \ 'n': ['ic', 'id', 'ie', 'i$'],
-        \ 'x': ['ic', 'id', 'ie', 'i$'],
-        \ 'o': ['ic', 'id', 'ie', 'i$'],
-        \}
+            \ 'n': ['ic', 'id', 'ie', 'i$'],
+            \ 'x': ['ic', 'id', 'ie', 'i$'],
+            \ 'o': ['ic', 'id', 'ie', 'i$'],
+            \}
 
 " none of these overrides worked
 "
@@ -426,10 +426,10 @@ hi Conceal ctermbg=none
 
 "COC
 map <leader>,p :CocCommand python.setInterpreter<cr>
- " call coc#config('python', {
- "  \   'jediEnabled': v:false,
- "  \   'pythonPath': split(execute('!which python3'), '\n')[-1]
- "  \ })
+" call coc#config('python', {
+"  \   'jediEnabled': v:false,
+"  \   'pythonPath': split(execute('!which python3'), '\n')[-1]
+"  \ })
 
 " nerdcommenter
 "nnoremap gc :call NERDComment(0,"toggle")<CR>
@@ -468,48 +468,108 @@ autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.js,*.ts,*.json,
 "set list
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
-" prettier and black
-autocmd BufWritePre *.py :Black
-autocmd BufWritePre *.js,*.json,*.jsx,*.ts :Prettier
+"====================
+" NEOFORMAT
+"====================
+" Enable alignment globally
+let g:neoformat_basic_format_align = 1
+" Enable tab to spaces conversion globally
+let g:neoformat_basic_format_retab = 1
+" Enable trimmming of trailing whitespace globally
+let g:neoformat_basic_format_trim = 1
+
+let g:neoformat_try_formatprg = 1
+" let g:neoformat_only_msg_on_error = 1
+let g:neoformat_verbose = 1
+augroup fmt
+    autocmd!
+    autocmd BufWritePre *.python,*.js,*.java,*.c,*.cpp,*.haskell :Neoformat
+augroup END
+nmap <silent><Leader>sp :Neoformat<cr>
+"-----------
+" PYTHON
+"-----------
+"'replace': 0 replace the file, instead of updating buffer (default: 0),
+let g:neoformat_python_black = {
+            \ 'exe': 'black',
+            \ 'args': ['-','--quiet','--line-length', '90'],
+            \ 'replace': 0,
+            \ 'stdin': 1,
+            \ }
+" lets you use gq
+autocmd FileType python setlocal formatprg=black\ -\ \
+            \--quiet\ \
+            \--line-length\ 90
+
+let g:neoformat_enabled_python = ['black']
+"-----------
+" Javascript
+"-----------
+autocmd FileType javascript,json,typescript,java let &l:formatprg='prettier --stdin-filepath ' .expand('%'). ' --print-width 90 --no-semi'
+
+let g:neoformat_javascript_prettier = {
+            \ 'exe': 'prettier',
+            \ 'args': ['--stdin-filepath','"%:p"','--print-width','90', '--no-semi'],
+            \ 'replace': 0,
+            \ 'stdin': 1,
+            \ }
+let g:neoformat_enabled_javascript = ['prettier']
+
+
+let g:neoformat_java_prettier = {
+            \ 'exe': 'prettier',
+            \ 'args': ['--stdin-filepath','"%:p"','--print-width','90', '--no-semi'],
+            \ 'replace': 0,
+            \ 'stdin': 1,
+            \ }
+let g:neoformat_enabled_java = ['prettier']
+" autocmd BufWritePre python Neoformat
+"====================
+" PRETTIER AND BLACK
+"====================
+" autocmd BufWritePre *.py :Black
+" autocmd BufWritePre *.js,*.json,*.jsx,*.ts :Prettier
 "======================
 "black
 "======================
 "
 "(defaults to 0)
-let g:black_fast = 0
-"(defaults to 88)
-let g:black_linelength = 88
-" (defaults to 0)
-let g:black_skip_string_normalization = 0
-"======================
-"prettier
-"======================
-" let g:prettier#config#print_width = 'auto'
-let g:prettier#config#print_width = 95
-"(defaults to ~/.vim/black or ~/.local/share/nvim/black)
-"let g:black_virtualenv ="~/.local/share/nvim/black"
-" nmap <Leader>p <Plug>(Prettier)
-nmap <silent><Leader>lp :call Formatting()<cr>
-" nmap <Leader>lp <Plug>(Prettier)
+"let g:black_fast = 0
+""(defaults to 88)
+"let g:black_linelength = 88
+"" (defaults to 0)
+"let g:black_skip_string_normalization = 0
+""======================
+""prettier
+""======================
+"" let g:prettier#config#print_width = 'auto'
+"let g:prettier#config#print_width = 95
+""(defaults to ~/.vim/black or ~/.local/share/nvim/black)
+""let g:black_virtualenv ="~/.local/share/nvim/black"
+"" nmap <Leader>p <Plug>(Prettier)
+"nmap <silent><Leader>lp :call Formatting()<cr>
+"" nmap <Leader>lp <Plug>(Prettier)
 
-function Formatting()
-" the [:-2] is to take away the last new line character
-    let extension = expand('%:e')
-    if extension =~ '\v(j|t)s'
-        :execute "normal \<Plug>(Prettier)"
-        return
-    else
-    if extension =~ "py"
-        echo worked
-        " :call CocAction('format')
-        :Black
-        return
-    endif
-    :!clear && shellcheck %<CR>
-    endif
-endfunction
+"function Formatting()
+"    " the [:-2] is to take away the last new line character
+"    let extension = expand('%:e')
+"    if extension =~ '\v(j|t)s'
+"        :execute "normal \<Plug>(Prettier)"
+"        return
+"    else
+"        if extension =~ "py"
+"            echo worked
+"            " :call CocAction('format')
+"            :Black
+"            return
+"        endif
+"        :!clear && shellcheck %<CR>
+"    endif
+"endfunction
 
-" easymotion"
+"=============
+" EASYMOTION
+"=============
 let g:Easymotion_do_mapping = 0
 map // <Plug>(easymotion-prefix)
 nmap s <Plug>(easymotion-s)
@@ -537,11 +597,13 @@ source ~/.config/nvim/modules/visual-at.vim
 
 " macros
 let @a = 'fxa.testing0lbeggining'
-    " whenever it finds an x, it runs this macro
-    " normal or norm is an ex command (a colon command, like :help)
+" whenever it finds an x, it runs this macro
+" normal or norm is an ex command (a colon command, like :help)
 nnoremap <leader>ri :g/x/normal @a<cr>
 
-" close tags
+"============
+" CLOSE TAGS
+"============
 "
 " filetypes like xml, html, xhtml, ...
 " These are the file types where this plugin is enabled.
@@ -562,9 +624,9 @@ let g:closetag_emptyTags_caseSensitive = 1
 " Disables auto-close if not in a "valid" region (based on filetype)
 "
 let g:closetag_regions = {
-    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
-    \ 'javascript.jsx': 'jsxRegion',
-    \ }
+            \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+            \ 'javascript.jsx': 'jsxRegion',
+            \ }
 
 " Shortcut for closing tags, default is '>'
 "
@@ -589,28 +651,28 @@ autocmd FileType html,css,js,jsx,ts EmmetInstall
 let g:user_emmet_leader_key='<C-Y>'
 " alt-gr s
 let g:user_emmet_expandabbr_key = 'ß'
- "  let g:user_emmet_expandword_key = '<C-y>;'
- "  let g:user_emmet_update_tag = '<C-y>u'
- "  "highlight tag groups"
- "  let g:user_emmet_balancetaginward_key = '<C-y>d'
- "  let g:user_emmet_balancetagoutward_key = '<C-y>D'
- "  "this is the next edit point"
- "  let g:user_emmet_next_key = '<C-y>n'
- "  let g:user_emmet_prev_key = '<C-y>N'
- "  let g:user_emmet_imagesize_key = '<C-y>i'
- "  "this comments a whole tag group"
- "  let g:user_emmet_togglecomment_key = '<C-y>/'
- "  let g:user_emmet_splitjointag_key = '<C-y>j'
- "  let g:user_emmet_removetag_key = '<C-y>k'
- "  "with a link it creates a <a tag"
- "  let g:user_emmet_anchorizeurl_key = '<C-y>a'
- "  "good for citation (gives an automatic description of the website)"
- "  let g:user_emmet_anchorizesummary_key = '<C-y>A'
- "  let g:user_emmet_mergelines_key = '<C-y>m'
- "  let g:user_emmet_codepretty_key = '<C-y>c'
+"  let g:user_emmet_expandword_key = '<C-y>;'
+"  let g:user_emmet_update_tag = '<C-y>u'
+"  "highlight tag groups"
+"  let g:user_emmet_balancetaginward_key = '<C-y>d'
+"  let g:user_emmet_balancetagoutward_key = '<C-y>D'
+"  "this is the next edit point"
+"  let g:user_emmet_next_key = '<C-y>n'
+"  let g:user_emmet_prev_key = '<C-y>N'
+"  let g:user_emmet_imagesize_key = '<C-y>i'
+"  "this comments a whole tag group"
+"  let g:user_emmet_togglecomment_key = '<C-y>/'
+"  let g:user_emmet_splitjointag_key = '<C-y>j'
+"  let g:user_emmet_removetag_key = '<C-y>k'
+"  "with a link it creates a <a tag"
+"  let g:user_emmet_anchorizeurl_key = '<C-y>a'
+"  "good for citation (gives an automatic description of the website)"
+"  let g:user_emmet_anchorizesummary_key = '<C-y>A'
+"  let g:user_emmet_mergelines_key = '<C-y>m'
+"  let g:user_emmet_codepretty_key = '<C-y>c'
 
- " vim git gutter"
- "
+" vim git gutter"
+"
 highlight GitGutterAdd    guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 highlight GitGutterDelete guifg=#ff2222 ctermfg=1
@@ -670,28 +732,28 @@ map <silent> <leader>b <Plug>CamelCaseMotion_b
 nmap gp  <Plug>ReplaceWithRegisterOperator
 nmap gpp <Plug>ReplaceWithRegisterLine
 xmap gp  <Plug>ReplaceWithRegisterVisual
-"USAGE						   *ReplaceWithRegister-usage*
+"USAGE                         *ReplaceWithRegister-usage*
 "
-"							     *gr* *grr* *v_gr*
-"[count]["x]gr{motion}	Replace {motion} text with the contents of register x.
-"			Especially when using the unnamed register, this is
-"			quicker than "_d{motion}P or "_c{motion}<C-R>"
-"[count]["x]grr		Replace [count] lines with the contents of register x.
-"			To replace from the cursor position to the end of the
-"			line use ["x]gr$
-"{Visual}["x]gr		Replace the selection with the contents of register x.
+"                                *gr* *grr* *v_gr*
+"[count]["x]gr{motion}  Replace {motion} text with the contents of register x.
+"           Especially when using the unnamed register, this is
+"           quicker than "_d{motion}P or "_c{motion}<C-R>"
+"[count]["x]grr     Replace [count] lines with the contents of register x.
+"           To replace from the cursor position to the end of the
+"           line use ["x]gr$
+"{Visual}["x]gr     Replace the selection with the contents of register x.
 
 " indent text object
 let g:textobj_indent_no_default_key_mappings = 1
 " let g:indent_object_except_first_level = 0
-vmap li	<Plug>(textobj-indent-i)
-omap li	<Plug>(textobj-indent-i)
-vmap ai	<Plug>(textobj-indent-a)
-omap ai	<Plug>(textobj-indent-a)
-vmap lI	<Plug>(textobj-indent-same-i)
-omap lI	<Plug>(textobj-indent-same-i)
-vmap aI	<Plug>(textobj-indent-same-a)
-omap aI	<Plug>(textobj-indent-same-a)
+vmap li <Plug>(textobj-indent-i)
+omap li <Plug>(textobj-indent-i)
+vmap ai <Plug>(textobj-indent-a)
+omap ai <Plug>(textobj-indent-a)
+vmap lI <Plug>(textobj-indent-same-i)
+omap lI <Plug>(textobj-indent-same-i)
+vmap aI <Plug>(textobj-indent-same-a)
+omap aI <Plug>(textobj-indent-same-a)
 "
 " line text object
 " only use for selecting, not for other stuff, has bugs
@@ -704,61 +766,61 @@ omap <silent> al <Plug>(textobj-line-a)
 
 " entire text object
 let g:textobj_entire_no_default_key_mappings = 1
-" vmap <silent> le	<Plug>(textobj-entire-i)
-" omap <silent> le	<Plug>(textobj-entire-i)
-vmap <silent> le	<Plug>(textobj-entire-i)
-omap <silent> le	<Plug>(textobj-entire-i)
-vmap <silent> ae	<Plug>(textobj-entire-a)
-omap <silent> ae	<Plug>(textobj-entire-a)
+" vmap <silent> le  <Plug>(textobj-entire-i)
+" omap <silent> le  <Plug>(textobj-entire-i)
+vmap <silent> le    <Plug>(textobj-entire-i)
+omap <silent> le    <Plug>(textobj-entire-i)
+vmap <silent> ae    <Plug>(textobj-entire-a)
+omap <silent> ae    <Plug>(textobj-entire-a)
 
 " python text objects
 let g:textobj_python_no_default_key_mappings = 1
 " silent! TextobjPythonDefaultKeyMappings!
-    " af: a function
-    " lf: inner function
-    " ac: a class
-    " lc: inner class
-    " [f previous function
-    " ]f next function
-    " [c previous class
-    " ]c next class
+" af: a function
+" lf: inner function
+" ac: a class
+" lc: inner class
+" [f previous function
+" ]f next function
+" [c previous class
+" ]c next class
 call textobj#user#map('python', {
-  \   'class': {
-  \     'select-a': '<buffer>ax',
-  \     'select-i': '<buffer>lx',
-  \     'move-n': '<buffer>]x',
-  \     'move-p': '<buffer>[x',
-  \   },
-  \   'function': {
-  \     'select-a': '<buffer>af',
-  \     'select-i': '<buffer>lf',
-  \     'move-n': '<buffer>]f',
-  \     'move-p': '<buffer>[f',
-  \   }
-  \ })
+            \   'class': {
+            \     'select-a': '<buffer>ax',
+            \     'select-i': '<buffer>lx',
+            \     'move-n': '<buffer>]x',
+            \     'move-p': '<buffer>[x',
+            \   },
+            \   'function': {
+            \     'select-a': '<buffer>af',
+            \     'select-i': '<buffer>lf',
+            \     'move-n': '<buffer>]f',
+            \     'move-p': '<buffer>[f',
+            \   }
+            \ })
 
 " text object comments
 " silent! TextobjCommentDefaultKeyMappings!
 let g:textobj_comment_no_default_key_mappings = 1
-vmap ac	<Plug>(textobj-comment-a)
-omap ac	<Plug>(textobj-comment-a)
+vmap ac <Plug>(textobj-comment-a)
+omap ac <Plug>(textobj-comment-a)
 vmap lc <Plug>(textobj-comment-i)
 omap lc <Plug>(textobj-comment-i)
 " vmap lc <Plug>(textobj-comment-i)
 " omap lc <Plug>(textobj-comment-i)
 " a big comment
 " whitespace after the comment, or if there isn't any,
-"			whitespace before the comment.
-"			Select linewise for full-line comments, characterwise
-"			for inline and end-of-line comments.
+"           whitespace before the comment.
+"           Select linewise for full-line comments, characterwise
+"           for inline and end-of-line comments.
 vmap aC <Plug>(textobj-comment-big-a)
 omap aC <Plug>(textobj-comment-big-a)
 
 
 " visual mode move
 let g:move_key_modifier = 'C'
-   " disable default bindings"
- let g:move_map_keys = 0
+" disable default bindings"
+let g:move_map_keys = 0
 vmap <C-n> <Plug>MoveBlockDown
 vmap <C-e> <Plug>MoveBlockUp
 vmap <C-h> <Plug>MoveBlockLeft
@@ -785,16 +847,16 @@ autocmd Filetype java,javascript,python let g:airline#extensions#tabline#enabled
 " autocmd Filetype java nmap <leader>dd :CocCommand java.debug.vimspector.start<cr>
 "enable python debugging
 " :VimspectorInstall vscode-python
-    " <Plug>VimspectorContinue
-    " <Plug>VimspectorStop
-    " <Plug>VimspectorRestart
-    " <Plug>VimspectorPause
-    " <Plug>VimspectorToggleBreakpoint
-    " <Plug>VimspectorToggleConditionalBreakpoint
-    " <Plug>VimspectorAddFunctionBreakpoint
-    " <Plug>VimspectorStepOver
-    " <Plug>VimspectorStepInto
-    " <Plug>VimspectorStepOut
+" <Plug>VimspectorContinue
+" <Plug>VimspectorStop
+" <Plug>VimspectorRestart
+" <Plug>VimspectorPause
+" <Plug>VimspectorToggleBreakpoint
+" <Plug>VimspectorToggleConditionalBreakpoint
+" <Plug>VimspectorAddFunctionBreakpoint
+" <Plug>VimspectorStepOver
+" <Plug>VimspectorStepInto
+" <Plug>VimspectorStepOut
 "{
 "  "configurations": {
 "    "univisal: Launch": {
@@ -862,7 +924,7 @@ let g:tagbar_map_closeallfolds = 'zM'
 let g:tagbar_map_hidenonpublic = 'h'
 
 " ranger.vim
-let g:ranger_replace_netrw = 1 
+let g:ranger_replace_netrw = 1
 let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0
 nmap <leader>f :Ranger<cr>
@@ -905,51 +967,51 @@ let g:switch_mapping = "¿"
 
 
 let b:switch_custom_definitions = [
-      \   {
-      \     '\(\k\+=\){\([[:keyword:].]\+\)}':      '\1{`${\2}`}',
-      \     '\(\k\+=\){`${\([[:keyword:].]\+\)}`}': '\1{\2}',
-      \   }
-      \ ]
+            \   {
+            \     '\(\k\+=\){\([[:keyword:].]\+\)}':      '\1{`${\2}`}',
+            \     '\(\k\+=\){`${\([[:keyword:].]\+\)}`}': '\1{\2}',
+            \   }
+            \ ]
 " it does this
 "<Thing foo={data} />
 "<Thing foo={`${data}`} />
 
 autocmd FileType tex,plaintex let b:switch_custom_definitions =
-    \ [
-    \    [ '\\tiny', '\\scriptsize', '\\footnotesize', '\\small', '\\normalsize', '\\large', '\\Large', '\\LARGE', '\\huge', '\\Huge' ],
-    \    [ '\\displaystyle', '\\scriptstyle', '\\scriptscriptstyle', '\\textstyle' ],
-    \    [ '\\part', '\\chapter', '\\section', '\\subsection', '\\subsubsection', '\\paragraph', '\\subparagraph' ],
-    \    [ 'part:', 'chap:', 'sec:', 'subsec:', 'subsubsec:' ],
-    \    [ 'article', 'report', 'book', 'letter', 'slides' ],
-    \    [ 'a4paper', 'a5paper', 'b5paper', 'executivepaper', 'legalpaper', 'letterpaper', 'beamer', 'subfiles', 'standalone' ],
-    \    [ 'onecolumn', 'twocolumn' ],
-    \    [ 'oneside', 'twoside' ],
-    \    [ 'draft', 'final' ],
-    \    [ 'AnnArbor', 'Antibes', 'Bergen', 'Berkeley',
-    \      'Berlin', 'Boadilla', 'CambridgeUS', 'Copenhagen', 'Darmstadt',
-    \      'Dresden', 'Frankfurt', 'Goettingen', 'Hannover', 'Ilmenau',
-    \      'JuanLesPins', 'Luebeck', 'Madrid', 'Malmoe', 'Marburg',
-    \      'Montpellier', 'PaloAlto', 'Pittsburgh', 'Rochester', 'Singapore',
-    \      'Szeged', 'Warsaw' ]
-    \ ]
+            \ [
+            \    [ '\\tiny', '\\scriptsize', '\\footnotesize', '\\small', '\\normalsize', '\\large', '\\Large', '\\LARGE', '\\huge', '\\Huge' ],
+            \    [ '\\displaystyle', '\\scriptstyle', '\\scriptscriptstyle', '\\textstyle' ],
+            \    [ '\\part', '\\chapter', '\\section', '\\subsection', '\\subsubsection', '\\paragraph', '\\subparagraph' ],
+            \    [ 'part:', 'chap:', 'sec:', 'subsec:', 'subsubsec:' ],
+            \    [ 'article', 'report', 'book', 'letter', 'slides' ],
+            \    [ 'a4paper', 'a5paper', 'b5paper', 'executivepaper', 'legalpaper', 'letterpaper', 'beamer', 'subfiles', 'standalone' ],
+            \    [ 'onecolumn', 'twocolumn' ],
+            \    [ 'oneside', 'twoside' ],
+            \    [ 'draft', 'final' ],
+            \    [ 'AnnArbor', 'Antibes', 'Bergen', 'Berkeley',
+            \      'Berlin', 'Boadilla', 'CambridgeUS', 'Copenhagen', 'Darmstadt',
+            \      'Dresden', 'Frankfurt', 'Goettingen', 'Hannover', 'Ilmenau',
+            \      'JuanLesPins', 'Luebeck', 'Madrid', 'Malmoe', 'Marburg',
+            \      'Montpellier', 'PaloAlto', 'Pittsburgh', 'Rochester', 'Singapore',
+            \      'Szeged', 'Warsaw' ]
+            \ ]
 " map <--> noremap
 " wrapscan <--> nowrapscan
 " set inccommand=
 "  "<Bar> <--> \|
 autocmd FileType vim let b:switch_custom_definitions = [
-      \ { '\<\([invoxtcl]\?\)noremap\>': '\1map'},
-      \ { '\<\([invoxtcl]\?\)map\>': '\1noremap'},
-      \ { '\<\(allowrevins\|ari\|autochdir\|acd\|arabic\|arab\|arabicshape\|arshape\|autoindent\|ai\|autoread\|ar\|autowrite\|aw\|autowriteall\|awa\|backup\|bk\|ballooneval\|beval\|binary\|bin\|bomb\|buflisted\|bl\|cindent\|cin\|confirm\|cf\|copyindent\|ci\|cscoperelative\|csre\|cscopetag\|cst\|cursorbind\|crb\|cursorcolumn\|cuc\|cursorline\|cul\|delcombine\|deco\|diff\|digraph\|dg\|endofline\|eol\|equalalways\|ea\|errorbells\|eb\|expandtab\|et\|fileignorecase\|fic\|fixendofline\|fixeol\|foldenable\|fen\|gdefault\|gd\|hidden\|hid\|hkmap\|hk\|hkmapp\|hkp\|hlsearch\|hls\|icon\|ignorecase\|ic\|imcmdline\|imc\|imdisable\|imd\|incsearch\|is\|infercase\|inf\|insertmode\|im\|joinspaces\|js\|langremap\|lrm\|lazyredraw\|lz\|linebreak\|lbr\|lisp\|list\|lpl\|loadplugins\|magic\|modeline\|ml\|modelineexpr\|mle\|modifiable\|ma\|modified\|mod\|more\|mousefocus\|mousef\|mousehide\|mh\|number\|nu\|opendevice\|odev\|paste\|preserveindent\|pi\|previewwindow\|pvw\|prompt\|readonly\|ro\|relativenumber\|rnu\|remap\|revins\|ri\|rightleft\|rl\|ruler\|ru\|scrollbind\|scb\|secure\|shellslash\|ssl\|shelltemp\|stmp\|shiftround\|sr\|showcmd\|sc\|showfulltag\|sft\|showmatch\|sm\|showmode\|smd\|smartcase\|scs\|smartindent\|si\|smarttab\|sta\|spell\|splitbelow\|sb\|splitright\|sr\|startofline\|sol\|swapfile\|swf\|tagbsearch\|tbs\|tagrelative\|tr\|tagstack\|tgst\|termbidi\|tbidi\|terse\|tildeop\|top\|timeout\|to\|ttimeout\|title\|ttyfast\|tf\|undofile\|udf\|visualbell\|vb\|warn\|wildignorecase\|wic\|wildmenu\|wmnu\|winfixheight\|wfh\|winfixwidth\|wfw\|wrap\|wrapscan\|ws\|write\|writeany\|wa\|writebackup\|wb\)\>': 'no\1'},
-      \ { '\<no\(allowrevins\|ari\|autochdir\|acd\|arabic\|arab\|arabicshape\|arshape\|autoindent\|ai\|autoread\|ar\|autowrite\|aw\|autowriteall\|awa\|backup\|bk\|ballooneval\|beval\|binary\|bin\|bomb\|buflisted\|bl\|cindent\|cin\|confirm\|cf\|copyindent\|ci\|cscoperelative\|csre\|cscopetag\|cst\|cursorbind\|crb\|cursorcolumn\|cuc\|cursorline\|cul\|delcombine\|deco\|diff\|digraph\|dg\|endofline\|eol\|equalalways\|ea\|errorbells\|eb\|expandtab\|et\|fileignorecase\|fic\|fixendofline\|fixeol\|foldenable\|fen\|gdefault\|gd\|hidden\|hid\|hkmap\|hk\|hkmapp\|hkp\|hlsearch\|hls\|icon\|ignorecase\|ic\|imcmdline\|imc\|imdisable\|imd\|incsearch\|is\|infercase\|inf\|insertmode\|im\|joinspaces\|js\|langremap\|lrm\|lazyredraw\|lz\|linebreak\|lbr\|lisp\|list\|lpl\|loadplugins\|magic\|modeline\|ml\|modelineexpr\|mle\|modifiable\|ma\|modified\|mod\|more\|mousefocus\|mousef\|mousehide\|mh\|number\|nu\|opendevice\|odev\|paste\|preserveindent\|pi\|previewwindow\|pvw\|prompt\|readonly\|ro\|relativenumber\|rnu\|remap\|revins\|ri\|rightleft\|rl\|ruler\|ru\|scrollbind\|scb\|secure\|shellslash\|ssl\|shelltemp\|stmp\|shiftround\|sr\|showcmd\|sc\|showfulltag\|sft\|showmatch\|sm\|showmode\|smd\|smartcase\|scs\|smartindent\|si\|smarttab\|sta\|spell\|splitbelow\|sb\|splitright\|sr\|startofline\|sol\|swapfile\|swf\|tagbsearch\|tbs\|tagrelative\|tr\|tagstack\|tgst\|termbidi\|tbidi\|terse\|tildeop\|top\|timeout\|to\|ttimeout\|title\|ttyfast\|tf\|undofile\|udf\|visualbell\|vb\|warn\|wildignorecase\|wic\|wildmenu\|wmnu\|winfixheight\|wfh\|winfixwidth\|wfw\|wrap\|wrapscan\|ws\|write\|writeany\|wa\|writebackup\|wb\)\>': '\1'},
-      \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)$': '\1split' },
-      \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)split\>': '\1nosplit' },
-      \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)nosplit\>': '\1' },
-      \ { '\c<Bar>': '\\|' },
-      \ { '\\|': '<Bar>' }
-      \]
+            \ { '\<\([invoxtcl]\?\)noremap\>': '\1map'},
+            \ { '\<\([invoxtcl]\?\)map\>': '\1noremap'},
+            \ { '\<\(allowrevins\|ari\|autochdir\|acd\|arabic\|arab\|arabicshape\|arshape\|autoindent\|ai\|autoread\|ar\|autowrite\|aw\|autowriteall\|awa\|backup\|bk\|ballooneval\|beval\|binary\|bin\|bomb\|buflisted\|bl\|cindent\|cin\|confirm\|cf\|copyindent\|ci\|cscoperelative\|csre\|cscopetag\|cst\|cursorbind\|crb\|cursorcolumn\|cuc\|cursorline\|cul\|delcombine\|deco\|diff\|digraph\|dg\|endofline\|eol\|equalalways\|ea\|errorbells\|eb\|expandtab\|et\|fileignorecase\|fic\|fixendofline\|fixeol\|foldenable\|fen\|gdefault\|gd\|hidden\|hid\|hkmap\|hk\|hkmapp\|hkp\|hlsearch\|hls\|icon\|ignorecase\|ic\|imcmdline\|imc\|imdisable\|imd\|incsearch\|is\|infercase\|inf\|insertmode\|im\|joinspaces\|js\|langremap\|lrm\|lazyredraw\|lz\|linebreak\|lbr\|lisp\|list\|lpl\|loadplugins\|magic\|modeline\|ml\|modelineexpr\|mle\|modifiable\|ma\|modified\|mod\|more\|mousefocus\|mousef\|mousehide\|mh\|number\|nu\|opendevice\|odev\|paste\|preserveindent\|pi\|previewwindow\|pvw\|prompt\|readonly\|ro\|relativenumber\|rnu\|remap\|revins\|ri\|rightleft\|rl\|ruler\|ru\|scrollbind\|scb\|secure\|shellslash\|ssl\|shelltemp\|stmp\|shiftround\|sr\|showcmd\|sc\|showfulltag\|sft\|showmatch\|sm\|showmode\|smd\|smartcase\|scs\|smartindent\|si\|smarttab\|sta\|spell\|splitbelow\|sb\|splitright\|sr\|startofline\|sol\|swapfile\|swf\|tagbsearch\|tbs\|tagrelative\|tr\|tagstack\|tgst\|termbidi\|tbidi\|terse\|tildeop\|top\|timeout\|to\|ttimeout\|title\|ttyfast\|tf\|undofile\|udf\|visualbell\|vb\|warn\|wildignorecase\|wic\|wildmenu\|wmnu\|winfixheight\|wfh\|winfixwidth\|wfw\|wrap\|wrapscan\|ws\|write\|writeany\|wa\|writebackup\|wb\)\>': 'no\1'},
+            \ { '\<no\(allowrevins\|ari\|autochdir\|acd\|arabic\|arab\|arabicshape\|arshape\|autoindent\|ai\|autoread\|ar\|autowrite\|aw\|autowriteall\|awa\|backup\|bk\|ballooneval\|beval\|binary\|bin\|bomb\|buflisted\|bl\|cindent\|cin\|confirm\|cf\|copyindent\|ci\|cscoperelative\|csre\|cscopetag\|cst\|cursorbind\|crb\|cursorcolumn\|cuc\|cursorline\|cul\|delcombine\|deco\|diff\|digraph\|dg\|endofline\|eol\|equalalways\|ea\|errorbells\|eb\|expandtab\|et\|fileignorecase\|fic\|fixendofline\|fixeol\|foldenable\|fen\|gdefault\|gd\|hidden\|hid\|hkmap\|hk\|hkmapp\|hkp\|hlsearch\|hls\|icon\|ignorecase\|ic\|imcmdline\|imc\|imdisable\|imd\|incsearch\|is\|infercase\|inf\|insertmode\|im\|joinspaces\|js\|langremap\|lrm\|lazyredraw\|lz\|linebreak\|lbr\|lisp\|list\|lpl\|loadplugins\|magic\|modeline\|ml\|modelineexpr\|mle\|modifiable\|ma\|modified\|mod\|more\|mousefocus\|mousef\|mousehide\|mh\|number\|nu\|opendevice\|odev\|paste\|preserveindent\|pi\|previewwindow\|pvw\|prompt\|readonly\|ro\|relativenumber\|rnu\|remap\|revins\|ri\|rightleft\|rl\|ruler\|ru\|scrollbind\|scb\|secure\|shellslash\|ssl\|shelltemp\|stmp\|shiftround\|sr\|showcmd\|sc\|showfulltag\|sft\|showmatch\|sm\|showmode\|smd\|smartcase\|scs\|smartindent\|si\|smarttab\|sta\|spell\|splitbelow\|sb\|splitright\|sr\|startofline\|sol\|swapfile\|swf\|tagbsearch\|tbs\|tagrelative\|tr\|tagstack\|tgst\|termbidi\|tbidi\|terse\|tildeop\|top\|timeout\|to\|ttimeout\|title\|ttyfast\|tf\|undofile\|udf\|visualbell\|vb\|warn\|wildignorecase\|wic\|wildmenu\|wmnu\|winfixheight\|wfh\|winfixwidth\|wfw\|wrap\|wrapscan\|ws\|write\|writeany\|wa\|writebackup\|wb\)\>': '\1'},
+            \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)$': '\1split' },
+            \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)split\>': '\1nosplit' },
+            \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)nosplit\>': '\1' },
+            \ { '\c<Bar>': '\\|' },
+            \ { '\\|': '<Bar>' }
+            \]
 
 " sneak (eye candy and vertical movement)
-" let g:sneak#s_next = 1    
+" let g:sneak#s_next = 1
 " let g:sneak#label = 0
 " map f <Plug>Sneak_f
 " map F <Plug>Sneak_F
@@ -972,24 +1034,24 @@ let g:clever_f_chars_match_any_signs=','
 let g:clever_f_repeat_last_char_inputs=["\<CR>"]
 let g:clever_f_mark_char =0
 let g:clever_f_mark_char_color = "Search"
-" it can search あ with this 
+" it can search あ with this
 let g:clever_f_use_migemo = 1
 
 " brightest
 " highlights all instances of a the word under the cursor in the buffer
 let g:brightest#highlight = {
-\   "group" : "BrightestUnderline"
-\}
+            \   "group" : "BrightestUnderline"
+            \}
 let g:brightest#pattern = '\k\+'
 let g:brightest#enable_filetypes = {
-\	""   : 0,
-\	"vim" : 1,
-\	"cpp" : 1,
-\	"python" : 1,
-\	"javascript" : 1,
-\	"java" : 1,
-\	"typescript" : 1,
-\}
+            \   ""   : 0,
+            \   "vim" : 1,
+            \   "cpp" : 1,
+            \   "python" : 1,
+            \   "javascript" : 1,
+            \   "java" : 1,
+            \   "typescript" : 1,
+            \}
 
 "==========
 " Ripgrep

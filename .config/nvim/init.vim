@@ -8,7 +8,7 @@
 "     |VVVVVV|++++++/VVVVV/'
 "    +|VVVVVV|++++/VVVVV/'+
 "  +++|VVVVVV|++/VVVVV/'+++++
- "+++++|VVVVVV|/VVV___++++++++++
+"+++++|VVVVVV|/VVV___++++++++++
 "  +++|VVVVVVVVVV/##/ +_+_+_+_
 "    +|VVVVVVVVV___ +/#_#,#_#,\
 "     |VVVVVVV//##/+/#/+/#/'/#/
@@ -60,7 +60,7 @@ source ~/.config/nvim/modules/settings.vim
 "==================
 " PLUGINS
 "==================
- source ~/.config/nvim/modules/plugins.vim
+source ~/.config/nvim/modules/plugins.vim
 
 "==================
 " APPEARANCE

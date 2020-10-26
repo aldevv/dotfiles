@@ -25,6 +25,8 @@ nnoremap [13;2u o
 noremap - /
 noremap / -
 
+nnoremap <silent><leader>lch  :!chmod +x %<cr>
+
 " Make double-<Esc> clear search highlights
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 
@@ -101,7 +103,7 @@ vnoremap <silent><leader> gr :B !sortListR.py <cr>t]xT[
 nnoremap gñ :SyntaxQuery<CR>
 nnoremap <leader>lt :silent call Toggle_transparent()<CR>
 function Toggle_transparent()
-exec ":!toggleTrans"
+  exec ":!toggleTrans"
 endfunction
 
 " open terminal
@@ -187,9 +189,9 @@ function! RunnerEnter()
   endif
 endfunction
 function Runner()
-    exec 'silent w'
-    let extension = expand('%:e')
-    let dict = 
+  exec 'silent w'
+  let extension = expand('%:e')
+  let dict =
         \{
         \ 'py': ":!python3 %",
         \ 'c': ":!gcc %  && ./a.out",
@@ -199,7 +201,7 @@ function Runner()
         \ 'java': "!javac % && java ".expand('%:t:r'),
         \ '': ":!chmod +x %; ./%"
         \}
-    execute dict[extension]
+  execute dict[extension]
 endfunction
 
 
@@ -211,15 +213,15 @@ map <silent> <leader>ra :silent call jobstart('setsid st -e ranger $(dirname %) 
 
 "debugging python, needs pip install ipdb
 func! s:SetBreakpoint()
-cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'import ipdb; ipdb.set_trace()')
+  cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'import ipdb; ipdb.set_trace()')
 endf
 
 func! s:RemoveBreakpoint()
-exe 'silent! g/^\s*import\sipdb\;\?\n*\s*ipdb.set_trace()/d'
+  exe 'silent! g/^\s*import\sipdb\;\?\n*\s*ipdb.set_trace()/d'
 endf
 
 func! s:ToggleBreakpoint()
-if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
+  if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
 endf
 " nnoremap <F6> :call <SID>ToggleBreakpoint()<CR>
 

@@ -42,13 +42,16 @@ export QT_IM_MODULE='ibus'
 export XMODIFIERS=@im='ibus'
 
 #======================================
-# work
+# WORK
+#======================================
+nvm_path="$HOME/.config/nvm/versions/node"
+node=$(ls $nvm_path | sed '/v[0-9]+\.[0-9]+\.[0-9]+/p' | sort -r  | sed '1q')
+export NODE_PATH="$nvm_path/$node/bin"
 export WORK="$HOME/dev/Work"
 export PYTHONPATH="$WORK/PPE/tensorflow-api/models/research:$WORK/PPE/tensorflow-api/models/research/slim:$WORK/PPE/tensorflow-api/models:$PYTHONPATH"
 export JDK_HOME="/usr/lib64/openjdk-11"
 export JAVA_HOME="$JDK_HOME"
-#for cargo
-export PATH="$PATH:$JAVA_HOME/bin:$HOME/.cargo/bin"
+export PATH="$PATH:$JAVA_HOME/bin:$HOME/.cargo/bin:$NODE_PATH"
 
 #======================================
 

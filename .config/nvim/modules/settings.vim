@@ -85,7 +85,7 @@ set confirm
 
 "detect root in git repo
 if executable('rg')
-    let g:rg_derive_root='true'
+  let g:rg_derive_root='true'
 endif
 
 let g:python_host_prog = '/usr/bin/python'
@@ -99,7 +99,7 @@ let g:termdebug_wide = 163
 
 " share registers between vim instances
 augroup SHADA
-    autocmd!
-    autocmd CursorHold,TextYankPost,FocusGained,FocusLost *
-                \ if exists(':rshada') | rshada | wshada | endif
+  autocmd!
+  autocmd CursorHold,TextYankPost,FocusGained,FocusLost *
+        \ if exists(':rshada') | rshada | wshada | endif
 augroup END

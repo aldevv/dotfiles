@@ -3,42 +3,42 @@ call plug#begin()
 " basic editor stuff (mkdir, move etc)
 " Plug 'tpope/vim-eunuch'
 " themes
- Plug 'morhetz/gruvbox'
- Plug 'fcpg/vim-fahrenheit'
- Plug 'tomasiser/vim-code-dark'
- Plug 'dracula/vim'
- Plug 'vim-airline/vim-airline'
- Plug 'vim-airline/vim-airline-themes'
- " programming
+Plug 'morhetz/gruvbox'
+Plug 'fcpg/vim-fahrenheit'
+Plug 'tomasiser/vim-code-dark'
+Plug 'dracula/vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" programming
 Plug 'bkad/CamelCaseMotion'
- Plug 'sheerun/vim-polyglot'
- Plug 'neoclide/coc.nvim', {'branch': 'release'}
- Plug 'liuchengxu/vista.vim'
- Plug 'preservim/tagbar'
- Plug 'scrooloose/syntastic'
- Plug 'SirVer/ultisnips'
- Plug 'honza/vim-snippets'
- Plug 'tpope/vim-commentary'
- Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
- Plug 'junegunn/fzf.vim'
- Plug 'yggdroot/indentLine'
- " explicitly put the release/1.x, because Master was failing"
- Plug 'psf/black', { 'branch': 'stable' }
- Plug 'prettier/vim-prettier', {
-   \ 'do': 'npm install',
-   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] ,
-   \ 'branch': 'release/1.x'}
- Plug 'mattn/emmet-vim'
- Plug 'airblade/vim-gitgutter' |
-    \ Plug 'tpope/vim-fugitive'
- " to see hex colors"
- Plug 'ap/vim-css-color'
+Plug 'sheerun/vim-polyglot'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'liuchengxu/vista.vim'
+Plug 'preservim/tagbar'
+Plug 'scrooloose/syntastic'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'yggdroot/indentLine'
+" explicitly put the release/1.x, because Master was failing"
+" Plug 'psf/black', { 'branch': 'stable' }
+" Plug 'prettier/vim-prettier', {
+         \ 'do': 'npm install',
+         \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] ,
+         \ 'branch': 'release/1.x'}
+Plug 'mattn/emmet-vim'
+Plug 'airblade/vim-gitgutter' |
+         \ Plug 'tpope/vim-fugitive'
+" to see hex colors"
+Plug 'ap/vim-css-color'
 Plug  'alvan/vim-closetag'
 "    gS to split a one-liner into multiple lines
 "    gJ (with the cursor on the first line of a block) to join a block into a single-line statement.
 Plug 'AndrewRadev/splitjoin.vim'
 " goooooooooood!!, more text objects!!
- " misc
+" misc
 Plug 'mbbill/undotree'
 Plug 'lervag/vimtex'
 Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
@@ -51,9 +51,9 @@ Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  } |
-             \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-             \ Plug 'ryanoasis/vim-devicons' |
-             \ Plug 'vwxyutarooo/nerdtree-devicons-syntax' |
+         \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+         \ Plug 'ryanoasis/vim-devicons' |
+         \ Plug 'vwxyutarooo/nerdtree-devicons-syntax' |
 Plug 'jupyter-vim/jupyter-vim'
 " text objects
 Plug 'kana/vim-textobj-user'
@@ -75,13 +75,13 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'rhysd/clever-f.vim'
 Plug 'osyo-manga/vim-brightest'
 Plug 'pseewald/vim-anyfold'
+Plug 'sbdchd/neoformat'
 
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'
 
 " check https://github.com/mattboehm/dotfiles/blob/master/vim/vimrc
 " for letting a single extension take care of formatting
-"Plug 'sbdchd/neoformat'
 " for commits
 "Plug 'junegunn/gv.vim'
 " for sending commands to terminal
@@ -90,7 +90,7 @@ Plug 'pseewald/vim-anyfold'
 
 "TODO
 "
-"look at 
+"look at
 "https://github.com/mattboehm/dotfiles/blob/master/vim/vimrc
 "for more
 "
