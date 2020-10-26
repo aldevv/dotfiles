@@ -1,7 +1,7 @@
 syntax enable
 " disable compatibility to vi, to activate vim improvements
 set nocompatible
-set shell=/bin/bash
+set shell=/bin/zsh
 let mapleader = " "
 "======================
 "set local leader
@@ -18,7 +18,8 @@ set spelllang=en_us
 "set spelllang=en_us
 
 " whichkey
-set timeoutlen=1500
+" set timeoutlen=1500
+set timeoutlen=700
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 filetype plugin indent on
 " set signcolumn=yes

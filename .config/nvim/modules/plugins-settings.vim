@@ -105,11 +105,17 @@ function! s:find_current_root()
 endfunction
 
 
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+"   \   fzf#vim#with_preview({'dir': s:find_current_root()}), <bang>0)
+
 " for ripgrep
-command! -bang -nargs=* Rg
+command! -bang -nargs=* Rgfzf
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(expand('<cword>')), 1,
   \   fzf#vim#with_preview({'dir': s:find_current_root()}), <bang>0)
+map <leader>sf :Rgfzf<cr>
 
 "search in specific folder"
 command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
@@ -489,6 +495,7 @@ function Formatting()
 endfunction
 
 " easymotion"
+let g:Easymotion_do_mapping = 0
 nmap s <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
 " map <Leader>j <Plug>(easymotion-j)
@@ -599,21 +606,25 @@ let g:gitgutter_map_keys = 0
 let g:gitgutter_highlight_linenrs = 1
 
 " JUPYTER-VIM
-"Set let g:jupyter_mapkeys = 0 in your .vimrc to prevent the default keybindings from being made.
+" let g:jupyter_mapkeys = 0 in your .vimrc to prevent the default keybindings from being made.
+" let g:jupyter_mapkeys = 0
 "
 "
-" Run current file
-" nnoremap <buffer> <silent> <localleader>R :JupyterRunFile<CR>
-" nnoremap <buffer> <silent> <localleader>I :PythonImportThisFile<CR>
+function SetupJupyter()
+    " Run current file
+    nnoremap <buffer> <silent> <leader><leader>r :JupyterRunFile<CR>
+    nnoremap <buffer> <silent> <leader><leader>I :PythonImportThisFile<CR>
 
-" Change to directory of current file
-" nnoremap <buffer> <silent> <localleader>d :JupyterCd %:p:h<CR>
+    " Change to directory of current file
+    nnoremap <buffer> <silent> <leader><leader>d :JupyterCd %:p:h<CR>
 
-" Send a selection of lines
-" nnoremap <buffer> <silent> <localleader>X :JupyterSendCell<CR>
-" nnoremap <buffer> <silent> <localleader>E :JupyterSendRange<CR>
-" nmap     <buffer> <silent> <localleader>e <Plug>JupyterRunTextObj
-autocmd FileType python nmap     <buffer> <silent> <localleader>c :JupyterConnect<cr>
+    " Send a selection of lines
+    nnoremap <buffer> <silent> <leader><leader>x :JupyterSendCell<CR>
+    nnoremap <buffer> <silent> <leader><leader>E :JupyterSendRange<CR>
+    nmap     <buffer> <silent> <leader><leader>e <Plug>JupyterRunTextObj
+    nmap <buffer> <silent> <leader><leader>c :JupyterConnect<cr>
+endfunction
+autocmd FileType python :call SetupJupyter()
 " vmap     <buffer> <silent> <localleader>e <Plug>JupyterRunVisual
 
 " nnoremap <buffer> <silent> <localleader>U :JupyterUpdateShell<CR>

@@ -72,6 +72,7 @@ Plug 'francoiscabrol/ranger.vim' |
          \ Plug 'rbgrouleff/bclose.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'justinmk/vim-sneak'
+Plug 'jremmen/vim-ripgrep'
 
 "TODO
 "switch.vim// on the ¿ key, ¡ is also free

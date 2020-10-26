@@ -19,7 +19,7 @@ vnoremap L I
 noremap ge J
 noremap gn i<cr><esc>k$
 " nnoremap <CR> o<Esc>
-nnoremap <S-CR> O<Esc>
+" nnoremap <S-CR> O<Esc>
 nnoremap [13;2u o
 
 noremap - /
@@ -96,7 +96,7 @@ endfunction
 map <Leader>st :new term://zsh \| resize 10<CR>
 
 "To map <Esc> to exit terminal-mode:
-tnoremap <a-m> <C-\><C-n>
+tnoremap <a-t> <C-\><C-n>
 
 "" Guide navigation
 noremap <a-k> <Esc>/<++><Enter>"_c4l
@@ -160,36 +160,36 @@ cnoremap <C-l> <Down>
 cnoremap <C-u> <Up>
 cnoremap <C-y> <Right>
 
-map <silent> <leader>rr :call Runner()<cr>
-function Runner()
-exec 'silent w'
-let extension = expand('%:e')
+" map <silent> <leader>RR :call Runner()<cr>
+" autocmd FileType python map <silent> <cr> :call Runner()<cr>
+" autocmd FileType python nnoremap <buffer> <s-cr> :silent w<bar>only<bar>vsp<bar>term ipython3 -i %<cr>
+autocmd FileType python nnoremap <buffer> <s-cr> :silent w<bar>only<bar>vsp<bar>term jupyter console<cr> <c-w>l :JupyterConnect<cr><cr> :JupyterRunFile<cr>
+autocmd FileType java nnoremap <silent><buffer> <s-cr> :silent w<bar>execute "!java ".expand('%:t:r')<cr>
+nnoremap <silent><cr> :call RunnerEnter()<cr>
 
-if extension == "c"
-     :!gcc %  && ./a.out
-endif
-
-if extension == "cpp"
-     :!g++  % && ./a.out
-endif
-
-if extension == "py"
-    :!python3 %
-endif
-if extension == "js"
-    :!node %
-endif
-if extension == "ts"
-    :!node %
-endif
-if extension == "java"
-    execute "!javac % && java ".expand('%:t:r')
-endif
-if extension == ""
-    : !chmod +x %; ./%
-
-endif
+function! RunnerEnter()
+  if &buftype ==# 'quickfix'
+    execute "normal! \<CR>"
+  else
+    :call Runner()
+  endif
 endfunction
+function Runner()
+    exec 'silent w'
+    let extension = expand('%:e')
+    let dict = 
+        \{
+        \ 'py': ":!python3 %",
+        \ 'c': ":!gcc %  && ./a.out",
+        \ 'cpp': ":!g++  % && ./a.out",
+        \ 'js': ":!node %",
+        \ 'ts': ":!node %",
+        \ 'java': "!javac % && java ".expand('%:t:r'),
+        \ '': ":!chmod +x %; ./%"
+        \}
+    execute dict[extension]
+endfunction
+
 
 " open browser in current file folder
 map <silent> <leader>ra :silent call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
