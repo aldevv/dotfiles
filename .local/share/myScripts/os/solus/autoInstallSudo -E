@@ -45,3 +45,34 @@ cp "$XDG_CONFIG_HOME/ranger/rc_root.conf" "/root/.config/ranger/rc.conf"
 cp "$XDG_CONFIG_HOME/completion_fzf.zsh" "/root/.config/completion_fzf.zsh"
 cp "$XDG_CONFIG_HOME/zshPlugAlias" "/root/.config/zshPlugAlias"
 cp "$XDG_CONFIG_HOME/colemak-less" "/root/.config/colemak-less"
+
+# basic
+ Build-Programs/rangerAndNeovim
+ Build-Programs/programing
+ Build-Programs/copyq
+ Build-Programs/font-preview
+
+ # suckless
+ Build-Programs/libxft-libgra
+ Build-Programs/dmenu
+ Build-Programs/st
+ Build-Programs/dragon
+ Build-Programs/newsboat
+ Build-Programs/sxiv
+
+ # extra
+ Build-Programs/zshPlugins
+ Build-Programs/fonts
+ Build-Programs/latex
+ Build-Programs/ilovepdf
+ Build-Programs/japanese
+ Build-Programs/teamviewer
+ Build-Programs/todoist
+ Build-Programs/emacs
+ Build-Programs/retro-terminal
+ Build-Programs/joplin-terminal
+ Build-Programs/joplin
+ Build-Programs/pdfgrep
+ Build-Programs/station
+ Build-Programs/zeal_user_repo
+ Build-Programs/pandoc

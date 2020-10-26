@@ -2,5 +2,13 @@
 
 # for vim and ranger
 mkdir -p "$HOME/nvim/backups"
-sudo pip3 install neovim-remote ranger-fm ueberzug pynvim 
+sudo pip3 install neovim-remote ranger-fm ueberzug pynvim
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | zsh
+# this is for nvm, otherwise just install npm and do npm install -g neovim
+source "$HOME/.config/nvm/nvm.sh"
+source "$HOME/.zshrc"
+source "$HOME/.zprofile"
+nvm install node
+#
 npm install -g neovim
