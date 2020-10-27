@@ -17,7 +17,6 @@ vnoremap i l
 vnoremap l i
 vnoremap L I
 noremap ge J
-noremap gn i<cr><esc>k$
 " nnoremap <CR> o<Esc>
 " nnoremap <S-CR> O<Esc>
 nnoremap [13;2u o
@@ -234,7 +233,7 @@ autocmd FileType python,java,js,jsx,ts iabbrev <buffer> rt return
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> fa False
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> tr True
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> br Break
-autocmd FileTYpe c,cpp,java imap < <><esc>ha
+" autocmd FileTYpe c,cpp,java imap < <><esc>ha
 
 " use * in visual mode
 function! s:VSetSearch()

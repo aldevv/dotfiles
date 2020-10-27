@@ -51,6 +51,18 @@ snippet sz "testing snippets" iA
 size()
 endsnippet
 
+snippet ffr "for normal" iA
+for(int i=0; i<$1; ${2:i++}) {
+	$3
+}
+endsnippet
+
+snippet ffi "for normal" iA
+for(${1:type} ${2:item} : ${3:items}) {
+	$3
+}
+endsnippet
+
 # snippet << "testing snippets" iA
 # <$1>
 # endsnippet

@@ -488,8 +488,14 @@ if !executable('black')
 endif
 
 if !executable('prettier')
-    :!npm install -g prettier prettier-plugin-java
+    :!npm install -g prettier 
 endif
+if !executable('clang-format')
+    :!pip3 install clang-format
+endif
+" if !executable('uncrustify')
+"     :!sudo eopkg install uncrustify
+" endif
 augroup fmt
     autocmd!
     autocmd BufWritePre *.python,*.js,*.java,*.c,*.cpp,*.haskell :Neoformat
@@ -514,7 +520,9 @@ let g:neoformat_enabled_python = ['black']
 "-----------
 " Javascript
 "-----------
-autocmd FileType javascript,json,typescript,java let &l:formatprg='prettier --stdin-filepath ' .expand('%'). ' --print-width 90 --no-semi'
+autocmd FileType javascript,json,typescript let &l:formatprg='prettier --stdin-filepath ' .expand('%'). ' --print-width 90'
+" uses google style
+autocmd FileType java,c,c++ let &l:formatprg='clang-format --assume-filename=' . expand('%:t'). ' -style=google'
 
 let g:neoformat_javascript_prettier = {
             \ 'exe': 'prettier',
@@ -525,13 +533,13 @@ let g:neoformat_javascript_prettier = {
 let g:neoformat_enabled_javascript = ['prettier']
 
 
-let g:neoformat_java_prettier = {
-            \ 'exe': 'prettier',
-            \ 'args': ['--stdin-filepath','"%:p"','--print-width','90', '--no-semi'],
-            \ 'replace': 0,
+let g:neoformat_java_clangformat = {
+            \ 'exe': 'clang-format',
+            \ 'args': ['-assume-filename=' . expand('%:t'), '-style=google'],
             \ 'stdin': 1,
             \ }
-let g:neoformat_enabled_java = ['prettier']
+let g:neoformat_enabled_java = ['clangformat']
+
 " autocmd BufWritePre python Neoformat
 "====================
 " PRETTIER AND BLACK
