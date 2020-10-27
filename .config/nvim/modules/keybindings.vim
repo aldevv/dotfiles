@@ -126,6 +126,7 @@ noremap <leader>rb i#!/bin/sh<CR><CR>
 
 " Alias replace all to
 nnoremap <A-s> :%s///gI<Left><Left><Left><Left>
+inoremap <A-s> <++>
 " save with no permission using w!!, could be cnoremap
 cmap w!! w !sudo tee > /dev/null %
 
@@ -182,7 +183,7 @@ autocmd FileType java nnoremap <silent><buffer> <s-cr> :silent w<bar>execute "!j
 nnoremap <silent><cr> :call RunnerEnter()<cr>
 
 function! RunnerEnter()
-  if &buftype ==# 'quickfix'
+  if &buftype ==# 'nofile'
     execute "normal! \<CR>"
   else
     :call Runner()
@@ -233,6 +234,7 @@ autocmd FileType python,java,js,jsx,ts iabbrev <buffer> rt return
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> fa False
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> tr True
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> br Break
+autocmd FileTYpe c,cpp,java imap < <><esc>ha
 
 " use * in visual mode
 function! s:VSetSearch()

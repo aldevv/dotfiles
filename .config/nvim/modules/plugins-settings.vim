@@ -78,12 +78,12 @@ nnoremap <F5> :UndotreeToggle<cr>
 " fzf
 " \ 'ctrl-t': 'tab split',
 let g:fzf_action = {
-            \ 'ctrl-s': 'split',
-            \ 'ctrl-v': 'vsplit' }
+            \ 'alt-s': 'split',
+            \ 'alt-v': 'vsplit' }
 " for rg
 let g:rg_derive_root='true'
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
-nnoremap <c-p> :PFiles<cr>
+nnoremap <a-p> :PFiles<cr>
 nnoremap <leader>sb :Buffers<cr>
 nnoremap <leader>,p :GFiles<cr>
 let g:vista_default_executive = 'ctags'
@@ -204,7 +204,7 @@ nnoremap <silent><nowait> <leader>cl  :<C-u>CocOpenLog<CR>
 
 function s:show_hover_doc()
     if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ "\\S"
-        silent! call timer_start(300, 'ShowDocIfNoDiagnostic')
+        silent! call timer_start(600, 'ShowDocIfNoDiagnostic')
     endif
 endfunction
 
@@ -241,9 +241,10 @@ let g:coc_force_debug = 1
 "    \ <SID>check_back_space() ? "\<TAB>" :
 "    \ coc#refresh()
 
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <silent><expr> <c-e> pumvisible() ? "\<C-p>" : "\<c-e>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+imap <silent><expr> <a-n> pumvisible() ? "\<C-n>" : "\<c-n>"
+imap <silent><expr> <a-e> pumvisible() ? "\<C-p>" : "\<c-e>"
 
 function! s:check_back_space() abort
     let col = col('.') - 1
@@ -263,8 +264,8 @@ inoremap <silent><expr> <CR> pumvisible() && coc#rpc#request('hasSelected', []) 
 
 
 "Coc-snippets
-let g:coc_snippet_next = '<TAB>'
-let g:coc_snippet_prev = '<S-TAB>'
+" let g:coc_snippet_next = '<TAB>'
+" let g:coc_snippet_prev = '<S-TAB>'
 "to scroll with tab
 " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -274,12 +275,12 @@ let g:coc_snippet_prev = '<S-TAB>'
 
 " \ 'coc-html',
 " \ 'coc-json',
+            " \ 'coc-pairs',
+            " \ 'coc-snippets',
 let g:coc_global_extensions = [
             \ 'coc-marketplace',
             \ 'coc-json',
-            \ 'coc-snippets',
             \ 'coc-tag',
-            \ 'coc-pairs',
             \ 'coc-tsserver',
             \ 'coc-css',
             \ 'coc-vimtex',
@@ -362,13 +363,13 @@ nmap <leader>gs :G<CR>
 "         return ' '
 " endfunction
 
-let g:UltiSnipsExpandTrigger='þ'
+let g:UltiSnipsExpandTrigger='<a-t>'
 " let g:UltiSnipsExpandTrigger=''
 let g:UltiSnipsListSnippets='<c-tab>'
 " let g:UltiSnipsJumpForwardTrigger = '<tab>'
 " let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsJumpForwardTrigger = '‹'
-let g:UltiSnipsJumpBackwardTrigger = 'ł'
+let g:UltiSnipsJumpForwardTrigger = '<a-t>'
+let g:UltiSnipsJumpBackwardTrigger = '<a-s>'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 
 
@@ -480,7 +481,15 @@ let g:neoformat_basic_format_trim = 1
 
 let g:neoformat_try_formatprg = 1
 " let g:neoformat_only_msg_on_error = 1
-let g:neoformat_verbose = 1
+"vvvvvvvvvvvvvvvvv
+" let g:neoformat_verbose = 1
+if !executable('black')
+    :!pip3 install black
+endif
+
+if !executable('prettier')
+    :!npm install -g prettier prettier-plugin-java
+endif
 augroup fmt
     autocmd!
     autocmd BufWritePre *.python,*.js,*.java,*.c,*.cpp,*.haskell :Neoformat
@@ -574,8 +583,6 @@ let g:Easymotion_do_mapping = 0
 map // <Plug>(easymotion-prefix)
 nmap s <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
-" map <Leader>j <Plug>(easymotion-j)
-" map <Leader>k <Plug>(easymotion-k)
 
 " devicons
 " let g:webdevicons_enable = 1
@@ -633,8 +640,8 @@ let g:closetag_regions = {
 let g:closetag_shortcut = '>'
 
 " Add > at current position without closing the current tag, default is ''
-"
-let g:closetag_close_shortcut = '<leader>>'
+"this is for adding a single > with no pair, bug with space
+" let g:closetag_close_shortcut = '<leader>>'
 
 
 " load folds that you did previously, breaks which-key
@@ -644,7 +651,9 @@ let g:closetag_close_shortcut = '<leader>>'
 "   autocmd BufWinEnter * silent! loadview
 " augroup END
 "
+" ==========
 " Emmet
+" ==========
 " enable just for desired filetypes
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,js,jsx,ts EmmetInstall
@@ -941,8 +950,8 @@ let g:bclose_no_plugin_maps=1
 " map <leader>sw :Delete
 
 " vis settings
-map <Nop> <Plug>SaveWinPosn
-map <Nop> <Plug>RestoreWinPosn
+" map <leader>swp <Plug>SaveWinPosn
+" map <leader>rwp <Plug>RestoreWinPosn
 
 " switch.vim
 " there are many options, lists, dicts, dicts of dicts, and custom mappings
@@ -1072,3 +1081,22 @@ let g:anyfold_fold_comments=1
 let g:context_filetype_blacklist = ["vim","tex"]
 let g:context_enabled = 0
 
+"==========
+" AUTOPAIRS
+"==========
+" System Shortcuts:
+"     <CR> : Insert new indented line after return if cursor in blank brackets
+"            or quotes.
+"     <BS> : Delete brackets in pair
+"     <M-p>: Toggle Autopairs (|g:AutoPairsShortcutToggle|)
+"     <M-n>: Jump to next closed pair (|g:AutoPairsShortcutJump|)
+"     <M-b>: BackInsert { (|g:AutoPairsShortcutBackInsert|) }
+"     <M-e>: 'Fast' 'Wrap' (g:AutoPairsShortcutFastWrap)
+"     { n n{ e n
+"     << ()
+"
+let g:AutoPairsMapCh = '<c-h>'
+let g:AutoPairsShortcutFastWrap = '<a-a>'
+let g:AutoPairsShortcutToggle = '<a-b>'
+let g:AutoPairsShortcutJump = '<a-w>'
+" let g:AutoPairsShortcutBackInsert = '<Nop>'

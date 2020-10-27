@@ -15,10 +15,42 @@ endsnippet
 
 
 #print("${1:${VISUAL}}")
-snippet sout "enclose with print" Ab
+snippet prn "enclose with print" Ab
 System.out.println("${VISUAL}${1}");
 endsnippet
 
-snippet scn "testing snippets" Ab
+snippet inn "testing snippets" Ab
 Scanner input$1 = new Scanner()
 endsnippet
+
+snippet itt "testing snippets" iA
+Integer ${1}
+endsnippet
+
+snippet iss "testing snippets" iA
+String ${1}
+endsnippet
+
+snippet dbb "testing snippets" iA
+Double ${1}
+endsnippet
+
+snippet ftt "testing snippets" iA
+Float ${1}
+endsnippet
+
+snippet mpp "testing snippets" Ab
+Map <${1},${2}> ${3} = new Map();
+endsnippet
+
+snippet lnn "testing snippets" iA
+length
+endsnippet
+
+snippet sz "testing snippets" iA
+size()
+endsnippet
+
+# snippet << "testing snippets" iA
+# <$1>
+# endsnippet

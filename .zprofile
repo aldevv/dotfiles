@@ -45,8 +45,12 @@ export XMODIFIERS=@im='ibus'
 # WORK
 #======================================
 nvm_path="$HOME/.config/nvm/versions/node"
-node=$(ls $nvm_path | sed '/v[0-9]+\.[0-9]+\.[0-9]+/p' | sort -r  | sed '1q')
-export NODE_PATH="$nvm_path/$node/bin"
+node=$(ls $nvm_path | sed -n -E '/v[0-9]+\.[0-9]+\.[0-9]+$/p' | sort -r  | sed '1q')
+if [ ! -z "$node" ]; then
+    export NODE_PATH="$nvm_path/$node/bin"
+else
+    export NODE_PATH=""
+fi
 export WORK="$HOME/dev/Work"
 export PYTHONPATH="$WORK/PPE/tensorflow-api/models/research:$WORK/PPE/tensorflow-api/models/research/slim:$WORK/PPE/tensorflow-api/models:$PYTHONPATH"
 export JDK_HOME="/usr/lib64/openjdk-11"
@@ -59,7 +63,8 @@ export PATH="$PATH:$JAVA_HOME/bin:$HOME/.cargo/bin:$NODE_PATH"
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
 export FZF_DEFAULT_COMMAND="rg --files --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,backups/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}'"
-export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
+# export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
+export FZF_DEFAULT_OPTS='--bind=alt-e:up,alt-n:down'
 export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type directory"
 # alt r -> cd into selected dir
 # ctrl t -> paste selected into command line(multiple)
