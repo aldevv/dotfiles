@@ -15,6 +15,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'bkad/CamelCaseMotion'"{{{
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'antoinemadec/coc-fzf'
 Plug 'liuchengxu/vista.vim'
 Plug 'preservim/tagbar'
 Plug 'AndrewRadev/switch.vim'
@@ -70,6 +71,7 @@ Plug 'francoiscabrol/ranger.vim' |
          \ Plug 'rbgrouleff/bclose.vim'
 Plug 'osyo-manga/vim-brightest'
 Plug 'jiangmiao/auto-pairs'
+Plug 'stsewd/fzf-checkout.vim'
 
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'

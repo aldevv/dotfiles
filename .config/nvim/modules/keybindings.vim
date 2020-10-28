@@ -54,7 +54,8 @@ endfunction
 
 noremap <leader>n <s-n>
 noremap <leader>sd :bd<cr>
-noremap <c-w> :bd<cr>
+noremap <a-q> :bd<cr> 
+" noremap <c-w> :bd<cr>
 noremap <silent>N :bprevious<cr>
 noremap <silent>E :bnext<cr>
 

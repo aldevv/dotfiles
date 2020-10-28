@@ -15,13 +15,28 @@ function s:UpdateNerd() " updates the  tree when a new file is saved
 endfunction
 " map <leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
 noremap <leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
-function s:FileName()
+
+" function s:EnterFileName()
+"     call inputsave()
+"     let g:FileName_ = input("File name: ")
+"     call inputrestore()
+" endfunction
+" nnoremap <leader>sn  :call <SID>EnterFileName()<cr> <bar>:e <C-r>=FileName_ <cr> <bar> startinsert<cr> <c-o>:w <cr>
+function EnterFileName()
     call inputsave()
-    let g:createdFile = input("File name: ")
+    let l:filename = input("Enter filename: ")
     call inputrestore()
+    while len(l:filename) == 0
+        let l:filename = input("Invalid. Enter filename:")
+    endwhile
+    exe ":e " . l:filename
+    w
+    startinsert
 endfunction
-" nnoremap <F1> oHello, <C-\><C-o>:call <SID>FileName()<CR><C-r>=createdFile<CR>. nice name.<ESC>
-nnoremap <leader>sn  :call <SID>FileName()<cr> <bar>:e <C-r>=createdFile <cr> <bar> startinsert<cr> <c-o>:w <cr>
+
+nnoremap <leader>sn  :call EnterFileName()<cr>
+
+" nnoremap <silent><leader>sn  :call <SID>FileName()<cr> <bar> :call <SID>CreateFileNamed()<cr> 
 
 map <leader>lb :Bookmark<CR>
 
@@ -135,10 +150,11 @@ command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gD <Plug>(coc-type-declaration)
+nmap <silent> <leader>cf <Plug>(coc-format)
 nmap gr <Plug>(coc-references)
+nmap <leader>gr <Plug>(coc-references-used)
 nmap gR <Plug>(coc-implementation)
 " nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gy <Plug>(coc-type-definition)
 nmap g, <Plug>(coc-diagnostic-prev)
 nmap g; <Plug>(coc-diagnostic-next)
 " g{ and g} are usable
@@ -294,21 +310,57 @@ let g:coc_global_extensions = [
 
 au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
 
+" =====================
 " Sweet Sweet FuGITive
-nmap <leader>gh :diffget //3<CR>
-nmap <leader>gu :diffget //2<CR>
+" =====================
+nmap <leader>gi :diffget //3<CR>
+nmap <leader>gh :diffget //2<CR>
 nmap <leader>gs :G<CR>
-" nnoremap <leader>gs :Gstatus<CR>
-" nnoremap <leader>gc :Gcommit<CR>
-" nnoremap <leader>gd :Gdiff<CR>
+
+nnoremap <leader>gst :Gstatus<CR>
+" use ctrl + d to delete branches
+" alt + enter to track from origin, locally : origin/ foo becomes foo
+" - Press <alt-enter> to track a remote branch locally (`origin/foo` becomes `foo`)
+" - Press <ctrl-b> to create a branch or tag with the current query as name
+" - Press <ctrl-d> to delete a branch or tag
+" - Press <ctrl-e> to merge a branch
+" - Press <ctrl-r> to rebase a branch
+nnoremap <leader>gc :GCheckout<CR> 
+nnoremap <leader>ggc :Gcommit<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>glg :Glog --reverse<CR>
+nnoremap Q :Glog --reverse<CR>
+nnoremap <leader>ggp :Git push<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gB :Gbrowse<CR>
 " nnoremap <leader>gw :Gwrite<CR>
 " nnoremap <leader>gr :Gread<CR>
-" nnoremap <leader>gl :Glog --reverse<CR>
-" nnoremap <leader>gp :Git push<CR>
-" nnoremap <leader>gb :Gblame<CR>
-" nnoremap <leader>gB :Gbrowse<CR>
 " nnoremap <leader>ga :tab sp \| Gvedit :1 \| windo diffthis<CR>
-"
+" for aliases:
+" command Gst G
+" command Ggc Gcommit
+" command Gc Gcheckout
+" command Gbl Gblame
+" command Ggp Gpush
+" command Gf Gfetch
+" command Glg Glog --reverse
+" command Gm Gmerge
+" command Guu Gpull
+" command Grb Grebase
+" command Grev Grevert
+" command Gd Gdiff
+" command Gds Gsdiff
+" command Gdv Gvdiff
+" command Gs Gsplit
+" command Gv Gvsplit
+" Gremove*      
+" Gbrowse*      
+" Gdelete*      
+" Gmove*        
+" Grename*      
+" Git!*         
+" Gpedit!*      
+" Gtabsplit!*   
 ""Fugitive extensions
 "nnoremap <silent> <leader>gm :tab sp<CR>:Glistmod<CR>
 "nnoremap <silent> ]d :call g:DiffNextLoc()<CR>
@@ -438,7 +490,7 @@ map <leader>,p :CocCommand python.setInterpreter<cr>
 
 " Goyo
 
-nnoremap <leader>gg :Goyo \| set wrap \| set linebreak<CR>
+nnoremap <leader>gy :Goyo \| set wrap \| set linebreak<CR>
 "nnoremap <leader>gd :Goyo! \| :set wrap! \| :set linebreak!<CR>
 
 
@@ -1108,3 +1160,27 @@ let g:AutoPairsShortcutFastWrap = '<a-a>'
 let g:AutoPairsShortcutToggle = '<a-b>'
 let g:AutoPairsShortcutJump = '<a-w>'
 " let g:AutoPairsShortcutBackInsert = '<Nop>'
+
+"===========
+"fzf
+"===========
+let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
+"===========
+" coc-fzf
+" ==========
+" nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>
+" nnoremap <silent> <space>a       :<C-u>CocFzfList diagnostics<CR>
+" nnoremap <silent> <space>b       :<C-u>CocFzfList diagnostics --current-buf<CR>
+" nnoremap <silent> <space>c       :<C-u>CocFzfList commands<CR>
+" nnoremap <silent> <space>e       :<C-u>CocFzfList extensions<CR>
+" nnoremap <silent> <space>l       :<C-u>CocFzfList location<CR>
+" nnoremap <silent> <space>o       :<C-u>CocFzfList outline<CR>
+" nnoremap <silent> <space>s       :<C-u>CocFzfList symbols<CR>
+" nnoremap <silent> <space>p       :<C-u>CocFzfListResume<CR>
+"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+"let g:coc_fzf_preview_toggle_key = '?'
+"let g:coc_fzf_preview = 'up:50%'
+"let g:coc_fzf_opts = ['--layout=reverse-list']
+"to make the command same as other fzf commands
+" let g:coc_fzf_preview = ''
+" let g:coc_fzf_opts = []
