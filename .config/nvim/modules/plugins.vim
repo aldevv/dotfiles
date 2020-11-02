@@ -72,6 +72,7 @@ Plug 'francoiscabrol/ranger.vim' |
 Plug 'osyo-manga/vim-brightest'
 Plug 'jiangmiao/auto-pairs'
 Plug 'stsewd/fzf-checkout.vim'
+Plug 'kassio/neoterm'
 
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'

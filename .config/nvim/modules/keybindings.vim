@@ -17,6 +17,7 @@ vnoremap i l
 vnoremap l i
 vnoremap L I
 noremap ge J
+map º <c-^>
 " noremap <a-n> <c-n>
 " noremap <a-e> <c-p>
 " nnoremap <CR> o<Esc>
@@ -56,7 +57,7 @@ endfunction
 
 noremap <leader>n <s-n>
 noremap <leader>sd :bd<cr>
-noremap <a-q> :bd<cr> 
+noremap <a-q> :bd<cr>
 " noremap <c-w> :bd<cr>
 noremap <silent>N :bprevious<cr>
 noremap <silent>E :bnext<cr>
@@ -109,10 +110,18 @@ function Toggle_transparent()
 endfunction
 
 " open terminal
-map <Leader>st :new term://zsh \| resize 10<CR>
+" map <Leader>st :new term://zsh \| resize 10<CR>
 
 "To map <Esc> to exit terminal-mode:
 tnoremap <a-t> <C-\><C-n>
+
+" exit terminal mode
+" tmap <silent><a-q> <a-t>:q<cr>
+tmap <silent><a-q> <a-t>:Ttoggle<cr>
+
+" go up from terminal
+tmap <a-r> <a-t><c-w>k
+map <a-r> <c-w>ja
 
 "" Guide navigation
 noremap <a-k> <Esc>/<++><Enter>"_c4l

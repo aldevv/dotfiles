@@ -36,7 +36,7 @@ endfunction
 
 nnoremap <leader>sn  :call EnterFileName()<cr>
 
-" nnoremap <silent><leader>sn  :call <SID>FileName()<cr> <bar> :call <SID>CreateFileNamed()<cr> 
+" nnoremap <silent><leader>sn  :call <SID>FileName()<cr> <bar> :call <SID>CreateFileNamed()<cr>
 
 
 map <leader>,b :Bookmark<CR>
@@ -168,7 +168,7 @@ nmap <leader>cp :CocSearch <C-R>=expand('<cword>')<cr><cr>
 ":CocRebuild                        *:CocRebuild*
 " use when you upgrade nodejs
 
-" nmap <leader>ca <Plug>(coc-codeaction)
+nmap <leader>cA <Plug>(coc-codeaction)
 nmap <leader>ca <Plug>(coc-codeaction-line)
 vmap <leader>ca <Plug>(coc-codeaction-selected)
 " Use `[g` and `]g` to navigate diagnostics (errors)
@@ -336,7 +336,7 @@ nnoremap <leader>gst :Gstatus<CR>
 " - Press <ctrl-d> to delete a branch or tag
 " - Press <ctrl-e> to merge a branch
 " - Press <ctrl-r> to rebase a branch
-nnoremap <leader>gc :GCheckout<CR> 
+nnoremap <leader>gc :GCheckout<CR>
 nnoremap <leader>ggc :Gcommit<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>glg :Glog --reverse<CR>
@@ -364,14 +364,14 @@ nnoremap <leader>gB :Gbrowse<CR>
 " command Gdv Gvdiff
 " command Gs Gsplit
 " command Gv Gvsplit
-" Gremove*      
-" Gbrowse*      
-" Gdelete*      
-" Gmove*        
-" Grename*      
-" Git!*         
-" Gpedit!*      
-" Gtabsplit!*   
+" Gremove*
+" Gbrowse*
+" Gdelete*
+" Gmove*
+" Grename*
+" Git!*
+" Gpedit!*
+" Gtabsplit!*
 ""Fugitive extensions
 "nnoremap <silent> <leader>gm :tab sp<CR>:Glistmod<CR>
 "nnoremap <silent> ]d :call g:DiffNextLoc()<CR>
@@ -551,7 +551,7 @@ if !executable('black')
 endif
 
 if !executable('prettier')
-    :!npm install -g prettier 
+    :!npm install -g prettier
 endif
 if !executable('clang-format')
     :!pip3 install clang-format
@@ -1199,3 +1199,13 @@ let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
 "to make the command same as other fzf commands
 " let g:coc_fzf_preview = ''
 " let g:coc_fzf_opts = []
+"
+" ================
+" NEOTERM
+" ================
+"
+let g:neoterm_size="10"
+let g:neoterm_autoinsert = 1
+let g:neoterm_default_mod = 'rightbelow'
+let g:neoterm_keep_term_open = 0
+map <silent><Leader>st :Ttoggle<cr>
