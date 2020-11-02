@@ -17,6 +17,8 @@ vnoremap i l
 vnoremap l i
 vnoremap L I
 noremap ge J
+" noremap <a-n> <c-n>
+" noremap <a-e> <c-p>
 " nnoremap <CR> o<Esc>
 " nnoremap <S-CR> O<Esc>
 nnoremap [13;2u o
@@ -183,7 +185,8 @@ autocmd FileType java nnoremap <silent><buffer> <s-cr> :silent w<bar>execute "!j
 nnoremap <silent><cr> :call RunnerEnter()<cr>
 
 function! RunnerEnter()
-  if &buftype ==# 'nofile'
+  " if &buftype ==# 'nofile'
+  if bufname('%') == ''
     execute "normal! \<CR>"
   else
     :call Runner()
@@ -246,3 +249,4 @@ endfunction
 
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR><c-o>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
+map <silent><leader>lfc :silent execute '!fcc' shellescape(&ft)<cr>

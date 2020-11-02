@@ -38,7 +38,8 @@ nnoremap <leader>sn  :call EnterFileName()<cr>
 
 " nnoremap <silent><leader>sn  :call <SID>FileName()<cr> <bar> :call <SID>CreateFileNamed()<cr> 
 
-map <leader>lb :Bookmark<CR>
+
+map <leader>,b :Bookmark<CR>
 
 " enable line numbers
 let NERDTreeShowLineNumbers=1
@@ -199,6 +200,13 @@ nnoremap <silent><nowait> <leader>ccl  :<C-u>CocListResume<CR>
 nnoremap <silent><nowait> <leader>ccr  :<C-u>CocRestart<cr>
 nnoremap <silent><nowait> <leader>cl  :<C-u>CocOpenLog<CR>
 
+" scroll documentation
+" nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+" nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+" inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+" inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+" _______________________________________________
+"
 " CocSearch is very powerful, so you should use it with the many options it has available
 " more info in man rg
 "
@@ -226,7 +234,9 @@ endfunction
 
 function! ShowDocIfNoDiagnostic(timer_id)
     if (coc#util#has_float() == 0)
-        silent! call CocActionAsync('doHover')
+        " silent! call CocActionAsync('doHover')
+        " non async so it doesnt try to create another one once theres already a rendered one
+        silent! call CocAction('doHover')
     endif
 endfunction
 
@@ -306,6 +316,7 @@ let g:coc_global_extensions = [
             \ 'coc-prettier',
             \ 'coc-clangd',
             \ ]
+" coc-clangd is necessary for c and c++
 
 
 au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
@@ -574,7 +585,8 @@ let g:neoformat_enabled_python = ['black']
 "-----------
 autocmd FileType javascript,json,typescript let &l:formatprg='prettier --stdin-filepath ' .expand('%'). ' --print-width 90'
 " uses google style
-autocmd FileType java,c,c++ let &l:formatprg='clang-format --assume-filename=' . expand('%:t'). ' -style=google'
+" autocmd FileType java,c,c++ let &l:formatprg='clang-format --assume-filename=' . expand('%:t'). ' -style=google'
+autocmd FileType java,c,c++ let &l:formatprg='clang-format --assume-filename=' . expand('%:t'). ' -style=file'
 
 let g:neoformat_javascript_prettier = {
             \ 'exe': 'prettier',
@@ -585,9 +597,10 @@ let g:neoformat_javascript_prettier = {
 let g:neoformat_enabled_javascript = ['prettier']
 
 
+            " \ 'args': ['-assume-filename=' . expand('%:t'), '-style=google'],
 let g:neoformat_java_clangformat = {
             \ 'exe': 'clang-format',
-            \ 'args': ['-assume-filename=' . expand('%:t'), '-style=google'],
+            \ 'args': ['-assume-filename=' . expand('%:t'), '-style=file'],
             \ 'stdin': 1,
             \ }
 let g:neoformat_enabled_java = ['clangformat']
@@ -783,19 +796,21 @@ autocmd FileType python :call SetupJupyter()
 " removes annoying red highlight from every space you put
 let g:python_highlight_space_errors = 0
 
-" camelcase motion
+" ================
+" CAMELCASE MOTION
+" ================
 " let g:camelcasemotion_key = '<leader>'
 map <silent> <leader>j <Plug>CamelCaseMotion_e
 map <silent> <leader>gj <Plug>CamelCaseMotion_ge
 map <silent> <leader>w <Plug>CamelCaseMotion_w
 map <silent> <leader>b <Plug>CamelCaseMotion_b
 
-" omap <silent> lw <Plug>CamelCaseMotion_iw
-" xmap <silent> lw <Plug>CamelCaseMotion_iw
-" omap <silent> lb <Plug>CamelCaseMotion_ib
-" xmap <silent> lb <Plug>CamelCaseMotion_ib
-" omap <silent> le <Plug>CamelCaseMotion_ie
-" xmap <silent> le <Plug>CamelCaseMotion_ie
+omap <silent><leader>lw <Plug>CamelCaseMotion_iw
+xmap <silent><leader>lw <Plug>CamelCaseMotion_iw
+omap <silent><leader>lb <Plug>CamelCaseMotion_ib
+xmap <silent><leader>lb <Plug>CamelCaseMotion_ib
+omap <silent><leader>lj <Plug>CamelCaseMotion_ie
+xmap <silent><leader>lj <Plug>CamelCaseMotion_ie
 
 " replace with register
 nmap gp  <Plug>ReplaceWithRegisterOperator
@@ -1098,7 +1113,7 @@ let g:clever_f_across_no_line = 1
 let g:clever_f_ignore_case = 0
 let g:clever_f_timeout_ms=3000
 " let g:clever_f_show_prompt=1
-let g:clever_f_chars_match_any_signs=','
+let g:clever_f_chars_match_any_signs='¿'
 " by default is <cr> but the remap doesnt work
 let g:clever_f_repeat_last_char_inputs=["\<CR>"]
 let g:clever_f_mark_char =0

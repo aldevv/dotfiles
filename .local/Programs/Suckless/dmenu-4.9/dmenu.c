@@ -359,8 +359,8 @@ keypress(XKeyEvent *ev)
 		case XK_J: /* fallthrough */
 		case XK_m: /* fallthrough */
 		case XK_M: ksym = XK_Return; ev->state &= ~ControlMask; break;
-		case XK_n: ksym = XK_Down;      break;
-		case XK_e: ksym = XK_Up;        break;
+		/* case XK_n: ksym = XK_Down;      break; */
+		/* case XK_n: ksym = XK_Down;      break; */
 
 		case XK_k: /* delete right */
 			text[cursor] = '\0';
@@ -409,6 +409,8 @@ keypress(XKeyEvent *ev)
 		case XK_j: ksym = XK_Next;  break;
 		case XK_k: ksym = XK_Prior; break;
 		case XK_l: ksym = XK_Down;  break;
+		case XK_n: ksym = XK_Down;  break;
+		case XK_e: ksym = XK_Up;  break;
 		default:
 			return;
 		}

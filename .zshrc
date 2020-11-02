@@ -288,6 +288,9 @@ alias i="sudo -E ./prog"
 alias ri="r && i"
 alias su="sudo su -" # the - lets you have env variables in root
 alias sudo="sudo -E" # this enables env variables in sudo
+alias colab="echo \"!wget https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip
+!unzip ijava-1.3.0.zip
+!python install.py --sys-prefix\" | xclip -sel clipboard" # this enables env variables in sudo
 
 # less keybindings
 lesskey $XDG_CONFIG_HOME/colemak-less

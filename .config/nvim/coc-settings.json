@@ -10,9 +10,21 @@
   "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/my_snippets"],
   "clangd.path": "/home/solus/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
   "clangd.disableDiagnostics": true,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "__diagnostic.messageDelay.comment":"default= 200",
+  "diagnostic.messageDelay":400,
+
   "__suggest.noselect.comment": "this is for not choosing first item when pressing TAB",
   "suggest.noselect": false,
+  "__suggest.labelMaxLength.comment": "width of text to the left, like Integer, def 100",
+  "suggest.labelMaxLength":70,
+  "__suggest.detailMaxLength.comment": "description, right of title,def: 200",
+  "suggest.detailMaxLength":15,
+  "suggest.maxPreviewWidth":200,
   "__suggest.trigger.comment": "edit this 2 for better sugestions",
   "suggest.triggerCompletionWait": 100,
-  "signature.triggerSignatureWait": 100
+  "signature.triggerSignatureWait": 200,
+  "signature.floatMaxWidth": 200
 }
