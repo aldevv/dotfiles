@@ -147,7 +147,6 @@ command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 " nnoremap <leader>fc :FClass<CR>
 
 " GoTo code navigation.
-"nmap <leader>gd <Plug>(coc-definition)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gD <Plug>(coc-type-declaration)
@@ -155,7 +154,6 @@ nmap <silent> <leader>cf <Plug>(coc-format)
 nmap gr <Plug>(coc-references)
 nmap <leader>gr <Plug>(coc-references-used)
 nmap gR <Plug>(coc-implementation)
-" nmap <leader>gi <Plug>(coc-implementation)
 nmap g, <Plug>(coc-diagnostic-prev)
 nmap g; <Plug>(coc-diagnostic-next)
 " g{ and g} are usable
@@ -164,6 +162,7 @@ nmap <silent> ; <Plug>(coc-diagnostic-next-error)
 nnoremap <silent> <leader>+ :call CocAction('doHover')<cr>
 nmap <F2> <Plug>(coc-rename)
 nmap <leader>cp :CocSearch <C-R>=expand('<cword>')<cr><cr>
+nmap <leader>cP :CocSearch <C-R>=expand('<cword>')<cr>
 
 ":CocRebuild                        *:CocRebuild*
 " use when you upgrade nodejs
@@ -182,23 +181,24 @@ cnoreabbrev CS CocSearch
 " Mappings for CoCList
 " Show all diagnostics.
 nnoremap <silent><nowait> <leader>ccd  :<C-u>CocList diagnostics<cr>
-nnoremap <silent><nowait> <leader>cd  :<C-u>CocDiagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <leader>cce  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <leader>ccc  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <leader>ccs  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <leader>cs  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent><nowait> <leader>cn  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent><nowait> <leader>ce  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <leader>ccl  :<C-u>CocListResume<CR>
 nnoremap <silent><nowait> <leader>ccr  :<C-u>CocRestart<cr>
-nnoremap <silent><nowait> <leader>cl  :<C-u>CocOpenLog<CR>
+nnoremap <silent><nowait> <leader>ccl  :<C-u>CocOpenLog<CR>
+nnoremap <silent><nowait> <leader>cd  :<C-u>CocDiagnostics<cr>
+
+" implemented in coc-fzf
+" Find symbol of current document.
+" nnoremap <silent><nowait> <leader>ccl  :<C-u>CocListResume<CR>
+" nnoremap <silent><nowait> <leader>cce  :<C-u>CocList extensions<cr>
+" nnoremap <silent><nowait> <leader>ccs  :<C-u>CocList outline<cr>
+" nnoremap <silent><nowait> <leader>cs  :<C-u>CocList -I symbols<cr>
+" Show commands.
+" nnoremap <silent><nowait> <leader>ccc  :<C-u>CocList commands<cr>
 
 " scroll documentation
 " nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
@@ -303,6 +303,8 @@ inoremap <silent><expr> <CR> pumvisible() && coc#rpc#request('hasSelected', []) 
 " \ 'coc-json',
             " \ 'coc-pairs',
             " \ 'coc-snippets',
+            " \ 'coc-tslint-plugin',
+            " \ 'coc-prettier',
 let g:coc_global_extensions = [
             \ 'coc-marketplace',
             \ 'coc-json',
@@ -312,8 +314,6 @@ let g:coc_global_extensions = [
             \ 'coc-vimtex',
             \ 'coc-python',
             \ 'coc-sh',
-            \ 'coc-tslint-plugin',
-            \ 'coc-prettier',
             \ 'coc-clangd',
             \ ]
 " coc-clangd is necessary for c and c++
@@ -1182,6 +1182,7 @@ let g:context_enabled = 0
 "     { n n{ e n
 "     << ()
 "
+autocmd Filetype tex let b:AutoPairs = {"(": ")", "[": "]"}
 let g:AutoPairsMapCh = '<c-h>'
 let g:AutoPairsShortcutFastWrap = '<a-a>'
 let g:AutoPairsShortcutToggle = '<a-b>'
@@ -1196,14 +1197,14 @@ let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
 " coc-fzf
 " ==========
 " nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>
-" nnoremap <silent> <space>a       :<C-u>CocFzfList diagnostics<CR>
-" nnoremap <silent> <space>b       :<C-u>CocFzfList diagnostics --current-buf<CR>
-" nnoremap <silent> <space>c       :<C-u>CocFzfList commands<CR>
-" nnoremap <silent> <space>e       :<C-u>CocFzfList extensions<CR>
-" nnoremap <silent> <space>l       :<C-u>CocFzfList location<CR>
-" nnoremap <silent> <space>o       :<C-u>CocFzfList outline<CR>
-" nnoremap <silent> <space>s       :<C-u>CocFzfList symbols<CR>
-" nnoremap <silent> <space>p       :<C-u>CocFzfListResume<CR>
+nnoremap <silent> <leader>cD       :<C-u>CocFzfList diagnostics<CR>
+nnoremap <silent> <leader>ccd       :<C-u>CocFzfList diagnostics --current-buf<CR>
+nnoremap <silent> <leader>ccc       :<C-u>CocFzfList commands<CR>
+nnoremap <silent> <leader>cce       :<C-u>CocFzfList extensions<CR>
+nnoremap <silent> <leader>cl       :<C-u>CocFzfList location<CR>
+nnoremap <silent> <leader>cV       :<C-u>CocFzfList outline<CR>
+nnoremap <silent> <leader>cs       :<C-u>CocFzfList symbols<CR>
+nnoremap <silent> <leader>ccb       :<C-u>CocFzfListResume<CR>
 "let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 "let g:coc_fzf_preview_toggle_key = '?'
 "let g:coc_fzf_preview = 'up:50%'
@@ -1262,9 +1263,8 @@ let g:syntastic_python_python_exec = 'python3'
 "see :ALEInfo to see what is going on
 " let g:ale_lint_on_text_changed = 1
 " let g:ale_lint_on_enter = 1
-let g:ale_enabled = 1
-autocmd FileType python :ALEToggle
 let g:ale_lint_on_insert_leave = 0
+let g:ale_enabled = 1
 map <leader>ll <Plug>(ale_toggle)
 " make ale ONLY use the linters defined in g:ale_linters
 let g:ale_linters_explicit = 0
