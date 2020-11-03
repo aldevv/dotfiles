@@ -77,6 +77,7 @@ Plug 'kassio/neoterm'
 Plug 'junegunn/gv.vim'
 "enables gbrowse and also hub instead of git (if hub installed)
 Plug 'tpope/vim-rhubarb'
+Plug 'dense-analysis/ale'
 
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'

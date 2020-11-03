@@ -1255,3 +1255,38 @@ nnoremap <leader>glog :GV?<cr>
 " let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 let g:syntastic_python_checkers = ['pylint', 'python', 'flake8']
 let g:syntastic_python_python_exec = 'python3'
+
+"===========
+"ALE
+"===========
+"see :ALEInfo to see what is going on
+" let g:ale_lint_on_text_changed = 1
+" let g:ale_lint_on_enter = 1
+let g:ale_enabled = 1
+autocmd FileType python :ALEToggle
+let g:ale_lint_on_insert_leave = 0
+map <leader>ll <Plug>(ale_toggle)
+" make ale ONLY use the linters defined in g:ale_linters
+let g:ale_linters_explicit = 0
+let g:ale_linters =  {
+  \   'elixir': ['credo', 'dialyxir', 'dogma'],
+  \   'go': ['gofmt', 'golint', 'go vet'],
+  \   'perl': ['all'],
+  \   'python': ['flake8', 'pylint', 'mypy', 'pyright'],
+  \   'rust': ['cargo', 'rls'],
+  \   'text': [],
+  \   'javascript': ['all'],
+  \   'vue': ['eslint', 'vls'],
+  \   'zsh': ['all'],
+  \   'c': ['all'],
+  \   'cpp': ['all'],
+  \}
+
+" show full linter message
+"<Plug>(ale_detail)
+" let g:ale_lint_on_save = 1
+" let g:ale_lint_on_filetype_changed = 1
+let g:ale_disable_lsp=1
+" let g:ale_linters_ignore= {'python': ['autopep8']}
+let g:ale_close_preview_on_insert = 1
+

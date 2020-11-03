@@ -149,7 +149,8 @@ alias pkg='sudo eopkg'\
 	djan='cd /home/solus/dev/trydjango/src'\
 	corona='/home/solus/dev/corona/get_info'\
 	tord='/home/solus/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads'\
-	sac='source env/bin/activate'\
+	saco='source env/bin/activate'\
+	sac='source .env/bin/activate'\
 	sacr='source env/bin/activate && pip install -r requirements.txt'\
 	ven='wine .wine/drive_c/Program\ Files/Vensim/venPLE32.exe'\
     dotrepo="git --git-dir=$HOME/Documents/DotFilesRepository/ --work-tree=$HOME"\
@@ -248,7 +249,7 @@ alias lg='exa -a | grep '
 #
 #
 # adding flags
-alias cp="cp -i"                          # confirm before overwriting something
+# alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'
 

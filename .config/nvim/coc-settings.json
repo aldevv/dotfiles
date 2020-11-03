@@ -2,8 +2,9 @@
   "__coc.preferences.formatOnSaveFiletypes": ["python"],
   "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
 
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": false,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": false,
   "python.formatting.provider": "black",
   "__python.pythonPath": "/usr/bin/python3",
   "python.jediEnabled": false,
@@ -28,5 +29,6 @@
   "__suggest.trigger.comment": "edit this 2 for better sugestions",
   "suggest.triggerCompletionWait": 100,
   "signature.triggerSignatureWait": 200,
-  "signature.floatMaxWidth": 200
+  "signature.floatMaxWidth": 200,
+  "coc.preferences.diagnostic.displayByAle": true
 }
