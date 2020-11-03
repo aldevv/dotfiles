@@ -339,7 +339,7 @@ nnoremap <leader>gst :Gstatus<CR>
 nnoremap <leader>gc :GCheckout<CR>
 nnoremap <leader>ggc :Gcommit<CR>
 nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>glg :Glog --reverse<CR>
+" nnoremap <leader>glg :Glog --reverse<CR>
 nnoremap Q :Glog --reverse<CR>
 nnoremap <leader>ggp :Git push<CR>
 nnoremap <leader>gb :Gblame<CR>
@@ -489,11 +489,23 @@ let g:tex_conceal='abdmg'
 hi Conceal ctermbg=none
 
 "COC
-map <leader>,p :CocCommand python.setInterpreter<cr>
+autocmd FileType python call PythonMappings()
+
+function PythonMappings()
+    map <leader><leader>p :CocCommand python.setInterpreter<cr>
+    map <leader><leader>r :CocCommand python.execInTerminal<cr>
+    map <leader><leader>l :CocCommand python.setLinter<cr>
+    map <leader><leader>g :CocCommand python.viewOutput<cr>
+endfunction
 " call coc#config('python', {
 "  \   'jediEnabled': v:false,
 "  \   'pythonPath': split(execute('!which python3'), '\n')[-1]
 "  \ })
+"
+	call coc#config('python', {
+		\ 'formatting.blackPath': $HOME."/.local/bin/black",
+		\})
+		" \ 'linting.pylintPath': $HOME."/.local/bin/pylint"
 
 " nerdcommenter
 "nnoremap gc :call NERDComment(0,"toggle")<CR>
@@ -561,7 +573,7 @@ endif
 " endif
 augroup fmt
     autocmd!
-    autocmd BufWritePre *.python,*.js,*.java,*.c,*.cpp,*.haskell :Neoformat
+    autocmd BufWritePre *.py,*.js,*.java,*.c,*.cpp,*.haskell :Neoformat
 augroup END
 nmap <silent><Leader>sp :Neoformat<cr>
 "-----------
@@ -772,7 +784,7 @@ let g:gitgutter_highlight_linenrs = 1
 "
 function SetupJupyter()
     " Run current file
-    nnoremap <buffer> <silent> <leader><leader>r :JupyterRunFile<CR>
+    nnoremap <buffer> <silent> <leader><leader>R :JupyterRunFile<CR>
     nnoremap <buffer> <silent> <leader><leader>I :PythonImportThisFile<CR>
 
     " Change to directory of current file
@@ -1207,5 +1219,39 @@ let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
 let g:neoterm_size="10"
 let g:neoterm_autoinsert = 1
 let g:neoterm_default_mod = 'rightbelow'
+let g:neoterm_automap_keys=''
 let g:neoterm_keep_term_open = 0
 map <silent><Leader>st :Ttoggle<cr>
+
+"=============
+"GV
+"=============
+"
+nnoremap <leader>glg :GV<cr>
+nnoremap <leader>glG :GV!<cr>
+nnoremap <leader>glog :GV?<cr>
+" Commands
+
+"     :GV to open commit browser
+"         You can pass git log options to the command, e.g. :GV -S foobar -- plugins.
+"     :GV! will only list commits that affected the current file
+"     :GV? fills the location list with the revisions of the current file
+
+" :GV or :GV? can be used in visual mode to track the changes in the selected lines.
+" Mappings
+
+"     o or <cr> on a commit to display the content of it
+"     o or <cr> on commits to display the diff in the range
+"     O opens a new tab instead
+"     gb for :Gbrowse
+"     ]] and [[ to move between commits
+"     . to start command-line with :Git [CURSOR] SHA à la fugitive
+"     q or gq to close
+"
+"============
+"SYNTASTIC
+"============
+"disable for python
+" let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+let g:syntastic_python_checkers = ['pylint', 'python', 'flake8']
+let g:syntastic_python_python_exec = 'python3'

@@ -16,11 +16,11 @@ Plug 'bkad/CamelCaseMotion'"{{{
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
+" Plug 'scrooloose/syntastic'
 Plug 'liuchengxu/vista.vim'
 Plug 'preservim/tagbar'
 Plug 'AndrewRadev/switch.vim'
 Plug 'sbdchd/neoformat'
-Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
@@ -73,19 +73,19 @@ Plug 'osyo-manga/vim-brightest'
 Plug 'jiangmiao/auto-pairs'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'kassio/neoterm'
+" for commits
+Plug 'junegunn/gv.vim'
+"enables gbrowse and also hub instead of git (if hub installed)
+Plug 'tpope/vim-rhubarb'
 
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'
 
 " check https://github.com/mattboehm/dotfiles/blob/master/vim/vimrc
-" for letting a single extension take care of formatting
-" for commits
-"Plug 'junegunn/gv.vim'
-" for sending commands to terminal
-"Plug 'kassio/neoterm'
-" context to where you are in the code
 
 "TODO
+"replace syntastic, makes vim slow
+"https://github.com/dense-analysis/ale
 "
 "look at
 "https://github.com/mattboehm/dotfiles/blob/master/vim/vimrc
@@ -102,7 +102,6 @@ Plug 'kassio/neoterm'
 
 " deleted
 " for c++
-"Plug 'preservim/tagbar'
 "Plug ‘ludovicchabant/vim-gutentags’
 "Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'https://github.com/dracula/vim', {'as': 'dracula'}

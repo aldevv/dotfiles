@@ -1,0 +1,12 @@
+#!/bin/sh
+# fcc: format code configuration
+# fc is a builtin and cannot be used or changed
+
+# options:  llvm google chromium mozilla webkit
+if [ "$1" = "java" ]; then
+    style="llvm"
+    cp "$XDG_CONFIG_HOME/clang-format/java/$style/.clang-format" .
+    exit
+fi
+style="mozilla"
+cp "$XDG_CONFIG_HOME/clang-format/c/$style/.clang-format" .

@@ -99,8 +99,8 @@ nnoremap <leader>ct :!ctags -R
 "added B and S (vis plugin)
 "B for applying commands to the visually selected area and only to that visual area
 "S is for searching stuff ONLY in the visually selected area
-vnoremap <silent><leader> gs :B !sortList.py <cr>t]xT[
-vnoremap <silent><leader> gr :B !sortListR.py <cr>t]xT[
+vnoremap <silent><leader>lgs :B !sortList.py <cr>t]xT[
+vnoremap <silent><leader>lgr :B !sortListR.py <cr>t]xT[
 
 
 nnoremap gñ :SyntaxQuery<CR>
@@ -110,7 +110,7 @@ function Toggle_transparent()
 endfunction
 
 " open terminal
-" map <Leader>st :new term://zsh \| resize 10<CR>
+" map <Leader>st :new term://zsh \| resize 10<CR>a
 
 "To map <Esc> to exit terminal-mode:
 tnoremap <a-t> <C-\><C-n>
@@ -242,10 +242,10 @@ endf
 " ABBREVIATIONS
 "====================
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> im import
-autocmd FileType python,java,js,jsx,ts iabbrev <buffer> rt return
-autocmd FileType python,java,js,jsx,ts iabbrev <buffer> fa False
-autocmd FileType python,java,js,jsx,ts iabbrev <buffer> tr True
-autocmd FileType python,java,js,jsx,ts iabbrev <buffer> br Break
+" autocmd FileType python,java,js,jsx,ts iabbrev <buffer> rt return
+" autocmd FileType python,java,js,jsx,ts iabbrev <buffer> fa False
+" autocmd FileType python,java,js,jsx,ts iabbrev <buffer> tr True
+" autocmd FileType python,java,js,jsx,ts iabbrev <buffer> br Break
 " autocmd FileTYpe c,cpp,java imap < <><esc>ha
 
 " use * in visual mode
