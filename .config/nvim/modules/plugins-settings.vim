@@ -94,8 +94,8 @@ nnoremap <F5> :UndotreeToggle<cr>
 " fzf
 " \ 'ctrl-t': 'tab split',
 let g:fzf_action = {
-            \ 'alt-s': 'split',
-            \ 'alt-v': 'vsplit' }
+            \ 'ctrl-s': 'split',
+            \ 'ctrl-v': 'vsplit' }
 " for rg
 let g:rg_derive_root='true'
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
@@ -106,6 +106,7 @@ nnoremap <leader>,ph :FilesHome<cr>
 nnoremap <leader>,pd :FilesDev<cr>
 nnoremap <leader>,pc :FilesClass<cr>
 nnoremap <leader>,pp :FilesProjects<cr>
+nnoremap <leader>,pp :FilesDots<cr>
 "made myself
 nnoremap <leader>,pb :Bookm<cr> 
 nnoremap <leader>sb :Buffers<cr>
@@ -133,6 +134,9 @@ command! -bang -nargs=? -complete=dir FilesClass
 
 command! -bang -nargs=? -complete=dir FilesProjects
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$PROJECTS, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+command! -bang -nargs=? -complete=dir FilesDots
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$XDG_CONFIG_HOME, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 " to start fzf at root of project
 command! PFiles execute 'Files' s:find_current_root()
@@ -266,11 +270,23 @@ function! ShowDocIfNoDiagnostic(timer_id)
 endfunction
 
 function Activate_hover()
-    autocmd CursorHoldI * silent! call <SID>show_hover_doc()
+    " autocmd CursorHoldI * silent! call <SID>show_hover_doc()
     autocmd CursorHold  * silent! call<SID>show_hover_doc()
+" autocmd CursorHold * if ! coc#util#has_float() | silent! call CocActionAsync('doHover') | endif 
 endfunction
 
 autocmd FileType python,cpp,javascript,c,java :call Activate_hover()
+nnoremap <nowait><expr> <a-n> coc#util#float_scrollable() ? coc#util#float_scroll(1) : OutlineFZF()
+" nnoremap <nowait><expr> <a-e> coc#util#float_scrollable() ? coc#util#float_scroll(0) : "\<c-w>\<c-v>"
+nnoremap <nowait><expr> <a-e> coc#util#float_scrollable() ? coc#util#float_scroll(0) : BrowseDots()
+
+function OutlineFZF()
+return ":CocFzfList outline \<cr>"
+endfunction
+
+function BrowseDots()
+return ":FilesDots \<cr>"
+endfunction
 
 let g:coc_force_debug = 1
 " Use c-n for trigger completion with characters ahead and navigate.
@@ -1229,7 +1245,8 @@ nnoremap <silent> <leader>ccd       :<C-u>CocFzfList diagnostics --current-buf<C
 nnoremap <silent> <leader>ccc       :<C-u>CocFzfList commands<CR>
 nnoremap <silent> <leader>cce       :<C-u>CocFzfList extensions<CR>
 nnoremap <silent> <leader>cl       :<C-u>CocFzfList location<CR>
-nnoremap <silent> <leader>cV       :<C-u>CocFzfList outline<CR>
+nnoremap <silent> <leader>cV            :<C-u>CocFzfList outline<CR>
+" nnoremap <silent> <a-n>            :<C-u>CocFzfList outline<CR>
 nnoremap <silent> <leader>cs       :<C-u>CocFzfList symbols<CR>
 nnoremap <silent> <leader>ccs       :<C-u>CocFzfList sources<CR>
 nnoremap <silent> <leader>ccb       :<C-u>CocFzfListResume<CR>
