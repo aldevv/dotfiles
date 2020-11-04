@@ -15,7 +15,7 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export BROWSER=firefox
 export BOOKS="$HOME/Documents/Learn/Books"
 export PROJECTS="$HOME/Documents/Learn/Projects"
-export CLASSES="$HOME/Documents/Learn/classes/2020-2/clases"
+export CLASS="$HOME/Documents/Learn/classes/2020-2/clases"
 export SUCKLESS="$HOME/.local/Programs/Suckless"
 export BACKUPS="$HOME/.backups"
 export PROGRAMS="$HOME/.local/Programs"
@@ -40,6 +40,9 @@ export PATH="$(du $HOME/.local/bin | cut -f2 | tr '\n' ':')$PATH"
 export GTK_IM_MODULE='ibus'
 export QT_IM_MODULE='ibus'
 export XMODIFIERS=@im='ibus'
+
+#qt5ct colorscheme
+export QT_QPA_PLATFORMTHEME="qt5ct"
 
 #======================================
 # WORK

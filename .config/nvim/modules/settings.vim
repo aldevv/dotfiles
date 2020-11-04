@@ -29,17 +29,86 @@ filetype plugin indent on
 let &t_8f = '\<esc>[38;2;%lu;%lu;%lum'
 let &t_8b = '\<esc>[48;2;%lu;%lu;%lum'
 set textwidth=95
-set nofoldenable
+" set nofoldenable
 " set foldmethod=indent
 set viewoptions=folds,cursor
 set sessionoptions=folds
 " set foldmethod=manual
 " autocmd FileType * set foldmethod=syntax
 " autocmd FileType python set foldmethod=indent
-autocmd FileType vim set foldmethod=marker
-set foldlevel=4
-set foldnestmax=1
-set foldlevelstart=2
+
+function! FoldForJava()
+    let line = getline(v:lnum) "v:lnum gives you the line number
+    if match(line,'\v^\s+(private|public|protected)?\s+\S+\s+\S+\s+\S+\s*\(.*\)\s*\{$') > -1
+        return ">1"
+    elseif match(line, '\v^\s*(for|while)\s*\(.+\)\s*?\{') > -1
+        return ">2"
+    elseif match(line, '\v^\s*if\s*\(.+\)') > -1
+        return ">3"
+    else
+        return "="
+    endif
+endfunction
+
+function! FoldForPython()
+    let line = getline(v:lnum) "v:lnum gives you the line number
+    if match(line,'\v^class\s+\S+\s?:') > -1
+        return ">3"
+    elseif match(line, '\v^\s*def\s\S+\(.*\)\s?:') > -1
+        return ">4"
+    elseif match(line, '\v^\s+(if|for|while).+\(.+\)\s?:$') > -1
+        return ">5"
+    elseif match(line, '\v^(if|for|while).+\(.+\)\s?:$') > -1
+        return ">2"
+    elseif match(line, '\v^\S+\s?\=\s?.+$') > -1
+        return ">0"
+    else
+        return "="
+    endif
+endfunction
+
+function! FoldForJavascript()
+    let line = getline(v:lnum) "v:lnum gives you the line number
+    if match(line,'\v^class\s.+\{$') > -1
+        return ">1"
+    elseif match(line,'\v^\s*function\s+\S+\(.*\)\s*\{$') > -1
+        return ">2"
+    elseif  match(line,'\v^\s*(if)@!(while)@!(for)@!.*\(.*\)\s*\{$') > -1
+        return ">2"
+    elseif  match(line,'\v^\s*\S+\s?\=\s?\(.*\)\s?\=\>.+\{$') > -1
+        return ">2"
+    elseif match(line, '\v^\s*(for|while)\s*\(.+\)\s*\{?$') > -1
+        return ">3"
+    elseif match(line, '\v^\s*if\s*\(.+\)\s*\{?$') > -1
+        return ">4"
+    else
+        return "="
+    endif
+endfunction
+
+if has('folding')
+  " set nofoldenable
+  set foldenable
+  " set foldmethod=indent               " not as cool as syntax, but faster
+  set foldlevelstart=99               " start unfolded
+  set foldnestmax=5
+endif
+autocmd FileType java setlocal foldmethod=expr foldexpr=FoldForJava()
+autocmd FileType python setlocal foldmethod=expr foldexpr=FoldForPython()
+autocmd FileType javascript setlocal foldmethod=expr foldexpr=FoldForJavascript()
+autocmd FileType c,cpp setlocal foldmethod=syntax
+set list                              " show whitespace
+set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
+set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)
+                                      " + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
+set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
+set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
+set listchars+=trail:•
+
+
+" autocmd FileType vim set foldmethod=marker
+" set foldlevel=4
+" set foldlevelstart=2
 augroup AutoSaveFolds
   autocmd!
   " view files are about 500 bytes
@@ -49,11 +118,11 @@ augroup AutoSaveFolds
   autocmd BufWinEnter ?* silent! loadview
 augroup end
 
-
+set lazyredraw "dont show changes in macro playback
 set splitbelow
 " set foldcolumn=1
 set wildmode=longest,list,full
-set expandtab "makes tab work as spaces
+set expandtab "always use spaces and not tabs
 set noerrorbells
 set ignorecase
 set smartcase

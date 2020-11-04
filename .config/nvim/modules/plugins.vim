@@ -41,7 +41,7 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'junegunn/goyo.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'rhysd/clever-f.vim'
-Plug 'pseewald/vim-anyfold'"}}}
+" Plug 'pseewald/vim-anyfold'"}}}
 
 "essential
 Plug 'wellle/targets.vim'"{{{
@@ -85,8 +85,8 @@ Plug 'dense-analysis/ale'
 " check https://github.com/mattboehm/dotfiles/blob/master/vim/vimrc
 
 "TODO
-"replace syntastic, makes vim slow
-"https://github.com/dense-analysis/ale
+"for jumping to interesting places
+"https://github.com/wincent/vcs-jump
 "
 "look at
 "https://github.com/mattboehm/dotfiles/blob/master/vim/vimrc

@@ -9,8 +9,9 @@ noremap gj ge
 noremap gJ gE
 nnoremap l i
 nnoremap i l
-noremap k n
-noremap K N
+noremap k nzzzv
+noremap K Nzzzv
+nnoremap <leader>- :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 noremap N J
 noremap J E
 vnoremap i l
@@ -24,23 +25,33 @@ map º <c-^>
 " nnoremap <S-CR> O<Esc>
 nnoremap [13;2u o
 
-noremap - /
+noremap - /\v
+vnoremap - /\v
 noremap / -
 
+nnoremap <leader>z zMzvzz
+
 nnoremap <silent><leader>lch  :!chmod +x %<cr>
+
+command! -bang -nargs=? -complete=dir Cfz :e $HOME/.zshrc
+command! -bang -nargs=? -complete=dir Cfp :e $HOME/.zprofile
+command! -bang -nargs=? -complete=dir Cfxp :e $HOME/.xprofile
+command! -bang -nargs=? -complete=dir Cfxx :e $HOME/.Xresources
+command! -bang -nargs=? -complete=dir Cfv :e $XDG_CONFIG_HOME/nvim/init.vim
+command! -bang -nargs=? -complete=dir Cfr :e $XDG_CONFIG_HOME/ranger/rc.conf
 
 " Make double-<Esc> clear search highlights
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 
-nnoremap <silent> <leader>z :call ToggleFMethod()<cr>
-function ToggleFMethod()
-  let method=&foldmethod
-  if method == "expr"
-    set foldmethod=manual
-  else
-    set foldmethod=expr
-  endif
-endfunction
+" nnoremap <silent> <leader>z :call ToggleFMethod()<cr>
+" function ToggleFMethod()
+"   let method=&foldmethod
+"   if method == "expr"
+"     set foldmethod=manual
+"   else
+"     set foldmethod=expr
+"   endif
+" endfunction
 
 " this didnt work because it needs to be put down lower, but is a good example
 " of how to obtain input for a command
@@ -92,6 +103,7 @@ nnoremap gl gi
 nnoremap , ;
 nnoremap ; ,
 nnoremap <leader>ct :!ctags -R
+
 
 
 " noremap gss !python2 -c "import sys; print(sys.stdin.read())"<cr>

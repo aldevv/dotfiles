@@ -100,8 +100,15 @@ let g:fzf_action = {
 let g:rg_derive_root='true'
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 nnoremap <a-p> :PFiles<cr>
+nnoremap <a-P> :GFiles<cr>
+nnoremap <leader>,ps :FilesScripts<cr>
+nnoremap <leader>,ph :FilesHome<cr>
+nnoremap <leader>,pd :FilesDev<cr>
+nnoremap <leader>,pc :FilesClass<cr>
+nnoremap <leader>,pp :FilesProjects<cr>
+"made myself
+nnoremap <leader>,pb :Bookm<cr> 
 nnoremap <leader>sb :Buffers<cr>
-nnoremap <leader>,p :GFiles<cr>
 let g:vista_default_executive = 'ctags'
 nnoremap <F4> :Course<cr>
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -110,6 +117,22 @@ let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %
 " gives a preview window to Files
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+" gives a preview window to Files in Home
+command! -bang -nargs=? -complete=dir FilesScripts
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$SCRIPTS, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+command! -bang -nargs=? -complete=dir FilesHome
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$HOME, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+command! -bang -nargs=? -complete=dir FilesDev
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$WORK, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+command! -bang -nargs=? -complete=dir FilesClass
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$CLASS, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+command! -bang -nargs=? -complete=dir FilesProjects
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$PROJECTS, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 " to start fzf at root of project
 command! PFiles execute 'Files' s:find_current_root()
@@ -130,9 +153,11 @@ endfunction
 command! -bang -nargs=* Rgfzf
             \ call fzf#vim#grep(
             \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(expand('<cword>')), 1,
-            \   fzf#vim#with_preview({'dir': s:find_current_root()}), <bang>0)
-map <leader>sf :Rgfzf<cr>
+            \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': s:find_current_root()}), <bang>0)
+map <leader>F :Rgfzf<cr>
 
+let commandFiles="awk '{print $2}' ".$XDG_CONFIG_HOME."/shortcuts/sd"
+command! -bang -nargs=* Bookm call fzf#run({'source':commandFiles,'sink': 'e'})
 "search in specific folder"
 command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 
@@ -339,9 +364,10 @@ nnoremap <leader>gst :Gstatus<CR>
 nnoremap <leader>gc :GCheckout<CR>
 nnoremap <leader>ggc :Gcommit<CR>
 nnoremap <leader>gd :Gdiff<CR>
-" nnoremap <leader>glg :Glog --reverse<CR>
+nnoremap <leader>gloG :Glog --reverse<CR>
 nnoremap Q :Glog --reverse<CR>
 nnoremap <leader>ggp :Git push<CR>
+nnoremap <leader>guu :Git pull<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gB :Gbrowse<CR>
 " nnoremap <leader>gw :Gwrite<CR>
@@ -1157,7 +1183,7 @@ nnoremap <leader>a :Rg<space>
 "==========
 "Anyfold
 "==========
-autocmd Filetype * AnyFoldActivate
+" autocmd Filetype * AnyFoldActivate
 let g:anyfold_fold_comments=1
 " let anyfold_fold_toplevel = 1
 "
