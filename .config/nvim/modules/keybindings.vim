@@ -326,3 +326,9 @@ function! s:VSetSearch()
   let @/ = '\V' . substitute(escape(@@, '\'),'\n','\\n','g')
   let @@ = temp
 endfunction
+
+" GIST
+" requires gist installed
+" you need to do gist --login for the first time
+vnoremap <leader>G :w !gist -p -t %:e \| xclip -selection clipboard<cr>
+"

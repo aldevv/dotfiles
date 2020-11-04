@@ -41,6 +41,8 @@ let NERDTreeMenuDown = 'n'
 let NERDTreeMapOpenExpl = 'k'
 let NERDTreeMapOpenSplit = "s"
 let NERDTreeMapPreview = "o"
+let NERDTreeMapOpenRecursively= "I"
+let NERDTreeMapCloseChildren = "H"
 let NERDTreeMapActivateNode = "go"
 let NERDTreeMapOpenVSplit = "v"
 let NERDTreeMapPreviewSplit = "gs"
@@ -1335,8 +1337,8 @@ nmap <silent> <leader>ctf :TestFile<CR>
 nmap <silent> <leader>cts :TestSuite<CR>
 nmap <silent> <leader>ctl :TestLast<CR>
 nmap <silent> <leader>ctg :TestVisit<CR>
-" let test#strategy = "NeoTerm"
-let test#strategy = "Dispatch"
+" let test#strategy = "neoTerm"
+let test#strategy = "dispatch"
 
 "==============
 "VIM-DISPATCH
