@@ -28,20 +28,24 @@ nnoremap [13;2u o
 noremap - /\v
 vnoremap - /\v
 noremap / -
+noremap <tab> %
+noremap <leader>o :call ToggleQuickFix()<cr>
+function! ToggleQuickFix()
+  if empty(filter(getwininfo(), 'v:val.quickfix'))
+    copen
+    execute "normal! \<c-w>k"
+  else
+    cclose
+  endif
+endfunction
 
 nnoremap <leader>z zMzvzz
 
 nnoremap <silent><leader>lch  :!chmod +x %<cr>
 
-command! -bang -nargs=? -complete=dir Cfz :e $HOME/.zshrc
-command! -bang -nargs=? -complete=dir Cfp :e $HOME/.zprofile
-command! -bang -nargs=? -complete=dir Cfxp :e $HOME/.xprofile
-command! -bang -nargs=? -complete=dir Cfxx :e $HOME/.Xresources
-command! -bang -nargs=? -complete=dir Cfv :e $XDG_CONFIG_HOME/nvim/init.vim
-command! -bang -nargs=? -complete=dir Cfr :e $XDG_CONFIG_HOME/ranger/rc.conf
 
 " Make double-<Esc> clear search highlights
-nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
+nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
 
 " nnoremap <silent> <leader>z :call ToggleFMethod()<cr>
 " function ToggleFMethod()
@@ -56,15 +60,20 @@ nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 " this didnt work because it needs to be put down lower, but is a good example
 " of how to obtain input for a command
 "
-" function s:FileName()
-"     call inputsave()
-"     let g:createdFile = input("File name: ")
-"     call inputrestore()
-"     :e <C-r>=createdFile<CR>
-"     :NERDTreeRefreshRoot<CR>
-" endfunction
-" " nnoremap <F1> oHello, <C-\><C-o>:call <SID>FileName()<CR><C-r>=createdFile<CR>. nice name.<ESC>
-" nnoremap <leader>sn  :call <SID>FileName()<CR> :e <C-r>=createdFile<CR>
+function! EnterFileName()
+    call inputsave()
+    let l:filename = input("Enter Filename: ")
+    call inputrestore()
+    if len(l:filename) == 0
+        return
+      endif
+    exe ":e " . l:filename
+    w
+    startinsert
+endfunction
+
+nnoremap <leader>sn  :call EnterFileName()<cr>
+
 
 noremap <leader>n <s-n>
 noremap <leader>sd :bd<cr>
@@ -102,7 +111,7 @@ nnoremap V v$
 nnoremap gl gi
 nnoremap , ;
 nnoremap ; ,
-nnoremap <leader>ct :!ctags -R
+nnoremap <leader>cct :!ctags -R
 
 
 
@@ -155,8 +164,9 @@ cmap w!! w !sudo tee > /dev/null %
 
 map <leader>rs :!./%<cr>
 map <silent> <F11> /\A\zs\a<cr>
-noremap <c-n> <c-e>
-noremap <c-e> <c-y>
+" ctrl alt 
+noremap <M-C-N> <c-e>
+noremap <M-C-E> <c-y>
 
 noremap  <Down> 5<c-w>-
 noremap  <Up> 5<c-w>+
@@ -166,10 +176,17 @@ noremap  <Left> 5<c-w><
 " noremap  E 5<c-w>+
 " noremap  + 5<c-w>>
 " noremap  - 5<c-w><
-nnoremap <leader>h <c-w>h
-nnoremap <leader>n <c-w>j
-nnoremap <leader>e <c-w>k
-nnoremap <leader>i <c-w>l
+
+" split movement
+" nnoremap <leader>h <c-w>h
+" nnoremap <leader>n <c-w>j
+" nnoremap <leader>e <c-w>k
+" nnoremap <leader>i <c-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-n> <C-w>j
+nnoremap <C-e> <C-w>k
+nnoremap <C-i> <C-w>l
+
 nnoremap <leader>ss <c-w>s
 nnoremap <leader>sv <c-w>v
 " map <leader>i :setlocal autoindent<cr>
@@ -203,6 +220,7 @@ cnoremap <C-y> <Right>
 " autocmd FileType python nnoremap <buffer> <s-cr> :silent w<bar>only<bar>vsp<bar>term ipython3 -i %<cr>
 autocmd FileType python nnoremap <buffer> <s-cr> :silent w<bar>only<bar>vsp<bar>term jupyter console<cr> <c-w>l :JupyterConnect<cr><cr> :JupyterRunFile<cr>
 autocmd FileType java nnoremap <silent><buffer> <s-cr> :silent w<bar>execute "!java ".expand('%:t:r')<cr>
+noremap <silent><leader><cr> :call Runner('noquickfix')<cr>
 nnoremap <silent><cr> :call RunnerEnter()<cr>
 
 function! RunnerEnter()
@@ -210,23 +228,29 @@ function! RunnerEnter()
   if bufname('%') == ''
     execute "normal! \<CR>"
   else
-    :call Runner()
+    :call Runner('')
   endif
 endfunction
-function Runner()
+function Runner(background)
   exec 'silent w'
+  let l:runner = 'Dispatch '
+  if a:background == 'noquickfix'
+    let l:runner ='! '
+  endif
+
   let extension = expand('%:e')
   let dict =
         \{
-        \ 'py': ":!python3 %",
-        \ 'c': ":!gcc %  && ./a.out",
-        \ 'cpp': ":!g++  % && ./a.out",
-        \ 'js': ":!node %",
-        \ 'ts': ":!node %",
-        \ 'java': "!javac % && java ".expand('%:t:r'),
-        \ '': ":!chmod +x %; ./%"
+        \ 'py': "python3 %",
+        \ 'c': "gcc %  && ./a.out",
+        \ 'cpp': "g++  % && ./a.out",
+        \ 'js': "node %",
+        \ 'ts': "node %",
+        \ 'java': "javac % && java ".expand('%:t:r'),
+        \ '': "chmod +x %; ./%"
         \}
-  execute dict[extension]
+  " execute '!'.dict[extension]
+  execute l:runner . dict[extension]
 endfunction
 
 
@@ -271,3 +295,34 @@ endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR><c-o>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
 map <silent><leader>lfc :silent execute '!fcc' shellescape(&ft)<cr>
+nnoremap <leader>v V`]
+
+command! -bang -nargs=? -complete=dir Cfz :e $HOME/.zshrc
+command! -bang -nargs=? -complete=dir Cfp :e $HOME/.zprofile
+command! -bang -nargs=? -complete=dir Cfxp :e $HOME/.xprofile
+command! -bang -nargs=? -complete=dir Cfxx :e $HOME/.Xresources
+command! -bang -nargs=? -complete=dir Cfv :e $XDG_CONFIG_HOME/nvim/init.vim
+command! -bang -nargs=? -complete=dir Cfr :e $XDG_CONFIG_HOME/ranger/rc.conf
+
+nnoremap <leader>,ev :Cfv<cr>
+nnoremap <leader>,ez :Cfz<cr>
+nnoremap <leader>,ep :Cfp<cr>
+nnoremap <leader>,er :Cfr<cr>
+nnoremap <leader>,exp :Cfxp<cr>
+nnoremap <leader>,exx :Cfxx<cr>
+
+nnoremap <silent><leader>hh :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent><leader>h1 :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent><leader>h2 :execute '2match DiffChange /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent><leader>h3 :execute '3match IncSearch /\<<c-r><c-w>\>/'<cr>
+
+" to search only selected text with * and #
+vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR><c-o>
+vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
+
+function! s:VSetSearch()
+  let temp = @@
+  norm! gvy
+  let @/ = '\V' . substitute(escape(@@, '\'),'\n','\\n','g')
+  let @@ = temp
+endfunction

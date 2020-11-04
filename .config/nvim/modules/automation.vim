@@ -1,5 +1,6 @@
 " Remove trailing whitespace on save
-"
+" auto save on focus lost
+" au FocusLost * :wa
 "
 let ext = expand('%:e')
 if ext != "vim"

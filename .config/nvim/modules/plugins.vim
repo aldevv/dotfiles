@@ -70,6 +70,8 @@ Plug 'francoiscabrol/ranger.vim' |
          \ Plug 'rbgrouleff/bclose.vim'
 Plug 'osyo-manga/vim-brightest'
 Plug 'jiangmiao/auto-pairs'
+" fork for some other features
+" Plug 'Krasjet/auto.pairs'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'kassio/neoterm'
 " for commits
@@ -77,6 +79,9 @@ Plug 'junegunn/gv.vim'
 "enables gbrowse and also hub instead of git (if hub installed)
 Plug 'tpope/vim-rhubarb'
 Plug 'dense-analysis/ale'
+Plug 'frazrepo/vim-rainbow'
+Plug 'tpope/vim-dispatch'
+Plug 'vim-test/vim-test'
 
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'

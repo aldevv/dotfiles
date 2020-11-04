@@ -140,6 +140,8 @@ function! MyFoldText() abort
 endfunction
 
 set foldtext=MyFoldText()
+" set wrap
+set formatoptions=qrn1
 
 set lazyredraw "dont show changes in macro playback
 set splitbelow

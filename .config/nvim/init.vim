@@ -47,7 +47,7 @@ set t_Co=256
 ":verbose xmap <leader>
 "
 
-"to install python3 in checkhelath
+"to install python3 in checkhealth
 "python3 -m pip install --user --upgrade pynvim
 "pip3 install neovim-remote
 "

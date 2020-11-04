@@ -16,27 +16,6 @@ endfunction
 " map <leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
 noremap <leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
 
-" function s:EnterFileName()
-"     call inputsave()
-"     let g:FileName_ = input("File name: ")
-"     call inputrestore()
-" endfunction
-" nnoremap <leader>sn  :call <SID>EnterFileName()<cr> <bar>:e <C-r>=FileName_ <cr> <bar> startinsert<cr> <c-o>:w <cr>
-function EnterFileName()
-    call inputsave()
-    let l:filename = input("Enter filename: ")
-    call inputrestore()
-    while len(l:filename) == 0
-        let l:filename = input("Invalid. Enter filename:")
-    endwhile
-    exe ":e " . l:filename
-    w
-    startinsert
-endfunction
-
-nnoremap <leader>sn  :call EnterFileName()<cr>
-
-" nnoremap <silent><leader>sn  :call <SID>FileName()<cr> <bar> :call <SID>CreateFileNamed()<cr>
 
 
 map <leader>,b :Bookmark<CR>
@@ -107,6 +86,7 @@ nnoremap <leader>,pd :FilesDev<cr>
 nnoremap <leader>,pc :FilesClass<cr>
 nnoremap <leader>,pp :FilesProjects<cr>
 nnoremap <leader>,pp :FilesDots<cr>
+nnoremap <leader>,pm :FilesSnips<cr>
 "made myself
 nnoremap <leader>,pb :Bookm<cr> 
 nnoremap <leader>sb :Buffers<cr>
@@ -137,6 +117,10 @@ command! -bang -nargs=? -complete=dir FilesProjects
 
 command! -bang -nargs=? -complete=dir FilesDots
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$XDG_CONFIG_HOME, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+let snips_folder=$XDG_CONFIG_HOME."/nvim/my_snippets"
+command! -bang -nargs=? -complete=dir FilesSnips
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':snips_folder, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 " to start fzf at root of project
 command! PFiles execute 'Files' s:find_current_root()
@@ -1212,7 +1196,7 @@ let g:context_filetype_blacklist = ["vim","tex"]
 let g:context_enabled = 0
 
 "==========
-" AUTOPAIRS
+" AUTO-PAIRS
 "==========
 " System Shortcuts:
 "     <CR> : Insert new indented line after return if cursor in blank brackets
@@ -1224,7 +1208,9 @@ let g:context_enabled = 0
 "     <M-e>: 'Fast' 'Wrap' (g:AutoPairsShortcutFastWrap)
 "     { n n{ e n
 "     << ()
-"
+
+let g:AutoPairsMultilineClose = 0
+let g:AutoPairsMapBS=1
 autocmd Filetype tex let b:AutoPairs = {"(": ")", "[": "]"}
 let g:AutoPairsMapCh = '<c-h>'
 let g:AutoPairsShortcutFastWrap = '<a-a>'
@@ -1334,3 +1320,27 @@ let g:ale_linters =  {
 let g:ale_disable_lsp=1
 " let g:ale_linters_ignore= {'python': ['autopep8']}
 let g:ale_close_preview_on_insert = 1
+
+"======================
+" RAINBOW PARENTHESIS
+"======================
+let g:rainbow_active = 0
+noremap <leader>B :RainbowToggle<cr>
+
+"==============
+"VIM-TEST
+"==============
+nmap <silent> <leader>ctn :TestNearest<CR>
+nmap <silent> <leader>ctf :TestFile<CR>
+nmap <silent> <leader>cts :TestSuite<CR>
+nmap <silent> <leader>ctl :TestLast<CR>
+nmap <silent> <leader>ctg :TestVisit<CR>
+" let test#strategy = "NeoTerm"
+let test#strategy = "Dispatch"
+
+"==============
+"VIM-DISPATCH
+"==============
+autocmd FileType java let b:dispatch = 'javac %'
+autocmd FileType cpp let b:dispatch = 'g++ %'
+autocmd FileType c let b:dispatch = 'gcc %'
