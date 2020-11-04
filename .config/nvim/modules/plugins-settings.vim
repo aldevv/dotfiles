@@ -337,6 +337,7 @@ let g:coc_global_extensions = [
             \ 'coc-tsserver',
             \ 'coc-css',
             \ 'coc-vimtex',
+            \ 'coc-vimlsp',
             \ 'coc-python',
             \ 'coc-sh',
             \ 'coc-clangd',
@@ -1230,6 +1231,7 @@ nnoremap <silent> <leader>cce       :<C-u>CocFzfList extensions<CR>
 nnoremap <silent> <leader>cl       :<C-u>CocFzfList location<CR>
 nnoremap <silent> <leader>cV       :<C-u>CocFzfList outline<CR>
 nnoremap <silent> <leader>cs       :<C-u>CocFzfList symbols<CR>
+nnoremap <silent> <leader>ccs       :<C-u>CocFzfList sources<CR>
 nnoremap <silent> <leader>ccb       :<C-u>CocFzfListResume<CR>
 "let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 "let g:coc_fzf_preview_toggle_key = '?'
@@ -1315,4 +1317,3 @@ let g:ale_linters =  {
 let g:ale_disable_lsp=1
 " let g:ale_linters_ignore= {'python': ['autopep8']}
 let g:ale_close_preview_on_insert = 1
-
