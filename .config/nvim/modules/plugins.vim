@@ -12,7 +12,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " programming
 " Plug 'uiiaoo/java-syntax.vim'
-Plug 'bkad/CamelCaseMotion'"{{{
+Plug 'bkad/CamelCaseMotion'"
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
@@ -41,10 +41,9 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'junegunn/goyo.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'rhysd/clever-f.vim'
-" Plug 'pseewald/vim-anyfold'"}}}
 
 "essential
-Plug 'wellle/targets.vim'"{{{
+Plug 'wellle/targets.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
@@ -62,7 +61,7 @@ Plug 'kana/vim-textobj-entire'
 Plug 'bps/vim-textobj-python'
 Plug 'tommcdo/vim-exchange' "
 Plug 'glts/vim-textobj-comment'
-Plug 'AndrewRadev/splitjoin.vim'"}}}
+Plug 'AndrewRadev/splitjoin.vim'
 
 " to do operations on visual mode
 Plug 'vim-scripts/vis'
@@ -104,6 +103,7 @@ Plug 'dense-analysis/ale'
 " deleted
 " for c++
 "Plug ‘ludovicchabant/vim-gutentags’
+" Plug 'pseewald/vim-anyfold'"
 "Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'https://github.com/dracula/vim', {'as': 'dracula'}
 " Plug 'psf/black', { 'branch': 'stable' }

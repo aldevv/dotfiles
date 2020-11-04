@@ -58,9 +58,19 @@ set t_Co=256
 source ~/.config/nvim/modules/settings.vim
 
 "==================
+" KEYBINDINGS
+"==================
+source ~/.config/nvim/modules/keybindings.vim
+
+"==================
 " PLUGINS
 "==================
 source ~/.config/nvim/modules/plugins.vim
+
+"==================
+" PLUGINS SETTINGS
+"==================
+source ~/.config/nvim/modules/plugins-settings.vim
 
 "==================
 " APPEARANCE
@@ -68,17 +78,7 @@ source ~/.config/nvim/modules/plugins.vim
 source ~/.config/nvim/modules/appearance.vim
 
 "==================
-" KEYBINDINGS
-"==================
-source ~/.config/nvim/modules/keybindings.vim
-
-"==================
 " AUTOMATION
 "==================
 source ~/.config/nvim/modules/automation.vim
-
-"==================
-" PLUGINS SETTINGS
-"==================
-source ~/.config/nvim/modules/plugins-settings.vim
 

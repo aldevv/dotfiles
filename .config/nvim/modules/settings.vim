@@ -118,6 +118,26 @@ augroup AutoSaveFolds
   autocmd BufWinEnter ?* silent! loadview
 augroup end
 
+" better folding style
+let s:middot='·'
+let s:raquo='»'
+let s:small_l='ℓ'
+function! MyFoldText() abort
+  let l:lines='[' . (v:foldend - v:foldstart + 1) . s:small_l . ']'
+  let line = getline(v:foldstart)
+  let l:first=substitute(line, '\v *', '', '')
+  let l:dashes=substitute(v:folddashes, '-', s:middot, 'g')
+  let nucolwidth = &fdc + &number * &numberwidth
+  let windowwidth = winwidth(0) - nucolwidth - 3
+  let foldedlinecount = v:foldend - v:foldstart
+  let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+  let concatspaces = repeat('·',fillcharcount-2)
+  return l:first . concatspaces . l:lines .  '  '
+  " return s:raquo . s:middot . s:middot . l:lines . l:dashes . ': ' . l:first
+endfunction
+
+set foldtext=MyFoldText()
+
 set lazyredraw "dont show changes in macro playback
 set splitbelow
 " set foldcolumn=1
