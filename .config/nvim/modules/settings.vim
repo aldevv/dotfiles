@@ -127,12 +127,15 @@ function! MyFoldText() abort
   let line = getline(v:foldstart)
   let l:first=substitute(line, '\v *', '', '')
   let l:dashes=substitute(v:folddashes, '-', s:middot, 'g')
-  let nucolwidth = &fdc + &number * &numberwidth
-  let windowwidth = winwidth(0) - nucolwidth - 3
-  let foldedlinecount = v:foldend - v:foldstart
-  let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-  let concatspaces = repeat('·',fillcharcount-2)
-  return l:first . concatspaces . l:lines .  '  '
+  let nucolwidth = max([strlen(line('$')), &numberwidth-1])
+  let l:padding = wincol()-virtcol('.')
+  let l:padding += nucolwidth 
+  " let nucolwidth = &fdc + &relativenumber * &numberwidth
+  let windowwidth = winwidth(0) - l:padding 
+  let foldedlinecount = v:foldend - v:foldstart + 3 " because of [ℓ]"
+  let fillcharcount = windowwidth - len(l:first) - len(foldedlinecount)
+  let concatspaces = repeat('·',fillcharcount)
+  return l:first . concatspaces . l:lines
   " return s:raquo . s:middot . s:middot . l:lines . l:dashes . ': ' . l:first
 endfunction
 
