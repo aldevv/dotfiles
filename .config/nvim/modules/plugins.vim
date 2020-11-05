@@ -4,6 +4,12 @@ call plug#begin()
 " Plug 'tpope/vim-eunuch'
 " themes
 Plug 'morhetz/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'crusoexia/vim-monokai'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'KeitaNakamura/highlighter.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'uiiaoo/java-syntax.vim'
+Plug 'sheerun/vim-polyglot'
 " Plug 'fcpg/vim-fahrenheit'
 " Plug 'tomasiser/vim-code-dark'
 " Plug 'dracula/vim'
@@ -13,10 +19,8 @@ Plug 'vim-airline/vim-airline-themes'
 " programming
 " Plug 'uiiaoo/java-syntax.vim'
 Plug 'bkad/CamelCaseMotion'"
-Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
-" Plug 'scrooloose/syntastic'
 Plug 'liuchengxu/vista.vim'
 Plug 'preservim/tagbar'
 Plug 'AndrewRadev/switch.vim'
@@ -107,10 +111,10 @@ Plug 'vim-test/vim-test'
 
 " deleted
 " for c++
+" Plug 'scrooloose/syntastic'
 "Plug ‘ludovicchabant/vim-gutentags’
 " Plug 'pseewald/vim-anyfold'"
 "Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
-"Plug 'https://github.com/dracula/vim', {'as': 'dracula'}
 " Plug 'psf/black', { 'branch': 'stable' }
 " Plug 'prettier/vim-prettier', {
          " \ 'do': 'npm install',

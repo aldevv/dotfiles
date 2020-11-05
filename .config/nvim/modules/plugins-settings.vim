@@ -341,6 +341,7 @@ let g:coc_global_extensions = [
             \ 'coc-vimtex',
             \ 'coc-vimlsp',
             \ 'coc-python',
+            \ 'coc-java',
             \ 'coc-sh',
             \ 'coc-clangd',
             \ ]
@@ -1346,3 +1347,8 @@ let test#strategy = "dispatch"
 autocmd FileType java let b:dispatch = 'javac %'
 autocmd FileType cpp let b:dispatch = 'g++ %'
 autocmd FileType c let b:dispatch = 'gcc %'
+"==============
+" HIGHLIGHTER
+"==============
+"it uses ctags to update highlights
+":HighlighterUpdate

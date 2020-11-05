@@ -5,7 +5,7 @@
 noremap n j
 noremap e k
 noremap j e
-noremap gj ge
+noremap gj ge 
 noremap gJ gE
 nnoremap l i
 nnoremap i l
@@ -18,7 +18,12 @@ vnoremap i l
 vnoremap l i
 vnoremap L I
 noremap ge J
+noremap gE a<cr><esc>k$
 map º <c-^>
+noremap ' `
+" testing
+noremap I L
+nnoremap L I
 " noremap <a-n> <c-n>
 " noremap <a-e> <c-p>
 " nnoremap <CR> o<Esc>
@@ -111,7 +116,7 @@ nnoremap V v$
 nnoremap gl gi
 nnoremap , ;
 nnoremap ; ,
-nnoremap <leader>cct :!ctags -R
+nnoremap <leader>cct :!ctags -R<cr>
 
 
 
@@ -331,4 +336,8 @@ endfunction
 " requires gist installed
 " you need to do gist --login for the first time
 vnoremap <leader>G :w !gist -p -t %:e \| xclip -selection clipboard<cr>
-"
+nnoremap Q gqip
+" to source your init.vim (only one line)
+vnoremap <silent><leader>S y:execute @@<cr>
+nnoremap <silent><leader>S ^vg_y:execute @@<cr>
+noremap <leader>0 :Colors<cr>

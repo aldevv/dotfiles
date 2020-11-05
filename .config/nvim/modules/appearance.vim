@@ -3,39 +3,57 @@
 " fix colors for highlighting spelling mistakes
 autocmd ColorScheme gruvbox hi! SpellBad cterm=reverse ctermfg=214 ctermbg=235 gui=reverse guifg=#fabd2f guibg=#282828
 
+"Themes
+"https://github.com/vim-airline/vim-airline/wiki/Screenshots
+"
+" let g:airline_theme='luna'
+" let g:airline_theme='gruvbox'
+
 set pumblend=15
 " Theme
 "colorscheme onehalfdark
-"colorscheme dracula
-" set background=dark
-" colorscheme gruvbox
 "try codedark
-" gruvbox
-let g:gruvbox_contrast_dark = "hard"
-" let g:gruvbox_contrast_light = "soft"
-" let g:gruvbox_improved_strings = 1
-let g:gruvbox_improved_warnings = 1
-
-set termguicolors
-if exists('+termguicolors')
- set t_8f=\[[38;2;%lu;%lu;%lum
- set t_8b=\[[48;2;%lu;%lu;%lum
-endif   
-let g:gruvbox_invert_selection = '0'
+"
 set background=dark
-let current_colorscheme = 1
+
+"(gruvbox dracula monokai codedark fahrenheit)
+let current_colorscheme = 2
+let g:makeTransparent=0
+
 if current_colorscheme == 1
+    let g:gruvbox_invert_selection = '0'
+    " let g:airline_theme='gruvbox'
+    let g:airline_theme='minimalist'
+    "soft medium hard
+    let g:gruvbox_contrast_dark = "hard"
+    " not sure what this does
+    let g:gruvbox_improved_warnings = 1
     colorscheme gruvbox
 endif
 if current_colorscheme == 2
     colorscheme dracula
+    let g:dracula_italic = 1
+    let g:airline_theme='dracula'
 endif
 if current_colorscheme == 3
-    colorscheme codedark
+    colorscheme monokai
+    let g:airline_theme='monokai'
+    let g:monokai_term_italic = 1
+    let g:monokai_gui_italic = 1
 endif
 if current_colorscheme == 4
-    colorscheme fahrenheit
+    " colorscheme onehalflight
+    colorscheme onehalfdark
+    let g:airline_theme='onehalfdark'
+    " lightline
+    " let g:lightline = { 'colorscheme': 'onehalfdark' }
 endif
+" if current_colorscheme == 3
+"     colorscheme codedark
+" endif
+" if current_colorscheme == 4
+"     colorscheme fahrenheit
+" endif
 
 " use custom highlights (italics)
 let custom_highlights = 1
@@ -52,14 +70,14 @@ endif
  " hi! CursorLineNr gui=bold guifg=#fabd2f guibg=NONE
  " hi! folded guifg=none guibg=NONE
 "
-if g:colors_name == "gruvbox"
+if g:makeTransparent
     "soft, medium and hard.
-"      hi! Normal ctermbg=none guibg=NONE
-"      hi! CursorLineNr gui=bold guifg=#fabd2f guibg=NONE
-"      hi! folded ctermbg=yellow cterm=bold guifg=none guibg=NONE
+     hi! Normal ctermbg=none guibg=NONE
+     hi! CursorLineNr gui=bold guifg=#fabd2f guibg=NONE
+     " hi! folded ctermbg=yellow cterm=bold guifg=none guibg=NONE
 endif
 
-" if g:colors_name == "fahrenheit"
+" if g:makeTransparent == "fahrenheit"
 "      hi! Normal ctermbg=none guibg=NONE
 "      hi! CursorLineNr gui=bold guifg=#fabd2f guibg=NONE
 "      hi! folded ctermbg=yellow cterm=bold guifg=none guibg=NONE
@@ -123,14 +141,11 @@ endfunction
 
  execute 'hi! lineNr guibg=NONE ' . HighGet("lineNr")
 
-"Themes
-"https://github.com/vim-airline/vim-airline/wiki/Screenshots
-"
-" let g:airline_theme='luna'
-" let g:airline_theme='gruvbox'
-let g:airline_theme='minimalist'
- 
-"https://ncona.com/2019/02/the-vim-statusline/
-"let g:airline_theme='onehalfdark'
-"let g:airline_theme='gruvbox'
-"show buffers active on top
+set termguicolors
+if exists('+termguicolors')
+ set t_8f=\[[38;2;%lu;%lu;%lum
+ set t_8b=\[[48;2;%lu;%lu;%lum
+endif   
+
+let g:java_highlight_all = 1
+"let java_highlight_functions = 1
