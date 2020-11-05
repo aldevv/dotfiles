@@ -16,19 +16,35 @@
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "",
   "diagnostic.infoSign": "",
-  "__diagnostic.messageDelay.comment":"default= 200",
-  "diagnostic.messageDelay":400,
+  "__diagnostic.messageDelay.comment": "default= 200",
+  "diagnostic.messageDelay": 400,
 
   "__suggest.noselect.comment": "this is for not choosing first item when pressing TAB",
   "suggest.noselect": false,
   "__suggest.labelMaxLength.comment": "width of text to the left, like Integer, def 100",
-  "suggest.labelMaxLength":70,
+  "suggest.labelMaxLength": 70,
   "__suggest.detailMaxLength.comment": "description, right of title,def: 200",
-  "suggest.detailMaxLength":15,
-  "suggest.maxPreviewWidth":200,
+  "suggest.detailMaxLength": 15,
+  "suggest.maxPreviewWidth": 200,
   "__suggest.trigger.comment": "edit this 2 for better sugestions",
   "suggest.triggerCompletionWait": 100,
   "signature.triggerSignatureWait": 200,
   "signature.floatMaxWidth": 200,
-  "coc.preferences.diagnostic.displayByAle": true
+  "coc.preferences.diagnostic.displayByAle": true,
+  "java.debug.vimspector.start": {
+    "configurations": {
+      "run": {
+        "adapter": "vscode-java",
+        "configuration": {
+          "request": "launch",
+          "protocol": "auto",
+          "stopOnEntry": true,
+          "console": "integratedTerminal",
+          "program": "${workspaceRoot}/Test2.java",
+          "cwd": "${workspaceRoot}"
+        }
+      },
+      "foobar": {}
+    }
+  }
 }

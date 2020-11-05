@@ -5,7 +5,7 @@
 noremap n j
 noremap e k
 noremap j e
-noremap gj ge 
+noremap gj ge
 noremap gJ gE
 nnoremap l i
 nnoremap i l
@@ -28,13 +28,13 @@ nnoremap L I
 " noremap <a-e> <c-p>
 " nnoremap <CR> o<Esc>
 " nnoremap <S-CR> O<Esc>
-nnoremap [13;2u o
+" nnoremap [13;2u o
 
 noremap - /\v
 vnoremap - /\v
 noremap / -
 noremap <tab> %
-noremap <leader>o :call ToggleQuickFix()<cr>
+noremap <silent><leader>o :call ToggleQuickFix()<cr>
 function! ToggleQuickFix()
   if empty(filter(getwininfo(), 'v:val.quickfix'))
     copen
@@ -50,7 +50,7 @@ nnoremap <silent><leader>lch  :!chmod +x %<cr>
 
 
 " Make double-<Esc> clear search highlights
-nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
+noremap <silent><esc> :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
 
 " nnoremap <silent> <leader>z :call ToggleFMethod()<cr>
 " function ToggleFMethod()
@@ -168,7 +168,7 @@ cmap w!! w !sudo tee > /dev/null %
 
 map <leader>rs :!./%<cr>
 map <silent> <F11> /\A\zs\a<cr>
-" ctrl alt 
+" ctrl alt
 noremap <M-C-N> <c-e>
 noremap <M-C-E> <c-y>
 

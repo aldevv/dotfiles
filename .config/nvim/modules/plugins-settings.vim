@@ -90,7 +90,7 @@ nnoremap <leader>,pp :FilesProjects<cr>
 nnoremap <leader>,pp :FilesDots<cr>
 nnoremap <leader>,pm :FilesSnips<cr>
 "made myself
-nnoremap <leader>,pb :Bookm<cr> 
+nnoremap <leader>,pb :Bookm<cr>
 nnoremap <leader>sb :Buffers<cr>
 let g:vista_default_executive = 'ctags'
 nnoremap <F4> :Course<cr>
@@ -192,7 +192,9 @@ nmap <silent> c, <Plug>(coc-fix-current)
 nmap <silent> cr <Plug>(coc-refactor)
 cnoreabbrev CS CocSearch
 " for static hover glitch
-nmap <Esc> :call coc#util#float_hide() <CR>
+nnoremap <silent><esc> :call coc#util#float_hide()<cr>
+
+
 " or do <c-w>o to close it but it closes other windows as well
 
 " nnoremap <silent> <leader>cs :call CocAction('documentSymbols')<cr>
@@ -261,7 +263,7 @@ endfunction
 function Activate_hover()
     " autocmd CursorHoldI * silent! call <SID>show_hover_doc()
     autocmd CursorHold  * silent! call<SID>show_hover_doc()
-" autocmd CursorHold * if ! coc#util#has_float() | silent! call CocActionAsync('doHover') | endif 
+    " autocmd CursorHold * if ! coc#util#has_float() | silent! call CocActionAsync('doHover') | endif
 endfunction
 
 autocmd FileType python,cpp,javascript,c,java :call Activate_hover()
@@ -270,12 +272,12 @@ nnoremap <nowait><expr> <a-n> coc#util#float_scrollable() ? coc#util#float_scrol
 nnoremap <nowait><expr> <a-e> coc#util#float_scrollable() ? coc#util#float_scroll(0) : BrowseDots()
 
 function OutlineFZF()
-return ":CocFzfList outline \<cr>"
+    return ":CocFzfList outline \<cr>"
 endfunction
 
 function BrowseDots()
-" return ":FilesDots \<cr>"
-return ":\<C-u>TagbarToggle\<CR>"
+    " return ":FilesDots \<cr>"
+    return ":\<C-u>TagbarToggle\<CR>"
 endfunction
 
 let g:coc_force_debug = 1
@@ -332,10 +334,10 @@ inoremap <silent><expr> <CR> pumvisible() && coc#rpc#request('hasSelected', []) 
 
 " \ 'coc-html',
 " \ 'coc-json',
-            " \ 'coc-pairs',
-            " \ 'coc-snippets',
-            " \ 'coc-tslint-plugin',
-            " \ 'coc-prettier',
+" \ 'coc-pairs',
+" \ 'coc-snippets',
+" \ 'coc-tslint-plugin',
+" \ 'coc-prettier',
 let g:coc_global_extensions = [
             \ 'coc-marketplace',
             \ 'coc-json',
@@ -537,10 +539,10 @@ endfunction
 "  \   'pythonPath': split(execute('!which python3'), '\n')[-1]
 "  \ })
 "
-	call coc#config('python', {
-		\ 'formatting.blackPath': $HOME."/.local/bin/black",
-		\})
-		" \ 'linting.pylintPath': $HOME."/.local/bin/pylint"
+call coc#config('python', {
+            \ 'formatting.blackPath': $HOME."/.local/bin/black",
+            \})
+" \ 'linting.pylintPath': $HOME."/.local/bin/pylint"
 
 " nerdcommenter
 "nnoremap gc :call NERDComment(0,"toggle")<CR>
@@ -608,9 +610,9 @@ endif
 " endif
 augroup fmt
     autocmd!
-    autocmd BufWritePre *.py,*.js,*.java,*.c,*.cpp,*.haskell :Neoformat
+    autocmd BufWritePre *.py,*.js,*.java,*.c,*.cpp,*.haskell,*.json,*.ts :Neoformat
 augroup END
-nmap <silent><Leader>sp :Neoformat<cr>
+nmap <silent><Leader>sf :Neoformat<cr>
 "-----------
 " PYTHON
 "-----------
@@ -644,7 +646,7 @@ let g:neoformat_javascript_prettier = {
 let g:neoformat_enabled_javascript = ['prettier']
 
 
-            " \ 'args': ['-assume-filename=' . expand('%:t'), '-style=google'],
+" \ 'args': ['-assume-filename=' . expand('%:t'), '-style=google'],
 let g:neoformat_java_clangformat = {
             \ 'exe': 'clang-format',
             \ 'args': ['-assume-filename=' . expand('%:t'), '-style=file'],
@@ -973,38 +975,76 @@ autocmd Filetype java,javascript,python let g:airline#extensions#tabline#enabled
 " vimspector
 " let g:vimspector_enable_mappings = 'HUMAN'
 " packadd! vimspector
-" nmap <leader>dd :call vimspector#Launch()<CR>
 " nmap <leader>dw :VimspectorWatch
 " autocmd Filetype java nmap <leader>dd :CocCommand java.debug.vimspector.start<cr>
 "enable python debugging
 " :VimspectorInstall vscode-python
-" <Plug>VimspectorContinue
-" <Plug>VimspectorStop
-" <Plug>VimspectorRestart
-" <Plug>VimspectorPause
-" <Plug>VimspectorToggleBreakpoint
-" <Plug>VimspectorToggleConditionalBreakpoint
+"
+fun GotoWindow(id)
+    call win_gotoid(a:id)
+    MaximizerToggle
+endfun
+
+" setup guide for java https://urfoex.blogspot.com/2020/08/debugging-java-with-jdb-or-vim.html
+
+nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<cr>
+nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<cr>
+nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<cr>
+nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<cr>
+nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<cr>
+nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.stack_output)<cr>
+
+nnoremap <leader>dd :call vimspector#Launch()<CR>
+nmap <leader>dD  <Plug>VimspectorStop
+nnoremap <leader>dr :call vimspector#Reset()<cr>
+nmap <leader>dR <Plug>VimspectorRestart
+nmap <leader>dl <Plug>VimspectorStepInto
+nmap <leader>dn <Plug>VimspectorStepOver
+nmap <leader>de <Plug>VimspectorStepOut
+nmap <leader>dp <Plug>VimspectorPause
+nnoremap <leader>d<space> :call vimspector#Continue()<cr>
+nmap <leader>dC <Plug>VimspectorRunToCursor
+nmap <leader>db <Plug>VimspectorToggleBreakpoint
+nmap <leader>dB <Plug>VimspectorToggleConditionalBreakpoint
 " <Plug>VimspectorAddFunctionBreakpoint
-" <Plug>VimspectorStepOver
-" <Plug>VimspectorStepInto
-" <Plug>VimspectorStepOut
+
+" default config for a javascript file!
+" Javascript
 "{
 "  "configurations": {
-"    "univisal: Launch": {
-"      "adapter": "debugpy",
+"    "run": {
+"      "adapter": "vscode-node",
 "      "configuration": {
-"        "name": "Launch",
-"        "type": "python",
 "        "request": "launch",
-"        "cwd": "${workspaceRoot}",
+"        "protocol": "auto",
 "        "stopOnEntry": true,
-"        "console": "externalTerminal",
-"        "debugOptions": [],
-"        "program": "${file}"
+"        "console": "integratedTerminal",
+"        "program": "${workspaceRoot}/nice.js",
+"        "cwd": "${workspaceRoot}"
+"      }
+"    },
+"    "foobar": {}
+"  }
+"}
+"Java
+""{
+"  "configurations": {
+"    "Java Attach": {
+"      "adapter": "vscode-java",
+"      "configuration": {
+"        "request": "attach",
+"        "hostName": "${host}",
+"        "port": "${port}",
+"        "projectName": "${projectName}",
+"        "sourcePaths": [
+"          "${workspaceRoot}/src/main/java",
+"          "${workspaceRoot}/src/test/java"
+"        ]
 "      }
 "    }
 "  }
 "}
+
 
 " vim-commentary
 autocmd FileType json setlocal commentstring=//%s
@@ -1308,18 +1348,18 @@ map <leader>ll <Plug>(ale_toggle)
 " make ale ONLY use the linters defined in g:ale_linters
 let g:ale_linters_explicit = 0
 let g:ale_linters =  {
-  \   'elixir': ['credo', 'dialyxir', 'dogma'],
-  \   'go': ['gofmt', 'golint', 'go vet'],
-  \   'perl': ['all'],
-  \   'python': ['flake8', 'pylint', 'mypy', 'pyright'],
-  \   'rust': ['cargo', 'rls'],
-  \   'text': [],
-  \   'javascript': ['all'],
-  \   'vue': ['eslint', 'vls'],
-  \   'zsh': ['all'],
-  \   'c': ['all'],
-  \   'cpp': ['all'],
-  \}
+            \   'elixir': ['credo', 'dialyxir', 'dogma'],
+            \   'go': ['gofmt', 'golint', 'go vet'],
+            \   'perl': ['all'],
+            \   'python': ['flake8', 'pylint', 'mypy', 'pyright'],
+            \   'rust': ['cargo', 'rls'],
+            \   'text': [],
+            \   'javascript': ['all'],
+            \   'vue': ['eslint', 'vls'],
+            \   'zsh': ['all'],
+            \   'c': ['all'],
+            \   'cpp': ['all'],
+            \}
 
 " show full linter message
 "<Plug>(ale_detail)
@@ -1368,7 +1408,7 @@ function! EnterNameToGrep()
     call inputrestore()
     if len(l:name_to_grep) == 0
         return
-      endif
+    endif
     exe ":VcsJump grep " . l:name_to_grep
 endfunction
 nnoremap <silent><Leader>vd <Plug>(VcsJump)<cr>
@@ -1376,3 +1416,9 @@ nnoremap <silent><Leader>vm :VcsJump merge<cr>
 nnoremap <Leader>vg :call EnterNameToGrep()<cr>
 
 let g:VcsJumpMode="cwd" "can be buffer
+"===========
+" MAXIMIZER
+"===========
+nnoremap <silent><F3> :MaximizerToggle<CR>
+vnoremap <silent><F3> :MaximizerToggle<CR>gv
+inoremap <silent><F3> <C-o>:MaximizerToggle<CR>

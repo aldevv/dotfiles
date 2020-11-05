@@ -84,6 +84,8 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'tpope/vim-dispatch'
 Plug 'vim-test/vim-test'
 Plug 'wincent/vcs-jump'
+Plug 'puremourning/vimspector'
+Plug 'szw/vim-maximizer'
 
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'
@@ -98,8 +100,6 @@ Plug 'wincent/vcs-jump'
 "https://github.com/mattboehm/dotfiles/blob/master/vim/vimrc
 "for more
 "
-" still not working correctly for neovim
-" Plug 'puremourning/vimspector'
 
 " can change this now that i have textobj-user
 
