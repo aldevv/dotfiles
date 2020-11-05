@@ -7,17 +7,14 @@ Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'crusoexia/vim-monokai'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'KeitaNakamura/highlighter.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'KeitaNakamura/highlighter.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'uiiaoo/java-syntax.vim'
 Plug 'sheerun/vim-polyglot'
-" Plug 'fcpg/vim-fahrenheit'
 " Plug 'tomasiser/vim-code-dark'
-" Plug 'dracula/vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " programming
-" Plug 'uiiaoo/java-syntax.vim'
 Plug 'bkad/CamelCaseMotion'"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
@@ -86,6 +83,7 @@ Plug 'dense-analysis/ale'
 Plug 'frazrepo/vim-rainbow'
 Plug 'tpope/vim-dispatch'
 Plug 'vim-test/vim-test'
+Plug 'wincent/vcs-jump'
 
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'

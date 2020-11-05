@@ -271,7 +271,8 @@ return ":CocFzfList outline \<cr>"
 endfunction
 
 function BrowseDots()
-return ":FilesDots \<cr>"
+" return ":FilesDots \<cr>"
+return ":\<C-u>TagbarToggle\<CR>"
 endfunction
 
 let g:coc_force_debug = 1
@@ -367,7 +368,8 @@ nnoremap <leader>gst :Gstatus<CR>
 " - Press <ctrl-r> to rebase a branch
 nnoremap <leader>gc :GCheckout<CR>
 nnoremap <leader>ggc :Gcommit<CR>
-nnoremap <leader>gd :Gdiff<CR>
+" nnoremap <leader>gd ::Gvdiff<CR>
+nnoremap <leader>gd ::Gvdiffsplit<CR>
 nnoremap <leader>gloG :Glog --reverse<CR>
 nnoremap Q :Glog --reverse<CR>
 nnoremap <leader>ggp :Git push<CR>
@@ -1029,10 +1031,10 @@ let g:vista_sidebar_width = 30
 
 " " nmap <leader>cv :Vista coc<cr>
 " nmap <leader>cv :Vista!!<cr>
-autocmd Filetype python,c,cpp,java,javascript,go,haskell nmap <leader>cf :Vista finder<cr>
+autocmd Filetype python,c,cpp,java,javascript,go,haskell,vim nmap <leader>cv :Vista finder<cr>
 
 " Tagbar
-nmap <leader>cv :TagbarToggle<CR>
+" nmap <leader>cv :TagbarToggle<CR>
 " let g:tagbar_position = 'rightbelow'
 
 " so it opens focused
@@ -1234,7 +1236,7 @@ nnoremap <silent> <leader>ccd       :<C-u>CocFzfList diagnostics --current-buf<C
 nnoremap <silent> <leader>ccc       :<C-u>CocFzfList commands<CR>
 nnoremap <silent> <leader>cce       :<C-u>CocFzfList extensions<CR>
 nnoremap <silent> <leader>cl       :<C-u>CocFzfList location<CR>
-nnoremap <silent> <leader>cV            :<C-u>CocFzfList outline<CR>
+" nnoremap <silent> <leader>cV        :<C-u>CocFzfList outline<CR>
 " nnoremap <silent> <a-n>            :<C-u>CocFzfList outline<CR>
 nnoremap <silent> <leader>cs       :<C-u>CocFzfList symbols<CR>
 nnoremap <silent> <leader>ccs       :<C-u>CocFzfList sources<CR>
@@ -1352,3 +1354,11 @@ autocmd FileType c let b:dispatch = 'gcc %'
 "==============
 "it uses ctags to update highlights
 ":HighlighterUpdate
+"
+"==============
+" VCS-JUMP
+"==============
+nmap <silent><Leader>vd <Plug>(VcsJump)<cr>
+nmap <silent><Leader>vm :VcsJump merge<cr>
+nmap <silent><Leader>vg :VcsJump grep<cr>
+let g:VcsJumpMode="cwd" "can be buffer

@@ -80,7 +80,6 @@ endfunction
 nnoremap <leader>sn  :call EnterFileName()<cr>
 
 
-noremap <leader>n <s-n>
 noremap <leader>sd :bd<cr>
 noremap <a-q> :bd<cr>
 " noremap <c-w> :bd<cr>
@@ -196,9 +195,9 @@ nnoremap <leader>ss <c-w>s
 nnoremap <leader>sv <c-w>v
 " map <leader>i :setlocal autoindent<cr>
 " map <leader>I :setlocal noautoindent<cr>
-map  <leader>T :w !sudo tee %<CR>
+map  <leader>q :w !sudo tee %<CR>
 map  <leader>t :w<CR>
-map  <leader>q :wq<CR>
+map  <leader>n :wq<CR>
 " map <leader><F1> :e ~/.config/nvim/init.vim<cr>
 nnoremap <F6> :e $HOME/.config/nvim/init.vim<cr>
 map <leader><F2> :e ~/.zshrc<cr>
@@ -300,7 +299,7 @@ endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR><c-o>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
 map <silent><leader>lfc :silent execute '!fcc' shellescape(&ft)<cr>
-nnoremap <leader>v V`]
+nnoremap <leader>V V`]
 
 command! -bang -nargs=? -complete=dir Cfz :e $HOME/.zshrc
 command! -bang -nargs=? -complete=dir Cfp :e $HOME/.zprofile
