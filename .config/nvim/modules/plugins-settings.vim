@@ -191,6 +191,9 @@ nmap <silent> c] <Plug>(coc-diagnostic-next)
 nmap <silent> c, <Plug>(coc-fix-current)
 nmap <silent> cr <Plug>(coc-refactor)
 cnoreabbrev CS CocSearch
+" for static hover glitch
+nmap <Esc> :call coc#util#float_hide() <CR>
+" or do <c-w>o to close it but it closes other windows as well
 
 " nnoremap <silent> <leader>cs :call CocAction('documentSymbols')<cr>
 " Mappings for CoCList
@@ -1358,7 +1361,18 @@ autocmd FileType c let b:dispatch = 'gcc %'
 "==============
 " VCS-JUMP
 "==============
-nmap <silent><Leader>vd <Plug>(VcsJump)<cr>
-nmap <silent><Leader>vm :VcsJump merge<cr>
-nmap <silent><Leader>vg :VcsJump grep<cr>
+
+function! EnterNameToGrep()
+    call inputsave()
+    let l:name_to_grep = input("Enter Grep Input: ")
+    call inputrestore()
+    if len(l:name_to_grep) == 0
+        return
+      endif
+    exe ":VcsJump grep " . l:name_to_grep
+endfunction
+nnoremap <silent><Leader>vd <Plug>(VcsJump)<cr>
+nnoremap <silent><Leader>vm :VcsJump merge<cr>
+nnoremap <Leader>vg :call EnterNameToGrep()<cr>
+
 let g:VcsJumpMode="cwd" "can be buffer
