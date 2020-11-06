@@ -5,7 +5,30 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+//static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+//static char *font = "Mono:pixelsize=12:antialias=true:autohint=true";
+//
+// current
+/* static char *font = "Fira Code:size=10:antialias=true:autohint=true"; */
+/* static char *font = "FiraCode Nerd Font:size=11:antialias=true:autohint=true"; */
+static char *font = "VictorMono Nerd Font:size=14:antialias=true:autohint=true";
+/* static char *font = "FiraCode Nerd Font Mono:size=11:antialias=true:autohint=true"; */
+/* static char *font = "monospace:pixelsize=15:antialias=true:autohint=true"; */
+/* static char *font = "Source Code Pro:pixelsize=14:antialias=true:autohint=true"; // Unicode (emojis) */
+;
+/* static char *font = "mono:size=10:antialias=true:autohint=true"; */
+/* Spare fonts */
+static char *font2[] = {
+    "Noto Sans Emoji:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis)
+    "Droid Sans Japanese:pixelsize=14:antialias=true:autohint=true", // Japanese
+    /* "Hack Nerd Font Mono:pixelsize=14:antialias=true:autohint=true", // Powerline */
+    /* "Source Code Pro:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis) */
+    /* "JoyPixels:pixelsize=14:antialias=true:autohint=true" //not working in solus */
+    /* "Symbola:pixelsize=14:antialias=true:autohint=true", // Unicode (emojis) */
+    /* "Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
+    /* "JoyPixels:pixelsize=14:antialias=true:autohint=true" //not working in solus */
+};
+
 static int borderpx = 2;
 
 /*
@@ -93,6 +116,11 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
+/* bg opacity */
+/* float alpha = 0.8; */
+/* float alpha = 0.8; */
+float alpha = 0.92;
+
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
@@ -120,6 +148,7 @@ static const char *colorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
+	"black",
 };
 
 
@@ -128,7 +157,7 @@ static const char *colorname[] = {
  * foreground, background, cursor, reverse cursor
  */
 unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
+unsigned int defaultbg = 258;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
@@ -189,9 +218,9 @@ ResourcePref resources[] = {
 		{ "color13",      STRING,  &colorname[13] },
 		{ "color14",      STRING,  &colorname[14] },
 		{ "color15",      STRING,  &colorname[15] },
-		{ "background",   STRING,  &colorname[256] },
+		{ "background",   STRING,  &colorname[258] },
 		{ "foreground",   STRING,  &colorname[257] },
-		{ "cursorColor",  STRING,  &colorname[258] },
+		{ "cursorColor",  STRING,  &colorname[256] },
 		{ "termname",     STRING,  &termname },
 		{ "shell",        STRING,  &shell },
 		{ "minlatency",   INTEGER, &minlatency },
@@ -202,6 +231,7 @@ ResourcePref resources[] = {
 		{ "borderpx",     INTEGER, &borderpx },
 		{ "cwscale",      FLOAT,   &cwscale },
 		{ "chscale",      FLOAT,   &chscale },
+		{ "alpha",        FLOAT,   &alpha },
 };
 
 /*
@@ -221,22 +251,38 @@ static MouseShortcut mshortcuts[] = {
 #define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
+static char *openurlcmd[] = { "/bin/sh", "-c", "st-urlhandler", "externalpipe", NULL };
+
+static char *copyurlcmd[] = { "/bin/sh", "-c",
+    "tmp=$(sed 's/.*│//g' | tr -d '\n' | grep -aEo '(((http|https|gopher|gemini|ftp|ftps|git)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./@$&%?$#=_-~]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*)' | uniq | sed 's/^www./http:\\/\\/www\\./g' ); IFS=; [ ! -z $tmp ] && echo $tmp | dmenu -i -p 'Copy which url?' -l 10 | tr -d '\n' | xclip -selection clipboard",
+    "externalpipe", NULL };
+
+static char *copyoutput[] = { "/bin/sh", "-c", "st-copyout", "externalpipe", NULL };
+
+
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
+	{ ControlMask|ShiftMask,XK_E,           zoom,           {.f = +1} },
+	{ ControlMask|ShiftMask,XK_N,           zoom,           {.f = -1} },
+	{ ControlMask|ShiftMask,XK_U,           zoom,           {.f = +2} },
+	{ ControlMask|ShiftMask,XK_D,           zoom,           {.f = -2} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
-	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
-	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
+	{ MODKEY,               XK_c,           clipcopy,       {.i =  0} },
+	{ MODKEY,               XK_v,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ MODKEY|ShiftMask,     XK_E,           kscrollup,      {.i =  1} },
+	{ MODKEY|ShiftMask,     XK_N,           kscrolldown,    {.i =  1} },
+	{ MODKEY|ShiftMask,     XK_U,           kscrollup,      {.i = -1} },
+	{ MODKEY|ShiftMask,     XK_D,           kscrolldown,    {.i = -1} },
+    { MODKEY,               XK_l,           externalpipe,   {.v = openurlcmd } },
+	{ MODKEY,               XK_y,           externalpipe,   {.v = copyurlcmd } },
+	{ MODKEY,               XK_o,           externalpipe,   {.v = copyoutput } },
 };
 
 /*
@@ -278,6 +324,7 @@ static uint ignoremod = Mod2Mask|XK_SWITCH_MOD;
  */
 static Key key[] = {
 	/* keysym           mask            string      appkey appcursor */
+    { XK_Return,        ShiftMask,      "\033[13;2u",    0,    0},
 	{ XK_KP_Home,       ShiftMask,      "\033[2J",       0,   -1},
 	{ XK_KP_Home,       ShiftMask,      "\033[1;2H",     0,   +1},
 	{ XK_KP_Home,       XK_ANY_MOD,     "\033[H",        0,   -1},

@@ -29,11 +29,11 @@ nnoremap L I
 " nnoremap <CR> o<Esc>
 " nnoremap <S-CR> O<Esc>
 " nnoremap [13;2u o
+"
 
 noremap - /\v
 vnoremap - /\v
 noremap / -
-noremap <tab> %
 noremap <silent><leader>o :call ToggleQuickFix()<cr>
 function! ToggleQuickFix()
   if empty(filter(getwininfo(), 'v:val.quickfix'))
@@ -50,7 +50,7 @@ nnoremap <silent><leader>,c  :!chmod +x %<cr>
 
 
 " Make double-<Esc> clear search highlights
-noremap <silent><esc> :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
+noremap <silent><esc><esc> :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
 
 " nnoremap <silent> <leader>z :call ToggleFMethod()<cr>
 " function ToggleFMethod()
@@ -162,8 +162,8 @@ tnoremap <a-t> <C-\><C-n>
 tmap <silent><a-q> <a-t>:Ttoggle<cr>
 
 " go up from terminal
-tmap <a-r> <a-t><c-w>k
-map <a-r> <c-w>ja
+tmap <a-d> <a-t><c-w>k
+map <a-d> <c-w>ja
 
 "" Guide navigation
 noremap <a-k> <Esc>/<++><Enter>"_c4l
@@ -177,8 +177,15 @@ inoremap <a-m> <++>
 " shell
 noremap <leader>rb i#!/bin/sh<CR><CR>
 
+"global do
+nnoremap <A-r> :%g/\v//norm!<Left><Left><Left><Left><Left><Left><Left>
+nnoremap <A-R> :%norm!<space>
+vnoremap <A-r> :norm!<space>
+vnoremap <A-R> :g/\v//norm!<Left><Left><Left><Left><Left><Left><Left>
+
 " Alias replace all to
-nnoremap <A-s> :%s///gI<Left><Left><Left><Left>
+nnoremap <A-s> :%s/\v//gI<Left><Left><Left><Left>
+vnoremap <A-s> :s/\v//gI<Left><Left><Left><Left>
 inoremap <A-s> <++>
 " save with no permission using w!!, could be cnoremap
 cmap w!! w !sudo tee > /dev/null %
@@ -198,15 +205,20 @@ noremap  <Left> 5<c-w><
 " noremap  + 5<c-w>>
 " noremap  - 5<c-w><
 
-" split movement
-" nnoremap <leader>h <c-w>h
-" nnoremap <leader>n <c-w>j
-" nnoremap <leader>e <c-w>k
-" nnoremap <leader>i <c-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <C-n> <C-w>j
-nnoremap <C-e> <C-w>k
-nnoremap <C-i> <C-w>l
+" split movement , cant be <c-i> because that is mapped to be the opposite of <c-o>
+nnoremap <leader>h <c-w>h
+nnoremap <leader>n <c-w>j
+nnoremap <leader>e <c-w>k
+nnoremap <leader>i <c-w>l
+noremap <tab> %
+nnoremap <M-i> <c-i>
+nnoremap <M-o> <c-o>
+
+
+" noremap <c-i> <c-i>
+" set <tab>=^[
+" noremap <TAB> <tab>
+
 
 nnoremap <leader>ss <c-w>s
 nnoremap <leader>sv <c-w>v
@@ -214,7 +226,6 @@ nnoremap <leader>sv <c-w>v
 " map <leader>I :setlocal noautoindent<cr>
 map  <leader>q :w !sudo tee %<CR>
 map  <leader>t :w<CR>
-map  <leader>n :q<CR>
 " map <leader><F1> :e ~/.config/nvim/init.vim<cr>
 nnoremap <F6> :e $HOME/.config/nvim/init.vim<cr>
 map <leader><F2> :e ~/.zshrc<cr>

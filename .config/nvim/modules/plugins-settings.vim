@@ -190,7 +190,7 @@ vmap <leader>ca <Plug>(coc-codeaction-selected)
 nmap <silent> c[ <Plug>(coc-diagnostic-prev)
 nmap <silent> c] <Plug>(coc-diagnostic-next)
 nmap <silent> c, <Plug>(coc-fix-current)
-nmap <silent> cr <Plug>(coc-refactor)
+nmap <silent> crr <Plug>(coc-refactor)
 cnoreabbrev CS CocSearch
 " for static hover glitch
 nnoremap <silent><esc> :call coc#util#float_hide()<cr>
@@ -1231,7 +1231,7 @@ let g:brightest#enable_filetypes = {
 "==========
 " Ripgrep
 "==========
-nnoremap <leader>cf :Rg 
+nnoremap <leader>cf :Rg<space>
 nnoremap <leader>cF :Rg <c-r>=expand('<cword>')<cr><cr>
 
 "==========
@@ -1463,6 +1463,7 @@ nnoremap <leader>.s :VimApmShutdown<cr>
 "========================
 let g:bujo#window_width = 40
 let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
+nmap <leader>,, :Todo<cr>
 nmap <M-,> <Plug>BujoAddnormal
 imap <M-,> <Plug>BujoAddinsert
 nmap <M-.> <Plug>BujoChecknormal

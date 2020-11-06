@@ -206,10 +206,13 @@ noremap  <Left> 5<c-w><
 " noremap  E 5<c-w>+
 " noremap  + 5<c-w>>
 " noremap  - 5<c-w><
+"
 nnoremap <leader>h <c-w>h
 nnoremap <leader>n <c-w>j
 nnoremap <leader>e <c-w>k
 nnoremap <leader>i <c-w>l
+noremap <tab> %
+
 nnoremap <leader>ss <c-w>s
 nnoremap <leader>sv <c-w>v
 " map <leader>i :setlocal autoindent<cr>

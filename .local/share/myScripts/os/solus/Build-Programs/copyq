@@ -1,8 +1,9 @@
 #!/bin/sh
 
 cd "$PROGRAMS"
-git clone --depth=1 https://github.com/Akuseru1/CopyQ
-
+git clone https://github.com/Akuseru1/CopyQ
+cd "CopyQ-Vi-Colemak-bindings"
+git remote add upstream https://github.com/hluk/CopyQ
 # cmake and git have to be installed
 eopkg it cmake
 

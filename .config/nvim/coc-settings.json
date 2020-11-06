@@ -19,6 +19,7 @@
   "diagnostic.infoSign": "",
   "__diagnostic.messageDelay.comment": "default= 200",
   "diagnostic.messageDelay": 400,
+  "diagnostic.displayByAle": true,
 
   "__suggest.noselect.comment": "this is for not choosing first item when pressing TAB",
   "suggest.noselect": false,
@@ -31,7 +32,6 @@
   "suggest.triggerCompletionWait": 100,
   "signature.triggerSignatureWait": 200,
   "signature.floatMaxWidth": 200,
-  "coc.preferences.diagnostic.displayByAle": true,
   "java.debug.vimspector.start": {
     "configurations": {
       "run": {
