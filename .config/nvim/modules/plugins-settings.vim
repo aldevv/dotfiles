@@ -1,5 +1,5 @@
 " UndoTreeToggle
-map <leader>u :UndotreeToggle<CR>
+map <silent><leader>u :UndotreeToggle<CR>
 
 " NERDTreeToggle
 " check mappings here
@@ -146,7 +146,6 @@ command! -bang -nargs=* Rgfzf
             \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
             \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': s:find_current_root()}), <bang>0)
 map <leader>f :Rgfzf<cr>
-map <leader>cf :Rg
 
 let commandFiles="awk '{print $2}' ".$XDG_CONFIG_HOME."/shortcuts/sd"
 command! -bang -nargs=* Bookm call fzf#run({'source':commandFiles,'sink': 'e'})
@@ -178,8 +177,8 @@ nmap <silent> , <Plug>(coc-diagnostic-prev-error)
 nmap <silent> ; <Plug>(coc-diagnostic-next-error)
 nnoremap <silent> <leader>+ :call CocAction('doHover')<cr>
 nmap <F2> <Plug>(coc-rename)
-nmap <leader>cp :CocSearch <C-R>=expand('<cword>')<cr><cr>
-nmap <leader>cP :CocSearch <C-R>=expand('<cword>')<cr>
+nmap <leader>crf :CocSearch <C-R>=expand('<cword>')<cr><cr>
+nmap <leader>crf :CocSearch <C-R>=expand('<cword>')<cr>
 
 ":CocRebuild                        *:CocRebuild*
 " use when you upgrade nodejs
@@ -364,6 +363,7 @@ au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
 nmap <leader>gi :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
 nmap <leader>gs :G<CR>
+nmap <leader>g<space> :G init<CR>
 
 nnoremap <leader>gst :Gstatus<CR>
 " use ctrl + d to delete branches
@@ -1231,7 +1231,8 @@ let g:brightest#enable_filetypes = {
 "==========
 " Ripgrep
 "==========
-nnoremap <leader>a :Rg<space>
+nnoremap <leader>cf :Rg 
+nnoremap <leader>cF :Rg <c-r>=expand('<cword>')<cr><cr>
 
 "==========
 "Anyfold
@@ -1445,4 +1446,30 @@ let g:qf_join_changes = 1
 
 let g:qf_write_changes = 1
 
+"========================
+" VIM BE GOOD AND VIM APM
+"========================
+"By default vim be good returns random offset for game difficult above noob,
+"if you with to set fixed offset set vim_be_good_delete_me_offset to desired value.
+" let g:vim_be_good_delete_me_offset = 35
+"
+nnoremap <leader>.v :VimBeGood<cr>
+nnoremap <leader>.w :VimApm<cr>
+nnoremap <leader>.s :VimApmShutdown<cr>
 
+
+"========================
+" VIM-BUJO
+"========================
+let g:bujo#window_width = 40
+let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
+nmap <M-,> <Plug>BujoAddnormal
+imap <M-,> <Plug>BujoAddinsert
+nmap <M-.> <Plug>BujoChecknormal
+imap <M-.> <Plug>BujoCheckinsert
+
+"========================
+" VIM-MAN
+"========================
+" map <leader>k <Plug>(Man) - open man page for word under cursor in a horizontal split
+map N <Plug>(Vman)

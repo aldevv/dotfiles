@@ -3,7 +3,8 @@ call plug#begin()
 " basic editor stuff (mkdir, move etc)
 " Plug 'tpope/vim-eunuch'
 " themes
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'crusoexia/vim-monokai'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
@@ -87,6 +88,15 @@ Plug 'wincent/vcs-jump'
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 Plug 'stefandtw/quickfix-reflector.vim'
+" task manager
+Plug 'vuciv/vim-bujo'
+Plug 'vim-utils/vim-man'
+
+"FUN STUFF"
+"
+" needs neovim 0.5
+Plug 'ThePrimeagen/vim-apm'
+Plug 'ThePrimeagen/vim-be-good'
 
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'

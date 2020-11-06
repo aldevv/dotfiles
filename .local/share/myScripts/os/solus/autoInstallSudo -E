@@ -2,6 +2,8 @@
 mkdir "$BACKUPS"
 mkdir "$PROGRAMS"
 
+# neovim is build from source!
+
 # install packages
 packages=$(awk '{printf "%s ", $0}' packages)
 eopkg -y $packages

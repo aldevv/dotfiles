@@ -12,7 +12,7 @@ nnoremap i l
 noremap k nzzzv
 noremap K Nzzzv
 nnoremap <leader>- :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
-noremap N J
+" noremap N J
 noremap J E
 vnoremap i l
 vnoremap l i
@@ -46,7 +46,7 @@ endfunction
 
 nnoremap <leader>z zMzvzz
 
-nnoremap <silent><leader>lch  :!chmod +x %<cr>
+nnoremap <silent><leader>,c  :!chmod +x %<cr>
 
 
 " Make double-<Esc> clear search highlights
@@ -89,20 +89,24 @@ function! EnterDirName()
     startinsert
 endfunction
 
+" create files and folders
 nnoremap <leader>sn  :call EnterFileName()<cr>
-nnoremap <leader>sn  :call EnterFolderName()<cr>
+nnoremap <leader>sm  :call EnterFolderName()<cr>
 
-
+" close buffers
 noremap <leader>sd :bd<cr>
 noremap <a-q> :bd<cr>
-" noremap <c-w> :bd<cr>
-noremap <silent>N :bprevious<cr>
-noremap <silent>E :bnext<cr>
+
+" change buffers like bscode
+" noremap <silent>N :bprevious<cr>
+" noremap <silent>E :bnext<cr>
 
 " clipboard
 " "*p pastes what is highlighted by the mouse
 " ""p and "0p are the default registers
 "
+"diffput
+vnoremap <leader>,p "_dP
 " set clipboard=unnamedplus
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+y$
@@ -142,7 +146,7 @@ vnoremap <silent><leader>lgr :B !sortListR.py <cr>t]xT[
 
 
 nnoremap gñ :SyntaxQuery<CR>
-nnoremap <leader>lt :silent call Toggle_transparent()<CR>
+nnoremap <silent><leader>,t :silent call Toggle_transparent()<CR>
 function Toggle_transparent()
   exec ":!toggleTrans"
 endfunction
@@ -311,7 +315,7 @@ endfunction
 
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR><c-o>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
-map <silent><leader>lfc :silent execute '!fcc' shellescape(&ft)<cr>
+map <silent><leader>,f :silent execute '!fcc' shellescape(&ft)<cr>
 nnoremap <leader>V V`]
 
 command! -bang -nargs=? -complete=dir Cfz :e $HOME/.zshrc
@@ -352,4 +356,8 @@ nnoremap Q gqip
 " to source your init.vim (only one line)
 vnoremap <silent><leader>S y:execute @@<cr>
 nnoremap <silent><leader>S ^vg_y:execute @@<cr>
-noremap <leader>0 :Colors<cr>
+noremap <leader>0 :Colors<crc
+
+" help current word
+nnoremap gw :h <c-r>=expand('<cword>')<cr><bar>resize 15<cr>
+

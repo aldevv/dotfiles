@@ -57,8 +57,12 @@ endif
 
     function CompileMd()
         " the space at the end .pdf " is caused by the \n character
+        let l:buffer = bufname()
+        if l:buffer =~ '\v.*/?todo.md'
+           return
+        endif
         let file = expand('%:p')
-
+         
         let destinationFile = system("printf \"$(basename ". file. " .md).pdf\"")
         let destinationPath = expand('%:p:h')
         let destination = destinationPath .'/'. destinationFile
@@ -85,6 +89,12 @@ endif
 function Autosaving()
     autocmd TextChanged,TextChangedI <buffer> silent! write
 endfunction
+
+" needs neovim 0.5
+augroup highlight_yank
+   autocmd!
+   autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
 
 "automatic ctags
 " au FileType {c,cpp} au BufWritePost <buffer> silent ! [ -e tags ] &&

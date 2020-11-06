@@ -3,7 +3,6 @@
 # $1 file name
 # $2 destination
 
-echo "first try!!!!!!"
 pandoc "$1" -o "$2"
 if [[ ! -e $2 ]]; then
     echo "second try!!!!!!"
