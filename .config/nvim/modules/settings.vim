@@ -176,7 +176,6 @@ set hidden
 " ask to save when not saved
 set confirm
 
-
 "detect root in git repo
 if executable('rg')
   let g:rg_derive_root='true'

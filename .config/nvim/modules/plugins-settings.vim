@@ -11,10 +11,10 @@ function s:UpdateNerd() " updates the  tree when a new file is saved
             autocmd BufWritePost * :NERDTreeRefreshRoot
         endif
     endif
-    g:nerdFirsttime = 1
+    let g:nerdFirsttime = 1
 endfunction
 " map <leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
-noremap <leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
+noremap <silent><leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
 
 
 
@@ -134,17 +134,19 @@ function! s:find_current_root()
 endfunction
 
 
-" command! -bang -nargs=* Rg
-"   \ call fzf#vim#grep(
-"   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-"   \   fzf#vim#with_preview({'dir': s:find_current_root()}), <bang>0)
-
 " for ripgrep
-command! -bang -nargs=* Rgfzf
+command! -bang -nargs=* Rgfzf2
             \ call fzf#vim#grep(
             \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(expand('<cword>')), 1,
             \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': s:find_current_root()}), <bang>0)
-map <leader>F :Rgfzf<cr>
+map <leader>F :Rgfzf2<cr>
+
+command! -bang -nargs=* Rgfzf
+            \ call fzf#vim#grep(
+            \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+            \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': s:find_current_root()}), <bang>0)
+map <leader>f :Rgfzf<cr>
+map <leader>cf :Rg
 
 let commandFiles="awk '{print $2}' ".$XDG_CONFIG_HOME."/shortcuts/sd"
 command! -bang -nargs=* Bookm call fzf#run({'source':commandFiles,'sink': 'e'})
@@ -165,7 +167,7 @@ command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gD <Plug>(coc-type-declaration)
-nmap <silent> <leader>cf <Plug>(coc-format)
+" nmap <silent> <leader>cf <Plug>(coc-format)
 nmap gr <Plug>(coc-references)
 nmap <leader>gr <Plug>(coc-references-used)
 nmap gR <Plug>(coc-implementation)
@@ -612,7 +614,7 @@ augroup fmt
     autocmd!
     autocmd BufWritePre *.py,*.js,*.java,*.c,*.cpp,*.haskell,*.json,*.ts :Neoformat
 augroup END
-nmap <silent><Leader>sf :Neoformat<cr>
+nmap <silent><Leader>sp :Neoformat<cr>
 "-----------
 " PYTHON
 "-----------
@@ -972,7 +974,9 @@ let g:airline_powerline_fonts = 1
 autocmd Filetype java,javascript,python let g:airline#extensions#tabline#enabled = 1
 " autocmd Filetype python let g:airline#extensions#tabline#enabled = 1
 
-" vimspector
+"===================
+" VIMSPECTOR
+"===================
 " let g:vimspector_enable_mappings = 'HUMAN'
 " packadd! vimspector
 " nmap <leader>dw :VimspectorWatch
@@ -1098,7 +1102,7 @@ let g:tagbar_map_hidenonpublic = 'h'
 let g:ranger_replace_netrw = 1
 let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0
-nmap <leader>f :Ranger<cr>
+nmap <leader>sf :Ranger<cr>
 
 " bclose
 let g:bclose_no_plugin_maps=1
@@ -1392,6 +1396,7 @@ let test#strategy = "dispatch"
 autocmd FileType java let b:dispatch = 'javac %'
 autocmd FileType cpp let b:dispatch = 'g++ %'
 autocmd FileType c let b:dispatch = 'gcc %'
+" cnoreabbrev Dispatch Dis
 "==============
 " HIGHLIGHTER
 "==============
@@ -1422,3 +1427,22 @@ let g:VcsJumpMode="cwd" "can be buffer
 nnoremap <silent><F3> :MaximizerToggle<CR>
 vnoremap <silent><F3> :MaximizerToggle<CR>gv
 inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
+
+"===========
+" QUICKFIX-REFLECTOR
+"===========
+"
+" If 1, automatically sets quickfix buffers 'modifiable'. If you prefer to do this manually, set the value to 0. Default: 1.
+let g:qf_modifiable = 1
+
+
+" If 1, changes within a single buffer will be joined using |:undojoin|, allowing them to be undone as a unit. Default: 0.
+let g:qf_join_changes = 1
+
+" If 1, writing the quickfix buffer will also write corresponding files. If 0,
+" buffers of corresponding files will be changed but not written,
+" allowing you to preview the changes before writing the individual buffers yourself. Default: 1
+
+let g:qf_write_changes = 1
+
+

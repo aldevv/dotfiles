@@ -77,7 +77,20 @@ function! EnterFileName()
     startinsert
 endfunction
 
+function! EnterDirName()
+    call inputsave()
+    let l:filename = input("Enter Folder Name: ")
+    call inputrestore()
+    if len(l:filename) == 0
+        return
+      endif
+    exe ":!mkdir " . l:filename
+    w
+    startinsert
+endfunction
+
 nnoremap <leader>sn  :call EnterFileName()<cr>
+nnoremap <leader>sn  :call EnterFolderName()<cr>
 
 
 noremap <leader>sd :bd<cr>
@@ -197,7 +210,7 @@ nnoremap <leader>sv <c-w>v
 " map <leader>I :setlocal noautoindent<cr>
 map  <leader>q :w !sudo tee %<CR>
 map  <leader>t :w<CR>
-map  <leader>n :wq<CR>
+map  <leader>n :q<CR>
 " map <leader><F1> :e ~/.config/nvim/init.vim<cr>
 nnoremap <F6> :e $HOME/.config/nvim/init.vim<cr>
 map <leader><F2> :e ~/.zshrc<cr>

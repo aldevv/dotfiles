@@ -86,6 +86,7 @@ Plug 'vim-test/vim-test'
 Plug 'wincent/vcs-jump'
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
+Plug 'stefandtw/quickfix-reflector.vim'
 
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'
