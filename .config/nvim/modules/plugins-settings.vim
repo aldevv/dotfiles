@@ -193,7 +193,7 @@ nmap <silent> c, <Plug>(coc-fix-current)
 nmap <silent> crr <Plug>(coc-refactor)
 cnoreabbrev CS CocSearch
 " for static hover glitch
-nnoremap <silent><esc> :call coc#util#float_hide()<cr>
+noremap <silent><esc> :call coc#util#float_hide()<cr>
 
 
 " or do <c-w>o to close it but it closes other windows as well
@@ -1272,11 +1272,11 @@ let g:AutoPairsShortcutJump = '<a-w>'
 " let g:AutoPairsShortcutBackInsert = '<Nop>'
 
 "===========
-"fzf
+"FZF
 "===========
 let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
 "===========
-" coc-fzf
+" COC-FZF
 " ==========
 " nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>
 nnoremap <silent> <leader>cD       :<C-u>CocFzfList diagnostics<CR>
@@ -1300,11 +1300,11 @@ nnoremap <silent> <leader>ccb       :<C-u>CocFzfListResume<CR>
 " ================
 " NEOTERM
 " ================
-"
+
 let g:neoterm_size="10"
 let g:neoterm_autoinsert = 1
 let g:neoterm_default_mod = 'rightbelow'
-let g:neoterm_automap_keys=''
+let g:neoterm_automap_keys=',tt'
 let g:neoterm_keep_term_open = 0
 map <silent><Leader>st :Ttoggle<cr>
 

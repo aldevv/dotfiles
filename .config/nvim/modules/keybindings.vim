@@ -19,7 +19,6 @@ vnoremap l i
 vnoremap L I
 noremap ge J
 noremap gE a<cr><esc>k$
-map º <c-^>
 noremap ' `
 " testing
 noremap I L
@@ -188,7 +187,7 @@ nnoremap <A-s> :%s/\v//gI<Left><Left><Left><Left>
 vnoremap <A-s> :s/\v//gI<Left><Left><Left><Left>
 inoremap <A-s> <++>
 " save with no permission using w!!, could be cnoremap
-cmap w!! w !sudo tee > /dev/null %
+cnoreabbrev w!! w !sudo tee > /dev/null %
 
 map <leader>rs :!./%<cr>
 map <silent> <F11> /\A\zs\a<cr>
@@ -224,7 +223,7 @@ nnoremap <leader>ss <c-w>s
 nnoremap <leader>sv <c-w>v
 " map <leader>i :setlocal autoindent<cr>
 " map <leader>I :setlocal noautoindent<cr>
-map  <leader>q :w !sudo tee %<CR>
+map  <silent><leader>q :silent w !sudo tee %<CR>
 map  <leader>t :w<CR>
 " map <leader><F1> :e ~/.config/nvim/init.vim<cr>
 nnoremap <F6> :e $HOME/.config/nvim/init.vim<cr>
