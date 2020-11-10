@@ -42,6 +42,8 @@ Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
 Plug 'liuchengxu/vim-which-key'
 Plug 'junegunn/goyo.vim'
 Plug 'jremmen/vim-ripgrep'
+
+" BUG with lazyredraw!
 Plug 'rhysd/clever-f.vim'
 
 "essential
@@ -53,9 +55,9 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  } |
          \ Plug 'Xuyuanp/nerdtree-git-plugin' |
          \ Plug 'ryanoasis/vim-devicons' |
-         \ Plug 'vwxyutarooo/nerdtree-devicons-syntax' |
+         \ Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 
-" text objects
+"" text objects
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
@@ -72,8 +74,6 @@ Plug 'francoiscabrol/ranger.vim' |
          \ Plug 'rbgrouleff/bclose.vim'
 Plug 'osyo-manga/vim-brightest'
 Plug 'jiangmiao/auto-pairs'
-" fork for some other features
-" Plug 'Krasjet/auto.pairs'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'kassio/neoterm'
 " for commits

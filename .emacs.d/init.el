@@ -4,7 +4,7 @@
 ;;      * install from internet:
 ;;          dont forget to do M-x all-the-icons-install font
 ;;      * change evil-colemak-basics u and U with l and L, and l with u
-;; 
+;;
 
 ;;company
 ;;company-irony
@@ -46,7 +46,9 @@
 
 ;;adds the libraries to the path
 (add-to-list 'load-path "~/.emacs.d/undo-tree")
+(add-to-list 'load-path "~/.emacs.d/evil-org-mode")
 (add-to-list 'load-path "~/.emacs.d/evil")
+(add-to-list 'load-path "~/.emacs.d/evil-magit")
 (add-to-list 'load-path "~/.emacs.d/evil-terminal-cursor-changer")
 (add-to-list 'load-path "~/.emacs.d/goto-chg")
 (add-to-list 'load-path "~/.emacs.d/evil-surround")
@@ -55,8 +57,6 @@
 (add-to-list 'load-path "~/.emacs.d/popup-el")
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
 (add-to-list 'load-path "~/.emacs.d/helm")
-(add-to-list 'load-path "~/.emacs.d/evil-org-mode")
-(add-to-list 'load-path "~/.emacs.d/evil-magit")
 (add-to-list 'load-path "~/.emacs.d/color-theme-approximate")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;; fixes tab for org-mode, must be before require evil!
@@ -344,10 +344,8 @@
 ;;(eval-after-load 'org
  ;; (progn
   ;;  (key-chord-define evil-visual-state-map "ir" nil)))
-(define-key evil-normal-state-map "i" nil)
-(define-key evil-visual-state-map "I" nil)
-(define-key evil-visual-state-map "i" nil)
 
+; Motion
 (define-key evil-motion-state-map "j" nil)
 (define-key evil-motion-state-map "k" nil)
 (define-key evil-motion-state-map "K" nil)
@@ -355,16 +353,48 @@
 (define-key evil-motion-state-map "e" nil)
 (define-key evil-motion-state-map "n" nil)
 (define-key evil-motion-state-map "N" nil)
-
-(define-key evil-normal-state-map "l" 'evil-insert)
-(define-key evil-visual-state-map "L" 'evil-insert)
-(define-key evil-visual-state-map "i" 'evil-forward-char)
-(define-key evil-motion-state-map "n" 'evil-next-line)
-(define-key evil-motion-state-map "e" 'evil-previous-line)
 (define-key evil-motion-state-map "i" 'evil-forward-char)
-(define-key evil-motion-state-map "j" 'evil-fordward-word-end)
 (define-key evil-motion-state-map "k" 'evil-ex-search-next)
 (define-key evil-motion-state-map "K" 'evil-ex-search-previous)
+(define-key evil-motion-state-map "n" 'evil-next-line)
+(define-key evil-motion-state-map "e" 'evil-previous-line)
+(define-key evil-motion-state-map "j" 'evil-fordward-word-end)
+
+;NORMAL
+
+(define-key evil-normal-state-map "j" nil)
+(define-key evil-normal-state-map "k" nil)
+(define-key evil-normal-state-map "K" nil)
+(define-key evil-normal-state-map "l" nil)
+(define-key evil-normal-state-map "e" nil)
+(define-key evil-normal-state-map "n" nil)
+(define-key evil-normal-state-map "N" nil)
+(define-key evil-normal-state-map "l" 'evil-insert)
+(define-key evil-normal-state-map "L" 'evil-insert-line)
+(define-key evil-normal-state-map "i" 'evil-forward-char)
+(define-key evil-normal-state-map "I" 'evil-window-bottom)
+(define-key evil-normal-state-map "k" 'evil-ex-search-next)
+(define-key evil-normal-state-map "K" 'evil-ex-search-previous)
+(define-key evil-normal-state-map "n" 'evil-next-line)
+(define-key evil-normal-state-map "e" 'evil-previous-line)
+(define-key evil-normal-state-map "j" 'evil-fordward-word-end)
+
+;Visual
+(define-key evil-visual-state-map "j" nil)
+(define-key evil-visual-state-map "k" nil)
+(define-key evil-visual-state-map "K" nil)
+(define-key evil-visual-state-map "l" nil)
+(define-key evil-visual-state-map "e" nil)
+(define-key evil-visual-state-map "n" nil)
+(define-key evil-visual-state-map "N" nil)
+(define-key evil-visual-state-map "L" 'evil-insert)
+(define-key evil-visual-state-map "i" 'evil-forward-char)
+(define-key evil-visual-state-map "k" 'evil-ex-search-next)
+(define-key evil-visual-state-map "K" 'evil-ex-search-previous)
+(define-key evil-visual-state-map "n" 'evil-next-line)
+(define-key evil-visual-state-map "e" 'evil-previous-line)
+(define-key evil-visual-state-map "j" 'evil-fordward-word-end)
+
 (define-key evil-normal-state-map (kbd "C-w j") nil)
 (define-key evil-normal-state-map (kbd "C-w k") nil)
 (define-key evil-normal-state-map (kbd "C-w i") nil)
@@ -372,8 +402,15 @@
 (define-key evil-normal-state-map (kbd "C-w e") 'evil-window-up)
 (define-key evil-motion-state-map (kbd "C-w i") 'evil-window-right)
 
+(define-key evil-visual-state-map "l" evil-inner-text-objects-map)
+(define-key evil-operator-state-map "l" evil-inner-text-objects-map)
 
-(evil-define-key 'visual org-mode-map (kbd "ir") nil)
+
+
+; see bindings
+;;https://mirrors.zju.edu.cn/elpa/melpa-stable/evil-colemak-basics-2.1.0.el
+
+(evil-define-key 'visual org-mode-map (kbd "lr") nil)
 ;; #' is simply good practice
 (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
 (evil-define-key 'insert org-mode-map (kbd "<tab>") #'tab-to-tab-stop)
@@ -429,7 +466,7 @@
   (setq file "TODO.org")
   (setq sync "rclone copy ~/org/ Dropbox:rclone")
   (if (equal (buffer-name) file) (shell-command sync)))
-      
+
 (add-hook 'after-save-hook 'dropbox_upload_schedule)
 
 ;; adds more options to TODO in org
@@ -506,7 +543,7 @@
 ; so opening links doesnt open in other window, default find-file-other-window
 
 ;is an association list (alist)
-(setq org-link-frame-setup '((file . find-file)))  
+(setq org-link-frame-setup '((file . find-file)))
 ;;
 
 ;;sets leader key
@@ -521,6 +558,7 @@
 
 ;;to follow links in org mode you have to put (org-open-at-point) in the function file
 (evil-leader/set-key
+  "t" 'save-buffer
   "w" 'avy-goto-char
   "c" 'org-toggle-checkbox
   "/s" 'org-sparse-tree ;both not in doom
@@ -541,15 +579,15 @@
   "oaq" 'org-tags-view
   "oas" 'org-agenda-month-view
   "oaa" 'org-agenda-list
-  "td" 'dired-open-term
-  "tn" 'newBuffer-ansi-term
-  "tp" 'org-cut-special
+  "st" 'dired-open-term
+  ; "st" 'newBuffer-ansi-term
+  ; "tp" 'org-cut-special
   "p" 'find-file
   "ee" 'eval-last-sexp
   "eb" 'eval-buffer
   "f" 'helm-bookmarks
   "sa" 'save-some-buffers
-  "st" 'org-set-tags-command
+  ; "st" 'org-set-tags-command
   "ss" 'flyspell-mode
 ;  "sp" 'split-window-horizontally ;; C-x 3 does this already
   "sb" 'flyspell-buffer

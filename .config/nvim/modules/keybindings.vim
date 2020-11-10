@@ -23,6 +23,10 @@ noremap ' `
 " testing
 noremap I L
 nnoremap L I
+
+noremap <c-w>N <c-w>J
+noremap <c-w>E <c-w>K
+noremap <c-w>I <c-w>L
 " noremap <a-n> <c-n>
 " noremap <a-e> <c-p>
 " nnoremap <CR> o<Esc>
@@ -164,28 +168,26 @@ tmap <silent><a-q> <a-t>:Ttoggle<cr>
 tmap <a-d> <a-t><c-w>k
 map <a-d> <c-w>ja
 
+" general insert commands
+inoremap <a-m> <++>
 "" Guide navigation
 noremap <a-k> <Esc>/<++><Enter>"_c4l
 inoremap <a-k> <Esc>/<++><Enter>"_c4l
 vnoremap <a-k> <Esc>/<++><Enter>"_c4l
 
-" general insert commands
-" inoremap ;g <++>
-inoremap <a-m> <++>
 
 " shell
 noremap <leader>rb i#!/bin/sh<CR><CR>
 
 "global do
-nnoremap <A-r> :%g/\v//norm!<Left><Left><Left><Left><Left><Left><Left>
-nnoremap <A-R> :%norm!<space>
-vnoremap <A-r> :norm!<space>
+nnoremap <A-R> :%g/\v//norm!<Left><Left><Left><Left><Left><Left><Left>
+nnoremap <A-r> :%norm!<space>
 vnoremap <A-R> :g/\v//norm!<Left><Left><Left><Left><Left><Left><Left>
+vnoremap <A-r> :norm!<space>
 
 " Alias replace all to
 nnoremap <A-s> :%s/\v//gI<Left><Left><Left><Left>
-vnoremap <A-s> :s/\v//gI<Left><Left><Left><Left>
-inoremap <A-s> <++>
+vnoremap <A-S> :s/\v//gI<Left><Left><Left><Left>
 " save with no permission using w!!, could be cnoremap
 cnoreabbrev w!! w !sudo tee > /dev/null %
 

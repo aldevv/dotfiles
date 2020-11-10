@@ -143,7 +143,7 @@ set foldtext=MyFoldText()
 " set wrap
 set formatoptions=qrn1
 
-set lazyredraw "dont show changes in macro playback
+" set lazyredraw "dont show changes in macro playback
 set splitbelow
 " set foldcolumn=1
 set wildmode=longest,list,full

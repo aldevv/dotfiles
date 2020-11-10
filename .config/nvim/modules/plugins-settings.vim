@@ -267,7 +267,10 @@ function Activate_hover()
     " autocmd CursorHold * if ! coc#util#has_float() | silent! call CocActionAsync('doHover') | endif
 endfunction
 
-autocmd FileType python,cpp,javascript,c,java :call Activate_hover()
+" auto hover
+" autocmd FileType python,cpp,javascript,c,java :call Activate_hover()
+
+
 nnoremap <nowait><expr> <a-n> coc#util#float_scrollable() ? coc#util#float_scroll(1) : OutlineFZF()
 " nnoremap <nowait><expr> <a-e> coc#util#float_scrollable() ? coc#util#float_scroll(0) : "\<c-w>\<c-v>"
 nnoremap <nowait><expr> <a-e> coc#util#float_scrollable() ? coc#util#float_scroll(0) : BrowseDots()
@@ -1206,20 +1209,23 @@ let g:clever_f_timeout_ms=3000
 " let g:clever_f_show_prompt=1
 let g:clever_f_chars_match_any_signs='¿'
 " by default is <cr> but the remap doesnt work
-let g:clever_f_repeat_last_char_inputs=["\<CR>"]
-let g:clever_f_mark_char =0
+" let g:clever_f_repeat_last_char_inputs=["\<CR>"]
+" let g:clever_f_mark_char =0
+let g:clever_f_mark_char =1
 let g:clever_f_mark_char_color = "Search"
 " it can search あ with this
 let g:clever_f_use_migemo = 1
 
 " brightest
 " highlights all instances of a the word under the cursor in the buffer
+            " \   "group" : "BrightestUnderline"
 let g:brightest#highlight = {
-            \   "group" : "BrightestUnderline"
+            \   "group" : "WildMenu"
             \}
 let g:brightest#pattern = '\k\+'
 let g:brightest#enable_filetypes = {
             \   ""   : 0,
+            \   "csv"   : 0,
             \   "vim" : 1,
             \   "cpp" : 1,
             \   "python" : 1,
