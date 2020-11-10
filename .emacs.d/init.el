@@ -378,6 +378,8 @@
 (define-key evil-normal-state-map "n" 'evil-next-line)
 (define-key evil-normal-state-map "e" 'evil-previous-line)
 (define-key evil-normal-state-map "j" 'evil-fordward-word-end)
+(define-key evil-normal-state-map "-" 'evil-ex-search-forward)
+(define-key evil-normal-state-map "/" 'evil-previous-line-first-non-blank)
 
 ;Visual
 (define-key evil-visual-state-map "j" nil)

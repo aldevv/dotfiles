@@ -707,7 +707,7 @@ let g:neoformat_enabled_java = ['clangformat']
 " EASYMOTION
 "=============
 let g:Easymotion_do_mapping = 0
-map // <Plug>(easymotion-prefix)
+map <leader>¿ <Plug>(easymotion-prefix)
 nmap s <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
 
@@ -729,9 +729,12 @@ let g:targets_nl = 'nN'
 "this script lets you apply macros to multiple lines
 source ~/.config/nvim/modules/visual-at.vim
 
-" macros
-let @a = 'fxa.testing0lbeggining'
+" =============
+" MACROS
+" =============
 " whenever it finds an x, it runs this macro
+let @z = 'fxa.testing0lbeggining'
+
 " normal or norm is an ex command (a colon command, like :help)
 nnoremap <leader>ri :g/x/normal @a<cr>
 
@@ -1118,7 +1121,10 @@ let g:bclose_no_plugin_maps=1
 " map <leader>sd :Delete
 " map <leader>sw :Delete
 
-" vis settings
+"=====================
+" VIS 
+"=====================
+"
 " map <leader>swp <Plug>SaveWinPosn
 " map <leader>rwp <Plug>RestoreWinPosn
 
@@ -1199,7 +1205,9 @@ autocmd FileType vim let b:switch_custom_definitions = [
 " " Needed if a plugin sets the colorscheme dynamically:
 " autocmd User SneakLeave highlight clear Sneak
 "
-" clever f
+" ==========
+" CLEVER F
+" ==========
 "controls to search a character across multi lines or not. Please set it to 1 in your vimrc to
 "search a character only in current line.
 "
