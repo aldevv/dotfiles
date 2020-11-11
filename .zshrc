@@ -159,7 +159,7 @@ alias pkg='sudo eopkg'\
 	dau='dotrepo add -u'\
 	dgc='dotrepo commit'\
 	dlg='dotrepo log --oneline --reverse'\
-	dgp='dotrepo push origin HEAD'\
+	# dgp='dotrepo push origin HEAD'\
 	pgp='uploadProjects'\
 	restartx='sudo systemctl restart display-manager'\
 	flat='flatpak --installation=extra'\
