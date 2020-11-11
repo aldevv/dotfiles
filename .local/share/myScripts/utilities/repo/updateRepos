@@ -9,10 +9,9 @@ if [ "$status" = "DIRTY" ]; then
     printf "\n"
     echo "enter script changes"
     read -r message
-    git add -u
-    git add .
     printf "\n\n"
     dotrepo add -u
+    printf "\n\n"
     dotrepo commit -m "$message"
     dotrepo push origin master
 fi
@@ -22,8 +21,9 @@ status=$(git status | grep -qF 'working directory clean' || echo "DIRTY")
 if [ "$status" = "DIRTY" ]; then
     git status
     printf "\n\n"
-    printf "enter wiki changes"
+    echo "enter wiki changes"
     read -r message
+    printf "\n\n"
     git add -u
     printf "\n\n"
     git commit -m "$message"
