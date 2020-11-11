@@ -1,0 +1,20 @@
+#!/bin/sh
+
+alias dotrepo="git --git-dir=${HOME}/Documents/DotFilesRepository/ --work-tree=${HOME}"
+cd "$SCRIPTS" || exit
+dotrepo diff --exit-code --quiet
+if [ "$?" = 1 ]; then
+    echo "enter script changes"
+    read -r message
+    dotrepo commit -m "$message"
+    dotrepo push origin master
+fi
+
+cd "$WIKI" || exit
+git diff --exit-code --quiet
+if [ "$?" = 1 ]; then
+    echo "enter wiki changes"
+    read -r message
+    git commit -m "$message"
+    git push origin master
+fi
