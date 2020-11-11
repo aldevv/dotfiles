@@ -3,7 +3,7 @@
 alias dotrepo="git --git-dir=${HOME}/Documents/DotFilesRepository/ --work-tree=${HOME}"
 cd "$SCRIPTS" || exit
 dotrepo diff --exit-code --quiet
-status=$(dotrepo status | grep -qF 'working directory clean' || echo "DIRTY")
+status=$(dotrepo status | grep -qF 'working tree clean' || echo "DIRTY")
 if [ "$status" = "DIRTY" ]; then
     dotrepo status
     printf "\n"
@@ -17,7 +17,7 @@ if [ "$status" = "DIRTY" ]; then
 fi
 
 cd "$WIKI" || exit
-status=$(git status | grep -qF 'working directory clean' || echo "DIRTY")
+status=$(git status | grep -qF 'working tree clean' || echo "DIRTY")
 if [ "$status" = "DIRTY" ]; then
     git status
     printf "\n\n"
