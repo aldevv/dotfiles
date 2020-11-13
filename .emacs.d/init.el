@@ -227,6 +227,7 @@
 
 ;;;set up Hooks FOR AUTOCOMPLETE
 
+
 (use-package company-anaconda
   :ensure t
   :config (eval-after-load "company"
@@ -292,10 +293,10 @@
 ;; alternative
 ;; (setq bibtex-completion-pdf-open-function 'org-open-file)
 
-;==============================================================
 
-;Configuration
-;; Themes
+;==============================================================
+;; THEMES
+;==============================================================
 
 ;; activate theme only in normal emacs
 
@@ -304,7 +305,13 @@
   ;;(load-theme 'misterioso t)
   )
 
-;;Remaps ======================================================
+;==============================================================
+;; SETTINGS
+;==============================================================
+(setq create-lockfiles nil)
+;==============================================================
+;;REMAPS
+;==============================================================
 
 ;;add go back functionality in terminal to Info mode
 (add-hook 'help-mode-hook
@@ -369,6 +376,8 @@
 (define-key evil-normal-state-map "e" nil)
 (define-key evil-normal-state-map "n" nil)
 (define-key evil-normal-state-map "N" nil)
+(define-key evil-normal-state-map "ñ" nil)
+(define-key evil-normal-state-map "ñ" 'evil-ex)
 (define-key evil-normal-state-map "l" 'evil-insert)
 (define-key evil-normal-state-map "L" 'evil-insert-line)
 (define-key evil-normal-state-map "i" 'evil-forward-char)
@@ -444,7 +453,10 @@
 ;;(add-hook 'org-shiftright-final-hook nil)
 ;; so that it adds all the non interactive functions to the apropos page in help
 (setq apropos-do-all t)
-;;org mode ======================================================
+
+;======================================================
+;;org mode
+;======================================================
 
 (add-hook 'org-mode-hook 'org-nav-hjkl)
 ;;so that the headings indent themselves
