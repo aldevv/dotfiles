@@ -159,7 +159,7 @@ alias pkg='sudo eopkg'\
 	dau='dotrepo add -u'\
 	dgc='dotrepo commit'\
 	dlg='dotrepo log --oneline --reverse'\
-	# dgp='dotrepo push origin HEAD'\
+	dgpo='dotrepo push origin HEAD'\
 	pgp='uploadProjects'\
 	restartx='sudo systemctl restart display-manager'\
 	flat='flatpak --installation=extra'\
@@ -169,6 +169,7 @@ alias pkg='sudo eopkg'\
     ph='python_help'\
     trc='transmission-remote-cli'\
     py='python3'\
+	pkgsize="eopkg li -l | awk '/Name:/ {sub(/,$/,\"\",\$2); name= \$2} /Installed Size:/{print \$5\$6, name}' | sort -h "\
 
 
 	#python='python3'\
@@ -307,3 +308,4 @@ source ~/.aliases
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export UBICACION=NUBIA

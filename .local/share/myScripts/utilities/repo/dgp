@@ -1,5 +1,21 @@
 #!/bin/sh
 
+cd "$WIKI" || exit
+status=$(git status | grep -qF 'working tree clean' || echo "DIRTY")
+if [ "$status" = "DIRTY" ]; then
+    git status
+    printf "\n\n"
+    echo "enter wiki changes"
+    read -r message
+    if [ ! -z "$message" ]; then
+        printf "\n\n"
+        git add -u
+        printf "\n\n"
+        git commit -m "$message"
+        git push origin master
+    fi
+fi
+
 alias dotrepo="git --git-dir=${HOME}/Documents/DotFilesRepository/ --work-tree=${HOME}"
 cd "$SCRIPTS" || exit
 dotrepo diff --exit-code --quiet
@@ -18,18 +34,3 @@ if [ "$status" = "DIRTY" ]; then
     fi
 fi
 
-cd "$WIKI" || exit
-status=$(git status | grep -qF 'working tree clean' || echo "DIRTY")
-if [ "$status" = "DIRTY" ]; then
-    git status
-    printf "\n\n"
-    echo "enter wiki changes"
-    read -r message
-    if [ ! -z "$message" ]; then
-        printf "\n\n"
-        git add -u
-        printf "\n\n"
-        git commit -m "$message"
-        git push origin master
-    fi
-fi

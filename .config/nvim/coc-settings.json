@@ -14,12 +14,15 @@
   "clangd.path": "/home/solus/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
   "clangd.disableDiagnostics": true,
   "diagnostic.checkCurrentLine": true,
-  "diagnostic.errorSign": "✘",
-  "diagnostic.warningSign": "",
+  "diagnostic.enable": true,
+  "__diagnostic.errorSign": "✘",
+  "__diagnostic.warningSign": "",
+  "diagnostic.errorSign": ">>",
+  "diagnostic.warningSign": "∙∙",
   "diagnostic.infoSign": "",
+  "diagnostic.displayByAle": false,
   "__diagnostic.messageDelay.comment": "default= 200",
   "diagnostic.messageDelay": 400,
-  "diagnostic.displayByAle": true,
 
   "__suggest.noselect.comment": "this is for not choosing first item when pressing TAB",
   "suggest.noselect": false,
@@ -47,5 +50,6 @@
       },
       "foobar": {}
     }
-  }
+  },
+  "coc.preferences.colorSupport": true
 }

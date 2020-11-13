@@ -44,6 +44,7 @@ export XMODIFIERS=@im='ibus'
 #qt5ct colorscheme
 #breaks copyq
 # export QT_QPA_PLATFORMTHEME="qt5ct"
+# export QT_PLUGIN_PATH=/usr/lib/qt5/plugins
 
 #======================================
 # WORK

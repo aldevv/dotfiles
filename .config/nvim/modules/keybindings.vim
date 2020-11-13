@@ -52,8 +52,6 @@ nnoremap <leader>z zMzvzz
 nnoremap <silent><leader>,c  :!chmod +x %<cr>
 
 
-" Make double-<Esc> clear search highlights
-noremap <silent><esc><esc> :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
 
 " nnoremap <silent> <leader>z :call ToggleFMethod()<cr>
 " function ToggleFMethod()
@@ -187,8 +185,10 @@ vnoremap <A-r> :norm!<space>
 
 " Alias replace all to
 nnoremap <A-s> :%s/\v//gI<Left><Left><Left><Left>
+vnoremap <A-s> :s/\v//gI<Left><Left><Left><Left>
 vnoremap <A-S> :s/\v//gI<Left><Left><Left><Left>
 " save with no permission using w!!, could be cnoremap
+"
 cnoreabbrev w!! w !sudo tee > /dev/null %
 
 map <leader>rs :!./%<cr>
@@ -344,7 +344,9 @@ nnoremap <leader>,er :Cfr<cr>
 nnoremap <leader>,exp :Cfxp<cr>
 nnoremap <leader>,exx :Cfxx<cr>
 
-nnoremap <silent><leader>hh :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
+" Make double-<Esc> clear search highlights
+noremap <silent><leader>hh :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
+" nnoremap <silent><leader>hh :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
 nnoremap <silent><leader>h1 :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
 nnoremap <silent><leader>h2 :execute '2match DiffChange /\<<c-r><c-w>\>/'<cr>
 nnoremap <silent><leader>h3 :execute '3match IncSearch /\<<c-r><c-w>\>/'<cr>
@@ -368,7 +370,7 @@ nnoremap Q gqip
 " to source your init.vim (only one line)
 vnoremap <silent><leader>S y:execute @@<cr>
 nnoremap <silent><leader>S ^vg_y:execute @@<cr>
-noremap <leader>0 :Colors<crc
+noremap <leader>0 :Colors<cr>
 
 " help current word
 nnoremap gw :h <c-r>=expand('<cword>')<cr><bar>resize 15<cr>

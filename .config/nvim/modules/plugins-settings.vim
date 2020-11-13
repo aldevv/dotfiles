@@ -1,4 +1,76 @@
+"==========
+"Themes
+"==========
+"https://github.com/vim-airline/vim-airline/wiki/Screenshots
+"
+" let g:airline_theme='luna'
+" let g:airline_theme='gruvbox'
+"
+set termguicolors
+if exists('+termguicolors')
+ set t_8f=\[[38;2;%lu;%lu;%lum
+ set t_8b=\[[48;2;%lu;%lu;%lum
+endif
+
+set pumblend=15
+" Theme
+"colorscheme onehalfdark
+"try codedark
+"
+"(gruvbox dracula monokai codedark ayu)
+let color_options = {
+            \ "gruvbox":0,
+            \ "dracula":1,
+            \ "monokai":2,
+            \ "onehalfdark":3,
+            \ "ayu":4,
+            \}
+let current_colorscheme = color_options["ayu"]
+if current_colorscheme == 0
+    let g:gruvbox_invert_selection = '0'
+    " let g:airline_theme='gruvbox'
+    let g:airline_theme='minimalist'
+    "soft medium hard
+    let g:gruvbox_contrast_dark = "hard"
+    " not sure what this does
+    let g:gruvbox_improved_warnings = 1
+    colorscheme gruvbox
+    " fix colors for highlighting spelling mistakes
+    autocmd ColorScheme gruvbox hi! SpellBad cterm=reverse ctermfg=214 ctermbg=235 gui=reverse guifg=#fabd2f guibg=#282828
+endif
+if current_colorscheme == 1
+    colorscheme dracula
+    let g:dracula_italic = 1
+    let g:airline_theme='dracula'
+endif
+if current_colorscheme == 2
+    colorscheme monokai
+    let g:airline_theme='monokai'
+    let g:monokai_term_italic = 1
+    let g:monokai_gui_italic = 1
+endif
+if current_colorscheme == 3
+    " colorscheme onehalflight
+    colorscheme onehalfdark
+    let g:airline_theme='onehalfdark'
+    " lightline
+    " let g:lightline = { 'colorscheme': 'onehalfdark' }
+endif
+if current_colorscheme == 4
+    let ayu_comment_italic=1 " enable italic for comments
+    let ayu_string_italic=1  " enable italic for strings
+    let ayu_type_italic=1    " enable italic for types
+    let ayu_keyword_italic=1 " enable italic for keywords
+    " let ayucolor="light"  " for light version of theme
+    " let ayucolor="mirage" " for mirage version of theme
+    let ayucolor="dark"   " for dark version of theme
+    let g:airline_theme='ayu'
+    colorscheme ayu
+endif
+set background=dark
+" ==============
 " UndoTreeToggle
+" ==============
 map <silent><leader>u :UndotreeToggle<CR>
 
 " NERDTreeToggle
@@ -69,10 +141,14 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
             \ 'Unknown'   :'?',
             \ }
 
+" =========
 " Undo tree
+" =========
 nnoremap <F5> :UndotreeToggle<cr>
 
-" fzf
+" =======
+" FZF
+" =======
 " \ 'ctrl-t': 'tab split',
 let g:fzf_action = {
             \ 'ctrl-s': 'split',
@@ -162,6 +238,31 @@ command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 " nnoremap <leader>fs :FZFBTags<CR>
 " nnoremap <leader>fc :FClass<CR>
 
+"=====
+"COC
+"=====
+"
+highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
+" \ 'coc-html',
+" \ 'coc-json',
+" \ 'coc-pairs',
+" \ 'coc-snippets',
+" \ 'coc-tslint-plugin',
+" \ 'coc-prettier',
+let g:coc_global_extensions = [
+            \ 'coc-marketplace',
+            \ 'coc-json',
+            \ 'coc-tag',
+            \ 'coc-tsserver',
+            \ 'coc-css',
+            \ 'coc-vimtex',
+            \ 'coc-vimlsp',
+            \ 'coc-python',
+            \ 'coc-java',
+            \ 'coc-sh',
+            \ 'coc-clangd',
+            \ ]
+" coc-clangd is necessary for c and c++
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -170,11 +271,13 @@ nmap <silent> gD <Plug>(coc-type-declaration)
 nmap gr <Plug>(coc-references)
 nmap <leader>gr <Plug>(coc-references-used)
 nmap gR <Plug>(coc-implementation)
-nmap g, <Plug>(coc-diagnostic-prev)
-nmap g; <Plug>(coc-diagnostic-next)
 " g{ and g} are usable
+nnoremap <silent><nowait> <leader>cd  :<C-u>CocDiagnostics<cr>
 nmap <silent> , <Plug>(coc-diagnostic-prev-error)
 nmap <silent> ; <Plug>(coc-diagnostic-next-error)
+nmap g, <Plug>(coc-diagnostic-prev)
+nmap g; <Plug>(coc-diagnostic-next)
+nmap <silent> g. <Plug>(coc-fix-current)
 nnoremap <silent> <leader>+ :call CocAction('doHover')<cr>
 nmap <F2> <Plug>(coc-rename)
 nmap <leader>crf :CocSearch <C-R>=expand('<cword>')<cr><cr>
@@ -186,14 +289,10 @@ nmap <leader>crf :CocSearch <C-R>=expand('<cword>')<cr>
 nmap <leader>cA <Plug>(coc-codeaction)
 nmap <leader>ca <Plug>(coc-codeaction-line)
 vmap <leader>ca <Plug>(coc-codeaction-selected)
-" Use `[g` and `]g` to navigate diagnostics (errors)
-nmap <silent> c[ <Plug>(coc-diagnostic-prev)
-nmap <silent> c] <Plug>(coc-diagnostic-next)
-nmap <silent> c, <Plug>(coc-fix-current)
 nmap <silent> crr <Plug>(coc-refactor)
 cnoreabbrev CS CocSearch
 " for static hover glitch
-noremap <silent><esc> :call coc#util#float_hide()<cr>
+" noremap <silent><esc> :call coc#util#float_hide()<cr>
 
 
 " or do <c-w>o to close it but it closes other windows as well
@@ -210,7 +309,6 @@ nnoremap <silent><nowait> <leader>ce  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <leader>ccr  :<C-u>CocRestart<cr>
 nnoremap <silent><nowait> <leader>ccl  :<C-u>CocOpenLog<CR>
-nnoremap <silent><nowait> <leader>cd  :<C-u>CocDiagnostics<cr>
 
 " implemented in coc-fzf
 " Find symbol of current document.
@@ -271,9 +369,14 @@ endfunction
 " autocmd FileType python,cpp,javascript,c,java :call Activate_hover()
 
 
-nnoremap <nowait><expr> <a-n> coc#util#float_scrollable() ? coc#util#float_scroll(1) : OutlineFZF()
+nnoremap <nowait><expr><a-n> coc#util#float_scrollable() ? coc#util#float_scroll(1) : OutlineFZF()
 " nnoremap <nowait><expr> <a-e> coc#util#float_scrollable() ? coc#util#float_scroll(0) : "\<c-w>\<c-v>"
-nnoremap <nowait><expr> <a-e> coc#util#float_scrollable() ? coc#util#float_scroll(0) : BrowseDots()
+nnoremap <nowait><expr><a-e> coc#util#float_scrollable() ? coc#util#float_scroll(0) : BrowseDots()
+
+imap <silent><expr> <a-n> pumvisible() ? "\<C-n>" : "\<C-o>n"
+imap <silent><expr> <a-e> pumvisible() ? "\<C-p>" : "\<C-o>e"
+
+
 
 function OutlineFZF()
     return ":CocFzfList outline \<cr>"
@@ -283,6 +386,7 @@ function BrowseDots()
     " return ":FilesDots \<cr>"
     return ":\<C-u>TagbarToggle\<CR>"
 endfunction
+
 
 let g:coc_force_debug = 1
 " Use c-n for trigger completion with characters ahead and navigate.
@@ -306,8 +410,6 @@ let g:coc_force_debug = 1
 
 " inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-imap <silent><expr> <a-n> pumvisible() ? "\<C-n>" : "\<c-n>"
-imap <silent><expr> <a-e> pumvisible() ? "\<C-p>" : "\<c-e>"
 
 function! s:check_back_space() abort
     let col = col('.') - 1
@@ -323,6 +425,23 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 inoremap <silent><expr> <CR> pumvisible() && coc#rpc#request('hasSelected', []) ? "\<C-y>" : "\<CR>"
 
+autocmd FileType python call PythonMappings()
+
+function PythonMappings()
+    map <leader><leader>p :CocCommand python.setInterpreter<cr>
+    map <leader><leader>r :CocCommand python.execInTerminal<cr>
+    map <leader><leader>l :CocCommand python.setLinter<cr>
+    map <leader><leader>g :CocCommand python.viewOutput<cr>
+endfunction
+" call coc#config('python', {
+"  \   'jediEnabled': v:false,
+"  \   'pythonPath': split(execute('!which python3'), '\n')[-1]
+"  \ })
+"
+call coc#config('python', {
+            \ 'formatting.blackPath': $HOME."/.local/bin/black",
+            \})
+" \ 'linting.pylintPath': $HOME."/.local/bin/pylint"
 
 
 
@@ -333,29 +452,8 @@ inoremap <silent><expr> <CR> pumvisible() && coc#rpc#request('hasSelected', []) 
 " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "imap <C-l> <Plug>(coc-snippets-expand)
-"
 
 
-" \ 'coc-html',
-" \ 'coc-json',
-" \ 'coc-pairs',
-" \ 'coc-snippets',
-" \ 'coc-tslint-plugin',
-" \ 'coc-prettier',
-let g:coc_global_extensions = [
-            \ 'coc-marketplace',
-            \ 'coc-json',
-            \ 'coc-tag',
-            \ 'coc-tsserver',
-            \ 'coc-css',
-            \ 'coc-vimtex',
-            \ 'coc-vimlsp',
-            \ 'coc-python',
-            \ 'coc-java',
-            \ 'coc-sh',
-            \ 'coc-clangd',
-            \ ]
-" coc-clangd is necessary for c and c++
 
 
 au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
@@ -530,24 +628,6 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 hi Conceal ctermbg=none
 
-"COC
-autocmd FileType python call PythonMappings()
-
-function PythonMappings()
-    map <leader><leader>p :CocCommand python.setInterpreter<cr>
-    map <leader><leader>r :CocCommand python.execInTerminal<cr>
-    map <leader><leader>l :CocCommand python.setLinter<cr>
-    map <leader><leader>g :CocCommand python.viewOutput<cr>
-endfunction
-" call coc#config('python', {
-"  \   'jediEnabled': v:false,
-"  \   'pythonPath': split(execute('!which python3'), '\n')[-1]
-"  \ })
-"
-call coc#config('python', {
-            \ 'formatting.blackPath': $HOME."/.local/bin/black",
-            \})
-" \ 'linting.pylintPath': $HOME."/.local/bin/pylint"
 
 " nerdcommenter
 "nnoremap gc :call NERDComment(0,"toggle")<CR>
@@ -624,14 +704,14 @@ nmap <silent><Leader>sp :Neoformat<cr>
 "'replace': 0 replace the file, instead of updating buffer (default: 0),
 let g:neoformat_python_black = {
             \ 'exe': 'black',
-            \ 'args': ['-','--quiet','--line-length', '90'],
+            \ 'args': ['-','--quiet','--line-length', '100'],
             \ 'replace': 0,
             \ 'stdin': 1,
             \ }
 " lets you use gq
 autocmd FileType python setlocal formatprg=black\ -\ \
             \--quiet\ \
-            \--line-length\ 90
+            \--line-length\ 100
 
 let g:neoformat_enabled_python = ['black']
 "-----------
@@ -707,7 +787,7 @@ let g:neoformat_enabled_java = ['clangformat']
 " EASYMOTION
 "=============
 let g:Easymotion_do_mapping = 0
-map <leader>¿ <Plug>(easymotion-prefix)
+map ¿ <Plug>(easymotion-prefix)
 nmap s <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
 
@@ -789,7 +869,7 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css,js,jsx,ts EmmetInstall
 let g:user_emmet_leader_key='<C-Y>'
 " alt-gr s
-let g:user_emmet_expandabbr_key = 'ß'
+let g:user_emmet_expandabbr_key = 'þ'
 "  let g:user_emmet_expandword_key = '<C-y>;'
 "  let g:user_emmet_update_tag = '<C-y>u'
 "  "highlight tag groups"
@@ -1122,18 +1202,20 @@ let g:bclose_no_plugin_maps=1
 " map <leader>sw :Delete
 
 "=====================
-" VIS 
+" VIS
 "=====================
 "
 " map <leader>swp <Plug>SaveWinPosn
 " map <leader>rwp <Plug>RestoreWinPosn
 
-" switch.vim
+"===============
+" SWITCH
+"===============
 " there are many options, lists, dicts, dicts of dicts, and custom mappings
 " separate from the global ones
 "https://github.com/AndrewRadev/switch.vim
 "
-let g:switch_mapping = "¿"
+let g:switch_mapping = "ß"
 " autocmd FileType eruby let b:switch_custom_definitions =
 "     \ [
 "     \   {
@@ -1147,9 +1229,9 @@ let g:switch_mapping = "¿"
 "     \ [
 "     \   ['foo', 'bar', 'baz']
 "     \ ]
-"-------------------------------------------------
 
 
+" for react
 let b:switch_custom_definitions = [
             \   {
             \     '\(\k\+=\){\([[:keyword:].]\+\)}':      '\1{`${\2}`}',
@@ -1160,6 +1242,7 @@ let b:switch_custom_definitions = [
 "<Thing foo={data} />
 "<Thing foo={`${data}`} />
 
+" for latex
 autocmd FileType tex,plaintex let b:switch_custom_definitions =
             \ [
             \    [ '\\tiny', '\\scriptsize', '\\footnotesize', '\\small', '\\normalsize', '\\large', '\\Large', '\\LARGE', '\\huge', '\\Huge' ],
@@ -1224,23 +1307,40 @@ let g:clever_f_mark_char_color = "Search"
 " it can search あ with this
 let g:clever_f_use_migemo = 1
 
-" brightest
+" ==========
+" BRIGHTEST
+" ==========
+noremap <leader>cb :BrightestToggle<cr>
+autocmd Filetype * :BrightestDisable
+" let g:brightest#enable_on_CursorHold = 1
+" let g:brightest#enable_clear_highlight_on_CursorMoved = 0
 " highlights all instances of a the word under the cursor in the buffer
             " \   "group" : "BrightestUnderline"
 let g:brightest#highlight = {
             \   "group" : "WildMenu"
             \}
-let g:brightest#pattern = '\k\+'
-let g:brightest#enable_filetypes = {
-            \   ""   : 0,
-            \   "csv"   : 0,
-            \   "vim" : 1,
-            \   "cpp" : 1,
-            \   "python" : 1,
-            \   "javascript" : 1,
-            \   "java" : 1,
-            \   "typescript" : 1,
+
+let g:brightest#highlight_in_cursorline = {
+            \ "group": "Wildmenu"
             \}
+
+let g:brightest#pattern = '\k\+'
+
+let g:brightest#enable_filetypes = {
+            \ "_": 1
+            \}
+" let g:brightest#enable_filetypes = {
+"             \   ""   : 0,
+"             \   "csv"   : 0,
+"             \   "tex"   : 0,
+"             \   "markdown" : 0,
+"             \   "vim" : 0,
+"             \   "cpp" : 0,
+"             \   "python" : 0,
+"             \   "javascript" : 0,
+"             \   "java" : 0,
+"             \   "typescript" : 0,
+"             \}
 
 "==========
 " Ripgrep
@@ -1297,7 +1397,7 @@ nnoremap <silent> <leader>cD       :<C-u>CocFzfList diagnostics<CR>
 nnoremap <silent> <leader>ccd       :<C-u>CocFzfList diagnostics --current-buf<CR>
 nnoremap <silent> <leader>ccc       :<C-u>CocFzfList commands<CR>
 nnoremap <silent> <leader>cce       :<C-u>CocFzfList extensions<CR>
-nnoremap <silent> <leader>cl       :<C-u>CocFzfList location<CR>
+" nnoremap <silent> <leader>cl       :<C-u>CocFzfList location<CR>
 " nnoremap <silent> <leader>cV        :<C-u>CocFzfList outline<CR>
 " nnoremap <silent> <a-n>            :<C-u>CocFzfList outline<CR>
 nnoremap <silent> <leader>cs       :<C-u>CocFzfList symbols<CR>
@@ -1318,7 +1418,7 @@ nnoremap <silent> <leader>ccb       :<C-u>CocFzfListResume<CR>
 let g:neoterm_size="10"
 let g:neoterm_autoinsert = 1
 let g:neoterm_default_mod = 'rightbelow'
-let g:neoterm_automap_keys=',tt'
+let g:neoterm_automap_keys='¡tt'
 let g:neoterm_keep_term_open = 0
 map <silent><Leader>st :Ttoggle<cr>
 
@@ -1359,13 +1459,45 @@ let g:syntastic_python_python_exec = 'python3'
 "ALE
 "===========
 "see :ALEInfo to see what is going on
+
 " let g:ale_lint_on_text_changed = 1
 " let g:ale_lint_on_enter = 1
 let g:ale_lint_on_insert_leave = 0
 let g:ale_enabled = 1
+let g:ale_disable_lsp=1
+let g:ale_fixers = {
+            \ '*':'trim_whitespace',
+            \ 'python': ['black']
+            \}
+let g:ale_fix_on_save = 0
+
+" nmap <silent> , <Plug>(ale_previous_error)
+" nmap <silent> ; <Plug>(ale_next_error)
+" nmap g, <Plug>(ale_previous_wrap)
+" nmap g; <Plug>(ale_next_wrap)
+" nmap g. <Plug>(ale_fix)
+" nmap cd <Plug>(ale_detail)
+" nmap cl <Plug>(ale_toggle)
+" let g:airline#extensions#ale#enabled = 1
+" let g:ale_set_loclist = 1
+"
+" let g:ale_sign_error = '>>'
+" let g:ale_sign_warning = '--'
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '∙∙'
+let g:ale_set_highlights = 0
+
+" let g:ale_sign_warning = ''
+  ""
+" highlight clear ALEErrorSign
+" highlight clear ALEWarningSign
+" let g:ale_lint_on_save = 1
+" let g:ale_lint_on_filetype_changed = 1
+" let g:ale_linters_ignore= {'python': ['autopep8']}
+let g:ale_close_preview_on_insert = 1
 map <leader>ll <Plug>(ale_toggle)
 " make ale ONLY use the linters defined in g:ale_linters
-let g:ale_linters_explicit = 0
+let g:ale_linters_explicit = 1
 let g:ale_linters =  {
             \   'elixir': ['credo', 'dialyxir', 'dogma'],
             \   'go': ['gofmt', 'golint', 'go vet'],
@@ -1379,14 +1511,6 @@ let g:ale_linters =  {
             \   'c': ['all'],
             \   'cpp': ['all'],
             \}
-
-" show full linter message
-"<Plug>(ale_detail)
-" let g:ale_lint_on_save = 1
-" let g:ale_lint_on_filetype_changed = 1
-let g:ale_disable_lsp=1
-" let g:ale_linters_ignore= {'python': ['autopep8']}
-let g:ale_close_preview_on_insert = 1
 
 "======================
 " RAINBOW PARENTHESIS

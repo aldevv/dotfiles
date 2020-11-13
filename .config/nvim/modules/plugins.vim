@@ -8,6 +8,8 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'crusoexia/vim-monokai'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
+" Plug 'ayu-theme/ayu-vim'
+Plug 'kuntau/ayu-vim'
 " Plug 'KeitaNakamura/highlighter.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'uiiaoo/java-syntax.vim'
 Plug 'sheerun/vim-polyglot'
@@ -52,11 +54,12 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/ReplaceWithRegister'
+
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  } |
          \ Plug 'Xuyuanp/nerdtree-git-plugin' |
          \ Plug 'ryanoasis/vim-devicons' |
          \ Plug 'vwxyutarooo/nerdtree-devicons-syntax'
-
+" Plug 'tpope/vim-vinegar'
 "" text objects
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
@@ -72,7 +75,6 @@ Plug 'vim-scripts/vis'
 Plug 'matze/vim-move'
 Plug 'francoiscabrol/ranger.vim' |
          \ Plug 'rbgrouleff/bclose.vim'
-Plug 'osyo-manga/vim-brightest'
 Plug 'jiangmiao/auto-pairs'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'kassio/neoterm'
@@ -91,9 +93,9 @@ Plug 'stefandtw/quickfix-reflector.vim'
 " task manager
 Plug 'vuciv/vim-bujo'
 Plug 'vim-utils/vim-man'
+Plug 'osyo-manga/vim-brightest'
 
 "FUN STUFF"
-"
 " needs neovim 0.5
 Plug 'ThePrimeagen/vim-apm'
 Plug 'ThePrimeagen/vim-be-good'
@@ -102,33 +104,23 @@ Plug 'ThePrimeagen/vim-be-good'
 " Plug 'wellle/context.vim'
 
 " check https://github.com/mattboehm/dotfiles/blob/master/vim/vimrc
-
+"
 "TODO
-"for jumping to interesting places
-"https://github.com/wincent/vcs-jump
+"tabnine
 "
-"look at
-"https://github.com/mattboehm/dotfiles/blob/master/vim/vimrc
-"for more
-"
-
-" can change this now that i have textobj-user
+call plug#end()
 
 " good guide for dev nvim
 "https://hanspinckaers.com/posts/2020/01/vim-python-ide/
 "https://github.com/wellle/targets.vim
 
 " deleted
-" for c++
 " Plug 'scrooloose/syntastic'
-"Plug ‘ludovicchabant/vim-gutentags’
+" Plug ‘ludovicchabant/vim-gutentags’
 " Plug 'pseewald/vim-anyfold'"
-"Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
+" Plug 'https://github.com/sonph/onehalf', {'rtp': 'vim/'}
 " Plug 'psf/black', { 'branch': 'stable' }
 " Plug 'prettier/vim-prettier', {
          " \ 'do': 'npm install',
          " \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] ,
          " \ 'branch': 'release/1.x'}
-"need both
-call plug#end()
-
