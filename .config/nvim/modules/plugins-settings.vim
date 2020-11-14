@@ -8,8 +8,8 @@
 "
 set termguicolors
 if exists('+termguicolors')
- set t_8f=\[[38;2;%lu;%lu;%lum
- set t_8b=\[[48;2;%lu;%lu;%lum
+    set t_8f=\[[38;2;%lu;%lu;%lum
+    set t_8b=\[[48;2;%lu;%lu;%lum
 endif
 
 set pumblend=15
@@ -1315,7 +1315,7 @@ autocmd Filetype * :BrightestDisable
 " let g:brightest#enable_on_CursorHold = 1
 " let g:brightest#enable_clear_highlight_on_CursorMoved = 0
 " highlights all instances of a the word under the cursor in the buffer
-            " \   "group" : "BrightestUnderline"
+" \   "group" : "BrightestUnderline"
 let g:brightest#highlight = {
             \   "group" : "WildMenu"
             \}
@@ -1488,7 +1488,7 @@ let g:ale_sign_warning = '∙∙'
 let g:ale_set_highlights = 0
 
 " let g:ale_sign_warning = ''
-  ""
+""
 " highlight clear ALEErrorSign
 " highlight clear ALEWarningSign
 " let g:ale_lint_on_save = 1

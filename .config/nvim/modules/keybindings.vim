@@ -375,3 +375,10 @@ noremap <leader>0 :Colors<cr>
 " help current word
 nnoremap gw :h <c-r>=expand('<cword>')<cr><bar>resize 15<cr>
 
+nnoremap <leader>cp :call FormatMyCode()
+function! FormatMyCode()
+  let fileExtension = expand("%:t:r")
+  execute '!$APPS/vim/formatCode ' . fileExtension
+endfunction
+
+
