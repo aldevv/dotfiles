@@ -42,18 +42,18 @@ if [ "$status" = "DIRTY" ]; then
     fi
 fi
 
-if [ wiki = 1 ] && [ dotfiles = 1 ]; then
+if [ $wiki = 1 ] && [ $dotfiles = 1 ]; then
     ts -t 0
     ts -t 1
     exit
 fi
 
-if [ wiki = 1 ]; then
+if [ $wiki = 1 ]; then
     ts -t 0
     exit
 fi
 
-if [ dotfiles = 1 ]; then
+if [ $dotfiles = 1 ]; then
     ts -t 0
     exit
 fi
