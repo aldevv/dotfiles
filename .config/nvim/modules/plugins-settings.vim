@@ -289,10 +289,13 @@ nmap <leader>crf :CocSearch <C-R>=expand('<cword>')<cr>
 nmap <leader>cA <Plug>(coc-codeaction)
 nmap <leader>ca <Plug>(coc-codeaction-line)
 vmap <leader>ca <Plug>(coc-codeaction-selected)
-nmap <silent> crr <Plug>(coc-refactor)
+nmap <M-CR> <Plug>(coc-codeaction-line)
+nmap <M-S-CR> <Plug>(coc-codeaction)
+vmap <M-CR> <Plug>(coc-codeaction-selected)
+nmap <silent><leader>crr <Plug>(coc-refactor)
 cnoreabbrev CS CocSearch
 " for static hover glitch
-" noremap <silent><esc> :call coc#util#float_hide()<cr>
+noremap <silent><esc> :call coc#util#float_hide()<cr>
 
 
 " or do <c-w>o to close it but it closes other windows as well
@@ -1535,6 +1538,7 @@ let test#strategy = "dispatch"
 autocmd FileType java let b:dispatch = 'javac %'
 autocmd FileType cpp let b:dispatch = 'g++ %'
 autocmd FileType c let b:dispatch = 'gcc %'
+autocmd FileType typescript let b:dispatch = 'tsc %'
 " cnoreabbrev Dispatch Dis
 "==============
 " HIGHLIGHTER

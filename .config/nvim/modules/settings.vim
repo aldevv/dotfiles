@@ -129,9 +129,9 @@ function! MyFoldText() abort
   let l:dashes=substitute(v:folddashes, '-', s:middot, 'g')
   let nucolwidth = max([strlen(line('$')), &numberwidth-1])
   let l:padding = wincol()-virtcol('.')
-  let l:padding += nucolwidth 
+  let l:padding += nucolwidth
   " let nucolwidth = &fdc + &relativenumber * &numberwidth
-  let windowwidth = winwidth(0) - l:padding 
+  let windowwidth = winwidth(0) - l:padding
   let foldedlinecount = v:foldend - v:foldstart + 3 " because of [ℓ]"
   let fillcharcount = windowwidth - len(l:first) - len(foldedlinecount)
   let concatspaces = repeat('·',fillcharcount)
@@ -171,6 +171,7 @@ set cmdheight=1
 set mouse=a
 " to show stuff under the modeline
 set noshowmode
+set autochdir
 " change buffers without saving
 set hidden
 " ask to save when not saved

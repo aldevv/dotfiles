@@ -253,7 +253,7 @@ cnoremap <C-y> <Right>
 " autocmd FileType python nnoremap <buffer> <s-cr> :silent w<bar>only<bar>vsp<bar>term ipython3 -i %<cr>
 autocmd FileType python nnoremap <buffer> <s-cr> :silent w<bar>only<bar>vsp<bar>term jupyter console<cr> <c-w>l :JupyterConnect<cr><cr> :JupyterRunFile<cr>
 autocmd FileType java nnoremap <silent><buffer> <s-cr> :silent w<bar>execute "!java ".expand('%:t:r')<cr>
-noremap <silent><leader><cr> :call Runner('noquickfix')<cr>
+noremap <silent><leader><cr> :call Runner(1)<cr>
 nnoremap <silent><cr> :call RunnerEnter()<cr>
 
 function! RunnerEnter()
@@ -261,13 +261,13 @@ function! RunnerEnter()
   if bufname('%') == ''
     execute "normal! \<CR>"
   else
-    :call Runner('')
+    call Runner(0)
   endif
 endfunction
-function Runner(background)
+function Runner(runInShell)
   exec 'silent w'
-  let l:runner = 'Dispatch '
-  if a:background == 'noquickfix'
+  let l:runner = 'Dispatch! '
+  if a:runInShell == 1
     let l:runner ='! '
   endif
 
@@ -278,14 +278,15 @@ function Runner(background)
         \ 'c': "gcc %  && ./a.out",
         \ 'cpp': "g++  % && ./a.out",
         \ 'js': "node %",
-        \ 'ts': "node %",
-        \ 'java': "javac % && java ".expand('%:t:r'),
+        \ 'ts': "tsc % && node %:r.js",
+        \ 'java': "javac *.java && java %:t:r",
         \ '': "chmod +x %; ./%"
         \}
   " execute '!'.dict[extension]
   execute l:runner . dict[extension]
+  execute 'Copen'
+  execute "normal! \<c-w>k"
 endfunction
-
 
 " open browser in current file folder
 map <silent> <leader>ra :silent call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
@@ -345,11 +346,11 @@ nnoremap <leader>,exp :Cfxp<cr>
 nnoremap <leader>,exx :Cfxx<cr>
 
 " Make double-<Esc> clear search highlights
-noremap <silent><leader>hh :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
+noremap <silent><leader>ll :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
 " nnoremap <silent><leader>hh :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>h1 :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>h2 :execute '2match DiffChange /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>h3 :execute '3match IncSearch /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent><leader>l1 :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent><leader>l2 :execute '2match DiffChange /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent><leader>l3 :execute '3match IncSearch /\<<c-r><c-w>\>/'<cr>
 
 " to search only selected text with * and #
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR><c-o>
@@ -375,9 +376,9 @@ noremap <leader>0 :Colors<cr>
 " help current word
 nnoremap gw :h <c-r>=expand('<cword>')<cr><bar>resize 15<cr>
 
-nnoremap <leader>cp :call FormatMyCode()
+nnoremap <silent><leader>cp :silent call FormatMyCode()<cr>
 function! FormatMyCode()
-  let fileExtension = expand("%:t:r")
+  let fileExtension = expand("%:e")
   execute '!$APPS/vim/formatCode ' . fileExtension
 endfunction
 
