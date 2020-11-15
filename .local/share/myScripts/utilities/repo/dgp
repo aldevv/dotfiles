@@ -4,6 +4,7 @@
 ts -K
 wiki=0
 dotfiles=0
+
 cd "$WIKI" || exit
 status=$(git status | grep -qF 'working tree clean' || echo "DIRTY")
 if [ "$status" = "DIRTY" ]; then
