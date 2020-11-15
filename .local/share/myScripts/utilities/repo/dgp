@@ -18,7 +18,7 @@ if [ "$status" = "DIRTY" ]; then
         printf "\n\n"
         git commit -m "$message"
         # git push origin master
-        ts git push origin master
+        ts git push origin master > /dev/null
     fi
 fi
 
@@ -38,7 +38,7 @@ if [ "$status" = "DIRTY" ]; then
         printf "\n\n"
         dotrepo commit -m "$message"
         # dotrepo push origin master
-        ts git --git-dir=${HOME}/Documents/DotFilesRepository/ --work-tree=${HOME} push origin master
+        ts git --git-dir=${HOME}/Documents/DotFilesRepository/ --work-tree=${HOME} push origin master > /dev/null
     fi
 fi
 
