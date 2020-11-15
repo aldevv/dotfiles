@@ -10,7 +10,8 @@
   "python.jediEnabled": false,
   "python.jediPath": "/usr/lib64/python3.7/site-packages",
 
-  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/my_snippets"],
+  "snippets.ultisnips.directories": ["~/.config/nvim/my_snippets", "UltiSnips"],
+  "snippets.userSnippetsDirectory": "~/.config/nvim/my_snippets",
   "clangd.path": "/home/solus/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
   "clangd.disableDiagnostics": true,
   "diagnostic.checkCurrentLine": true,
@@ -51,5 +52,16 @@
       "foobar": {}
     }
   },
-  "coc.preferences.colorSupport": true
+  "coc.preferences.colorSupport": true,
+  "list.normalMappings": {
+    "t": "action:tabe",
+    "v": "action:vsplit",
+    "s": "action:split"
+  },
+  "list.insertMappings": {
+    "<C-t>": "action:tabe",
+    "<C-w>": "command:wincmd k",
+    "<A-n>": "normal:n",
+    "<A-e>": "normal:e"
+  }
 }

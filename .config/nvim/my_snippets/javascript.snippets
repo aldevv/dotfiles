@@ -1,3 +1,23 @@
-snippet clg
+snippet prn "print anything" b
 console.log(${1})
+endsnippet
+
+snippet prN "trace where errors come from" b
+console.trace(${1})
+endsnippet
+
+snippet pRN "print a table of objects" b
+console.table(${1})
+endsnippet
+
+snippet ffn "do function" b
+function $1 ($2) {
+	$3
+}
+endsnippet
+
+snippet ffN "Description" b
+handleBlur = ($1) => {
+	$2
+}
 endsnippet

@@ -155,8 +155,8 @@
   :load-path "~/.emacs.d/evil-snipe"
   :config (progn
   (evil-define-key* '(motion normal) evil-snipe-local-mode-map
-		    "s" nil  ;disables the override of s from snipe
-		    "S" nil)
+			"s" nil  ;disables the override of s from snipe
+			"S" nil)
 (evil-snipe-mode +1)
 (evil-snipe-override-mode +1)
   ))
@@ -316,7 +316,7 @@
 ;;add go back functionality in terminal to Info mode
 (add-hook 'help-mode-hook
 	  (lambda ()
-	    (define-key help-mode-map (kbd "SPC-l") 'help-go-back)))
+		(define-key help-mode-map (kbd "SPC-l") 'help-go-back)))
 ;; remaps my alt gr key to work as meta
 
 (define-key key-translation-map (kbd "»") (kbd "M-x"))
@@ -365,7 +365,7 @@
 (define-key evil-motion-state-map "K" 'evil-ex-search-previous)
 (define-key evil-motion-state-map "n" 'evil-next-line)
 (define-key evil-motion-state-map "e" 'evil-previous-line)
-(define-key evil-motion-state-map "j" 'evil-fordward-word-end)
+(define-key evil-motion-state-map "j" 'evil-forward-word-end)
 
 ;NORMAL
 
@@ -386,7 +386,7 @@
 (define-key evil-normal-state-map "K" 'evil-ex-search-previous)
 (define-key evil-normal-state-map "n" 'evil-next-line)
 (define-key evil-normal-state-map "e" 'evil-previous-line)
-(define-key evil-normal-state-map "j" 'evil-fordward-word-end)
+(define-key evil-normal-state-map "j" 'evil-forward-word-end)
 (define-key evil-normal-state-map "-" 'evil-ex-search-forward)
 (define-key evil-normal-state-map "/" 'evil-previous-line-first-non-blank)
 
@@ -404,7 +404,7 @@
 (define-key evil-visual-state-map "K" 'evil-ex-search-previous)
 (define-key evil-visual-state-map "n" 'evil-next-line)
 (define-key evil-visual-state-map "e" 'evil-previous-line)
-(define-key evil-visual-state-map "j" 'evil-fordward-word-end)
+(define-key evil-visual-state-map "j" 'evil-forward-word-end)
 
 (define-key evil-normal-state-map (kbd "C-w j") nil)
 (define-key evil-normal-state-map (kbd "C-w k") nil)
@@ -421,18 +421,20 @@
 ; see bindings
 ;;https://mirrors.zju.edu.cn/elpa/melpa-stable/evil-colemak-basics-2.1.0.el
 
-(evil-define-key 'visual org-mode-map (kbd "lr") nil)
-;; #' is simply good practice
-(evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
-(evil-define-key 'insert org-mode-map (kbd "<tab>") #'tab-to-tab-stop)
-(setq-default indent-tabs-mode nil)
-(setq-default tab-always-indent nil)
-(setq-default tab-width 4)
-(setq indent-line-function 'insert-tab)
+; (evil-define-key 'visual org-mode-map (kbd "lr") nil)
+; ;; #' is simply good practice
+; (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
+; (evil-define-key 'insert org-mode-map (kbd "<tab>") #'tab-to-tab-stop)
+; (setq-default indent-tabs-mode nil)
+; (setq-default tab-always-indent nil)
+; (setq-default tab-width 4)
+; (setq indent-line-function 'insert-tab)
 
 ;; Defines most org-mode navigation bindings
 (defun org-nav-hjkl ()
   ;; sets the variable so that enter actually enters links (it doesnt by default)
+  (require 'org-tempo) ; for snippets
+  (org-babel-do-load-languages 'org-babel-load-languages '( (python . t) ) )
   (setq org-return-follows-link t)
   (define-key evil-motion-state-map (kbd "RET") nil) ;;to activate org-return and enter links
   (define-key org-mode-map (kbd "C-o") 'org-insert-heading) ;; to create a new heading
@@ -786,7 +788,7 @@ scroll-down-aggressively 0.01)
 (defun fd-switch-dictionary()
   (interactive)
      (let* ((dic ispell-current-dictionary)
-	    (change (if (string= dic "castellano") "english" "castellano")))
+		(change (if (string= dic "castellano") "english" "castellano")))
        (ispell-change-dictionary change)
        (message "Dictionary switched from %s to %s" dic change)
        ))
@@ -810,8 +812,8 @@ scroll-down-aggressively 0.01)
 (add-hook 'c++-mode-hook
           (lambda ()
             (flyspell-prog-mode)
-	    ; ...
-	    ))
+		; ...
+		))
 
 ;; this enables it for org-mode
 
@@ -850,7 +852,7 @@ scroll-down-aggressively 0.01)
 
 ;(add-hook 'org-mode-hook
 ;	  (lambda ()
-;	    (visual-line-mode)))
+;		(visual-line-mode)))
 
 ;; for navigating better in helm mode for bookmarks
 

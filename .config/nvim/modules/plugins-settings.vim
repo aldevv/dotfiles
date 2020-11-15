@@ -246,13 +246,14 @@ highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
 " \ 'coc-html',
 " \ 'coc-json',
 " \ 'coc-pairs',
-" \ 'coc-snippets',
 " \ 'coc-tslint-plugin',
 " \ 'coc-prettier',
+" \ 'coc-ultisnips',
 let g:coc_global_extensions = [
             \ 'coc-marketplace',
             \ 'coc-json',
             \ 'coc-tag',
+            \ 'coc-snippets',
             \ 'coc-tsserver',
             \ 'coc-css',
             \ 'coc-vimtex',
@@ -312,12 +313,12 @@ nnoremap <silent><nowait> <leader>ce  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <leader>ccr  :<C-u>CocRestart<cr>
 nnoremap <silent><nowait> <leader>ccl  :<C-u>CocOpenLog<CR>
+nnoremap <silent><nowait> <leader>cv  :<C-u>CocList --auto-preview outline<cr>
 
 " implemented in coc-fzf
 " Find symbol of current document.
 " nnoremap <silent><nowait> <leader>ccl  :<C-u>CocListResume<CR>
 " nnoremap <silent><nowait> <leader>cce  :<C-u>CocList extensions<cr>
-" nnoremap <silent><nowait> <leader>ccs  :<C-u>CocList outline<cr>
 " nnoremap <silent><nowait> <leader>cs  :<C-u>CocList -I symbols<cr>
 " Show commands.
 " nnoremap <silent><nowait> <leader>ccc  :<C-u>CocList commands<cr>
@@ -448,16 +449,26 @@ call coc#config('python', {
 
 
 
-"Coc-snippets
-" let g:coc_snippet_next = '<TAB>'
-" let g:coc_snippet_prev = '<S-TAB>'
-"to scroll with tab
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"imap <C-l> <Plug>(coc-snippets-expand)
+"=============
+"COC-SNIPPETS
+"=============
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>cx <Plug>(coc-convert-snippet)
 
+" Use <C-l> for trigger snippet expand.
+imap <a-t> <Plug>(coc-snippets-expand)
 
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <a-t> <Plug>(coc-snippets-select)
 
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<a-t>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<a-s>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+" imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
 
@@ -557,30 +568,17 @@ nnoremap <leader>gB :Gbrowse<CR>
 "=====================
 "   ULTISNIPS
 "=====================
-"
-" Set <space> as primary trigger
-" inoremap <silent><cr> <C-R>=ExpandUsingSpace()<CR>
-" let g:ulti_expand_res = 0
-" function! ExpandUsingSpace()
-"     call UltiSnips#ExpandSnippet()
-"     if g:ulti_expand_res
-"         return ''
-"     else
-"         return ' '
-" endfunction
+"disabled for coc-snippets
 
-let g:UltiSnipsExpandTrigger='<a-t>'
-" let g:UltiSnipsExpandTrigger=''
-let g:UltiSnipsListSnippets='<c-tab>'
-" let g:UltiSnipsJumpForwardTrigger = '<tab>'
-" let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsJumpForwardTrigger = '<a-t>'
-let g:UltiSnipsJumpBackwardTrigger = '<a-s>'
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
+" let g:UltiSnipsExpandTrigger='<a-t>'
+" let g:UltiSnipsListSnippets='<c-tab>'
+" let g:UltiSnipsJumpForwardTrigger = '<a-t>'
+" let g:UltiSnipsJumpBackwardTrigger = '<a-s>'
+" let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 
-
-
-" vimtex
+"==========
+" VIMTEX
+"==========
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
@@ -1149,27 +1147,30 @@ let g:splitjoin_join_mapping = 'gS'
 
 " nmap gs :SplitjoinSplit<cr>
 " nmap gS :SplitjoinJoin<cr>
-"
-" vista
-"
+
+"=========
+" VISTA
+"=========
 " defaultwhen running :Vista
-let g:vista_default_executive = 'coc'
-let g:vista_fzf_preview = ['right:50%']
-let g:vista_sidebar_width = 30
-" " let g:vista_sidebar_position ="vertical topleft"
-" let g:vista_sidebar_position ="vertical botright"
-" let g:vista_ctags_cmd = {
-"   \ 'c': 'ctags -R',
-"   \ 'cpp': 'ctags -R',
-"   \}
+" let g:vista_default_executive = 'coc'
+" let g:vista_fzf_preview = ['right:50%']
+" let g:vista_sidebar_width = 30
+" " " let g:vista_sidebar_position ="vertical topleft"
+" " let g:vista_sidebar_position ="vertical botright"
+" " let g:vista_ctags_cmd = {
+" "   \ 'c': 'ctags -R',
+" "   \ 'cpp': 'ctags -R',
+" "   \}
 
-" let g:vista_finder_alternative_executives = ['ctags']
+" " let g:vista_finder_alternative_executives = ['ctags']
 
-" " nmap <leader>cv :Vista coc<cr>
-" nmap <leader>cv :Vista!!<cr>
-autocmd Filetype python,c,cpp,java,javascript,go,haskell,vim nmap <leader>cv :Vista finder<cr>
+" " " nmap <leader>cv :Vista coc<cr>
+" " nmap <leader>cv :Vista!!<cr>
+" autocmd Filetype python,c,cpp,java,javascript,go,haskell,vim nmap <leader>cV :Vista finder<cr>
 
-" Tagbar
+"=========
+" TAGBAR
+"=========
 " nmap <leader>cv :TagbarToggle<CR>
 " let g:tagbar_position = 'rightbelow'
 
@@ -1401,7 +1402,7 @@ nnoremap <silent> <leader>ccd       :<C-u>CocFzfList diagnostics --current-buf<C
 nnoremap <silent> <leader>ccc       :<C-u>CocFzfList commands<CR>
 nnoremap <silent> <leader>cce       :<C-u>CocFzfList extensions<CR>
 " nnoremap <silent> <leader>cl       :<C-u>CocFzfList location<CR>
-" nnoremap <silent> <leader>cV        :<C-u>CocFzfList outline<CR>
+" nnoremap <silent> <leader>cv        :<C-u>CocFzfList outline<CR>
 " nnoremap <silent> <a-n>            :<C-u>CocFzfList outline<CR>
 nnoremap <silent> <leader>cs       :<C-u>CocFzfList symbols<CR>
 nnoremap <silent> <leader>ccs       :<C-u>CocFzfList sources<CR>

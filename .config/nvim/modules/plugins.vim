@@ -21,11 +21,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'bkad/CamelCaseMotion'"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
-Plug 'liuchengxu/vista.vim'
 Plug 'preservim/tagbar'
 Plug 'AndrewRadev/switch.vim'
 Plug 'sbdchd/neoformat'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -115,6 +114,7 @@ call plug#end()
 "https://github.com/wellle/targets.vim
 
 " deleted
+" Plug 'liuchengxu/vista.vim' " changed for tagbar
 " Plug 'scrooloose/syntastic'
 " Plug ‘ludovicchabant/vim-gutentags’
 " Plug 'pseewald/vim-anyfold'"
