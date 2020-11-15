@@ -2,8 +2,8 @@
 
 # task spooler
 ts -C
-# wiki=0
-# dotfiles=0
+wiki=0
+dotfiles=0
 cd "$WIKI" || exit
 status=$(git status | grep -qF 'working tree clean' || echo "DIRTY")
 if [ "$status" = "DIRTY" ]; then
@@ -17,7 +17,7 @@ if [ "$status" = "DIRTY" ]; then
         git add -u
         printf "\n\n"
         git commit -m "$message"
-        git push origin master &
+        outputWiki=$(git push origin master)
         # ts git push origin master
     fi
 fi
@@ -37,23 +37,27 @@ if [ "$status" = "DIRTY" ]; then
         dotrepo add -u
         printf "\n\n"
         dotrepo commit -m "$message"
-        dotrepo push origin master &
+        outputDotfiles=$(dotrepo push origin master)
         # ts dotrepo push origin master
     fi
 fi
 
-# if [ wiki = 1 ] && [ dotfiles = 1 ]; then
-#     ts -t 0
-#     ts -t 1
-#     exit
-# fi
+if [ wiki = 1 ] && [ dotfiles = 1 ]; then
+    # ts -t 0
+    # ts -t 1
+    echo "$outputWiki"
+    echo "$outputDotfiles"
+    exit
+fi
 
-# if [ wiki = 1 ]; then
+if [ wiki = 1 ]; then
 #     ts -t 0
-#     exit
-# fi
+    echo "$outputWiki"
+    exit
+fi
 
-# if [ dotfiles = 1 ]; then
+if [ dotfiles = 1 ]; then
 #     ts -t 0
-#     exit
-# fi
+    echo "$outputDotfiles"
+    exit
+fi
