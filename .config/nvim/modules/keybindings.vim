@@ -53,6 +53,7 @@ nnoremap <silent><leader>,c  :!chmod +x %<cr>
 
 
 
+let g:extension = expand('%:e')
 " nnoremap <silent> <leader>z :call ToggleFMethod()<cr>
 " function ToggleFMethod()
 "   let method=&foldmethod
@@ -253,39 +254,38 @@ cnoremap <C-y> <Right>
 " autocmd FileType python nnoremap <buffer> <s-cr> :silent w<bar>only<bar>vsp<bar>term ipython3 -i %<cr>
 autocmd FileType python nnoremap <buffer> <s-cr> :silent w<bar>only<bar>vsp<bar>term jupyter console<cr> <c-w>l :JupyterConnect<cr><cr> :JupyterRunFile<cr>
 autocmd FileType java nnoremap <silent><buffer> <s-cr> :silent w<bar>execute "!java ".expand('%:t:r')<cr>
-noremap <silent><leader><cr> :call Runner(1)<cr>
+noremap <silent><leader><cr> :call RunnerTerminal()<cr>
 nnoremap <silent><cr> :call RunnerEnter()<cr>
 
 function! RunnerEnter()
-  " if &buftype ==# 'nofile'
   if bufname('%') == ''
-    execute "normal! \<CR>"
+    silent execute "normal! \<CR>"
   else
-    call Runner(0)
+    silent call Runner()
   endif
 endfunction
-function Runner(runInShell)
-  exec 'silent w'
-  let l:runner = 'Dispatch! '
-  if a:runInShell == 1
-    let l:runner ='! '
-  endif
 
-  let extension = expand('%:e')
-  let dict =
-        \{
-        \ 'py': "python3 %",
-        \ 'c': "gcc %  && ./a.out",
-        \ 'cpp': "g++  % && ./a.out",
-        \ 'js': "node %",
-        \ 'ts': "tsc % && node %:r.js",
-        \ 'java': "javac *.java && java %:t:r",
-        \ '': "chmod +x %; ./%"
-        \}
-  " execute '!'.dict[extension]
-  execute l:runner . dict[extension]
-  execute 'Copen'
-  execute "normal! \<c-w>k"
+
+function! Runner()
+  exec 'silent w'
+  let l:runner = 'Dispatch '
+  if g:extension != 'java'
+    execute l:runner
+  else
+    let l:runner = 'Dispatch! '
+    echo "entre"
+    execute l:runner
+    execute 'Copen'
+    execute "normal! \<c-w>k"
+  endif
+endfunction
+
+function! RunnerTerminal()
+  exec 'silent w'
+  let l:runnerCommand = projectionist#query('dispatch')[0][1]
+  let l:runner = 'T '
+  execute l:runner . l:runnerCommand
+  " execute "normal! \<c-w>k"
 endfunction
 
 " open browser in current file folder
@@ -378,8 +378,7 @@ nnoremap gw :h <c-r>=expand('<cword>')<cr><bar>resize 15<cr>
 
 nnoremap <silent><leader>cp :silent call FormatMyCode()<cr>
 function! FormatMyCode()
-  let fileExtension = expand("%:e")
-  execute '!$APPS/vim/formatCode ' . fileExtension
+  execute '!$APPS/vim/formatCode ' . g:extension
 endfunction
 
 

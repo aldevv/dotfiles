@@ -455,6 +455,8 @@ call coc#config('python', {
 " Use <leader>x for convert visual selected code to snippet
 xmap <leader>cx <Plug>(coc-convert-snippet)
 
+nmap <leader>cx :CocCommand snippets.editSnippets<cr>
+
 " Use <C-l> for trigger snippet expand.
 imap <a-t> <Plug>(coc-snippets-expand)
 
@@ -1536,10 +1538,10 @@ let test#strategy = "dispatch"
 "==============
 "VIM-DISPATCH
 "==============
-autocmd FileType java let b:dispatch = 'javac %'
-autocmd FileType cpp let b:dispatch = 'g++ %'
-autocmd FileType c let b:dispatch = 'gcc %'
-autocmd FileType typescript let b:dispatch = 'tsc %'
+" autocmd FileType java let b:dispatch = 'javac %'
+" autocmd FileType cpp let b:dispatch = 'g++ %'
+" autocmd FileType c let b:dispatch = 'gcc %'
+" autocmd FileType typescript let b:dispatch = 'tsc %'
 " cnoreabbrev Dispatch Dis
 "==============
 " HIGHLIGHTER
@@ -1617,3 +1619,112 @@ imap <M-.> <Plug>BujoCheckinsert
 "========================
 " map <leader>k <Plug>(Man) - open man page for word under cursor in a horizontal split
 map N <Plug>(Vman)
+
+"========================
+" VIM-PROJECTIONIST
+"========================
+"
+" heuristics, for general files
+"
+" java needs to be run with Dispatch!
+"
+"the heuristic is different from .projections.json
+"the "*" is the project finder, .projections.json doesn't need it
+let g:projectionist_heuristics = {
+            \ "*": {
+                \ "*.js": {
+                \   "alternate": [
+                \   "{dirname}/{basename}.test.js",
+                \   "{dirname}/__tests__/{basename}-test.js",
+                \   ],
+                \   "type": "source",
+                \   "dispatch": "node {}.js",
+                \   "console": "node {}.js"
+                \ },
+                \
+                \ "*.ts": {
+                \   "alternate": [
+                \   "{dirname}/{basename}.test.js",
+                \   "{dirname}/__tests__/{basename}-test.js",
+                \   ],
+                \   "type": "source",
+                \   "dispatch": "tsc % && node %:r.js"
+                \ },
+                \
+                \ "*.c": {
+                \   "dispatch": "gcc % && ./a.out",
+                \   "alternate": "{}.h",
+                \   "type": "source"
+                \ },
+                \
+                \ "*.cpp": {
+                \   "dispatch": "g++ % && ./a.out",
+                \   "alternate": "{}.h",
+                \   "type": "source"
+                \ },
+                \
+                \ "*.java": {
+                \   "dispatch": "javac *.java && java {basename}",
+                \   "type": "source"
+                \ },
+                \
+                \ "*.py": {
+                \   "dispatch": "python3 %",
+                \   "type": "source"
+                \ },
+                \
+                \ "*": {
+                \   "dispatch": "chmod +x %; ./%",
+                \   "type": "source"
+                \ },
+            \}
+        \ }
+
+" autocmd User ProjectionistDetect
+"             \ if SomeCondition(g:projectionist_file) |
+"             \   call projectionist#append(root, projections) |
+"             \ endif
+"
+" dot             / to .
+" underscore      / to _
+" backslash       / to \
+" colons          / to ::
+" hyphenate       _ to -
+" blank           _ and - to space
+" uppercase       uppercase
+" camelcase       foo_bar/baz_quux to fooBar/bazQuux
+" snakecase       FooBar/bazQuux to foo_bar/baz_quux
+" capitalize      capitalize first letter and each letter after a slash
+" dirname         remove last slash separated component
+" basename        remove all but last slash separated component
+" singular        singularize
+" plural          pluralize
+" file            absolute path to file
+" project         absolute path to project
+" open            literal {
+" close           literal }
+" nothing         empty string
+" vim             no-op (include to specify other implementations should ignore)
+
+" autocmd User ProjectionistActivate call s:activate()
+
+"     function! s:activate() abort
+"       for [root, value] in projectionist#query('wrap')
+"         let &l:textwidth = value
+"         break
+"       endfor
+"     endfunction
+"
+"{
+"  navigation
+"  "plugin/*.vim": {"type": "plugin"},
+"  "autoload/*.vim": {"type": "autoload"},
+"  "doc/*.txt": {"type": "doc"},
+"  "README.markdown": {"type": "doc"}
+"  alternate files
+"  "src/main/java/*.java": {"alternate": "src/test/java/{}.java"},
+"  "src/test/java/*.java": {"alternate": "src/main/java/{}.java"}
+"  run files
+"   "*": {"make": "rake"},
+"   "spec/*_spec.rb": {"dispatch": "rspec {file}"}
+"}

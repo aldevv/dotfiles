@@ -61,14 +61,14 @@ set t_Co=256
 source ~/.config/nvim/modules/settings.vim
 
 "==================
-" KEYBINDINGS
-"==================
-source ~/.config/nvim/modules/keybindings.vim
-
-"==================
 " PLUGINS
 "==================
  source ~/.config/nvim/modules/plugins.vim
+
+"==================
+" KEYBINDINGS
+"==================
+source ~/.config/nvim/modules/keybindings.vim
 
 "==================
 " PLUGINS SETTINGS

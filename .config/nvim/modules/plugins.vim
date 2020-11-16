@@ -81,7 +81,7 @@ Plug 'kassio/neoterm'
 Plug 'junegunn/gv.vim'
 "enables gbrowse and also hub instead of git (if hub installed)
 Plug 'tpope/vim-rhubarb'
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'frazrepo/vim-rainbow'
 Plug 'tpope/vim-dispatch'
 Plug 'vim-test/vim-test'
@@ -93,6 +93,7 @@ Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'vuciv/vim-bujo'
 Plug 'vim-utils/vim-man'
 Plug 'osyo-manga/vim-brightest'
+Plug 'tpope/vim-projectionist'
 
 "FUN STUFF"
 " needs neovim 0.5

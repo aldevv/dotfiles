@@ -197,3 +197,10 @@ augroup SHADA
   autocmd CursorHold,TextYankPost,FocusGained,FocusLost *
         \ if exists(':rshada') | rshada | wshada | endif
 augroup END
+
+" if quickfix or terminal window is the last window, then close vim
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
+  au WinEnter * if winnr('$') == 1 && &buftype == "terminal"|q|endif
+aug END
