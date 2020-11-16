@@ -1630,6 +1630,8 @@ map N <Plug>(Vman)
 "
 "the heuristic is different from .projections.json
 "the "*" is the project finder, .projections.json doesn't need it
+"
+"type is used so you can do stuff like :Esource
 let g:projectionist_heuristics = {
             \ "*": {
                 \ "*.js": {
@@ -1647,38 +1649,86 @@ let g:projectionist_heuristics = {
                 \   "{dirname}/{basename}.test.js",
                 \   "{dirname}/__tests__/{basename}-test.js",
                 \   ],
-                \   "type": "source",
                 \   "dispatch": "tsc % && node %:r.js"
                 \ },
                 \
                 \ "*.c": {
                 \   "dispatch": "gcc % && ./a.out",
                 \   "alternate": "{}.h",
-                \   "type": "source"
                 \ },
                 \
                 \ "*.cpp": {
                 \   "dispatch": "g++ % && ./a.out",
                 \   "alternate": "{}.h",
-                \   "type": "source"
                 \ },
                 \
                 \ "*.java": {
                 \   "dispatch": "javac *.java && java {basename}",
-                \   "type": "source"
                 \ },
                 \
                 \ "*.py": {
                 \   "dispatch": "python3 %",
-                \   "type": "source"
                 \ },
                 \
                 \ "*": {
                 \   "dispatch": "chmod +x %; ./%",
-                \   "type": "source"
                 \ },
-            \}
+            \},
+            \ "src/*": {
+                \ "src/containers/*.js": {
+                \    "type": "container",
+                \    "template": [
+                \      "import React, {open} Component {close} from 'react';\n",
+                \      "export default class {capitalize} extends Component {",
+                \      "  render () {",
+                \      "    return (",
+                \      "    );",
+                \      "  };",
+                \      "}",
+                \      "",
+                \      "export default connect(",
+                \      "  state => ({open}state: state{close}),",
+                \      "  dispatch => ({open}actions: bindActionCreators(actions, dispatch){close})",
+                \      ")({capitalize});"
+                \    ]
+                \  },
+                \  "src/components/*.js": {
+                \    "type": "component",
+                \    "template": [
+                \      "import React, {open} Component {close} from 'react';\n",
+                \      "export default class \{} extends Component {",
+                \      "  render () {",
+                \      "    return (",
+                \      "    );",
+                \      "  };",
+                \      "}"
+                \    ]
+                \  },
+                \  "src/reducers/*.js": {
+                \    "type": "reducer"
+                \  },
+                \  "package.json": {
+                \    "type": "package"
+                \  },
+                \}
         \ }
+
+" this is a sample of a .projections.json
+"
+"{
+"  "src/main/java/*.java": {
+"    "alternate": "src/test/java/{}.java",
+"    "type": "source"
+"  },
+"  "src/test/java/*.java": {
+"    "alternate": "src/main/java/{}.java",
+"    "type": "test"
+"  },
+"  "*.java": {
+"    "dispatch": "javac -classpath \".:sqlite-jdbc-3.32.3.2.jar\" *.java && java -classpath \".:sqlite-jdbc-3.32.3.2.jar\" {}"
+"  },
+"  "*": { "make": "mvn" }
+"}
 
 " autocmd User ProjectionistDetect
 "             \ if SomeCondition(g:projectionist_file) |
