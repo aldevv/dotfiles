@@ -248,7 +248,7 @@ highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
 " \ 'coc-pairs',
 " \ 'coc-tslint-plugin',
 " \ 'coc-prettier',
-" \ 'coc-ultisnips',
+            \ 'coc-ultisnips',
 let g:coc_global_extensions = [
             \ 'coc-marketplace',
             \ 'coc-json',
@@ -571,12 +571,14 @@ nnoremap <leader>gB :Gbrowse<CR>
 "   ULTISNIPS
 "=====================
 "disabled for coc-snippets
-
-" let g:UltiSnipsExpandTrigger='<a-t>'
-" let g:UltiSnipsListSnippets='<c-tab>'
-" let g:UltiSnipsJumpForwardTrigger = '<a-t>'
-" let g:UltiSnipsJumpBackwardTrigger = '<a-s>'
-" let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
+" this plugin enables the use of skeletons
+" let g:did_UltiSnips_vim = 1
+" let g:did_UltiSnips_vim_after = 1
+let g:UltiSnipsExpandTrigger='<a-t>'
+let g:UltiSnipsListSnippets='<c-tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<a-s>'
+let g:UltiSnipsJumpForwardTrigger = '<a-t>'
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 
 "==========
 " VIMTEX

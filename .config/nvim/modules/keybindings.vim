@@ -38,12 +38,21 @@ noremap - /\v
 vnoremap - /\v
 noremap / -
 noremap <silent><leader>o :call ToggleQuickFix()<cr>
+noremap <silent><leader>O :call ToggleLocation()<cr>
 function! ToggleQuickFix()
   if empty(filter(getwininfo(), 'v:val.quickfix'))
     copen
     execute "normal! \<c-w>k"
   else
     cclose
+  endif
+endfunction
+function! ToggleLocation()
+  if empty(filter(getwininfo(), 'v:val.quickfix'))
+    lopen
+    execute "normal! \<c-w>k"
+  else
+    lclose
   endif
 endfunction
 
@@ -258,7 +267,7 @@ noremap <silent><leader><cr> :call RunnerTerminal()<cr>
 nnoremap <silent><cr> :call RunnerEnter()<cr>
 
 function! RunnerEnter()
-  if bufname('%') == ''
+  if bufname('%') == '' || &buftype == 'quickfix'
     silent execute "normal! \<CR>"
   else
     silent call Runner()

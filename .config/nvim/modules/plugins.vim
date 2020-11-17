@@ -94,6 +94,8 @@ Plug 'vuciv/vim-bujo'
 Plug 'vim-utils/vim-man'
 Plug 'osyo-manga/vim-brightest'
 Plug 'tpope/vim-projectionist'
+" Plug 'srydell/vim-skeleton'
+"  Plug 'akuseru1/vim-skeleton'
 
 "FUN STUFF"
 " needs neovim 0.5

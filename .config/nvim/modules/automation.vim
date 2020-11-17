@@ -96,6 +96,9 @@ augroup highlight_yank
    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
 
+"make this work for the skeleton plugin
+" autocmd BufNewFile * execute "normal! i_skel\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>"
+
 "automatic ctags
 " au FileType {c,cpp} au BufWritePost <buffer> silent ! [ -e tags ] &&
 "     \ ( awk -F'\t' '$2\!="%:gs/'/'\''/"{print}' tags ; ctags -f- '%:gs/'/'\''/' )

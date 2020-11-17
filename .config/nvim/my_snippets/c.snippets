@@ -1,13 +1,23 @@
-snippet init "start programming!" Ab
+snippet start "start programming!" b
 #include <stdio.h>
 
 int main(int argc, char *argv[])
 {
 	${1}
-    return 0;
+	return 0;
 }
 endsnippet
 
 snippet prn "Description" Ab
 printf("$1");
+endsnippet
+
+snippet _skel "Description" b
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+	${1}
+	return 0;
+}
 endsnippet

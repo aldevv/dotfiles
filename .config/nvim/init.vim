@@ -60,7 +60,7 @@ set t_Co=256
 "==================
 source ~/.config/nvim/modules/settings.vim
 
-"==================
+"===r==============
 " PLUGINS
 "==================
  source ~/.config/nvim/modules/plugins.vim
