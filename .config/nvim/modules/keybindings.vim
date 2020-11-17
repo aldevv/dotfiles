@@ -33,7 +33,6 @@ noremap <c-w>I <c-w>L
 " nnoremap <S-CR> O<Esc>
 " nnoremap [13;2u o
 "
-
 noremap - /\v
 vnoremap - /\v
 noremap / -
@@ -389,5 +388,4 @@ nnoremap <silent><leader>cp :silent call FormatMyCode()<cr>
 function! FormatMyCode()
   execute '!$APPS/vim/formatCode ' . g:extension
 endfunction
-
 

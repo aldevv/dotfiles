@@ -74,7 +74,6 @@ source ~/.config/nvim/modules/keybindings.vim
 " PLUGINS SETTINGS
 "==================
  source ~/.config/nvim/modules/plugins-settings.vim
-
 "==================
 " APPEARANCE
 "==================
@@ -84,3 +83,4 @@ source ~/.config/nvim/modules/keybindings.vim
 " AUTOMATION
 "==================
 source ~/.config/nvim/modules/automation.vim
+

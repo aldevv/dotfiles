@@ -3,10 +3,7 @@ syntax enable
 set nocompatible
 set shell=/bin/zsh
 let mapleader = " "
-"======================
-"set local leader
-autocmd FileType tex let maplocalleader=','
-autocmd FileType tex nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+" let maplocalleader=','
 "======================
 set updatetime=1500 " this is for autosave in tex files(every cursorhold event)
 set encoding=utf-8
@@ -14,7 +11,7 @@ scriptencoding utf-8
 
 "setlocal spell
 " set spelllang=es
-set spelllang=en_us
+set spelllang=en_us,es
 "set spelllang=en_us
 
 " whichkey

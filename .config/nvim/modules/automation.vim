@@ -96,6 +96,18 @@ augroup highlight_yank
    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
 
+" let maplocalleader = ','
+augroup set_latex_env
+   autocmd!
+   autocmd BufNewFile .tex set spell! wrap spelllang=es
+   "set local leader
+   if g:extension == 'tex'
+       let maplocalleader = ','
+   endif
+   
+   autocmd FileType tex nnoremap <silent><localleader> :<c-u>WhichKey  ','<CR>
+"======================
+augroup END
 
 "automatic ctags
 " au FileType {c,cpp} au BufWritePost <buffer> silent ! [ -e tags ] &&

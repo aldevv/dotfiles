@@ -248,15 +248,16 @@ highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
 " \ 'coc-pairs',
 " \ 'coc-tslint-plugin',
 " \ 'coc-prettier',
-            \ 'coc-ultisnips',
+" \ 'coc-ultisnips',
+"
 let g:coc_global_extensions = [
             \ 'coc-marketplace',
             \ 'coc-json',
             \ 'coc-tag',
+            \ 'coc-vimtex',
             \ 'coc-snippets',
             \ 'coc-tsserver',
             \ 'coc-css',
-            \ 'coc-vimtex',
             \ 'coc-vimlsp',
             \ 'coc-python',
             \ 'coc-java',
@@ -296,7 +297,7 @@ vmap <M-CR> <Plug>(coc-codeaction-selected)
 nmap <silent><leader>crr <Plug>(coc-refactor)
 cnoreabbrev CS CocSearch
 " for static hover glitch
-noremap <silent><esc> :call coc#util#float_hide()<cr>
+noremap <silent><esc> :call coc#float#close_all()<cr>
 
 
 " or do <c-w>o to close it but it closes other windows as well
@@ -575,15 +576,53 @@ nnoremap <leader>gB :Gbrowse<CR>
 "=====================
 "   ULTISNIPS
 "=====================
-"disabled for coc-snippets
 " this plugin enables the use of skeletons
-let g:did_UltiSnips_vim = 1
-let g:did_UltiSnips_vim_after = 1
+" let g:did_UltiSnips_vim = 1
+" let g:did_UltiSnips_vim_after = 1
 let g:UltiSnipsExpandTrigger='<a-t>'
+let g:UltiSnipsJumpForwardTrigger='<a-t>'
+let g:UltiSnipsJumpBackwardTrigger='<a-s>'
 let g:UltiSnipsListSnippets='<c-tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<a-s>'
-let g:UltiSnipsJumpForwardTrigger = '<a-t>'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
+" for normal mode
+" nnoremap <a-t> i<c-r>=UltiSnips#JumpForwards()<cr>
+" snoremap <a-t> <Esc>:call UltiSnips#JumpForwards()<cr>
+"
+noremap <leader>I :call <SID>addSkel()<cr>
+function! s:addSkel()
+if !empty(b:projectionist)
+    " Loop through projections with 'skeleton' key
+    " and try each one until the snippet expands
+    for [root, value] in projectionist#query('skeleton')
+      if s:try_insert(value)
+        call s:install_undo_workaround()
+        return
+      endif
+    endfor
+endif
+if s:try_insert('skel')
+    call s:install_undo_workaround()
+endif
+    
+endfunction
+
+function! s:install_undo_workaround() abort
+  nnoremap <silent><buffer> u :call <SID>undo_workaround()<CR>
+endfunction
+
+function! s:undo_workaround() abort
+  normal! 2u
+  nunmap <buffer> u
+endfunction
+
+" Try to expand the snippet named _skel
+function! s:try_insert(skel)
+  execute 'normal! i_' . a:skel . "\<C-r>=UltiSnips#ExpandSnippet()\<CR>"
+  if g:ulti_expand_res == 0
+    silent! undo
+  endif
+  return g:ulti_expand_res
+endfunction
 
 "==========
 " VIMTEX
@@ -610,6 +649,10 @@ let g:vimtex_mappings_disable= {
             \ 'o': ['ic', 'id', 'ie', 'i$'],
             \}
 
+"tex conceal
+set conceallevel=1
+let g:tex_conceal='abdmg'
+hi Conceal ctermbg=none
 " none of these overrides worked
 "
 " let g:vimtex_mappings_override_existing=1
@@ -633,23 +676,23 @@ let g:vimtex_mappings_disable= {
 "     autocmd FileType tex omap <buffer> ;$ <plug>(vimtex-i$)
 " augroup END
 
-"tex conceal
-set conceallevel=1
-let g:tex_conceal='abdmg'
-hi Conceal ctermbg=none
 
 
 " nerdcommenter
 "nnoremap gc :call NERDComment(0,"toggle")<CR>
 "vnoremap gc :call NERDComment(0,"toggle")<CR>
 
-" Goyo
+"======
+" GOYO
+"======
 
 nnoremap <leader>gy :Goyo \| set wrap \| set linebreak<CR>
 "nnoremap <leader>gd :Goyo! \| :set wrap! \| :set linebreak!<CR>
 
 
-" Haskell-vim
+"=============
+" HASKELL-VIM
+"=============
 let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
 let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
 let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
