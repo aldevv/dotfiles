@@ -24,7 +24,7 @@ Plug 'antoinemadec/coc-fzf'
 Plug 'preservim/tagbar'
 Plug 'AndrewRadev/switch.vim'
 Plug 'sbdchd/neoformat'
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -94,7 +94,7 @@ Plug 'vuciv/vim-bujo'
 Plug 'vim-utils/vim-man'
 Plug 'osyo-manga/vim-brightest'
 Plug 'tpope/vim-projectionist'
-" Plug 'srydell/vim-skeleton'
+Plug 'srydell/vim-skeleton'
 "  Plug 'akuseru1/vim-skeleton'
 
 "FUN STUFF"

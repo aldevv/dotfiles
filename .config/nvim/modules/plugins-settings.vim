@@ -452,22 +452,27 @@ call coc#config('python', {
 "=============
 "COC-SNIPPETS
 "=============
+"
+"gives me preview of the snippets, and gives me a shortcut to transform snippets quick
+"
 " Use <leader>x for convert visual selected code to snippet
 xmap <leader>cx <Plug>(coc-convert-snippet)
 
 nmap <leader>cx :CocCommand snippets.editSnippets<cr>
 
+" these aren't used
+
 " Use <C-l> for trigger snippet expand.
-imap <a-t> <Plug>(coc-snippets-expand)
+" imap <a-t> <Plug>(coc-snippets-expand)
 
 " Use <C-j> for select text for visual placeholder of snippet.
-vmap <a-t> <Plug>(coc-snippets-select)
+" vmap <a-t> <Plug>(coc-snippets-select)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<a-t>'
+" let g:coc_snippet_next = '<a-t>'
 
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<a-s>'
+" let g:coc_snippet_prev = '<a-s>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 " imap <C-j> <Plug>(coc-snippets-expand-jump)
@@ -572,8 +577,8 @@ nnoremap <leader>gB :Gbrowse<CR>
 "=====================
 "disabled for coc-snippets
 " this plugin enables the use of skeletons
-" let g:did_UltiSnips_vim = 1
-" let g:did_UltiSnips_vim_after = 1
+let g:did_UltiSnips_vim = 1
+let g:did_UltiSnips_vim_after = 1
 let g:UltiSnipsExpandTrigger='<a-t>'
 let g:UltiSnipsListSnippets='<c-tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<a-s>'
@@ -1666,6 +1671,7 @@ let g:projectionist_heuristics = {
                 \
                 \ "*.java": {
                 \   "dispatch": "javac *.java && java {basename}",
+                \   "skeleton": "class",
                 \ },
                 \
                 \ "*.py": {

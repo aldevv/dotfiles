@@ -84,4 +84,3 @@ source ~/.config/nvim/modules/keybindings.vim
 " AUTOMATION
 "==================
 source ~/.config/nvim/modules/automation.vim
-

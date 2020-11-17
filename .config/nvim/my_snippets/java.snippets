@@ -1,8 +1,18 @@
-snippet init "init java file" Ab
+snippet _skel "init java file" b
 public class `!p snip.rv = snip.basename` {
 
 	public static void main(String[] args) {
-		$2
+		$1
+	}
+}
+endsnippet
+
+# this is used over _skel
+snippet _class "init java file" b
+public class `!p snip.rv = snip.basename` {
+
+	public static void main(String[] args) {
+		$1
 	}
 }
 endsnippet

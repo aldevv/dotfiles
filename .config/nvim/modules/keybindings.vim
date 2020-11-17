@@ -264,7 +264,7 @@ cnoremap <C-y> <Right>
 autocmd FileType python nnoremap <buffer> <s-cr> :silent w<bar>only<bar>vsp<bar>term jupyter console<cr> <c-w>l :JupyterConnect<cr><cr> :JupyterRunFile<cr>
 autocmd FileType java nnoremap <silent><buffer> <s-cr> :silent w<bar>execute "!java ".expand('%:t:r')<cr>
 noremap <silent><leader><cr> :call RunnerTerminal()<cr>
-nnoremap <silent><cr> :call RunnerEnter()<cr>
+" nnoremap <silent><cr> :call RunnerEnter()<cr>
 
 function! RunnerEnter()
   if bufname('%') == '' || &buftype == 'quickfix'
