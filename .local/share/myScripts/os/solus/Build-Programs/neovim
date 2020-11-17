@@ -5,7 +5,8 @@ git clone --depth=1 https://github.com/neovim/neovim
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 make install
 
-python3 -m pip install --user --upgrade pynvim
+python3 -m pip install --user --upgrade pynvim neovim-remote
 python2 -m pip install --user --upgrade pynvim
+npm install -g neovim
 
 

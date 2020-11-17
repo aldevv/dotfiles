@@ -57,8 +57,8 @@ if current_colorscheme == 3
     " let g:lightline = { 'colorscheme': 'onehalfdark' }
 endif
 if current_colorscheme == 4
-    let ayu_comment_italic=1 " enable italic for comments
-    let ayu_string_italic=1  " enable italic for strings
+    let ayu_comment_italic=0 " enable italic for comments
+    let ayu_string_italic=0  " enable italic for strings
     let ayu_type_italic=1    " enable italic for types
     let ayu_keyword_italic=1 " enable italic for keywords
     " let ayucolor="light"  " for light version of theme

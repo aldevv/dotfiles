@@ -4,6 +4,14 @@ mkdir "$PROGRAMS"
 
 # neovim is build from source!
 
+# check latest nvm link
+# this is for nvm, otherwise just install npm and do npm install -g neovim
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | zsh
+source "$HOME/.config/nvm/nvm.sh"
+source "$HOME/.zshrc"
+source "$HOME/.zprofile"
+nvm install node
+
 # install packages
 packages=$(awk '{printf "%s ", $0}' packages)
 eopkg -y $packages

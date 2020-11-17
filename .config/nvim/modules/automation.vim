@@ -52,7 +52,7 @@ endif
     autocmd BufWritePost *.md :silent call CompileMd()
 
     function CompileTex()
-        :w | silent exec "!latexmk -pdf %"
+        :w | silent Dispatch! latexmk -pdf %
     endfunction
 
     function CompileMd()
@@ -99,7 +99,7 @@ augroup END
 " let maplocalleader = ','
 augroup set_latex_env
    autocmd!
-   autocmd BufNewFile .tex set spell! wrap spelllang=es
+   autocmd FileType tex set spell! wrap spelllang=es
    "set local leader
    if g:extension == 'tex'
        let maplocalleader = ','
