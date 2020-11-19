@@ -108,8 +108,8 @@ noremap <leader>sd :bd<cr>
 noremap <a-q> :bd<cr>
 
 " change buffers like bscode
-" noremap <silent>N :bprevious<cr>
-" noremap <silent>E :bnext<cr>
+noremap <silent>E :bprevious<cr>
+noremap <silent>N :bnext<cr>
 
 " clipboard
 " "*p pastes what is highlighted by the mouse
@@ -187,9 +187,9 @@ vnoremap <a-k> <Esc>/<++><Enter>"_c4l
 noremap <leader>rb i#!/bin/sh<CR><CR>
 
 "global do
-nnoremap <A-R> :%g/\v//norm!<Left><Left><Left><Left><Left><Left><Left>
+nnoremap <A-R> :%g/\v/norm!<Left><Left><Left><Left><Left><Left>
 nnoremap <A-r> :%norm!<space>
-vnoremap <A-R> :g/\v//norm!<Left><Left><Left><Left><Left><Left><Left>
+vnoremap <A-R> :g/\v/norm!<Left><Left><Left><Left><Left><Left>
 vnoremap <A-r> :norm!<space>
 
 " Alias replace all to
@@ -263,7 +263,7 @@ cnoremap <C-y> <Right>
 autocmd FileType python nnoremap <buffer> <s-cr> :silent w<bar>only<bar>vsp<bar>term jupyter console<cr> <c-w>l :JupyterConnect<cr><cr> :JupyterRunFile<cr>
 autocmd FileType java nnoremap <silent><buffer> <s-cr> :silent w<bar>execute "!java ".expand('%:t:r')<cr>
 noremap <silent><leader><cr> :call RunnerTerminal()<cr>
-" nnoremap <silent><cr> :call RunnerEnter()<cr>
+nnoremap <silent><cr> :call RunnerEnter()<cr>
 
 function! RunnerEnter()
   if bufname('%') == '' || &buftype == 'quickfix'

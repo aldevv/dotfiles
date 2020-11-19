@@ -1551,7 +1551,7 @@ let g:ale_set_highlights = 0
 " let g:ale_lint_on_filetype_changed = 1
 " let g:ale_linters_ignore= {'python': ['autopep8']}
 let g:ale_close_preview_on_insert = 1
-map <leader>ll <Plug>(ale_toggle)
+" map <leader>ll <Plug>(ale_toggle)
 " make ale ONLY use the linters defined in g:ale_linters
 let g:ale_linters_explicit = 1
 let g:ale_linters =  {
@@ -1668,7 +1668,7 @@ imap <M-.> <Plug>BujoCheckinsert
 " VIM-MAN
 "========================
 " map <leader>k <Plug>(Man) - open man page for word under cursor in a horizontal split
-map N <Plug>(Vman)
+map <leader>N <Plug>(Vman)
 
 "========================
 " VIM-PROJECTIONIST
@@ -1710,6 +1710,10 @@ let g:projectionist_heuristics = {
                 \ "*.cpp": {
                 \   "dispatch": "g++ % && ./a.out",
                 \   "alternate": "{}.h",
+                \ },
+                \ "*.tex": {
+                \   "dispatch": "latexmk -pdf {file}",
+                \   "alternate": "mybib.bib",
                 \ },
                 \
                 \ "*.java": {
