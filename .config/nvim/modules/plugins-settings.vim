@@ -464,19 +464,19 @@ nmap <leader>cx :CocCommand snippets.editSnippets<cr>
 " these aren't used
 
 " Use <C-l> for trigger snippet expand.
-" imap <a-t> <Plug>(coc-snippets-expand)
+" imap <c-j> <Plug>(coc-snippets-expand)
 
 " Use <C-j> for select text for visual placeholder of snippet.
-" vmap <a-t> <Plug>(coc-snippets-select)
+vmap <a-t> <Plug>(coc-snippets-select)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
-" let g:coc_snippet_next = '<a-t>'
+let g:coc_snippet_next = '<a-t>'
 
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-" let g:coc_snippet_prev = '<a-s>'
+let g:coc_snippet_prev = '<a-s>'
 
-" Use <C-j> for both expand and jump (make expand higher priority.)
-" imap <C-j> <Plug>(coc-snippets-expand-jump)
+" Use <a-t> for both expand and jump (make expand higher priority.)
+imap <a-t> <Plug>(coc-snippets-expand-jump)
 
 au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
 
@@ -588,7 +588,7 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 " nnoremap <a-t> i<c-r>=UltiSnips#JumpForwards()<cr>
 " snoremap <a-t> <Esc>:call UltiSnips#JumpForwards()<cr>
 "
-noremap <leader>I :call <SID>addSkel()<cr>
+noremap <silent><leader>I :silent call <SID>addSkel()<cr>
 function! s:addSkel()
 if !empty(b:projectionist)
     " Loop through projections with 'skeleton' key
@@ -607,21 +607,38 @@ endif
 endfunction
 
 function! s:install_undo_workaround() abort
-  nnoremap <silent><buffer> u :call <SID>undo_workaround()<CR>
+  nnoremap <buffer> u :call <SID>undo_workaround()<CR>
 endfunction
 
 function! s:undo_workaround() abort
   normal! 2u
   nunmap <buffer> u
 endfunction
+" for ultisnips
+" function! s:try_insert(skel)
+"   execute 'normal! i_' . a:skel . "\<C-r>=UltiSnips#ExpandSnippet()\<CR>"
+"   if g:ulti_expand_res == 0
+"     silent! undo
+"   endif
+"   return g:ulti_expand_res
+" endfunction
 
-" Try to expand the snippet named _skel
+" for coc_snippets
+let g:snippet_expanded = 0
 function! s:try_insert(skel)
-  execute 'normal! i_' . a:skel . "\<C-r>=UltiSnips#ExpandSnippet()\<CR>"
-  if g:ulti_expand_res == 0
-    silent! undo
-  endif
-  return g:ulti_expand_res
+    silent execute 'normal! i_' . a:skel . "\<C-r>=Coc_expand()\<cr>"
+    if g:snippet_expanded == 0
+        silent! undo
+    endif
+    return g:snippet_expanded
+endfunction
+function! Coc_expand()
+    if coc#expandable()
+        let g:snippet_expanded = 1
+        return coc#rpc#request('doKeymap', ['snippets-expand-jump',''])
+    endif
+    let g:snippet_expanded = 0
+    return
 endfunction
 
 "==========

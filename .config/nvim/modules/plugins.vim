@@ -24,7 +24,6 @@ Plug 'antoinemadec/coc-fzf'
 Plug 'preservim/tagbar'
 Plug 'AndrewRadev/switch.vim'
 Plug 'sbdchd/neoformat'
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -96,6 +95,7 @@ Plug 'osyo-manga/vim-brightest'
 Plug 'tpope/vim-projectionist'
 " Plug 'srydell/vim-skeleton'
 "  Plug 'akuseru1/vim-skeleton'
+" Plug 'SirVer/ultisnips'
 
 "FUN STUFF"
 " needs neovim 0.5

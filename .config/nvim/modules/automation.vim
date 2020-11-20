@@ -106,7 +106,13 @@ augroup set_latex_env
    endif
    
    autocmd FileType tex nnoremap <silent><localleader> :<c-u>WhichKey  ','<CR>
+
 "======================
+augroup END
+
+augroup projectionist_env
+   autocmd BufRead,BufNewFile .projection  set filetype=projection
+
 augroup END
 
 "automatic ctags
