@@ -16,6 +16,7 @@ if [ "$status" = "DIRTY" ]; then
     if [ ! -z "$message" ]; then
         printf "\n\n"
         git add -u
+        git add .
         printf "\n\n"
         git commit -m "$message"
         # git push origin master
