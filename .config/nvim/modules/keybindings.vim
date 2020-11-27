@@ -127,7 +127,7 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 nmap <leader>gp "+gp
 " copy default register into the main clipboard
-nnoremap <silent> <leader>. :let @+ = @"<cr>
+" nnoremap <silent> <leader>. :let @+ = @"<cr>
 
 "fold
 noremap ze zk
@@ -389,3 +389,4 @@ function! FormatMyCode()
   execute '!$APPS/vim/formatCode ' . g:extension
 endfunction
 
+cnoreabbrev Sne CocCommand snippets.editSnippets

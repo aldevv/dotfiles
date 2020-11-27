@@ -52,7 +52,7 @@ snippet box "Box"
 $0
 endsnippet
 
-snippet mk "Math" wA
+snippet mmm "Math" wA
 $${1}$`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
     snip.rv = ' '
@@ -61,22 +61,58 @@ else:
 `$2
 endsnippet
 
-snippet dm "Math" wA
+# this is the same as $$ but can be in its own line
+snippet mmM "Math" wA
 \[
 $1
 .\] $0
 endsnippet
 
-snippet sr "^2" iA
+# this aligns equations by the & symbol
+snippet mma "Math" wA
+% import amsmath
+% usepackage{amsmath}
+% the * toggles equation numbering
+\begin{align*}
+	${1:something & something} \\
+	${2:something & something}
+\end{align*}
+endsnippet
+
+# this aligns equations by centering
+snippet mmg "Math" wA
+% import amsmath
+% usepackage{amsmath}
+% the * toggles equation numbering
+\begin{gather*}
+	${1:0} \\
+	${2:1}
+\end{gather*}
+endsnippet
+
+snippet ssq "^2" iA
 ^2
 endsnippet
 
-snippet cb "^3" iA
+snippet ccb "^3" iA
 ^3
 endsnippet
 
-snippet td "superscript" iA
+snippet ppw "superscript" iA
 ^{$1}$0
+endsnippet
+
+snippet ssb "superscript" iA
+_{$1}$0
+endsnippet
+
+snippet ssA "subject to" iA
+% import amsmath
+% usepackage{amsmath}
+\begin{cases}
+	${1:0}, & ${2:\text{if}\ a=1 \\}
+	${3:1}, & ${3:\text{otherwise}}
+\end{cases}
 endsnippet
 
 snippet /// "Fraction" iA
@@ -85,4 +121,16 @@ endsnippet
 # for fractions
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)//' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+snippet ssa "Description" iA
+%\usepackage{empheq}
+\begin{empheq}[left={$1=\empheqlbrace}\]{alignat*=7}
+	$2
+    %example:
+    % - 0,1&X_{1} &- 0,1&X_{2} &- 0,1&X_{3} &+ 0,9&X_{4} &- 0,1&X_{5}& &<= 0 \\
+    % &X_{1} &+ &X_{2} &+ &X_{3} &+ &X_{4} &+ &X_{5}& &<= 2\,000\,000 \\
+\end{empheq}
+
+
 endsnippet

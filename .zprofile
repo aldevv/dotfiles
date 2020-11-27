@@ -64,6 +64,9 @@ export JAVA_HOME="$JDK_HOME"
 export PATH="$PATH:$JAVA_HOME/bin:$HOME/.cargo/bin:$NODE_PATH"
 
 #======================================
+#
+#WINE
+export DISPLAY=:0
 
 #fzf
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
