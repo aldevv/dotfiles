@@ -297,7 +297,7 @@ vmap <M-CR> <Plug>(coc-codeaction-selected)
 nmap <silent><leader>crr <Plug>(coc-refactor)
 cnoreabbrev CS CocSearch
 " for static hover glitch
-noremap <silent><esc> :call coc#float#close_all()<cr>
+nnoremap <silent><esc> :call coc#float#close_all()<cr>
 
 
 " or do <c-w>o to close it but it closes other windows as well

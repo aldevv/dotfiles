@@ -106,7 +106,7 @@ snippet ssb "superscript" iA
 _{$1}$0
 endsnippet
 
-snippet ssA "subject to" iA
+snippet ssa "subject to" iA
 % import amsmath
 % usepackage{amsmath}
 \begin{cases}
@@ -123,7 +123,7 @@ snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)//' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
-snippet ssa "Description" iA
+snippet ssA "Description" iA
 %\usepackage{empheq}
 \begin{empheq}[left={$1=\empheqlbrace}\]{alignat*=7}
 	$2

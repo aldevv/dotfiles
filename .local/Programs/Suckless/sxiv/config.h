@@ -71,11 +71,6 @@ static const keymap_t keys[] = {
 	{ 0,            XK_r,             g_reload_image,       None },
 	{ 0,            XK_D,             g_remove_image,       None },
 	{ ControlMask,  XK_Left,          g_scroll_screen,      DIR_LEFT },
-	{ ControlMask,  XK_h,             g_scroll_screen,      DIR_LEFT },
-	{ ControlMask,  XK_n,             g_scroll_screen,      DIR_DOWN },
-	{ ControlMask,  XK_e,             g_scroll_screen,      DIR_UP },
-	{ ControlMask,  XK_i,             g_scroll_screen,      DIR_RIGHT },
-	{ ControlMask,  XK_Down,          g_scroll_screen,      DIR_DOWN },
 	{ ControlMask,  XK_Up,            g_scroll_screen,      DIR_UP },
 	{ ControlMask,  XK_Right,         g_scroll_screen,      DIR_RIGHT },
 	{ 0,            XK_minus,     g_change_gamma,       -1 },
@@ -92,6 +87,14 @@ static const keymap_t keys[] = {
 	{ 0,            XK_P,             g_navigate_marked,    -1 },
 	{ ControlMask,  XK_g,             g_change_gamma,        0 },
 
+	// movement
+	{ 0,            XK_n,             i_scroll,             DIR_DOWN },
+	{ 0,            XK_e,             i_scroll,             DIR_UP },
+	{ 0,            XK_h,             i_scroll,             DIR_LEFT },
+	{ 0,            XK_i,             i_scroll,             DIR_RIGHT },
+	{ 0,            XK_d,             g_scroll_screen,      DIR_DOWN },
+	{ 0,            XK_u,             g_scroll_screen,      DIR_UP },
+
 	{ 0,            XK_h,             t_move_sel,           DIR_LEFT },
 	{ 0,            XK_Left,          t_move_sel,           DIR_LEFT },
 	{ 0,            XK_n,             t_move_sel,           DIR_DOWN },
@@ -103,12 +106,11 @@ static const keymap_t keys[] = {
 	{ 0,            XK_R,             t_reload_all,         None },
 
     //next folder
-	{ 0,            XK_n,             i_navigate,           +1 },
+	{ ControlMask,            XK_n,             i_navigate,           +1 },
+	{ ControlMask,            XK_e,             i_navigate,           -1 },
 
 	{ 0,            XK_k,             i_scroll_to_edge,     DIR_LEFT | DIR_UP },
 	{ 0,            XK_space,         i_navigate,           +1 },
-    //previous folder
-	{ 0,            XK_e,             i_navigate,           -1 },
 
 	{ 0,            XK_p,             i_scroll_to_edge,     DIR_LEFT | DIR_UP },
 	{ 0,            XK_BackSpace,     i_navigate,           -1 },

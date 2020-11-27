@@ -353,7 +353,7 @@ nnoremap <leader>,er :Cfr<cr>
 nnoremap <leader>,exp :Cfxp<cr>
 nnoremap <leader>,exx :Cfxx<cr>
 
-" Make double-<Esc> clear search highlights
+" clear search highlights
 noremap <silent><leader>ll :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
 " nnoremap <silent><leader>hh :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
 nnoremap <silent><leader>l1 :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
@@ -390,3 +390,6 @@ function! FormatMyCode()
 endfunction
 
 cnoreabbrev Sne CocCommand snippets.editSnippets
+
+" this is to exit select mode when using snips
+snoremap <Esc> <c-c>
