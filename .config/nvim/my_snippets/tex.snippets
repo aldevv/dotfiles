@@ -65,7 +65,7 @@ endsnippet
 snippet mmM "Math" wA
 \[
 $1
-.\] $0
+\] $0
 endsnippet
 
 # this aligns equations by the & symbol
@@ -88,6 +88,14 @@ snippet mmg "Math" wA
 	${1:0} \\
 	${2:1}
 \end{gather*}
+endsnippet
+
+snippet ssm "Math sum" iA
+\sum_{$1}^{$2}
+endsnippet
+
+snippet inn "Math integral" iA
+\int_{$1}^{$2}
 endsnippet
 
 snippet ssq "^2" iA
@@ -132,5 +140,21 @@ snippet ssA "Description" iA
     % &X_{1} &+ &X_{2} &+ &X_{3} &+ &X_{4} &+ &X_{5}& &<= 2\,000\,000 \\
 \end{empheq}
 
+
+endsnippet
+
+snippet sssu "Description" bA
+\subsubsection{$1}\label{subsec:$2}
+endsnippet
+
+snippet ggR "images in Latex" bA
+\usepackage{graphicx}
+\graphicspath{{./imagenes/}}
+endsnippet
+
+snippet ggr "Description" bA
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{$1}
+\end{figure}
 
 endsnippet

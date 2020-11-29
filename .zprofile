@@ -1,5 +1,7 @@
 export EDITOR=nvim
 export VISUAL=nvim
+export MANPAGER='less -s -M +Gg'
+export PAGER='less -s -M +Gg'
 export C_INCLUDE_PATH=.:~/Documents/mlibs
 export EPISODES=~/Downloads
 export TERMINAL=st
@@ -87,7 +89,6 @@ export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type directory"
 #export  LESS_TERMCAP_ue=$'\e[0m'
 #export  LESS_TERMCAP_us=$'\e[1;32m'
 
-export MANPAGER='less -s -M +Gg'
 export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 export LESS_TERMCAP_mb=$( printf '\E[01;31m')
 export LESS_TERMCAP_md=$( printf '\E[01;31m')

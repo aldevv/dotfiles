@@ -608,6 +608,12 @@ alias colab="echo \"!wget https://github.com/SpencerPark/IJava/releases/download
 # less keybindings
 lesskey $XDG_CONFIG_HOME/colemak-less
 
+ranger_new_line() {
+  printf "[ranger]\n%s" "$PS1"
+}
+# show ranger level from terminal spawned in ranger
+if [ -n "$RANGER_LEVEL" ]; then export PS1=$(ranger_new_line); fi
+
 #pdfgrep
 #completion and highlighting
 source ~/.config/completion_fzf.zsh
