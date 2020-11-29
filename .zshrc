@@ -492,7 +492,11 @@ alias pkg='sudo eopkg'\
 autoload -U edit-command-line
 # Vi style:
 zle -N edit-command-line
+
 bindkey -v
+
+# make mode changing faster (0.1 seconds)
+export KEYTIMEOUT=1
 
 #to fix the backspace problem
 bindkey "^?" backward-delete-char
@@ -523,6 +527,11 @@ bindkey -M menuselect 'e' vi-up-line-or-history
 bindkey -M menuselect 'i' vi-forward-char
 bindkey -M menuselect 'n' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
+
+# move in insert mode, you need to put the \e
+bindkey "\eh" backward-char
+bindkey "\ei" forward-char
+#
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -608,10 +617,12 @@ alias colab="echo \"!wget https://github.com/SpencerPark/IJava/releases/download
 # less keybindings
 lesskey $XDG_CONFIG_HOME/colemak-less
 
-ranger_new_line() {
-  printf "[ranger]\n%s" "$PS1"
-}
 # show ranger level from terminal spawned in ranger
+ranger_new_line() {
+  # working for theme: "af-magic"
+  PS1=$(echo "$PS1" | sed 's/[[:blank:]]*$//')
+  printf "%s\e[0;31m» " "$PS1"
+}
 if [ -n "$RANGER_LEVEL" ]; then export PS1=$(ranger_new_line); fi
 
 #pdfgrep
