@@ -12,8 +12,11 @@
 
   "snippets.ultisnips.directories": ["~/.config/nvim/my_snippets", "UltiSnips"],
   "snippets.userSnippetsDirectory": "~/.config/nvim/my_snippets",
-  "clangd.path": "/home/solus/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
-  "clangd.disableDiagnostics": true,
+  "clangd.path": "/home/solus/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
+  "clangd.disableDiagnostics": false,
+  "clangd.arguments": ["--fallback-style=mozilla"],
+  "clangd.fallbackFlags": ["-stdlib=libstdc++"],
+  "clangd.compilationDatabasePath": "",
   "diagnostic.checkCurrentLine": true,
   "diagnostic.enable": true,
   "__diagnostic.errorSign": "✘",

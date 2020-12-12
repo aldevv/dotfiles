@@ -1,0 +1,12 @@
+[
+  {
+    "directory": "mypath",
+    "file": "myname",
+    "arguments": [
+      "/usr/bin/clang-10",
+      "-stdlib=libstdc++",
+      "myname",
+      "--target=x86_64-solus-linux"
+    ]
+  }
+]

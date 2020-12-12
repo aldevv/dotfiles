@@ -114,6 +114,33 @@ snippet ssb "superscript" iA
 _{$1}$0
 endsnippet
 
+snippet uurl "url bibliography" b
+@article{$1,
+author = {},
+title = {{}},
+url = {$2},
+year = {}
+}
+endsnippet
+
+snippet bbib "biblatex" b
+\usepackage[
+    style=apa,
+    backend=biber,
+    sortcites=true,
+    sorting=nyt,
+%    isbn=false,
+%    url=false,
+%    doi=false,
+%    eprint=false,
+    % hyperref=false,
+    backref=false,
+%    firstinits=false,
+]{biblatex}
+\addbibresource{$1}
+%\printbibliography
+endsnippet
+
 snippet ssa "subject to" iA
 % import amsmath
 % usepackage{amsmath}

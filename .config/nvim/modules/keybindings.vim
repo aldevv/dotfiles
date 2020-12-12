@@ -336,7 +336,7 @@ endfunction
 
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR><c-o>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
-map <silent><leader>,f :silent execute '!fcc' shellescape(&ft)<cr>
+" map <silent><leader>,f :silent execute '!formatCode' shellescape(&ft)<cr>
 nnoremap <leader>V V`]
 
 command! -bang -nargs=? -complete=dir Cfz :e $HOME/.zshrc
@@ -384,9 +384,11 @@ noremap <leader>0 :Colors<cr>
 " help current word
 nnoremap gw :h <c-r>=expand('<cword>')<cr><bar>resize 15<cr>
 
+" nnoremap <silent><leader>cp :silent call FormatMyCode()<cr>
 nnoremap <silent><leader>cp :silent call FormatMyCode()<cr>
 function! FormatMyCode()
-  execute '!$APPS/vim/formatCode ' . g:extension
+  execute '!$APPS/vim/formatCode ' . g:extension .' '. expand('%:p')
+  :CocRestart
 endfunction
 
 cnoreabbrev Sne CocCommand snippets.editSnippets

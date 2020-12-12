@@ -8,5 +8,20 @@ if [ "$1" = "java" ]; then
     cp "$XDG_CONFIG_HOME/clang-format/java/$style/.clang-format" .
     exit
 fi
-style="mozilla"
-cp "$XDG_CONFIG_HOME/clang-format/c/$style/.clang-format" .
+
+if [ "$1" = "c" ]; then
+    style="mozilla"
+    cp "$XDG_CONFIG_HOME/clang-format/c/$style/.clang-format" .
+    exit
+fi
+
+if [ "$1" = "cpp" ]; then
+    style="mozilla"
+    cp "$XDG_CONFIG_HOME/clang-format/c/$style/.clang-format" .
+    # create compilation database for clang
+    cp "$XDG_CONFIG_HOME/clang-format/compile_commands.json" .
+    fname=$(basename -- "$2")
+    sed -i "s|mypath|$2|g; s|myname|$fname|g" compile_commands.json
+    exit
+fi
+

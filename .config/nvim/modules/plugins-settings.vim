@@ -262,8 +262,8 @@ let g:coc_global_extensions = [
             \ 'coc-python',
             \ 'coc-java',
             \ 'coc-sh',
-            \ 'coc-clangd',
             \ ]
+            " \ 'coc-clangd',
 " coc-clangd is necessary for c and c++
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -739,6 +739,7 @@ set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 "====================
 " NEOFORMAT
 "====================
+" let g:neoformat_run_all_formatters = 1
 " Enable alignment globally
 let g:neoformat_basic_format_align = 1
 " Enable tab to spaces conversion globally
@@ -808,6 +809,13 @@ let g:neoformat_java_clangformat = {
             \ 'stdin': 1,
             \ }
 let g:neoformat_enabled_java = ['clangformat']
+
+let g:neoformat_cpp_clangformat = {
+            \ 'exe': 'clang-format',
+            \ 'args': ['-assume-filename=' . expand('%:t'), '-style=file'],
+            \ 'stdin': 1,
+            \ }
+let g:neoformat_enabled_cpp = ['clangformat']
 
 " autocmd BufWritePre python Neoformat
 "====================
@@ -1850,3 +1858,5 @@ let g:projectionist_heuristics = {
 "   "*": {"make": "rake"},
 "   "spec/*_spec.rb": {"dispatch": "rspec {file}"}
 "}
+""
+
