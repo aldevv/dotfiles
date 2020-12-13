@@ -154,14 +154,8 @@ mode_switch + a
 # mode_switch + b
 # 	dwmc togglefullscr
 
-#mode_switch + e
-#    $SCRIPTS/useful/fun/emojiSelect
-
-# mode_switch + e
-#     retrieveip
-
-# mode_switch + shift + e
-#     retrievemask
+mode_switch + e
+    $SCRIPTS/useful/fun/emojiSelect
 
 mode_switch + i
     $UTILITIES/misc/saveImage

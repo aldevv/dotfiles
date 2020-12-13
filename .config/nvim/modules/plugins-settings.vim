@@ -288,11 +288,12 @@ nmap <leader>crf :CocSearch <C-R>=expand('<cword>')<cr>
 ":CocRebuild                        *:CocRebuild*
 " use when you upgrade nodejs
 
+nmap <leader>* <Plug>(coc-diagnostic-info)
 nmap <leader>cA <Plug>(coc-codeaction)
 nmap <leader>ca <Plug>(coc-codeaction-line)
 vmap <leader>ca <Plug>(coc-codeaction-selected)
-nmap <M-CR> <Plug>(coc-codeaction-line)
-nmap <M-S-CR> <Plug>(coc-codeaction)
+nmap <M-CR> <Plug>(coc-codeaction)
+nmap <M-S-CR> <Plug>(coc-codeaction-line)
 vmap <M-CR> <Plug>(coc-codeaction-selected)
 nmap <silent><leader>crr <Plug>(coc-refactor)
 cnoreabbrev CS CocSearch
@@ -352,12 +353,12 @@ nnoremap <silent><nowait> <leader>cv  :<C-u>CocList --auto-preview outline<cr>
 
 function s:show_hover_doc()
     if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ "\\S"
-        silent! call timer_start(600, 'ShowDocIfNoDiagnostic')
+        silent! call timer_start(1300, 'ShowDocIfNoDiagnostic')
     endif
 endfunction
 
 function! ShowDocIfNoDiagnostic(timer_id)
-    if (coc#util#has_float() == 0)
+    if (coc#float#has_float() == 0)
         " silent! call CocActionAsync('doHover')
         " non async so it doesnt try to create another one once theres already a rendered one
         silent! call CocAction('doHover')
@@ -367,16 +368,19 @@ endfunction
 function Activate_hover()
     " autocmd CursorHoldI * silent! call <SID>show_hover_doc()
     autocmd CursorHold  * silent! call<SID>show_hover_doc()
-    " autocmd CursorHold * if ! coc#util#has_float() | silent! call CocActionAsync('doHover') | endif
+    " autocmd CursorHold * if ! coc#float#has_float() | silent! call CocActionAsync('doHover') | endif
 endfunction
 
 " auto hover
-" autocmd FileType python,cpp,javascript,c,java :call Activate_hover()
+augroup auto_hovering
+    autocmd!
+    autocmd FileType python,cpp,javascript,c,java :call Activate_hover()
+augroup END
 
 
-nnoremap <nowait><expr><a-n> coc#util#float_scrollable() ? coc#util#float_scroll(1) : OutlineFZF()
 " nnoremap <nowait><expr> <a-e> coc#util#float_scrollable() ? coc#util#float_scroll(0) : "\<c-w>\<c-v>"
-nnoremap <nowait><expr><a-e> coc#util#float_scrollable() ? coc#util#float_scroll(0) : BrowseDots()
+nnoremap <nowait><expr><a-n> coc#float#has_scroll() ? coc#float#scroll(1) : OutlineFZF()
+nnoremap <nowait><expr><a-e> coc#float#has_scroll() ? coc#float#scroll(0) : BrowseDots()
 
 imap <silent><expr> <a-n> pumvisible() ? "\<C-n>" : "\<C-o>n"
 imap <silent><expr> <a-e> pumvisible() ? "\<C-p>" : "\<C-o>e"
@@ -603,7 +607,7 @@ endif
 if s:try_insert('skel')
     call s:install_undo_workaround()
 endif
-    
+
 endfunction
 
 function! s:install_undo_workaround() abort
@@ -1250,6 +1254,10 @@ let g:splitjoin_join_mapping = 'gS'
 "=========
 " nmap <leader>cv :TagbarToggle<CR>
 " let g:tagbar_position = 'rightbelow'
+" let g:tagbar_iconchars = ['▶ ', '▼ ']
+let g:tagbar_iconchars = ['▸ ', '▾ ']
+        " let g:tagbar_iconchars = ['▷', '◢']
+        " let g:tagbar_iconchars = ['+', '-']  (default on Windows)
 
 " so it opens focused
 let g:tagbar_autofocus = 1
