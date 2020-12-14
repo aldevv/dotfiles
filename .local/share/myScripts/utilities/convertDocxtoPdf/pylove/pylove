@@ -11,5 +11,7 @@ t.add_file(file_)
 t.set_output_folder(destination)
 t.debug = False
 t.execute()
-t.download()
+filename=t.download()
 t.delete_current_task()
+import os
+os.rename(destination+'/'+filename, os.path.splitext(os.path.basename(file_))[0]+'.pdf')

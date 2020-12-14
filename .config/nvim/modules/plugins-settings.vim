@@ -745,6 +745,8 @@ set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 "====================
 " NEOFORMAT
 "====================
+" let g:neoformat_verbose = 1
+"
 " let g:neoformat_run_all_formatters = 1
 " Enable alignment globally
 let g:neoformat_basic_format_align = 1
@@ -756,7 +758,6 @@ let g:neoformat_basic_format_trim = 1
 let g:neoformat_try_formatprg = 1
 " let g:neoformat_only_msg_on_error = 1
 "vvvvvvvvvvvvvvvvv
-" let g:neoformat_verbose = 1
 if !executable('black')
     :!pip3 install black
 endif
@@ -797,7 +798,7 @@ let g:neoformat_enabled_python = ['black']
 autocmd FileType javascript,json,typescript let &l:formatprg='prettier --stdin-filepath ' .expand('%'). ' --print-width 90'
 " uses google style
 " autocmd FileType java,c,c++ let &l:formatprg='clang-format --assume-filename=' . expand('%:t'). ' -style=google'
-autocmd FileType java,c,c++ let &l:formatprg='clang-format --assume-filename=' . expand('%:t'). ' -style=file'
+autocmd FileType java,c,c++ let &l:formatprg='clang-format --assume-filename="' . expand('%:t'). '" -style=file'
 
 let g:neoformat_javascript_prettier = {
             \ 'exe': 'prettier',
@@ -811,14 +812,14 @@ let g:neoformat_enabled_javascript = ['prettier']
 " \ 'args': ['-assume-filename=' . expand('%:t'), '-style=google'],
 let g:neoformat_java_clangformat = {
             \ 'exe': 'clang-format',
-            \ 'args': ['-assume-filename=' . expand('%:t'), '-style=file'],
+            \ 'args': ['-assume-filename="' . expand('%:t').'"', '-style=file'],
             \ 'stdin': 1,
             \ }
 let g:neoformat_enabled_java = ['clangformat']
 
 let g:neoformat_cpp_clangformat = {
             \ 'exe': 'clang-format',
-            \ 'args': ['-assume-filename=' . expand('%:t'), '-style=file'],
+            \ 'args': ['-assume-filename="' . expand('%:t').'"', '-style=file'],
             \ 'stdin': 1,
             \ }
 let g:neoformat_enabled_cpp = ['clangformat']
