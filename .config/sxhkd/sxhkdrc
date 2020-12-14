@@ -47,12 +47,6 @@ mode_switch + shift + Return
 mode_switch +  k
     st -e newsboat
 
-mode_switch + n
-    nw
-
-mode_switch + shift + n
-    mk
-
 hyper + n
     retrieveip
 

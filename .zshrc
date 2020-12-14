@@ -151,6 +151,7 @@ alias pkg='sudo eopkg'\
     trc='transmission-remote-cli'\
     py='python3'\
 	pkgsize="eopkg li -l | awk '/Name:/ {sub(/,$/,\"\",\$2); name= \$2} /Installed Size:/{print \$5\$6, name}' | sort -h "\
+	plz="sudo"\
 
 
 	#python='python3'\

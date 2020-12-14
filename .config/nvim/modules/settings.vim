@@ -83,6 +83,21 @@ function! FoldForJavascript()
     endif
 endfunction
 
+function! FoldForVim()
+    let line = getline(v:lnum) "v:lnum gives you the line number
+    if match(line,'\v^function!?\s.+$') > -1
+        return ">2"
+    elseif match(line, '\v^\s*(augroup|aug)\s(END)@!.+$') > -1
+        return ">2"
+    elseif match(line, '\v^\s*(if|for|while).+\(.+\)\s?$') > -1
+        return ">1"
+    elseif match(line, '\v^(endfunction|endif|augroup END)@!\S*$') > -1
+        return ">0"
+    else
+        return "="
+    endif
+endfunction
+
 if has('folding')
   " set nofoldenable
   set foldenable
@@ -90,9 +105,12 @@ if has('folding')
   set foldlevelstart=99               " start unfolded
   set foldnestmax=5
 endif
+
 autocmd FileType java setlocal foldmethod=expr foldexpr=FoldForJava()
 autocmd FileType python setlocal foldmethod=expr foldexpr=FoldForPython()
 autocmd FileType javascript setlocal foldmethod=expr foldexpr=FoldForJavascript()
+autocmd FileType vim setlocal foldmethod=expr foldexpr=FoldForVim()
+" these work
 autocmd FileType c,cpp setlocal foldmethod=syntax
 set list                              " show whitespace
 set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
@@ -113,7 +131,7 @@ augroup AutoSaveFolds
   " nested is needed by bufwrite* (if triggered via other autocmd)
   autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
   autocmd BufWinEnter ?* silent! loadview
-augroup end
+augroup END
 
 " better folding style
 let s:middot='·'

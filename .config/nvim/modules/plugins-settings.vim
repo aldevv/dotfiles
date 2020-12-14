@@ -275,12 +275,12 @@ nmap <leader>gr <Plug>(coc-references-used)
 nmap gR <Plug>(coc-implementation)
 " g{ and g} are usable
 nnoremap <silent><nowait> <leader>cd  :<C-u>CocDiagnostics<cr>
-nmap <silent> , <Plug>(coc-diagnostic-prev-error)
-nmap <silent> ; <Plug>(coc-diagnostic-next-error)
-nmap g, <Plug>(coc-diagnostic-prev)
-nmap g; <Plug>(coc-diagnostic-next)
+nmap ; <Plug>(coc-diagnostic-prev)
+nmap , <Plug>(coc-diagnostic-next)
+nmap <silent> g; <Plug>(coc-diagnostic-prev-error)
+nmap <silent> g, <Plug>(coc-diagnostic-next-error)
 nmap <silent> g. <Plug>(coc-fix-current)
-nnoremap <silent> <leader>+ :call CocAction('doHover')<cr>
+nnoremap <silent> + :call CocAction('doHover')<cr>
 nmap <F2> <Plug>(coc-rename)
 nmap <leader>crf :CocSearch <C-R>=expand('<cword>')<cr><cr>
 nmap <leader>crf :CocSearch <C-R>=expand('<cword>')<cr>
@@ -288,7 +288,9 @@ nmap <leader>crf :CocSearch <C-R>=expand('<cword>')<cr>
 ":CocRebuild                        *:CocRebuild*
 " use when you upgrade nodejs
 
-nmap <leader>* <Plug>(coc-diagnostic-info)
+nmap <leader>cl <Plug>(coc-codelens-action)
+nmap <leader>+ <Plug>(coc-diagnostic-info)
+nmap <leader>* <Plug>(coc-fix-current)
 nmap <leader>cA <Plug>(coc-codeaction)
 nmap <leader>ca <Plug>(coc-codeaction-line)
 vmap <leader>ca <Plug>(coc-codeaction-selected)
@@ -371,11 +373,11 @@ function Activate_hover()
     " autocmd CursorHold * if ! coc#float#has_float() | silent! call CocActionAsync('doHover') | endif
 endfunction
 
-" auto hover
-augroup auto_hovering
-    autocmd!
-    autocmd FileType python,cpp,javascript,c,java :call Activate_hover()
-augroup END
+" auto hover, uncomment for enabling
+" augroup auto_hovering
+"     autocmd!
+"     autocmd FileType python,cpp,javascript,c,java :call Activate_hover()
+" augroup END
 
 
 " nnoremap <nowait><expr> <a-e> coc#util#float_scrollable() ? coc#util#float_scroll(0) : "\<c-w>\<c-v>"
