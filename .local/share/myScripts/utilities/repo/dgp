@@ -59,3 +59,5 @@ if [ $dotfiles = 1 ]; then
     ts -t 0
     exit
 fi
+
+echo "nothing to commit"
