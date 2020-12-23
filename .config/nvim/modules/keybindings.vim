@@ -9,13 +9,13 @@ noremap gj ge
 noremap gJ gE
 nnoremap l i
 nnoremap i l
+" vnoremap l i
+vnoremap i l
 noremap k nzzzv
 noremap K Nzzzv
 nnoremap <leader>- :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 " noremap N J
 noremap J E
-vnoremap i l
-vnoremap l i
 vnoremap L I
 noremap ge J
 noremap gE a<cr><esc>k$
@@ -221,6 +221,7 @@ nnoremap <leader>n <c-w>j
 nnoremap <leader>e <c-w>k
 nnoremap <leader>i <c-w>l
 noremap <tab> %
+vnoremap <tab> %
 nnoremap <M-i> <c-i>
 nnoremap <M-o> <c-o>
 

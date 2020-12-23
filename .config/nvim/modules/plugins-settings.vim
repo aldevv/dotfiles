@@ -881,8 +881,9 @@ let g:EasyMotion_smartcase = 1
 " let g:DevIconsEnableFoldersOpenClose = 1
 " let g:DevIconsEnableFolderExtensionPatternMatching = 1
 
-" targets plugin
-"
+"=========
+" TARGETS
+"=========
 
 let g:targets_aiAI = 'alAL'
 " let g:targets_aiAI = 'aiAi'
@@ -1123,14 +1124,16 @@ vmap aC <Plug>(textobj-comment-big-a)
 omap aC <Plug>(textobj-comment-big-a)
 
 
-" visual mode move
+"=======================
+" VISUAL MODE MOVE BLOCK
+"=======================
 let g:move_key_modifier = 'C'
 " disable default bindings"
 let g:move_map_keys = 0
-vmap <C-n> <Plug>MoveBlockDown
-vmap <C-e> <Plug>MoveBlockUp
-vmap <C-h> <Plug>MoveBlockLeft
-vmap <C-i> <Plug>MoveBlockRight
+vmap <down> <Plug>MoveBlockDown
+vmap <up> <Plug>MoveBlockUp
+vmap <left> <Plug>MoveBlockLeft
+vmap <right> <Plug>MoveBlockRight
 
 " smooth scroll
 " change the second parameter to change the duration of the scroll
