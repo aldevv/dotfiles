@@ -1331,7 +1331,9 @@ let b:switch_custom_definitions = [
             \   {
             \     '\(\k\+=\){\([[:keyword:].]\+\)}':      '\1{`${\2}`}',
             \     '\(\k\+=\){`${\([[:keyword:].]\+\)}`}': '\1{\2}',
-            \   }
+            \     '==': '!=',
+            \     '!=': '=='
+            \   },
             \ ]
 " it does this
 "<Thing foo={data} />

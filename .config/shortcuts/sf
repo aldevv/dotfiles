@@ -12,6 +12,7 @@ lp         ~/Documents/Learn/Projects
 jp         ~/Documents/Learn/Must_Read/japanese/pimsleur/pimsleur-Japones/Pimsleur-JP
 ss         ~/.local/Programs/Suckless
 lw         ~/Documents/Learn/Web/course/test
+ln         ~/Documents/lightnovels
 cf         ~/.config
 snip       ~/.config/nvim/my_snippets
 ms         ~/.local/share/myScripts/

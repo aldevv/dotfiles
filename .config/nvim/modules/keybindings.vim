@@ -253,10 +253,11 @@ inoremap <a-h> <Left>
 " inoremap <C-n> <Down>
 " inoremap <C-e> <Up>
 inoremap <a-i> <Right>
-cnoremap <C-j> <Left>
-cnoremap <C-l> <Down>
-cnoremap <C-u> <Up>
-cnoremap <C-y> <Right>
+
+cnoremap <a-h> <Left>
+cnoremap <a-e> <Up>
+cnoremap <a-n> <Down>
+cnoremap <a-i> <Right>
 
 " map <silent> <leader>RR :call Runner()<cr>
 " autocmd FileType python map <silent> <cr> :call Runner()<cr>

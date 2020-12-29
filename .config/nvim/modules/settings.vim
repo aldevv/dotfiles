@@ -154,6 +154,7 @@ function! MyFoldText() abort
   " return s:raquo . s:middot . s:middot . l:lines . l:dashes . ': ' . l:first
 endfunction
 
+set inccommand=split
 set foldtext=MyFoldText()
 " set wrap
 set formatoptions=qrn1
