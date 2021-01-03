@@ -45,7 +45,7 @@ mode_switch + shift + Return
 
 # menu button
 mode_switch +  k
-    st -e newsboat
+    st -e bash -c "newsboat;$SHELL"
 
 hyper + n
     retrieveip

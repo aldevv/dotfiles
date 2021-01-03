@@ -31,6 +31,7 @@ bind-key K prev-unread
 bind-key D pb-download
 bind-key U show-urls
 bind-key x pb-delete
+bind-key - open-search
 
 color listnormal white default
 color listfocus black yellow standout bold
