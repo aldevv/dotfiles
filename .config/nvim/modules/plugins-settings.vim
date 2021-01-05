@@ -260,8 +260,9 @@ let g:coc_global_extensions = [
             \ 'coc-css',
             \ 'coc-vimlsp',
             \ 'coc-python',
-            \ 'coc-java',
             \ 'coc-sh',
+            \ 'coc-diagnostic',
+            \ 'coc-java'
             \ ]
             " \ 'coc-clangd',
 " coc-clangd is necessary for c and c++

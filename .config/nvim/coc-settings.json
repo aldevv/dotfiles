@@ -17,6 +17,9 @@
   "clangd.arguments": ["--fallback-style=mozilla"],
   "clangd.fallbackFlags": ["-stdlib=libstdc++"],
   "clangd.compilationDatabasePath": "",
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  },
   "diagnostic.checkCurrentLine": false,
   "diagnostic.enableMessage": "jump",
   "diagnostic.virtualTextCurrentLineOnly": false,

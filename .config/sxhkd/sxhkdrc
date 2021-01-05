@@ -85,7 +85,7 @@ super + F4
     "$UTILITIES/japanese/notesJap"
 
 super + F5
-    "$UTILITIES/translate/main"
+    "$UTILITIES/japanese/translate/toEnglish"
 
 super + F6
     "$UTILITIES/japanese/japSearch"

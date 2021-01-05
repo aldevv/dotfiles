@@ -101,6 +101,12 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases
 alias pkg='sudo eopkg'\
+	pkgls="eopkg li -l | awk '/Name:/ {sub(/,$/,\"\",\$2); name= \$2} /Installed Size:/{print \$5\$6, name}' | sort -h "\
+	pkgl="eopkg li"\
+	pkgs="eopkg sr"\
+	pkgi="eopkg it"\
+	pkgr="eopkg rm"\
+	pkgro="eopkg rmo"\
 	station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
     xc="xclip -selection clipboard"\
 	j="joplin"\
@@ -150,9 +156,9 @@ alias pkg='sudo eopkg'\
     ph='python_help'\
     trc='transmission-remote-cli'\
     py='python3'\
-	pkgsize="eopkg li -l | awk '/Name:/ {sub(/,$/,\"\",\$2); name= \$2} /Installed Size:/{print \$5\$6, name}' | sort -h "\
 	audio="pavucontrol"\
 	plz="sudo"\
+	jp="tagainijisho"\
 
 
 	#python='python3'\
