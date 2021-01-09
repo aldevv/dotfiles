@@ -88,7 +88,14 @@ super + F5
     "$UTILITIES/japanese/translate/toEnglish"
 
 super + F6
-    "$UTILITIES/japanese/japSearch"
+    "$UTILITIES/japanese/dicSearch"
+
+super + F7
+    "$UTILITIES/japanese/kanjiSearch"
+
+# super + F8
+#     "$UTILITIES/japanese/rtkSearch"
+
 
 
 # super + shift + F1

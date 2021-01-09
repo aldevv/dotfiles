@@ -12,7 +12,7 @@ show-toolbar=false
 sidebar-page='links'
 sidebar-size=386
 sizing-mode='free'
-window-ratio=(1.4229166666666666, 1.4222222222222223)
+window-ratio=(1.0873949579831932, 0.40261282660332542)
 zoom=2.2718567271141419
 
 [caja/list-view]
@@ -20,7 +20,7 @@ default-column-order=['name', 'size', 'type', 'date_modified', 'date_accessed', 
 default-visible-columns=['name', 'size', 'type', 'date_modified']
 
 [caja/window-state]
-geometry='683x719+339+18'
+geometry='677x744+0+18'
 maximized=false
 sidebar-width=127
 start-with-location-bar=true
@@ -31,6 +31,7 @@ start-with-toolbar=true
 [calc]
 accuracy=9
 angle-units='degrees'
+base=10
 button-mode='programming'
 number-format='automatic'
 show-thousands=true
@@ -73,8 +74,8 @@ exec='st'
 
 [desktop/background]
 color-shading-type='solid'
-picture-filename='/home/solus/Pictures/wallpapers/wo/1574019542040.jpg'
-picture-options='stretched'
+picture-filename='/home/solus/Pictures/1. wallpapers/wall/new/irylovlv1lj51.png'
+picture-options='zoom'
 primary-color='rgb(0,0,0)'
 secondary-color='rgb(0,0,0)'
 
@@ -127,8 +128,8 @@ vertical-two-finger-scrolling=true
 
 [desktop/session]
 idle-delay=6
-session-start=1593963996
-show-hidden-apps=false
+session-start=1610128252
+show-hidden-apps=true
 
 [desktop/sound]
 event-sounds=false
@@ -151,15 +152,15 @@ unar-open-zip=false
 
 [engrampa/listing]
 list-mode='as-folder'
-name-column-width=250
+name-column-width=730
 show-path=false
-sort-method='name'
+sort-method='size'
 sort-type='descending'
 
 [engrampa/ui]
 sidebar-width=200
-window-height=719
-window-width=1362
+window-height=744
+window-width=677
 
 [eom/ui]
 image-collection=false
@@ -177,7 +178,7 @@ num-workspaces=10
 theme='Material-Black-Mango'
 
 [marco/global-keybindings]
-run-command-terminal='<Mod4>Return'
+run-command-terminal='disabled'
 switch-to-workspace-1='<Mod4>1'
 switch-to-workspace-10='<Mod4>0'
 switch-to-workspace-2='<Mod4>2'
@@ -192,15 +193,15 @@ switch-to-workspace-9='<Mod4>9'
 [marco/window-keybindings]
 close='<Mod4>q'
 move-to-workspace-1='<Shift><Mod4>exclam'
-move-to-workspace-10='<Primary><Shift>equal'
+move-to-workspace-10='<Shift><Mod4>equal'
 move-to-workspace-2='<Shift><Mod4>quotedbl'
 move-to-workspace-3='<Shift><Mod4>numbersign'
 move-to-workspace-4='<Shift><Mod4>dollar'
-move-to-workspace-5='<Primary><Shift>percent'
-move-to-workspace-6='<Primary><Shift>ampersand'
-move-to-workspace-7='<Primary><Shift>slash'
-move-to-workspace-8='<Primary><Shift>parenleft'
-move-to-workspace-9='<Primary><Shift>parenright'
+move-to-workspace-5='<Shift><Mod4>percent'
+move-to-workspace-6='<Shift><Mod4>ampersand'
+move-to-workspace-7='<Shift><Mod4>slash'
+move-to-workspace-8='<Shift><Mod4>parenleft'
+move-to-workspace-9='<Shift><Mod4>parenright'
 toggle-fullscreen='disabled'
 toggle-maximized='<Mod4>f'
 
@@ -209,7 +210,7 @@ popup-location='top_right'
 theme='slate'
 
 [panel/general]
-history-mate-run=['/usr/bin/caja --no-desktop --browser ', 'dev/corona/get_info']
+history-mate-run=['/bin/sh "/home/solus/Programs/netbeans-12.0/netbeans/bin/netbeans"', 'sqlitebrowser ', 'ranger', 'st', 'pluma ', 'eom ', 'gthumb ', 'libreoffice', 'anki ', 'anki']
 object-id-list=['window-list', 'notification-area', 'clock', 'separator', 'object-0']
 show-program-list=true
 toplevel-id-list=['bottom']
@@ -233,6 +234,9 @@ object-type='applet'
 panel-right-stick=true
 position=30
 toplevel-id='bottom'
+
+[panel/objects/notification-area/prefs]
+min-icon-size=22
 
 [panel/objects/object-0]
 applet-iid='CommandAppletFactory::CommandApplet'
@@ -259,12 +263,18 @@ object-type='applet'
 position=10
 toplevel-id='bottom'
 
+[panel/objects/window-list/prefs]
+group-windows='always'
+show-window-thumbnails=false
+thumbnail-window-size=50
+
 [panel/toplevels/bottom]
 auto-hide=false
-expand=true
+expand=false
 orientation='top'
 screen=0
 size=18
+x-centered=true
 y=0
 y-bottom=-1
 
@@ -280,10 +290,10 @@ statusbar-visible=true
 [pluma/plugins/filebrowser/on-load]
 root='file:///'
 tree-view=true
-virtual-root='file:///home/solus/Documents/Learn/myos4/chmaquina/backend'
+virtual-root='file:///home/solus/Documents/wiki/cheatsheets/Bootstrap'
 
 [power-manager]
-brightness-ac=76.0
+brightness-ac=20.0
 info-history-type='charge'
 info-last-device='/org/freedesktop/UPower/devices/line_power_AC0'
 info-stats-type='discharge-accuracy'
@@ -305,16 +315,27 @@ home='<Mod4>bar'
 screensaver=''
 www='<Mod4>w'
 
+[system-monitor]
+window-state=(700, 505, 50, 50)
+
+[system-monitor/disktreenew]
+col-6-width=300
+
+[system-monitor/proctree]
+col-26-width=131
+
 [terminal/keybindings]
 zoom-in='<Alt>Up'
 zoom-out='<Alt>Down'
 
 [terminal/profiles/default]
-background-color='#FFFFFFFFDDDD'
-background-darkness=0.95299145299145294
+background-color='#00002B2A3635'
+background-darkness=0.60164271047227924
 background-type='transparent'
 bold-color='#000000000000'
+bold-color-same-as-fg=false
 default-show-menubar=false
-foreground-color='#000000000000'
-palette='#2E2E34343636:#CCCC00000000:#4E4E9A9A0606:#C4C4A0A00000:#34346565A4A4:#757550507B7B:#060698209A9A:#D3D3D7D7CFCF:#555557575353:#EFEF29292929:#8A8AE2E23434:#FCFCE9E94F4F:#72729F9FCFCF:#ADAD7F7FA8A8:#3434E2E2E2E2:#EEEEEEEEECEC'
+foreground-color='#838294939695'
+palette='#070636354241:#DCDB32312F2E:#858499990000:#B5B489880000:#26258B8AD2D1:#D3D236358281:#2A29A1A09897:#EEEDE8E7D5D4:#00002B2A3635:#CBCA4B4A1615:#58576E6D7574:#65647B7A8382:#838294939695:#6C6B7170C4C3:#9392A1A0A1A0:#FDFCF6F5E3E2'
+use-theme-colors=false
 visible-name='Default'

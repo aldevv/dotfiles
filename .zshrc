@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases
 alias pkg='sudo eopkg'\
-	pkgls="eopkg li -l | awk '/Name:/ {sub(/,$/,\"\",\$2); name= \$2} /Installed Size:/{print \$5\$6, name}' | sort -h "\
+	pkgsi="eopkg li -l | awk '/Name:/ {sub(/,$/,\"\",\$2); name= \$2} /Installed Size:/{print \$5\$6, name}' | sort -h "\
 	pkgl="eopkg li"\
 	pkgs="eopkg sr"\
 	pkgi="eopkg it"\
