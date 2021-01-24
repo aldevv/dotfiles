@@ -14,8 +14,8 @@ rm /usr/share/X11/xkb/symbols/latam
 
 cp latam  /usr/share/X11/xkb/symbols/latam
 
-sed -i "/! variant/a \ \ colemak-gaming   latam: Spanish (Latin American, Colemak for gaming)" /usr/share/X11/xkb/rules/evdev.lst 
-sed -i "/! variant/a \ \ colemak          latam: Spanish (Latin American, Colemak)" /usr/share/X11/xkb/rules/evdev.lst 
+sed -i "/! variant/a \ \ colemak-gaming   latam: Spanish (Latin American, Colemak for gaming)" /usr/share/X11/xkb/rules/evdev.lst
+sed -i "/! variant/a \ \ colemak          latam: Spanish (Latin American, Colemak)" /usr/share/X11/xkb/rules/evdev.lst
 
 awk -v text="\
 <variant>

@@ -4,7 +4,7 @@ setopt KSH_GLOB
 #COLEMAK DOTFILES
 #!  https://rgoswami.me/posts/colemak-dots-refactor/
 #
-#autoload -U colors && colors	# Load colors
+#autoload -U colors && colors   # Load colors
 #PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 export SXHKD_SHELL="/usr/bin/sh"
 export ZSH="$HOME/.oh-my-zsh"
@@ -101,67 +101,68 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases
 alias pkg='sudo eopkg'\
-	pkgsi="eopkg li -l | awk '/Name:/ {sub(/,$/,\"\",\$2); name= \$2} /Installed Size:/{print \$5\$6, name}' | sort -h "\
-	pkgl="eopkg li"\
-	pkgs="eopkg sr"\
-	pkgi="eopkg it"\
-	pkgr="eopkg rm"\
-	pkgro="eopkg rmo"\
-	station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
+    pkgsi="sudo eopkg li -l | awk '/Name:/ {sub(/,$/,\"\",\$2); name= \$2} /Installed Size:/{print \$5\$6, name}' | sort -h "\
+    pkgl="sudo eopkg li"\
+    pkgs="sudo eopkg sr"\
+    pkgi="sudo eopkg it"\
+    pkgr="sudo eopkg rm"\
+    pkgro="sudo eopkg rmo"\
+    dockerclean="docker system prune -a"\
+    station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
     xc="xclip -selection clipboard"\
-	j="joplin"\
-	v="nvim"\
-	xmonad="$HOME/.cabal/bin/xmonad"\
-	rz="mpv 'http://www.youtube.com/watch?v=w-RUTZBbGwM'"\
+    j="joplin"\
+    v="nvim"\
+    xmonad="$HOME/.cabal/bin/xmonad"\
+    rz="mpv 'http://www.youtube.com/watch?v=w-RUTZBbGwM'"\
     rick="curl -s -L http://bit.ly/10hA8iC | bash"\
     bt="curl rate.sx"\
-	cheat="$UTILITIES/sheetmaker.sh"\
-	ytu="$UTILITIES/youtube/YT.tcl"\
-	yta="$UTILITIES/youtube/downloadAudio.sh"\
-	ytv="$UTILITIES/youtube/downloadVideo.sh"\
-	dic="$UTILITIES/dictionary.sh"\
-	conv="$UTILITIES/MkvToMp4.sh"\
-	par="curl parrot.live"\
-	wtr="$UTILITIES/weather.sh"\
-	ssr="simplescreenrecorder"\
-	yt="youtube-viewer"\
-	rr="ranger"\
-	todoist="cd ~/Programs/todoist-linux && make up"\
-	ma="make && sleep 0.5 ./a.out"\
-	uncompress='tar xvzf'\
-	code='code-oss'\
-	pydocs='~/Documents/myScripts/python_documentation.sh'\
-	xi='sudo vim /etc/X11/xinit/xinitrc'\
-	xa='sudo /opt/lampp/manager-linux-x64.run'\
-	djan='cd /home/solus/dev/trydjango/src'\
-	corona='/home/solus/dev/corona/get_info'\
-	tord='/home/solus/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads'\
-	saco='source env/bin/activate'\
-	sac='source .env/bin/activate'\
-	sacr='source env/bin/activate && pip install -r requirements.txt'\
-	ven='wine .wine/drive_c/Program\ Files/Vensim/venPLE32.exe'\
+    cheat="$UTILITIES/sheetmaker.sh"\
+    ytu="$UTILITIES/youtube/YT.tcl"\
+    yta="$UTILITIES/youtube/downloadAudio.sh"\
+    ytv="$UTILITIES/youtube/downloadVideo.sh"\
+    dic="$UTILITIES/dictionary.sh"\
+    conv="$UTILITIES/MkvToMp4.sh"\
+    par="curl parrot.live"\
+    wtr="$UTILITIES/weather.sh"\
+    ssr="simplescreenrecorder"\
+    yt="youtube-viewer"\
+    rr="ranger"\
+    todoist="cd ~/Programs/todoist-linux && make up"\
+    ma="make && sleep 0.5 ./a.out"\
+    uncompress='tar xvzf'\
+    code='code-oss'\
+    pydocs='~/Documents/myScripts/python_documentation.sh'\
+    xi='sudo vim /etc/X11/xinit/xinitrc'\
+    xa='sudo /opt/lampp/manager-linux-x64.run'\
+    djan='cd /home/solus/dev/trydjango/src'\
+    corona='/home/solus/dev/corona/get_info'\
+    tord='/home/solus/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads'\
+    saco='source env/bin/activate'\
+    sac='source .env/bin/activate'\
+    sacr='source env/bin/activate && pip install -r requirements.txt'\
+    ven='wine .wine/drive_c/Program\ Files/Vensim/venPLE32.exe'\
     dotrepo="git --git-dir=$HOME/Documents/DotFilesRepository/ --work-tree=$HOME"\
-	dst='dotrepo status'\
-	daa='dotrepo add'\
-	dau='dotrepo add -u'\
-	dgc='dotrepo commit'\
-	dlg='dotrepo log --oneline --reverse'\
-	dgpo='dotrepo push origin HEAD'\
-	pgp='uploadProjects'\
-	restartx='sudo systemctl restart display-manager'\
-	flat='flatpak --installation=extra'\
-	spot='flatpak --installation=extra run com.spotify.Client'\
-	glv='git log --oneline --decorate --all --graph'\
-	zealu='zeal-user-contrib'\
+    dst='dotrepo status'\
+    daa='dotrepo add'\
+    dau='dotrepo add -u'\
+    dgc='dotrepo commit'\
+    dlg='dotrepo log --oneline --reverse'\
+    dgpo='dotrepo push origin HEAD'\
+    pgp='uploadProjects'\
+    restartx='sudo systemctl restart display-manager'\
+    flat='flatpak --installation=extra'\
+    spot='flatpak --installation=extra run com.spotify.Client'\
+    glv='git log --oneline --decorate --all --graph'\
+    zealu='zeal-user-contrib'\
     ph='python_help'\
     trc='transmission-remote-cli'\
     py='python3'\
-	audio="pavucontrol"\
-	plz="sudo"\
-	jp="tagainijisho"\
+    audio="pavucontrol"\
+    plz="sudo"\
+    jp="tagainijisho"\
 
 
-	#python='python3'\
+    #python='python3'\
 
 # Keybindings
 
@@ -179,6 +180,9 @@ bindkey "^[[127;2u" backward-delete-char
 
 #to fix the space shift problem, inserts a space
 bindkey -s "^[[32;2u" " "
+
+# to delete word using ctrl and backspace
+bindkey "^[[127;5u" backward-delete-word
 
 # Colemak.
 bindkey -M vicmd "h" backward-char
@@ -277,6 +281,7 @@ alias tv="/home/solus/.local/Programs/teamviewer/teamviewer"
 alias zoom="/home/solus/.local/Programs/zoom/ZoomLauncher"
 alias nmone="nmcli d wifi connect HYPERION "
 alias nmtwo="nmcli d wifi connect Hyperion_R "
+alias nmmobile='nmcli d wifi connect "One plus" '
 alias nmc="nmcli d wifi connect"
 alias nvmls="nvm ls-remote"
 alias nvmch=". $SCRIPTS/useful/node/nvmch"
