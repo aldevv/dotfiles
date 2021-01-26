@@ -252,6 +252,8 @@ highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
 "
 let g:coc_global_extensions = [
             \ 'coc-marketplace',
+            \ 'coc-java-debug',
+            \ 'coc-cssmodules',
             \ 'coc-json',
             \ 'coc-tag',
             \ 'coc-vimtex',
@@ -262,9 +264,9 @@ let g:coc_global_extensions = [
             \ 'coc-python',
             \ 'coc-sh',
             \ 'coc-diagnostic',
-            \ 'coc-java'
+            \ 'coc-java',
+            \ 'coc-clangd'
             \ ]
-            " \ 'coc-clangd',
 " coc-clangd is necessary for c and c++
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)

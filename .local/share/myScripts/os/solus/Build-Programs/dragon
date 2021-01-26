@@ -2,7 +2,7 @@
 # for drag and drop (dragon)
 #git clone https://github.com/mwh/dragon $HOME/Documents/Suckless
 
-eopkg -y install libgtk-3-devel
+eopkg install -y libgtk-3-devel
 cd "$SUCKLESS/dragon"
 
 make

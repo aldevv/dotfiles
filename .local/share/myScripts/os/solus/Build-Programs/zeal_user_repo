@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # zeal user docsets
-npm install --global zeal-user-contrib
+sudo -u "$1" npm install --global zeal-user-contrib

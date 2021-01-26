@@ -1,6 +1,6 @@
 #!/bin/sh
 
-eopkg -y install ghc haskell-cabal-install ghc-devel libx11-devel libxrandr-devel libxscrnsaver-devel libxinerama-devel
+eopkg install -y ghc haskell-cabal-install ghc-devel libx11-devel libxrandr-devel libxscrnsaver-devel libxinerama-devel
 cabal update
 cabal install xmonad xmonad-contrib
 

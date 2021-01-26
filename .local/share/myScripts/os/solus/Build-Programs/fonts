@@ -1,4 +1,2 @@
 #!/bin/sh
-cd "$HOME/.local/share/fonts"
-# symbola and joypixels
-git clone --depth=1 https://github.com/Akuseru1/joypixels .
+sudo -u "$1" git clone --depth=1 https://github.com/Akuseru1/fonts "$HOME/.local/share/fonts"

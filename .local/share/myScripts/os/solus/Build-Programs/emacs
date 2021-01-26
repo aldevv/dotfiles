@@ -1,5 +1,5 @@
 #!/bin/sh
-eopkg -y install emacs
+eopkg install -y emacs
 
 #for emacs (might not need to make them manually)
 mkdir -p ~/.emacs.d/undo ~/.emacs.d/.trash

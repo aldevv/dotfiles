@@ -91,12 +91,20 @@ source $ZSH/oh-my-zsh.sh
 . $XDG_CONFIG_HOME/zshPlugAlias
 #https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode
 
-# setup dotrepo
-#
+#==============
+# SETUP DOTREPO
+#==============
+#git clone --bare https://github.com/akuseru1/dotfiles
+# or
 #git init --bare $HOME/Documents/DotFilesRepository
-#git init --bare $HOME/Documents/ProjectsRepository
 #dotrepo config --local status.showUntrackedFiles no
-#prorepo config --local status.showUntrackedFiles no
+#==============
+# MIGRATING
+#==============
+# do backups
+#mkdir -p .backups/bare ;dotrepo checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .backups/bare/{}
+# then do (when everything backed up)
+#dotrepo checkout
 
 
 # Aliases
@@ -141,7 +149,7 @@ alias pkg='sudo eopkg'\
     sac='source .env/bin/activate'\
     sacr='source env/bin/activate && pip install -r requirements.txt'\
     ven='wine .wine/drive_c/Program\ Files/Vensim/venPLE32.exe'\
-    dotrepo="git --git-dir=$HOME/Documents/DotFilesRepository/ --work-tree=$HOME"\
+    dotrepo="git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME"\
     dst='dotrepo status'\
     daa='dotrepo add'\
     dau='dotrepo add -u'\

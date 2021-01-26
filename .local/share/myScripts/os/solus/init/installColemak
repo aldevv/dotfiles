@@ -1,5 +1,8 @@
 #!/bin/sh
-
+if [ ! -z "$BACKUPS/evdev.lst" ]; then
+	# if already backed up, program already ran once, no need to run again
+	exit
+fi
 cd "$PROGRAMS"
 git clone https://github.com/nhermosilla14/latam-colemak
 cd latam-colemak
@@ -38,7 +41,8 @@ cp *.map.gz /usr/share/kbd/keymaps/i386/colemak/
 #sudo not working
 localectl set-x11-keymap latam pc104 colemak
 echo "KEYMAP=colemak-la" > /etc/vconsole.conf
-
+cd "$PROGRAMS"
+rm -rf "latam-colemak"
 #<variant>
 #          <configItem>
 #            <name>colemak</name>

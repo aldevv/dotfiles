@@ -9,4 +9,4 @@
 
 
 # for japanese (might also need to install fcitx-gtk3 and fcitx-qt5)
-sudo eopkg -y install fcitx mozc fcitx-mozc fcitx-configtool 
+eopkg install -y fcitx mozc fcitx-mozc fcitx-configtool 

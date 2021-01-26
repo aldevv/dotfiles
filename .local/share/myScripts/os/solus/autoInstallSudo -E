@@ -1,88 +1,63 @@
 #!/bin/sh
-mkdir "$BACKUPS"
-mkdir "$PROGRAMS"
 
-# neovim is build from source!
+#args: $1 WM:dwm or xmonad, all: optional programs
+#	   $2 all: optional programs
 
-# check latest nvm link
-# this is for nvm, otherwise just install npm and do npm install -g neovim
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | zsh
-source "$HOME/.config/nvm/nvm.sh"
-source "$HOME/.zshrc"
+user="kanon"
+# add access to sudoers
+awk -i inplace -v user="$user" '/#includedir /etc/sudoers.d/{print; print user " ALL=(ALL) NOPASSWD:ALL";next}1' /etc/sudoers
+
+sudo -u $user git clone https://github.com/Akuseru1/Wiki "$HOME/.local/share/wiki"
+
+
 source "$HOME/.zprofile"
-nvm install node
+sudo -u $user mkdir "$BACKUPS" "$HOME/.local/bin"
 
 # install packages
-packages=$(awk '{printf "%s ", $0}' packages)
-eopkg -y $packages
+packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages)
+eopkg install -y -c system.devel
+eopkg install -y $packages
 
 #install window manager
+
 if [ "$1" == "dwm" ]; then
    WM/dwm
-   DisplayManager/setupDwm
+   DM/setupDwm
 fi
 
 if [ "$1" == "xmonad" ]; then
    WM/xmonad
-   DisplayManager/setupXmonad
+   DM/setupXmonad
 fi
 
 # fix keyboard and mouse
-find init/* -exec {} \;
+find init/* -exec {} $user \;
+
+# check latest nvm link
+# this is for nvm, otherwise just install npm and do npm install -g neovim
+sudo -u $user curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | zsh
+source "$HOME/.config/nvm/nvm.sh"
+nvm install node
 
 # build suckless programs and progs not in repositories
-find Build-Programs/* -exec {} \;
+find Build-Programs/* -exec {} $user \;
 
-cp "$XDG_CONFIG_HOME/nvim/init_root.vim" "/root/.config/nvim/init.vim"
+# optional progs
+if [ "$1" == "all" ] || [ "$2" == "all" ]; then
+   find optional-programs/* -exec {} $user \;;
 
-cp "$XDG_CONFIG_HOME/ranger/rc_root.conf" "/root/.config/ranger/rc.conf"
-cp "$XDG_CONFIG_HOME/ranger/rifle.conf" "/root/.config/ranger/rifle.conf"
-cp "$XDG_CONFIG_HOME/ranger/scope.sh" "/root/.config/ranger/scope.sh"
+fi
 
-sudo su -c 'sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
-sudo ln -s "$HOME/.zshrc" "/root"
-# this is so the the env variables work
-mkdir -p "/root/.local/bin"
-sudo ln -s "$HOME/.zprofile" "/root"
-sudo ln -s "$HOME/.aliases" "/root"
-sudo ln -s "$SCRIPTS" "/root/.local/share/myScripts"
-sudo ln -s "$PROGRAMS" "/root/.local/Programs"
+# vim-plug
+cd "$HOME/.config/nvim"
+sudo -u $user sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+# fixes npm bug
+chown -R 1000:1000 "$HOME/.npm"
+nvim -c 'PlugInstall'
 
-mkdir -p "/root/.config/ranger"
-mkdir -p "/root/.config/nvim"
-cp "$XDG_CONFIG_HOME/nvim/init_root.vim" "/root/.config/nvim"
-cp "$XDG_CONFIG_HOME/ranger/rc_root.conf" "/root/.config/ranger/rc.conf"
-cp "$XDG_CONFIG_HOME/completion_fzf.zsh" "/root/.config/completion_fzf.zsh"
-cp "$XDG_CONFIG_HOME/zshPlugAlias" "/root/.config/zshPlugAlias"
-cp "$XDG_CONFIG_HOME/colemak-less" "/root/.config/colemak-less"
+sudo -u "$user" sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# basic
- Build-Programs/rangerAndNeovim
- Build-Programs/programing
- Build-Programs/copyq
- Build-Programs/font-preview
 
- # suckless
- Build-Programs/libxft-libgra
- Build-Programs/dmenu
- Build-Programs/st
- Build-Programs/dragon
- Build-Programs/newsboat
- Build-Programs/sxiv
 
- # extra
- Build-Programs/zshPlugins
- Build-Programs/fonts
- Build-Programs/latex
- Build-Programs/ilovepdf
- Build-Programs/japanese
- Build-Programs/teamviewer
- Build-Programs/todoist
- Build-Programs/emacs
- Build-Programs/retro-terminal
- Build-Programs/joplin-terminal
- Build-Programs/joplin
- Build-Programs/pdfgrep
- Build-Programs/station
- Build-Programs/zeal_user_repo
- Build-Programs/pandoc
+# logout and login
