@@ -24,7 +24,8 @@ if [ "$status" = "DIRTY" ]; then
     fi
 fi
 
-alias dotrepo="git --git-dir=${HOME}/.local/share/dotfiles --work-tree=${HOME}"
+repoPath="${HOME}/.local/share/dotfiles"
+alias dotrepo="git --git-dir=$repoPath --work-tree=${HOME}"
 cd "$SCRIPTS" || exit
 dotrepo diff --exit-code --quiet
 status=$(dotrepo status | grep -qF 'nothing to commit (use -u to show untracked files)' || echo "DIRTY")
@@ -40,7 +41,7 @@ if [ "$status" = "DIRTY" ]; then
         printf "\n\n"
         dotrepo commit -m "$message"
         # dotrepo push origin master
-        ts dotrepo push origin master > /dev/null
+        ts git --git-dir=$repoPath --work-tree=${HOME} push origin master > /dev/null
     fi
 fi
 
