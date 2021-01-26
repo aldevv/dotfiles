@@ -24,7 +24,7 @@ if [ "$status" = "DIRTY" ]; then
     fi
 fi
 
-alias dotrepo="git --git-dir=${HOME}/Documents/DotFilesRepository/ --work-tree=${HOME}"
+alias dotrepo="git --git-dir=${HOME}/.local/share/dotfiles --work-tree=${HOME}"
 cd "$SCRIPTS" || exit
 dotrepo diff --exit-code --quiet
 status=$(dotrepo status | grep -qF 'nothing to commit (use -u to show untracked files)' || echo "DIRTY")

@@ -105,6 +105,7 @@ source $ZSH/oh-my-zsh.sh
 #mkdir -p .backups/bare ;dotrepo checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .backups/bare/{}
 # then do (when everything backed up)
 #dotrepo checkout
+#force it if you have to
 
 
 # Aliases
