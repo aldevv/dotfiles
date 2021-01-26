@@ -25,6 +25,7 @@ export WIKI="$HOME/.local/share/wiki"
 export READER=zathura
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
+export NVIM_LOG_FILE="$HOME/.config/nvim/log/log"
 
 export SCRIPTS="$HOME/.local/share/myScripts"
 export SHARED="$SCRIPTS/shared"
