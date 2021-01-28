@@ -13,7 +13,7 @@ static const char *fonts[] = {
 	"monospace:size=12"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
-#include "/home/solus/.cache/wal/colors-wal-dmenu.h"
+#include "/home/kanon/.cache/wal/colors-wal-dmenu.h"
 // better colors
 	/* [SchemeNorm] = { "#edc3ee", "#0d0911" }, */
 	/* [SchemeSel] = { "#edc3ee", "#62329E" }, */

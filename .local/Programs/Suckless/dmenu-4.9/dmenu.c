@@ -408,16 +408,16 @@ static void keypress(XKeyEvent *ev) {
       ksym = XK_End;
       break;
     case XK_h:
-      ksym = XK_Up;
+      /* ksym = XK_Up; */
       break;
     case XK_j:
-      ksym = XK_Next;
+      /* ksym = XK_Next; */
       break;
     case XK_k:
-      ksym = XK_Prior;
+      /* ksym = XK_Prior; */
       break;
     case XK_l:
-      ksym = XK_Down;
+      /* ksym = XK_Down; */
       break;
     case XK_n:
       ksym = XK_Down;

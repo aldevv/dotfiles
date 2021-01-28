@@ -38,7 +38,7 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const char col_urgborder[]   = "#ff0000";
-#include "/home/solus/.cache/wal/colors-wal-dwm.h"
+#include "/home/kanon/.cache/wal/colors-wal-dwm.h"
 /* static char *colors[][3] = { */
 /*        /1*               fg           bg           border   *1/ */
 /*        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor }, */

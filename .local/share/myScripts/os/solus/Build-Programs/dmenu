@@ -1,6 +1,10 @@
 #!/bin/sh
 cd "$SUCKLESS/dmenu"
-eopkg install -y libxft-devel libxinerama-devel 
+currentUser=$(grep "$USER" config.h)
+if [ -z "$currentUser" ]; then
+    sed -i "s|#include \"/home/.*|#include \"$HOME/.cache/wal/colors-wal-dmenu.h\"|g" config.h
+fi
+eopkg install -y libxft-devel libxinerama-devel
 make clean
-make 
+make
 make install
