@@ -598,6 +598,9 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 " snoremap <a-t> <Esc>:call UltiSnips#JumpForwards()<cr>
 "
 noremap <silent><leader>I :silent call <SID>addSkel()<cr>
+" doesn't work for autocmd because of ultisnip
+" autocmd BufNewFile * :silent call feedkeys("\<space>I")
+" autocmd BufNewFile * :silent call <SID>addSkel()
 function! s:addSkel()
 if !empty(b:projectionist)
     " Loop through projections with 'skeleton' key
@@ -1002,7 +1005,7 @@ function SetupJupyter()
     nnoremap <buffer> <silent> <leader><leader>I :PythonImportThisFile<CR>
 
     " Change to directory of current file
-    nnoremap <buffer> <silent> <leader><leader>d :JupyterCd %:p:h<CR>
+    " nnoremap <buffer> <silent> <leader><leader>d :JupyterCd %:p:h<CR>
 
     " Send a selection of lines
     nnoremap <buffer> <silent> <leader><leader>x :JupyterSendCell<CR>
@@ -1168,25 +1171,25 @@ endfun
 
 " setup guide for java https://urfoex.blogspot.com/2020/08/debugging-java-with-jdb-or-vim.html
 
-nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<cr>
-nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<cr>
-nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<cr>
-nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<cr>
-nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<cr>
-nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.stack_output)<cr>
+nnoremap <leader><leader>dc :call GotoWindow(g:vimspector_session_windows.code)<cr>
+nnoremap <leader><leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<cr>
+nnoremap <leader><leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<cr>
+nnoremap <leader><leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<cr>
+nnoremap <leader><leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<cr>
+nnoremap <leader><leader>do :call GotoWindow(g:vimspector_session_windows.stack_output)<cr>
 
-nnoremap <leader>dd :call vimspector#Launch()<CR>
-nmap <leader>dD  <Plug>VimspectorStop
-nnoremap <leader>dr :call vimspector#Reset()<cr>
-nmap <leader>dR <Plug>VimspectorRestart
-nmap <leader>dl <Plug>VimspectorStepInto
-nmap <leader>dn <Plug>VimspectorStepOver
-nmap <leader>de <Plug>VimspectorStepOut
-nmap <leader>dp <Plug>VimspectorPause
-nnoremap <leader>d<space> :call vimspector#Continue()<cr>
-nmap <leader>dC <Plug>VimspectorRunToCursor
-nmap <leader>db <Plug>VimspectorToggleBreakpoint
-nmap <leader>dB <Plug>VimspectorToggleConditionalBreakpoint
+nnoremap <leader><leader>dd :call vimspector#Launch()<CR>
+nmap <leader><leader>dD  <Plug>VimspectorStop
+nnoremap <leader><leader>dr :call vimspector#Reset()<cr>
+nmap <leader><leader>dR <Plug>VimspectorRestart
+nmap <leader><leader>dl <Plug>VimspectorStepInto
+nmap <leader><leader>dn <Plug>VimspectorStepOver
+nmap <leader><leader>de <Plug>VimspectorStepOut
+nmap <leader><leader>dp <Plug>VimspectorPause
+nnoremap <leader><leader>d<space> :call vimspector#Continue()<cr>
+nmap <leader><leader>dC <Plug>VimspectorRunToCursor
+nmap <leader><leader>db <Plug>VimspectorToggleBreakpoint
+nmap <leader><leader>dB <Plug>VimspectorToggleConditionalBreakpoint
 " <Plug>VimspectorAddFunctionBreakpoint
 
 " default config for a javascript file!

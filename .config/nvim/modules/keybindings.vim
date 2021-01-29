@@ -121,6 +121,11 @@ vnoremap <leader>,p "_dP
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+y$
 nnoremap  <leader>y  "+y
+
+vnoremap  <leader>d  "+d
+nnoremap  <leader>D  "+d$
+nnoremap  <leader>d  "+d
+
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p

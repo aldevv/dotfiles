@@ -1,5 +1,153 @@
+#==============
+# SETUP DOTREPO
+#==============
+#git clone --bare https://github.com/akuseru1/dotfiles
+# or
+#git init --bare $HOME/Documents/DotFilesRepository
+#dotrepo config --local status.showUntrackedFiles no
+#==============
+# MIGRATING
+#==============
+# do backups
+#mkdir -p .backups/bare ;dotrepo checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .backups/bare/{}
+# then do (when everything backed up)
+#dotrepo checkout
+#force it if you have to
+#
+#
+# Aliases
+alias pkg='sudo eopkg'\
+    pkgsi="sudo eopkg li -l | awk '/Name:/ {sub(/,$/,\"\",\$2); name= \$2} /Installed Size:/{print \$5\$6, name}' | sort -h "\
+    pkgl="sudo eopkg li"\
+    pkgs="sudo eopkg sr"\
+    pkgi="sudo eopkg it"\
+    pkgr="sudo eopkg rm"\
+    pkgro="sudo eopkg rmo"\
+    dockerclean="docker system prune -a"\
+    station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
+    xc="xclip -selection clipboard"\
+    j="joplin"\
+    v="nvim"\
+    xmonad="$HOME/.cabal/bin/xmonad"\
+    rz="mpv 'http://www.youtube.com/watch?v=w-RUTZBbGwM'"\
+    rick="curl -s -L http://bit.ly/10hA8iC | bash"\
+    bt="curl rate.sx"\
+    cheat="$UTILITIES/sheetmaker.sh"\
+    ytu="$UTILITIES/youtube/YT.tcl"\
+    yta="$UTILITIES/youtube/downloadAudio.sh"\
+    ytv="$UTILITIES/youtube/downloadVideo.sh"\
+    dic="$UTILITIES/dictionary.sh"\
+    conv="$UTILITIES/MkvToMp4.sh"\
+    par="curl parrot.live"\
+    wtr="$UTILITIES/weather.sh"\
+    ssr="simplescreenrecorder"\
+    yt="youtube-viewer"\
+    r="ranger"\
+    todoist="cd ~/Programs/todoist-linux && make up"\
+    ma="make && sleep 0.5 ./a.out"\
+    uncompress='tar xvzf'\
+    code='code-oss'\
+    pydocs='~/Documents/myScripts/python_documentation.sh'\
+    xi='sudo vim /etc/X11/xinit/xinitrc'\
+    xa='sudo /opt/lampp/manager-linux-x64.run'\
+    djan='cd /home/solus/dev/trydjango/src'\
+    corona='/home/solus/dev/corona/get_info'\
+    tord='/home/solus/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads'\
+    saco='source env/bin/activate'\
+    sac='source .env/bin/activate'\
+    sacr='source env/bin/activate && pip install -r requirements.txt'\
+    ven='wine .wine/drive_c/Program\ Files/Vensim/venPLE32.exe'\
+    dotrepo="git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME"\
+    dst='dotrepo status'\
+    daa='dotrepo add'\
+    dau='dotrepo add -u'\
+    dgc='dotrepo commit'\
+    dlg='dotrepo log --oneline --reverse'\
+    dgpo='dotrepo push origin HEAD'\
+    pgp='uploadProjects'\
+    restartx='sudo systemctl restart display-manager'\
+    flat='flatpak --installation=extra'\
+    spot='flatpak --installation=extra run com.spotify.Client'\
+    glv='git log --oneline --decorate --all --graph'\
+    zealu='zeal-user-contrib'\
+    ph='python_help'\
+    trc='transmission-remote-cli'\
+    py='python3'\
+    audio="pavucontrol"\
+    plz="sudo"\
+    jp="tagainijisho"\
+    ls='exa -a --color=automatic --group-directories-first'\
+    l='exa -al --color=automatic --group-directories-first'\
+    la='exa -a --color=automatic --group-directories-first'\
+    ll='exa -l --color=automatic --group-directories-first'\
+    lt='exa -aT --color=automatic --group-directories-first'\
+    l.='exa -a | egrep "^\."'\
+    lg='exa -a | grep '\
+    df='df -h'\
+    free='free -m'\
+    ..='cd ..'\
+    ...='cd ../..'\
+    .3='cd ../../..'\
+    .4='cd ../../..'\
+    .5='cd ../../../..'\
+    .6='cd ../../../../..'\
+    yta-aac="youtube-dl --extract-audio --audio-format aac "\
+    yta-best="youtube-dl --extract-audio --audio-format best "\
+    yta-flac="youtube-dl --extract-audio --audio-format flac "\
+    yta-m4a="youtube-dl --extract-audio --audio-format m4a "\
+    yta-mp3="youtube-dl --extract-audio --audio-format mp3 "\
+    yta-opus="youtube-dl --extract-audio --audio-format opus "\
+    yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "\
+    yta-wav="youtube-dl --extract-audio --audio-format wav "\
+    ytv-best="youtube-dl -f bestvideo+bestaudio "\
+    du="du -hd 1"\
+    pk="$PROGRAMS/PacketTracer-AppImage/out/Cisco_Packet_Tracer-7.2.1.glibc2.15-x86_64.AppImage"\
+    tv="$HOME/.local/Programs/teamviewer/teamviewer"\
+    zm="$HOME/.local/Programs/zoom/ZoomLauncher"\
+    nmone="nmcli d wifi connect HYPERION "\
+    nmtwo="nmcli d wifi connect Hyperion_R "\
+    nmmobile='nmcli d wifi connect "One plus" '\
+    nmc="nmcli d wifi connect"\
+    nvmls="nvm ls-remote"\
+    nvmch=". $SCRIPTS/useful/node/nvmch"\
+    mydot="git clone --depth=1 https://www.github.com/akuseru1/dotfiles"\
+    sudo="sudo -E"\
+    flas="export FLASK_APP=app.py && flask run"\
+    myalias="nvim \"$XDG_CONFIG_HOME/zshPlugAlias\""
+
+alias su="sudo su -" # the - lets you have env variables in root
+
+    # colab="echo \"!wget https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip
+    # !unzip ijava-1.3.0.zip
+    # !python install.py --sys-prefix\" | xclip -sel clipboard"\
+
 # lol git systemd vscode npm
 #
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   unzstd $1    ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
 
 alias hig="history | grep -i" hi="history"
 # LOL!!1
@@ -25,7 +173,6 @@ alias nowai='chmod'
 
 alias hai='cd'
 alias iz='ls'
-alias plz='pwd'
 alias ihasbucket='df -h'
 
 alias inur='locate'
@@ -460,40 +607,40 @@ function systemd_prompt_info {
 #   https://github.com/SteelShot
 
 # Verify if any manual user choice of VS Code exists first.
-if [[ -n "$VSCODE" ]] && ! which $VSCODE &>/dev/null; then
-  echo "'$VSCODE' flavour of VS Code not detected."
-  unset VSCODE
-fi
+# if [[ -n "$VSCODE" ]] && ! which $VSCODE &>/dev/null; then
+#   echo "'$VSCODE' flavour of VS Code not detected."
+#   unset VSCODE
+# fi
 
-# Otherwise, try to detect a flavour of VS Code.
-if [[ -z "$VSCODE" ]]; then
-  if which code &>/dev/null; then
-    VSCODE=code
-  elif which code-insiders &>/dev/null; then
-    VSCODE=code-insiders
-  elif which codium &>/dev/null; then
-    VSCODE=codium
-  else
-    return
-  fi
-fi
+# # Otherwise, try to detect a flavour of VS Code.
+# if [[ -z "$VSCODE" ]]; then
+#   if which code &>/dev/null; then
+#     VSCODE=code
+#   elif which code-insiders &>/dev/null; then
+#     VSCODE=code-insiders
+#   elif which codium &>/dev/null; then
+#     VSCODE=codium
+#   else
+#     return
+#   fi
+# fi
 
-alias vsc="$VSCODE ."
-alias vsca="$VSCODE --add"
-alias vscd="$VSCODE --diff"
-alias vscg="$VSCODE --goto"
-alias vscn="$VSCODE --new-window"
-alias vscr="$VSCODE --reuse-window"
-alias vscw="$VSCODE --wait"
-alias vscu="$VSCODE --user-data-dir"
+# alias vsc="$VSCODE ."
+# alias vsca="$VSCODE --add"
+# alias vscd="$VSCODE --diff"
+# alias vscg="$VSCODE --goto"
+# alias vscn="$VSCODE --new-window"
+# alias vscr="$VSCODE --reuse-window"
+# alias vscw="$VSCODE --wait"
+# alias vscu="$VSCODE --user-data-dir"
 
-alias vsced="$VSCODE --extensions-dir"
-alias vscie="$VSCODE --install-extension"
-alias vscue="$VSCODE --uninstall-extension"
+# alias vsced="$VSCODE --extensions-dir"
+# alias vscie="$VSCODE --install-extension"
+# alias vscue="$VSCODE --uninstall-extension"
 
-alias vscv="$VSCODE --verbose"
-alias vscl="$VSCODE --log"
-alias vscde="$VSCODE --disable-extensions"
+# alias vscv="$VSCODE --verbose"
+# alias vscl="$VSCODE --log"
+# alias vscde="$VSCODE --disable-extensions"
 
 
 #=====================================================
@@ -561,3 +708,250 @@ alias npmP="npm publish"
 
 # Run npm init
 alias npmI="npm init"
+
+#============
+#DOCKER
+#============
+
+#
+# Defines Docker aliases.
+#
+# Author:
+#   François Vantomme <akarzim@gmail.com>
+#
+
+# Return if requirements are not found.
+if (( ! $+commands[docker] )); then
+    return 1
+fi
+
+#
+# Functions
+#
+
+# Set Docker Machine environment
+function dkme {
+    if (( ! $+commands[docker-machine] )); then
+        return 1
+    fi
+
+    eval $(docker-machine env $1)
+}
+
+# Set Docker Machine default machine
+function dkmd {
+    if (( ! $+commands[docker-machine] )); then
+        return 1
+    fi
+
+    pushd ~/.docker/machine/machines
+
+    if [[ ! -d $1 ]]; then
+        echo "Docker machine '$1' does not exists. Abort."
+        popd
+        return 1
+    fi
+
+    if [[ -L default ]]; then
+        eval $(rm -f default)
+    elif [[ -d default ]]; then
+        echo "A default manchine already exists. Abort."
+        popd
+        return 1
+    elif [[ -e default ]]; then
+        echo "A file named 'default' already exists. Abort."
+        popd
+        return 1
+    fi
+
+    eval $(ln -s $1 default)
+    popd
+}
+
+
+#
+# Defines Docker aliases.
+#
+# Author:
+#   François Vantomme <akarzim@gmail.com>
+#
+
+#
+# Aliases
+#
+
+# Docker
+alias dk='docker'
+alias dka='docker attach'
+alias dkb='docker build'
+alias dkd='docker diff'
+alias dkdf='docker system df'
+alias dke='docker exec'
+alias dkE='docker exec -e COLUMNS=`tput cols` -e LINES=`tput lines` -i -t'
+alias dkh='docker history'
+alias dki='docker images'
+alias dkin='docker inspect'
+alias dkim='docker import'
+alias dkk='docker kill'
+alias dkkh='docker kill -s HUP'
+alias dkl='docker logs'
+alias dkL='docker logs -f'
+alias dkli='docker login'
+alias dklo='docker logout'
+alias dkls='docker ps'
+alias dkp='docker pause'
+alias dkP='docker unpause'
+alias dkpl='docker pull'
+alias dkph='docker push'
+alias dkps='docker ps'
+alias dkpsa='docker ps -a'
+alias dkr='docker run'
+alias dkR='docker run -e COLUMNS=`tput cols` -e LINES=`tput lines` -i -t --rm'
+alias dkRe='docker run -e COLUMNS=`tput cols` -e LINES=`tput lines` -i -t --rm --entrypoint /bin/bash'
+alias dkRM='docker system prune'
+alias dkrm='docker rm'
+alias dkrmi='docker rmi'
+alias dkrn='docker rename'
+alias dks='docker start'
+alias dkS='docker restart'
+alias dkss='docker stats'
+alias dksv='docker save'
+alias dkt='docker tag'
+alias dktop='docker top'
+alias dkup='docker update'
+alias dkV='docker volume'
+alias dkv='docker version'
+alias dkw='docker wait'
+alias dkx='docker stop'
+
+## Container (C)
+alias dkC='docker container'
+alias dkCa='docker container attach'
+alias dkCcp='docker container cp'
+alias dkCd='docker container diff'
+alias dkCe='docker container exec'
+alias dkCE='docker container exec -e COLUMNS=`tput cols` -e LINES=`tput lines` -i -t'
+alias dkCin='docker container inspect'
+alias dkCk='docker container kill'
+alias dkCl='docker container logs'
+alias dkCL='docker container logs -f'
+alias dkCls='docker container ls'
+alias dkCp='docker container pause'
+alias dkCpr='docker container prune'
+alias dkCrn='docker container rename'
+alias dkCS='docker container restart'
+alias dkCrm='docker container rm'
+alias dkCr='docker container run'
+alias dkCR='docker container run -e COLUMNS=`tput cols` -e LINES=`tput lines` -i -t --rm'
+alias dkCRe='docker container run -e COLUMNS=`tput cols` -e LINES=`tput lines` -i -t --rm --entrypoint /bin/bash'
+alias dkCs='docker container start'
+alias dkCss='docker container stats'
+alias dkCx='docker container stop'
+alias dkCtop='docker container top'
+alias dkCP='docker container unpause'
+alias dkCup='docker container update'
+alias dkCw='docker container wait'
+
+## Image (I)
+alias dkI='docker image'
+alias dkIb='docker image build'
+alias dkIh='docker image history'
+alias dkIim='docker image import'
+alias dkIin='docker image inspect'
+alias dkIls='docker image ls'
+alias dkIpr='docker image prune'
+alias dkIpl='docker image pull'
+alias dkIph='docker image push'
+alias dkIrm='docker image rm'
+alias dkIsv='docker image save'
+alias dkIt='docker image tag'
+
+## Volume (V)
+alias dkV='docker volume'
+alias dkVin='docker volume inspect'
+alias dkVls='docker volume ls'
+alias dkVpr='docker volume prune'
+alias dkVrm='docker volume rm'
+
+## Network (N)
+alias dkN='docker network'
+alias dkNs='docker network connect'
+alias dkNx='docker network disconnect'
+alias dkNin='docker network inspect'
+alias dkNls='docker network ls'
+alias dkNpr='docker network prune'
+alias dkNrm='docker network rm'
+
+## System (Y)
+alias dkY='docker system'
+alias dkYdf='docker system df'
+alias dkYpr='docker system prune'
+
+## Stack (K)
+alias dkK='docker stack'
+alias dkKls='docker stack ls'
+alias dkKps='docker stack ps'
+alias dkKrm='docker stack rm'
+
+## Swarm (W)
+alias dkW='docker swarm'
+
+## CleanUp (rm)
+# Clean up exited containers (docker < 1.13)
+alias dkrmC='docker rm $(docker ps -qaf status=exited)'
+
+# Clean up dangling images (docker < 1.13)
+alias dkrmI='docker rmi $(docker images -qf dangling=true)'
+
+# Pull all tagged images
+alias dkplI='docker images --format "{{ .Repository }}" | grep -v "^<none>$" | xargs -L1 docker pull'
+
+# Clean up dangling volumes (docker < 1.13)
+alias dkrmV='docker volume rm $(docker volume ls -qf dangling=true)'
+
+# Docker Machine (m)
+alias dkm='docker-machine'
+alias dkma='docker-machine active'
+alias dkmcp='docker-machine scp'
+alias dkmin='docker-machine inspect'
+alias dkmip='docker-machine ip'
+alias dkmk='docker-machine kill'
+alias dkmls='docker-machine ls'
+alias dkmpr='docker-machine provision'
+alias dkmps='docker-machine ps'
+alias dkmrg='docker-machine regenerate-certs'
+alias dkmrm='docker-machine rm'
+alias dkms='docker-machine start'
+alias dkmsh='docker-machine ssh'
+alias dkmst='docker-machine status'
+alias dkmS='docker-machine restart'
+alias dkmu='docker-machine url'
+alias dkmup='docker-machine upgrade'
+alias dkmv='docker-machine version'
+alias dkmx='docker-machine stop'
+
+# Docker Compose (c)
+alias dkc='docker-compose'
+alias dkcb='docker-compose build'
+alias dkcB='docker-compose build --no-cache'
+alias dkcd='docker-compose down'
+alias dkce='docker-compose exec -e COLUMNS=`tput cols` -e LINES=`tput lines`'
+alias dkck='docker-compose kill'
+alias dkcl='docker-compose logs'
+alias dkcL='docker-compose logs -f'
+alias dkcls='docker-compose ps'
+alias dkcp='docker-compose pause'
+alias dkcP='docker-compose unpause'
+alias dkcpl='docker-compose pull'
+alias dkcph='docker-compose push'
+alias dkcps='docker-compose ps'
+alias dkcr='docker-compose run -e COLUMNS=`tput cols` -e LINES=`tput lines`'
+alias dkcR='docker-compose run -e COLUMNS=`tput cols` -e LINES=`tput lines` --rm'
+alias dkcrm='docker-compose rm'
+alias dkcs='docker-compose start'
+alias dkcsc='docker-compose scale'
+alias dkcS='docker-compose restart'
+alias dkcu='docker-compose up'
+alias dkcU='docker-compose up -d'
+alias dkcv='docker-compose version'
+alias dkcx='docker-compose stop'
