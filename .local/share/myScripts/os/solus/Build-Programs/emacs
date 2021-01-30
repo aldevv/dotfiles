@@ -1,7 +1,7 @@
 #!/bin/sh
+
 eopkg install -y emacs
 
-#for emacs (might not need to make them manually)
 mkdir -p ~/.emacs.d/undo ~/.emacs.d/.trash
 cd "$HOME/.emacs.d"
-awk '{print $2 }' "$APPS/emacs/emacsDependencies" | xargs -n 1 git clone
+sudo -u "$SUDO_USER" awk '{if ($1 !~ /^#/) print $2 }' "$APPS/emacs/emacsDependencies" | xargs -n 1 git clone

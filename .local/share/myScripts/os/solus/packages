@@ -46,6 +46,7 @@ xsel
 qt5ct
 docker
 docker-compose
+htop
 pip
 tagainijisho
 github-cli

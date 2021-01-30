@@ -2,7 +2,7 @@
 
 cd "$PROGRAMS"
 #Clone the repo
-sudo -u "$1" git clone --depth=1 https://github.com/sdushantha/fontpreview
+sudo -u "$SUDO_USER" git clone --depth=1 https://github.com/sdushantha/fontpreview
 
 # Change your current directory to fontpreview
 cd fontpreview

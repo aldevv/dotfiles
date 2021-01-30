@@ -1,14 +1,14 @@
 #!/bin/sh
 
 cd "$PROGRAMS"
-sudo -u "$1" git clone --depth=1 https://github.com/neovim/neovim
+sudo -u "$SUDO_USER" git clone --depth=1 https://github.com/neovim/neovim
 cd neovim
 # make CMAKE_BUILD_TYPE=RelWithDebInfo
 make CMAKE_BUILD_TYPE=Release
 make install
 
-sudo -u "$1" python3 -m pip install --user --upgrade pynvim neovim-remote
-sudo -u "$1" python2 -m pip install --user --upgrade pynvim
+sudo -u "$SUDO_USER" python3 -m pip install --user --upgrade pynvim neovim-remote
+sudo -u "$SUDO_USER" python2 -m pip install --user --upgrade pynvim
 npm install -g neovim
 
 mkdir -p "$HOME/.config/nvim/log"

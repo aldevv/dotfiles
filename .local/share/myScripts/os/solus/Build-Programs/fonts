@@ -1,2 +1,2 @@
 #!/bin/sh
-sudo -u "$1" git clone --depth=1 https://github.com/Akuseru1/fonts "$HOME/.local/share/fonts"
+sudo -u "$SUDO_USER" git clone --depth=1 https://github.com/Akuseru1/fonts "$HOME/.local/share/fonts"

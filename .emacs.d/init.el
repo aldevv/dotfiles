@@ -2,7 +2,7 @@
 
 ;; if first time:
 ;;      * install from internet:
-;;          dont forget to do M-x all-the-icons-install font
+;;          dont forget to do M-x all-the-icons-install-fonts
 ;;      * change evil-colemak-basics u and U with l and L, and l with u
 ;;
 
@@ -45,7 +45,7 @@
 ;; =================>>>>  make sure to run the emacsDependencies script beforehand
 
 ;;adds the libraries to the path
-(add-to-list 'load-path "~/.emacs.d/undo-tree")
+(add-to-list 'load-path "~/.emacs.d/undo-tree.el")
 (add-to-list 'load-path "~/.emacs.d/evil-org-mode")
 (add-to-list 'load-path "~/.emacs.d/evil")
 (add-to-list 'load-path "~/.emacs.d/evil-magit")
@@ -58,6 +58,8 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
 (add-to-list 'load-path "~/.emacs.d/helm")
 (add-to-list 'load-path "~/.emacs.d/color-theme-approximate")
+(add-to-list 'load-path "~/.emacs.d/emacs") ; dracula-theme
+; (add-to-list 'load-path "~/.emacs.d/all-the-icons.el")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;; fixes tab for org-mode, must be before require evil!
 
@@ -78,6 +80,8 @@
 (require 'evil-org)
 (require 'color-theme-approximate)
 (require 'helm-bookmark)
+(require 'dracula-theme)
+; (require 'all-the-icons)
 
 ;; adds option prompts for shortcuts after pressing a key binding
 (add-to-list 'load-path "~/.emacs.d/emacs-which-key")
@@ -304,6 +308,12 @@
   (load-theme 'dracula t)
   ;;(load-theme 'misterioso t)
   )
+(use-package all-the-icons
+  :ensure t
+  :config
+  (unless (package-installed-p 'all-the-icons)
+    (all-the-icons-install-fonts))
+             )
 
 ;==============================================================
 ;; SETTINGS
@@ -866,8 +876,10 @@ scroll-down-aggressively 0.01)
 
 ;; change the first value after alpha to change it
 (if (display-graphic-p)
- (set-frame-parameter (selected-frame) 'alpha '(95 . 50))
- (add-to-list 'default-frame-alist '(alpha . (95 . 50)))
+ ; (set-frame-parameter (selected-frame) 'alpha '(95 . 50))
+ ; (add-to-list 'default-frame-alist '(alpha . (95 . 50)))
+ (set-frame-parameter (selected-frame) 'alpha '(95 . 95))
+ (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 
  (defun toggle-transparency ()
    (interactive)

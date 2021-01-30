@@ -141,7 +141,7 @@ source ~/.aliases
 #completion and highlighting
 # source ~/.config/completion_fzf.zsh
 # fpath=($PROGRAMS/zsh-completions/src $fpath)
-# source $PROGRAMS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $PROGRAMS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # export NVM_DIR="$HOME/.config/nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

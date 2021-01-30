@@ -3,7 +3,7 @@
 #args: $1 WM:dwm or xmonad, all: optional programs
 #	   $2 all: optional programs
 
-user="kanon"
+user="$SUDO_USER"
 # add access to sudoers
 awk -i inplace -v user="$user" '/#includedir /etc/sudoers.d/{print; print user " ALL=(ALL) NOPASSWD:ALL";next}1' /etc/sudoers
 
@@ -32,7 +32,7 @@ if [ "$1" == "xmonad" ]; then
 fi
 
 # fix keyboard and mouse
-find init/* -exec {} $user \;
+find init/* -exec {} \;
 
 # check latest nvm link
 # this is for nvm, otherwise just install npm and do npm install -g neovim
@@ -41,11 +41,11 @@ source "$HOME/.config/nvm/nvm.sh"
 nvm install node
 
 # build suckless programs and progs not in repositories
-find Build-Programs/* -exec {} $user \;
+find Build-Programs/* -exec {} \;
 
 # optional progs
 if [ "$1" == "all" ] || [ "$2" == "all" ]; then
-   find optional-programs/* -exec {} $user \;;
+   find optional-programs/* -exec {} \;;
 
 fi
 

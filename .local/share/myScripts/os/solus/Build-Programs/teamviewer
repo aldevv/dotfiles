@@ -4,6 +4,6 @@
 eopkg install -y qt5-quickcontrols
 
 cd "$PROGRAMS"
-sudo -u "$1" wget https://download.teamviewer.com/download/linux/teamviewer_amd64.tar.xz
-sudo -u "$1" tar kvvxf teamviewer_amd64.tar.xz
+sudo -u "$SUDO_USER" wget https://download.teamviewer.com/download/linux/teamviewer_amd64.tar.xz
+sudo -u "$SUDO_USER" tar kvvxf teamviewer_amd64.tar.xz
 rm teamviewer_amd64.tar.xz

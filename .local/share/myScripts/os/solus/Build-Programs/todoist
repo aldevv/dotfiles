@@ -1,5 +1,5 @@
 #!/bin/bash
 cd "$PROGRAMS"
-sudo -u "$1" git clone --depth=1 https://github.com/KryDos/todoist-linux
+sudo -u "$SUDO_USER" git clone https://github.com/KryDos/todoist-linux
 cd todoist-linux
 make env

@@ -3,9 +3,9 @@
 #dependencies
 eopkg install -y util-macros-devel
 cd "$PROGRAMS"   
-sudo -u "$1" git clone https://gitlab.freedesktop.org/xorg/lib/libxft.git
+sudo -u "$SUDO_USER" git clone https://gitlab.freedesktop.org/xorg/lib/libxft.git
 cd libxft
-sudo -u "$1" wget -qO- 'https://gitlab.freedesktop.org/xorg/lib/libxft/merge_requests/1.patch' | patch -p1
+sudo -u "$SUDO_USER" wget -qO- 'https://gitlab.freedesktop.org/xorg/lib/libxft/merge_requests/1.patch' | patch -p1
 ./autogen.sh
 ./configure --prefix=/usr --sysconfdir=/etc --disable-static
 make

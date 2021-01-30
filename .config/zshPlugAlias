@@ -43,9 +43,9 @@ alias pkg='sudo eopkg'\
     ssr="simplescreenrecorder"\
     yt="youtube-viewer"\
     r="ranger"\
-    todoist="cd ~/Programs/todoist-linux && make up"\
+    todoist="cd $PROGRAMS/todoist-linux && make up"\
     ma="make && sleep 0.5 ./a.out"\
-    uncompress='tar xvzf'\
+    ta='tar xvzf'\
     code='code-oss'\
     pydocs='~/Documents/myScripts/python_documentation.sh'\
     xi='sudo vim /etc/X11/xinit/xinitrc'\
@@ -111,11 +111,10 @@ alias pkg='sudo eopkg'\
     nvmls="nvm ls-remote"\
     nvmch=". $SCRIPTS/useful/node/nvmch"\
     mydot="git clone --depth=1 https://www.github.com/akuseru1/dotfiles"\
-    sudo="sudo -E"\
     flas="export FLASK_APP=app.py && flask run"\
-    myalias="nvim \"$XDG_CONFIG_HOME/zshPlugAlias\""
+    sudo="sudo -E"\
 
-alias su="sudo su -" # the - lets you have env variables in root
+alias su="su -" # the - lets you have env variables in root
 
     # colab="echo \"!wget https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip
     # !unzip ijava-1.3.0.zip
@@ -247,6 +246,7 @@ function git_main_branch() {
 alias g='git'
 
 alias gaa='git add'
+alias ga='git add'
 alias gA='git add --all'
 alias gapa='git add --patch'
 alias gau='git add --update'
@@ -712,7 +712,7 @@ alias npmI="npm init"
 #============
 #DOCKER
 #============
-
+#https://github.com/akarzim/zsh-docker-aliases
 #
 # Defines Docker aliases.
 #

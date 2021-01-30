@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cd "$PROGRAMS"
-sudo -u "$1" git clone https://github.com/Akuseru1/CopyQ-Vi-Colemak-bindings
+sudo -u "$SUDO_USER" git clone https://github.com/Akuseru1/CopyQ-Vi-Colemak-bindings
 cd "CopyQ-Vi-Colemak-bindings"
 git remote add upstream https://github.com/hluk/CopyQ
 # cmake and git have to be installed
