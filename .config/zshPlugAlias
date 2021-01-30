@@ -23,7 +23,7 @@ alias pkg='sudo eopkg'\
     pkgi="sudo eopkg it"\
     pkgr="sudo eopkg rm"\
     pkgro="sudo eopkg rmo"\
-    dockerclean="docker system prune -a"\
+    dockerclean="docker system prune --volumes -all"\
     station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
     xc="xclip -selection clipboard"\
     j="joplin"\
@@ -791,6 +791,7 @@ alias dkE='docker exec -e COLUMNS=`tput cols` -e LINES=`tput lines` -i -t'
 alias dkh='docker history'
 alias dki='docker images'
 alias dkin='docker inspect'
+alias dkinfo='docker info'
 alias dkim='docker import'
 alias dkk='docker kill'
 alias dkkh='docker kill -s HUP'
@@ -806,15 +807,16 @@ alias dkph='docker push'
 alias dkps='docker ps'
 alias dkpsa='docker ps -a'
 alias dkr='docker run'
-alias dkR='docker run -e COLUMNS=`tput cols` -e LINES=`tput lines` -i -t --rm'
-alias dkRe='docker run -e COLUMNS=`tput cols` -e LINES=`tput lines` -i -t --rm --entrypoint /bin/bash'
+alias dkri='docker run -it'
+alias dkR='docker run -e COLUMNS=`tput cols` -e LINES=`tput lines` -it --rm'
+alias dkRb='docker run -e COLUMNS=`tput cols` -e LINES=`tput lines` -it --rm --entrypoint /bin/bash'
 alias dkRM='docker system prune'
 alias dkrm='docker rm'
 alias dkrmi='docker rmi'
 alias dkrn='docker rename'
 alias dks='docker start'
 alias dkS='docker restart'
-alias dkss='docker stats'
+alias dkst='docker stats'
 alias dksv='docker save'
 alias dkt='docker tag'
 alias dktop='docker top'
@@ -845,7 +847,7 @@ alias dkCr='docker container run'
 alias dkCR='docker container run -e COLUMNS=`tput cols` -e LINES=`tput lines` -i -t --rm'
 alias dkCRe='docker container run -e COLUMNS=`tput cols` -e LINES=`tput lines` -i -t --rm --entrypoint /bin/bash'
 alias dkCs='docker container start'
-alias dkCss='docker container stats'
+alias dkCst='docker container stats'
 alias dkCx='docker container stop'
 alias dkCtop='docker container top'
 alias dkCP='docker container unpause'
@@ -875,7 +877,8 @@ alias dkVrm='docker volume rm'
 
 ## Network (N)
 alias dkN='docker network'
-alias dkNs='docker network connect'
+alias dkNc='docker network create'
+alias dkNco='docker network connect'
 alias dkNx='docker network disconnect'
 alias dkNin='docker network inspect'
 alias dkNls='docker network ls'

@@ -265,7 +265,8 @@ let g:coc_global_extensions = [
             \ 'coc-sh',
             \ 'coc-diagnostic',
             \ 'coc-java',
-            \ 'coc-clangd'
+            \ 'coc-clangd',
+            \ 'coc-rls'
             \ ]
 " coc-clangd is necessary for c and c++
 " GoTo code navigation.
@@ -320,6 +321,7 @@ nnoremap <silent><nowait> <leader>ce  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <leader>ccr  :<C-u>CocRestart<cr>
 nnoremap <silent><nowait> <leader>ccl  :<C-u>CocOpenLog<CR>
+nnoremap <silent><nowait> <leader>ccm  :<C-u>CocList marketplace<CR>
 nnoremap <silent><nowait> <leader>cv  :<C-u>CocList --auto-preview outline<cr>
 
 " implemented in coc-fzf
@@ -333,8 +335,8 @@ nnoremap <silent><nowait> <leader>cv  :<C-u>CocList --auto-preview outline<cr>
 " scroll documentation
 " nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 " nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-" inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-" inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+inoremap <nowait><expr> <M-C-N> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1, 3)\<cr>" : "\<Right>"
+inoremap <nowait><expr> <M-C-E> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0, 3)\<cr>" : "\<Left>"
 " _______________________________________________
 "
 " CocSearch is very powerful, so you should use it with the many options it has available
@@ -1770,6 +1772,10 @@ let g:projectionist_heuristics = {
                 \
                 \ "*.py": {
                 \   "dispatch": "python3 %",
+                \ },
+                \
+                \ "*.rs": {
+                \   "dispatch": "cargo run",
                 \ },
                 \
                 \ "*": {

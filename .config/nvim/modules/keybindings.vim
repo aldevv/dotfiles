@@ -283,17 +283,32 @@ endfunction
 
 function! Runner()
   exec 'silent w'
-  let l:runner = 'Dispatch '
-  if g:extension != 'java'
-    execute l:runner
-  else
+  let l:runner = 'Dispatch! '
+  let l:special_cases = ['java', 'rs']
+  if index(l:special_cases, g:extension) >= 0 " si esta en el arreglo
     let l:runner = 'Dispatch! '
-    echo "entre"
-    execute l:runner
-    execute 'Copen'
-    execute "normal! \<c-w>k"
+  else 
+    let l:runner = 'Dispatch '
   endif
+  execute l:runner
+  execute 'Copen'
+  execute "normal! \<c-w>k"
 endfunction
+
+
+" function! Runner()
+"   exec 'silent w'
+"   let l:runner = 'Dispatch '
+"   if g:extension != 'java'
+"     execute l:runner
+"   else
+"     let l:runner = 'Dispatch! '
+"     echo "entre"
+"     execute l:runner
+"     execute 'Copen'
+"     execute "normal! \<c-w>k"
+"   endif
+" endfunction
 
 function! RunnerTerminal()
   exec 'silent w'

@@ -51,6 +51,7 @@ pip
 tagainijisho
 github-cli
 cargo
+rustup
 xsetroot
 xclip
 transmission

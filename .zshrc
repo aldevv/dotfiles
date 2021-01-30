@@ -129,6 +129,7 @@ bindkey -v '^?' backward-delete-char
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+#
 
 # less keybindings
 lesskey $XDG_CONFIG_HOME/colemak-less
