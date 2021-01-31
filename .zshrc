@@ -130,18 +130,20 @@ bindkey -v '^?' backward-delete-char
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 #
-
 # less keybindings
 lesskey $XDG_CONFIG_HOME/colemak-less
 
 source ~/.aliases
+# unsetopt completealiases
 
 # MAKES IT SLOW
 
 #pdfgrep
 #completion and highlighting
 # source ~/.config/completion_fzf.zsh
+#
 # fpath=($PROGRAMS/zsh-completions/src $fpath)
+# autoload -U compinit && compinit
 source $PROGRAMS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # export NVM_DIR="$HOME/.config/nvm"

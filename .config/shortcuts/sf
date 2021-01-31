@@ -5,24 +5,20 @@ obd         ~/dev/Work/PPE/tensorflow-api/models/research/object_detection
 wo         ~/Master/Work
 bk         ~/Documents/Books
 ba         ~/.backups
-lc         ~/Master/classes/2020-2/clases
+cc         ~/Master/Classes/2021-1
 ll         ~/Master/Learn
 tt         ~/.local/share/Trash/files
-lt         ~/Documents/Learn/typing
-lp         ~/Master/Projects
+po         ~/Master/Projects
 ss         ~/.local/Programs/Suckless
-lw         ~/Documents/Learn/Web/course/test
 ln         ~/Documents/lightnovels
 cf         ~/.config
-snip       ~/.config/nvim/my_snippets
+sp       ~/.config/nvim/my_snippets
 ms         ~/.local/share/myScripts/
-mo         ~/.local/share/myScripts/os
+mo         ~/.local/share/myScripts/os/solus
 mu         ~/.local/share/myScripts/utilities
-maa        ~/.local/share/myScripts/automation
-dev        ~/dev
-wk         ~/dev/Work
+ma        ~/.local/share/myScripts/automation
 doc        /usr/share/doc
-map        ~/.local/share/myScripts/apps
+mp        ~/.local/share/myScripts/apps
 D          ~/Downloads
 d          ~/Documents
 pp         ~/Pictures
@@ -38,5 +34,5 @@ rb         /bin
 rt         /root
 rmn        /mnt
 sc         ~/Pictures/screenshots
-rtk        ~/Documents/Learn/Books/japanese/heisig
+rtk        ~/Books/japanese/heisig
 

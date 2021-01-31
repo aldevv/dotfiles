@@ -1,2 +1,3 @@
 #!/bin/sh
-sudo -u "$SUDO_USER" git clone --depth=1 https://github.com/Akuseru1/fonts "$HOME/.local/share/fonts"
+[ ! -e "$PROGRAMS/pass" ] && ./pass
+sudo -u "$SUDO_USER" git clone --depth=1 "https://akuseru1:$(pass github)@github.com/Akuseru1/fonts" "$HOME/.local/share/fonts"

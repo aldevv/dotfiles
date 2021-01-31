@@ -3,7 +3,7 @@
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 cd "$PROGRAMS"
 # install completions (deprecated)
-# sudo -u "$SUDO_USER" git clone --depth=1 https://github.com/zsh-users/zsh-completions
+# sudo -u "$SUDO_USER" git clone https://github.com/zsh-users/zsh-completions
 # install highlight
 sudo -u "$SUDO_USER" git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
