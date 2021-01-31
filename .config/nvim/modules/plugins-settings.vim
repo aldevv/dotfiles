@@ -770,7 +770,7 @@ if !executable('black')
     :!pip3 install black
 endif
 
-if !executable('prettier')
+if !executable('prettier') && $USER != 'root'
     :!npm install -g prettier
 endif
 if !executable('clang-format')

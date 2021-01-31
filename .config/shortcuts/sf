@@ -10,7 +10,7 @@ ll         ~/Master/Learn
 tt         ~/.local/share/Trash/files
 po         ~/Master/Projects
 ss         ~/.local/Programs/Suckless
-ln         ~/Documents/lightnovels
+bl         ~/Documents/Books/LN
 cf         ~/.config
 sp       ~/.config/nvim/my_snippets
 ms         ~/.local/share/myScripts/
@@ -31,7 +31,7 @@ re         /etc
 ru         /usr
 rv         /var
 rb         /bin
-rt         /root
+rr         /root
 rmn        /mnt
 sc         ~/Pictures/screenshots
 rtk        ~/Books/japanese/heisig

@@ -112,9 +112,9 @@ alias pkg='sudo eopkg'\
     nvmch=". $SCRIPTS/useful/node/nvmch"\
     mydot="git clone --depth=1 https://www.github.com/akuseru1/dotfiles"\
     flas="export FLASK_APP=app.py && flask run"\
-    sudo="sudo -E"\
 
 alias su="su -" # the - lets you have env variables in root
+    # sudo="sudo -E"\
 
     # colab="echo \"!wget https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip
     # !unzip ijava-1.3.0.zip
@@ -331,7 +331,7 @@ function ggfl() {
 }
 compdef _git ggfl=git-checkout
 
-function ggl() {
+function ggP() {
   if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
     git pull origin "${*}"
   else
@@ -339,7 +339,7 @@ function ggl() {
     git pull origin "${b:=$1}"
   fi
 }
-compdef _git ggl=git-checkout
+compdef _git ggP=git-checkout
 
 function ggp() {
   if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
@@ -351,26 +351,28 @@ function ggp() {
 }
 compdef _git ggp=git-checkout
 
-function ggpnp() {
+# pull and push
+function ggpp() {
   if [[ "$#" == 0 ]]; then
-    ggl && ggp
+    ggP && ggp
   else
-    ggl "${*}" && ggp "${*}"
+    ggP "${*}" && ggp "${*}"
   fi
 }
-compdef _git ggpnp=git-checkout
+compdef _git ggpp=git-checkout
 
-function ggu() {
+function ggPr() {
   [[ "$#" != 1 ]] && local b="$(git_current_branch)"
   git pull --rebase origin "${b:=$1}"
 }
-compdef _git ggu=git-checkout
+compdef _git ggPr=git-checkout
 
-alias ggpur='ggu'
-alias ggpu='git pull origin "$(git_current_branch)"'
+# alias ggpur='ggPr'
+# alias ggPu='git pull origin "$(git_current_branch)"'
+#
 alias ggpush='git push origin "$(git_current_branch)"'
 
-alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
+alias gbsup='git branch --set-upstream-to=origin/$(git_current_branch)'
 alias gpsup='git push --set-upstream origin $(git_current_branch)'
 
 alias ghh='git help'
@@ -472,12 +474,12 @@ alias gtl='gtl(){ git tag --sort=-v:refname -n -l "${1}*" }; noglob gtl'
 
 alias gunignore='git update-index --no-assume-unchanged'
 alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
-alias guu='git pull'
-alias gup='git pull --rebase'
-alias gupv='git pull --rebase -v'
-alias gupa='git pull --rebase --autostash'
-alias gupav='git pull --rebase --autostash -v'
-alias glum='git pull upstream $(git_main_branch)'
+alias gP='git pull'
+alias gPr='git pull --rebase'
+alias gPrv='git pull --rebase -v'
+alias gPra='git pull --rebase --autostash'
+alias gPrav='git pull --rebase --autostash -v'
+alias gPum='git pull upstream $(git_main_branch)'
 
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
@@ -801,10 +803,10 @@ alias dkL='docker logs -f'
 alias dkli='docker login'
 alias dklo='docker logout'
 alias dkls='docker ps'
-alias dkp='docker pause'
-alias dkP='docker unpause'
-alias dkpl='docker pull'
-alias dkph='docker push'
+alias dkpa='docker pause'
+alias dkpA='docker unpause'
+alias dkP='docker pull'
+alias dkp='docker push'
 alias dkps='docker ps'
 alias dkpsa='docker ps -a'
 alias dkr='docker run'

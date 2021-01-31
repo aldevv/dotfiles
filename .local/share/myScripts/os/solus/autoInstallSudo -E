@@ -38,6 +38,7 @@ find init/* -exec {} \;
 # this is for nvm, otherwise just install npm and do npm install -g neovim
 sudo -u $user curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | zsh
 source "$HOME/.config/nvm/nvm.sh"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | zsh
 nvm install node
 
 # build suckless programs and progs not in repositories

@@ -18,6 +18,7 @@ export BROWSER=firefox
 export BOOKS="$HOME/Documents/Books"
 export PROJECTS="$HOME/Master/Projects"
 export CLASS="$HOME/Master/Classes/2021-1"
+export LEARN="$HOME/Master/Learn"
 export VOLUMES="$HOME/Master/Volumes"
 export SUCKLESS="$HOME/.local/Programs/Suckless"
 export BACKUPS="$HOME/.backups"

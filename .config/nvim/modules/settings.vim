@@ -9,6 +9,9 @@ set updatetime=1500 " this is for autosave in tex files(every cursorhold event)
 set encoding=utf-8
 scriptencoding utf-8
 
+"fix for yankring and neovim
+let g:yankring_clipboard_monitor=0
+
 "setlocal spell
 " set spelllang=es
 set spelllang=en_us,es

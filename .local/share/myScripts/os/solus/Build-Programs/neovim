@@ -13,3 +13,6 @@ npm install -g neovim
 
 mkdir -p "$HOME/.config/nvim/log"
 touch "$HOME/.config/nvim/log/log"
+
+ln -s $(which nvim) /usr/bin/nvim
+ln -s $(which nvim) /usr/bin/vim
