@@ -1,0 +1,5 @@
+# copy and paste!
+sudo eopkg up -y
+sudo eopkg it -y git
+git clone --depth=1 https://github.com/Akuseru1/dotfiles
+# copy and merge files manually

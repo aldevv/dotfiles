@@ -112,6 +112,7 @@ alias pkg='sudo eopkg'\
     nvmch=". $SCRIPTS/useful/node/nvmch"\
     mydot="git clone --depth=1 https://www.github.com/akuseru1/dotfiles"\
     flas="export FLASK_APP=app.py && flask run"\
+    logset="sudo lightdm-settings"\
 
 alias su="su -" # the - lets you have env variables in root
     # sudo="sudo -E"\

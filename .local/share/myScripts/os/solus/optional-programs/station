@@ -1,0 +1,5 @@
+#!/bin/sh
+mkdir -p "$PROGRAMS/station"
+cd "$PROGRAMS/station"
+version=$(sudo -u $1 wget -q -O - "https://dl.getstation.com/download/" | grep "path" | cut -d ' ' -f 2)
+sudo -u "$1" wget "https://dl.getstation.com/download/${version}"
