@@ -3,8 +3,6 @@
 https://hiphish.github.io/blog/rss.xml linux
 https://rgoswami.me/posts/index.xml linux
 http://www.dre.unal.edu.co/rss.html edu
-https://www.datacamp.com/community/rss.xml
-https://twitrss.me/twitter_user_to_rss/?user=Ministerio_TIC edu
 https://createfeed.fivefilters.org/extract.php?url=https%3A%2F%2Fwww.mintic.gov.co%2Fportal%2Finicio%2FConvocatorias%2F&in_id_or_class=recuadro&max=5&order=document "~Mintic Convocatorias"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg youtube
 https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA youtube
@@ -15,3 +13,4 @@ https://github.com/hrivera7777.atom friends
 https://github.com/velocirraptor5.atom friends
 https://www.animenewsnetwork.com/news/rss.xml?ann-edition=us anime
 https://www.animenewsnetwork.com/this-week-in-anime/rss.xml?ann-edition=w anime
+http://feeds.feedburner.com/metalinjection

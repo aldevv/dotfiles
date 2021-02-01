@@ -57,3 +57,7 @@ xclip
 transmission
 mpv
 lightdm-settings
+ruby
+alacritty
+strace
+ltrace

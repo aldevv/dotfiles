@@ -65,7 +65,10 @@ alias pkg='sudo eopkg'\
     dlg='dotrepo log --oneline --reverse'\
     dgpo='dotrepo push origin HEAD'\
     pgp='uploadProjects'\
-    restartx='sudo systemctl restart display-manager'\
+    rtx='sudo systemctl restart display-manager'\
+    wclass='xprop WM_CLASS'\
+    wname='xprop WM_NAME'\
+    wrole='xprop WM_ROLE'\
     flat='flatpak --installation=extra'\
     spot='flatpak --installation=extra run com.spotify.Client'\
     glv='git log --oneline --decorate --all --graph'\
@@ -113,6 +116,7 @@ alias pkg='sudo eopkg'\
     mydot="git clone --depth=1 https://www.github.com/akuseru1/dotfiles"\
     flas="export FLASK_APP=app.py && flask run"\
     logset="sudo lightdm-settings"\
+    fixpkg="sudo usysconf run -f ssl-certs"\
 
 alias su="su -" # the - lets you have env variables in root
     # sudo="sudo -E"\

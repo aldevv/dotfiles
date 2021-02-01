@@ -56,6 +56,7 @@ const char *spcmd3[] = {"st", "-n", "spman", "-f", "monospace:size=10", "-e", "b
 const char *spcmd4[] = {"st", "-n", "sptab", "-f", "monospace:size=10", "-e", "bash", "-c", "tableContents;$SHELL",  NULL };
 const char *spcmd5[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-e", "bc", "-liq", NULL };
 const char *spcmd6[] = {"st", "-n", "sppydoc", "-f", "monospace:size=12", "-e", "bash", "-c", "python_docs;$SHELL", NULL };
+const char *spcmd7[] = {"st", "-n", "spnews", "-e", "newsboat", NULL };
 /* const char *spcmd6[] = {"station", NULL }; */
 static Sp scratchpads[] = {
 	/* name          cmd  */
@@ -65,6 +66,7 @@ static Sp scratchpads[] = {
 	{"sptab",       spcmd4},
 	{"spcalc",      spcmd5},
 	{"sppydoc",      spcmd6},
+	{"spnews",      spcmd7},
 	/* {"spstat",      spcmd6}, */
 };
 
@@ -93,6 +95,7 @@ static const Rule rules[] = {
 	{ NULL,		  "sptab",		NULL,	SPTAG(3),	     1,		     1,           0,        -1,  "100% 0% 300W 400H"      },
 	{ NULL,		  "spcalc",		NULL,	SPTAG(4),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"     },
 	{ NULL,		  "sppydoc",	NULL,	SPTAG(5),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"     },
+	{ NULL,		  "spnews",		NULL,	SPTAG(6),	     1,		     1,           0,        -1,  "50% 50% 1300W 720H"     },
 	/* { NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 }, */
 	//{ "Station", NULL,     NULL,         (1 << 8)-1,    0,          0,          -1,        -1 }, selects all tags except the 9th
 };
@@ -227,6 +230,7 @@ static Key keys[] = {
 	{ Mod5Mask|ShiftMask,           XK_m,      togglescratch,  {.ui = 3 } },
 	{ MODKEY,   		            XK_a,      togglescratch,  {.ui = 4 } },
 	{ Mod5Mask,   		            XK_p,      togglescratch,  {.ui = 5 } },
+	{ Mod5Mask,            			XK_k,  	   togglescratch,  {.ui = 6 } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)

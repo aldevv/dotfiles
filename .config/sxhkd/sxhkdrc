@@ -44,11 +44,14 @@ mode_switch + shift + Return
     $PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage 2>/dev/null
 
 # menu button
-mode_switch +  k
-    st -e bash -c "newsboat;$SHELL"
+# mode_switch +  k
+#     st -e bash -c "newsboat;$SHELL"
 
-hyper + n
-    retrieveip
+# hyper + n
+#     retrieveip
+
+mode_switch + n
+    passmenu
 
 # hyper + shift + n
 #     retrievemask
