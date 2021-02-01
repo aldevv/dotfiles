@@ -408,6 +408,8 @@ nnoremap gw :h <c-r>=expand('<cword>')<cr><bar>resize 15<cr>
 
 " nnoremap <silent><leader>cp :silent call FormatMyCode()<cr>
 nnoremap <silent><leader>cp :silent call FormatMyCode()<cr>
+autocmd BufNewFile *.cpp,*.c,*.java call FormatMyCode()
+
 function! FormatMyCode()
   execute '!$APPS/vim/formatCode ' . g:extension .' '. expand('%:p')
   :CocRestart

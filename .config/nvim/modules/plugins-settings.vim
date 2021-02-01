@@ -1753,12 +1753,12 @@ let g:projectionist_heuristics = {
                 \ },
                 \
                 \ "*.c": {
-                \   "dispatch": "gcc % && ./a.out",
+                \   "dispatch": "gcc -g -o {basename} {file} && ./{basename}",
                 \   "alternate": "{}.h",
                 \ },
                 \
                 \ "*.cpp": {
-                \   "dispatch": "g++ % && ./a.out",
+                \   "dispatch": "g++ -g -o {basename} {file} && ./{basename}",
                 \   "alternate": "{}.h",
                 \ },
                 \ "*.tex": {
