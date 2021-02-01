@@ -15,6 +15,7 @@ cf         ~/.config
 sp       ~/.config/nvim/my_snippets
 ms         ~/.local/share/myScripts/
 mo         ~/.local/share/myScripts/os/solus
+mO         ~/.local/share/myScripts/os/solus/Build-Programs
 mu         ~/.local/share/myScripts/utilities
 ma        ~/.local/share/myScripts/automation
 doc        /usr/share/doc
@@ -28,7 +29,12 @@ mm         ~/Music
 wi         ~/.local/share/wiki
 lo         ~/.local
 re         /etc
-ru         /usr
+rU         /usr
+rus         /usr/share
+rub         /usr/bin
+rui         /usr/include
+rulo         /usr/local
+ruli         /usr/lib
 rv         /var
 rb         /bin
 rr         /root

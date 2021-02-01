@@ -105,7 +105,7 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " to avoid crashes with vim-plug functions while cursor in nerdtree
 let NERDTreeShowHidden=1
 let g:plug_window = 'noautocmd vertical topleft new'
-let NERDTreeShowHidden=0
+let NERDTreeShowHidden=1
 
 let NERDTreeMenuUp   = 'e'
 let NERDTreeMenuDown = 'n'
@@ -1155,7 +1155,7 @@ vmap <right> <Plug>MoveBlockRight
 let g:airline_powerline_fonts = 1
 autocmd Filetype java,javascript,python let g:airline#extensions#tabline#enabled = 1
 " autocmd Filetype python let g:airline#extensions#tabline#enabled = 1
-
+"
 "===================
 " VIMSPECTOR
 "===================
@@ -1170,7 +1170,7 @@ fun GotoWindow(id)
     call win_gotoid(a:id)
     MaximizerToggle
 endfun
-
+let g:vimspector_install_gadgets = [ 'debugpy', 'CodeLLDB' ]
 " setup guide for java https://urfoex.blogspot.com/2020/08/debugging-java-with-jdb-or-vim.html
 
 nnoremap <leader><leader>dc :call GotoWindow(g:vimspector_session_windows.code)<cr>
@@ -1181,6 +1181,7 @@ nnoremap <leader><leader>ds :call GotoWindow(g:vimspector_session_windows.stack_
 nnoremap <leader><leader>do :call GotoWindow(g:vimspector_session_windows.stack_output)<cr>
 
 nnoremap <leader><leader>dd :call vimspector#Launch()<CR>
+nnoremap <silent> <leader><leader>di :silent exec '!createdbg ' . shellescape(g:extension) . ' ' . shellescape(expand("%:r"))<cr>
 nmap <leader><leader>dD  <Plug>VimspectorStop
 nnoremap <leader><leader>dr :call vimspector#Reset()<cr>
 nmap <leader><leader>dR <Plug>VimspectorRestart
@@ -1192,7 +1193,7 @@ nnoremap <leader><leader>d<space> :call vimspector#Continue()<cr>
 nmap <leader><leader>dC <Plug>VimspectorRunToCursor
 nmap <leader><leader>db <Plug>VimspectorToggleBreakpoint
 nmap <leader><leader>dB <Plug>VimspectorToggleConditionalBreakpoint
-" <Plug>VimspectorAddFunctionBreakpoint
+ " <Plug>VimspectorAddFunctionBreakpoint
 
 " default config for a javascript file!
 " Javascript

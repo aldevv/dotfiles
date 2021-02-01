@@ -1,6 +1,5 @@
 sf  ~/.config/shortcuts/sf
 sd  ~/.config/shortcuts/sd
-cai  ~/.local/share/myScripts/solus/autoInstallSudo
 cfe ~/.emacs.d/init.el
 cfz ~/.zshrc
 cfp ~/.zprofile
@@ -10,11 +9,13 @@ cfxx ~/.Xresources
 cfxp ~/.xprofile
 cfv ~/.config/nvim/init.vim
 cfk ~/.config/sxhkd/sxhkdrc
-cfm ~/.xmonad/xmonad.hs
+cfxm ~/.xmonad/xmonad.hs
 cfi ~/.xinitrc
 cfn ~/.config/newsboat/urls
 cfy ~/.config/youtube-dl/config
 cfd ~/.local/Programs/Suckless/dwm-6.2/config.h
 cn  ~/.local/share/myScripts/utilities/classes/network/typenet
-cr  "~/dev/Work/PPE/pm/researched"
+cr  ~/dev/Work/PPE/pm/researched
 cfa ~/.config/zshPlugAlias
+cfma    ~/.local/share/myScripts/os/solus/autoInstallSudo -E
+cfmp    ~/.local/share/myScripts/os/solus/packages

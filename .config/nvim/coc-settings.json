@@ -57,7 +57,7 @@
             "protocol": "auto",
             "stopOnEntry": true,
             "console": "integratedTerminal",
-            "program": "${workspaceRoot}/Test2.java",
+            "program": "${workspaceRoot}/{basename}.java",
             "cwd": "${workspaceRoot}"
           }
         },

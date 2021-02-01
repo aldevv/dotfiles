@@ -1,1 +1,4 @@
 *.o
+.gitsecret/keys/random_seed
+!*.secret
+.config/youtube-viewer/api.json.config/rclone/rclone.conf

@@ -83,6 +83,8 @@ bindkey "^[[127;2u" backward-delete-char
 
 #to fix the space shift problem, inserts a space
 bindkey -s "^[[32;2u" " "
+bindkey -s "^[i" "^[OC"
+bindkey -s "^[h" "^[OD"
 
 # to delete word using ctrl and backspace
 bindkey "^[[127;5u" backward-delete-word
@@ -135,7 +137,9 @@ lesskey $XDG_CONFIG_HOME/colemak-less
 
 source ~/.aliases
 # unsetopt completealiases
-
+nvml() {
+. "$NVM_DIR/nvm.sh"
+}
 # MAKES IT SLOW
 
 #pdfgrep
@@ -146,6 +150,6 @@ source ~/.aliases
 # autoload -U compinit && compinit
 source $PROGRAMS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# export NVM_DIR="$HOME/.config/nvm"
+export NVM_DIR="$HOME/.config/nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
