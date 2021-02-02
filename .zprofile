@@ -34,6 +34,7 @@ export SHARED="$SCRIPTS/shared"
 export UTILITIES="$SCRIPTS/utilities"
 export AUTOMATION="$SCRIPTS/automation"
 export APPS="$SCRIPTS/apps"
+export OS="$SCRIPTS/os/solus"
 #add all files in these directories to the PATH
 export PATH="$(du $SHARED | cut -f2 | tr '\n' ':')$PATH"
 export PATH="$(du $APPS | cut -f2 | tr '\n' ':')$PATH"
@@ -76,7 +77,7 @@ export DISPLAY=:0
 #fzf
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
-export FZF_DEFAULT_COMMAND="rg --files --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}'"
+export FZF_DEFAULT_COMMAND="rg --files --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
 # export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 export FZF_DEFAULT_OPTS='--bind=alt-e:up,alt-n:down'
 export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type directory"

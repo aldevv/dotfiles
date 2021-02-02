@@ -149,6 +149,7 @@ nnoremap <F5> :UndotreeToggle<cr>
 " =======
 " FZF
 " =======
+" call fzf#vim#complete#path($FZF_DEFAULT_COMMAND)
 " \ 'ctrl-t': 'tab split',
 let g:fzf_action = {
             \ 'ctrl-s': 'split',
@@ -158,13 +159,15 @@ let g:rg_derive_root='true'
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 nnoremap <a-p> :PFiles<cr>
 nnoremap <a-P> :GFiles<cr>
-nnoremap <leader>,ps :FilesScripts<cr>
-nnoremap <leader>,ph :FilesHome<cr>
-nnoremap <leader>,pd :FilesDev<cr>
-nnoremap <leader>,pc :FilesClass<cr>
-nnoremap <leader>,pp :FilesProjects<cr>
-nnoremap <leader>,pp :FilesDots<cr>
-nnoremap <leader>,pm :FilesSnips<cr>
+nnoremap <leader>,fms :FilesScripts<cr>
+nnoremap <leader>,fsp :FilesSnips<cr>
+nnoremap <leader>,fh :FilesHome<cr>
+nnoremap <leader>,fwo :FilesWork<cr>
+nnoremap <leader>,fcc :FilesClass<cr>
+nnoremap <leader>,fpo :FilesProjects<cr>
+nnoremap <leader>,fpr :FilesPrograms<cr>
+nnoremap <leader>,fcf :FilesDots<cr>
+nnoremap <leader>,fmo :FilesOs<cr>
 "made myself
 nnoremap <leader>,pb :Bookm<cr>
 nnoremap <leader>sb :Buffers<cr>
@@ -184,7 +187,7 @@ command! -bang -nargs=? -complete=dir FilesScripts
 command! -bang -nargs=? -complete=dir FilesHome
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$HOME, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
-command! -bang -nargs=? -complete=dir FilesDev
+command! -bang -nargs=? -complete=dir FilesWork
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$WORK, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 command! -bang -nargs=? -complete=dir FilesClass
@@ -195,6 +198,15 @@ command! -bang -nargs=? -complete=dir FilesProjects
 
 command! -bang -nargs=? -complete=dir FilesDots
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$XDG_CONFIG_HOME, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+command! -bang -nargs=? -complete=dir FilesLearn
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$LEARN, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+command! -bang -nargs=? -complete=dir FilesPrograms
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$PROGRAMS, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+command! -bang -nargs=? -complete=dir FilesOs
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$OS, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 let snips_folder=$XDG_CONFIG_HOME."/nvim/my_snippets"
 command! -bang -nargs=? -complete=dir FilesSnips
@@ -211,17 +223,23 @@ endfunction
 
 
 " for ripgrep
+" command! -bang -nargs=* Rgfzf
+"             \ call fzf#vim#grep(
+"             \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+"             \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': s:find_current_root()}), <bang>0)
+let rg_command_nofiles = "rg --column --no-heading --color=always --smart-case --line-number --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
+command! -bang -nargs=* Rgfzf
+            \ call fzf#vim#grep(
+            \   rg_command_nofiles . ' ' . shellescape(<q-args>), 1,
+            \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': s:find_current_root()}), <bang>0)
+map <leader>f :Rgfzf<cr>
+
 command! -bang -nargs=* Rgfzf2
             \ call fzf#vim#grep(
-            \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(expand('<cword>')), 1,
+            \   rg_command_nofiles . ' ' . shellescape(expand('<cword>')), 1,
             \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': s:find_current_root()}), <bang>0)
 map <leader>F :Rgfzf2<cr>
 
-command! -bang -nargs=* Rgfzf
-            \ call fzf#vim#grep(
-            \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-            \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': s:find_current_root()}), <bang>0)
-map <leader>f :Rgfzf<cr>
 
 let commandFiles="awk '{print $2}' ".$XDG_CONFIG_HOME."/shortcuts/sd"
 command! -bang -nargs=* Bookm call fzf#run({'source':commandFiles,'sink': 'e'})
@@ -464,7 +482,7 @@ call coc#config('python', {
 "=============
 "COC-SNIPPETS
 "=============
-"
+au BufRead,BufNewFile .vimspector.json		set filetype=vimspector.json
 "gives me preview of the snippets, and gives me a shortcut to transform snippets quick
 "
 " Use <leader>x for convert visual selected code to snippet
@@ -585,8 +603,9 @@ nnoremap <leader>gB :Gbrowse<CR>
 "endfunction
 
 "=====================
-"   ULTISNIPS
+"   ULTISNIPS ( changed for coc-snippets )
 "=====================
+" autocmd BufNewFile,BufRead .vimspector.json UltiSnipsAddFiletypes vimspector.json
 " this plugin enables the use of skeletons
 " let g:did_UltiSnips_vim = 1
 " let g:did_UltiSnips_vim_after = 1
@@ -1213,27 +1232,10 @@ nmap <leader><leader>dB <Plug>VimspectorToggleConditionalBreakpoint
 "    "foobar": {}
 "  }
 "}
-"Java
-""{
-"  "configurations": {
-"    "Java Attach": {
-"      "adapter": "vscode-java",
-"      "configuration": {
-"        "request": "attach",
-"        "hostName": "${host}",
-"        "port": "${port}",
-"        "projectName": "${projectName}",
-"        "sourcePaths": [
-"          "${workspaceRoot}/src/main/java",
-"          "${workspaceRoot}/src/test/java"
-"        ]
-"      }
-"    }
-"  }
-"}
 
-
-" vim-commentary
+"===============
+" VIM-COMMENTARY
+"===============
 autocmd FileType json setlocal commentstring=//%s
 autocmd FileType sxhkdrc setlocal commentstring=#%s
 

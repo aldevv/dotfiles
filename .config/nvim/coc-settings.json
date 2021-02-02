@@ -12,6 +12,13 @@
 
     "snippets.ultisnips.directories": ["~/.config/nvim/my_snippets", "UltiSnips"],
     "snippets.userSnippetsDirectory": "~/.config/nvim/my_snippets",
+    "snippets.extends":
+    {
+      "cpp": ["c"],
+      "javascriptreact": ["javascript"],
+      "typescript": ["javascript"]
+    },
+    "snippets.shortcut":"S",
     "clangd.path": "/home/solus/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
     "clangd.disableDiagnostics": false,
     "clangd.arguments": ["--fallback-style=mozilla"],
