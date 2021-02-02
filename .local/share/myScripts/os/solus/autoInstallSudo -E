@@ -31,8 +31,7 @@ if [ "$1" == "xmonad" ]; then
    DM/setupXmonad
 fi
 
-# fix keyboard and mouse
-find init/* -exec {} \;
+find init/* -type f -exec {} \;
 
 # check latest nvm link
 # this is for nvm, otherwise just install npm and do npm install -g neovim

@@ -2283,4 +2283,9 @@ python Dashboard.start()
 # End:
 # source /home/kanon/Downloads/pwndbg/gdbinit.py
 source ~/.local/Programs/gef/.gdbinit-gef.py
-gef config context.layout "legend -regs -stack -code -args source -threads -trace -extra -memory"
+gef config context.layout "legend -regs  source -code -stack -threads trace -args -extra -memory"
+alias il = info locals
+alias ia = info args
+alias ib = info break
+alias cn = context
+# gef config context.enable False

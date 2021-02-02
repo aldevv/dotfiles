@@ -1,4 +1,0 @@
-#!/bin/sh
-cd "$SCRIPTS/os/solus/hardware"
-# ./fixMouse
-./fixKeyboard

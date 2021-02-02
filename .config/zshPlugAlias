@@ -118,6 +118,7 @@ alias pkg='sudo eopkg'\
     flas="export FLASK_APP=app.py && flask run"\
     logset="sudo lightdm-settings"\
     fixpkg="sudo usysconf run -f ssl-certs"\
+    gdbfront="gdbfrontend"\
 
 alias su="su -" # the - lets you have env variables in root
     # sudo="sudo -E"\
