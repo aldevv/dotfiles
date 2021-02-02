@@ -1,0 +1,19 @@
+dashboard -layout !assembly source !breakpoints !threads expressions history registers memory stack variables
+dashboard source -style height 20
+dashboard -enabled off
+
+# you can add your own functions, that work in gdb
+#
+# everything here is sourced as python, so be original
+
+define default-profile
+    dashboard -layout !assembly source !breakpoints !threads expressions history registers memory stack variables
+    dashboard source -style height 20
+    dashboard -enabled off
+end
+
+define memory-profile
+    dashboard -layout source breakpoints registers threads !assembly !expressions !history memory stack variables
+    dashboard source -style height 15
+    dashboard -enabled off
+end

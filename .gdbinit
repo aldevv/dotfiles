@@ -1,3 +1,4 @@
+
 python
 
 # GDB dashboard - Modular visual interface for GDB in Python.
@@ -2280,3 +2281,6 @@ python Dashboard.start()
 # Local Variables:
 # mode: python
 # End:
+# source /home/kanon/Downloads/pwndbg/gdbinit.py
+source ~/.local/Programs/gef/.gdbinit-gef.py
+gef config context.layout "legend -regs -stack -code -args source -threads -trace -extra -memory"

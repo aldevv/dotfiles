@@ -20,7 +20,7 @@ rm -f "$shell_shortcuts" "$ranger_shortcuts"
 (grep "source $HOME/.config/ranger/shortcuts.conf" $HOME/.config/ranger/rc.conf)>/dev/null || echo "source $HOME/.config/ranger/shortcuts.conf" >> $HOME/.config/ranger/rc.conf
 
 # directory shortcuts
-sed "/^#/d; /^$/d" $folders | tee >(awk '{shortcut=""; for ( i = 2; i <= NF; i++ ) if (shortcut != "") shortcut =shortcut"\\ "$i; else shortcut=$i}; {print "alias "$1"='\''cd \""shortcut"\" && ls -a'\''"}' >> $shell_shortcuts) \
+sed "/^#/d; /^$/d" $folders | tee >(awk '{shortcut=""; for ( i = 2; i <= NF; i++ ) if (shortcut != "") shortcut =shortcut"\\ "$i; else shortcut=$i}; {print "alias "$1"='\''cd "shortcut" && ls -a'\''"}' >> $shell_shortcuts) \
     >(awk '{shortcut=""; for ( i = 2; i <= NF; i++ ) if (shortcut != "") shortcut =shortcut"\\ "$i; else shortcut=$i}; {print "map g"$1" cd "shortcut"\nmap t"$1" tab_new "shortcut"\nmap m"$1" shell mv -v %s "shortcut"\nmap Y"$1" shell cp -rv %s "shortcut}' >> $ranger_shortcuts) >/dev/null
 
 # dotfile shortcuts
