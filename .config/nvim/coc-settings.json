@@ -82,5 +82,27 @@
       "<C-w>": "command:wincmd k",
       "<A-n>": "normal:n",
       "<A-e>": "normal:e"
-    }
+    },
+    // this lets you enter the settings of a languageserver that
+    // would normally be used like yaml.schemas, it has to be defined like this
+    // because once the languageserver is defined it didn't read the other variables
+    // settings : {
+      //      yaml:
+      //}
+      "languageserver": {
+        "yaml-language-server": {
+          "command": "~/.config/coc/extensions/node_modules/coc-yaml/node_modules/.bin/yaml-language-server",
+          "args": ["--stdio"],
+          "filetypes": ["yaml", "yml", "docker-compose.yml"],
+          "settings": {
+            "yaml": {
+              "schemas": {
+                "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": "docker-*.yml"
+              },
+              "schemaStore.enable": true,
+              "trace.server": "verbose"
+            }
+          }
+        }
+      }
   }

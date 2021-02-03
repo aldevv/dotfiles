@@ -57,7 +57,9 @@ endfunction
 
 nnoremap <leader>z zMzvzz
 
-nnoremap <silent><leader>,c  :!chmod +x %<cr>
+nnoremap <silent><leader>,ch  :w !chmod +x %<cr>
+nnoremap <silent><leader>,n  :w !npm start 2>/dev/null<cr>
+nnoremap <silent><leader>,ri  :w ! [ ! -e '.env' ] && python3 -m venv .env 2>/dev/null; pip3 install -r requirements.txt 2>/dev/null<cr>
 
 
 
@@ -367,13 +369,17 @@ command! -bang -nargs=? -complete=dir Cfxp :e $HOME/.xprofile
 command! -bang -nargs=? -complete=dir Cfxx :e $HOME/.Xresources
 command! -bang -nargs=? -complete=dir Cfv :e $XDG_CONFIG_HOME/nvim/init.vim
 command! -bang -nargs=? -complete=dir Cfr :e $XDG_CONFIG_HOME/ranger/rc.conf
+command! -bang -nargs=? -complete=dir Cfma :e $OS/autoInstallSudo\ -E
+command! -bang -nargs=? -complete=dir Cfa :e $XDG_CONFIG_HOME/zshPlugAlias
 
-nnoremap <leader>,ev :Cfv<cr>
-nnoremap <leader>,ez :Cfz<cr>
-nnoremap <leader>,ep :Cfp<cr>
-nnoremap <leader>,er :Cfr<cr>
-nnoremap <leader>,exp :Cfxp<cr>
-nnoremap <leader>,exx :Cfxx<cr>
+nnoremap <leader>,cfv :Cfv<cr>
+nnoremap <leader>,cfz :Cfz<cr>
+nnoremap <leader>,cfp :Cfp<cr>
+nnoremap <leader>,cfr :Cfr<cr>
+nnoremap <leader>,cfxp :Cfxp<cr>
+nnoremap <leader>,cfxx :Cfxx<cr>
+nnoremap <leader>,cfma :Cfma<cr>
+nnoremap <leader>,cfa :Cfa<cr>
 
 " clear search highlights
 noremap <silent><leader>ll :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>

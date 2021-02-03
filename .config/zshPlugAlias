@@ -43,7 +43,7 @@ alias pkg='sudo eopkg'\
     wtr="$UTILITIES/weather.sh"\
     ssr="simplescreenrecorder"\
     yt="youtube-viewer -q"\
-    r="ranger"\
+    r=". ranger"\
     todoist="cd $PROGRAMS/todoist-linux && make up"\
     ma="make && sleep 0.5 ./a.out"\
     ta='tar xvzf'\
@@ -119,6 +119,7 @@ alias pkg='sudo eopkg'\
     logset="sudo lightdm-settings"\
     fixpkg="sudo usysconf run -f ssl-certs"\
     gdbfront="gdbfrontend"\
+    al="alias"\
 
 alias su="su -" # the - lets you have env variables in root
     # sudo="sudo -E"\
@@ -950,13 +951,13 @@ alias dkcB='docker-compose build --no-cache'
 alias dkcd='docker-compose down'
 alias dkce='docker-compose exec -e COLUMNS=`tput cols` -e LINES=`tput lines`'
 alias dkck='docker-compose kill'
-alias dkcl='docker-compose logs'
-alias dkcL='docker-compose logs -f'
+alias dkclg='docker-compose logs'
+alias dkclG='docker-compose logs -f'
 alias dkcls='docker-compose ps'
-alias dkcp='docker-compose pause'
-alias dkcP='docker-compose unpause'
-alias dkcpl='docker-compose pull'
-alias dkcph='docker-compose push'
+alias dkcz='docker-compose pause'
+alias dkcZ='docker-compose unpause'
+alias dkcP='docker-compose pull'
+alias dkcp='docker-compose push'
 alias dkcps='docker-compose ps'
 alias dkcr='docker-compose run -e COLUMNS=`tput cols` -e LINES=`tput lines`'
 alias dkcR='docker-compose run -e COLUMNS=`tput cols` -e LINES=`tput lines` --rm'

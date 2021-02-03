@@ -79,7 +79,8 @@ export DISPLAY=:0
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
 export FZF_DEFAULT_COMMAND="rg --files --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
 # export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
-export FZF_DEFAULT_OPTS='--bind=alt-e:up,alt-n:down'
+# to unhide preview window, change to --preview-window=right:hidden:wrap"
+export FZF_DEFAULT_OPTS="--multi --bind=alt-e:up,alt-n:down,alt-t:toggle-preview,ctrl-a:select-all+accept --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) > /dev/null | head -300' --preview-window=right:wrap"
 export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type directory"
 # alt r -> cd into selected dir
 # ctrl t -> paste selected into command line(multiple)

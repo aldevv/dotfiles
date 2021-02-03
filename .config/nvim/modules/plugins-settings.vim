@@ -267,6 +267,8 @@ highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
 " \ 'coc-tslint-plugin',
 " \ 'coc-prettier',
 " \ 'coc-ultisnips',
+" \ 'coc-yaml', 
+" for docker compose add to coc-settings
 "
 let g:coc_global_extensions = [
             \ 'coc-marketplace',
@@ -284,7 +286,8 @@ let g:coc_global_extensions = [
             \ 'coc-diagnostic',
             \ 'coc-java',
             \ 'coc-clangd',
-            \ 'coc-rls'
+            \ 'coc-rls',
+            \ 'coc-yaml', 
             \ ]
 " coc-clangd is necessary for c and c++
 " GoTo code navigation.
@@ -751,19 +754,27 @@ let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
-"IndentLine
-"
+"==========
+"INDENTLINE
+"==========
 "let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_char = '┆'
 let g:indentLine_enabled = 0
 
+"==========
+"VIM-INDENTLINE
+"==========
+" let g:indentguides_ignorelist = ['cpp']
+" let g:indentguides_spacechar = '┆'
+" let g:indentguides_tabchar = '|'
 
 " enable vertical lines in javascript and typescript files
 function VerticalLines()
     :IndentLinesToggle
     set shiftwidth=2
 endfunction
-autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.js,*.ts,*.json,*.jsx :call VerticalLines()
+nmap <leader>cL :call VerticalLines()<cr>
+autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.{vim,jsx,json,ts,js} :call VerticalLines()
 "these 2 only work with real tabs, not expanded tabs"
 "set listchars=tab:┆.,trail:.,extends:>,precedes:<
 "set list
@@ -790,7 +801,11 @@ if !executable('black')
 endif
 
 if !executable('prettier') && $USER != 'root'
+  if !executable('npm') && $USER != 'root'
+    :!yarn global add prettier
+  else
     :!npm install -g prettier
+  endif
 endif
 if !executable('clang-format')
     :!pip3 install clang-format

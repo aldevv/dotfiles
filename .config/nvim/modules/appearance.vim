@@ -16,6 +16,7 @@ endif
 highlight clear SignColumn
 
 set cursorline
+set cursorcolumn
 " for cursor color you need this st patch 
 " https://st.suckless.org/patches/osc_10_11_12/
 " and use this

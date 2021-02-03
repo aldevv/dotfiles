@@ -60,7 +60,7 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # # in archlinux put the archlinux plugin!
 
 # docker adds completion for docker commands, same docker compose
-plugins=(extract docker docker-compose)
+plugins=(extract docker)
 # z is a command that takes you to the most probable folder
 source $ZSH/oh-my-zsh.sh
 . $XDG_CONFIG_HOME/zshPlugAlias

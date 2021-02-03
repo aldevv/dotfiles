@@ -113,6 +113,9 @@ Plug 'ThePrimeagen/vim-be-good'
 "
 call plug#end()
 
+" WORKING ALTERNATIVES
+" Plug 'thaerkh/vim-indentguides' for indentLines
+" ============================================
 " good guide for dev nvim
 "https://hanspinckaers.com/posts/2020/01/vim-python-ide/
 "https://github.com/wellle/targets.vim
