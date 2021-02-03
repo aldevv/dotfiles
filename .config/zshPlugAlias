@@ -50,7 +50,6 @@ alias pkg='sudo eopkg'\
     code='code-oss'\
     pydocs='~/Documents/myScripts/python_documentation.sh'\
     xi='sudo vim /etc/X11/xinit/xinitrc'\
-    xa='sudo /opt/lampp/manager-linux-x64.run'\
     djan='cd /home/solus/dev/trydjango/src'\
     corona='/home/solus/dev/corona/get_info'\
     tord='/home/solus/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads'\
@@ -120,6 +119,7 @@ alias pkg='sudo eopkg'\
     fixpkg="sudo usysconf run -f ssl-certs"\
     gdbfront="gdbfrontend"\
     al="alias"\
+    xa='xargs -I{}'\
 
 alias su="su -" # the - lets you have env variables in root
     # sudo="sudo -E"\
@@ -423,6 +423,7 @@ alias gpf='git push --force'
 alias gpoat='git push origin --all && git push origin --tags'
 # alias gpu='git push upstream'
 alias gpv='git push -v'
+alias gv='git --version'
 
 alias gr='git remote'
 alias gra='git remote add'

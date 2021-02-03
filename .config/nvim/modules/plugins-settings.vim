@@ -288,6 +288,7 @@ let g:coc_global_extensions = [
             \ 'coc-clangd',
             \ 'coc-rls',
             \ 'coc-yaml', 
+            \ 'coc-docker', 
             \ ]
 " coc-clangd is necessary for c and c++
 " GoTo code navigation.
@@ -1538,7 +1539,8 @@ nnoremap <silent> <leader>ccb       :<C-u>CocFzfListResume<CR>
 " NEOTERM
 " ================
 
-let g:neoterm_size="10"
+" let g:neoterm_size="10"
+let g:neoterm_size="7"
 let g:neoterm_autoinsert = 1
 let g:neoterm_default_mod = 'rightbelow'
 let g:neoterm_automap_keys='¡tt'

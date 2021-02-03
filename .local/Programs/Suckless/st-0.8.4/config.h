@@ -211,7 +211,7 @@ ResourcePref resources[] = {
         { "color6",       STRING,  &colorname[6] },
         { "color7",       STRING,  &colorname[7] },
         { "color8",       STRING,  &colorname[8] },
-        { "color9",       STRING,  &colorname[9] },
+        { "color9",       STRING,  &colorname[9] }, // this is the text in the prompt
         { "color10",      STRING,  &colorname[10] },
         { "color11",      STRING,  &colorname[11] },
         { "color12",      STRING,  &colorname[12] },

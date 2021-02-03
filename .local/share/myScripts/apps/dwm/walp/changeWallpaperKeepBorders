@@ -2,7 +2,7 @@
 if [ ! -z "$1" ]; then
     # to use a different layout like tile or extend, check here
     # https://github.com/dylanaraps/pywal/wiki/Getting-Started
-    wal -i "$1"
+    wal --saturate 0.7 -i "$1"
 fi
 walFolder="$HOME/.cache/wal/colors-wal-dwm.h"
 sleep 2

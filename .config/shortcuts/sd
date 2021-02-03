@@ -14,6 +14,7 @@ cfi ~/.xinitrc
 cfn ~/.config/newsboat/urls
 cfy ~/.config/youtube-dl/config
 cfd ~/.local/Programs/Suckless/dwm-6.2/config.h
+cfs ~/.local/Programs/Suckless/st-0.8.4/config.h
 cn  ~/.local/share/myScripts/utilities/classes/network/typenet
 cr  ~/dev/Work/PPE/pm/researched
 cfa ~/.config/zshPlugAlias
