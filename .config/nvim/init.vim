@@ -20,9 +20,6 @@
 "     'V/'  /##//##//##//###/
 "              ++
 "
-"\v magic : makes it work like grep -E
-"fzf choose folder with :File <myfolder>
-"
 "create your own text objects
 "https://github.com/kana/vim-textobj-user
 "
@@ -33,12 +30,6 @@
 "map <leader>ra :call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
 set t_Co=256
 "cgn change <highlighted item>, useful when you searched something
-"install plugs
-"sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-"       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-"
-"
-"expand('%:p:h')  for directory of file
 "shellescape: has 2 uses, in system() and in :!. pass 1 for :! commands so it escapes the quotes, and dont pass anything for system()
 "commands
 "
@@ -48,13 +39,8 @@ set t_Co=256
 ":verbose imap <leader>
 ":verbose nmap <localleader>
 ":verbose xmap <leader>
-"
 
-"to install python3 in checkhealth
-"python3 -m pip install --user --upgrade pynvim
-"pip3 install neovim-remote
-"
-"
+
 "==================
 " SETTINGS
 "==================
@@ -74,6 +60,7 @@ source ~/.config/nvim/modules/keybindings.vim
 " PLUGINS SETTINGS
 "==================
  source ~/.config/nvim/modules/plugins-settings.vim
+
 "==================
 " APPEARANCE
 "==================

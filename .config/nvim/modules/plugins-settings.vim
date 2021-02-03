@@ -153,7 +153,8 @@ nnoremap <F5> :UndotreeToggle<cr>
 " \ 'ctrl-t': 'tab split',
 let g:fzf_action = {
             \ 'ctrl-s': 'split',
-            \ 'ctrl-v': 'vsplit' }
+            \ 'ctrl-v': 'vsplit', 
+            \ 'ctrl-o': 'silent !setsid st -e nvim 2>/dev/null' } " sends it to other nvim instance
 " for rg
 let g:rg_derive_root='true'
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
@@ -176,9 +177,6 @@ nnoremap <F4> :Course<cr>
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
 
-" gives a preview window to Files
-command! -bang -nargs=? -complete=dir Files
-            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 " gives a preview window to Files in Home
 command! -bang -nargs=? -complete=dir FilesScripts
@@ -211,6 +209,10 @@ command! -bang -nargs=? -complete=dir FilesOs
 let snips_folder=$XDG_CONFIG_HOME."/nvim/my_snippets"
 command! -bang -nargs=? -complete=dir FilesSnips
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':snips_folder, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+" gives a preview window to Files
+command! -bang -nargs=? -complete=dir Files
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 " to start fzf at root of project
 command! PFiles execute 'Files' s:find_current_root()
@@ -287,6 +289,7 @@ let g:coc_global_extensions = [
             \ 'coc-java',
             \ 'coc-clangd',
             \ 'coc-rls',
+            \ 'coc-go',
             \ 'coc-yaml', 
             \ 'coc-docker', 
             \ ]

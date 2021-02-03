@@ -27,7 +27,6 @@ alias pkg='sudo eopkg'\
     station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
     xc="xclip -selection clipboard"\
     j="joplin"\
-    v="nvim"\
     xmonad="$HOME/.cabal/bin/xmonad"\
     rz="mpv 'http://www.youtube.com/watch?v=w-RUTZBbGwM'"\
     yz="mpv 'https://www.youtube.com/watch?v=mRwcGr8yTws'"\
@@ -107,9 +106,9 @@ alias pkg='sudo eopkg'\
     pk="$PROGRAMS/PacketTracer-AppImage/out/Cisco_Packet_Tracer-7.2.1.glibc2.15-x86_64.AppImage"\
     tv="$HOME/.local/Programs/teamviewer/teamviewer"\
     zm="$HOME/.local/Programs/zoom/ZoomLauncher"\
-    nmone="nmcli d wifi connect HYPERION "\
-    nmtwo="nmcli d wifi connect Hyperion_R "\
-    nmmobile='nmcli d wifi connect "One plus" '\
+    nm1="nmcli d wifi connect HYPERION "\
+    nm2="nmcli d wifi connect Hyperion_R "\
+    nmone='nmcli d wifi connect "One plus" '\
     nmc="nmcli d wifi connect"\
     nvmls="nvm ls-remote"\
     nvmch=". $SCRIPTS/useful/node/nvmch"\
@@ -120,7 +119,15 @@ alias pkg='sudo eopkg'\
     gdbfront="gdbfrontend"\
     al="alias"\
     xa='xargs -I{}'\
+    b='bat --wrap never'\
+    blue='blueman-manager'\
+    vl='vimpager'\
+    vim='vim'\
 
+alias v="nvim"
+alias V='nvr -o'
+alias Vv='nvr -O'
+alias Vt='nvr --remote-tab'
 alias su="su -" # the - lets you have env variables in root
     # sudo="sudo -E"\
 
@@ -167,7 +174,6 @@ alias rtfm='man'
 alias :3='echo'
 alias visible='echo'
 alias invisible='cat'
-alias moar='more'
 alias tldr='less'
 alias alwayz='tail -f'
 

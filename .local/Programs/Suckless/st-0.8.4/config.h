@@ -11,7 +11,7 @@
 // current
 /* static char *font = "Fira Code:size=10:antialias=true:autohint=true"; */
 /* static char *font = "FiraCode Nerd Font:size=11:antialias=true:autohint=true"; */
-static char *font = "VictorMono Nerd Font:size=14:antialias=true:autohint=true";
+static char *font = "VictorMono Nerd Font:size=13:antialias=true:autohint=true";
 /* static char *font = "FiraCode Nerd Font Mono:size=11:antialias=true:autohint=true"; */
 /* static char *font = "monospace:pixelsize=15:antialias=true:autohint=true"; */
 /* static char *font = "Source Code Pro:pixelsize=14:antialias=true:autohint=true"; // Unicode (emojis) */

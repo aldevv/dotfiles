@@ -12,7 +12,8 @@ external-url-viewer "urlscan -dc -r 'firefox {}'"
 #bind-key k prev articlelist
 #bind-key J next-feed articlelist
 #bind-key K prev-feed articlelist
-
+goto-next-feed no
+bind-key s sort
 bind-key n down
 bind-key e up
 bind-key n next articlelist

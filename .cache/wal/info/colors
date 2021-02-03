@@ -1,0 +1,4 @@
+you might want to invert foreground and background
+
+color 9: text in the terminal
+color 15: text in dmenu

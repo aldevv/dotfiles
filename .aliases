@@ -40,6 +40,7 @@ alias rr='cd /root && ls -a'
 alias rmn='cd /mnt && ls -a'
 alias sc='cd ~/Pictures/screenshots && ls -a'
 alias rtk='cd ~/Books/japanese/heisig && ls -a'
+alias wa='cd ~/.cache/wal && ls -a'
 alias lLd='cd ~/Master/Learn/Docker/Docker\ Mastery/Docker\ Mastery\ with\ Kubernetes\ +Swarm\ from\ a\ Docker\ Captain && ls -a'
 alias lLr='cd ~/Master/Learn/Rust/Learn\ Rust\ by\ Building\ Real\ Applications && ls -a'
 alias sf="$EDITOR ~/.config/shortcuts/sf"

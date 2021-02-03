@@ -1,13 +1,15 @@
 export EDITOR=nvim
 export VISUAL=nvim
-export MANPAGER='less -s -M +Gg'
-export PAGER='less -s -M +Gg'
+export LESS='-sSMRQJ -j.5'
+export PAGER='less'
+export MANPAGER='less'
 export C_INCLUDE_PATH=.:~/Documents/mlibs
 export EPISODES=~/Downloads
 export TERMINAL=st
 export TERM=st
 export COLORTERM=truecolor
-export BAT_THEME=OneHalfDark
+export BAT_THEME='OneHalfDark'
+export BAT_PAGER='less'
 export SHELL=/bin/zsh
 export PATH="$HOME/.symfony/bin:$PATH"
 # you can source sxhkd & here if you login from console
@@ -69,18 +71,23 @@ export JDK_HOME="/usr/lib64/openjdk-11"
 export JAVA_HOME="$JDK_HOME"
 export PATH="$PATH:$JAVA_HOME/bin:$HOME/.cargo/bin:$NODE_PATH"
 
+export GOPATH=$HOME/.local/share/builds/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 #======================================
 #
 #WINE
 export DISPLAY=:0
 
 #fzf
+export FZF_COMPLETION_TRIGGER='**'
+# Options to fzf command
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
 export FZF_DEFAULT_COMMAND="rg --files --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
 # export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 # to unhide preview window, change to --preview-window=right:hidden:wrap"
-export FZF_DEFAULT_OPTS="--multi --bind=alt-e:up,alt-n:down,alt-t:toggle-preview,ctrl-a:select-all+accept --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) > /dev/null | head -300' --preview-window=right:wrap"
+# for prompt at the bottom, change layout to "default"
+export FZF_DEFAULT_OPTS=" --height=15 --layout=reverse --multi --bind=alt-e:up,alt-n:down,alt-t:toggle-preview,ctrl-a:select-all+accept --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) > /dev/null | head -300' --preview-window=right:wrap"
 export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type directory"
 # alt r -> cd into selected dir
 # ctrl t -> paste selected into command line(multiple)

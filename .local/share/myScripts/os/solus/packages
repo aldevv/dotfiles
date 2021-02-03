@@ -2,9 +2,9 @@
 zsh
 sxhkd
 dmenu
-fzf
 dash
 python3-devel
+#fzf
 # nodejs
 zathura-mupdf
 python3
@@ -28,6 +28,7 @@ feh
 sxiv
 zeal
 ripgrep
+fd
 drive
 rclone
 shellcheck

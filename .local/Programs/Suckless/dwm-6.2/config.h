@@ -91,7 +91,7 @@ static const Rule rules[] = {
 	{ NULL,       NULL,     "Event Tester", 0,           0,          0,           1,        -1,  "50% 50% 800W 800H"     },
 	{ NULL,		  "spterm",		NULL,	SPTAG(0),	     1,		     1,           0,        -1,  "50% 50% 800W 500H"      },
 	{ NULL,		  "spfm",		NULL,	SPTAG(1),	     1,		     1,           0,        -1,  "0% 0% 500W 500H"      },
-	{ NULL,		  "spman",      NULL,	SPTAG(2),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"      },
+	{ NULL,		  "spman",      NULL,	SPTAG(2),	     1,		     1,           0,        -1,  "50% 50% 1200W 720H"      },
 	{ NULL,		  "sptab",		NULL,	SPTAG(3),	     1,		     1,           0,        -1,  "100% 0% 300W 400H"      },
 	{ NULL,		  "spcalc",		NULL,	SPTAG(4),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"     },
 	{ NULL,		  "sppydoc",	NULL,	SPTAG(5),	     1,		     1,           0,        -1,  "50% 50% 800W 800H"     },

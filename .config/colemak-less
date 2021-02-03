@@ -7,3 +7,8 @@ K    reverse-search
 -    forw-search
 /    toggle-option
 ñ    quit
+I    toggle-option i
+h   left-scroll
+i   right-scroll
+H   help
+g   goto-line

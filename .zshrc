@@ -28,11 +28,11 @@ ZSH_THEME="aussiegeek"
 
 #functions
 #to open man in vim
-function manv() {
-    for arg in "$@"; do
-        nvim -c 'execute "normal! :let no_man_maps = 1\<cr>:runtime ftplugin/man.vim\<cr>:Man '"${arg}"'\<cr>:wincmd o\<cr>"'
-    done
-}
+# function manv() {
+#     for arg in "$@"; do
+        # nvim -c 'execute "normal! :let no_man_maps = 1\<cr>:runtime ftplugin/man.vim\<cr>:Man '"${arg}"'\<cr>:wincmd o\<cr>"'
+    # done
+# }
 
 
 # Change cursor shape for different vi modes.
@@ -144,14 +144,31 @@ nvml() {
 }
 # MAKES IT SLOW
 
-#pdfgrep
 #completion and highlighting
 # source ~/.config/completion_fzf.zsh
 #
 # fpath=($PROGRAMS/zsh-completions/src $fpath)
 # autoload -U compinit && compinit
 source $PROGRAMS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+doge() {
+  _fzf_complete --multi --reverse --prompt="doge> " -- "$@" < <(
+    echo very
+    echo wow
+    echo such
+    echo doge
+  )
+}
 
+_fzf_compgen_path() {
+  excluded=".git node_modules plugged .env __pycache__ .wine .npm .icons .vscode */nvm/backups .cache undodir"
+  fd --hidden --follow --exclude "$excluded" . "$1"
+}
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  excluded=".git node_modules plugged .env __pycache__ .wine .npm .icons .vscode */nvm/backups .cache undodir"
+  fd --type d --hidden --follow --exclude "$excluded" . "$1"
+}
 export NVM_DIR="$HOME/.config/nvm"
+[ -f "$HOME/.config/.fzf.zsh" ] && source "$HOME/.config/.fzf.zsh"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
