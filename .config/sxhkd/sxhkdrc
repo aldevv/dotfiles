@@ -20,7 +20,7 @@ super + alt + w
 	# st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
 
 super + alt + p
-	mpv "$($UTILITIES/anime/run_episode2.sh)"
+	mpv "$($UTILITIES/anime/run_episode)"
 
 mode_switch + w
     emacs $WIKI/wiki.org

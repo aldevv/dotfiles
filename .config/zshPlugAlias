@@ -122,7 +122,12 @@ alias pkg='sudo eopkg'\
     b='bat --wrap never'\
     blue='blueman-manager'\
     vl='vimpager'\
-    vim='vim'\
+    shm='mount -t tmpfs tmpfs /mnt/tmp'\
+    mpva='mpv --no-video'\
+    mpvas='mpv --no-video --shuffle'\
+    mpvs='mpv --shuffle'\
+    aniplay='mpv --no-video --shuffle https://www.youtube.com/playlist\?list\=PLjNlQ2vXx1xbt30X8TcUfNzw_akVISXEu'\
+    aniplayv='mpv --shuffle https://www.youtube.com/playlist\?list\=PLjNlQ2vXx1xbt30X8TcUfNzw_akVISXEu'\
 
 alias v="nvim"
 alias V='nvr -o'

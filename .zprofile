@@ -53,6 +53,29 @@ export XMODIFIERS=@im='ibus'
 #breaks copyq
 # export QT_QPA_PLATFORMTHEME="qt5ct"
 # export QT_PLUGIN_PATH=/usr/lib/qt5/plugins
+prefixes_dir="$HOME/.local/Programs/prefix-installs"
+if [[ -d $prefixes_dir ]]; then
+    for dir in "$prefixes_dir"/*; do
+        dir=${dir:A}
+        if [[ -d "$dir/bin" ]]; then
+            PATH="$dir/bin:$PATH"
+        fi
+        if [[ -d "$dir/share/man" ]]; then
+            MANPATH="$dir/share/man:$MANPATH"
+        fi
+        if [[ -d "$dir/lib" ]]; then
+            LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$dir/lib"
+        fi
+        if [[ -d "$dir/lib/pkgconfig" ]]; then
+            PKG_CONFIG_PATH="$dir/lib/pkgconfig:$PKG_CONFIG_PATH"
+        fi
+    done
+fi
+unset dir prefixes_dir
+export PATH MANPATH LD_LIBRARY_PATH PKG_CONFIG_PATH
+
+#and this is how I uninstall programs in the prefix-install directory :
+#rm -rf ~/.user-prefixes/nvim
 
 #======================================
 # WORK

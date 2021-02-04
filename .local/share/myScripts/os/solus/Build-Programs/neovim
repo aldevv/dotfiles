@@ -4,8 +4,8 @@ cd "$PROGRAMS"
 sudo -u "$SUDO_USER" git clone --depth=1 https://github.com/neovim/neovim
 cd neovim
 # make CMAKE_BUILD_TYPE=RelWithDebInfo
-make CMAKE_BUILD_TYPE=Release
-make install
+make  CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$PROGRAMS/prefix-installs/neovim"
+make CMAKE_BUILD_TYPE=Release install
 
 sudo -u "$SUDO_USER" python3 -m pip install --user --upgrade pynvim neovim-remote
 sudo -u "$SUDO_USER" python2 -m pip install --user --upgrade pynvim

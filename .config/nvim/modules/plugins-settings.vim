@@ -1801,6 +1801,9 @@ let g:projectionist_heuristics = {
                 \   "dispatch": "cargo run",
                 \ },
                 \
+                \ "*.go": {
+                \   "dispatch": "go run {file}",
+                \ },
                 \ "*": {
                 \   "dispatch": "chmod +x %; ./%",
                 \ },

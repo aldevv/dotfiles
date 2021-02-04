@@ -271,8 +271,8 @@ cnoremap <a-i> <Right>
 " autocmd FileType python nnoremap <buffer> <s-cr> :silent w<bar>only<bar>vsp<bar>term ipython3 -i %<cr>
 autocmd FileType python nnoremap <buffer> <s-cr> :silent w<bar>only<bar>vsp<bar>term jupyter console<cr> <c-w>l :JupyterConnect<cr><cr> :JupyterRunFile<cr>
 autocmd FileType java nnoremap <silent><buffer> <s-cr> :silent w<bar>execute "!java ".expand('%:t:r')<cr>
-noremap <silent><leader><cr> :call RunnerTerminal()<cr>
-nnoremap <silent><cr> :call RunnerEnter()<cr>
+noremap <silent><leader><cr> :silent call RunnerTerminal()<cr>
+nnoremap <silent><cr> :silent call RunnerEnter()<cr>
 
 function! RunnerEnter()
   if bufname('%') == '' || &buftype == 'quickfix'
@@ -286,13 +286,13 @@ endfunction
 function! Runner()
   exec 'silent w'
   let l:runner = 'Dispatch! '
-  let l:special_cases = ['java', 'rs']
+  let l:special_cases = ['java', 'rs', 'go']
   if index(l:special_cases, g:extension) >= 0 " si esta en el arreglo
     let l:runner = 'Dispatch! '
   else 
     let l:runner = 'Dispatch '
   endif
-  execute l:runner
+  silent execute l:runner
   execute 'Copen'
   execute "normal! \<c-w>k"
 endfunction

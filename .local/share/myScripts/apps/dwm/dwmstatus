@@ -35,8 +35,9 @@ while true; do
 
     #wifi connected
     # [[ $(nmcli d status | sed -n '2p' | cut -d" " -f 9) == "connected" ]] && internet=🍥 ||internet=🐡
+    wifi_stat=$([ $(cat /sys/class/net/wlp3s0/operstate) == "up" ] && echo '上' || echo '下')
 
-	xsetroot -name "${packages} | ${volume} | ${battery} | ${time} | ${date}"
+	xsetroot -name "${packages}| ${volume} | ${battery} | ${wifi_stat} | ${time} | ${date}"
 	# xsetroot -name "| ${internet} | ${packages} | ${volume} | ${battery} | ${time} | ${date}"
 	sleep 1m
 done

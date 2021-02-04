@@ -1,5 +1,5 @@
 #!/bin/sh
-video=$(ls -t $HOME/Downloads/*mkv  | sed 's/^.*\///g' | dmenu -i -l 30)
+video=$(select_anime)
 [ ! -z "$video" ] && mpv "$HOME/Downloads/$video" 2>/dev/null
 
 

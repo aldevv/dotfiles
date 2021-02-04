@@ -42,5 +42,5 @@ rmn        /mnt
 sc         ~/Pictures/screenshots
 rtk         ~/Books/japanese/heisig
 wa         ~/.cache/wal
-lLd         ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
-lLr         ~/Master/Learn/Rust/Learn Rust by Building Real Applications
+Ld         ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
+Lr         ~/Master/Learn/Rust/Learn Rust by Building Real Applications
