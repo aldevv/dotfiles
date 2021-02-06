@@ -28,7 +28,6 @@
 "
 "run in the background use jobstart
 "map <leader>ra :call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
-set t_Co=256
 "cgn change <highlighted item>, useful when you searched something
 "shellescape: has 2 uses, in system() and in :!. pass 1 for :! commands so it escapes the quotes, and dont pass anything for system()
 "commands
@@ -41,10 +40,11 @@ set t_Co=256
 ":verbose xmap <leader>
 
 
+ set t_Co=256
 "==================
 " SETTINGS
 "==================
-source ~/.config/nvim/modules/settings.vim
+ source ~/.config/nvim/modules/settings.vim
 
 "==================
 " PLUGINS
@@ -54,7 +54,7 @@ source ~/.config/nvim/modules/settings.vim
 "==================
 " KEYBINDINGS
 "==================
-source ~/.config/nvim/modules/keybindings.vim
+ source ~/.config/nvim/modules/keybindings.vim
 
 "==================
 " PLUGINS SETTINGS
@@ -69,5 +69,5 @@ source ~/.config/nvim/modules/keybindings.vim
 "==================
 " AUTOMATION
 "==================
-source ~/.config/nvim/modules/automation.vim
+ source ~/.config/nvim/modules/automation.vim
 

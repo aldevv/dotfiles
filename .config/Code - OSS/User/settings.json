@@ -24,10 +24,7 @@
     },
     "sync.forceUpload": true,
     "editor.lineNumbers": "relative",
-    "workbench.activityBar.visible": false,
     "vim.useSystemClipboard": true,
-    //"window.menuBarVisibility": "default",
-    "window.menuBarVisibility": "toggle",
     "vim.leader": "<space>",
     "keyboard.dispatch": "keyCode",
     "workbench.editor.enablePreview": false,
@@ -425,13 +422,12 @@
         "subcuadrillas"
     ],
     "workbench.startupEditor": "bruh",
-    "editor.minimap.enabled": false,
     "editor.fontSize": 18,
     "terminal.integrated.fontFamily": "monospace, PowerLineSymbols",
     // "editor.fontFamily": "'Fira Code'",
     "editor.fontFamily": "Fira Code iScript",
     "editor.fontLigatures": true,
-    "workbench.colorTheme": "Dracula Italics",
+    "workbench.colorTheme": "Gruvbox Material Dark",
     
 "editor.tokenColorCustomizations": {
     "textMateRules": [
@@ -612,5 +608,29 @@
             "after": ["l"]
         },
     ],
+    "vscode-neovim.neovimExecutablePaths.linux": "/home/kanon/.local/Programs/prefix-installs/neovim/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.linux": "/home/kanon/.config/nvim/init.vim",
+    "vscode-neovim.highlightGroups.highlights": {
+    
+        "Directory": "vim",
+        "IncSearch": {
+            "backgroundColor": "theme.editor.findMatchBackground",
+            "borderColor": "theme.editor.findMatchBorder"
+        },
+        "Search": {
+            "backgroundColor": "theme.editor.findMatchHighlightBackground",
+            "borderColor": "theme.editor.findMatchHighlightBorder"
+        },
+        "Visual": {
+            "backgroundColor": "theme.editor.selectionBackground"
+        },
+        "Conceal": "vim",
+        "Substitute": "vim"
+    },
+    "window.menuBarVisibility": "toggle",
+    "gruvboxMaterial.darkContrast": "hard",
+    "vscode-neovim.mouseSelectionStartVisualMode": true,
+    "vscode-neovim.useCtrlKeysForInsertMode": false,
+    "vscode-neovim.useCtrlKeysForNormalMode": false,
 
 }

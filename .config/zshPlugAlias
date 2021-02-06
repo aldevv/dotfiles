@@ -46,15 +46,13 @@ alias pkg='sudo eopkg'\
     todoist="cd $PROGRAMS/todoist-linux && make up"\
     ma="make && sleep 0.5 ./a.out"\
     ta='tar xvzf'\
-    code='code-oss'\
     pydocs='~/Documents/myScripts/python_documentation.sh'\
     xi='sudo vim /etc/X11/xinit/xinitrc'\
     djan='cd /home/solus/dev/trydjango/src'\
     corona='/home/solus/dev/corona/get_info'\
     tord='/home/solus/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads'\
-    saco='source env/bin/activate'\
-    sac='source .env/bin/activate'\
-    sacr='source env/bin/activate && pip install -r requirements.txt'\
+    sac='source .venv/bin/activate'\
+    sacr='source installReq' \
     ven='wine .wine/drive_c/Program\ Files/Vensim/venPLE32.exe'\
     dotrepo="git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME"\
     dst='dotrepo status'\
@@ -128,6 +126,10 @@ alias pkg='sudo eopkg'\
     mpvs='mpv --shuffle'\
     aniplay='mpv --no-video --shuffle https://www.youtube.com/playlist\?list\=PLjNlQ2vXx1xbt30X8TcUfNzw_akVISXEu'\
     aniplayv='mpv --shuffle https://www.youtube.com/playlist\?list\=PLjNlQ2vXx1xbt30X8TcUfNzw_akVISXEu'\
+    apropos='apropos -e'\
+    f='nvim $(fzf)'\
+    batl='bat --paging=always'\
+    ri='source .env/bin/activate && python3 -m pip install --upgrade pip && pip3 install -r requirements.txt '\
 
 alias v="nvim"
 alias V='nvr -o'
@@ -396,7 +398,7 @@ alias gpsup='git push --set-upstream origin $(git_current_branch)'
 
 alias ghh='git help'
 
-alias gignore='git update-index --assume-unchanged'
+alias gignore='git update-index --assume-unchanged' # and your file <file>
 alias gignored='git ls-files -v | grep "^[[:lower:]]"'
 alias git-svn-dcommit-push='git svn dcommit && git push github $(git_main_branch):svntrunk'
 
@@ -818,8 +820,8 @@ alias dkinfo='docker info'
 alias dkim='docker import'
 alias dkk='docker kill'
 alias dkkh='docker kill -s HUP'
-alias dkl='docker logs'
-alias dkL='docker logs -f'
+alias dklg='docker logs'
+alias dklG='docker logs -f'
 alias dkli='docker login'
 alias dklo='docker logout'
 alias dkls='docker ps'
@@ -958,6 +960,7 @@ alias dkmx='docker-machine stop'
 
 # Docker Compose (c)
 alias dkc='docker-compose'
+alias dkcc='docker-compose config'
 alias dkcb='docker-compose build'
 alias dkcB='docker-compose build --no-cache'
 alias dkcd='docker-compose down'
@@ -981,3 +984,8 @@ alias dkcu='docker-compose up'
 alias dkcU='docker-compose up -d'
 alias dkcv='docker-compose version'
 alias dkcx='docker-compose stop'
+
+#=======
+# GITHUB
+#=======
+alias ghprc='gh pr create'

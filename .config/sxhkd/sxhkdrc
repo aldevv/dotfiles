@@ -10,8 +10,8 @@
 super + alt + w
 	"$UTILITIES/misc/toggle_chat"
 
-#super + p
-#	dmenu_run
+super + shift + q
+	shutdown now
 
 #mode_switch + p
 # 	python_docs
@@ -37,7 +37,7 @@ super + m
 mode_switch + Return
     st >/dev/null 2>&1
 
-mode_switch + shift o
+mode_switch + shift + o
     opacity_toggle
 
 mode_switch + shift + Return
@@ -50,7 +50,7 @@ mode_switch + shift + Return
 # hyper + n
 #     retrieveip
 
-mode_switch + n
+super + shift + n
     passmenu
 
 # hyper + shift + n

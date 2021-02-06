@@ -87,3 +87,16 @@ function! s:syntax_query() abort
   endfor
 endfunction
 command! SyntaxQuery call s:syntax_query()
+
+"================
+" FORMATTING
+"================
+"
+" autocmd FileType python setlocal formatprg=black\ -\ \
+"             \--quiet\ \
+"             \--line-length\ 100
+
+autocmd FileType python setlocal formatprg=autopep8
+
+
+

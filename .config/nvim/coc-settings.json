@@ -1,14 +1,16 @@
 {
-  "__coc.preferences.formatOnSaveFiletypes": ["python"],
-  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+  "coc.preferences.formatOnSaveFiletypes": ["python"],
+  /* "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"], */
 
-    "python.linting.enabled": false,
-    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": true,
     "python.linting.flake8Enabled": false,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintPath": "~/.local/bin/pylint",
     "python.formatting.provider": "black",
-    "__python.pythonPath": "/usr/bin/python3",
+    "python.formatting.blackArgs": ["-", "--quiet", "--line-length", "100"],
+    /* "__python.pythonPath": "/usr/bin/python3", */
+    /* "python.jediPath": "/usr/lib64/python3.7/site-packages", */
     "python.jediEnabled": false,
-    "python.jediPath": "/usr/lib64/python3.7/site-packages",
 
     "snippets.ultisnips.directories": ["~/.config/nvim/my_snippets", "UltiSnips"],
     "snippets.userSnippetsDirectory": "~/.config/nvim/my_snippets",
@@ -19,7 +21,7 @@
       "typescript": ["javascript"]
     },
     "snippets.shortcut":"S",
-    "clangd.path": "/home/solus/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
+    "clangd.path": "/home/kanon/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
     "clangd.disableDiagnostics": false,
     "clangd.arguments": ["--fallback-style=mozilla"],
     "clangd.fallbackFlags": ["-stdlib=libstdc++"],
@@ -35,23 +37,23 @@
     "diagnostic.virtualTextLineSeparator": " \\ ",
     "diagnostic.enable": true,
     "codeLens.enable": false,
-    "__diagnostic.errorSign": "✘",
-    "__diagnostic.warningSign": "",
+    /* "__diagnostic.errorSign": "✘", */
+    /* "__diagnostic.warningSign": "", */
     "diagnostic.errorSign": ">>",
     "diagnostic.warningSign": "∙∙",
     "diagnostic.infoSign": "",
     "diagnostic.displayByAle": false,
-    "__diagnostic.messageDelay.comment": "default= 200",
+    /* "__diagnostic.messageDelay.comment": "default= 200", */
     "diagnostic.messageDelay": 400,
 
-    "__suggest.noselect.comment": "this is for not choosing first item when pressing TAB",
+    /* "__suggest.noselect.comment": "this is for not choosing first item when pressing TAB", */
     "suggest.noselect": false,
-    "__suggest.labelMaxLength.comment": "width of text to the left, like Integer, def 100",
+    /* "__suggest.labelMaxLength.comment": "width of text to the left, like Integer, def 100", */
     "suggest.labelMaxLength": 70,
-    "__suggest.detailMaxLength.comment": "description, right of title,def: 200",
+    /* "__suggest.detailMaxLength.comment": "description, right of title,def: 200", */
     "suggest.detailMaxLength": 15,
     "suggest.maxPreviewWidth": 200,
-    "__suggest.trigger.comment": "edit this 2 for better sugestions",
+    /* "__suggest.trigger.comment": "edit this 2 for better sugestions", */
     "suggest.triggerCompletionWait": 100,
     "signature.triggerSignatureWait": 200,
     "signature.floatMaxWidth": 200,

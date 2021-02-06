@@ -402,7 +402,7 @@ endfunction
 " GIST
 " requires gist installed
 " you need to do gist --login for the first time
-vnoremap <leader>G :w !gist -p -t %:e \| xclip -selection clipboard<cr>
+vnoremap <leader>G :w !gist -p -t %:e \| xsel -b<cr>
 nnoremap Q gqip
 " to source your init.vim (only one line)
 vnoremap <silent><leader>S y:execute @@<cr>
@@ -413,7 +413,7 @@ noremap <leader>0 :Colors<cr>
 nnoremap gw :h <c-r>=expand('<cword>')<cr><bar>resize 15<cr>
 
 " nnoremap <silent><leader>cp :silent call FormatMyCode()<cr>
-nnoremap <silent><leader>cp :silent call FormatMyCode()<cr>
+" nnoremap <silent><leader>cp :silent call FormatMyCode()<cr>
 autocmd BufNewFile *.cpp,*.c,*.java call FormatMyCode()
 
 function! FormatMyCode()

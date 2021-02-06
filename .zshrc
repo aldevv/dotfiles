@@ -62,7 +62,7 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # # in archlinux put the archlinux plugin!
 
 # docker adds completion for docker commands, same docker compose
-plugins=(extract docker)
+plugins=(docker)
 # z is a command that takes you to the most probable folder
 source $ZSH/oh-my-zsh.sh
 . $XDG_CONFIG_HOME/zshPlugAlias
@@ -168,7 +168,7 @@ _fzf_compgen_dir() {
   excluded=".git node_modules plugged .env __pycache__ .wine .npm .icons .vscode */nvm/backups .cache undodir"
   fd --type d --hidden --follow --exclude "$excluded" . "$1"
 }
-export NVM_DIR="$HOME/.config/nvm"
+# export NVM_DIR="$HOME/.config/nvm"
 [ -f "$HOME/.config/.fzf.zsh" ] && source "$HOME/.config/.fzf.zsh"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

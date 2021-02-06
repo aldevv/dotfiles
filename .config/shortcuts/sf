@@ -8,7 +8,6 @@ ba         ~/.backups
 cc         ~/Master/Classes/2021-1
 ll         ~/Master/Learn
 tt         ~/.local/share/Trash/files
-po         ~/Master/Projects
 ss         ~/.local/Programs/Suckless
 bl         ~/Documents/Books/LN
 cf         ~/.config
@@ -44,3 +43,11 @@ rtk         ~/Books/japanese/heisig
 wa         ~/.cache/wal
 Ld         ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
 Lr         ~/Master/Learn/Rust/Learn Rust by Building Real Applications
+pa        ~/Master/Projects
+pd        ~/Master/Projects/Debug
+po        ~/Master/Projects/Micro
+pO        ~/Master/Projects/Main/
+w1         ~/Master/Work/covidalert
+1         ~/Master/Projects/Micro/HTTP-server in Rust
+2         ~/Master/Projects/Micro/Docker
+p1        ~/Master/Projects/Main/example

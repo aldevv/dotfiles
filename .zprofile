@@ -10,8 +10,8 @@ export TERM=st
 export COLORTERM=truecolor
 export BAT_THEME='OneHalfDark'
 export BAT_PAGER='less'
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/rg"
 export SHELL=/bin/zsh
-export PATH="$HOME/.symfony/bin:$PATH"
 # you can source sxhkd & here if you login from console
 export SXHKD_SHELL="/bin/zsh"
 # export SI=https://meet.google.com/ixe-gxnu-ovp
@@ -19,6 +19,7 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export BROWSER=firefox
 export BOOKS="$HOME/Documents/Books"
 export PROJECTS="$HOME/Master/Projects"
+export WORK="$HOME/Master/Work"
 export CLASS="$HOME/Master/Classes/2021-1"
 export LEARN="$HOME/Master/Learn"
 export VOLUMES="$HOME/Master/Volumes"
@@ -72,6 +73,14 @@ if [[ -d $prefixes_dir ]]; then
     done
 fi
 unset dir prefixes_dir
+
+if [[ -d $PROGRAMS ]]; then
+    for dir in "$PROGRAMS"/*; do
+        if [[ -d "$dir/man" ]]; then
+            MANPATH="$dir/man:$MANPATH"
+        fi
+    done
+fi
 export PATH MANPATH LD_LIBRARY_PATH PKG_CONFIG_PATH
 
 #and this is how I uninstall programs in the prefix-install directory :
@@ -87,7 +96,6 @@ if [ ! -z "$node" ]; then
 else
     export NODE_PATH=""
 fi
-export WORK="$HOME/dev/Work"
 # export PYTHONPATH="$WORK/PPE/tensorflow-api/models/research:$WORK/PPE/tensorflow-api/models/research/slim:$WORK/PPE/tensorflow-api/models:$PYTHONPATH"
 export PYTHONPATH="$WORK/PPE/workplace/train/images/models/research:$WORK/PPE/workplace/train/images/models/research/slim:$WORK/PPE/workplace/train/images/models:$PYTHONPATH"
 export JDK_HOME="/usr/lib64/openjdk-11"
@@ -106,7 +114,7 @@ export FZF_COMPLETION_TRIGGER='**'
 # Options to fzf command
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
-export FZF_DEFAULT_COMMAND="rg --files --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
+export FZF_DEFAULT_COMMAND="rg --files --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
 # export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 # to unhide preview window, change to --preview-window=right:hidden:wrap"
 # for prompt at the bottom, change layout to "default"

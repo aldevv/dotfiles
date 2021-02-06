@@ -158,8 +158,13 @@ let g:fzf_action = {
 " for rg
 let g:rg_derive_root='true'
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
-nnoremap <a-p> :PFiles<cr>
+nnoremap <a-p> :Filescwd<cr>
 nnoremap <a-P> :GFiles<cr>
+nnoremap <c-p> :Buffers<cr>
+nnoremap <C-S-P> :Commits<cr>
+  command! -bang Commits call fzf#vim#commits({'options': '--no-preview'}, <bang>0)
+nnoremap <leader>C :Commands<cr>
+nnoremap <c-c>m :Maps<cr>
 nnoremap <leader>,fms :FilesScripts<cr>
 nnoremap <leader>,fsp :FilesSnips<cr>
 nnoremap <leader>,fh :FilesHome<cr>
@@ -211,11 +216,15 @@ command! -bang -nargs=? -complete=dir FilesSnips
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':snips_folder, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 " gives a preview window to Files
+command! -bang -nargs=? -complete=dir Filescwd
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline'], 'dir': getcwd()}), <bang>0)
+
+" overwrites GFILES (user git-ls which doesn't find files not in repo) 
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 " to start fzf at root of project
-command! PFiles execute 'Files' s:find_current_root()
+command! GFiles execute 'Files' s:find_current_root()
 
 function! s:find_current_root()
     execute ':lcd %:p:h'
@@ -229,7 +238,7 @@ endfunction
 "             \ call fzf#vim#grep(
 "             \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
 "             \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': s:find_current_root()}), <bang>0)
-let rg_command_nofiles = "rg --column --no-heading --color=always --smart-case --line-number --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
+let rg_command_nofiles = "rg --column --no-heading --color=always --smart-case --line-number --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
 command! -bang -nargs=* Rgfzf
             \ call fzf#vim#grep(
             \   rg_command_nofiles . ' ' . shellescape(<q-args>), 1,
@@ -261,7 +270,7 @@ command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 "=====
 "COC
 "=====
-"
+
 highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
 " \ 'coc-html',
 " \ 'coc-json',
@@ -294,11 +303,14 @@ let g:coc_global_extensions = [
             \ 'coc-docker', 
             \ ]
 " coc-clangd is necessary for c and c++
+nmap <silent> <leader>cci :CocInfo<cr>
+nmap <silent> <leader>cC  :CocConfig<cr>
+nmap <silent> <leader>ccC :CocLocalConfig<cr>
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gD <Plug>(coc-type-declaration)
-" nmap <silent> <leader>cf <Plug>(coc-format)
+" nmap <silent> <leader>cp <Plug>(coc-format)
 nmap gr <Plug>(coc-references)
 nmap <leader>gr <Plug>(coc-references-used)
 nmap gR <Plug>(coc-implementation)
@@ -469,20 +481,20 @@ inoremap <silent><expr> <CR> pumvisible() && coc#rpc#request('hasSelected', []) 
 autocmd FileType python call PythonMappings()
 
 function PythonMappings()
-    map <leader><leader>p :CocCommand python.setInterpreter<cr>
-    map <leader><leader>r :CocCommand python.execInTerminal<cr>
-    map <leader><leader>l :CocCommand python.setLinter<cr>
-    map <leader><leader>g :CocCommand python.viewOutput<cr>
+    map <leader>Lp :CocCommand python.setInterpreter<cr>
+    map <leader>Lr :CocCommand python.execInTerminal<cr>
+    map <leader>Ll :CocCommand python.setLinter<cr>
+    map <leader>Lg :CocCommand python.viewOutput<cr>
 endfunction
 " call coc#config('python', {
 "  \   'jediEnabled': v:false,
 "  \   'pythonPath': split(execute('!which python3'), '\n')[-1]
 "  \ })
 "
-call coc#config('python', {
-            \ 'formatting.blackPath': $HOME."/.local/bin/black",
-            \})
-" \ 'linting.pylintPath': $HOME."/.local/bin/pylint"
+" call coc#config('python', {
+              " \ 'formatting.blackPath': $HOME."/.local/bin/black",
+            " \})
+            " \ 'linting.pylintPath': "usr/bin/pylint"
 
 
 
@@ -805,7 +817,7 @@ if !executable('black')
 endif
 
 if !executable('prettier') && $USER != 'root'
-  if !executable('npm') && $USER != 'root'
+  if !executable('npm')
     :!yarn global add prettier
   else
     :!npm install -g prettier
@@ -819,31 +831,38 @@ endif
 " endif
 augroup fmt
     autocmd!
-    autocmd BufWritePre *.py,*.js,*.java,*.c,*.cpp,*.haskell,*.json,*.ts :Neoformat
+    autocmd BufWritePre *.{js,java,c,cpp,haskell,json,ts,rs,go} :Neoformat
 augroup END
-nmap <silent><Leader>sp :Neoformat<cr>
+
+function FormatSelector() abort
+  let l:special_cases = ['py']
+  if index(l:special_cases, g:extension) >= 0 " si esta en el arreglo
+    nmap <silent><leader>cp <Plug>(coc-format)
+  else 
+    nmap <silent><Leader>cp :Neoformat<cr>
+  endif
+endfunction
+call FormatSelector()
+" js,java,c,cpp,haskell,json,ts,rs,go
 "-----------
 " PYTHON
 "-----------
 "'replace': 0 replace the file, instead of updating buffer (default: 0),
-let g:neoformat_python_black = {
-            \ 'exe': 'black',
-            \ 'args': ['-','--quiet','--line-length', '100'],
-            \ 'replace': 0,
-            \ 'stdin': 1,
-            \ }
+" let g:neoformat_python_black = {
+"             \ 'exe': 'black',
+"             \ 'args': ['-','--quiet','--line-length', '100'],
+"             \ 'replace': 0,
+"             \ 'stdin': 1,
+"             \ }
 " lets you use gq
-autocmd FileType python setlocal formatprg=black\ -\ \
-            \--quiet\ \
-            \--line-length\ 100
+" let g:neoformat_enabled_python = ['black', 'autopep8']
 
-let g:neoformat_enabled_python = ['black']
 "-----------
 " Javascript
 "-----------
-autocmd FileType javascript,json,typescript let &l:formatprg='prettier --stdin-filepath ' .expand('%'). ' --print-width 90'
+autocmd FileType javascript,,typescript let &l:formatprg='prettier --stdin-filepath ' .expand('%'). ' --print-width 90'
 " uses google style
-" autocmd FileType java,c,c++ let &l:formatprg='clang-format --assume-filename=' . expand('%:t'). ' -style=google'
+" autocmd FileType  let &l:formatprg='clang-format --assume-filename=' . expand('%:t'). ' -style=google'
 autocmd FileType java,c,c++ let &l:formatprg='clang-format --assume-filename="' . expand('%:t'). '" -style=file'
 
 let g:neoformat_javascript_prettier = {
@@ -870,12 +889,16 @@ let g:neoformat_cpp_clangformat = {
             \ }
 let g:neoformat_enabled_cpp = ['clangformat']
 
+"rust
+" if !executable('rustfmt-nightly') && $USER != 'root'
+"   rustup component add rls rust-analysis rust-src
+" endif
 " autocmd BufWritePre python Neoformat
 "====================
 " PRETTIER AND BLACK
 "====================
 " autocmd BufWritePre *.py :Black
-" autocmd BufWritePre *.js,*.json,*.jsx,*.ts :Prettier
+" autocmd BufWritePre *.js,*.json,*.jsx,*. :Prettier
 "======================
 "black
 "======================
@@ -1283,7 +1306,7 @@ let g:splitjoin_join_mapping = 'gS'
 
 " " " nmap <leader>cv :Vista coc<cr>
 " " nmap <leader>cv :Vista!!<cr>
-" autocmd Filetype python,c,cpp,java,javascript,go,haskell,vim nmap <leader>cV :Vista finder<cr>
+" autocmd Filetype python,c,cpp,java,javascript,go,skell,vim nmap <leader>cV :Vista finder<cr>
 
 "=========
 " TAGBAR
