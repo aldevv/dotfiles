@@ -93,29 +93,37 @@ endfunction
 " endfunction
 
 " nnoremap <leader>Sd  :call GetNameDmenu("something")<cr>
-
-function! CreateFile()
+function! CreateFileTouch()
   let l:filename = GetName("Enter File Name: ")
   if len(l:filename) == 0
       return
-  endif
-
-  let l:command = ":e " . l:filename
-
-  if l:filename =~ '\v^\|\S+'
-    let l:filename = l:filename[1:-1]
-    let l:command = ":!touch " . l:filename
   endif
 
   if l:filename =~ '.*/.+'
     exec system('filename=' . l:filename . '; mkdir -p ${filename%\/*}/')
   endif
 
-  exe l:command
-
+  exe ":!touch " . l:filename
   if !SpecialWindow()
     w
   endif
+  " this condition works when nerdtree is open or closed
+  if exists("g:NERDTree") && g:NERDTree.IsOpen()
+    :NERDTreeRefreshRoot
+  endif
+endfunction
+
+function! CreateFileEnter()
+  let l:filename = GetName("Enter File Name: ")
+  if len(l:filename) == 0
+      return
+  endif
+  
+  if l:filename =~ '.*/.+'
+    exec system('filename=' . l:filename . '; mkdir -p ${filename%\/*}/')
+  endif
+
+  exe ":e " . l:filename
   " this condition works when nerdtree is open or closed
   if exists("g:NERDTree") && g:NERDTree.IsOpen()
     :NERDTreeRefreshRoot
@@ -138,7 +146,8 @@ function! CreateDir()
   endif
 endfunction
 
-nnoremap <silent><leader>sn  :silent call CreateFile()<cr>
+nnoremap <silent><leader>sn  :silent call CreateFileEnter()<cr>
+nnoremap <silent><leader>st  :silent call CreateFileTouch()<cr>
 nnoremap <silent><leader>sf  :silent call CreateDir()<cr>
 " nnoremap <leader>sF  :call RemoveDir()<cr>
 " nnoremap <leader>sN  :call RemoveFile()<cr>

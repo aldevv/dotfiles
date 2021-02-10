@@ -235,9 +235,15 @@ function! s:find_current_root()
                 \ expand("%:p:h") : system("git rev-parse --show-toplevel 2> /dev/null")[:-2]
 endfunction
 
+" function! SpecialWindow()
+"   return &buftype == 'quickfix' || &buftype == 'nofile'
+" endfunction
+
 function RemoveFileUpdateNerdtree(files)
   exec system('rm ' . a:files)
-  :w
+  if !SpecialWindow()
+    :w
+  endif
   if exists("g:NERDTree") && g:NERDTree.IsOpen()
     :NERDTreeRefreshRoot
   endif
@@ -253,7 +259,9 @@ command! -bang -bar -complete=dir RemoveFiles
 
 function RemoveDirUpdateNerdtree(dir)
   exec system('rm -r ' . a:dir)
-  :w
+  if !SpecialWindow()
+    :w
+  endif
   if exists("g:NERDTree") && g:NERDTree.IsOpen()
     :NERDTreeRefreshRoot
   endif
@@ -1605,7 +1613,7 @@ let g:neoterm_autoinsert = 1
 let g:neoterm_default_mod = 'rightbelow'
 let g:neoterm_automap_keys='¡tt'
 let g:neoterm_keep_term_open = 0
-map <silent><Leader>st :Ttoggle<cr>
+map <silent><Leader>T :Ttoggle<cr>
 
 "=============
 "GV

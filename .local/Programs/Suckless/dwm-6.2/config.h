@@ -219,8 +219,6 @@ static Key keys[] = {
 
 	/* modifier                     key        function        argument */
 	//{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_w,      spawn,          {.v = firefox} },
 	{ MODKEY,                       XK_F9,     spawn,          {.v = mountUsb} },
 	{ MODKEY,                       XK_F10,    spawn,          {.v = umountUsb} },
 	{ MODKEY,            			XK_c,  	   togglescratch,  {.ui = 0 } },

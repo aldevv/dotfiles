@@ -10,6 +10,12 @@
 super + alt + w
 	"$UTILITIES/misc/toggle_chat"
 
+super + w
+	"$BROWSER"
+
+super + p
+	dmenucmd
+
 super + shift + q
 	shutdown now
 
