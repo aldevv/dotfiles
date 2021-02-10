@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# for vim and ranger
+mkdir -p "$HOME/nvim/backups"
+pip3 install ranger-fm ueberzug
+
+#

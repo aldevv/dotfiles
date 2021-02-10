@@ -24,6 +24,13 @@ d          ~/Documents
 pp         ~/Pictures
 pr         ~/.local/Programs
 vv         ~/Videos
+M         ~/Master
+Md         ~/Master/Debug
+Ml         ~/Master/Learn
+Mp         ~/Master/Projects
+Mv         ~/Master/Volumes
+Mc         ~/Master/Classes
+Mw         ~/Master/Work
 mm         ~/Music
 wi         ~/.local/share/wiki
 lo         ~/.local
@@ -41,12 +48,14 @@ rmn        /mnt
 sc         ~/Pictures/screenshots
 rtk         ~/Books/japanese/heisig
 wa         ~/.cache/wal
-Ld         ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
-Lr         ~/Master/Learn/Rust/Learn Rust by Building Real Applications
+l1         ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
+l2         ~/Master/Learn/Rust/Learn Rust by Building Real Applications
+ld         ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
+lr         ~/Master/Learn/Rust/Learn Rust by Building Real Applications
 pa        ~/Master/Projects
-pd        ~/Master/Projects/Debug
 po        ~/Master/Projects/Micro
-pO        ~/Master/Projects/Main/
+pm        ~/Master/Projects/Main/
+P        ~/Master/Projects/Main/
 w1         ~/Master/Work/covidalert
 1         ~/Master/Projects/Micro/HTTP-server in Rust
 2         ~/Master/Projects/Micro/Docker

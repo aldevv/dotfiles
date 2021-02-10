@@ -1,0 +1,23 @@
+#!/bin/bash
+# optional
+# $1 argument
+
+if [ -z "$1" ]; then
+    text=$(echo "" | dmenu -p "translate" -fn 'Droid Sans Japanese:pixelsize=19')
+    while [[ ! -z $text ]]
+        do
+        notify-send -t 800 "translating to clipboard..."
+        translated=$(echo $text | python3 "$UTILITIES/japanese/translate/translate_text.py")
+        #saves to clipboard
+        echo "$translated" | xclip -sel clip
+        notify-send "$translated"
+        text=$(echo $translated | dmenu -p "translate" -fn 'Droid Sans Japanese:pixelsize=19')
+    done
+else
+    text="$1"
+    translated=$(echo $text | python3 "$UTILITIES/japanese/translate/translate_text.py")
+    notify-send "in clipboard"
+    echo "$translated" | xclip -sel clip
+    echo "$translated"
+fi
+

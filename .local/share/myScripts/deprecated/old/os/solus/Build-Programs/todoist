@@ -1,0 +1,5 @@
+#!/bin/bash
+cd "$PROGRAMS"
+git clone --depth=1 https://github.com/KryDos/todoist-linux
+cd todoist-linux
+make env

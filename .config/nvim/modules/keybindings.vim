@@ -77,33 +77,75 @@ let g:extension = expand('%:e')
 " this didnt work because it needs to be put down lower, but is a good example
 " of how to obtain input for a command
 "
-function! EnterFileName()
+function! GetName(detail)
     call inputsave()
-    let l:filename = input("Enter Filename: ")
+    let l:filename = input(a:detail)
     call inputrestore()
-    if len(l:filename) == 0
-        return
-      endif
-    exe ":e " . l:filename
-    w
-    startinsert
+    return l:filename
 endfunction
 
-function! EnterDirName()
-    call inputsave()
-    let l:filename = input("Enter Folder Name: ")
-    call inputrestore()
-    if len(l:filename) == 0
-        return
-      endif
-    exe ":!mkdir " . l:filename
+" function! GetNameDmenu(detail)
+"   " call inputsave()
+"   let l:filename = system('dmenu -p ' . shellescape(a:detail))
+"   echo l:filename
+"     " call inputrestore()
+"     " return l:filename
+" endfunction
+
+" nnoremap <leader>Sd  :call GetNameDmenu("something")<cr>
+
+function! CreateFile()
+  let l:filename = GetName("Enter File Name: ")
+  if len(l:filename) == 0
+      return
+  endif
+
+  let l:command = ":e " . l:filename
+
+  if l:filename =~ '\v^\|\S+'
+    let l:filename = l:filename[1:-1]
+    let l:command = ":!touch " . l:filename
+  endif
+
+  if l:filename =~ '.*/.+'
+    exec system('filename=' . l:filename . '; mkdir -p ${filename%\/*}/')
+  endif
+
+  exe l:command
+
+  if !SpecialWindow()
     w
-    startinsert
+  endif
+  " this condition works when nerdtree is open or closed
+  if exists("g:NERDTree") && g:NERDTree.IsOpen()
+    :NERDTreeRefreshRoot
+  endif
 endfunction
 
-" create files and folders
-nnoremap <leader>sn  :call EnterFileName()<cr>
-nnoremap <leader>sm  :call EnterFolderName()<cr>
+function! CreateDir()
+  let l:dir_name = GetName("Enter Dir Name: ")
+  if len(l:dir_name) == 0
+      return
+  endif
+  exe ":!mkdir -p " . l:dir_name
+
+  if !SpecialWindow() 
+    w
+  endif
+
+  if exists("g:NERDTree") && g:NERDTree.IsOpen()
+    :NERDTreeRefreshRoot
+  endif
+endfunction
+
+nnoremap <silent><leader>sn  :silent call CreateFile()<cr>
+nnoremap <silent><leader>sf  :silent call CreateDir()<cr>
+" nnoremap <leader>sF  :call RemoveDir()<cr>
+" nnoremap <leader>sN  :call RemoveFile()<cr>
+
+" 'cd' towards the directory in which the current file is edited
+" but only change the path for the current window
+nnoremap <leader>sc :lcd %:h<CR>
 
 " close buffers
 noremap <leader>sd :bd<cr>
@@ -274,8 +316,13 @@ autocmd FileType java nnoremap <silent><buffer> <s-cr> :silent w<bar>execute "!j
 noremap <silent><leader><cr> :silent call RunnerTerminal()<cr>
 nnoremap <silent><cr> :silent call RunnerEnter()<cr>
 
+function! SpecialWindow()
+  return &buftype == 'quickfix' || &buftype == 'nofile'
+endfunction
+
 function! RunnerEnter()
-  if bufname('%') == '' || &buftype == 'quickfix'
+  " if bufname('%') == '' || &buftype == 'quickfix' || &buftype == 'nofile'
+  if SpecialWindow() || bufname('%') == ''
     silent execute "normal! \<CR>"
   else
     silent call Runner()

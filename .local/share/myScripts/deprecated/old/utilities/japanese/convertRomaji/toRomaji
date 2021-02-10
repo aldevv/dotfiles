@@ -1,0 +1,10 @@
+#!/bin/sh
+# optional
+# $1 argument
+
+if [ -z $1 ]; then
+    text=$(dmenu -p "translate")
+else
+    text=$1
+fi
+echo "$text" | iconv -f utf8 -t eucjp | kakasi -i euc -w | kakasi -i euc -Ha -Ka -Ja -Ea -ka

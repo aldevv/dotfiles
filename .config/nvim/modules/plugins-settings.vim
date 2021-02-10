@@ -84,6 +84,7 @@ function s:UpdateNerd() " updates the  tree when a new file is saved
         endif
     endif
     let g:nerdFirsttime = 1
+    :NERDTreeRefreshRoot
 endfunction
 " map <leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
 noremap <silent><leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
@@ -174,6 +175,8 @@ nnoremap <leader>,fpo :FilesProjects<cr>
 nnoremap <leader>,fpr :FilesPrograms<cr>
 nnoremap <leader>,fcf :FilesDots<cr>
 nnoremap <leader>,fmo :FilesOs<cr>
+nnoremap <leader>sN :RemoveFiles<cr>
+nnoremap <leader>sF :RemoveDirs<cr>
 "made myself
 nnoremap <leader>,pb :Bookm<cr>
 nnoremap <leader>sb :Buffers<cr>
@@ -232,6 +235,37 @@ function! s:find_current_root()
                 \ expand("%:p:h") : system("git rev-parse --show-toplevel 2> /dev/null")[:-2]
 endfunction
 
+function RemoveFileUpdateNerdtree(files)
+  exec system('rm ' . a:files)
+  :w
+  if exists("g:NERDTree") && g:NERDTree.IsOpen()
+    :NERDTreeRefreshRoot
+  endif
+endfunction
+let remove_files_command = "rg --files -u -u --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --""
+command! -bang -bar -complete=dir RemoveFiles
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(
+            \ {
+            \   'source': remove_files_command,
+            \   'sink': function('RemoveFileUpdateNerdtree'),
+            \   'options': ['--layout=reverse', '--info=inline']
+            \ }), <bang>0)
+
+function RemoveDirUpdateNerdtree(dir)
+  exec system('rm -r ' . a:dir)
+  :w
+  if exists("g:NERDTree") && g:NERDTree.IsOpen()
+    :NERDTreeRefreshRoot
+  endif
+endfunction
+let remove_dir_command = "fd -t d -H -d 1""
+command! -bang -bar -complete=dir RemoveDirs
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(
+            \ {
+            \   'source': remove_dir_command,
+            \   'sink': function('RemoveDirUpdateNerdtree'),
+            \   'options': ['--layout=reverse', '--info=inline']
+            \ }), <bang>0)
 
 " for ripgrep
 " command! -bang -nargs=* Rgfzf
@@ -1336,7 +1370,7 @@ let g:tagbar_map_hidenonpublic = 'h'
 let g:ranger_replace_netrw = 1
 let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0
-nmap <leader>sf :Ranger<cr>
+nmap <leader>sr :Ranger<cr>
 
 " bclose
 let g:bclose_no_plugin_maps=1

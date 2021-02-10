@@ -1,0 +1,38 @@
+#!/bin/bash
+# $1 is %s in ranger
+
+# do a dictionary, where G=2, M=1, K=0
+# if last character in spaceUsb is SAME as last character sizeFile, then check numbers, if correct, continue
+# if last character in spaceUsb > last character in sizeFile then continue
+# else fail
+
+declare -A sizes
+sizes[G]=2
+sizes[M]=1
+sizes[K]=0
+
+spaceUsb=$(spaceFree /mnt)
+sizeFile=$(ls -l "$1" | awk '{print $2}')
+
+charUsb=$(printf "%s" $spaceUsb | sed 's/.*\(.\)/\1/')
+charFile=$(printf "%s" $spaceUsb | sed 's/.*\(.\)/\1/')
+
+if [ $sizes[$charUsb] == $sizes[$charFile] ]; then
+    # check numbers
+    numUsb=$(printf "%s" $spaceUsb | sed 's/\(.*\)./\1/')
+    numFile=$(printf "%s" $spaceFile | sed 's/\(.*\)./\1/')
+    if [ "$numUsb" > "$numFile" ]; then
+        # sudo mv %s /mnt
+        notify-send "moved to usb!"
+    else
+        notify-send "not enough space in usb!"
+    fi
+else
+    if [ $sizes[$charUsb] > $sizes[$charFile] ]; then
+        # sudo mv %s /mnt
+        notify-send "moved to usb!"
+    else
+        notify-send "not enough space in usb!"
+    fi
+fi
+

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+    df -Ph . | tail -1 | awk '{print $4}'
+else
+    df -Ph "$1" | tail -1 | awk '{print $4}'
+fi
+

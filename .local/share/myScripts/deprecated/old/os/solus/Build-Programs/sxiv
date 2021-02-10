@@ -1,0 +1,7 @@
+#!/bin/sh
+# dependencies sxiv
+eopkg -y install imlib2-devel libexif-devel giflib-devel
+
+cd "$SUCKLESS/sxiv"
+make 
+make install

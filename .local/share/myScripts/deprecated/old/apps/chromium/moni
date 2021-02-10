@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# echo -n "https://meet.google.com/gfk-vxrz-zzn" | xclip -selection clipboard
+xdotool keydown ctrl + v

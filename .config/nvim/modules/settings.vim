@@ -33,6 +33,7 @@ set textwidth=95
 " set foldmethod=indent
 set viewoptions=folds,cursor
 set sessionoptions=folds
+let g:extension = expand('%:e')
 " set foldmethod=manual
 " autocmd FileType * set foldmethod=syntax
 " autocmd FileType python set foldmethod=indent

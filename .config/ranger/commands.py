@@ -40,6 +40,26 @@ class fzf_select(Command):
                 self.fm.select_file(fzf_file)
 
 
+class rg_select(Command):
+    """
+
+    Find a file using rg and fzf.
+
+    See: https://github.com/junegunn/fzf
+    """
+
+    def execute(self):
+        import subprocess
+        import os.path
+
+        command = os.getenv("RG_DEFAULT") + " | fzf +m "
+        fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
+        stdout, stderr = fzf.communicate()
+        if fzf.returncode == 0:
+            fzf_file = os.path.abspath(stdout.rstrip("\n"))
+            self.fm.select_file(fzf_file)
+
+
 class YankContent(Command):
     """
     Copy the content of image file and text file with xclip

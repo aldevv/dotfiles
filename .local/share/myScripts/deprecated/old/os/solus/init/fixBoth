@@ -1,0 +1,3 @@
+#!/bin/sh
+../hardware/fixMouse
+../hardware/fixKeyboard

@@ -1,4 +1,5 @@
 # dashboard -layout !assembly source !breakpoints !threads !registers expressions history  memory stack variables
+
 dashboard -layout !assembly !source breakpoints !threads !registers expressions history  memory stack variables
 dashboard source -style height 20
 dashboard -enabled off

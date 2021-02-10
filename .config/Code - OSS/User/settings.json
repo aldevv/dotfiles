@@ -405,7 +405,7 @@
         // "after": ["1","5","n","z","z"]
         // },
     ],
-    "window.zoomLevel": -1,
+    "window.zoomLevel": -2,
     "editor.largeFileOptimizations": false,
     "vsicons.dontShowNewVersionMessage": true,
     "workbench.colorCustomizations": {},
@@ -631,6 +631,6 @@
     "gruvboxMaterial.darkContrast": "hard",
     "vscode-neovim.mouseSelectionStartVisualMode": true,
     "vscode-neovim.useCtrlKeysForInsertMode": false,
-    "vscode-neovim.useCtrlKeysForNormalMode": false,
+    "editor.minimap.enabled": false,
 
 }

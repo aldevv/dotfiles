@@ -1,0 +1,10 @@
+#!/bin/bash
+word=$(dmenu -p "search in dictionary")
+if [[ ! -z $word ]];then
+    # if is a phrase, get the first word
+    if [[ $(echo $word | wc -w) -eq 1 ]]; then
+        firefox https://jisho.org/search/$word
+    else
+        firefox https://jisho.org/search/$(echo $word | awk '{print $1}')
+    fi
+fi

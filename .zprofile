@@ -16,7 +16,7 @@ export SHELL=/bin/zsh
 export SXHKD_SHELL="/bin/zsh"
 # export SI=https://meet.google.com/ixe-gxnu-ovp
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
-export BROWSER=firefox
+export BROWSER=brave-browser
 export BOOKS="$HOME/Documents/Books"
 export PROJECTS="$HOME/Master/Projects"
 export WORK="$HOME/Master/Work"
@@ -31,6 +31,8 @@ export READER=zathura
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export NVIM_LOG_FILE="$HOME/.config/nvim/log/log"
+
+export PYTHONPATH="$PYTHONPATH:$PROGRAMS/cpython/Tools/gdb:$PROGRAMS/cpython"
 
 export SCRIPTS="$HOME/.local/share/myScripts"
 export SHARED="$SCRIPTS/shared"
@@ -114,7 +116,9 @@ export FZF_COMPLETION_TRIGGER='**'
 # Options to fzf command
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
-export FZF_DEFAULT_COMMAND="rg --files --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
+export RG_FILES="rg --files --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
+export RG_DEFAULT="rg --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
+export FZF_DEFAULT_COMMAND=$RG_FILES
 # export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 # to unhide preview window, change to --preview-window=right:hidden:wrap"
 # for prompt at the bottom, change layout to "default"

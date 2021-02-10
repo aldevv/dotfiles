@@ -1,0 +1,10 @@
+#!/bin/sh
+clear
+echo "Enter Filename: "
+read -r name
+if [ -z "$name" ]; then
+    curl -O "$(xclip -out -sel clip)"
+else
+    curl -o "$name" "$(xclip -out -sel clip)"
+fi
+

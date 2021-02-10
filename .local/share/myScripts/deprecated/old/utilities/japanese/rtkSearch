@@ -1,0 +1,16 @@
+#!/bin/bash
+# optional first argument
+if [[ -z "$1" ]]; then
+    word=$(dmenu -p "search in rtk")
+else
+    word="$1"
+fi
+
+if [[ ! -z $word ]];then
+    # if is a phrase, get the first word
+    if [[ $(echo "$word" | wc -w) -eq 1 ]]; then
+        zathura -f $word $BOOKS/japanese/heisig/Remembering\ the\ Kanji\ 1\ A\ Complete\ Course\ on\ How\ Not\ to\ Forget\ the\ Meaning\ and\ Writing\ of\ Japanese\ Characters\ by\ James\ W.\ Heisig\ \(z-lib.org\).pdf | cut -d : -f 1
+    else
+        zathura -f "$(echo $word | awk '{print $1}')" $BOOKS/japanese/heisig/Remembering\ the\ Kanji\ 1\ A\ Complete\ Course\ on\ How\ Not\ to\ Forget\ the\ Meaning\ and\ Writing\ of\ Japanese\ Characters\ by\ James\ W.\ Heisig\ \(z-lib.org\).pdf | cut -d : -f 1
+    fi
+fi

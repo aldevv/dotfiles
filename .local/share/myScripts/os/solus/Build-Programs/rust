@@ -1,0 +1,4 @@
+#!/bin/sh
+# dont use the package manager, it has problems when installing packages
+echo "1" | sudo -u "$SUDO_USER" curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+
