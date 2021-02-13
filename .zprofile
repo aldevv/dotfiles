@@ -10,7 +10,7 @@ export TERM=st
 export COLORTERM=truecolor
 export BAT_THEME='OneHalfDark'
 export BAT_PAGER='less'
-export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/rg"
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/rg/.ripgreprc"
 export SHELL=/bin/zsh
 # you can source sxhkd & here if you login from console
 export SXHKD_SHELL="/bin/zsh"
@@ -116,9 +116,12 @@ export FZF_COMPLETION_TRIGGER='**'
 # Options to fzf command
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
-export RG_FILES="rg --files --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
-export RG_DEFAULT="rg --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
-export FZF_DEFAULT_COMMAND=$RG_FILES
+export RG_DEFAULT="rg --files --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
+
+# not working for fd
+# excluded='{node_modules,*.class,.git,**/*~,plugged,__pycache__,.wine,.npm,.icons,*/nvim/backups,.emacs.d,.cache,undodir}'
+export FD_DEFAULT="fd --follow --exclude $excluded"
+export FZF_DEFAULT_COMMAND=$RG_DEFAULT
 # export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 # to unhide preview window, change to --preview-window=right:hidden:wrap"
 # for prompt at the bottom, change layout to "default"

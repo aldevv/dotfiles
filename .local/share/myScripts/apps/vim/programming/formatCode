@@ -9,13 +9,13 @@ if [ "$1" = "java" ]; then
     exit
 fi
 
-if [ "$1" = "c" ]; then
-    style="mozilla"
-    cp "$XDG_CONFIG_HOME/clang-format/c/$style/.clang-format" .
-    exit
-fi
+# if [ "$1" = "c" ]; then
+#     style="mozilla"
+#     cp "$XDG_CONFIG_HOME/clang-format/c/$style/.clang-format" .
+#     exit
+# fi
 
-if [ "$1" = "cpp" ]; then
+if [ "$1" = "cpp" ] || [ "$1" = "c" ]; then
     style="mozilla"
     cp "$XDG_CONFIG_HOME/clang-format/c/$style/.clang-format" .
     # create compilation database for clang

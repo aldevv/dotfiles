@@ -20,3 +20,4 @@ cr  ~/dev/Work/PPE/pm/researched
 cfa ~/.config/zshPlugAlias
 cfma    ~/.local/share/myScripts/os/solus/autoInstallSudo -E
 cfmp    ~/.local/share/myScripts/os/solus/packages
+cfl    ~/Master/Projects/Micro/Lily58/qmk_firmware/keyboards/lily58/keymaps/mine-def/keymap.c

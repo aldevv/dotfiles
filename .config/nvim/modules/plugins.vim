@@ -102,6 +102,7 @@ Plug 'puremourning/vimspector'
 " needs neovim 0.5
 Plug 'ThePrimeagen/vim-apm'
 Plug 'ThePrimeagen/vim-be-good'
+Plug 'KabbAmine/zeavim.vim'
 
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'

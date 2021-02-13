@@ -159,13 +159,16 @@ doge() {
   )
 }
 
+bindkey -s '^p' 'nvim $(fzf)^M'
+
 _fzf_compgen_path() {
-  excluded=".git node_modules plugged .env __pycache__ .wine .npm .icons .vscode */nvm/backups .cache undodir"
+
+  excluded=".git node_modules plugged .env __pycache__ .wine .npm .icons .vscode */nvm/backups .cache undodir __pycache__ **/node_modules/* env envs "
   fd --hidden --follow --exclude "$excluded" . "$1"
 }
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  excluded=".git node_modules plugged .env __pycache__ .wine .npm .icons .vscode */nvm/backups .cache undodir"
+  excluded=".git node_modules plugged .env __pycache__ .wine .npm .icons .vscode */nvm/backups .cache undodir __pycache__ **/node_modules/* env envs "
   fd --type d --hidden --follow --exclude "$excluded" . "$1"
 }
 # export NVM_DIR="$HOME/.config/nvm"

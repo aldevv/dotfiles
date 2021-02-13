@@ -24,7 +24,7 @@ d          ~/Documents
 pp         ~/Pictures
 pr         ~/.local/Programs
 vv         ~/Videos
-M         ~/Master
+MM         ~/Master
 Md         ~/Master/Debug
 Ml         ~/Master/Learn
 Mp         ~/Master/Projects
@@ -54,9 +54,8 @@ ld         ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +
 lr         ~/Master/Learn/Rust/Learn Rust by Building Real Applications
 pa        ~/Master/Projects
 po        ~/Master/Projects/Micro
-pm        ~/Master/Projects/Main/
-P        ~/Master/Projects/Main/
+pO        ~/Master/Projects/Main/
 w1         ~/Master/Work/covidalert
-1         ~/Master/Projects/Micro/HTTP-server in Rust
-2         ~/Master/Projects/Micro/Docker
-p1        ~/Master/Projects/Main/example
+p1         ~/Master/Projects/Micro/HTTP-server in Rust
+p2         ~/Master/Projects/Micro/Docker
+1         ~/Master/Projects/Main/covidalert

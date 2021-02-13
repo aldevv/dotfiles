@@ -414,8 +414,8 @@ nnoremap <silent><nowait> <leader>cv  :<C-u>CocList --auto-preview outline<cr>
 " scroll documentation
 " nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 " nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <nowait><expr> <M-C-N> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1, 3)\<cr>" : "\<Right>"
-inoremap <nowait><expr> <M-C-E> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0, 3)\<cr>" : "\<Left>"
+inoremap <nowait><expr> <M-C-N> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1, 3)\<cr>" : "\<c-o><c-e>"
+inoremap <nowait><expr> <M-C-E> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0, 3)\<cr>" : "\<c-o><c-y>"
 " _______________________________________________
 "
 " CocSearch is very powerful, so you should use it with the many options it has available
@@ -1795,7 +1795,24 @@ nnoremap <leader>.s :VimApmShutdown<cr>
 "========================
 let g:bujo#window_width = 40
 let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
-nmap <leader>,, :Todo<cr>
+nmap <leader>,g :call BujoGlobal()<CR>
+nmap <leader>,; :call BujoGlobal()<CR>
+nmap <leader>,, :call BujoProject()<CR>
+function BujoGlobal()
+if (expand('%') == 'todo.md') 
+  :wq
+else
+  exec ':Todo g' 
+endif
+endfunction
+
+function BujoProject()
+if (expand('%') == 'todo.md') 
+  :wq
+else
+  exec ':Todo' 
+endif
+endfunction
 nmap <M-,> <Plug>BujoAddnormal
 imap <M-,> <Plug>BujoAddinsert
 nmap <M-.> <Plug>BujoChecknormal
@@ -1978,4 +1995,20 @@ let g:projectionist_heuristics = {
 "   "spec/*_spec.rb": {"dispatch": "rspec {file}"}
 "}
 ""
+
+"============
+" ZEAVIM
+"============
+nmap gz <Plug>ZVOperator
+nmap gZ <Plug>ZVKeyDocset
+nmap gzz <Plug>Zeavim
+vmap gzz <Plug>ZVVisSelection
+"g:zv_keep_focus - Keep or not the focus on vim after executing zeal
+let g:zv_keep_focus = 0
+let g:zv_file_types = {
+            \   'help'                : 'vim',
+            \   'javascript'          : 'javascript,nodejs',
+            \   'python'              : 'django',
+            \   '\v^.+\.js' : 'javascript,nodejs',
+            \ }
 

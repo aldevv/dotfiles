@@ -55,7 +55,8 @@ function! ToggleLocation()
   endif
 endfunction
 
-nnoremap <leader>z zMzvzz
+" for folds
+nnoremap <leader>Z zMzvzz
 
 nnoremap <silent><leader>,ch  :w !chmod +x %<cr>
 nnoremap <silent><leader>,n  :w !npm start 2>/dev/null<cr>
@@ -99,7 +100,7 @@ function! CreateFileTouch()
       return
   endif
 
-  if l:filename =~ '.*/.+'
+  if l:filename =~ '\v.*/.+'
     exec system('filename=' . l:filename . '; mkdir -p ${filename%\/*}/')
   endif
 
@@ -119,7 +120,7 @@ function! CreateFileEnter()
       return
   endif
   
-  if l:filename =~ '.*/.+'
+  if l:filename =~ '\v.*/.+'
     exec system('filename=' . l:filename . '; mkdir -p ${filename%\/*}/')
   endif
 
@@ -294,6 +295,8 @@ nnoremap <leader>sv <c-w>v
 " map <leader>i :setlocal autoindent<cr>
 " map <leader>I :setlocal noautoindent<cr>
 map  <silent><leader>q :silent w !sudo tee %<CR>
+" save without autocmd (no formatting)
+map  <silent><leader>Q :noautocmd w<CR>
 map  <leader>t :w<CR>
 " map <leader><F1> :e ~/.config/nvim/init.vim<cr>
 nnoremap <F6> :e $HOME/.config/nvim/init.vim<cr>
@@ -473,7 +476,7 @@ nnoremap gw :h <c-r>=expand('<cword>')<cr><bar>resize 15<cr>
 autocmd BufNewFile *.cpp,*.c,*.java call FormatMyCode()
 
 function! FormatMyCode()
-  execute '!$APPS/vim/formatCode ' . g:extension .' '. expand('%:p')
+  execute '!$APPS/vim/programming/formatCode ' . g:extension .' '. expand('%:p')
   :CocRestart
 endfunction
 
@@ -481,3 +484,5 @@ cnoreabbrev Sne CocCommand snippets.editSnippets
 
 " this is to exit select mode when using snips
 snoremap <Esc> <c-c>
+
+nmap <leader>.l :!$PROJECTS/Micro/Lily58/qmk_firmware/bin/qmk flash -kb lily58 -km mine-def<cr>

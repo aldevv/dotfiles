@@ -83,6 +83,7 @@ static const Rule rules[] = {
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor     floatpos     */
 	/* { "Gimp",    NULL,   NULL,           0,           1,          0,           0,        -1,       0 }, */
 	{ "Firefox",  NULL,     NULL,           1 << 8,      0,          0,           0,        -1,  "50% 50% 800W 800H"    },
+	{ "Brave-browser",  NULL,     NULL,           1 << 8,      0,          0,           0,        -1,  "50% 50% 800W 800H"    },
 	{ "Code",     NULL,     NULL,           1 << 2,      0,          0,           0,        -1,  "50% 50% 800W 800H"    },
 	{ "St",       NULL,     NULL,              0,        0,          1,           0,        -1,  "50% 50% 800W 800H"    },
 	{ "Station",  NULL,     NULL,           1 << 0,      0,          0,           0,        -1,  "50% 50% 800W 800H"     },
