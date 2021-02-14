@@ -137,6 +137,7 @@ alias pkg='sudo eopkg'\
     c='cd'\
     fl='$PROJECTS/Micro/Lily58/qmk_firmware/bin/qmk flash -kb lily58 -km'\
     fla='$PROJECTS/Micro/Lily58/qmk_firmware/bin/qmk flash -kb lily58 -km mine-def'\
+    sth='setsid st >/dev/null 2>&1 & disown'\
 
 alias v="nvim"
 alias V='nvr -o'
@@ -413,7 +414,7 @@ alias gk='\gitk --all --branches'
 alias gke='\gitk --all $(git log -g --pretty=%h)'
 
 # alias gl='git pull'
-alias glg="git log --reverse --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr)'"
+alias glg="git log --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr)'"
 alias glgs='git log --stat'
 alias glgp='git log --stat -p'
 alias glgg='git log --graph'

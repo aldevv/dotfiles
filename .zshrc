@@ -160,6 +160,7 @@ doge() {
 }
 
 bindkey -s '^p' 'nvim $(fzf)^M'
+bindkey -s "^n" "sth^M"
 
 _fzf_compgen_path() {
 

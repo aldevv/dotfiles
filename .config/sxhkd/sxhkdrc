@@ -14,7 +14,7 @@ super + w
 	"$BROWSER"
 
 super + p
-	dmenucmd
+	dmenu_run
 
 super + shift + q
 	shutdown now

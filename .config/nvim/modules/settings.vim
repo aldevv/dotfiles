@@ -8,6 +8,8 @@ let mapleader = " "
 set updatetime=1500 " this is for autosave in tex files(every cursorhold event)
 set encoding=utf-8
 scriptencoding utf-8
+set splitright
+set splitbelow
 
 "fix for yankring and neovim
 let g:yankring_clipboard_monitor=0

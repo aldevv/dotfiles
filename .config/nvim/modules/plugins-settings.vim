@@ -1795,28 +1795,56 @@ nnoremap <leader>.s :VimApmShutdown<cr>
 "========================
 let g:bujo#window_width = 40
 let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
-nmap <leader>,g :call BujoGlobal()<CR>
-nmap <leader>,; :call BujoGlobal()<CR>
-nmap <leader>,, :call BujoProject()<CR>
+nmap <silent><leader>,g :call BujoGlobal()<CR>
+nmap <silent><leader>,; :call BujoGlobal()<CR>
+nmap <silent><leader>,, :call BujoProject()<CR>
+" nmap <M-,> <Plug>BujoAddnormal
+" imap <M-,> <Plug>BujoAddinsert
+"
+" returns 0 if not found
+function SearchCheck()
+" search string in current cursor pos and backwards for - character
+  return (search('-', 'nc', line('.')) || search('-', 'nbc', line('.')))
+endfunction
+
+nmap <expr><M-,> SearchCheck() ? 'i[]' : 'i- []'
+imap <expr><M-,> SearchCheck() ? '[]' : '- []'
+nmap <M-.> <Plug>BujoChecknormal
+imap <M-.> <Plug>BujoCheckinsert
+
 function BujoGlobal()
 if (expand('%') == 'todo.md') 
-  :wq
+  if &mod == 1
+    :wq!
+    let date = strftime('%F')
+    silent call git#push(expand('$HOME/.cache/bujo'), date)
+    " silent exec 'Start! -wait=never git -C $HOME/.cache/bujo add . && git -C $HOME/.cache/bujo commit -m "$(date)" && git -C $HOME/.cache/bujo push origin master'
+  else 
+    :q
+  endif
 else
+  set nosplitright
   exec ':Todo g' 
+  set splitright
 endif
 endfunction
 
 function BujoProject()
 if (expand('%') == 'todo.md') 
-  :wq
+  if &mod == 1
+    :wq!
+    let date = strftime('%F')
+    silent call git#push(expand('$HOME/.cache/bujo'), date)
+    " silent exec 'Start! -wait=never git -C $HOME/.cache/bujo add . && git -C $HOME/.cache/bujo commit -m "$(date)" && git -C $HOME/.cache/bujo push origin master'
+  else 
+    :q
+  endif
 else
+  set nosplitright
   exec ':Todo' 
+  set splitright
 endif
 endfunction
-nmap <M-,> <Plug>BujoAddnormal
-imap <M-,> <Plug>BujoAddinsert
-nmap <M-.> <Plug>BujoChecknormal
-imap <M-.> <Plug>BujoCheckinsert
 
 "========================
 " VIM-MAN
@@ -1824,14 +1852,14 @@ imap <M-.> <Plug>BujoCheckinsert
 " map <leader>k <Plug>(Man) - open man page for word under cursor in a horizontal split
 map <leader>N <Plug>(Vman)
 
-"========================
+"
+"t========================
 " VIM-PROJECTIONIST
 "========================
 "
 " heuristics, for general files
 "
 " java needs to be run with Dispatch!
-"
 "the heuristic is different from .projections.json
 "the "*" is the project finder, .projections.json doesn't need it
 "

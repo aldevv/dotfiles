@@ -14,7 +14,16 @@ vnoremap i l
 noremap k nzzzv
 noremap K Nzzzv
 nnoremap <leader>- :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
-" noremap N J
+
+" move lines without clipboard
+nnoremap E :m .-2<cr>==
+nnoremap N :m .+1<cr>==
+vnoremap E :m '<-2<cr>gv=gv
+vnoremap N :m '>+1<cr>gv=gv
+
+" vnoremap E :m '<-2<cr>gv=gv
+" vnoremap N :m '>+1<cr>gv=gv
+"
 noremap J E
 vnoremap L I
 noremap ge J
@@ -161,9 +170,9 @@ nnoremap <leader>sc :lcd %:h<CR>
 noremap <leader>sd :bd<cr>
 noremap <a-q> :bd<cr>
 
-" change buffers like bscode
-noremap <silent>E :bprevious<cr>
-noremap <silent>N :bnext<cr>
+" change buffers like vscode
+" noremap <silent>E :bprevious<cr>
+" noremap <silent>N :bnext<cr>
 
 " clipboard
 " "*p pastes what is highlighted by the mouse
