@@ -62,3 +62,7 @@ alacritty
 strace
 ltrace
 pavucontrol
+pandoc
+ffmpeg
+# pdf rendering library for rga
+poppler-utils

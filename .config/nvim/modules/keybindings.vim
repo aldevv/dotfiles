@@ -271,8 +271,6 @@ cnoreabbrev w!! w !sudo tee > /dev/null %
 map <leader>rs :!./%<cr>
 map <silent> <F11> /\A\zs\a<cr>
 " ctrl alt
-noremap <M-C-N> <c-e>
-noremap <M-C-E> <c-y>
 
 noremap  <Down> 5<c-w>-
 noremap  <Up> 5<c-w>+

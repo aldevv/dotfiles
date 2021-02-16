@@ -3,7 +3,7 @@
 cd "$PROGRAMS"
 if [ ! -e "pass" ]; then
     sudo -u "$SUDO_USER" wget https://git.zx2c4.com/password-store/snapshot/password-store-1.7.3.tar.xz
-    mkdir -p "pass" && tar kvvxf "password-store-1.7.3.tar.xz" -C "pass" --strip-components 1
+    sudo -u "$SUDO_USER" mkdir -p "pass" && tar kvvxf "password-store-1.7.3.tar.xz" -C "pass" --strip-components 1
     rm "password-store-1.7.3.tar.xz"
     cd "pass"
     make install

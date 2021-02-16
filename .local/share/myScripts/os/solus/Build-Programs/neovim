@@ -7,6 +7,8 @@ cd neovim
 make  CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$PROGRAMS/prefix-installs/neovim"
 make CMAKE_BUILD_TYPE=Release install
 
+chown kanon:kanon "$PROGRAMS"/prefix-installs/**/*
+
 sudo -u "$SUDO_USER" python3 -m pip install --user --upgrade pynvim neovim-remote
 sudo -u "$SUDO_USER" python2 -m pip install --user --upgrade pynvim
 npm install -g neovim

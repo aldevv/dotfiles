@@ -1,6 +1,10 @@
 #!/bin/sh
 
 # snap install newsboat
+if [ ! -e "$PROGRAMS/rust/cargo" ]; then
+    $OS/Build-Programs/rust
+fi
+
 cd "$PROGRAMS"
 eopkg install -y stfl-devel curl-devel sqlite3-devel json-c-devel
 gem install asciidoctor

@@ -3,4 +3,5 @@
 if [ ! -e "$PROGRAMS/rust/cargo" ]; then
     $OS/Build-Programs/rust
 fi
-sudo -u "$SUDO_USER" cargo install exa
+
+sudo -u "$SUDO_USER" "$CARGO_HOME/bin/cargo" install ripgrep_all

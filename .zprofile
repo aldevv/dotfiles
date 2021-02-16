@@ -16,7 +16,7 @@ export SHELL=/bin/zsh
 export SXHKD_SHELL="/bin/zsh"
 # export SI=https://meet.google.com/ixe-gxnu-ovp
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
-export BROWSER=brave-browser
+export BROWSER=firefox
 export BOOKS="$HOME/Documents/Books"
 export PROJECTS="$HOME/Master/Projects"
 export WORK="$HOME/Master/Work"
@@ -102,7 +102,11 @@ fi
 export PYTHONPATH="$WORK/PPE/workplace/train/images/models/research:$WORK/PPE/workplace/train/images/models/research/slim:$WORK/PPE/workplace/train/images/models:$PYTHONPATH"
 export JDK_HOME="/usr/lib64/openjdk-11"
 export JAVA_HOME="$JDK_HOME"
+# TODO update this path to remove cargo
 export PATH="$PATH:$JAVA_HOME/bin:$HOME/.cargo/bin:$NODE_PATH"
+
+export CARGO_HOME="$PROGRAMS/rust/cargo"
+export RUSTUP_HOME="$PROGRAMS/rust/rustup"
 
 export GOPATH=$HOME/.local/share/builds/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin

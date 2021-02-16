@@ -278,7 +278,10 @@ alias gaa='git add'
 alias ga='git add'
 alias gA='git add --all'
 alias gapa='git add --patch'
+# add modified
 alias gau='git add --update'
+# add untracked
+alias gaU='git add $(git ls-files -o --exclude-standard $(git rev-parse --show-toplevel))'
 alias gav='git add --verbose'
 alias gap='git apply'
 alias gapt='git apply --3way'
@@ -997,3 +1000,5 @@ alias dkcx='docker-compose stop'
 # GITHUB
 #=======
 alias ghprc='gh pr create'
+alias ghil='gh issue list'
+alias ghiv='gh issue view --comments $(gh issue list | fzf --no-preview | cut -f1)'

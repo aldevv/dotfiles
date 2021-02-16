@@ -414,8 +414,16 @@ nnoremap <silent><nowait> <leader>cv  :<C-u>CocList --auto-preview outline<cr>
 " scroll documentation
 " nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 " nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <nowait><expr> <M-C-N> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1, 3)\<cr>" : "\<c-o><c-e>"
-inoremap <nowait><expr> <M-C-E> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0, 3)\<cr>" : "\<c-o><c-y>"
+"
+" noremap <M-C-N> <c-e>
+" noremap <M-C-E> <c-y>
+noremap <silent><nowait><expr> <M-C-N> coc#float#has_scroll() ? ":call coc#float#scroll(1, 3)\<cr>" : "\<c-e>"
+noremap <silent><nowait><expr> <M-C-E> coc#float#has_scroll() ? ":call coc#float#scroll(0, 3)\<cr>" : "\<c-y>"
+inoremap <silent><nowait><expr> <M-C-N> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1, 3)\<cr>" : "\<c-o><c-e>"
+inoremap <silent><nowait><expr> <M-C-E> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0, 3)\<cr>" : "\<c-o><c-y>"
+" inoremap <silent><nowait><expr> <M-C-N> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1, 3)\<cr>" : "\<c-o><c-e>"
+" inoremap <silent><nowait><expr> <M-C-E> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0, 3)\<cr>" : "\<c-o><c-y>"
+
 " _______________________________________________
 "
 " CocSearch is very powerful, so you should use it with the many options it has available
