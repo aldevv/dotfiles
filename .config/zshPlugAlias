@@ -129,7 +129,8 @@ alias pkg='sudo eopkg'\
     aniplayv='mpv --shuffle https://www.youtube.com/playlist\?list\=PLjNlQ2vXx1xbt30X8TcUfNzw_akVISXEu'\
     apropos='apropos -e'\
     f='nvim $(fzf)'\
-    batl='bat | less'\
+    batl='bat --paging=always'\
+    cat='bat --paging=never'\
     ri='source .env/bin/activate && python3 -m pip install --upgrade pip && pip3 install -r requirements.txt '\
     brave='brave-browser'\
     rg='rg 2>/dev/null'\

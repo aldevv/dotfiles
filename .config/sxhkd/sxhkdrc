@@ -16,6 +16,9 @@ super + w
 super + p
 	dmenu_run
 
+super + shift + p
+	xrandr-dmenu
+
 super + shift + q
 	shutdown now
 

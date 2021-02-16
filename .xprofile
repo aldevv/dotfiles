@@ -11,11 +11,12 @@ startupScripts
 DISPLAY=":0" picom -b
 # compton &
 dwmstatus &
-wal -R &
 xrdb -merge ~/.Xresources
 copyq &
 # setup monitors
-cm
+# cm
+autorandr --change
+wal -R &
 sxhkd &
 
 # lastScheme=$(ls -t "$HOME/.cache/wal/schemes" | sed 1q)

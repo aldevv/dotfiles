@@ -9,7 +9,7 @@ export TERMINAL=st
 export TERM=st
 export COLORTERM=truecolor
 export BAT_THEME='OneHalfDark'
-export BAT_PAGER='less'
+export BAT_PAGER='less -RF'
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/rg/.ripgreprc"
 export SHELL=/bin/zsh
 # you can source sxhkd & here if you login from console
