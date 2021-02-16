@@ -130,6 +130,7 @@ alias pkg='sudo eopkg'\
     apropos='apropos -e'\
     f='nvim $(fzf)'\
     batl='bat --paging=always'\
+    bat='bat --paging=always'\
     cat='bat --paging=never'\
     ri='source .env/bin/activate && python3 -m pip install --upgrade pip && pip3 install -r requirements.txt '\
     brave='brave-browser'\
@@ -139,6 +140,9 @@ alias pkg='sudo eopkg'\
     fl='$PROJECTS/Micro/Lily58/qmk_firmware/bin/qmk flash -kb lily58 -km'\
     fla='$PROJECTS/Micro/Lily58/qmk_firmware/bin/qmk flash -kb lily58 -km mine-def'\
     sth='setsid st >/dev/null 2>&1 & disown'\
+    .c='sudo ./configure'\
+    sm='sudo make'\
+    smi='sudo make install'\
 
 alias v="nvim"
 alias V='nvr -o'

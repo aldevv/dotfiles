@@ -1,23 +1,18 @@
 #to import env variables to dbus
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
-# transmission-daemon &
-dunst &
 
+# dunst is started by dbus-daemon now
+# the display manager is also taken care of by dbus, in case you want to change to startx, havent tested
+# dunst &
 fcitx & # for languages
-
 # custom scripts
 startupScripts
 
 DISPLAY=":0" picom -b
-# compton &
 dwmstatus &
 xrdb -merge ~/.Xresources
 copyq &
-# setup monitors
 # cm
 autorandr --change
 wal -R &
 sxhkd &
-
-# lastScheme=$(ls -t "$HOME/.cache/wal/schemes" | sed 1q)
-# wal -f "$HOME/.cache/wal/schemes/${lastScheme}"

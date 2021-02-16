@@ -1,0 +1,6 @@
+--smart-case
+--max-columns-preview
+--color=auto
+--colors=match:fg:magenta
+#--colors=match:bg:yellow
+#--colors=line:fg:yellow

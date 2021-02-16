@@ -6,6 +6,7 @@ echo \
 
 echo "Running X session wrapper"
 
+
 # Load profile
 for file in "/etc/profile" "$HOME/.zprofile" "/usr/share/defaults/etc/xprofile" "/etc/xprofile" "$HOME/.xprofile"; do
     if [ -f "$file" ]; then

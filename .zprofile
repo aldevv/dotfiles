@@ -17,6 +17,8 @@ export SXHKD_SHELL="/bin/zsh"
 # export SI=https://meet.google.com/ixe-gxnu-ovp
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export BROWSER=firefox
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
 export BOOKS="$HOME/Documents/Books"
 export PROJECTS="$HOME/Master/Projects"
 export WORK="$HOME/Master/Work"
@@ -28,8 +30,6 @@ export BACKUPS="$HOME/.backups"
 export PROGRAMS="$HOME/.local/Programs"
 export WIKI="$HOME/.local/share/wiki"
 export READER=zathura
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
 export NVIM_LOG_FILE="$HOME/.config/nvim/log/log"
 
 export PYTHONPATH="$PYTHONPATH:$PROGRAMS/cpython/Tools/gdb:$PROGRAMS/cpython"
