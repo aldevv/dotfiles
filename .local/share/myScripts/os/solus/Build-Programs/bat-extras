@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd $PROGRAMS
+sudo -u "$SUDO_USER" git clone https://github.com/eth-p/bat-extras
+cd bat-extras
+./build.sh --install --prefix=$PREFIX_DIR

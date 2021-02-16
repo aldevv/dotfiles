@@ -56,6 +56,7 @@ export XMODIFIERS=@im='ibus'
 #breaks copyq
 # export QT_QPA_PLATFORMTHEME="qt5ct"
 # export QT_PLUGIN_PATH=/usr/lib/qt5/plugins
+export PREFIX_DIR="$HOME/.local/Programs/prefix-installs"
 prefixes_dir="$HOME/.local/Programs/prefix-installs"
 if [[ -d $prefixes_dir ]]; then
     for dir in "$prefixes_dir"/*; do

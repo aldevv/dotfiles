@@ -52,7 +52,7 @@ class rg_select(Command):
         import subprocess
         import os.path
 
-        command = os.getenv("RG_DEFAULT") + " | fzf +m "
+        command = "rga"
         fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:

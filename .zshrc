@@ -159,6 +159,7 @@ doge() {
   )
 }
 # ripgrep-all with preview
+# check bat-extras : https://github.com/eth-p/bat-extras
 rga-fzf() {
 	RG_PREFIX="rga --files-with-matches"
 	local file

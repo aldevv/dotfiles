@@ -4,4 +4,5 @@ if [ ! -e "$PROGRAMS/rust/cargo" ]; then
     $OS/Build-Programs/rust
 fi
 
-sudo -u "$SUDO_USER" "$CARGO_HOME/bin/cargo" install ripgrep_all
+# --locked because of bug in the ripgrep_all AT THE MOMENT OF CREATION
+sudo -u $SUDO_USER -E PATH="$PATH" "$CARGO_HOME/bin/cargo" install --locked ripgrep_all
