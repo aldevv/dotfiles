@@ -52,12 +52,37 @@ class rg_select(Command):
         import subprocess
         import os.path
 
-        command = "rga"
+        command = """
+            RG_PREFIX="rga --files-with-matches"
+            local file
+            file="$(
+                FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+                        fzf --sort --preview="[[ ! -z {} ]] && bat --color always {} | rg --pretty --context 5 {q} 2>/dev/null" \
+                                --phony -q "$1" \
+                                --bind "change:reload:$RG_PREFIX {q}" \
+                                --preview-window="70%:wrap"
+        )" &&
+        echo "$file" """
+
+        # command = """
+        #     RG_PREFIX="rga --files-with-matches"
+        #     local file
+        #     file="$(
+        #         FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+        #                 fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+        #                         --phony -q "$1" \
+        #                         --bind "change:reload:$RG_PREFIX {q}" \
+        #                         --preview-window="70%:wrap"
+        # )" &&
+        # echo "opening $file" &&
+        # xdg-open "$file" """
+
         fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
             fzf_file = os.path.abspath(stdout.rstrip("\n"))
             self.fm.select_file(fzf_file)
+            self.fm.execute_command("xdg-open " + fzf_file)
 
 
 class YankContent(Command):

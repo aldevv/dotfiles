@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Mpv
+Terminal=false
+Exec=/usr/bin/mpv

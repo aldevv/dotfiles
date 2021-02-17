@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Nvim
+Terminal=true
+Exec=/home/kanon/.local/Programs/prefix-installs/neovim/bin/nvim
