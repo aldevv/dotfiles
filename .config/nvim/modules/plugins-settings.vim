@@ -583,10 +583,10 @@ au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
 " =====================
 nmap <leader>gi :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
-nmap <leader>gs :G<CR>
+nmap <leader>gst :G<CR>
+" nnoremap <leader>gst :Gstatus<CR>
 nmap <leader>g<space> :G init<CR>
 
-nnoremap <leader>gst :Gstatus<CR>
 " use ctrl + d to delete branches
 " alt + enter to track from origin, locally : origin/ foo becomes foo
 " - Press <alt-enter> to track a remote branch locally (`origin/foo` becomes `foo`)
@@ -594,7 +594,11 @@ nnoremap <leader>gst :Gstatus<CR>
 " - Press <ctrl-d> to delete a branch or tag
 " - Press <ctrl-e> to merge a branch
 " - Press <ctrl-r> to rebase a branch
-nnoremap <leader>gc :GCheckout<CR>
+nnoremap <leader>gc :GBranches<CR>
+nnoremap <leader>gsp :G stash push<CR>
+nnoremap <leader>gsP :G stash pop<CR>
+nnoremap <leader>gsl :G stash list<CR>
+
 nnoremap <leader>ggc :Gcommit<CR>
 " nnoremap <leader>gd ::Gvdiff<CR>
 nnoremap <leader>gd ::Gvdiffsplit<CR>
