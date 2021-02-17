@@ -57,6 +57,8 @@ sudo -u $user sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/
 chown -R 1000:1000 "$HOME/.npm"
 nvim -c 'PlugInstall'
 
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
 # so it uses docker without sudo
 usermod -a -G docker $user
 

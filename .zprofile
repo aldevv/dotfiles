@@ -57,9 +57,8 @@ export XMODIFIERS=@im='ibus'
 # export QT_QPA_PLATFORMTHEME="qt5ct"
 # export QT_PLUGIN_PATH=/usr/lib/qt5/plugins
 export PREFIX_DIR="$HOME/.local/Programs/prefix-installs"
-prefixes_dir="$HOME/.local/Programs/prefix-installs"
-if [[ -d $prefixes_dir ]]; then
-    for dir in "$prefixes_dir"/*; do
+if [[ -d $PREFIX_DIR ]]; then
+    for dir in "$PREFIX_DIR"/*; do
         dir=${dir:A}
         if [[ -d "$dir/bin" ]]; then
             PATH="$dir/bin:$PATH"
@@ -75,7 +74,6 @@ if [[ -d $prefixes_dir ]]; then
         fi
     done
 fi
-unset dir prefixes_dir
 
 if [[ -d $PROGRAMS ]]; then
     for dir in "$PROGRAMS"/*; do
