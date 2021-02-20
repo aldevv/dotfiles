@@ -66,7 +66,10 @@ alias pkg='sudo eopkg'\
     wclass='xprop WM_CLASS'\
     wname='xprop WM_NAME'\
     wrole='xprop WM_ROLE'\
-    flat='flatpak --installation=extra'\
+    flat='flatpak'\
+    flatrm='flatpak uninstall $($APPS/flatpak/flatlistinstalled)'\
+    flatr='flatpak run $($APPS/flatpak/flatlistinstalled)'\
+    flatrmo='flatpak uninstall --unused'\
     spot='flatpak --installation=extra run com.spotify.Client'\
     glv='git log --oneline --decorate --all --graph'\
     zealu='zeal-user-contrib'\
@@ -126,7 +129,7 @@ alias pkg='sudo eopkg'\
     mpvas='mpv --no-video --shuffle'\
     mpvs='mpv --shuffle'\
     aniplay='mpv --no-video --shuffle https://www.youtube.com/playlist\?list\=PLjNlQ2vXx1xbt30X8TcUfNzw_akVISXEu'\
-    lofiplay="mpv --no-video --shuffle 'https://www.youtube.com/playlist?list=PLOzDu-MXXLliO9fBNZOQTBDddoA3FzZUo'"\
+    lofiplay="mpv --no-video --shuffle 'https://www.youtube.com/playlist?list=PLKYTmz7SemaqVDF6XJ15bv_8-j7ckkNgb'"\
     aniplayv='mpv --shuffle https://www.youtube.com/playlist\?list\=PLjNlQ2vXx1xbt30X8TcUfNzw_akVISXEu'\
     apropos='apropos -e'\
     f='nvim $(fzf)'\
@@ -138,7 +141,6 @@ alias pkg='sudo eopkg'\
     rg='rg 2>/dev/null'\
     pyv='python3 -m venv .venv'\
     c='cd'\
-    fl='$PROJECTS/Micro/Lily58/qmk_firmware/bin/qmk flash -kb lily58 -km'\
     fla='$PROJECTS/Micro/Lily58/qmk_firmware/bin/qmk flash -kb lily58 -km mine-def'\
     sth='setsid st >/dev/null 2>&1 & disown'\
     .c='sudo ./configure'\
@@ -154,6 +156,8 @@ alias pkg='sudo eopkg'\
     ec='echo'\
     et='entr'\
     mime='xdg-mime query filetype'\
+    chm='chmod +x'\
+    xmod='xmodmap "$HOME/.config/.Xmodmap"'\
 
 
 alias v="nvim"
@@ -327,8 +331,8 @@ alias ggcall='git commit -v -a'
 # alias gcam='git commit -a -m'
 # alias gcsm='git commit -s -m'
 alias gcb='git checkout -b'
-alias gcfl='git config --list'
-alias gcfi='git config --global user.name "Juan Alejandro"; git config --global user.email jbernal@unal.edu.co'
+alias gcfl='git config --global --list'
+alias gcf='git config --global'
 # alias gcl='git clone --recurse-submodules'
 alias gcld='git clone --depth=1'
 alias gcl='git clone'
@@ -428,13 +432,16 @@ alias gpsup='git push --set-upstream origin $(git_current_branch)'
 alias ghh='git help'
 
 alias gignore='git update-index --assume-unchanged' # and your file <file>
+alias gnignore='git update-index --no-assume-unchanged' # and your file <file>
 alias gignored='git ls-files -v | grep "^[[:lower:]]"'
+alias gignored2='git ls-files -v | grep '^h' | cut -c3-'
 alias git-svn-dcommit-push='git svn dcommit && git push github $(git_main_branch):svntrunk'
 
 alias gk='\gitk --all --branches'
 alias gke='\gitk --all $(git log -g --pretty=%h)'
 
 # alias gl='git pull'
+alias grf="git reflog"
 alias glg="git log --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr)'"
 alias glgs='git log --stat'
 alias glgp='git log --stat -p'
@@ -477,9 +484,9 @@ alias grbi='git rebase -i'
 alias grbm='git rebase $(git_main_branch)'
 alias grbs='git rebase --skip'
 alias grev='git revert'
-alias grh='git reset'
-alias grhh='git reset --hard'
-alias groh='git reset origin/$(git_current_branch) --hard'
+alias gR='git reset'
+alias gRh='git reset --hard'
+alias gRoh='git reset origin/$(git_current_branch) --hard'
 alias grm='git rm'
 alias grmc='git rm --cached'
 alias grmv='git remote rename'
@@ -514,7 +521,7 @@ alias gsd='git stash drop'
 alias gsl='git stash list'
 alias gsP='git stash pop'
 alias gss='git stash show --text'
-alias gsu='git stash --include-untracked'
+alias gspu='git stash push --include-untracked'
 alias gstall='git stash --all'
 alias gSu='git submodule update'
 alias gsw='git switch'
@@ -1021,3 +1028,12 @@ alias dkcx='docker-compose stop'
 alias ghprc='gh pr create'
 alias ghil='gh issue list'
 alias ghiv='gh issue view --comments $(gh issue list | fzf --no-preview | cut -f1)'
+
+#=======
+# DJANGO
+#=======
+alias dj='python manage.py'
+alias djt='python manage.py test'
+alias djr='python manage.py runserver'
+alias djM='python manage.py makemigrations'
+alias djm='python manage.py migrate'

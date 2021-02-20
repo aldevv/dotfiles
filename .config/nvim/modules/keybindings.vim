@@ -67,7 +67,6 @@ endfunction
 " for folds
 nnoremap <leader>Z zMzvzz
 
-nnoremap <silent><leader>,ch  :w !chmod +x %<cr>
 nnoremap <silent><leader>,n  :w !npm start 2>/dev/null<cr>
 nnoremap <silent><leader>,ri  :w ! [ ! -e '.env' ] && python3 -m venv .env 2>/dev/null; pip3 install -r requirements.txt 2>/dev/null<cr>
 
@@ -269,6 +268,7 @@ vnoremap <A-S> :s/\v//gI<Left><Left><Left><Left>
 cnoreabbrev w!! w !sudo tee > /dev/null %
 
 map <leader>rs :!./%<cr>
+nnoremap <silent><leader>rc  :w !sudo chmod +x %<cr>
 map <silent> <F11> /\A\zs\a<cr>
 " ctrl alt
 
@@ -297,14 +297,22 @@ nnoremap <M-o> <c-o>
 " noremap <TAB> <tab>
 
 
-nnoremap <leader>ss <c-w>s
-nnoremap <leader>sv <c-w>v
+" nnoremap <leader>ss <c-w>s
+" nnoremap <leader>sv <c-w>v
+
 " map <leader>i :setlocal autoindent<cr>
 " map <leader>I :setlocal noautoindent<cr>
-map  <silent><leader>q :silent w !sudo tee %<CR>
-" save without autocmd (no formatting)
-map  <silent><leader>Q :noautocmd w<CR>
+map  <silent><leader>Q :silent w !sudo tee %<CR>
+" save without autocmd (no formatting) 
+function SaveNoFormat() abort
+  :noautocmd w
+  if expand('%') == 'keymap.c'
+    exec ':!$PROJECTS/Micro/Lily58/qmk_firmware/bin/qmk flash -kb lily58 -km mine-def'
+  endif
+endfunction
+map  <silent><leader>q :call SaveNoFormat()<CR>
 map  <leader>t :w<CR>
+map  <leader>ss :wq<CR>
 " map <leader><F1> :e ~/.config/nvim/init.vim<cr>
 nnoremap <F6> :e $HOME/.config/nvim/init.vim<cr>
 map <leader><F2> :e ~/.zshrc<cr>

@@ -46,7 +46,8 @@ super + R
 super + m
     setsid st -e "$AUTOMATION/ncmpcppStart"
 
-mode_switch + Return
+# mode_switch + Return
+alt + space
     st >/dev/null 2>&1
 
 mode_switch + shift + o
@@ -72,7 +73,8 @@ super + shift + n
 #     retrievemask
 
 # fn + c
-XF86Launch1
+# XF86Launch1
+mode_switch + c
 	copyq toggle
 
 button8
@@ -153,8 +155,11 @@ mode_switch + b
 mode_switch + shift + b
 	 $UTILITIES/search/searchBook
 
-mode_switch + c
+mode_switch + C
 	 $UTILITIES/classes/searchClass
+
+mode_switch + †
+    xmodmap "$HOME/.config/.Xmodmap"
 
 mode_switch + shift c
 	 searchDocs

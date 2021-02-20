@@ -21,3 +21,7 @@ cfa ~/.config/zshPlugAlias
 cfoo    ~/.local/share/myScripts/os/solus/autoInstallSudo -E
 cfop    ~/.local/share/myScripts/os/solus/packages
 cfl    ~/Master/Projects/Micro/Lily58/qmk_firmware/keyboards/lily58/keymaps/mine-def/keymap.c
+cfK    $APPS/qmk/lily58/keymap.c
+
+cfZ /root/.zshrc
+cfP /root/.zprofile

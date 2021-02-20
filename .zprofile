@@ -107,7 +107,7 @@ export PATH="$PATH:$JAVA_HOME/bin:$HOME/.cargo/bin:$NODE_PATH"
 export CARGO_HOME="$PROGRAMS/rust/cargo"
 export RUSTUP_HOME="$PROGRAMS/rust/rustup"
 
-export GOPATH=$HOME/.local/share/builds/go
+export GOPATH=$PROGRAMS/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 #======================================
 #

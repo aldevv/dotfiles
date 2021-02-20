@@ -91,8 +91,6 @@ noremap <silent><leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
 
 
 
-map <leader>,b :Bookmark<CR>
-
 " enable line numbers
 let NERDTreeShowLineNumbers=1
 " make sure relative line numbers are used
@@ -178,7 +176,7 @@ nnoremap <leader>,fmo :FilesOs<cr>
 nnoremap <leader>sN :RemoveFiles<cr>
 nnoremap <leader>sF :RemoveDirs<cr>
 "made myself
-nnoremap <leader>,pb :Bookm<cr>
+nnoremap <leader>,b :Bookm<cr>
 nnoremap <leader>sb :Buffers<cr>
 let g:vista_default_executive = 'ctags'
 nnoremap <F4> :Course<cr>
@@ -581,6 +579,18 @@ au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
 " =====================
 " Sweet Sweet FuGITive
 " =====================
+" vimdiff commnads
+""]c :        - next difference
+"[c :        - previous difference
+"do          - diff obtain
+"dp          - diff put
+"zo          - open folded text
+"zc          - close folded text
+":diffupdate - re-scan the files for differences
+" default diffopt
+" set diffopt=internal,filler,closeoff
+set diffopt=internal,vertical,closeoff,filler
+
 nmap <leader>gi :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
 nmap <leader>gst :G<CR>
@@ -599,15 +609,20 @@ nnoremap <leader>gsp :G stash push<CR>
 nnoremap <leader>gsP :G stash pop<CR>
 nnoremap <leader>gsl :G stash list<CR>
 
-nnoremap <leader>ggc :Gcommit<CR>
+nnoremap <leader>ggc :G commit<CR>
+nnoremap <leader>gm :Git merge<CR>
 " nnoremap <leader>gd ::Gvdiff<CR>
-nnoremap <leader>gd ::Gvdiffsplit<CR>
-nnoremap <leader>gloG :Glog --reverse<CR>
+nnoremap <leader>ggd ::Gdiffsplit!<CR>
+nnoremap <leader>gd ::Gvdiffsplit!<CR>
+nnoremap <leader>gD ::Git difftool<CR>
+" this works like VS jumper, test to see if i deprecate the other one
+nnoremap <leader>gM ::Git mergetool<CR>
+nnoremap <leader>gloG :Gclog --reverse<CR>
 nnoremap Q :Glog --reverse<CR>
 nnoremap <leader>ggp :Git push<CR>
 nnoremap <leader>guu :Git pull<CR>
-nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gB :Gbrowse<CR>
+nnoremap <leader>gb :Git_blame<CR>
+nnoremap <leader>gB :GBrowse<CR>
 " nnoremap <leader>gw :Gwrite<CR>
 " nnoremap <leader>gr :Gread<CR>
 " nnoremap <leader>ga :tab sp \| Gvedit :1 \| windo diffthis<CR>
@@ -1819,10 +1834,30 @@ function SearchCheck()
   return (search('-', 'nc', line('.')) || search('-', 'nbc', line('.')))
 endfunction
 
-nmap <expr><M-,> SearchCheck() ? 'i[]' : 'i- []'
-imap <expr><M-,> SearchCheck() ? '[]' : '- []'
+nmap <expr><M-,> SearchCheck() ? 'i[] ' : 'i- [] '
+imap <expr><M-,> SearchCheck() ? '[] ' : '- [] '
+"TODO add check insert like the 2 above
 nmap <M-.> <Plug>BujoChecknormal
 imap <M-.> <Plug>BujoCheckinsert
+
+noremap <leader>,p :call BujoPersonal()<CR>
+
+function BujoPersonal()
+if (expand('%') == 'todo.md') 
+  if &mod == 1
+    :wq!
+    let date = strftime('%F')
+    silent call git#push(expand('$WIKI'), date)
+    " silent exec 'Start! -wait=never git -C $HOME/.cache/bujo add . && git -C $HOME/.cache/bujo commit -m "$(date)" && git -C $HOME/.cache/bujo push origin master'
+  else 
+    :q
+  endif
+else
+  set nosplitright
+  exec ':vs $WIKI/todo.md' 
+  set splitright
+endif
+endfunction
 
 function BujoGlobal()
 if (expand('%') == 'todo.md') 
