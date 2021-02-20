@@ -129,7 +129,7 @@ alias pkg='sudo eopkg'\
     mpvas='mpv --no-video --shuffle'\
     mpvs='mpv --shuffle'\
     aniplay='mpv --no-video --shuffle https://www.youtube.com/playlist\?list\=PLjNlQ2vXx1xbt30X8TcUfNzw_akVISXEu'\
-    lofiplay="mpv --no-video --shuffle 'https://www.youtube.com/playlist?list=PLKYTmz7SemaqVDF6XJ15bv_8-j7ckkNgb'"\
+    lofiplay="mpv --no-video --shuffle 'https://www.youtube.com/watch?v=0te6noMKffA'"\
     aniplayv='mpv --shuffle https://www.youtube.com/playlist\?list\=PLjNlQ2vXx1xbt30X8TcUfNzw_akVISXEu'\
     apropos='apropos -e'\
     f='nvim $(fzf)'\
@@ -156,7 +156,7 @@ alias pkg='sudo eopkg'\
     ec='echo'\
     et='entr'\
     mime='xdg-mime query filetype'\
-    chm='chmod +x'\
+    chm='sudo chmod +x'\
     xmod='xmodmap "$HOME/.config/.Xmodmap"'\
 
 
@@ -508,6 +508,7 @@ alias gshp='git show --pretty=short --show-signature'
 alias gsr='git svn rebase'
 alias gsT='git status -s'
 alias gst='git status'
+alias gt='git tag'
 
 # use the default stash push on git 2.13 and newer
 autoload -Uz is-at-least

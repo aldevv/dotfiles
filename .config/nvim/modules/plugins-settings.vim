@@ -311,6 +311,7 @@ command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 "COC
 "=====
 
+nmap <silent><leader>ccp <Plug>(coc-format)
 highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
 " \ 'coc-html',
 " \ 'coc-json',
@@ -900,7 +901,7 @@ endif
 " endif
 augroup fmt
     autocmd!
-    autocmd BufWritePre *.{js,java,c,cpp,haskell,json,ts,rs,go} :Neoformat
+    autocmd BufWritePre *.{js,java,cpp,haskell,json,ts,rs,go} :Neoformat
 augroup END
 
 function FormatSelector() abort
