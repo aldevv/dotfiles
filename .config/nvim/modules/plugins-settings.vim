@@ -622,7 +622,7 @@ nnoremap <leader>gloG :Gclog --reverse<CR>
 nnoremap Q :Glog --reverse<CR>
 nnoremap <leader>ggp :Git push<CR>
 nnoremap <leader>guu :Git pull<CR>
-nnoremap <leader>gb :Git_blame<CR>
+nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gB :GBrowse<CR>
 " nnoremap <leader>gw :Gwrite<CR>
 " nnoremap <leader>gr :Gread<CR>
@@ -2124,5 +2124,6 @@ let g:zv_file_types = {
 "==========
 "OBSESSION
 "==========
-noremap <leader>co :source Session.vim<CR>
-noremap <leader>c0 :Obsession<CR>
+noremap <leader>co :source %:h/Session.vim<bar> :Obsession<CR>
+noremap <leader>cO :Obsession<CR>
+set statusline=%{ObsessionStatus()}

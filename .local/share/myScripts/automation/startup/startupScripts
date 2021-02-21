@@ -13,8 +13,9 @@ xcape -e "Shift_L=Shift_L|bracketleft"
 xcape -e "Shift_R=Shift_L|bracketright"
 
 sleep 1
+# TODO
 # changed to the xdg auto start in .config/autostart
-# xmodmap "$HOME/.config/.Xmodmap"
+xmodmap "$HOME/.config/.Xmodmap"
 #(it does these already)
 # map the menu button to left hyper
 # xmodmap -e 'keycode 48 = braceleft bracketleft braceleft bracketleft asciicircum braceleft asciicircum'
