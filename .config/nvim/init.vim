@@ -71,5 +71,3 @@
 " AUTOMATION
 "==================
  source ~/.config/nvim/modules/automation.vim
-
-nnoremap [13;2u o

@@ -3,9 +3,7 @@
 cd "$PROGRAMS"
 sudo -u "$SUDO_USER" git clone --depth=1 https://github.com/neovim/neovim
 cd neovim
-# make CMAKE_BUILD_TYPE=RelWithDebInfo
-make  CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$PROGRAMS/prefix-installs/neovim"
-make CMAKE_BUILD_TYPE=Release install
+make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX="$PROGRAMS/prefix-installs/neovim" install
 
 chown kanon:kanon "$PROGRAMS"/prefix-installs/**/*
 

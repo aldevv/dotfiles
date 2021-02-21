@@ -9,6 +9,8 @@ fcitx & # for languages
 startupScripts
 
 DISPLAY=":0" picom -b
+# this is for when picom 9 releases
+# DISPLAY=":0" picom -b --experimental-backends
 dwmstatus &
 xrdb -merge ~/.Xresources
 copyq &

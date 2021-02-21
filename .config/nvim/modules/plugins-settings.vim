@@ -152,7 +152,7 @@ nnoremap <F5> :UndotreeToggle<cr>
 " \ 'ctrl-t': 'tab split',
 let g:fzf_action = {
             \ 'ctrl-s': 'split',
-            \ 'ctrl-v': 'vsplit', 
+            \ 'ctrl-v': 'vsplit',
             \ 'ctrl-o': 'silent !setsid st -e nvim 2>/dev/null' } " sends it to other nvim instance
 " for rg
 let g:rg_derive_root='true'
@@ -220,7 +220,7 @@ command! -bang -nargs=? -complete=dir FilesSnips
 command! -bang -nargs=? -complete=dir Filescwd
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline'], 'dir': getcwd()}), <bang>0)
 
-" overwrites GFILES (user git-ls which doesn't find files not in repo) 
+" overwrites GFILES (user git-ls which doesn't find files not in repo)
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
@@ -319,7 +319,7 @@ highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
 " \ 'coc-tslint-plugin',
 " \ 'coc-prettier',
 " \ 'coc-ultisnips',
-" \ 'coc-yaml', 
+" \ 'coc-yaml',
 " for docker compose add to coc-settings
 "
 let g:coc_global_extensions = [
@@ -340,8 +340,8 @@ let g:coc_global_extensions = [
             \ 'coc-clangd',
             \ 'coc-rls',
             \ 'coc-go',
-            \ 'coc-yaml', 
-            \ 'coc-docker', 
+            \ 'coc-yaml',
+            \ 'coc-docker',
             \ ]
 " coc-clangd is necessary for c and c++
 nmap <silent> <leader>cci :CocInfo<cr>
@@ -864,8 +864,6 @@ autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.{vim,jsx,json,t
 "these 2 only work with real tabs, not expanded tabs"
 "set listchars=tab:┆.,trail:.,extends:>,precedes:<
 "set list
-set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
-
 "====================
 " NEOFORMAT
 "====================
@@ -908,7 +906,7 @@ function FormatSelector() abort
   let l:special_cases = ['py']
   if index(l:special_cases, g:extension) >= 0 " si esta en el arreglo
     nmap <silent><leader>cp <Plug>(coc-format)
-  else 
+  else
     nmap <silent><Leader>cp :Neoformat<cr>
   endif
 endfunction
@@ -1636,12 +1634,47 @@ nnoremap <silent> <leader>ccb       :<C-u>CocFzfListResume<CR>
 " ================
 
 " let g:neoterm_size="10"
-let g:neoterm_size="7"
+let g:neoterm_size="20"
 let g:neoterm_autoinsert = 1
+" let g:neoterm_default_mod = 'rightbelow'
 let g:neoterm_default_mod = 'rightbelow'
 let g:neoterm_automap_keys='¡tt'
 let g:neoterm_keep_term_open = 0
-map <silent><Leader>T :Ttoggle<cr>
+" map <silent><Leader>T :Ttoggle<cr>
+
+" open terminal
+" map <Leader>st :new term://zsh \| resize 10<CR>a
+
+"To map <Esc> to exit terminal-mode:
+tmap <silent><a-t> <C-\><C-n>
+
+" go up from terminal
+tmap <silent><a-d> <a-t><c-w>e
+
+" close terminal
+" botright makes it appear at the bottom of all splits (or to the right of all, depending on
+" the type of split (not determined by botright))
+map <silent><a-q> :botright Ttoggle<CR>
+tmap <silent><a-q> <a-t>:q<CR>
+
+" noremap <a-d> <c-w>ja
+nnoremap <silent><a-d> :call Switch_terminal()<CR>
+
+function! Switch_terminal()
+
+  if &buftype == "terminal"
+    exec "normal! \<c-w>k"
+    return
+  endif
+
+  let exists = bufwinnr("neoterm-*")
+  if exists == -1
+    :botright Ttoggle<CR>
+    let exists = bufwinnr("neoterm-*")
+  endif
+  call utils#focus_window(exists)
+endfunction
+
 
 "=============
 "GV
@@ -1844,52 +1877,52 @@ imap <M-.> <Plug>BujoCheckinsert
 noremap <leader>,p :call BujoPersonal()<CR>
 
 function BujoPersonal()
-if (expand('%') == 'todo.md') 
+if (expand('%') == 'todo.md')
   if &mod == 1
     :wq!
     let date = strftime('%F')
     silent call git#push(expand('$WIKI'), date)
     " silent exec 'Start! -wait=never git -C $HOME/.cache/bujo add . && git -C $HOME/.cache/bujo commit -m "$(date)" && git -C $HOME/.cache/bujo push origin master'
-  else 
+  else
     :q
   endif
 else
   set nosplitright
-  exec ':vs $WIKI/todo.md' 
+  exec ':vs $WIKI/todo.md'
   set splitright
 endif
 endfunction
 
 function BujoGlobal()
-if (expand('%') == 'todo.md') 
+if (expand('%') == 'todo.md')
   if &mod == 1
     :wq!
     let date = strftime('%F')
     silent call git#push(expand('$HOME/.cache/bujo'), date)
     " silent exec 'Start! -wait=never git -C $HOME/.cache/bujo add . && git -C $HOME/.cache/bujo commit -m "$(date)" && git -C $HOME/.cache/bujo push origin master'
-  else 
+  else
     :q
   endif
 else
   set nosplitright
-  exec ':Todo g' 
+  exec ':Todo g'
   set splitright
 endif
 endfunction
 
 function BujoProject()
-if (expand('%') == 'todo.md') 
+if (expand('%') == 'todo.md')
   if &mod == 1
     :wq!
     let date = strftime('%F')
     silent call git#push(expand('$HOME/.cache/bujo'), date)
     " silent exec 'Start! -wait=never git -C $HOME/.cache/bujo add . && git -C $HOME/.cache/bujo commit -m "$(date)" && git -C $HOME/.cache/bujo push origin master'
-  else 
+  else
     :q
   endif
 else
   set nosplitright
-  exec ':Todo' 
+  exec ':Todo'
   set splitright
 endif
 endfunction
@@ -2088,3 +2121,8 @@ let g:zv_file_types = {
             \   '\v^.+\.js' : 'javascript,nodejs',
             \ }
 
+"==========
+"OBSESSION
+"==========
+noremap <leader>co :source Session.vim<CR>
+noremap <leader>c0 :Obsession<CR>

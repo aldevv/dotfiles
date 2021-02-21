@@ -22,6 +22,9 @@ super + shift + p
 super + shift + q
 	shutdown now
 
+super + shift + delete
+	reboot
+
 alt + shift + q
 	sudo systemctl restart display-manager
 
@@ -66,7 +69,7 @@ ctrl + shift + Escape
 # hyper + n
 #     retrieveip
 
-super + shift + n
+mode_switch + n
     passmenu
 
 # hyper + shift + n
@@ -144,7 +147,7 @@ shift + Print
 
 # works on release
 @Print
-	 allScreen
+	 allScreen2
 
 control + Print
 	 allScreen2

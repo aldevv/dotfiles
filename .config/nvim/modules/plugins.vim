@@ -103,6 +103,7 @@ Plug 'puremourning/vimspector'
 Plug 'ThePrimeagen/vim-apm'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'KabbAmine/zeavim.vim'
+Plug 'tpope/vim-obsession'
 
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'

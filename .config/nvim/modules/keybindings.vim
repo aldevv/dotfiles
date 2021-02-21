@@ -36,6 +36,15 @@ nnoremap L I
 noremap <c-w>N <c-w>J
 noremap <c-w>E <c-w>K
 noremap <c-w>I <c-w>L
+
+noremap <c-w>n <c-w>j
+noremap <c-w>e <c-w>k
+noremap <c-w>i <c-w>l
+
+noremap <c-w>k <c-w>n
+
+" vertical version of <c-w>^
+noremap <silent><c-w>~ :vsp #<cr>
 " noremap <a-n> <c-n>
 " noremap <a-e> <c-p>
 " nnoremap <CR> o<Esc>
@@ -167,7 +176,6 @@ nnoremap <leader>sc :lcd %:h<CR>
 
 " close buffers
 noremap <leader>sd :bd<cr>
-noremap <a-q> :bd<cr>
 
 " change buffers like vscode
 " noremap <silent>E :bprevious<cr>
@@ -227,20 +235,6 @@ nnoremap <silent><leader>,t :silent call Toggle_transparent()<CR>
 function Toggle_transparent()
   exec ":!toggleTrans"
 endfunction
-
-" open terminal
-" map <Leader>st :new term://zsh \| resize 10<CR>a
-
-"To map <Esc> to exit terminal-mode:
-tnoremap <a-t> <C-\><C-n>
-
-" exit terminal mode
-" tmap <silent><a-q> <a-t>:q<cr>
-tmap <silent><a-q> <a-t>:Ttoggle<cr>
-
-" go up from terminal
-tmap <a-d> <a-t><c-w>k
-map <a-d> <c-w>ja
 
 " general insert commands
 inoremap <a-m> <++>
