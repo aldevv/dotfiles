@@ -225,13 +225,13 @@ command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 " to start fzf at root of project
-command! GFiles execute 'Files' s:find_current_root()
+command! GFiles execute 'Files' git#find_current_root()
 
-function! s:find_current_root()
-    execute ':lcd %:p:h'
-    return system('git status') =~ '^fatal:' ?
-                \ expand("%:p:h") : system("git rev-parse --show-toplevel 2> /dev/null")[:-2]
-endfunction
+" function! s:find_current_root()
+"     execute ':lcd %:p:h'
+    " return system('git status') =~ '^fatal:' ?
+    "             \ expand("%:p:h") : system("git rev-parse --show-toplevel 2> /dev/null")[:-2]
+" endfunction
 
 " function! SpecialWindow()
 "   return &buftype == 'quickfix' || &buftype == 'nofile'
@@ -349,6 +349,7 @@ nmap <silent> <leader>cC  :CocConfig<cr>
 nmap <silent> <leader>ccC :CocLocalConfig<cr>
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gv :vsp<CR><Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gD <Plug>(coc-type-declaration)
 " nmap <silent> <leader>cp <Plug>(coc-format)
@@ -1654,16 +1655,52 @@ tmap <silent><a-d> <a-t><c-w>e
 " close terminal
 " botright makes it appear at the bottom of all splits (or to the right of all, depending on
 " the type of split (not determined by botright))
-map <silent><a-q> :botright Ttoggle<CR>
+map <silent><a-q> :call Open_terminal()<CR>
+" map <silent><a-q> :botright Ttoggle<CR>
 tmap <silent><a-q> <a-t>:q<CR>
 
 " noremap <a-d> <c-w>ja
 nnoremap <silent><a-d> :call Switch_terminal()<CR>
 
-function! Switch_terminal()
+function! Open_terminal()
 
+  " only the first time
+  let exists_name = bufname("neoterm-*")
+  if len(exists_name) == 0 
+    let project_root = git#find_current_root()
+    exec ':botright T cd ' . project_root
+    call chansend(b:terminal_job_id, "")"
+    return
+  endif
+
+  " if closed, open it
+  let exists = bufwinnr("neoterm-*")
+  if exists == -1
+    :botright Ttoggle<CR>
+    return
+  endif
+
+  " if open but not focused on it
+  let win = winnr()
+  call utils#focus_window(exists)
+  call chansend(b:terminal_job_id, '' . '')
+  :q
+endfunction
+
+function! Switch_terminal()
   if &buftype == "terminal"
     exec "normal! \<c-w>k"
+    return
+  endif
+
+  " let exists = bufwinnr("neoterm-*")
+  " if exists == -1
+  " FIRST TIME ONLY
+  let exists_name = bufname("neoterm-*")
+  if len(exists_name) == 0 
+    let project_root = git#find_current_root()
+    exec ':botright T cd ' . project_root
+    call chansend(b:terminal_job_id, "")"
     return
   endif
 
@@ -1672,7 +1709,11 @@ function! Switch_terminal()
     :botright Ttoggle<CR>
     let exists = bufwinnr("neoterm-*")
   endif
+
   call utils#focus_window(exists)
+    execute 'normal! a'
+    " this is up key and escape
+    call chansend(b:terminal_job_id, "OA" . "")
 endfunction
 
 

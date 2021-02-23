@@ -172,6 +172,7 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
 //SSD1306 OLED update loop, make sure to enable OLED_DRIVER_ENABLE=yes in rules.mk
 #ifdef OLED_DRIVER_ENABLE
 
+
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   if (!is_keyboard_master())
     return OLED_ROTATION_180;  // flips the display 180 degrees if offhand

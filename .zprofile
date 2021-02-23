@@ -3,8 +3,11 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export EDITOR=nvim
 export VISUAL=nvim
 export LESS='-sSMRQJ -j.5'
+# export PAGER='bat'
 export PAGER='less'
-# export MANPAGER='less'
+# export MANPAGER="less"
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# export MANPAGER="nvim -c ' set ft=man' -"
 export C_INCLUDE_PATH=.:~/Documents/mlibs
 export EPISODES=~/Downloads
 export TERMINAL=st
@@ -53,6 +56,7 @@ export QT_IM_MODULE='ibus'
 export XMODIFIERS=@im='ibus'
 
 #qt5ct colorscheme
+export GTK_THEME='Nordic-darker'
 #breaks copyq
 # export QT_QPA_PLATFORMTHEME="qt5ct"
 # export QT_PLUGIN_PATH=/usr/lib/qt5/plugins
