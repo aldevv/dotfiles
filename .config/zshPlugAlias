@@ -144,7 +144,7 @@ alias pkg='sudo eopkg'\
     pyv='python3 -m venv .venv'\
     c='cd'\
     fla='$PROJECTS/Micro/Lily58/qmk_firmware/bin/qmk flash -kb lily58 -km mine-def'\
-    sth='setsid st >/dev/null 2>&1 & disown'\
+    stn='setsid st >/dev/null 2>&1 & disown'\
     .c='sudo ./configure'\
     sm='sudo make'\
     smi='sudo make install'\
@@ -160,6 +160,8 @@ alias pkg='sudo eopkg'\
     mime='xdg-mime query filetype'\
     chm='sudo chmod +x'\
     xmod='xmodmap "$HOME/.config/.Xmodmap"'\
+    lightdm='sudo lightdm-settings'\
+    psql='docker run governmentpaas/psql psql'\
 
 
 alias v="nvim"

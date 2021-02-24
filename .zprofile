@@ -58,8 +58,10 @@ export XMODIFIERS=@im='ibus'
 
 #qt5ct colorscheme
 export GTK_THEME='Nordic-darker'
+export QT_QPA_PLATFORMTHEME="qt5ct"
+# export QT_STYLE_OVERRIDE=qt5ct-style
 #breaks copyq
-# export QT_QPA_PLATFORMTHEME="qt5ct"
+# export QT_QPA_PLATFORMTHEME="gtk2"
 # export QT_PLUGIN_PATH=/usr/lib/qt5/plugins
 export PREFIX_DIR="$HOME/.local/Programs/prefix-installs"
 if [[ -d $PREFIX_DIR ]]; then

@@ -7,7 +7,6 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 fcitx & # for languages
 # custom scripts
 startupScripts
-
 DISPLAY=":0" picom -b
 # this is for when picom 9 releases
 # DISPLAY=":0" picom -b --experimental-backends

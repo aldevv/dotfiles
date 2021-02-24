@@ -175,8 +175,9 @@ doge() {
 	xdg-open "$file"
 }
 
-bindkey -s '^p' 'nvim $(fzf)^M'
-bindkey -s "^n" "sth^M"
+bindkey -s 'p' 'nvim $(fzf)^M'
+bindkey -s "^n" "stn^M"
+bindkey -s "P" "fzf^M"
 
 _fzf_compgen_path() {
 
