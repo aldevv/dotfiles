@@ -17,6 +17,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="af-magic"
 #ZSH_THEME="agnoster"
 # ZSH_THEME="amuse"
+# ZSH_THEME="daivasmara"
 ZSH_THEME="aussiegeek"
 
 # Set list of themes to pick from when loading at random
@@ -175,9 +176,15 @@ doge() {
 	xdg-open "$file"
 }
 
-bindkey -s 'p' 'nvim $(fzf)^M'
 bindkey -s "^n" "stn^M"
-bindkey -s "P" "fzf^M"
+bindkey -s 'p' 'file=$(fzf); [ -n "$file" ] && nvim "$file"^M'
+bindkey -s 'w' 'file=$(fd . -I -H "$WORK" | fzf); [ -n "$file" ] && nvim "$file"^M'
+bindkey -s 'c' 'file=$(fd . -I -H "$CLASS" | fzf); [ -n "$file" ] && nvim "$file"^M'
+bindkey -s 'M' 'file=$(fd . -I -H "$MASTER" | fzf); [ -n "$file" ] && nvim "$file"^M'
+bindkey -s 'P' 'file=$(fd . -I -H "$PROJECTS" | fzf); [ -n "$file" ] && nvim "$file"^M'
+bindkey -s 'l' 'file=$(fd . -I -H "$LEARN" | fzf); [ -n "$file" ] && nvim "$file"^M'
+bindkey -s 'o' '!\$^M'
+bindkey -s 'O' '!*^M'
 
 _fzf_compgen_path() {
 

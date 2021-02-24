@@ -71,3 +71,5 @@
 " AUTOMATION
 "==================
  source ~/.config/nvim/modules/automation.vim
+
+" set shellcmdflag=-ic
