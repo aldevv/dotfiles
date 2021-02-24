@@ -23,11 +23,12 @@ export SXHKD_SHELL="/bin/zsh"
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export BROWSER=firefox
 export BOOKS="$HOME/Documents/Books"
-export PROJECTS="$HOME/Master/Projects"
-export WORK="$HOME/Master/Work"
-export CLASS="$HOME/Master/Classes/2021-1"
-export LEARN="$HOME/Master/Learn"
-export VOLUMES="$HOME/Master/Volumes"
+export MASTER="$HOME/Master"
+export PROJECTS="$MASTER/Projects"
+export WORK="$MASTER/Work"
+export CLASS="$MASTER/Classes/2021-1"
+export LEARN="$MASTER/Learn"
+export VOLUMES="$MASTER/Volumes"
 export SUCKLESS="$HOME/.local/Programs/Suckless"
 export BACKUPS="$HOME/.backups"
 export PROGRAMS="$HOME/.local/Programs"
@@ -123,7 +124,7 @@ export FZF_COMPLETION_TRIGGER='**'
 # Options to fzf command
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
-export RG_DEFAULT="rg --files --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
+export RG_DEFAULT="rg --files --hidden --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,**/*~,**/plugged/*,**/venv/*,**/__pycache__/*,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
 
 # not working for fd
 # excluded='{node_modules,*.class,.git,**/*~,plugged,__pycache__,.wine,.npm,.icons,*/nvim/backups,.emacs.d,.cache,undodir}'

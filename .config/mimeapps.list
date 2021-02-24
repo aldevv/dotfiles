@@ -40,6 +40,7 @@ x-scheme-handler/postman=Postman.desktop
 application/vnd.ms-htmlhelp=org.gnome.Evince.desktop
 application/x-wine-extension-ini=nvim.desktop
 application/pdf=zathura.desktop
+x-scheme-handler/eclipse+command=_usr_share_dbeaver_.desktop
 
 [Added Associations]
 */*=code_code.desktop;caja-folder-handler.desktop;caja-browser.desktop;

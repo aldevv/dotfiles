@@ -25,13 +25,14 @@ let color_options = {
             \ "onehalfdark":3,
             \ "ayu":4,
             \}
-let current_colorscheme = color_options["ayu"]
+" let current_colorscheme = color_options["ayu"]
+let current_colorscheme = color_options["gruvbox"]
 if current_colorscheme == 0
     let g:gruvbox_invert_selection = '0'
-    " let g:airline_theme='gruvbox'
-    let g:airline_theme='minimalist'
+    let g:airline_theme='gruvbox'
+    " let g:airline_theme='minimalist'
     "soft medium hard
-    let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_contrast_dark = "hard"
     " not sure what this does
     let g:gruvbox_improved_warnings = 1
     colorscheme gruvbox
@@ -148,6 +149,11 @@ nnoremap <F5> :UndotreeToggle<cr>
 " =======
 " FZF
 " =======
+" :Colors
+" :Maps
+" :Snippets
+" :Helptags
+"
 " call fzf#vim#complete#path($FZF_DEFAULT_COMMAND)
 " \ 'ctrl-t': 'tab split',
 let g:fzf_action = {
@@ -164,22 +170,23 @@ nnoremap <C-S-P> :Commits<cr>
   command! -bang Commits call fzf#vim#commits({'options': '--no-preview'}, <bang>0)
 nnoremap <leader>C :Commands<cr>
 nnoremap <c-c>m :Maps<cr>
-nnoremap <leader>,fms :FilesScripts<cr>
-nnoremap <leader>,fsp :FilesSnips<cr>
-nnoremap <leader>,fh :FilesHome<cr>
-nnoremap <leader>,fwo :FilesWork<cr>
-nnoremap <leader>,fcc :FilesClass<cr>
-nnoremap <leader>,fpo :FilesProjects<cr>
-nnoremap <leader>,fpr :FilesPrograms<cr>
-nnoremap <leader>,fcf :FilesDots<cr>
-nnoremap <leader>,fmo :FilesOs<cr>
+nnoremap <leader>,pms :FilesScripts<cr>
+nnoremap <leader>,pM  :FilesMaster<cr>
+nnoremap <leader>,psp :FilesSnips<cr>
+nnoremap <leader>,ph :FilesHome<cr>
+nnoremap <leader>,pwo :FilesWork<cr>
+nnoremap <leader>,pcc :FilesClass<cr>
+nnoremap <leader>,ppo :FilesProjects<cr>
+nnoremap <leader>,ppr :FilesPrograms<cr>
+nnoremap <leader>,pcf :FilesDots<cr>
+nnoremap <leader>,pmo :FilesOs<cr>
 nnoremap <leader>sN :RemoveFiles<cr>
 nnoremap <leader>sF :RemoveDirs<cr>
 "made myself
 nnoremap <leader>,b :Bookm<cr>
 nnoremap <leader>sb :Buffers<cr>
 let g:vista_default_executive = 'ctags'
-nnoremap <F4> :Course<cr>
+" nnoremap <F4> :Course<cr>
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
 
@@ -190,6 +197,9 @@ command! -bang -nargs=? -complete=dir FilesScripts
 
 command! -bang -nargs=? -complete=dir FilesHome
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$HOME, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+command! -bang -nargs=? -complete=dir FilesMaster
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$MASTER, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 command! -bang -nargs=? -complete=dir FilesWork
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$WORK, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
@@ -207,7 +217,7 @@ command! -bang -nargs=? -complete=dir FilesLearn
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$LEARN, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 command! -bang -nargs=? -complete=dir FilesPrograms
-            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$PROGRAMS, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+          \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$PROGRAMS, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 command! -bang -nargs=? -complete=dir FilesOs
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'dir':$OS, 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
@@ -226,16 +236,6 @@ command! -bang -nargs=? -complete=dir Files
 
 " to start fzf at root of project
 command! GFiles execute 'Files' git#find_current_root()
-
-" function! s:find_current_root()
-"     execute ':lcd %:p:h'
-    " return system('git status') =~ '^fatal:' ?
-    "             \ expand("%:p:h") : system("git rev-parse --show-toplevel 2> /dev/null")[:-2]
-" endfunction
-
-" function! SpecialWindow()
-"   return &buftype == 'quickfix' || &buftype == 'nofile'
-" endfunction
 
 function RemoveFileUpdateNerdtree(files)
   exec system('rm ' . a:files)
@@ -282,20 +282,20 @@ let rg_command_nofiles = "rg --column --no-heading --color=always --smart-case -
 command! -bang -nargs=* Rgfzf
             \ call fzf#vim#grep(
             \   rg_command_nofiles . ' ' . shellescape(<q-args>), 1,
-            \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': s:find_current_root()}), <bang>0)
+            \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': git#find_current_root()}), <bang>0)
 map <leader>f :Rgfzf<cr>
 
 command! -bang -nargs=* Rgfzf2
             \ call fzf#vim#grep(
             \   rg_command_nofiles . ' ' . shellescape(expand('<cword>')), 1,
-            \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': s:find_current_root()}), <bang>0)
+            \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': git#find_current_root()}), <bang>0)
 map <leader>F :Rgfzf2<cr>
 
 
 let commandFiles="awk '{print $2}' ".$XDG_CONFIG_HOME."/shortcuts/sd"
-command! -bang -nargs=* Bookm call fzf#run({'source':commandFiles,'sink': 'e'})
+command! -bang -nargs=* Bookm call fzf#run({'source':commandFiles,'sink': 'e', 'options':'--no-preview'})
 "search in specific folder"
-command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
+" command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 
 "Or, if you want to override the command with different fzf options, just pass a custom spec to the function.
 "command! -bang -nargs=? -complete=dir Files
@@ -1280,10 +1280,82 @@ vmap <right> <Plug>MoveBlockRight
 " noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 5, 4)<CR>
 " noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 5, 4)<CR>
 
-"Airline
+"========
+"AIRLINE
+"========
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_min_count = 1
 let g:airline_powerline_fonts = 1
-autocmd Filetype java,javascript,python let g:airline#extensions#tabline#enabled = 1
+" let b:airline_disable_statusline = 1
+" let g:airline_statusline_ontop = 1
+"
+" let g:airline#extensions#tabline#fnametruncate = 30
+" let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#formatter = 'short_path'
+" let g:airline#extensions#tabline#fnamemod = ':p:~'
+" let g:airline#extensions#tabline#fnamecollapse = 3
+" autocmd Filetype java,javascript,python let g:airline#extensions#tabline#enabled = 1
+  let g:airline_mode_map = {
+      \ '__'     : '-',
+      \ 'c'      : 'C',
+      \ 'i'      : 'I',
+      \ 'ic'     : 'I',
+      \ 'ix'     : 'I',
+      \ 'n'      : 'N',
+      \ 'multi'  : 'M',
+      \ 'ni'     : 'N',
+      \ 'no'     : 'N',
+      \ 'R'      : 'R',
+      \ 'Rv'     : 'R',
+      \ 's'      : 'S',
+      \ 'S'      : 'S',
+      \ ''     : 'S',
+      \ 't'      : 'T',
+      \ 'v'      : 'V',
+      \ 'V'      : 'V',
+      \ ''     : 'V',
+      \ }
+
+
+" choose one or the other, not both
+" let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#fugitiveline#enabled = 1
+
+
+let g:airline#extensions#tagbar#enabled = 1
+" see tagbar-statusline
+" let g:airline#extensions#tagbar#flags = ''  (default)
+"   let g:airline#extensions#tagbar#flags = 'f'
+  " let g:airline#extensions#tagbar#flags = 's'
+  " let g:airline#extensions#tagbar#flags = 'p'
+<
+
+let g:airline#extensions#tagbar#flags = 'p'
+let g:airline#extensions#obsession#enabled = 1
+let g:airline#extensions#fzf#enabled = 1
+let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#virtualenv#enabled = 1
+
+" let g:airline_section_c = airline#section#create(['%{expand("%:p:~")}', 'virtualenv'])
+" has to be empty to show coc
+" let g:airline_section_c = ''
+" let g:airline_section_c = '%{expand("%:p:h:t")}/%t'
+"
+" let g:airline_section_c = '%<%<%{airline#extensions#fugitiveline#bufname()}%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#%#__accent_bold#%{airline#util#wrap(airline#extensions#coc#get_status(),0)}%#__restore__#%#__accent_bold#%#__restore__#'
+
+" you can check the value of these variables by: echo g:airline_section_x
+let g:airline_section_c = '%<%<%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#%#__accent_bold#%{airline#util#wrap(airline#extensions#coc#get_status(),0)}%#__restore__#%#__accent_bold#%#__restore__#'
+" let g:airline_section_c=''
+" remove separators for empty sections
+
+" set title titlestring=%{expand('%:p:h:t')}/%t
+
+" let g:airline#extensions#default#layout = [
+"   \ [ 'a', 'b', 'c'],
+    " \ [ 'x', 'y', 'z', 'error', 'warning' ]
+      " \ ]
+
 " autocmd Filetype python let g:airline#extensions#tabline#enabled = 1
 "
 "===================
@@ -1816,13 +1888,37 @@ noremap <leader>B :RainbowToggle<cr>
 "==============
 "VIM-TEST
 "==============
-nmap <silent> <leader>ctn :TestNearest<CR>
-nmap <silent> <leader>ctf :TestFile<CR>
-nmap <silent> <leader>cts :TestSuite<CR>
-nmap <silent> <leader>ctl :TestLast<CR>
-nmap <silent> <leader>ctg :TestVisit<CR>
-" let test#strategy = "neoTerm"
-let test#strategy = "dispatch"
+"If projectionist.vim is present,
+"you can run a test command from an application file,
+"and test.vim will automatically try to run the 
+"command on the "alternate" test file.
+
+nmap <silent> <leader>Tn :TestNearest<CR>
+nmap <silent> <leader>Tf :TestFile<CR>
+nmap <silent> <leader>Ts :TestSuite<CR>
+nmap <silent> <leader>Tl :TestLast<CR>
+nmap <silent> <leader>Tg :TestVisit<CR>
+" let test#project_root = projectionist#query('project_root')
+let test#strategy = "neoterm"
+" let test#strategy = "dispatch"
+" https://github.com/vim-test/vim-test
+
+let test#python#runner = 'djangotest'
+let g:test#javascript#runner = 'jest'
+" Runners available are 'gotest', 'ginkgo', 'richgo', 'delve'
+let test#go#runner = 'ginkgo'
+let test#scala#runner = 'blooptest'
+let test#java#runner = 'gradletest'
+
+let test#php#phpunit#executable = 'phpunit artisan test'
+" The following setup will automatically run tests when a test file or its alternate application file is saved:
+
+" augroup test
+"   autocmd!
+"   autocmd BufWrite * if test#exists() |
+"     \   TestFile |
+"     \ endif
+" augroup END
 
 "==============
 "VIM-DISPATCH
@@ -1915,9 +2011,9 @@ imap <expr><M-,> SearchCheck() ? '[] ' : '- [] '
 nmap <M-.> <Plug>BujoChecknormal
 imap <M-.> <Plug>BujoCheckinsert
 
-noremap <leader>,p :call BujoPersonal()<CR>
+noremap <leader>,P :call BujoPrivate()<CR>
 
-function BujoPersonal()
+function BujoPrivate()
 if (expand('%') == 'todo.md')
   if &mod == 1
     :wq!
@@ -1986,6 +2082,10 @@ map <leader>N <Plug>(Vman)
 "the "*" is the project finder, .projections.json doesn't need it
 "
 "type is used so you can do stuff like :Esource
+noremap <leader>vv :V<CR>
+noremap <leader>vs :S<CR>
+noremap <leader>ve :E<CR>
+noremap <leader>va :A<CR>
 let g:projectionist_heuristics = {
             \ "*": {
                 \ "*.js": {
@@ -2168,3 +2268,12 @@ let g:zv_file_types = {
 noremap <leader>co :source %:h/Session.vim<bar> :Obsession<CR>
 noremap <leader>cO :Obsession<CR>
 set statusline=%{ObsessionStatus()}
+
+"==========
+"DOTENV
+"==========
+function! s:env(var) abort
+  return exists('*DotenvGet') ? DotenvGet(a:var) : eval('$'.a:var)
+endfunction
+
+let db_url = s:env('DATABASE_URL')

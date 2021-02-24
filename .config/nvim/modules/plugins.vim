@@ -25,15 +25,12 @@ Plug 'preservim/tagbar'
 Plug 'AndrewRadev/switch.vim'
 Plug 'sbdchd/neoformat'
 Plug 'honza/vim-snippets'
-Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'chengzeyi/fzf-preview.vim'
 Plug 'yggdroot/indentLine'
-Plug 'jupyter-vim/jupyter-vim'
+" Plug 'jupyter-vim/jupyter-vim'
 Plug 'mattn/emmet-vim'
-Plug 'airblade/vim-gitgutter' |
-         \ Plug 'tpope/vim-fugitive'
 Plug 'ap/vim-css-color'
 Plug  'alvan/vim-closetag'
 Plug 'mbbill/undotree'
@@ -82,8 +79,6 @@ Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-rhubarb'
 " Plug 'dense-analysis/ale'
 Plug 'frazrepo/vim-rainbow'
-Plug 'tpope/vim-dispatch'
-Plug 'vim-test/vim-test'
 Plug 'wincent/vcs-jump'
 Plug 'szw/vim-maximizer'
 Plug 'stefandtw/quickfix-reflector.vim'
@@ -91,9 +86,8 @@ Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'vuciv/vim-bujo'
 Plug 'vim-utils/vim-man'
 Plug 'osyo-manga/vim-brightest'
-Plug 'tpope/vim-projectionist'
 Plug 'bfrg/vim-cpp-modern'
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 " Plug 'srydell/vim-skeleton'
 "  Plug 'akuseru1/vim-skeleton'
 " Plug 'SirVer/ultisnips'
@@ -103,25 +97,21 @@ Plug 'puremourning/vimspector'
 Plug 'ThePrimeagen/vim-apm'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'KabbAmine/zeavim.vim'
+Plug 'tpope/vim-commentary'
+Plug 'airblade/vim-gitgutter' |
+         \ Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-dispatch'
+Plug 'vim-test/vim-test'
+Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-dotenv'
+Plug 'tpope/vim-dadbod'
+" TODO check these 3!!
+" https://github.com/kristijanhusak/vim-dadbod-ui
+call plug#end()
 
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'
-
-" check https://github.com/mattboehm/dotfiles/blob/master/vim/vimrc
-"
-"TODO
-"tabnine
-"
-call plug#end()
-
-" WORKING ALTERNATIVES
-" Plug 'thaerkh/vim-indentguides' for indentLines
-" ============================================
-" good guide for dev nvim
-"https://hanspinckaers.com/posts/2020/01/vim-python-ide/
-"https://github.com/wellle/targets.vim
-
 " deleted
 " Plug 'liuchengxu/vista.vim' " changed for tagbar
 " Plug 'scrooloose/syntastic'

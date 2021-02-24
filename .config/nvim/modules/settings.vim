@@ -10,7 +10,20 @@ set encoding=utf-8
 scriptencoding utf-8
 set splitright
 set splitbelow
-
+set title
+" set titlestring=:\ %-25.55F\ %a%r%m titlelen=70
+" set title titlestring=%{expand(\"%:p\")}\ %a%r%m 
+" set title titlestring=%{expand('%:p:h:t')}/%t
+ 
+" set title titlestring=...%{strpart(expand(\"%:p:h\"),stridx(expand(\"%:p:h\"),\"/\",strlen(expand(\"%:p:h\"))-12))}/%{expand(\"%:t:r\")}\ %m\ %Y\ %l\ of\ %L
+" set titlestring=%{expand(\"%:p:~\")}\ %a%r%m
+" let &titlestring = '%t%( %m%r%)%( <%{get(g:, "cur_project", "")}>%)' .
+"             \ '%( (%{expand("%:~:.:h")})%)' .
+            " \ '%( (%{getcwd()})%)%( %a%) - %(%{v:servername}%)'
+  set titlestring=\ %{expand(\"%:p:~\")}
+" set titlestring=%t
+" set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
+" set title titlestring=%<%F%=%l/%L-%P titlelen=70
 "fix for yankring and neovim
 let g:yankring_clipboard_monitor=0
 
