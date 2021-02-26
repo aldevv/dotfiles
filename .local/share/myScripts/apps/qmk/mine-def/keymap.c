@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
 
-
 #ifdef PROTOCOL_LUFA
   #include "lufa.h"
   #include "split_util.h"
@@ -8,6 +7,22 @@
 #ifdef SSD1306OLED
   #include "ssd1306.h"
 #endif
+
+
+//TODO https://beta.docs.qmk.fm/using-qmk/hardware-features/displays/feature_oled_driverhttps://beta.docs.qmk.fm/using-qmk/software-features/tap_hold
+//TODO https://beta.docs.qmk.fm/using-qmk/software-features/feature_combo
+//TODO
+//TODO https://beta.docs.qmk.fm/using-qmk/software-features/feature_tap_dance
+//TODO emojis
+//https://beta.docs.qmk.fm/using-qmk/software-features/feature_unicode
+//TODO https://beta.docs.qmk.fm/using-qmk/software-features/feature_layers
+//TODO https://beta.docs.qmk.fm/using-qmk/advanced-keycodes/feature_leader_key
+//TODO https://beta.docs.qmk.fm/using-qmk/software-features/feature_auto_shift
+//TODO https://beta.docs.qmk.fm/using-qmk/advanced-keycodes/feature_dynamic_macros
+//TODO  mouse keys
+//https://beta.docs.qmk.fm/using-qmk/software-features/feature_pointing_device
+//https://beta.docs.qmk.fm/using-qmk/advanced-keycodes/feature_mouse_keys
+//TODOhttps://beta.docs.qmk.fm/using-qmk/hardware-features/displays/feature_oled_driver
 
 extern uint8_t is_master;
 
@@ -82,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_GRV,   WK1,    WK2,     WK3,     WK4,      WK5,                     WK6,     WK7,     WK8,     WK9,     WK0,     KC_RBRC, \
   KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, \
   KC_LCTRL, KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC,   KC_GRAVE, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT, \
+  KC_LSPO,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC,   KC_GRAVE, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSPC, \
               OSL(_RAISE),KC_LGUI, LALT_T(KC_ENT), KC_RCTRL,   KC_BSPC, LT(_LOWER,KC_SPC), KC_ROPT, OSL(_LOWER) \
 ),
 
@@ -238,7 +253,18 @@ void oled_task_user(void) {
 /* SS_RALT(string), SS_ROPT(string) or SS_ALGR(string) */
 /* SS_RGUI(string), SS_RCMD(string) or SS_RWIN(string) */
 /* https://beta.docs.qmk.fm/using-qmk/advanced-keycodes/feature_macros */
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LALT_T(KC_ENT):
+            return TAPPING_TERM - 10;
+        /* case LT(1, KC_GRV): */
+        /*     return 130; */
+        default:
+            return TAPPING_TERM;
+    }
 }
+
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {

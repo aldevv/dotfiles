@@ -67,14 +67,15 @@ function! FoldForJava()
 endfunction
 
 function! FoldForPython()
+" the smaller the number, the more priority it has
     let line = getline(v:lnum) "v:lnum gives you the line number
-    if match(line,'\v^class\s+\S+\s?:') > -1
+    if match(line,'\v^class\s+\S+\(?.+\)?\s?:') > -1
         return ">3"
     elseif match(line, '\v^\s*def\s\S+\(.*\)\s?:') > -1
         return ">4"
-    elseif match(line, '\v^\s+(if|for|while).+\(.+\)\s?:$') > -1
+    elseif match(line, '\v^\s+(if|for|while)\s.+\s?:$') > -1
         return ">5"
-    elseif match(line, '\v^(if|for|while).+\(.+\)\s?:$') > -1
+    elseif match(line, '\v^(if|for|while).+\s?:$') > -1
         return ">2"
     elseif match(line, '\v^\S+\s?\=\s?.+$') > -1
         return ">0"

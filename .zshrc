@@ -65,6 +65,7 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # docker adds completion for docker commands, same docker compose
 plugins=(docker)
 # z is a command that takes you to the most probable folder
+export HISTFILE="$XDG_CONFIG_HOME/.zsh_history"
 source $ZSH/oh-my-zsh.sh
 . $XDG_CONFIG_HOME/zshPlugAlias
 #https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode
@@ -185,6 +186,7 @@ bindkey -s 'P' 'file=$(fd . -I -H "$PROJECTS" | fzf); [ -n "$file" ] && nvim "$
 bindkey -s 'l' 'file=$(fd . -I -H "$LEARN" | fzf); [ -n "$file" ] && nvim "$file"^M'
 bindkey -s 'o' '!\$^M'
 bindkey -s 'O' '!*^M'
+bindkey -s 't' '**	'
 
 _fzf_compgen_path() {
 

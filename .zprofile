@@ -2,7 +2,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export EDITOR=nvim
 export VISUAL=nvim
-export LESS='-sSMRQJ -j.5'
+export LESS="-isSMRQJ -j.5"
 # export PAGER='bat'
 export PAGER='less'
 # export MANPAGER="less"
@@ -135,7 +135,7 @@ export FZF_DEFAULT_COMMAND=$RG_DEFAULT
 # export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 # to unhide preview window, change to --preview-window=right:hidden:wrap"
 # for prompt at the bottom, change layout to "default"
-export FZF_DEFAULT_OPTS=" --height=15 --layout=reverse --multi --bind=alt-e:up,alt-n:down,alt-t:toggle-preview,ctrl-a:select-all+accept --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) > /dev/null | head -300' --preview-window=right:wrap"
+export FZF_DEFAULT_OPTS=" --height=15 --layout=reverse --multi --bind=alt-e:up,alt-n:down,+:toggle-preview,ctrl-a:select-all+accept --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) > /dev/null | head -200' --preview-window=right:wrap"
 export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type directory"
 # alt r -> cd into selected dir
 # ctrl t -> paste selected into command line(multiple)

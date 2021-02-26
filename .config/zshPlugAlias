@@ -53,7 +53,7 @@ alias pkg='sudo eopkg'\
     djan='cd /home/solus/dev/trydjango/src'\
     corona='/home/solus/dev/corona/get_info'\
     tord='/home/solus/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads'\
-    sac='source .venv/bin/activate'\
+    sac='[ -d ".venv" ] || (echo "create? (default: y)"; read ans; [ "$ans" != "n" ] && python3 -m venv .venv) && source .venv/bin/activate'\
     sacr='source installReq' \
     ven='wine .wine/drive_c/Program\ Files/Vensim/venPLE32.exe'\
     dotrepo="git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME"\
@@ -161,10 +161,9 @@ alias pkg='sudo eopkg'\
     chm='sudo chmod +x'\
     xmod='xmodmap "$HOME/.config/.Xmodmap"'\
     lightdm='sudo lightdm-settings'\
-    psql='docker run governmentpaas/psql psql'\
+    netstat='busybox netstat'\
 
 
-alias v="nvim"
 alias V='nvr -o'
 alias Vv='nvr -O'
 alias Vt='nvr --remote-tab'
@@ -943,6 +942,7 @@ alias dkVpr='docker volume prune'
 alias dkVrm='docker volume rm'
 
 ## Network (N)
+alias dkNg='docker inspect -f "{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"' #name_container
 alias dkN='docker network'
 alias dkNc='docker network create'
 alias dkNco='docker network connect'
@@ -1043,3 +1043,4 @@ alias djtp='python manage.py test --parallel'
 alias djr='python manage.py runserver'
 alias djM='python manage.py makemigrations'
 alias djm='python manage.py migrate'
+alias djl='python manage.py loadfixtures'

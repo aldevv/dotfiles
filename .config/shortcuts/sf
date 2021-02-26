@@ -8,7 +8,7 @@ ba         ~/.backups
 cc         ~/Master/Classes/2021-1
 ll         ~/Master/Learn
 tt         ~/.local/share/Trash/files
-ss         ~/.local/Programs/Suckless
+sk         ~/.local/Programs/Suckless
 bl         ~/Documents/Books/LN
 cf         ~/.config
 sp       ~/.config/nvim/my_snippets
@@ -52,6 +52,7 @@ l1         ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +
 l2         ~/Master/Learn/Rust/Learn Rust by Building Real Applications
 ld         ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
 lr         ~/Master/Learn/Rust/Learn Rust by Building Real Applications
+V        ~/Master/Volumes
 pa        ~/Master/Projects
 po        ~/Master/Projects/Micro
 pO        ~/Master/Projects/Main/

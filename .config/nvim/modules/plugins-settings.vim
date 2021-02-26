@@ -150,12 +150,20 @@ nnoremap <F5> :UndotreeToggle<cr>
 " FZF
 " =======
 " :Colors
+" :Commands
 " :Maps
 " :Snippets
 " :Helptags
 "
 " call fzf#vim#complete#path($FZF_DEFAULT_COMMAND)
 " \ 'ctrl-t': 'tab split',
+"" defaults
+let $FZF_DEFAULT_OPTS = ' --height=15 --layout=reverse --multi --bind=alt-e:up,alt-n:down,+:toggle-preview,ctrl-a:select-all+accept'
+let g:fzf_preview_window = ['right:50%', '+']
+" hidden by default, ctrl-/ to toggle
+" let g:fzf_preview_window = ['up:40%:hidden', '+']
+
+let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
 let g:fzf_action = {
             \ 'ctrl-s': 'split',
             \ 'ctrl-v': 'vsplit',
@@ -168,18 +176,19 @@ nnoremap <a-P> :GFiles<cr>
 nnoremap <c-p> :Buffers<cr>
 nnoremap <C-S-P> :Commits<cr>
   command! -bang Commits call fzf#vim#commits({'options': '--no-preview'}, <bang>0)
-nnoremap <leader>C :Commands<cr>
-nnoremap <c-c>m :Maps<cr>
-nnoremap <leader>,pms :FilesScripts<cr>
-nnoremap <leader>,pM  :FilesMaster<cr>
-nnoremap <leader>,psp :FilesSnips<cr>
-nnoremap <leader>,ph :FilesHome<cr>
-nnoremap <leader>,pwo :FilesWork<cr>
-nnoremap <leader>,pcc :FilesClass<cr>
-nnoremap <leader>,ppo :FilesProjects<cr>
-nnoremap <leader>,ppr :FilesPrograms<cr>
-nnoremap <leader>,pcf :FilesDots<cr>
-nnoremap <leader>,pmo :FilesOs<cr>
+nnoremap <leader>ac :Commands<cr>
+" <c-c> is viable too
+nnoremap <leader>am :Maps<cr>
+nnoremap <leader><space>pms :FilesScripts<cr>
+nnoremap <leader><space>pM  :FilesMaster<cr>
+nnoremap <leader><space>psp :FilesSnips<cr>
+nnoremap <leader><space>ph :FilesHome<cr>
+nnoremap <leader><space>pwo :FilesWork<cr>
+nnoremap <leader><space>pcc :FilesClass<cr>
+nnoremap <leader><space>ppo :FilesProjects<cr>
+nnoremap <leader><space>ppr :FilesPrograms<cr>
+nnoremap <leader><space>pcf :FilesDots<cr>
+nnoremap <leader><space>pmo :FilesOs<cr>
 nnoremap <leader>sN :RemoveFiles<cr>
 nnoremap <leader>sF :RemoveDirs<cr>
 "made myself
@@ -285,15 +294,15 @@ command! -bang -nargs=* Rgfzf
             \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': git#find_current_root()}), <bang>0)
 map <leader>f :Rgfzf<cr>
 
-command! -bang -nargs=* Rgfzf2
+command! -bang -nargs=* RgfzfCurrentWord
             \ call fzf#vim#grep(
             \   rg_command_nofiles . ' ' . shellescape(expand('<cword>')), 1,
             \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': git#find_current_root()}), <bang>0)
-map <leader>F :Rgfzf2<cr>
+map <leader>F :RgfzfCurrentWord<cr>
 
 
 let commandFiles="awk '{print $2}' ".$XDG_CONFIG_HOME."/shortcuts/sd"
-command! -bang -nargs=* Bookm call fzf#run({'source':commandFiles,'sink': 'e', 'options':'--no-preview'})
+command! -bang -nargs=* Bookm call fzf#run(fzf#vim#with_preview(fzf#wrap({'source':commandFiles,'sink': 'e'})))
 "search in specific folder"
 " command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 
@@ -306,6 +315,31 @@ command! -bang -nargs=* Bookm call fzf#run({'source':commandFiles,'sink': 'e', '
 " from https://github.com/
 " nnoremap <leader>fs :FZFBTags<CR>
 " nnoremap <leader>fc :FClass<CR>
+
+"===========
+" COC-FZF
+" ==========
+" you can fill quickfix window with multiselect
+let g:coc_fzf_preview_toggle_key = ''
+let g:coc_fzf_preview = 'up:50%:hidden'
+let g:coc_fzf_opts = []
+
+"to make the command same as other fzf commands
+" let g:coc_fzf_preview = ''
+
+nnoremap <silent> <leader><space>a :<C-u>CocFzfList<CR>
+nnoremap <silent> <leader><space>cd       :<C-u>CocFzfList diagnostics<CR>
+nnoremap <silent> <leader><space>cD       :<C-u>CocFzfList diagnostics --current-buf<CR>
+nnoremap <silent> <leader><space>cc       :<C-u>CocFzfList commands<CR>
+nnoremap <silent> <leader><leader>ce       :<C-u>CocFzfList extensions<CR>
+nnoremap <silent> <leader><space>cl       :<C-u>CocFzfList location<CR>
+" nnoremap <silent> <leader>cv        :<C-u>CocFzfList outline<CR>
+" nnoremap <silent> <a-n>            :<C-u>CocFzfList outline<CR>
+nnoremap <silent> <leader><space>cS       :<C-u>CocFzfList sources<CR>
+nnoremap <silent> <leader><space>cs       :<C-u>CocFzfList symbols<CR>
+nnoremap <silent> <leader>cS       :<C-u>CocFzfList sources<CR>
+nnoremap <silent> <leader>cs       :<C-u>CocFzfList symbols<CR>
+nnoremap <silent> <leader><space>cL       :<C-u>CocFzfListResume<CR>
 
 "=====
 "COC
@@ -349,13 +383,13 @@ nmap <silent> <leader>cC  :CocConfig<cr>
 nmap <silent> <leader>ccC :CocLocalConfig<cr>
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gv :vsp<CR><Plug>(coc-definition)
+nmap <silent> gD :vsp<CR><Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gD <Plug>(coc-type-declaration)
-" nmap <silent> <leader>cp <Plug>(coc-format)
+nmap <silent> gY <Plug>(coc-type-declaration)
 nmap gr <Plug>(coc-references)
-nmap <leader>gr <Plug>(coc-references-used)
-nmap gR <Plug>(coc-implementation)
+nmap gR <Plug>(coc-references-used)
+nmap gi <Plug>(coc-implementation)
+" nmap <silent> <leader>cp <Plug>(coc-format)
 " g{ and g} are usable
 nnoremap <silent><nowait> <leader>cd  :<C-u>CocDiagnostics<cr>
 nmap ; <Plug>(coc-diagnostic-prev)
@@ -365,22 +399,23 @@ nmap <silent> g, <Plug>(coc-diagnostic-next-error)
 nmap <silent> g. <Plug>(coc-fix-current)
 nnoremap <silent> + :call CocAction('doHover')<cr>
 nmap <F2> <Plug>(coc-rename)
-nmap <leader>crf :CocSearch <C-R>=expand('<cword>')<cr><cr>
-nmap <leader>crf :CocSearch <C-R>=expand('<cword>')<cr>
+nmap cr :CocSearch <C-R>=expand('<cword>')<cr>
+nmap cR :CocSearch <C-R>=expand('<cword>')<cr><cr>
 
 ":CocRebuild                        *:CocRebuild*
 " use when you upgrade nodejs
 
 nmap <leader>cl <Plug>(coc-codelens-action)
+nnoremap <silent><nowait> <leader>cL  :<C-u>CocOpenLog<CR>
 nmap <leader>+ <Plug>(coc-diagnostic-info)
 nmap <leader>* <Plug>(coc-fix-current)
 nmap <leader>cA <Plug>(coc-codeaction)
 nmap <leader>ca <Plug>(coc-codeaction-line)
 vmap <leader>ca <Plug>(coc-codeaction-selected)
-nmap <M-CR> <Plug>(coc-codeaction)
-nmap <M-S-CR> <Plug>(coc-codeaction-line)
-vmap <M-CR> <Plug>(coc-codeaction-selected)
-nmap <silent><leader>crr <Plug>(coc-refactor)
+nmap <M-BS> <Plug>(coc-codeaction)
+nmap <M-S-BS> <Plug>(coc-codeaction-line)
+vmap <M-BS> <Plug>(coc-codeaction-selected)
+nmap <silent><leader>cr <Plug>(coc-refactor)
 cnoreabbrev CS CocSearch
 " for static hover glitch
 nnoremap <silent><esc> :call coc#float#close_all()<cr>
@@ -392,15 +427,12 @@ nnoremap <silent><esc> :call coc#float#close_all()<cr>
 " Mappings for CoCList
 " Show all diagnostics.
 nnoremap <silent><nowait> <leader>ccd  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
 " Do default action for next item.
 nnoremap <silent><nowait> <leader>cn  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent><nowait> <leader>ce  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <leader>ccr  :<C-u>CocRestart<cr>
-nnoremap <silent><nowait> <leader>ccl  :<C-u>CocOpenLog<CR>
-nnoremap <silent><nowait> <leader>ccm  :<C-u>CocList marketplace<CR>
+nnoremap <silent><nowait> <leader>cR  :<C-u>CocRestart<cr>
+nnoremap <silent><nowait> <leader>cm  :<C-u>CocList marketplace<CR>
 nnoremap <silent><nowait> <leader>cv  :<C-u>CocList --auto-preview outline<cr>
 
 " implemented in coc-fzf
@@ -482,11 +514,11 @@ imap <silent><expr> <a-e> pumvisible() ? "\<C-p>" : "\<C-o>e"
 
 
 function OutlineFZF()
-    return ":CocFzfList outline \<cr>"
+  return ":CocFzfList outline \<cr>"
 endfunction
 
 function BrowseDots()
-    " return ":FilesDots \<cr>"
+" return ":FilesDots \<cr>"
     return ":\<C-u>TagbarToggle\<CR>"
 endfunction
 
@@ -860,7 +892,7 @@ function VerticalLines()
     :IndentLinesToggle
     set shiftwidth=2
 endfunction
-nmap <leader>cL :call VerticalLines()<cr>
+nmap <leader>,l :call VerticalLines()<cr>
 autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.{vim,jsx,json,ts,js} :call VerticalLines()
 "these 2 only work with real tabs, not expanded tabs"
 "set listchars=tab:┆.,trail:.,extends:>,precedes:<
@@ -1188,17 +1220,32 @@ xmap gp  <Plug>ReplaceWithRegisterVisual
 "           line use ["x]gr$
 "{Visual}["x]gr     Replace the selection with the contents of register x.
 
-" indent text object
-let g:textobj_indent_no_default_key_mappings = 1
+" ===================
+" INDENT-TEXT-OBJECT current
+" ===================
+" if no docs, do :helptags doc to load it into memory
+"<count>ai 	An Indentation level and line above.
+" <count>ii 	Inner Indentation level (no line above).
+" <count>aI 	An Indentation level and lines above/below.
+" <count>iI 	Inner Indentation level (no lines above/below).
+"Note: the iI mapping is mostly included simply for completeness, it is effectively a synonym for ii. ===================
+
+
+" ===================
+" INDENT-TEXT-OBJECT 2, deprecated
+" ===================
+"
+" Note: the iI mapping is mostly included simply for completeness, it is effectively a synonym for ii.
+" let g:textobj_indent_no_default_key_mappings = 1
 " let g:indent_object_except_first_level = 0
-vmap li <Plug>(textobj-indent-i)
-omap li <Plug>(textobj-indent-i)
-vmap ai <Plug>(textobj-indent-a)
-omap ai <Plug>(textobj-indent-a)
-vmap lI <Plug>(textobj-indent-same-i)
-omap lI <Plug>(textobj-indent-same-i)
-vmap aI <Plug>(textobj-indent-same-a)
-omap aI <Plug>(textobj-indent-same-a)
+" vmap li <Plug>(textobj-indent-i)
+" omap li <Plug>(textobj-indent-i)
+" vmap ai <Plug>(textobj-indent-a)
+" omap ai <Plug>(textobj-indent-a)
+" vmap lI <Plug>(textobj-indent-same-i)
+" omap lI <Plug>(textobj-indent-same-i)
+" vmap aI <Plug>(textobj-indent-same-a)
+" omap aI <Plug>(textobj-indent-same-a)
 "
 " line text object
 " only use for selecting, not for other stuff, has bugs
@@ -1601,7 +1648,7 @@ let g:clever_f_use_migemo = 1
 " ==========
 " BRIGHTEST
 " ==========
-noremap <leader>cb :BrightestToggle<cr>
+noremap <leader>.b :BrightestToggle<cr>
 autocmd Filetype * :BrightestDisable
 " let g:brightest#enable_on_CursorHold = 1
 " let g:brightest#enable_clear_highlight_on_CursorMoved = 0
@@ -1676,31 +1723,6 @@ let g:AutoPairsShortcutToggle = '<a-b>'
 let g:AutoPairsShortcutJump = '<a-w>'
 " let g:AutoPairsShortcutBackInsert = '<Nop>'
 
-"===========
-"FZF
-"===========
-let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
-"===========
-" COC-FZF
-" ==========
-" nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>
-nnoremap <silent> <leader>cD       :<C-u>CocFzfList diagnostics<CR>
-nnoremap <silent> <leader>ccd       :<C-u>CocFzfList diagnostics --current-buf<CR>
-nnoremap <silent> <leader>ccc       :<C-u>CocFzfList commands<CR>
-nnoremap <silent> <leader>cce       :<C-u>CocFzfList extensions<CR>
-" nnoremap <silent> <leader>cl       :<C-u>CocFzfList location<CR>
-" nnoremap <silent> <leader>cv        :<C-u>CocFzfList outline<CR>
-" nnoremap <silent> <a-n>            :<C-u>CocFzfList outline<CR>
-nnoremap <silent> <leader>cs       :<C-u>CocFzfList symbols<CR>
-nnoremap <silent> <leader>ccs       :<C-u>CocFzfList sources<CR>
-nnoremap <silent> <leader>ccb       :<C-u>CocFzfListResume<CR>
-"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-"let g:coc_fzf_preview_toggle_key = '?'
-"let g:coc_fzf_preview = 'up:50%'
-"let g:coc_fzf_opts = ['--layout=reverse-list']
-"to make the command same as other fzf commands
-" let g:coc_fzf_preview = ''
-" let g:coc_fzf_opts = []
 "
 " ================
 " NEOTERM

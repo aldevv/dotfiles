@@ -68,3 +68,4 @@ ffmpeg
 # pdf rendering library for rga
 poppler-utils
 golang
+busybox

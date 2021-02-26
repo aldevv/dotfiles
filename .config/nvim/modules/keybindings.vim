@@ -440,14 +440,14 @@ command! -bang -nargs=? -complete=dir Cfr :e $XDG_CONFIG_HOME/ranger/rc.conf
 command! -bang -nargs=? -complete=dir Cfma :e $OS/autoInstallSudo\ -E
 command! -bang -nargs=? -complete=dir Cfa :e $XDG_CONFIG_HOME/zshPlugAlias
 
-nnoremap <leader>,cfv :Cfv<cr>
-nnoremap <leader>,cfz :Cfz<cr>
-nnoremap <leader>,cfp :Cfp<cr>
-nnoremap <leader>,cfr :Cfr<cr>
-nnoremap <leader>,cfxp :Cfxp<cr>
-nnoremap <leader>,cfxx :Cfxx<cr>
-nnoremap <leader>,cfma :Cfma<cr>
-nnoremap <leader>,cfa :Cfa<cr>
+" nnoremap <leader><space>cfv :Cfv<cr>
+" nnoremap <leader><space>cfz :Cfz<cr>
+" nnoremap <leader><space>cfp :Cfp<cr>
+" nnoremap <leader><space>cfr :Cfr<cr>
+" nnoremap <leader><space>cfxp :Cfxp<cr>
+" nnoremap <leader><space>cfxx :Cfxx<cr>
+" nnoremap <leader><space>cfma :Cfma<cr>
+" nnoremap <leader><space>cfa :Cfa<cr>
 
 " clear search highlights
 noremap <silent><leader>ll :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
