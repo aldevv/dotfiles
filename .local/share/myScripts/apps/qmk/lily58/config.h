@@ -35,3 +35,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 200
 #define TAPPING_TERM_PER_KEY
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 400
+/* #define */
+// KC_TRNS for no tap mod
+#define LSPO_KEYS KC_LSFT, KC_LSFT, KC_8
+#define RSPC_KEYS KC_RSFT, KC_LSFT, KC_9

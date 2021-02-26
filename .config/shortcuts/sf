@@ -1,62 +1,62 @@
 #something
-h          ~
-ob         ~/dev/Work/PPE/tensorflow-api
-obd         ~/dev/Work/PPE/tensorflow-api/models/research/object_detection
-wo         ~/Master/Work
-bk         ~/Documents/Books
-ba         ~/.backups
-cc         ~/Master/Classes/2021-1
-ll         ~/Master/Learn
-tt         ~/.local/share/Trash/files
-sk         ~/.local/Programs/Suckless
-bl         ~/Documents/Books/LN
-cf         ~/.config
-sp       ~/.config/nvim/my_snippets
-ms         ~/.local/share/myScripts/
-mo         ~/.local/share/myScripts/os/solus
-mO         ~/.local/share/myScripts/os/solus/Build-Programs
-mu         ~/.local/share/myScripts/utilities
-ma        ~/.local/share/myScripts/automation
-doc        /usr/share/doc
-mp        ~/.local/share/myScripts/apps
-D          ~/Downloads
-d          ~/Documents
-pp         ~/Pictures
-pr         ~/.local/Programs
-vv         ~/Videos
-MM         ~/Master
-Md         ~/Master/Debug
-Ml         ~/Master/Learn
-Mp         ~/Master/Projects
-Mv         ~/Master/Volumes
-Mc         ~/Master/Classes
-Mw         ~/Master/Work
-mm         ~/Music
-wi         ~/.local/share/wiki
-lo         ~/.local
-re         /etc
-rU         /usr
-rus         /usr/share
-rub         /usr/bin
-rui         /usr/include
-rulo         /usr/local
-ruli         /usr/lib
-rv         /var
-rb         /bin
-rr         /root
-rmn        /mnt
-sc         ~/Pictures/screenshots
-rtk         ~/Books/japanese/heisig
-wa         ~/.cache/wal
-l1         ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
-l2         ~/Master/Learn/Rust/Learn Rust by Building Real Applications
-ld         ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
-lr         ~/Master/Learn/Rust/Learn Rust by Building Real Applications
-V        ~/Master/Volumes
-pa        ~/Master/Projects
-po        ~/Master/Projects/Micro
-pO        ~/Master/Projects/Main/
-w1         ~/Master/Work/covidalert
-p1         ~/Master/Projects/Micro/HTTP-server in Rust
-p2         ~/Master/Projects/Micro/Docker
-1         ~/Master/Projects/Main/covidalert
+h       ~
+ob      ~/dev/Work/PPE/tensorflow-api
+obd     ~/dev/Work/PPE/tensorflow-api/models/research/object_detection
+wo      ~/Master/Work
+bk      ~/Documents/Books
+ba      ~/.backups
+cc      ~/Master/Classes/2021-1
+ll      ~/Master/Learn
+tt      ~/.local/share/Trash/files
+sk      ~/.local/Programs/Suckless
+bl      ~/Documents/Books/LN
+cf      ~/.config
+sp      ~/.config/nvim/my_snippets
+ms      ~/.local/share/myScripts/
+mo      ~/.local/share/myScripts/os/solus
+mO      ~/.local/share/myScripts/os/solus/Build-Programs
+mu      ~/.local/share/myScripts/utilities
+ma      ~/.local/share/myScripts/automation
+oc      /usr/share/doc
+mp      ~/.local/share/myScripts/apps
+D       ~/Downloads
+d       ~/Documents
+pp      ~/Pictures
+pr      ~/.local/Programs
+v       ~/Videos
+MM      ~/Master
+Md      ~/Master/Debug
+Ml      ~/Master/Learn
+Mp      ~/Master/Projects
+Mv      ~/Master/Volumes
+Mc      ~/Master/Classes
+Mw      ~/Master/Work
+mm      ~/Music
+wi      ~/.local/share/wiki
+lo      ~/.local
+re      /etc
+rU      /usr
+rus     /usr/share
+rub     /usr/bin
+rui     /usr/include
+rulo    /usr/local
+ruli    /usr/lib
+rv      /var
+rb      /bin
+rr      /root
+rmn     /mnt
+sc      ~/Pictures/screenshots
+rtk     ~/Books/japanese/heisig
+wa      ~/.cache/wal
+l1      ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
+l2      ~/Master/Learn/Rust/Learn Rust by Building Real Applications
+ld      ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
+lr      ~/Master/Learn/Rust/Learn Rust by Building Real Applications
+V       ~/Master/Volumes
+pa      ~/Master/Projects
+po      ~/Master/Projects/Micro
+pO      ~/Master/Projects/Main/
+w1      ~/Master/Work/covidalert
+p1      ~/Master/Projects/Micro/HTTP-server in Rust
+p2      ~/Master/Projects/Micro/Docker
+1       ~/Master/Projects/Main/covidalert

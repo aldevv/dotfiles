@@ -1,5 +1,18 @@
 #include QMK_KEYBOARD_H
 
+#include "sendstring_colemak.h"
+/* CM_O */
+/* https://github.com/qmk/qmk_firmware/blob/master/quantum/keymap_extras/sendstring_colemak.h */
+
+/* latam colemak is LCM, default colemak is CM */
+#include "latam_colemak.h"
+/* #include "keymap_colemak.h" */
+// CM_0
+//https://github.com/qmk/qmk_firmware/blob/master/quantum/keymap_extras/keymap_colemak.h
+
+#include "keymap_spanish.h"
+// ES_0
+//https://github.com/qmk/qmk_firmware/blob/master/quantum/keymap_extras/keymap_spanish.h
 
 #ifdef PROTOCOL_LUFA
   #include "lufa.h"
@@ -8,6 +21,37 @@
 #ifdef SSD1306OLED
   #include "ssd1306.h"
 #endif
+
+
+//TODO LEADER MEY
+//https://beta.docs.qmk.fm/using-qmk/advanced-keycodes/feature_leader_key
+//
+//TODO PERMISSIVE HOLD
+//https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold
+//
+//TODO
+//https://beta.docs.qmk.fm/using-qmk/software-features/feature_combo
+//
+//TODO
+//https://beta.docs.qmk.fm/using-qmk/software-features/feature_tap_dance
+//
+//TODO emojis
+//https://beta.docs.qmk.fm/using-qmk/software-features/feature_unicode
+//
+//TODO layers
+//https://beta.docs.qmk.fm/using-qmk/software-features/feature_layers
+//
+//TODO AUTO SHIFT
+//https://beta.docs.qmk.fm/using-qmk/software-features/feature_auto_shift
+//
+//TODO DYNAMIC MACROS
+//https://beta.docs.qmk.fm/using-qmk/advanced-keycodes/feature_dynamic_macros
+//
+//TODO MOUSE KEYS
+//https://beta.docs.qmk.fm/using-qmk/software-features/feature_pointing_device
+//https://beta.docs.qmk.fm/using-qmk/advanced-keycodes/feature_mouse_keys
+//TODO OLED (NOT READ YET)
+//TODOhttps://beta.docs.qmk.fm/using-qmk/hardware-features/displays/feature_oled_driver
 
 extern uint8_t is_master;
 
@@ -26,7 +70,7 @@ enum my_macros {
 };
 
 enum layer_number {
-  _QWERTY = 0,
+  _COLEMAK = 0,
   _LOWER,
   _RAISE,
   _ADJUST,
@@ -41,6 +85,8 @@ enum layer_number {
 /* MT(MOD_LCTL | MOD_LSFT, KC_ESC) */
 /* there are also shortcuts for these */
 /* LALT_T(kc) */
+
+//space cadets (shift taps) are in config.h
 
 /* ========= */
 /* LAYERS */
@@ -57,6 +103,9 @@ enum layer_number {
 /* KC_RALT = RIGHTALT  */
 /* KC_ALGR = Alt-gr  */
 /* KC_NUBS = <  */
+/* KC_LSPO = LEFT SHIFT WHEN HOLD, ( WHEN TAPPED */
+/* KC_RSPC = right SHIFT WHEN HOLD, ) WHEN TAPPED */
+/* KC_LEAD = leaderkey  */
 /* create macro for \ */
 
 //https://beta.docs.qmk.fm/using-qmk/software-features/feature_layers
@@ -77,13 +126,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `-------------------''-------'           '------''--------------------'
  */
 
-  /* KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV, \ */
- [_QWERTY] = LAYOUT( \
+ [_COLEMAK] = LAYOUT( \
   KC_GRV,   WK1,    WK2,     WK3,     WK4,      WK5,                     WK6,     WK7,     WK8,     WK9,     WK0,     KC_RBRC, \
-  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, \
-  KC_LCTRL, KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC,   KC_GRAVE, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT, \
-              OSL(_RAISE),KC_LGUI, LALT_T(KC_ENT), KC_RCTRL,   KC_BSPC, LT(_LOWER,KC_SPC), KC_ROPT, OSL(_LOWER) \
+  KC_TAB,   LCM_Q,   LCM_W,    LCM_F,    LCM_P,    LCM_G,                     LCM_J,    LCM_L,    LCM_U,    LCM_Y,    LCM_NTIL, KC_LBRC, \
+  KC_LCTRL, LCM_A,   LCM_R,    LCM_S,    LCM_T,    LCM_D,                     LCM_H,    LCM_N,    LCM_E,    LCM_I,    LCM_O, LCM_LCBR, \
+  KC_LSPO,  LCM_Z,   LCM_X,    LCM_C,    LCM_V,    LCM_B, LCM_BSLS,   KC_LEAD, LCM_K,    LCM_M,    LCM_COMM, LCM_DOT,  LCM_MINS, KC_RSPC,\
+              OSL(_RAISE),KC_LGUI, LALT_T(KC_ENT), KC_RCTRL,   KC_BSPC, LT(_LOWER,KC_SPC), ROPT_T(KC_DEL), OSL(_LOWER) \
 ),
 
  /* /1* [_QWERTY] = LAYOUT( \ */
@@ -111,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______,_______, _______, _______,\
   _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, \
   _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS, \
-  _______, KC_NUBS, _______, _______, _______, _______, _______, _______, KC_PIPE, KC_GRAVE, KC_PLUS, KC_LCBR, KC_RCBR, _______, \
+  _______, KC_NUBS, RSFT(KC_NUBS), _______, _______, _______, _______, _______, KC_PIPE, KC_GRAVE, KC_PLUS, KC_LCBR, KC_RCBR, _______, \
                              _______, _______, _______, KC_ALGR, _______,  _______, _______, _______\
 ),
 /* RAISE
@@ -238,8 +286,22 @@ void oled_task_user(void) {
 /* SS_RALT(string), SS_ROPT(string) or SS_ALGR(string) */
 /* SS_RGUI(string), SS_RCMD(string) or SS_RWIN(string) */
 /* https://beta.docs.qmk.fm/using-qmk/advanced-keycodes/feature_macros */
+
+// MY HOLD AND TAP TIMINGS
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LALT_T(KC_ENT):
+            return TAPPING_TERM - 10;
+        /* case LT(1, KC_GRV): */
+        /*     return 130; */
+        default:
+            return TAPPING_TERM;
+    }
 }
 
+// MY SIMPLE MACROS
+// for colemak codes
+//#include "sendstring_colemak.h"
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
 #ifdef OLED_DRIVER_ENABLE
@@ -288,3 +350,41 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
+
+// LEADER KEY
+// for colemak codes
+LEADER_EXTERNS();
+
+void matrix_scan_user(void) {
+    LEADER_DICTIONARY() {
+      leading = false;
+      leader_end();
+
+    SEQ_ONE_KEY(KC_W) {
+        // Anything you can do in a macro.
+        SEND_STRING(SS_ALGR("w"));
+      /* register_code(KC_LGUI); */
+      /* register_code(KC_S); */
+      /* unregister_code(KC_S); */
+      /* unregister_code(KC_LGUI) */
+
+    }
+    SEQ_ONE_KEY(KC_O) {
+        /* SEND_STRING(); */
+      register_code(CM_6);
+    }
+    /* SEQ_TWO_KEYS(KC_E, KC_D) { */
+    /*   SEND_STRING(SS_LGUI("r") "cmd\n" SS_LCTL("c")); */
+      /* did_leader_succeed = true; */
+    /* } */
+    leader_end();
+  }
+}
+
+/* void leader_start(void) { */
+/*   // sequence started */
+/* } */
+
+/* void leader_end(void) { */
+  // sequence ended (no success/failuer detection)
+/* } */

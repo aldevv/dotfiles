@@ -301,7 +301,8 @@ map  <silent><leader>Q :silent w !sudo tee %<CR>
 function SaveNoFormat() abort
   :noautocmd w
   if expand('%') == 'keymap.c'
-    exec ':!$PROJECTS/Micro/Lily58/qmk_firmware/bin/qmk flash -kb lily58 -km mine-def'
+    " exec ':!$PROJECTS/Micro/Lily58/qmk_firmware/bin/qmk flash -kb lily58 -km mine-def'
+    exec ':!qmk flash'
   endif
 endfunction
 map  <silent><leader>q :call SaveNoFormat()<CR>
