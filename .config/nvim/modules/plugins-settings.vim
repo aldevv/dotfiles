@@ -1966,12 +1966,13 @@ nnoremap <leader>.s :VimApmShutdown<cr>
 "========================
 " VIM-BUJO
 "========================
-let g:bujo#window_width = 50
+let g:bujo#window_width = 90
 let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
 map <silent><leader>,g <Plug>(BujoGlobal)
 map <silent><leader>,; <Plug>(BujoGlobal)
 map <silent><leader>,, <Plug>(BujoProject)
 map <silent><leader>,P <Plug>(BujoPrivate)
+
 map <M-,> <Plug>(BujoAddnormal)
 imap <M-,> <Plug>(BujoAddinsert)
 "TODO add check insert like the 2 above

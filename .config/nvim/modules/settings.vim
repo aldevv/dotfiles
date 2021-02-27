@@ -38,6 +38,7 @@ set timeoutlen=700
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 " nnoremap <silent> <leader><space>   :<c-u>WhichKey '<leader><leader>'<CR>
 filetype plugin indent on
+filetype plugin on
 " set signcolumn=yes
 " set foldmethod=indent
 
