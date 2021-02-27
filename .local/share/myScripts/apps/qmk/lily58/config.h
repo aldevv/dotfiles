@@ -37,10 +37,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define USE_SERIAL_PD2
 
 #define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 200
 #define TAPPING_TERM_PER_KEY
 #define LEADER_PER_KEY_TIMING
 #define LEADER_TIMEOUT 400
+#define COMBO_COUNT 4
+#define COMBO_TERM 160
+#define TAPPING_TERM 190
 /* #define */
 // KC_TRNS for no tap mod
 

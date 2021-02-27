@@ -146,6 +146,9 @@
 #define LCM_SCLN S(LCM_COMM)    // ;
 #define LCM_UNDS S(LCM_MINS) // _
 #define LCM_QUES S(LCM_ACUT) // ?
+/* #define LCM_IEXL KC_EQL // ¿ */
+#define LCM_IEXL KC_PLUS //
+#define LCM_IQUE KC_EQL // ¿
 
 // DEPRECATED
 #define KC_CM_Q    CM_Q
