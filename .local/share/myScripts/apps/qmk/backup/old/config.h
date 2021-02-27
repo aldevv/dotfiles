@@ -24,13 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 
-#define SPLIT_USB_DETECT
-//#define MASTER_LEFT
-//#define MASTER_RIGHT
-// needed to flash with make lily58:mine-def:avrdude-split-left with only left side connected
-// needed to flash with make lily58:mine-def:avrdude-split-right with only right side connected
-// then it can detect the master alone
-#define EE_HANDS
+#define MASTER_LEFT
+// #define MASTER_RIGHT
+// #define EE_HANDS
 
 //#define OLED_DRIVER
 
@@ -39,15 +35,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 200
 #define TAPPING_TERM_PER_KEY
-#define LEADER_PER_KEY_TIMING
-#define LEADER_TIMEOUT 400
-/* #define */
-// KC_TRNS for no tap mod
-
-/* #define LSPO_KEYS KC_LSFT, KC_LSFT, KC_8 */
-/* #define RSPC_KEYS KC_RSFT, KC_LSFT, KC_9 */
-// it doesn't read the colemak redefinitions
-// quot = {
-// bsls = {
-#define LSPO_KEYS KC_LSFT, KC_LSFT, KC_QUOT
-#define RSPC_KEYS KC_RSFT, KC_LSFT, KC_BSLS

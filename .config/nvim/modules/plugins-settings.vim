@@ -303,6 +303,11 @@ map <leader>F :RgfzfCurrentWord<cr>
 
 let commandFiles="awk '{print $2}' ".$XDG_CONFIG_HOME."/shortcuts/sd"
 command! -bang -nargs=* Bookm call fzf#run(fzf#vim#with_preview(fzf#wrap({'source':commandFiles,'sink': 'e'})))
+
+command! -bang -nargs=* Diffany call fzf#run(fzf#wrap({'source':'git branch', 'sink': function('git#diff_any_branch')}))
+nnoremap <leader>gda :Diffany<CR>
+
+
 "search in specific folder"
 " command! -bang Course call fzf#vim#files('~/Documents/Learn/languages', <bang>0)
 
@@ -646,11 +651,11 @@ nnoremap <leader>gsl :G stash list<CR>
 nnoremap <leader>ggc :G commit<CR>
 nnoremap <leader>gm :Git merge<CR>
 " nnoremap <leader>gd ::Gvdiff<CR>
-nnoremap <leader>ggd ::Gdiffsplit!<CR>
-nnoremap <leader>gd ::Gvdiffsplit!<CR>
-nnoremap <leader>gD ::Git difftool<CR>
+nnoremap <leader>gds :Gdiffsplit!<CR>
+nnoremap <leader>gdd :Gvdiffsplit!<CR>
+nnoremap <leader>gdD :Git difftool<CR>
 " this works like VS jumper, test to see if i deprecate the other one
-nnoremap <leader>gM ::Git mergetool<CR>
+nnoremap <leader>gM :Git mergetool<CR>
 nnoremap <leader>gloG :Gclog --reverse<CR>
 nnoremap Q :Glog --reverse<CR>
 nnoremap <leader>ggp :Git push<CR>
@@ -739,62 +744,10 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 " for normal mode
 " nnoremap <a-t> i<c-r>=UltiSnips#JumpForwards()<cr>
 " snoremap <a-t> <Esc>:call UltiSnips#JumpForwards()<cr>
-"
-noremap <silent><leader>I :silent call <SID>addSkel()<cr>
+
+nmap <silent><leader>si <Plug>(InsertSkeleton)
 " doesn't work for autocmd because of ultisnip
 " autocmd BufNewFile * :silent call feedkeys("\<space>I")
-" autocmd BufNewFile * :silent call <SID>addSkel()
-function! s:addSkel()
-if !empty(b:projectionist)
-    " Loop through projections with 'skeleton' key
-    " and try each one until the snippet expands
-    for [root, value] in projectionist#query('skeleton')
-      if s:try_insert(value)
-        call s:install_undo_workaround()
-        return
-      endif
-    endfor
-endif
-if s:try_insert('skel')
-    call s:install_undo_workaround()
-endif
-
-endfunction
-
-function! s:install_undo_workaround() abort
-  nnoremap <buffer> u :call <SID>undo_workaround()<CR>
-endfunction
-
-function! s:undo_workaround() abort
-  normal! 2u
-  nunmap <buffer> u
-endfunction
-" for ultisnips
-" function! s:try_insert(skel)
-"   execute 'normal! i_' . a:skel . "\<C-r>=UltiSnips#ExpandSnippet()\<CR>"
-"   if g:ulti_expand_res == 0
-"     silent! undo
-"   endif
-"   return g:ulti_expand_res
-" endfunction
-
-" for coc_snippets
-let g:snippet_expanded = 0
-function! s:try_insert(skel)
-    silent execute 'normal! i_' . a:skel . "\<C-r>=Coc_expand()\<cr>"
-    if g:snippet_expanded == 0
-        silent! undo
-    endif
-    return g:snippet_expanded
-endfunction
-function! Coc_expand()
-    if coc#expandable()
-        let g:snippet_expanded = 1
-        return coc#rpc#request('doKeymap', ['snippets-expand-jump',''])
-    endif
-    let g:snippet_expanded = 0
-    return
-endfunction
 
 "==========
 " VIMTEX

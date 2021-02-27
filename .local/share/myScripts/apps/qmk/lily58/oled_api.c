@@ -1,3 +1,8 @@
+// ======================================================
+// THIS IS ONLY FOR DOCUMENTATION, THIS FILE IS NOT USED
+// ======================================================
+
+
 // OLED rotation enum values are flags
 typedef enum {
     OLED_ROTATION_0   = 0,

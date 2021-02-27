@@ -86,8 +86,6 @@ enum layer_number {
 /* there are also shortcuts for these */
 /* LALT_T(kc) */
 
-//space cadets (shift taps) are in config.h
-
 /* ========= */
 /* LAYERS */
 /* ========= */
@@ -126,11 +124,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `-------------------''-------'           '------''--------------------'
  */
 
+  /* KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV, \ */
+ /* [_QWERTY] = LAYOUT( \ */
  [_COLEMAK] = LAYOUT( \
   KC_GRV,   WK1,    WK2,     WK3,     WK4,      WK5,                     WK6,     WK7,     WK8,     WK9,     WK0,     KC_RBRC, \
   KC_TAB,   LCM_Q,   LCM_W,    LCM_F,    LCM_P,    LCM_G,                     LCM_J,    LCM_L,    LCM_U,    LCM_Y,    LCM_NTIL, KC_LBRC, \
-  KC_ESC, LCM_A,   LCM_R,    LCM_S,    LCM_T,    LCM_D,                     LCM_H,    LCM_N,    LCM_E,    LCM_I,    LCM_O, LCM_LCBR, \
-  KC_LSPO,  LCM_Z,   LCM_X,    LCM_C,    LCM_V,    LCM_B, LCM_BSLS,   KC_LEAD, LCM_K,    LCM_M,    LCM_COMM, LCM_DOT,  LCM_MINS, KC_RSPC,\
+  KC_LCTRL, LCM_A,   LCM_S,    LCM_D,    LCM_F,    LCM_G,                     LCM_H,    LCM_N,    LCM_E,    LCM_I,    LCM_O, LCM_LCBC, \
+  KC_LSPO,  LCM_Z,   LCM_X,    LCM_C,    LCM_V,    LCM_B, KC_LBRC,   KC_LEAD, LCM_K,    LCM_M,    KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(LCM_RPRN),\
               OSL(_RAISE),KC_LGUI, LALT_T(KC_ENT), KC_RCTRL,   KC_BSPC, LT(_LOWER,KC_SPC), ROPT_T(KC_DEL), OSL(_LOWER) \
 ),
 
@@ -220,6 +220,14 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
 
 //SSD1306 OLED update loop, make sure to enable OLED_DRIVER_ENABLE=yes in rules.mk
 #ifdef OLED_DRIVER_ENABLE
+
+
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+  if (!is_keyboard_master())
+    return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+  return rotation;
+}
+
 // When you add source files to SRC in rules.mk, you can use functions.
 const char *read_layer_state(void);
 const char *read_logo(void);
@@ -231,45 +239,19 @@ const char *read_keylogs(void);
 // const char *read_host_led_state(void);
 // void set_timelog(void);
 // const char *read_timelog(void);
+
 void oled_task_user(void) {
   if (is_keyboard_master()) {
-    /* oled_write_ln(read_layer_state(), false); */
-    // second argument is invert characters, not flip
-    oled_write_P(PSTR("Layer: "), false);
-
-    switch (get_highest_layer(layer_state)) {
-        case _COLEMAK:
-            oled_write_P(PSTR("COLEMAK\n"), false);
-            break;
-        case _LOWER:
-            oled_write_P(PSTR("LOWER\n"), false);
-            break;
-        case _RAISE:
-            oled_write_P(PSTR("RAISE\n"), false);
-            break;
-        case _ADJUST:
-            oled_write_P(PSTR("ADJUST\n"), false);
-            break;
-        default:
-            // Or use the write_ln shortcut over adding '\n' to the end of your string
-            oled_write_ln_P(PSTR("Undefined"), false);
-    }
+    // If you want to change the display of OLED, you need to change here
+    oled_write_ln(read_layer_state(), false);
     oled_write_ln(read_keylog(), false);
     oled_write_ln(read_keylogs(), false);
     //oled_write_ln(read_mode_icon(keymap_config.swap_lalt_lgui), false);
     //oled_write_ln(read_host_led_state(), false);
     //oled_write_ln(read_timelog(), false);
   } else {
-    /* oled_write_P(PSTR("not master\n"), false); */
     oled_write(read_logo(), false);
   }
-}
-  oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (!is_keyboard_master()) {
-      // for left master exchange the return values
-        return rotation;
-      }
-    return OLED_ROTATION_180;
 }
 
 #endif // OLED_DRIVER_ENABLE
@@ -387,9 +369,9 @@ void matrix_scan_user(void) {
       /* unregister_code(KC_LGUI) */
 
     }
-    SEQ_ONE_KEY(KC_LEAD) {
+    SEQ_ONE_KEY(KC_O) {
         /* SEND_STRING(); */
-        SEND_STRING("jbernal" SS_ALGR("2") "unal.edu.co");
+      register_code(CM_6);
     }
     /* SEQ_TWO_KEYS(KC_E, KC_D) { */
     /*   SEND_STRING(SS_LGUI("r") "cmd\n" SS_LCTL("c")); */

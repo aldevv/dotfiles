@@ -42,6 +42,7 @@
 
 "Use Start! to run programs, and Dispatch to compile them
  set t_Co=256
+ lua require('config')
 "==================
 " SETTINGS
 "==================

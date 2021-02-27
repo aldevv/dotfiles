@@ -1,0 +1,22 @@
+{
+  "*": {
+    "console": "python manage.py shell",
+    "start": "python {project}/manage.py runserver"
+  },
+  "*/serializers.py": {
+    "alternate": ["{}/models.py", "{}/viewsets.py", "{}/urls.py"],
+    "type": "seri"
+  },
+  "*/viewsets.py": {
+    "alternate": ["{}/serializers.py", "{}/models.py", "{}/urls.py"],
+    "type": "viewsets"
+  },
+  "*/urls.py": {
+    "alternate": ["{}/models.py", "{}/serializers.py", "{}/viewsets.py"],
+    "type": "urls"
+  },
+  "*/models.py": {
+    "alternate": ["{}/urls.py", "{}/serializers.py", "{}/viewsets.py"],
+    "type": "models"
+  }
+}

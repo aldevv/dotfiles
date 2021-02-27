@@ -15,6 +15,9 @@ noremap k nzzzv
 noremap K Nzzzv
 nnoremap <leader>- :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
+nnoremap º <c-^>
+nnoremap ^ <c-^>
+
 " move lines without clipboard
 nnoremap E :m .-2<cr>==
 nnoremap N :m .+1<cr>==
