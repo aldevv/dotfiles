@@ -161,6 +161,7 @@ alias pkg='sudo eopkg'\
     xmod='xmodmap "$HOME/.config/.Xmodmap"'\
     lightdm='sudo lightdm-settings'\
     netstat='busybox netstat'\
+    retro="$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage"
 
 
 alias V='nvr -o'

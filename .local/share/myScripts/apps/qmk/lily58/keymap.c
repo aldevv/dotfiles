@@ -25,9 +25,6 @@
 //TODO PERMISSIVE HOLD
 //https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold
 //
-//TODO COMBOS
-//https://beta.docs.qmk.fm/using-qmk/software-features/feature_combo
-//
 //TODO emojis
 //https://beta.docs.qmk.fm/using-qmk/software-features/feature_unicode
 //
@@ -80,7 +77,7 @@ enum combos {
 };
 
 const uint16_t PROGMEM zq_combo[] = {KC_Z, KC_Q, COMBO_END};
-const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM jk_combo[] = {LCM_J, LCM_K, COMBO_END};
 const uint16_t PROGMEM copy_combo[] = {KC_Z, KC_C, COMBO_END};
 const uint16_t PROGMEM paste_combo[] = {KC_X, KC_V, COMBO_END};
 

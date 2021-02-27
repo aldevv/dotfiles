@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 
-#define SPLIT_USB_DETECT
+/* #define SPLIT_USB_DETECT */
 //#define MASTER_LEFT
 //#define MASTER_RIGHT
 // needed to flash with make lily58:mine-def:avrdude-split-left with only left side connected

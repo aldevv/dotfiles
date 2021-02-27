@@ -29,7 +29,6 @@
 "run in the background use jobstart
 "map <leader>ra :call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
 "cgn change <highlighted item>, useful when you searched something
-"shellescape: has 2 uses, in system() and in :!. pass 1 for :! commands so it escapes the quotes, and dont pass anything for system()
 "commands
 "
 " see operator pending mappings (omap) for keybinding mappings

@@ -1966,78 +1966,17 @@ nnoremap <leader>.s :VimApmShutdown<cr>
 "========================
 " VIM-BUJO
 "========================
-let g:bujo#window_width = 40
+let g:bujo#window_width = 50
 let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
-nmap <silent><leader>,g :call BujoGlobal()<CR>
-nmap <silent><leader>,; :call BujoGlobal()<CR>
-nmap <silent><leader>,, :call BujoProject()<CR>
-" nmap <M-,> <Plug>BujoAddnormal
-" imap <M-,> <Plug>BujoAddinsert
-"
-" returns 0 if not found
-function SearchCheck()
-" search string in current cursor pos and backwards for - character
-  return (search('-', 'nc', line('.')) || search('-', 'nbc', line('.')))
-endfunction
-
-nmap <expr><M-,> SearchCheck() ? 'i[] ' : 'i- [] '
-imap <expr><M-,> SearchCheck() ? '[] ' : '- [] '
+map <silent><leader>,g <Plug>(BujoGlobal)
+map <silent><leader>,; <Plug>(BujoGlobal)
+map <silent><leader>,, <Plug>(BujoProject)
+map <silent><leader>,P <Plug>(BujoPrivate)
+map <M-,> <Plug>(BujoAddnormal)
+imap <M-,> <Plug>(BujoAddinsert)
 "TODO add check insert like the 2 above
-nmap <M-.> <Plug>BujoChecknormal
-imap <M-.> <Plug>BujoCheckinsert
-
-noremap <leader>,P :call BujoPrivate()<CR>
-
-function BujoPrivate()
-if (expand('%') == 'todo.md')
-  if &mod == 1
-    :wq!
-    let date = strftime('%F')
-    silent call git#push(expand('$WIKI'), date)
-    " silent exec 'Start! -wait=never git -C $HOME/.cache/bujo add . && git -C $HOME/.cache/bujo commit -m "$(date)" && git -C $HOME/.cache/bujo push origin master'
-  else
-    :q
-  endif
-else
-  set nosplitright
-  exec ':vs $WIKI/todo.md'
-  set splitright
-endif
-endfunction
-
-function BujoGlobal()
-if (expand('%') == 'todo.md')
-  if &mod == 1
-    :wq!
-    let date = strftime('%F')
-    silent call git#push(expand('$HOME/.cache/bujo'), date)
-    " silent exec 'Start! -wait=never git -C $HOME/.cache/bujo add . && git -C $HOME/.cache/bujo commit -m "$(date)" && git -C $HOME/.cache/bujo push origin master'
-  else
-    :q
-  endif
-else
-  set nosplitright
-  exec ':Todo g'
-  set splitright
-endif
-endfunction
-
-function BujoProject()
-if (expand('%') == 'todo.md')
-  if &mod == 1
-    :wq!
-    let date = strftime('%F')
-    silent call git#push(expand('$HOME/.cache/bujo'), date)
-    " silent exec 'Start! -wait=never git -C $HOME/.cache/bujo add . && git -C $HOME/.cache/bujo commit -m "$(date)" && git -C $HOME/.cache/bujo push origin master'
-  else
-    :q
-  endif
-else
-  set nosplitright
-  exec ':Todo'
-  set splitright
-endif
-endfunction
+map <M-.> <Plug>(BujoChecknormal)
+imap <M-.> <Plug>(BujoCheckinsert)
 
 "========================
 " VIM-MAN

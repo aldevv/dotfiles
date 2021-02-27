@@ -83,7 +83,7 @@ Plug 'wincent/vcs-jump'
 Plug 'szw/vim-maximizer'
 Plug 'stefandtw/quickfix-reflector.vim'
 " task manager
-Plug 'vuciv/vim-bujo'
+" Plug 'vuciv/vim-bujo'
 Plug 'vim-utils/vim-man'
 Plug 'osyo-manga/vim-brightest'
 Plug 'bfrg/vim-cpp-modern'
