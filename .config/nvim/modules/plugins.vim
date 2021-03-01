@@ -105,7 +105,10 @@ Plug 'vim-test/vim-test'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-dotenv'
-Plug 'tpope/vim-dadbod'
+" Plug 'tpope/vim-dadbod'
+" Plug 'dbeniamine/cheat.sh-vim'
+Plug 'RishabhRD/popfix'
+Plug 'RishabhRD/nvim-cheat.sh'
 " TODO check these 3!!
 " https://github.com/kristijanhusak/vim-dadbod-ui
 call plug#end()

@@ -47,7 +47,7 @@ endfunction
 " If we are passed an argument, it means that the user wants to open the
 " general bujo file, so we also return the general file path in that case
 function s:GetBujoFilePath(general)
-  if a:general || !s:InGitRepository()
+  if a:general || !s:InGitRepository() || expand('%:p:h') == g:bujo#todo_file_path
     return g:bujo#todo_file_path . "/todo.md"
   else
     let repo_name = s:GetToplevelFolder()

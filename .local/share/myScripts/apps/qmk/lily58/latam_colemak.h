@@ -55,7 +55,7 @@
 #define LCM_ACUT KC_LBRC  // ´
 #define LCM_MINS KC_SLSH // -
 // to change
-#define LCM_PLUS S(KC_RBRC)  // +
+#define LCM_PLUS KC_RBRC  // +
 
 // Row 2
 #define LCM_Q    KC_Q    // Q

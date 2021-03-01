@@ -106,11 +106,16 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let NERDTreeShowHidden=1
 let g:plug_window = 'noautocmd vertical topleft new'
 let NERDTreeShowHidden=1
-
+" change root, not cwd
+let NERDTreeMapChangeRoot= 'cv'
+" change cwd
+let NERDTreeMapChdir = 'cr'
+" go back to cwd
+let NERDTreeMapCWD= 'd'
 let NERDTreeMenuUp   = 'e'
 let NERDTreeMenuDown = 'n'
 
-let NERDTreeMapOpenExpl = 'k'
+let NERDTreeMapOpenExpl = 'w'
 let NERDTreeMapOpenSplit = "s"
 let NERDTreeMapPreview = "o"
 let NERDTreeMapOpenRecursively= "I"
@@ -914,7 +919,7 @@ call FormatSelector()
 "-----------
 " Javascript
 "-----------
-autocmd FileType javascript,,typescript let &l:formatprg='prettier --stdin-filepath ' .expand('%'). ' --print-width 90'
+autocmd FileType javascript,typescript let &l:formatprg='prettier --stdin-filepath ' .expand('%'). ' --print-width 90'
 " uses google style
 " autocmd FileType  let &l:formatprg='clang-format --assume-filename=' . expand('%:t'). ' -style=google'
 autocmd FileType java,c,c++ let &l:formatprg='clang-format --assume-filename="' . expand('%:t'). '" -style=file'
@@ -1473,13 +1478,19 @@ let g:tagbar_map_openallfolds = 'zR'
 let g:tagbar_map_closeallfolds = 'zM'
 let g:tagbar_map_hidenonpublic = 'h'
 
-" ranger.vim
+"=========
+" RANGER.VIM
+"=========
 let g:ranger_replace_netrw = 1
 let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0
 nmap <leader>sr :Ranger<cr>
 
-" bclose
+
+"=========
+" BCLOSE
+"=========
+"The :Bclose command deletes a buffer without changing the window layout, unlike :bd.
 let g:bclose_no_plugin_maps=1
 
 " eunuch (Basic filesystem settings)
@@ -2192,3 +2203,102 @@ function! s:env(var) abort
 endfunction
 
 let db_url = s:env('DATABASE_URL')
+
+"==========
+"CHEATSHEET
+"==========
+"vim.g.cheat_default_window_layout = 'split'
+nnoremap <silent> <leader>K :Cheat<cr>
+"===============
+"cheatsheet official
+" let g:CheatSheetDoNotMap=1
+" let g:CheatPager='bat'
+"   " Pager
+" nnoremap <script> <silent> <leader>KK
+"             \ :call cheat#cheat("", getcurpos()[1], getcurpos()[1], 0, 2, '!')<CR>
+" vnoremap <script> <silent> <leader>KK
+"             \ :call cheat#cheat("", -1, -1, 2, 2, '!')<CR>
+
+
+
+" " Error providers
+" " Currently errors are search from the quickfix, then from syntastic errors. To change this order :
+" " let  g:CheatSheetProviders = ['syntastic', 'quickfix']
+" let  g:CheatSheetProviders = ['quickfix']
+
+" nnoremap <script> <silent> <leader>KB
+"               \ :call cheat#cheat("", getcurpos()[1], getcurpos()[1], 0, 0, '!')<CR>
+" vnoremap <script> <silent> <leader>KB
+"               \ :call cheat#cheat("", -1, -1, 2, 0, '!')<CR>
+
+" vnoremap <script> <silent> <leader>KL  :call cheat#session#last()<CR>
+" nnoremap <script> <silent> <leader>KL  :call cheat#session#last()<CR>
+
+" " Paste
+" nnoremap <script> <silent> <leader>KP
+"             \ :call cheat#cheat("", getcurpos()[1], getcurpos()[1], 0, 4, '!')<CR>
+" vnoremap <script> <silent> <leader>KP
+"             \ :call cheat#cheat("", -1, -1, 4, 1, '!')<CR>
+
+" nnoremap <script> <silent> <leader>Kp
+"             \ :call cheat#cheat("", getcurpos()[1], getcurpos()[1], 0, 3, '!')<CR>
+" vnoremap <script> <silent> <leader>Kp
+"             \ :call cheat#cheat("", -1, -1, 3, 1, '!')<CR>
+
+" " Buffer
+" nnoremap <script> <silent> <leader>KE
+"             \ :call cheat#cheat("", -1, -1 , -1, 5, '!')<CR>
+" vnoremap <script> <silent> <leader>KE
+"             \ :call cheat#cheat("", -1, -1, -1, 5, '!')<CR>
+"  " Toggle comments
+" nnoremap <script> <silent> <leader>KC :call cheat#navigate(0, 'C')<CR>
+" vnoremap <script> <silent> <leader>KC :call cheat#navigate(0, 'C')<CR>
+
+"   " Frameworks switch
+" nnoremap <script> <silent> <leader>Kf
+"             \ :call cheat#frameworks#cycle(1)<CR>
+" vnoremap <script> <silent> <leader>Kf
+"             \ :call cheat#frameworks#cycle(1)<CR>
+" nnoremap <script> <silent> <leader>KF
+"             \ :call cheat#frameworks#cycle(-1)<CR>
+" vnoremap <script> <silent> <leader>KF
+"             \ :call cheat#frameworks#cycle(-1)<CR>
+" nnoremap <script> <silent> <leader>Kt
+"             \ :call cheat#frameworks#cycle(0)<CR>
+" vnoremap <script> <silent> <leader>Kt
+"             \ :call cheat#frameworks#cycle(0)<CR>
+" nnoremap <script> <silent> <leader>KT
+"             \ :call cheat#frameworks#autodetect(1)<CR>
+" vnoremap <script> <silent> <leader>KT
+"           \ :call cheat#frameworks#autodetect(1)<CR>
+
+
+
+"     " <leader>Kt : Use filetype instead of framework
+"     " <leader>KT : Use autodetected framework
+"     " <leader>Kf : Use next defined framework for current filetype
+"     " <leader>KF : Use previous defined framework for current filetype
+
+" " override frameworks
+"  " let g:CheatSheetFrameworks = {
+"  "                \ 'python' : ['python', 'django', ],
+"                 " \ 'javascript' : ['javascript', 'node', 'angular', 'jquery'],
+"                 " \ 'php' : ['php', 'symphony', 'yii', 'zend'],
+"                 " \}
+
+
+" " In the cheat buffer, the following mappings are also available :
+
+" "     <localleader>h Previous Answer
+" "     <localleader>j Next Question
+" "     <localleader>k Previous Question
+" "     <localleader>l Next Answer
+" "     <localleader>H Previous history
+" "     <localleader>J Next "See also"
+" "     <localleader>K Previous "See also"
+" "     <localleader>L Next history
+" " cheat sheet pager
+" " let g:CheatPager='less -R'
+
+" "" pygmentize theme used for pager output, see :CheatPager :styles-demo
+" " let g:CheatSheetPagerStyle=rrt

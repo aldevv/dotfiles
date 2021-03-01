@@ -13,6 +13,7 @@ nnoremap i l
 vnoremap i l
 noremap k nzzzv
 noremap K Nzzzv
+" put last searched items into QuickFix window
 nnoremap <leader>- :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
 nnoremap º <c-^>
