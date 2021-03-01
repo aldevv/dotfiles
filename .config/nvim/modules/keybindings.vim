@@ -394,7 +394,9 @@ function! RunnerTerminal()
 endfunction
 
 " open browser in current file folder
-map <silent> <leader>ra :silent call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
+map <silent> <leader>.r :silent call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
+map <silent> <leader>.R :silent call jobstart('setsid st -e sudo ranger $(dirname %) 2>&1')<cr>
+map <silent> <leader>.- :silent call jobstart('setsid st -e sudo nvim ' . expand('%:p') . ' "+normal ' . line('.') . 'G' . col('.') . '\|" 2>&1')<cr>
 "old
 " map <leader>ra :silent !setsid st -e ranger $(dirname %) 2>&1 &<cr>
 

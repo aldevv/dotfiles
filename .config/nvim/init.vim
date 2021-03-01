@@ -1,6 +1,7 @@
 " read usr_1 for hard/fast way of learning vimscript
 " read vimscript the hard way easy/slow way of learning vimscript
 "
+
 " ============================
 "   My nvim Colemak dotfile
 "============================
@@ -50,7 +51,9 @@
 "==================
 " PLUGINS
 "==================
+if $USER != "root"
  source ~/.config/nvim/modules/plugins.vim
+endif
 
 "==================
 " KEYBINDINGS
@@ -60,7 +63,9 @@
 "==================
 " PLUGINS SETTINGS
 "==================
+if $USER != "root"
  source ~/.config/nvim/modules/plugins-settings.vim
+ endif
 
 "==================
 " APPEARANCE
