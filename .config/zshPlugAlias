@@ -163,6 +163,7 @@ alias pkg='sudo eopkg'\
     netstat='busybox netstat'\
     retro="$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage"\
     au="autorandr --change && wal -R"\
+    searchCode="firefox https://docs.github.com/en/github/searching-for-information-on-github/searching-code"\
 
 
 alias V='nvr -o'

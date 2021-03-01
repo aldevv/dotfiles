@@ -1,6 +1,8 @@
 #!/bin/sh
 source "$HOME/.config/nvm/nvm.sh"
-nvm install node
+if type "node" &>/dev/null; then
+    nvm install node
+fi
 #nvm use default
 #nvm_path="$HOME/.config/nvm/versions/node"
 #node=$(ls $nvm_path | sed -n -E '/v[0-9]+\.[0-9]+\.[0-9]+$/p' | sort -r  | sed '1q')
@@ -10,9 +12,8 @@ nvm install node
 
 # cant run npm from script when installed from nvm, copy and paste these to terminal
 
-NPM_CONFIG_PREFIX=$HOME/.joplin-bin 
-npm install -g joplin
-sudo -u $1 ln -s $HOME/.joplin-bin/bin/joplin /usr/bin/joplin
+NPM_CONFIG_PREFIX=$HOME/.config/.joplin-bin npm install -g joplin
+sudo -u "$SUDO_USER" ln -s $HOME/.config/.joplin-bin/bin/joplin /usr/bin/joplin
 
 #sync terminal joplin https://joplinapp.org/terminal/    if it fails, delete the joplin directory in .config
 #:config sync.target 7

@@ -109,6 +109,7 @@ Plug 'tpope/vim-dotenv'
 " Plug 'dbeniamine/cheat.sh-vim'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-cheat.sh'
+Plug 'c-brenn/fuzzy-projectionist.vim'
 " TODO check these 3!!
 " https://github.com/kristijanhusak/vim-dadbod-ui
 call plug#end()

@@ -23,4 +23,4 @@ cfop    ~/.local/share/myScripts/os/solus/packages
 cfl     ~/Master/Projects/Micro/Lily58/qmk_firmware/keyboards/lily58/keymaps/mine-def/keymap.c
 cfK     ~/.local/share/myScripts/apps/qmk/lily58/keymap.c
 cfZ     /root/.zshrc
-cfP     /root/.zprofile
+cfP     $APPS/nvim/projections/global/.projections.json

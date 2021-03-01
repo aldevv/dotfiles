@@ -111,7 +111,7 @@ augroup set_latex_env
 augroup END
 " setfiletype doesn't change the filetype if already set
 " add the filetype in the name of the custom one, so it loads the correct syntax
-autocmd! BufRead,BufNewFile .projection  set filetype=projection.json syntax=json
+autocmd! BufRead,BufNewFile .projections.json  set filetype=projections.json syntax=json
 autocmd! BufRead,BufNewFile .vimspector.json  set filetype=vimspector.json syntax=json
 
 

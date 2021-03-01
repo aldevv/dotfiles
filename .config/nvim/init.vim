@@ -77,4 +77,3 @@ if $USER != "root"
 "==================
  source ~/.config/nvim/modules/automation.vim
 
-" set shellcmdflag=-ic

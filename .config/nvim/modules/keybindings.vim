@@ -397,6 +397,7 @@ endfunction
 map <silent> <leader>.r :silent call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
 map <silent> <leader>.R :silent call jobstart('setsid st -e sudo ranger $(dirname %) 2>&1')<cr>
 map <silent> <leader>.- :silent call jobstart('setsid st -e sudo nvim ' . expand('%:p') . ' "+normal ' . line('.') . 'G' . col('.') . '\|" 2>&1')<cr>
+map <silent> <leader>.t :silent call jobstart('setsid st')<cr>
 "old
 " map <leader>ra :silent !setsid st -e ranger $(dirname %) 2>&1 &<cr>
 
@@ -419,11 +420,11 @@ endf
 " ABBREVIATIONS
 "====================
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> im import
-" autocmd FileType python,java,js,jsx,ts iabbrev <buffer> rt return
-" autocmd FileType python,java,js,jsx,ts iabbrev <buffer> fa False
-" autocmd FileType python,java,js,jsx,ts iabbrev <buffer> tr True
-" autocmd FileType python,java,js,jsx,ts iabbrev <buffer> br Break
-" autocmd FileTYpe c,cpp,java imap < <><esc>ha
+autocmd FileType python,java,js,jsx,ts iabbrev <buffer> rrt return
+autocmd FileType python,java,js,jsx,ts iabbrev <buffer> ffa False
+autocmd FileType python,java,js,jsx,ts iabbrev <buffer> ttr True
+autocmd FileType python,java,js,jsx,ts iabbrev <buffer> bbr Break
+autocmd FileTYpe c,cpp,java,html imap < <><esc>ha
 
 " use * in visual mode
 function! s:VSetSearch()
@@ -438,23 +439,6 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
 " map <silent><leader>,f :silent execute '!formatCode' shellescape(&ft)<cr>
 nnoremap <leader>V V`]
 
-command! -bang -nargs=? -complete=dir Cfz :e $HOME/.zshrc
-command! -bang -nargs=? -complete=dir Cfp :e $HOME/.zprofile
-command! -bang -nargs=? -complete=dir Cfxp :e $HOME/.xprofile
-command! -bang -nargs=? -complete=dir Cfxx :e $HOME/.Xresources
-command! -bang -nargs=? -complete=dir Cfv :e $XDG_CONFIG_HOME/nvim/init.vim
-command! -bang -nargs=? -complete=dir Cfr :e $XDG_CONFIG_HOME/ranger/rc.conf
-command! -bang -nargs=? -complete=dir Cfma :e $OS/autoInstallSudo\ -E
-command! -bang -nargs=? -complete=dir Cfa :e $XDG_CONFIG_HOME/zshPlugAlias
-
-" nnoremap <leader><space>cfv :Cfv<cr>
-" nnoremap <leader><space>cfz :Cfz<cr>
-" nnoremap <leader><space>cfp :Cfp<cr>
-" nnoremap <leader><space>cfr :Cfr<cr>
-" nnoremap <leader><space>cfxp :Cfxp<cr>
-" nnoremap <leader><space>cfxx :Cfxx<cr>
-" nnoremap <leader><space>cfma :Cfma<cr>
-" nnoremap <leader><space>cfa :Cfa<cr>
 
 " clear search highlights
 noremap <silent><leader>ll :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
