@@ -1898,16 +1898,74 @@ nmap <silent> <leader>Tg :TestVisit<CR>
   " let g:test#no_alternate = 1
 " <
 
-autocmd BufRead * let test#project_root = git#find_current_root()
-
 let test#strategy = "dispatch"
 " let test#strategy = "neoterm"
-let test#python#runner = 'djangotest'
+autocmd BufRead * let g:test#project_root = git#find_current_root()
+augroup TestType
+" autocmd User ProjectionistActivate call <SID>choose_test_runner()
+autocmd User ProjectionistActivate call <SID>get_testrunner()
+augroup END
+
+function s:get_testrunner()
+  " better way to do this? FileType autocmd didnt work
+
+  " if defined in projectionist, choose it, otherwise, let the plugin choose
+  let l:value = projectionist#query('testrunner')
+  if len(value) < 1
+    return
+  endif
+  let l:value = l:value[-1][1]
+  let l:extensions = ['ts', 'scala', 'js', 'py', 'java', 'rs', 'go', 'php']
+
+  if index(l:extensions, g:extension) >= 0 " si esta en el arreglo
+    if g:extension == "py"
+      let g:test#python#runner = l:value
+      return
+    endif
+    if g:extension == "java"
+      let g:test#java#runner = l:value
+      return
+    endif
+    if g:extension == "ts"
+      let g:test#typescript#runner = l:value
+      return
+    endif
+    if g:extension == "js"
+      let g:test#javascript#runner = l:value
+      return
+    endif
+    if g:extension == "go"
+      let g:test#go#runner = l:value
+      return
+    endif
+    if g:extension == "rs"
+      let g:test#rust#runner = l:value
+      return
+    endif
+    if g:extension == "scala"
+      let g:test#scala#runner = l:value
+      return
+    endif
+    if g:extension == "php"
+      let g:test#php#runner = l:value
+      return
+    endif
+  endif
+endfunction
+
+function s:choose_test_runner()
+autocmd FileType python let g:test#python#runner = projectionist#query('testrunner')[1][1]
+autocmd FileType javascript,typescript let g:test#javascript#runner = projectionist#query('testrunner')[1][1]
+  autocmd FileType java let g:test#java#runner = projectionist#query('testrunner')[1][1]
+  autocmd FileType go let g:test#go#runner = projectionist#query('testrunner')[1][1]
+  autocmd FileType scala let g:test#scala#runner = projectionist#query('testrunner')[1][1]
+  autocmd FileType php let g:test#php#runner = projectionist#query('testrunner')[1][1]
+endfunction
+
+
+" let test#strategy = "neoterm"
 " let g:test#runner_commands = ['DjangoTest']
-" let g:test#javascript#runner = 'jest'
 " Runners available are 'gotest', 'ginkgo', 'richgo', 'delve'
-" let test#go#runner = 'ginkgo'
-" let test#scala#runner = 'blooptest'
 " let test#java#runner = 'gradletest'
 " let test#php#phpunit#executable = 'phpunit artisan test'
 

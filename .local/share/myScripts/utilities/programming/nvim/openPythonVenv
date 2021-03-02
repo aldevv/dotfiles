@@ -1,0 +1,6 @@
+#!/bin/bash
+
+file="$@"
+source findMountVenv
+echo "$file"
+nvim -- "$file"

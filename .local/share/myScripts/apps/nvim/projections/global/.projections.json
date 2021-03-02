@@ -1,16 +1,12 @@
 {
-  "*": {
-    "dispatch": "chmod +x %; ./%"
-  },
-
   "*.js": {
     "alternate": [
       "{dirname}/{basename}.test.js",
       "{dirname}/__tests__/{basename}-test.js"
     ],
     "type": "source",
-    "console": "node {}.js",
-    "dispatch": "node {}.js"
+    "dispatch": "node {}.js",
+    "console": "node {}.js"
   },
 
   "*.ts": {
@@ -41,17 +37,17 @@
   },
 
   "*.py": {
-    "dispatch": "python3 %",
-    "start": "python3 %"
+    "dispatch": "python3 %"
   },
 
   "*.rs": {
-    "dispatch": "cargo run",
-    "console": "cargo run"
+    "dispatch": "cargo run"
   },
 
   "*.go": {
     "dispatch": "go run {file}"
+  },
+  "*": {
+    "dispatch": "chmod +x %; ./%"
   }
 }
-
