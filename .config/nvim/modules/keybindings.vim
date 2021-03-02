@@ -361,7 +361,7 @@ function! Runner()
   let l:runner = 'Dispatch! '
   let l:special_cases = ['java', 'rs', 'go']
   if index(l:special_cases, g:extension) >= 0 " si esta en el arreglo
-    let l:runner = 'Dispatch! '
+    let l:runner = 'Dispatch!'
   else 
     let l:runner = 'Dispatch '
   endif
@@ -369,21 +369,6 @@ function! Runner()
   execute 'Copen'
   execute "normal! \<c-w>k"
 endfunction
-
-
-" function! Runner()
-"   exec 'silent w'
-"   let l:runner = 'Dispatch '
-"   if g:extension != 'java'
-"     execute l:runner
-"   else
-"     let l:runner = 'Dispatch! '
-"     echo "entre"
-"     execute l:runner
-"     execute 'Copen'
-"     execute "normal! \<c-w>k"
-"   endif
-" endfunction
 
 function! RunnerTerminal()
   exec 'silent w'
@@ -484,5 +469,3 @@ cnoreabbrev Sne CocCommand snippets.editSnippets
 
 " this is to exit select mode when using snips
 snoremap <Esc> <c-c>
-
-nmap <leader>.l :!$PROJECTS/Micro/Lily58/qmk_firmware/bin/qmk flash -kb lily58 -km mine-def<cr>

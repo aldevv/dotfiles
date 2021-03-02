@@ -53,8 +53,6 @@ alias pkg='sudo eopkg'\
     djan='cd /home/solus/dev/trydjango/src'\
     corona='/home/solus/dev/corona/get_info'\
     tord='/home/solus/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads'\
-    sac='[ -d ".venv" ] || (echo "create? (default: y)"; read ans; [ "$ans" != "n" ] && python3 -m venv .venv) && source .venv/bin/activate'\
-    sacr='source installReq' \
     ven='wine .wine/drive_c/Program\ Files/Vensim/venPLE32.exe'\
     dotrepo="git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME"\
     dst='dotrepo status'\

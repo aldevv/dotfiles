@@ -9,19 +9,7 @@ endif
 " Vertically center document when entering insert mode
 " autocmd InsertEnter * norm zz
 
-
-"bufwritepost  is when you save them
-"bufreadpost  is when you open them
-
 " Utilities
-" auto save if is a python file
-   " autocmd BufReadPost *.py :call Autosaving()
-   "
-" commenting in python
-"    autocmd FileType python     nnoremap <buffer> gcc I#<esc>
-
-" commenting in c,cpp
-"    autocmd FileType c,cpp     nnoremap <buffer> gcc I//<esc>
 
 " auto compile status bar dwm
     autocmd BufWritePost dwmstatus :!killall dwmstatus; setsid dwmstatus &
@@ -113,9 +101,3 @@ augroup END
 " add the filetype in the name of the custom one, so it loads the correct syntax
 autocmd! BufRead,BufNewFile .projections.json  set filetype=projections.json syntax=json
 autocmd! BufRead,BufNewFile .vimspector.json  set filetype=vimspector.json syntax=json
-
-
-"automatic ctags
-" au FileType {c,cpp} au BufWritePost <buffer> silent ! [ -e tags ] &&
-"     \ ( awk -F'\t' '$2\!="%:gs/'/'\''/"{print}' tags ; ctags -f- '%:gs/'/'\''/' )
-"     \ | sort -t$'\t' -k1,1 -o tags.new && mv tags.new tags

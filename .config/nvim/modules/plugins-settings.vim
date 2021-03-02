@@ -340,7 +340,7 @@ let g:coc_fzf_opts = []
 nnoremap <silent> <leader><space>a :<C-u>CocFzfList<CR>
 nnoremap <silent> <leader><space>cd       :<C-u>CocFzfList diagnostics<CR>
 nnoremap <silent> <leader><space>cD       :<C-u>CocFzfList diagnostics --current-buf<CR>
-nnoremap <silent> <leader><space>cc       :<C-u>CocFzfList commands<CR>
+nnoremap <silent> <leader><space>cm       :<C-u>CocFzfList commands<CR>
 nnoremap <silent> <leader><leader>ce       :<C-u>CocFzfList extensions<CR>
 nnoremap <silent> <leader><space>cl       :<C-u>CocFzfList location<CR>
 " nnoremap <silent> <leader>cv        :<C-u>CocFzfList outline<CR>
@@ -366,6 +366,7 @@ highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
 " \ 'coc-yaml',
 " for docker compose add to coc-settings
 "
+            " \ 'coc-python',
 let g:coc_global_extensions = [
             \ 'coc-marketplace',
             \ 'coc-java-debug',
@@ -377,7 +378,6 @@ let g:coc_global_extensions = [
             \ 'coc-tsserver',
             \ 'coc-css',
             \ 'coc-vimlsp',
-            \ 'coc-python',
             \ 'coc-sh',
             \ 'coc-diagnostic',
             \ 'coc-java',
@@ -442,7 +442,8 @@ nnoremap <silent><nowait> <leader>cn  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent><nowait> <leader>ce  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <leader>cR  :<C-u>CocRestart<cr>
-nnoremap <silent><nowait> <leader>cm  :<C-u>CocList marketplace<CR>
+nnoremap <silent><nowait> <leader>cM  :<C-u>CocList marketplace<CR>
+nnoremap <silent><nowait> <leader>cm  :<C-u>CocList commands<CR>
 nnoremap <silent><nowait> <leader>cv  :<C-u>CocList --auto-preview outline<cr>
 
 " implemented in coc-fzf
@@ -1884,19 +1885,32 @@ nmap <silent> <leader>Tf :TestFile<CR>
 nmap <silent> <leader>Ts :TestSuite<CR>
 nmap <silent> <leader>Tl :TestLast<CR>
 nmap <silent> <leader>Tg :TestVisit<CR>
-" let test#project_root = projectionist#query('project_root')
-let test#strategy = "neoterm"
-" let test#strategy = "dispatch"
 " https://github.com/vim-test/vim-test
+"
+" PROJECTIONIST INTEGRATION                       *test-projectionist*
 
+" If the |projectionist| plug-in is present, you can run a test command from an
+" application file, and test.vim will automatically try to run the
+" command on the "alternate" test file.
+
+" You can disable this integration by doing
+" >
+  " let g:test#no_alternate = 1
+" <
+
+autocmd BufRead * let test#project_root = git#find_current_root()
+
+let test#strategy = "dispatch"
+" let test#strategy = "neoterm"
 let test#python#runner = 'djangotest'
-let g:test#javascript#runner = 'jest'
+" let g:test#runner_commands = ['DjangoTest']
+" let g:test#javascript#runner = 'jest'
 " Runners available are 'gotest', 'ginkgo', 'richgo', 'delve'
-let test#go#runner = 'ginkgo'
-let test#scala#runner = 'blooptest'
-let test#java#runner = 'gradletest'
+" let test#go#runner = 'ginkgo'
+" let test#scala#runner = 'blooptest'
+" let test#java#runner = 'gradletest'
+" let test#php#phpunit#executable = 'phpunit artisan test'
 
-let test#php#phpunit#executable = 'phpunit artisan test'
 " The following setup will automatically run tests when a test file or its alternate application file is saved:
 
 " augroup test
