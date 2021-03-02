@@ -1,0 +1,7 @@
+{
+  "python.linting.enabled": true,
+  "python.formatting.autopep8Path": ".venv/bin/autopep8",
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintPath": ".venv/bin/pylint",
+  "python.formatting.provider": "autopep8"
+}
