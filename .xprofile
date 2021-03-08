@@ -8,6 +8,8 @@ fcitx & # for languages
 # custom scripts
 startupScripts
 DISPLAY=":0" picom -b
+# so the user can make connections to the xserver (docker)
+xhost local:root
 # this is for when picom 9 releases
 # DISPLAY=":0" picom -b --experimental-backends
 dwmstatus &
