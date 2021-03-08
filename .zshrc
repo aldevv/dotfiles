@@ -187,6 +187,7 @@ bindkey -s 'l' 'file=$(fd . -I -H "$LEARN" | fzf); [ -n "$file" ] && nvim "$fil
 bindkey -s 'o' '!\$^M'
 bindkey -s 'O' '!*^M'
 bindkey -s 't' '**	'
+bindkey -s '.' 'setsid st^M'
 
 _fzf_compgen_path() {
 

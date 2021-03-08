@@ -42,14 +42,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LEADER_TIMEOUT 400
 #define COMBO_COUNT 4
 #define COMBO_TERM 160
-#define TAPPING_TERM 190
+#define TAPPING_TERM 170
 /* #define */
 // KC_TRNS for no tap mod
 
+// parentesis
 /* #define LSPO_KEYS KC_LSFT, KC_LSFT, KC_8 */
 /* #define RSPC_KEYS KC_RSFT, KC_LSFT, KC_9 */
 // it doesn't read the colemak redefinitions
-// quot = {
-// bsls = {
+// quot = [
+// bsls = ]
 #define LSPO_KEYS KC_LSFT, KC_LSFT, KC_QUOT
 #define RSPC_KEYS KC_RSFT, KC_LSFT, KC_BSLS

@@ -1,13 +1,17 @@
 set selection-clipboard clipboard
 
+map f scroll full-down
+map b scroll full-up
+map F follow
+
 map h scroll left
 map n scroll down
 map e scroll up
 map i scroll right
 map G scroll bottom
-map bb focus_inputbar ":bmark \""
-map bl focus_inputbar :blist
-map bd focus_inputbar ":bdelete "
+map <C-b> focus_inputbar ":bmark \""
+map <C-l> focus_inputbar :blist
+map <C-d> focus_inputbar ":bdelete "
 map t recolor
 map u scroll half-up
 map d scroll half-down

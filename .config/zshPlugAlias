@@ -105,7 +105,7 @@ alias pkg='sudo eopkg'\
     ytvb="youtube-dl -f bestvideo+bestaudio "\
     du="du -hd 1"\
     pk="$PROGRAMS/PacketTracer-AppImage/out/Cisco_Packet_Tracer-7.2.1.glibc2.15-x86_64.AppImage"\
-    tv="$HOME/.local/Programs/teamviewer/teamviewer"\
+    tv="$PROGRAMS/teamviewer/teamviewer"\
     zm="$HOME/.local/Programs/zoom/ZoomLauncher"\
     nm1="nmcli d wifi connect HYPERION "\
     nm2="nmcli d wifi connect Hyperion_R "\
@@ -915,7 +915,7 @@ alias dkCR='docker container run -e COLUMNS=`tput cols` -e LINES=`tput lines` -i
 alias dkCRb='docker container run -e COLUMNS=`tput cols` -e LINES=`tput lines` -i -t --rm --entrypoint /bin/bash'
 alias dkCs='docker container start'
 alias dkCst='docker container stats'
-alias dkCx='docker container stop'
+alias dkCS='docker container stop'
 alias dkCtop='docker container top'
 alias dkCP='docker container unpause'
 alias dkCup='docker container update'
@@ -995,11 +995,11 @@ alias dkmrm='docker-machine rm'
 alias dkms='docker-machine start'
 alias dkmsh='docker-machine ssh'
 alias dkmst='docker-machine status'
-alias dkmS='docker-machine restart'
+alias dkmx='docker-machine restart'
 alias dkmu='docker-machine url'
 alias dkmup='docker-machine upgrade'
 alias dkmv='docker-machine version'
-alias dkmx='docker-machine stop'
+alias dkmS='docker-machine stop'
 
 # Docker Compose (c)
 alias dkc='docker-compose'
@@ -1022,11 +1022,11 @@ alias dkcR='docker-compose run -e COLUMNS=`tput cols` -e LINES=`tput lines` --rm
 alias dkcrm='docker-compose rm'
 alias dkcs='docker-compose start'
 alias dkcsc='docker-compose scale'
-alias dkcS='docker-compose restart'
+alias dkcx='docker-compose restart'
 alias dkcu='docker-compose up'
 alias dkcU='docker-compose up -d'
 alias dkcv='docker-compose version'
-alias dkcx='docker-compose stop'
+alias dkcS='docker-compose stop'
 
 #=======
 # GITHUB
@@ -1039,8 +1039,9 @@ alias ghiv='gh issue view --comments $(gh issue list | fzf --no-preview | cut -f
 # DJANGO
 #=======
 alias dj='python manage.py'
+alias djs='python manage.py shell'
+alias djtp= 'python manage.py test --parallel'
 alias djt='python manage.py test'
-alias djtp='python manage.py test --parallel'
 alias djr='python manage.py runserver'
 alias djM='python manage.py makemigrations'
 alias djm='python manage.py migrate'

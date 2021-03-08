@@ -48,7 +48,8 @@ noremap <c-w>i <c-w>l
 noremap <c-w>k <c-w>n
 
 " vertical version of <c-w>^
-noremap <silent><c-w>~ :vsp #<cr>
+noremap <silent><c-w>V :vsp #<cr>
+noremap <silent><c-w>S :sp #<cr>
 " noremap <a-n> <c-n>
 " noremap <a-e> <c-p>
 " nnoremap <CR> o<Esc>
@@ -315,7 +316,6 @@ map  <leader>ss :wq<CR>
 " map <leader><F1> :e ~/.config/nvim/init.vim<cr>
 nnoremap <F6> :e $HOME/.config/nvim/init.vim<cr>
 map <leader><F2> :e ~/.zshrc<cr>
-map <C-&> <C-^>
 " noremap  <leader>ww :w<CR>
 noremap  ! :!
 noremap  <F7> :set spell! \| set wrap<CR>

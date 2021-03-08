@@ -1898,8 +1898,8 @@ nmap <silent> <leader>Tg :TestVisit<CR>
   " let g:test#no_alternate = 1
 " <
 
-let test#strategy = "dispatch"
-" let test#strategy = "neoterm"
+" let test#strategy = "dispatch"
+let test#strategy = "neoterm"
 autocmd BufRead * let g:test#project_root = git#find_current_root()
 augroup TestType
 " autocmd User ProjectionistActivate call <SID>choose_test_runner()

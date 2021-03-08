@@ -221,7 +221,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                          _______, _______, _______,_______, _______, _______,\
   _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                          KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, \
   _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                             KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS, \
-  _______, LCM_LABK, _______, _______, _______, _______, _______,    _______, KC_PIPE, KC_GRAVE, LCM_IEXL, KC_LCBR, LCM_PLUS, _______, \
+  _______, LCM_LABK, LCM_PIPE, _______, _______, _______, _______,    _______, KC_PIPE, KC_GRAVE, LCM_IEXL, KC_LCBR, LCM_PLUS, _______, \
                              _______, _______, _______, KC_ALGR,                  _______,  _______, _______, _______\
 ),
 /* RAISE
@@ -372,6 +372,14 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LALT_T(KC_ENT):
             return TAPPING_TERM - 10;
+
+        case TD(TD_PLUS):
+            return TAPPING_TERM + 40;
+
+        case KC_LSPO:
+            return TAPPING_TERM - 20;
+        case KC_RSPC:
+            return TAPPING_TERM - 50;
         /* case LT(1, KC_GRV): */
         /*     return 130; */
         default:

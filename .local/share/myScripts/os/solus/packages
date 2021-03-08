@@ -25,7 +25,6 @@ mpd
 ncmpcpp
 asciidoc
 feh
-sxiv
 zeal
 ripgrep
 fd
@@ -39,7 +38,6 @@ snapd
 powerline-fonts
 font-symbola-ttf
 font-droid-ttf
-copyq
 bat
 picom
 xmodmap

@@ -30,7 +30,8 @@ class fzf_select(Command):
             -o -print 2> /dev/null | sed 1d | cut -b3- | fzf +m"
             # not working
             # command="rg . --hidden --follow -g '!{**/node_modules/*,.git,miniconda3,env,envs,__pycache__, libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache}' |fzf"
-        fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
+        fzf = self.fm.execute_command(
+            command, universal_newlines=True, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
             fzf_file = os.path.abspath(stdout.rstrip("\n"))
@@ -57,7 +58,7 @@ class rg_select(Command):
             local file
             file="$(
                 FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
-                        fzf --sort --preview="[[ ! -z {} ]] && bat --color always {} | rg --pretty --context 5 {q} 2>/dev/null" \
+                        fzf --height=40 --sort --preview="[[ ! -z {} ]] && bat --color always {} | rg --pretty --context 5 {q} 2>/dev/null" \
                                 --phony -q "$1" \
                                 --bind "change:reload:$RG_PREFIX {q}" \
                                 --preview-window="70%:wrap"
@@ -77,7 +78,8 @@ class rg_select(Command):
         # echo "opening $file" &&
         # xdg-open "$file" """
 
-        fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
+        fzf = self.fm.execute_command(
+            command, universal_newlines=True, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
             fzf_file = os.path.abspath(stdout.rstrip("\n"))
@@ -115,9 +117,11 @@ class YankContent(Command):
         elif file.image:
             cmd += ["-t", file.mimetype, file.path]
             subprocess.check_call(cmd)
-            self.fm.notify("Content of {} is copied to x clipboard".format(relative_path))
+            self.fm.notify(
+                "Content of {} is copied to x clipboard".format(relative_path))
         else:
-            self.fm.notify("{} is not an image file or a text file.".format(relative_path))
+            self.fm.notify(
+                "{} is not an image file or a text file.".format(relative_path))
 
     def tab(self, tabnum):
         return self._tab_directory_content()
