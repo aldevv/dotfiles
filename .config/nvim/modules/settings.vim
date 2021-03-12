@@ -20,7 +20,7 @@ set title
 " let &titlestring = '%t%( %m%r%)%( <%{get(g:, "cur_project", "")}>%)' .
 "             \ '%( (%{expand("%:~:.:h")})%)' .
             " \ '%( (%{getcwd()})%)%( %a%) - %(%{v:servername}%)'
-  set titlestring=\ %{expand(\"%:p:~\")}
+  set titlestring=\ %{expand(\"%:p:~\")}%a%r%m 
 " set titlestring=%t
 " set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
 " set title titlestring=%<%F%=%l/%L-%P titlelen=70

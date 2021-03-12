@@ -27,6 +27,8 @@ map E scroll half-up
 map k search forward
 map K search backward
 
+map j toggle_statusbar
+
 # For TOC navigation
 map [index] o toggle_index
 

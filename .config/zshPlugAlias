@@ -445,21 +445,24 @@ alias gke='\gitk --all $(git log -g --pretty=%h)'
 
 # alias gl='git pull'
 alias grf="git reflog"
+
+alias glp="_git_log_prettily"
+
 alias glg="git log --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr)'"
+alias glG='git log --graph'
 alias glgs='git log --stat'
 alias glgp='git log --stat -p'
-alias glgg='git log --graph'
-alias glgga='git log --graph --decorate --all'
-alias glgm='git log --graph --max-count=10'
-alias glo='git log --oneline --decorate'
-alias glol="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
-alias glols="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --stat"
-alias glod="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'"
-alias glods="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short"
-alias glola="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
-alias glog='git log --oneline --decorate --graph'
-alias gloga='git log --oneline --decorate --graph --all'
-alias glp="_git_log_prettily"
+alias glGa='git log --graph --decorate --all'
+alias glGm='git log --graph --max-count=10'
+alias glgo='git log --oneline --decorate'
+alias glGo='git log --oneline --decorate --graph'
+alias glGoa='git log --oneline --decorate --graph --all'
+
+alias glGol="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+alias glGols="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --stat"
+alias glGod="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'"
+alias glGods="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short"
+alias glGola="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
 
 alias gm='git merge'
 alias gmom='git merge origin/$(git_main_branch)'

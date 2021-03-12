@@ -187,8 +187,8 @@ bindkey -s 'l' 'file=$(fd . -I -H "$LEARN" | fzf); [ -n "$file" ] && nvim "$fil
 bindkey -s 'o' '!\$^M'
 bindkey -s 'O' '!*^M'
 bindkey -s 't' '**	'
-bindkey -s '.' 'setsid st^M'
-
+# tested, this shows stderr correctly on new terminal window
+bindkey -s '.' 'setsid st &>/dev/null^M'
 _fzf_compgen_path() {
 
   excluded=".git node_modules plugged .env __pycache__ .wine .npm .icons .vscode */nvm/backups .cache undodir __pycache__ **/node_modules/* env envs "
