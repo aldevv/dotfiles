@@ -1,0 +1,40 @@
+version: '3.5'
+
+x-vars:
+  &db-variables
+  MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+
+
+services:
+  web:
+    image: php:apache
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/var/www/html
+    networks:
+      - lamp
+
+  db:
+    image: mysql
+    environment: *db-variables
+    ports:
+      - "3306:3306"
+    volumes:
+      - ${VOLUMES}/mysql:/var/lib/mysql
+    networks:
+      - lamp
+
+  phpmyadmin:
+    image: phpmyadmin
+    depends_on:
+      - db
+    environment: *db-variables
+    ports:
+      - "8181:80"
+    networks:
+      - lamp
+networks:
+  lamp:

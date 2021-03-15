@@ -1049,3 +1049,8 @@ alias djr='python manage.py runserver'
 alias djM='python manage.py makemigrations'
 alias djm='python manage.py migrate'
 alias djl='python manage.py loadfixtures'
+#=======
+# REACT
+#=======
+# any arguments is the name of the app
+alias react='npx create-react-app'
