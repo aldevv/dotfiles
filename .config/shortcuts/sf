@@ -16,6 +16,7 @@ ms      ~/.local/share/myScripts/
 mo      ~/.local/share/myScripts/os/solus
 mO      ~/.local/share/myScripts/os/solus/Build-Programs
 mu      ~/.local/share/myScripts/utilities
+md      ~/.local/share/myScripts/useful/docker/docker-compose
 ma      ~/.local/share/myScripts/automation
 oc      /usr/share/doc
 mp      ~/.local/share/myScripts/apps

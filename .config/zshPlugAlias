@@ -19,6 +19,7 @@
 alias shock="cd $HOME'/.wine/drive_c/GOG Games/System Shock 2' && wine Shock2.exe"
 
 alias pkg='sudo eopkg'\
+    m="mkdir"\
     pkgsi="sudo eopkg li -l | awk '/Name:/ {sub(/,$/,\"\",\$2); name= \$2} /Installed Size:/{print \$5\$6, name}' | sort -h "\
     pkgl="sudo eopkg li"\
     pkgs="sudo eopkg sr"\
@@ -895,6 +896,7 @@ alias dkV='docker volume'
 alias dkv='docker version'
 alias dkw='docker wait'
 alias dkS='docker stop'
+alias dkSa='docker stop $(docker ps -a -q)'
 
 ## Container (C)
 alias dkC='docker container'

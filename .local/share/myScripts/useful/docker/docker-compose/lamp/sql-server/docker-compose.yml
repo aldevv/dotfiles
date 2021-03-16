@@ -1,0 +1,32 @@
+version: '3.5'
+
+x-vars:
+  &db-variables
+  MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+  SA_PASSWORD: 'Mypassword.'
+  ACCEPT_EULA: 'Y'
+
+services:
+  web:
+    image: php:apache
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/var/www/html
+    networks:
+      - lamp
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    environment: *db-variables
+    ports:
+      - "1433:1433"
+    volumes:
+      - ${VOLUMES}/sqlserver:/var/opt/mssql
+    networks:
+      - lamp
+
+networks:
+  lamp:

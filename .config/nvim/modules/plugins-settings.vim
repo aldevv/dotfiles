@@ -1081,7 +1081,7 @@ let g:closetag_shortcut = '>'
 " ==========
 " enable just for desired filetypes
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,js,jsx,ts EmmetInstall
+autocmd BufReadPre *.{html,css,js,jsx,ts} EmmetInstall
 let g:user_emmet_leader_key='<C-Y>'
 " alt-gr s
 let g:user_emmet_expandabbr_key = 'þ'
@@ -2013,8 +2013,10 @@ let g:VcsJumpMode="cwd" "can be buffer
 "===========
 " MAXIMIZER
 "===========
-nnoremap <silent><F3> :MaximizerToggle<CR>
-vnoremap <silent><F3> :MaximizerToggle<CR>gv
+" nnoremap <silent><F3> :MaximizerToggle<CR>
+" vnoremap <silent><F3> :MaximizerToggle<CR>gv
+nnoremap <silent><leader>m :MaximizerToggle<CR>
+vnoremap <silent><leader>m :MaximizerToggle<CR>gv
 inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
 
 "===========
