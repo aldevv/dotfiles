@@ -191,7 +191,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_COLEMAK] = LAYOUT( \
   KC_GRV,   WK1,    WK2,     WK3,     WK4,      WK5,                     WK6,     WK7,       WK8,     WK9,      WK0,     LCM_PLUS, \
   KC_TAB,   LCM_Q,   LCM_W,    LCM_F,    LCM_P,    LCM_G,               LCM_J,    LCM_L,    LCM_U,    LCM_Y,    TD(TD_PLUS), KC_LBRC, \
-  KC_ESC, LCM_A,   LCM_R,    LCM_S,    LCM_T,    LCM_D,                 LCM_H,    LCM_N,    LCM_E,    LCM_I,    LCM_O, LCM_LCBR, \
+  KC_ESC, LCM_A,   LCM_R,    LCM_S,    LCM_T,    LCM_D,                 LCM_H,    LCM_N,    LCM_E,    LCM_I,    LCM_O, KC_DEL, \
   KC_LSPO,  LCM_Z,   LCM_X,    LCM_C,    LCM_V,    LCM_B, LCM_BSLS,   KC_LEAD, LCM_K,    LCM_M,    LCM_COMM, LCM_DOT,  LCM_MINS, KC_RSPC,\
               OSL(_RAISE),KC_LGUI, LALT_T(KC_ENT), KC_RCTRL,   KC_BSPC, LT(_LOWER,KC_SPC), ROPT_T(KC_DEL), OSL(_LOWER) \
 ),

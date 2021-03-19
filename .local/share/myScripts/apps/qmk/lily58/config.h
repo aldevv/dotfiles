@@ -45,12 +45,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 170
 /* #define */
 // KC_TRNS for no tap mod
+// it doesn't read the colemak redefinitions
 
-// parentesis
+// KC_8 = (
+// KC_9 = )
 /* #define LSPO_KEYS KC_LSFT, KC_LSFT, KC_8 */
 /* #define RSPC_KEYS KC_RSFT, KC_LSFT, KC_9 */
-// it doesn't read the colemak redefinitions
 // quot = [
 // bsls = ]
-#define LSPO_KEYS KC_LSFT, KC_LSFT, KC_QUOT
-#define RSPC_KEYS KC_RSFT, KC_LSFT, KC_BSLS
+/* #define LSPO_KEYS KC_LSFT, KC_LSFT, KC_QUOT */
+/* #define RSPC_KEYS KC_RSFT, KC_LSFT, KC_BSLS */
+// quot = {
+// bsls = }
+#define LSPO_KEYS KC_LSFT, KC_TRNS, KC_QUOT
+#define RSPC_KEYS KC_RSFT, KC_TRNS, KC_BSLS
