@@ -1430,7 +1430,9 @@ nmap <leader><leader>dB <Plug>VimspectorToggleConditionalBreakpoint
 autocmd FileType json setlocal commentstring=//%s
 autocmd FileType sxhkdrc setlocal commentstring=#%s
 
-" splitjoin
+" ==========
+" SPLITJOIN
+" ==========
 let g:splitjoin_split_mapping = 'gs'
 let g:splitjoin_join_mapping = 'gS'
 
