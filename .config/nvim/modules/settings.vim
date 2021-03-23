@@ -3,15 +3,15 @@ syntax enable
 set nocompatible
 set shell=/bin/zsh
 let mapleader = "\<Space>"
-" let maplocalleader="\<BS>"
+let maplocalleader="\<BS>"
 "===================
 " WHICHKEY
 "===================
 " set timeoutlen=1500
 set timeoutlen=700
 nnoremap <silent><leader> :<c-u>WhichKey '<Space>'<CR>
-" nnoremap <silent><localleader> :<c-u>WhichKey '<BS>' <CR>
-" nnoremap <silent> <leader><space>   :<c-u>WhichKey '<leader><leader>'<CR>
+nnoremap <silent><localleader> :<c-u>WhichKey "\<BS\>" <CR>
+nnoremap <silent> <leader><space>   :<c-u>WhichKey '<leader><leader>'<CR>
 "======================
 
 set updatetime=1500 " this is for autosave in tex files(every cursorhold event)

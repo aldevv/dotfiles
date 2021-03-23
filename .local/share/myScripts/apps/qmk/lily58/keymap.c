@@ -59,7 +59,7 @@ enum my_macros {
     WK0,
     COMM_SPC,
     SCLN_END,
-    CLN_END
+    COLN_END
 };
 
 enum layer_number {
@@ -223,9 +223,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT( \
   _______, _______, _______, _______, _______, _______,                          _______, _______, _______,_______, _______, _______,\
   _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                          KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, \
-  _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                             KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS, \
-  _______, LCM_LABK, LCM_PIPE, LCM_IEXL, _______, _______, _______,    _______, KC_PIPE, KC_GRAVE, COMM_SPC, KC_LCBR, LCM_PLUS, _______, \
-                             _______, _______, _______, KC_ALGR,                  _______,  _______, _______, _______\
+  _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                             KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  _______, \
+  _______, LCM_LABK, LCM_RABK, LCM_IQUE, LCM_IEXL, LCM_GRV, _______,    _______, LCM_BSLS, LCM_PIPE, COMM_SPC, KC_LCBR, LCM_PLUS, _______, \
+                             _______, _______, _______, _______,                  _______,  _______, _______, _______\
 ),
 /* RAISE
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -246,7 +246,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, KC_PSCREEN, \
   KC_F11,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F12, \
   _______, KC_BRID, KC_BRIU, KC_MUTE, KC_VOLD, KC_VOLU,                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  LSFT(KC_PSCREEN), XXXXXXX, \
-  _______, _______, _______, _______, KC_MEDIA_SELECT,_______,_______,  _______, LCM_IEXL, TD(TD_PAR),  SCLN_END, CLN_END, _______, _______, \
+  _______, _______, _______, _______, KC_MEDIA_SELECT,_______,_______,  _______, LCM_IEXL, TD(TD_PAR),  SCLN_END, COLN_END, _______, _______, \
                              _______, _______, _______,  _______,               KC_DEL, KC_RCTRL,  LT(_ADJUST,KC_SPC), _______ \
 ),
 
@@ -436,11 +436,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false; // Skip all further processing of this key
             case SCLN_END:
                 tap_code16(KC_END);
-                SEND_STRING(";");
+                tap_code16(LCM_SCLN);
                 return false; // Skip all further processing of this key
-            case CLN_END:
+            case COLN_END:
                 tap_code16(KC_END);
-                SEND_STRING(":");
+                tap_code16(LCM_COLN);
                 return false; // Skip all further processing of this key
                 /* case KC_ENTER: */
                 // Play a tone when enter is pressed

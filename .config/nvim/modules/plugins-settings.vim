@@ -186,16 +186,16 @@ nnoremap <leader>ac :Commands<cr>
 nnoremap <leader>am :Maps<cr>
 " TODO, make it auto from the bookmarks files
 " TODO, check whichkey issue
-nnoremap <BS>ms :FilesScripts<cr>
-nnoremap <BS>M  :FilesMaster<cr>
-nnoremap <BS>sp :FilesSnips<cr>
-nnoremap <BS>h :FilesHome<cr>
-nnoremap <BS>wo :FilesWork<cr>
-nnoremap <BS>cc :FilesClass<cr>
-nnoremap <BS>po :FilesProjects<cr>
-nnoremap <BS>pr :FilesPrograms<cr>
-nnoremap <BS>cf :FilesDots<cr>
-nnoremap <BS>mo :FilesOs<cr>
+nnoremap <localleader>ms :FilesScripts<cr>
+nnoremap <localleader>M  :FilesMaster<cr>
+nnoremap <localleader>sp :FilesSnips<cr>
+nnoremap <localleader>h :FilesHome<cr>
+nnoremap <localleader>wo :FilesWork<cr>
+nnoremap <localleader>cc :FilesClass<cr>
+nnoremap <localleader>po :FilesProjects<cr>
+nnoremap <localleader>pr :FilesPrograms<cr>
+nnoremap <localleader>cf :FilesDots<cr>
+nnoremap <localleader>mo :FilesOs<cr>
 nnoremap <leader>sN :RemoveFiles<cr>
 nnoremap <leader>sF :RemoveDirs<cr>
 "made myself

@@ -3,8 +3,8 @@
 " Version:      0.5
 
 " SearchCheck() searches for whether or not BujoCheck... was called on a
-" checked or unchecked task. We need to call search() twice with and without 
-" the 'b' tag because search() only allows you to search forward or backwards, 
+" checked or unchecked task. We need to call search() twice with and without
+" the 'b' tag because search() only allows you to search forward or backwards,
 " not both ways.
 
 "ORIGINAL
@@ -19,7 +19,7 @@ function s:SearchCheck()
 endfunction
 
 function s:SearchCheckBrackets()
-" search string in current cursor pos and backwards for - character
+" search string in current cursor pos and backwards for [] character
   return (search('\[\]', 'nc', line('.')) || search('\[\]', 'nbc', line('.')))
 endfunction
 
@@ -27,8 +27,8 @@ endfunction
 " Edit markdown lists
 " Add and remove bullets with ease
 " If we are already checked then we uncheck
-nnoremap <expr><silent><buffer><Plug>(BujoChecknormal) <SID>SearchCheckBrackets() ? 'mm:.s/\[\]/\[x\]<Enter>`m<right>' : 'mm:.s/\[x\]/\[\]<Enter>`m<left>' 
-inoremap <expr><silent><buffer><Plug>(BujoCheckinsert) <SID>SearchCheckBrackets() ? '<esc>mm:.s/\[\]/\[x\]<Enter>`ma<right>' : '<esc>mm:.s/\[x\]/\[\]<Enter>`ma<left>' 
+nnoremap <expr><silent><buffer><Plug>(BujoChecknormal) <SID>SearchCheckBrackets() ? 'mm:silent! .s/\[\]/\[x\]<Enter>`m<right>' : 'mm:silent! .s/\[x\]/\[\]<Enter>`m<left>'
+inoremap <expr><silent><buffer><Plug>(BujoCheckinsert) <SID>SearchCheckBrackets() ? '<esc>mm:silent! .s/\[\]/\[x\]<Enter>`ma<right>' : '<esc>mm:silent! .s/\[x\]/\[\]<Enter>`ma<left>'
 
 noremap <expr><buffer><Plug>(BujoAddnormal) <SID>SearchCheck() ? '' : 'i- [] '
 inoremap <expr><buffer><Plug>(BujoAddinsert) <SID>SearchCheck() ? '' : '- [] '
@@ -36,9 +36,6 @@ inoremap <expr><buffer><Plug>(BujoAddinsert) <SID>SearchCheck() ? '' : '- [] '
 " noremap <expr><buffer><Plug>(BujoAddnormal) <SID>SearchCheck() ? 'i[] ' : 'i- [] '
 " inoremap <expr><buffer><Plug>(BujoAddinsert) <SID>SearchCheck() ? '[] ' : '- [] '
 
-" nnoremap <silent> <buffer> <Plug>BujoAddnormal i-[] 
-" inoremap <silent> <buffer> <Plug>BujoAddinsert -[] 
+" nnoremap <silent> <buffer> <Plug>BujoAddnormal i-[]
+" inoremap <silent> <buffer> <Plug>BujoAddinsert -[]
 "
-
-
-
