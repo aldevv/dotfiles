@@ -59,7 +59,8 @@ enum my_macros {
     WK0,
     COMM_SPC,
     SCLN_END,
-    COLN_END
+    COLN_END,
+    CAPS_EMU
 };
 
 enum layer_number {
@@ -192,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
  [_COLEMAK] = LAYOUT( \
-  KC_GRV,   WK1,    WK2,     WK3,     WK4,      WK5,                     WK6,     WK7,       WK8,     WK9,      WK0,     LCM_PLUS, \
+  CAPS_EMU,   WK1,    WK2,     WK3,     WK4,      WK5,                     WK6,     WK7,       WK8,     WK9,      WK0,    LGUI(LCM_W), \
   KC_TAB,   LCM_Q,   LCM_W,    LCM_F,    LCM_P,    LCM_G,               LCM_J,    LCM_L,    LCM_U,    LCM_Y,    TD(TD_PLUS), KC_LBRC, \
   KC_ESC, LCM_A,   LCM_R,    LCM_S,    LCM_T,    LCM_D,                 LCM_H,    LCM_N,    LCM_E,    LCM_I,    LCM_O, KC_DEL, \
   KC_LSPO,  LCM_Z,   LCM_X,    LCM_C,    LCM_V,    LCM_B, LCM_BSLS,   KC_LEAD, LCM_K,    LCM_M,    LCM_COMM, LCM_DOT,  LCM_MINS, KC_RSPC,\
@@ -245,7 +246,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = LAYOUT( \
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, KC_PSCREEN, \
   KC_F11,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F12, \
-  _______, KC_BRID, KC_BRIU, KC_MUTE, KC_VOLD, KC_VOLU,                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  LSFT(KC_PSCREEN), XXXXXXX, \
+  KC_CAPS, KC_BRID, KC_BRIU, KC_MUTE, KC_VOLD, KC_VOLU,                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  LSFT(KC_PSCREEN), XXXXXXX, \
   _______, _______, _______, _______, KC_MEDIA_SELECT,_______,_______,  _______, LCM_IEXL, TD(TD_PAR),  SCLN_END, COLN_END, _______, _______, \
                              _______, _______, _______,  _______,               KC_DEL, KC_RCTRL,  LT(_ADJUST,KC_SPC), _______ \
 ),
@@ -267,7 +268,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_ADJUST] = LAYOUT( \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   XXXXXXX, KC_POWER, KC_HELP, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_HOME, KC_PGDOWN, KC_PGUP, KC_END, XXXXXXX, XXXXXXX, \
+  XXXXXXX, LCM_A, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_HOME, KC_PGDOWN, KC_PGUP, KC_END, XXXXXXX, KC_LSFT, \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
                              _______, _______, _______, _______, _______,  _______, _______, _______ \
   )
@@ -391,8 +392,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 }
 
 // MY SIMPLE MACROS
-// for colemak codes
-//#include "sendstring_colemak.h"
+bool is_caps_emu_active = false;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
 #ifdef OLED_DRIVER_ENABLE
@@ -442,6 +442,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code16(KC_END);
                 tap_code16(LCM_COLN);
                 return false; // Skip all further processing of this key
+          case CAPS_EMU:
+                if (!is_caps_emu_active) {
+                  register_code16(KC_LSFT);
+                  is_caps_emu_active = true;
+                } else {
+                  unregister_code16(KC_LSFT);
+                  is_caps_emu_active = false;
+                }
+                return false;
                 /* case KC_ENTER: */
                 // Play a tone when enter is pressed
                 /* PLAY_SONG(tone_qwerty); */
