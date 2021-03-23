@@ -184,20 +184,22 @@ nnoremap <C-S-P> :Commits<cr>
 nnoremap <leader>ac :Commands<cr>
 " <c-c> is viable too
 nnoremap <leader>am :Maps<cr>
-nnoremap <leader><space>pms :FilesScripts<cr>
-nnoremap <leader><space>pM  :FilesMaster<cr>
-nnoremap <leader><space>psp :FilesSnips<cr>
-nnoremap <leader><space>ph :FilesHome<cr>
-nnoremap <leader><space>pwo :FilesWork<cr>
-nnoremap <leader><space>pcc :FilesClass<cr>
-nnoremap <leader><space>ppo :FilesProjects<cr>
-nnoremap <leader><space>ppr :FilesPrograms<cr>
-nnoremap <leader><space>pcf :FilesDots<cr>
-nnoremap <leader><space>pmo :FilesOs<cr>
+" TODO, make it auto from the bookmarks files
+" TODO, check whichkey issue
+nnoremap <BS>ms :FilesScripts<cr>
+nnoremap <BS>M  :FilesMaster<cr>
+nnoremap <BS>sp :FilesSnips<cr>
+nnoremap <BS>h :FilesHome<cr>
+nnoremap <BS>wo :FilesWork<cr>
+nnoremap <BS>cc :FilesClass<cr>
+nnoremap <BS>po :FilesProjects<cr>
+nnoremap <BS>pr :FilesPrograms<cr>
+nnoremap <BS>cf :FilesDots<cr>
+nnoremap <BS>mo :FilesOs<cr>
 nnoremap <leader>sN :RemoveFiles<cr>
 nnoremap <leader>sF :RemoveDirs<cr>
 "made myself
-nnoremap <leader>,b :Bookm<cr>
+nnoremap <BS>b :Bookm<cr>
 nnoremap <leader>sb :Buffers<cr>
 let g:vista_default_executive = 'ctags'
 " nnoremap <F4> :Course<cr>
@@ -851,7 +853,7 @@ function VerticalLines()
     :IndentLinesToggle
     set shiftwidth=2
 endfunction
-nmap <leader>,l :call VerticalLines()<cr>
+nmap <leader>Tl :call VerticalLines()<cr>
 autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.{vim,jsx,json,ts,js} :call VerticalLines()
 "these 2 only work with real tabs, not expanded tabs"
 "set listchars=tab:┆.,trail:.,extends:>,precedes:<
@@ -1613,7 +1615,7 @@ let g:clever_f_use_migemo = 1
 " ==========
 " BRIGHTEST
 " ==========
-noremap <leader>.b :BrightestToggle<cr>
+noremap <leader>Tb :BrightestToggle<cr>
 autocmd Filetype * :BrightestDisable
 " let g:brightest#enable_on_CursorHold = 1
 " let g:brightest#enable_clear_highlight_on_CursorMoved = 0
@@ -1648,8 +1650,8 @@ let g:brightest#enable_filetypes = {
 "==========
 " Ripgrep
 "==========
-nnoremap <leader>cf :Rg<space>
-nnoremap <leader>cF :Rg <c-r>=expand('<cword>')<cr><cr>
+nnoremap <leader>rg :Rg<space>
+nnoremap <leader>rG :Rg <c-r>=expand('<cword>')<cr><cr>
 
 "==========
 "Anyfold
@@ -1870,7 +1872,7 @@ let g:ale_linters =  {
 " RAINBOW PARENTHESIS
 "======================
 let g:rainbow_active = 0
-noremap <leader>B :RainbowToggle<cr>
+noremap <leader>Tr :RainbowToggle<cr>
 
 "==============
 "VIM-TEST
@@ -1880,11 +1882,11 @@ noremap <leader>B :RainbowToggle<cr>
 "and test.vim will automatically try to run the 
 "command on the "alternate" test file.
 
-nmap <silent> <leader>Tn :TestNearest<CR>
-nmap <silent> <leader>Tf :TestFile<CR>
-nmap <silent> <leader>Ts :TestSuite<CR>
-nmap <silent> <leader>Tl :TestLast<CR>
-nmap <silent> <leader>Tg :TestVisit<CR>
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ts :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tg :TestVisit<CR>
 " https://github.com/vim-test/vim-test
 "
 " PROJECTIONIST INTEGRATION                       *test-projectionist*
@@ -2053,10 +2055,9 @@ nnoremap <leader>.s :VimApmShutdown<cr>
 "========================
 let g:bujo#window_width = 90
 let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
-map <silent><leader>,g <Plug>(BujoGlobal)
-map <silent><leader>,; <Plug>(BujoGlobal)
-map <silent><leader>,, <Plug>(BujoProject)
-map <silent><leader>,P <Plug>(BujoPrivate)
+map <silent><leader><leader>g <Plug>(BujoGlobal)
+map <silent><leader><leader>b <Plug>(BujoProject)
+map <silent><leader><leader>B <Plug>(BujoPrivate)
 
 map <M-,> <Plug>(BujoAddnormal)
 imap <M-,> <Plug>(BujoAddinsert)

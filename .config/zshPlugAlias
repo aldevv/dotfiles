@@ -1032,6 +1032,8 @@ alias dkcu='docker-compose up'
 alias dkcU='docker-compose up -d'
 alias dkcv='docker-compose version'
 alias dkcS='docker-compose stop'
+alias dkcz='docker-compose down && docker-compose up -d'
+alias dkcR='docker-compose build && docker-compose down && docker-compose up -d'
 
 #=======
 # GITHUB

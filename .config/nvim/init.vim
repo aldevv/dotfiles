@@ -75,5 +75,5 @@ if $USER != "root"
 "==================
 " AUTOMATION
 "==================
- source ~/.config/nvim/modules/automation.vim
+source ~/.config/nvim/modules/automation.vim
 

@@ -59,20 +59,27 @@ noremap <silent><c-w>S :sp #<cr>
 noremap - /\v
 vnoremap - /\v
 noremap / -
-noremap <silent><leader>o :call ToggleQuickFix()<cr>
-noremap <silent><leader>O :call ToggleLocation()<cr>
-function! ToggleQuickFix()
+noremap <silent><leader>q :call ToggleQuickFix(0)<cr>
+noremap <silent><leader>Q :call ToggleQuickFix(1)<cr>
+noremap <silent><leader>ll :call ToggleLocation(0)<cr>
+
+function! ToggleQuickFix(staywindow)
   if empty(filter(getwininfo(), 'v:val.quickfix'))
     copen
-    execute "normal! \<c-w>k"
+    if (a:staywindow == 0)
+      execute "normal! \<c-w>k"
+    endif
   else
     cclose
   endif
 endfunction
+
 function! ToggleLocation()
   if empty(filter(getwininfo(), 'v:val.quickfix'))
     lopen
-    execute "normal! \<c-w>k"
+    if (!a:staywindow)
+      execute "normal! \<c-w>k"
+    endif
   else
     lclose
   endif
@@ -236,7 +243,7 @@ vnoremap <silent><leader>lgr :B !sortListR.py <cr>t]xT[
 
 
 nnoremap gñ :SyntaxQuery<CR>
-nnoremap <silent><leader>,t :silent call Toggle_transparent()<CR>
+nnoremap <silent><leader>Tt :silent call Toggle_transparent()<CR>
 function Toggle_transparent()
   exec ":!toggleTrans"
 endfunction
@@ -301,24 +308,16 @@ nnoremap <M-o> <c-o>
 
 " map <leader>i :setlocal autoindent<cr>
 " map <leader>I :setlocal noautoindent<cr>
-map  <silent><leader>Q :silent w !sudo tee %<CR>
-" save without autocmd (no formatting) 
-function SaveNoFormat() abort
-  :noautocmd w
-  if expand('%') == 'keymap.c'
-    " exec ':!$PROJECTS/Micro/Lily58/qmk_firmware/bin/qmk flash -kb lily58 -km mine-def'
-    exec ':!qmk flash'
-  endif
-endfunction
-map  <silent><leader>q :call SaveNoFormat()<CR>
-map  <leader>t :w<CR>
-map  <leader>ss :wq<CR>
+map  <leader>o :w<CR>
+map  <silent><leader>O :silent w !sudo tee %<CR>
+" map  <leader>ss :wq<CR>
 " map <leader><F1> :e ~/.config/nvim/init.vim<cr>
 nnoremap <F6> :e $HOME/.config/nvim/init.vim<cr>
 map <leader><F2> :e ~/.zshrc<cr>
 " noremap  <leader>ww :w<CR>
 noremap  ! :!
 noremap  <F7> :set spell! \| set wrap<CR>
+noremap  <leader>Ts :set spell! \| set wrap<CR>
 
 map ñ :
 
@@ -426,7 +425,7 @@ nnoremap <leader>V V`]
 
 
 " clear search highlights
-noremap <silent><leader>ll :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
+noremap <silent><leader>H :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
 " nnoremap <silent><leader>hh :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
 nnoremap <silent><leader>l1 :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
 nnoremap <silent><leader>l2 :execute '2match DiffChange /\<<c-r><c-w>\>/'<cr>

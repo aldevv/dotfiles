@@ -2,9 +2,18 @@ syntax enable
 " disable compatibility to vi, to activate vim improvements
 set nocompatible
 set shell=/bin/zsh
-let mapleader = " "
-" let maplocalleader=','
+let mapleader = "\<Space>"
+" let maplocalleader="\<BS>"
+"===================
+" WHICHKEY
+"===================
+" set timeoutlen=1500
+set timeoutlen=700
+nnoremap <silent><leader> :<c-u>WhichKey '<Space>'<CR>
+" nnoremap <silent><localleader> :<c-u>WhichKey '<BS>' <CR>
+" nnoremap <silent> <leader><space>   :<c-u>WhichKey '<leader><leader>'<CR>
 "======================
+
 set updatetime=1500 " this is for autosave in tex files(every cursorhold event)
 set encoding=utf-8
 scriptencoding utf-8
@@ -32,11 +41,6 @@ let g:yankring_clipboard_monitor=0
 set spelllang=en_us,es
 "set spelllang=en_us
 
-" whichkey
-" set timeoutlen=1500
-set timeoutlen=700
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-" nnoremap <silent> <leader><space>   :<c-u>WhichKey '<leader><leader>'<CR>
 filetype plugin indent on
 filetype plugin on
 " set lazyredraw

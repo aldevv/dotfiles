@@ -56,7 +56,10 @@ enum my_macros {
     WK7,
     WK8,
     WK9,
-    WK0
+    WK0,
+    COMM_SPC,
+    SCLN_END,
+    CLN_END
 };
 
 enum layer_number {
@@ -221,7 +224,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                          _______, _______, _______,_______, _______, _______,\
   _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                          KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, \
   _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                             KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS, \
-  _______, LCM_LABK, LCM_PIPE, _______, _______, _______, _______,    _______, KC_PIPE, KC_GRAVE, LCM_IEXL, KC_LCBR, LCM_PLUS, _______, \
+  _______, LCM_LABK, LCM_PIPE, LCM_IEXL, _______, _______, _______,    _______, KC_PIPE, KC_GRAVE, COMM_SPC, KC_LCBR, LCM_PLUS, _______, \
                              _______, _______, _______, KC_ALGR,                  _______,  _______, _______, _______\
 ),
 /* RAISE
@@ -243,7 +246,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, KC_PSCREEN, \
   KC_F11,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F12, \
   _______, KC_BRID, KC_BRIU, KC_MUTE, KC_VOLD, KC_VOLU,                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  LSFT(KC_PSCREEN), XXXXXXX, \
-  _______, _______, _______, _______, KC_MEDIA_SELECT,_______,_______,  _______, LCM_IEXL, TD(TD_PAR),  KC_LBRC, KC_RBRC, _______, _______, \
+  _______, _______, _______, _______, KC_MEDIA_SELECT,_______,_______,  _______, LCM_IEXL, TD(TD_PAR),  SCLN_END, CLN_END, _______, _______, \
                              _______, _______, _______,  _______,               KC_DEL, KC_RCTRL,  LT(_ADJUST,KC_SPC), _______ \
 ),
 
@@ -428,6 +431,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case WK0:
                 SEND_STRING(SS_LGUI("0"));
                 return false; // Skip all further processing of this key
+            case COMM_SPC:
+                SEND_STRING(", ");
+                return false; // Skip all further processing of this key
+            case SCLN_END:
+                tap_code16(KC_END);
+                SEND_STRING(";");
+                return false; // Skip all further processing of this key
+            case CLN_END:
+                tap_code16(KC_END);
+                SEND_STRING(":");
+                return false; // Skip all further processing of this key
                 /* case KC_ENTER: */
                 // Play a tone when enter is pressed
                 /* PLAY_SONG(tone_qwerty); */
@@ -580,13 +594,13 @@ void parrot(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 /* ========================================================== */
-/* tap_now registers a key and unregisters it instantly */
+/* tap_code registers a key and unregisters it instantly */
 
 /* theres also */
 
 /* tap_code16(LCTL(KC_C)); */
 
-// for more functions like tap_now : https://beta.docs.qmk.fm/using-qmk/advanced-keycodes/feature_macros#advanced-example
+// for more functions like tap_code : https://beta.docs.qmk.fm/using-qmk/advanced-keycodes/feature_macros#advanced-example
 // use advanced when you need register and unregister
 // for basic doubles do action_tap_dance_double(key1, key2)
 //

@@ -127,7 +127,7 @@ export FZF_COMPLETION_TRIGGER='**'
 # Options to fzf command
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
-export RG_DEFAULT="rg --files --hidden --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,**/*~,**/plugged/*,**/venv/*,**/__pycache__/*,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
+export RG_DEFAULT="rg --files --hidden --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,**/*~,**/plugged/*,**/venv/*,**/__pycache__/*,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*,ftplugin/keymap.c.vim}' --"
 
 # not working for fd
 # excluded='{node_modules,*.class,.git,**/*~,plugged,__pycache__,.wine,.npm,.icons,*/nvim/backups,.emacs.d,.cache,undodir}'
