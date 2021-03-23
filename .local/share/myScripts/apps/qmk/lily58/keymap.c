@@ -128,6 +128,7 @@ enum {
     X_CTL,
     TD_DC, // . -> :
     TD_CS, // , -> ;
+    TD_CIRC_PLUS, // ¿ -> par
     TD_PAR, // ¿ -> par
     TD_PLUS, // - -> +
 };
@@ -141,7 +142,7 @@ void cs_finished(qk_tap_dance_state_t *state, void *user_data);
 void cs_reset(qk_tap_dance_state_t *state, void *user_data);
 void web_finished(qk_tap_dance_state_t *state, void *user_data);
 void web_reset(qk_tap_dance_state_t *state, void *user_data);
-void parrot(qk_tap_dance_state_t *state, void *user_data);
+void CIRC_PLUS(qk_tap_dance_state_t *state, void *user_data);
 
 /* ========= */
 /* MODS */
@@ -195,7 +196,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_COLEMAK] = LAYOUT( \
   CAPS_EMU,   WK1,    WK2,     WK3,     WK4,      WK5,                     WK6,     WK7,       WK8,     WK9,      WK0,    LGUI(LCM_W), \
   KC_TAB,   LCM_Q,   LCM_W,    LCM_F,    LCM_P,    LCM_G,               LCM_J,    LCM_L,    LCM_U,    LCM_Y,    TD(TD_PLUS), KC_LBRC, \
-  KC_ESC, LCM_A,   LCM_R,    LCM_S,    LCM_T,    LCM_D,                 LCM_H,    LCM_N,    LCM_E,    LCM_I,    LCM_O, KC_DEL, \
+  KC_ESC, LCM_A,   LCM_R,    LCM_S,    LCM_T,    LCM_D,                 LCM_H,    LCM_N,    LCM_E,    LCM_I,    LCM_O, RSFT(LCM_7), \
   KC_LSPO,  LCM_Z,   LCM_X,    LCM_C,    LCM_V,    LCM_B, LCM_BSLS,   KC_LEAD, LCM_K,    LCM_M,    LCM_COMM, LCM_DOT,  LCM_MINS, KC_RSPC,\
               OSL(_RAISE),KC_LGUI, LALT_T(KC_ENT), KC_RCTRL,   KC_BSPC, LT(_LOWER,KC_SPC), ROPT_T(KC_DEL), OSL(_LOWER) \
 ),
@@ -225,7 +226,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                          _______, _______, _______,_______, _______, _______,\
   _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                          KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, \
   _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                             KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  _______, \
-  _______, LCM_LABK, LCM_RABK, LCM_IQUE, LCM_IEXL, LCM_GRV, _______,    _______, LCM_BSLS, LCM_PIPE, COMM_SPC, KC_LCBR, LCM_PLUS, _______, \
+  _______, LCM_LABK, LCM_RABK, LCM_GRV, ROPT(LCM_LCBR), KC_LCBR, _______,    _______, LCM_BSLS, LCM_PIPE, COMM_SPC, LCM_IQUE, LCM_IEXL, _______, \
                              _______, _______, _______, _______,                  _______,  _______, _______, _______\
 ),
 /* RAISE
@@ -247,7 +248,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, KC_PSCREEN, \
   KC_F11,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F12, \
   KC_CAPS, KC_BRID, KC_BRIU, KC_MUTE, KC_VOLD, KC_VOLU,                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  LSFT(KC_PSCREEN), XXXXXXX, \
-  _______, _______, _______, _______, KC_MEDIA_SELECT,_______,_______,  _______, LCM_IEXL, TD(TD_PAR),  SCLN_END, COLN_END, _______, _______, \
+  _______, _______, _______, _______, KC_MEDIA_SELECT,_______,_______,  _______, LCM_IEXL,TD(TD_PAR),  SCLN_END, COLN_END, _______, _______, \
                              _______, _______, _______,  _______,               KC_DEL, KC_RCTRL,  LT(_ADJUST,KC_SPC), _______ \
 ),
 
@@ -590,6 +591,17 @@ void dc_reset(qk_tap_dance_state_t *state, void *user_data) {
     dctap_state.state = 0;
 }
 
+void CIRC_PLUS(qk_tap_dance_state_t *state, void *user_data) {
+  // for ACTION_TAP_DANCE_FN you CANT use a switch, it only runs after a count
+  switch (state->count) {
+      case 1:
+          tap_code16(ROPT(LCM_O));
+          break;
+      case 2:
+          tap_code(LCM_PLUS);
+          break;
+    }
+}
 void parrot(qk_tap_dance_state_t *state, void *user_data) {
   // for ACTION_TAP_DANCE_FN you CANT use a switch, it only runs after a count
   switch (state->count) {
@@ -617,6 +629,7 @@ void parrot(qk_tap_dance_state_t *state, void *user_data) {
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_CS] = ACTION_TAP_DANCE_DOUBLE(LCM_COMM, LCM_SCLN),
     [TD_PLUS] = ACTION_TAP_DANCE_DOUBLE(LCM_NTIL, LCM_PLUS),
+    [TD_CIRC_PLUS] = ACTION_TAP_DANCE_FN(CIRC_PLUS),
     [TD_PAR] = ACTION_TAP_DANCE_FN(parrot),
     [TD_DC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dc_finished, dc_reset),
 };
