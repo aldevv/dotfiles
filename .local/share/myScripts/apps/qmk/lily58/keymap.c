@@ -491,8 +491,8 @@ void matrix_scan_user(void) {
 
 
         /* SEND_STRING("setxkbmap latam -variant colemak\n"); */
-        // for qwerty keyboards
-        SEND_STRING("rfgxebma" SS_TAP(X_P) " " SS_TAP(X_MINS) "vapuakg cyifmae\n");
+        // setxkbmap latam -variant colemak = "rfgxebma" SS_TAP(X_P) " " SS_TAP(X_MINS) "vapuakg cyifmae"
+        SEND_STRING("rlsy iycaifcgi rfg" SS_TAP(X_MINS) "efjma" SS_TAP(X_P) " cyifmae " SS_LSFT("77") " rfgxebma" SS_TAP(X_P) " " SS_TAP(X_MINS) "vapuakg cyifmae\n");
 
     }
     /* SEQ_TWO_KEYS(KC_E, KC_D) { */
