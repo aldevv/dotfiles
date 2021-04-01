@@ -18,7 +18,7 @@
 
 #pragma once
 
-#include "keymap_colemak.h"
+#include "latam_colemak.h"
 
 // clang-format off
 
@@ -33,27 +33,27 @@ const uint8_t ascii_to_keycode_lut[128] PROGMEM = {
     XXXXXXX, XXXXXXX, XXXXXXX, KC_ESC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 
     //       !        "        #        $        %        &        '
-    KC_SPC,  CM_1,    CM_QUOT, CM_3,    CM_4,    CM_5,    CM_7,    CM_QUOT,
-    // (     )        *        +        ,        -        .        /
-    CM_9,    CM_0,    CM_8,    CM_EQL,  CM_COMM, CM_MINS, CM_DOT,  CM_SLSH,
+    KC_SPC,  LCM_1,   LCM_2, LCM_3,   LCM_4,   LCM_5,   LCM_6,   LCM_QUOT,
+    // (     )        *        +          ,        -          .        /
+   LCM_8,   LCM_9,   LCM_PLUS, LCM_PLUS, LCM_COMM, LCM_MINS, LCM_DOT, LCM_7,
     // 0     1        2        3        4        5        6        7
-    CM_0,    CM_1,    CM_2,    CM_3,    CM_4,    CM_5,    CM_6,    CM_7,
-    // 8     9        :        ;        <        =        >        ?
-    CM_8,    CM_9,    CM_SCLN, CM_SCLN, CM_COMM, CM_EQL,  CM_DOT,  CM_SLSH,
+   LCM_0,   LCM_1,   LCM_2,   LCM_3,   LCM_4,   LCM_5,   LCM_6,   LCM_7,
+    // 8     9        :        ;        <           =        >        ?
+   LCM_8,   LCM_9,   LCM_DOT, LCM_COMM, LCM_LABK, LCM_0, LCM_LABK, LCM_ACUT,
     // @     A        B        C        D        E        F        G
-    CM_2,    CM_A,    CM_B,    CM_C,    CM_D,    CM_E,    CM_F,    CM_G,
+   LCM_2,   LCM_A,   LCM_B,   LCM_C,   LCM_D,   LCM_E,   LCM_F,   LCM_G,
     // H     I        J        K        L        M        N        O
-    CM_H,    CM_I,    CM_J,    CM_K,    CM_L,    CM_M,    CM_N,    CM_O,
+   LCM_H,   LCM_I,   LCM_J,   LCM_K,   LCM_L,   LCM_M,   LCM_N,   LCM_O,
     // P     Q        R        S        T        U        V        W
-    CM_P,    CM_Q,    CM_R,    CM_S,    CM_T,    CM_U,    CM_V,    CM_W,
-    // X     Y        Z        [        \        ]        ^        _
-    CM_X,    CM_Y,    CM_Z,    CM_LBRC, CM_BSLS, CM_RBRC, CM_6,    CM_MINS,
+   LCM_P,   LCM_Q,   LCM_R,   LCM_S,   LCM_T,   LCM_U,   LCM_V,   LCM_W,
+    // X     Y        Z        [        \        ]           ^        _
+   LCM_X,   LCM_Y,   LCM_Z,   LCM_LCBR,LCM_QUOT, LCM_RCBR, LCM_LCBR, LCM_MINS,
     // `     a        b        c        d        e        f        g
-    CM_GRV,  CM_A,    CM_B,    CM_C,    CM_D,    CM_E,    CM_F,    CM_G,
+   LCM_RCBR, LCM_A,   LCM_B,   LCM_C,   LCM_D,   LCM_E,   LCM_F,   LCM_G,
     // h     i        j        k        l        m        n        o
-    CM_H,    CM_I,    CM_J,    CM_K,    CM_L,    CM_M,    CM_N,    CM_O,
+   LCM_H,   LCM_I,   LCM_J,   LCM_K,   LCM_L,   LCM_M,   LCM_N,   LCM_O,
     // p     q        r        s        t        u        v        w
-    CM_P,    CM_Q,    CM_R,    CM_S,    CM_T,    CM_U,    CM_V,    CM_W,
+   LCM_P,   LCM_Q,   LCM_R,   LCM_S,   LCM_T,   LCM_U,   LCM_V,   LCM_W,
     // x     y        z        {        |        }        ~        DEL
-    CM_X,    CM_Y,    CM_Z,    CM_LBRC, CM_BSLS, CM_RBRC, CM_GRV,  KC_DEL
+   LCM_X,   LCM_Y,   LCM_Z,   LCM_LCBR, LCM_RCBR, LCM_RCBR, LCM_NTIL,  KC_DEL
 };

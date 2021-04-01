@@ -1070,6 +1070,7 @@ alias vgi='vagrant init'
 alias vgssh='vagrant ssh'
 alias vga='vagrant box add'
 alias vgrm='vagrant box remove'
+alias vgRM='vagrant box list | cut -f 1 -d ' ' | xargs -L 1 vagrant box remove -f'
 alias vgls='vagrant box list'
 alias vgst='vagrant status'
 # same as start
@@ -1082,3 +1083,7 @@ alias vgB='vagrant box'
 alias vgBls='vagrant box list'
 alias vgBa='vagrant box add'
 alias vgBrm='vagrant box remove'
+alias vgkali='vagrant init kalilinux/rolling && vagrant up'
+alias vgwin='vagrant init gusztavvargadr/windows-10 && vagrant up'
+
+

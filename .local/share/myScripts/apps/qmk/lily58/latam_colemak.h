@@ -133,8 +133,9 @@
 #define LCM_ASTR S(LCM_PLUS) // *
 
 // Row 2
-#define LCM_LBRC S(LCM_LCBC) // [
-#define LCM_RBRC S(LCM_RCBC) // ]
+
+#define LCM_LBRC S(LCM_LCBR) // [
+#define LCM_RBRC S(LCM_RCBR) // ]
 
 // Row 3
 

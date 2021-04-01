@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 
-#include "sendstring_colemak.h"
+#include "sendstring_latam_colemak.h"
 /* CM_O */
 /* https://github.com/qmk/qmk_firmware/blob/master/quantum/keymap_extras/sendstring_colemak.h */
 
@@ -486,6 +486,10 @@ void matrix_scan_user(void) {
     SEQ_ONE_KEY(KC_LEAD) {
         /* SEND_STRING(); */
         SEND_STRING("jbernal" SS_ALGR("2") "unal.edu.co");
+    }
+    SEQ_ONE_KEY(LCM_C) {
+        /* SEND_STRING(); */
+        SEND_STRING("setxkbmap latam -variant colemak");
     }
     /* SEQ_TWO_KEYS(KC_E, KC_D) { */
     /*   SEND_STRING(SS_LGUI("r") "cmd\n" SS_LCTL("c")); */
