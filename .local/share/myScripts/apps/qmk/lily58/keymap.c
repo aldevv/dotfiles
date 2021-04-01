@@ -488,8 +488,12 @@ void matrix_scan_user(void) {
         SEND_STRING("jbernal" SS_ALGR("2") "unal.edu.co");
     }
     SEQ_ONE_KEY(LCM_C) {
-        /* SEND_STRING(); */
-        SEND_STRING("setxkbmap latam -variant colemak");
+
+
+        /* SEND_STRING("setxkbmap latam -variant colemak\n"); */
+        // for qwerty keyboards
+        SEND_STRING("rfgxebma" SS_TAP(X_P) " " SS_TAP(X_MINS) "vapuakg cyifmae\n");
+
     }
     /* SEQ_TWO_KEYS(KC_E, KC_D) { */
     /*   SEND_STRING(SS_LGUI("r") "cmd\n" SS_LCTL("c")); */

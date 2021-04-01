@@ -54,6 +54,6 @@ const uint8_t ascii_to_keycode_lut[128] PROGMEM = {
    LCM_H,   LCM_I,   LCM_J,   LCM_K,   LCM_L,   LCM_M,   LCM_N,   LCM_O,
     // p     q        r        s        t        u        v        w
    LCM_P,   LCM_Q,   LCM_R,   LCM_S,   LCM_T,   LCM_U,   LCM_V,   LCM_W,
-    // x     y        z        {        |        }        ~        DEL
-   LCM_X,   LCM_Y,   LCM_Z,   LCM_LCBR, LCM_RCBR, LCM_RCBR, LCM_NTIL,  KC_DEL
+    // x     y        z        {        |        }        ~              ñ
+   LCM_X,   LCM_Y,   LCM_Z,   LCM_LCBR, LCM_RCBR, LCM_RCBR, LCM_NTIL,  LCM_NTIL
 };
