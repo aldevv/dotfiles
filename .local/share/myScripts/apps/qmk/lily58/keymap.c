@@ -489,11 +489,14 @@ void matrix_scan_user(void) {
     }
     SEQ_ONE_KEY(LCM_C) {
 
-
-        /* SEND_STRING("setxkbmap latam -variant colemak\n"); */
-        // setxkbmap latam -variant colemak = "rfgxebma" SS_TAP(X_P) " " SS_TAP(X_MINS) "vapuakg cyifmae"
-        SEND_STRING("rlsy iycaifcgi rfg" SS_TAP(X_MINS) "efjma" SS_TAP(X_P) " cyifmae " SS_LSFT("77") " rfgxebma" SS_TAP(X_P) " " SS_TAP(X_MINS) "vapuakg cyifmae\n");
-
+        //PERMANENT 
+        // sudo localectl set-x11-keymap latam pc104 colemak && sudo localectl set-keymap colemak
+        SEND_STRING("rlsy iycaifcgi rfg" SS_TAP(X_MINS) "x11" SS_TAP(X_MINS) "efjma" SS_TAP(X_P) " iagam " SS_TAP(X_P) "c104 cyifmae " SS_LSFT("77") " rlsy iycaifcgi rfg" SS_TAP(X_MINS) "efjma" SS_TAP(X_P) " cyifmae\n");
+    }
+    SEQ_TWO_KEYS(KC_RSPC, LCM_C) {
+        //TEMPORAL 
+        // setxkbmap latam -variant colemak 
+        SEND_STRING("rfgxebma" SS_TAP(X_P) " iagam " SS_TAP(X_MINS) "vapuakg cyifmae\n");
     }
     /* SEQ_TWO_KEYS(KC_E, KC_D) { */
     /*   SEND_STRING(SS_LGUI("r") "cmd\n" SS_LCTL("c")); */

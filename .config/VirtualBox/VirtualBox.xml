@@ -11,8 +11,8 @@
       <ExtraDataItem name="GUI/Details/Elements" value="general,system,preview,display,storage,audio,network,usb,sharedFolders,description"/>
       <ExtraDataItem name="GUI/GroupDefinitions/" value="n=GLOBAL,m=d60b06aa-d1f9-45a3-ac05-cd7b3d6b4490"/>
       <ExtraDataItem name="GUI/LastItemSelected" value="m=vagrant-test_default_1617271918288_18963"/>
-      <ExtraDataItem name="GUI/LastWindowPosition" value="1920,18,677,744"/>
-      <ExtraDataItem name="GUI/SplitterSizes" value="202,474"/>
+      <ExtraDataItem name="GUI/LastWindowPosition" value="1943,41,647,704"/>
+      <ExtraDataItem name="GUI/SplitterSizes" value="202,444"/>
       <ExtraDataItem name="GUI/SuppressMessages" value="all"/>
       <ExtraDataItem name="GUI/Toolbar" value="false"/>
       <ExtraDataItem name="GUI/Tools/LastItemsSelected" value="Welcome,Details"/>
