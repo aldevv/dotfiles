@@ -1060,3 +1060,25 @@ alias djl='python manage.py loadfixtures'
 #=======
 # any arguments is the name of the app
 alias react='npx create-react-app'
+
+alias vb='VirtualBox'
+#============
+# VAGRANT
+#============
+alias vg='vagrant'
+alias vgi='vagrant init'
+alias vgssh='vagrant ssh'
+alias vga='vagrant box add'
+alias vgrm='vagrant box remove'
+alias vgls='vagrant box list'
+alias vgst='vagrant status'
+# same as start
+alias vgu='vagrant up'
+# same as stop
+alias vgh='vagrant halt'
+# same as down
+alias vgd='vagrant destroy'
+alias vgB='vagrant box'
+alias vgBls='vagrant box list'
+alias vgBa='vagrant box add'
+alias vgBrm='vagrant box remove'
