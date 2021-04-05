@@ -165,6 +165,7 @@ alias pkg='sudo eopkg'\
     retro="$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage"\
     au="autorandr --change && wal -R"\
     searchCode="firefox https://docs.github.com/en/github/searching-for-information-on-github/searching-code"\
+    convertpdf="convert -density 300"\
 
 
 alias V='nvr -o'

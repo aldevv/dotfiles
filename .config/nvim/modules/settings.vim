@@ -10,6 +10,7 @@ let maplocalleader="\<BS>"
 " set timeoutlen=1500
 set timeoutlen=700
 nnoremap <silent><leader> :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent><leader> :<c-u>WhichKeyVisual '<Space>'<CR>
 nnoremap <silent><localleader> :<c-u>WhichKey "\<BS\>" <CR>
 nnoremap <silent> <leader><space>   :<c-u>WhichKey '<leader><leader>'<CR>
 "======================
