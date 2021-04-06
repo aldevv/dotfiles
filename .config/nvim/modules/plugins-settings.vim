@@ -1904,7 +1904,9 @@ nmap <silent> <leader>tg :TestVisit<CR>
 
 " let test#strategy = "dispatch"
 let test#strategy = "neoterm"
-autocmd BufRead * let g:test#project_root = git#find_current_root()
+
+autocmd BufReadPost * let test#project_root = git#find_current_root(1)
+
 augroup TestType
 " autocmd User ProjectionistActivate call <SID>choose_test_runner()
 autocmd User ProjectionistActivate call <SID>get_testrunner()

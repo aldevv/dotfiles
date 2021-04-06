@@ -6,8 +6,10 @@ function git#push(path, comment)
   silent exec 'Start! -wait=never ' . add . '&& ' . commit . '&& ' . push
 endfunction
 
-function! git#find_current_root()
+function! git#find_current_root(...)
+  if a:0 != 1
     execute ':lcd %:p:h'
+  endif
     return system('git status') =~ '^fatal:' ?
                 \ expand("%:p:h") : system("git rev-parse --show-toplevel 2> /dev/null")[:-2]
 endfunction

@@ -4,14 +4,16 @@ map f scroll full-down
 map b scroll full-up
 map F follow
 
+# bookmarks
+map <C-b> focus_inputbar ":bmark \""
+map <C-l> focus_inputbar :blist
+map <C-d> focus_inputbar ":bdelete "
+
 map h scroll left
 map n scroll down
 map e scroll up
 map i scroll right
 map G scroll bottom
-map <C-b> focus_inputbar ":bmark \""
-map <C-l> focus_inputbar :blist
-map <C-d> focus_inputbar ":bdelete "
 map t recolor
 map u scroll half-up
 map d scroll half-down

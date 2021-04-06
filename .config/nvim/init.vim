@@ -65,7 +65,7 @@ endif
 "==================
 if $USER != "root"
  source ~/.config/nvim/modules/plugins-settings.vim
- endif
+endif
 
 "==================
 " APPEARANCE
