@@ -27,11 +27,11 @@ endfunction
 " Edit markdown lists
 " Add and remove bullets with ease
 " If we are already checked then we uncheck
-nnoremap <expr><silent><buffer><Plug>(BujoChecknormal) <SID>SearchCheckBrackets() ? 'mm:silent! .s/\[\]/\[x\]<Enter>`m<right>' : 'mm:silent! .s/\[x\]/\[\]<Enter>`m<left>'
-inoremap <expr><silent><buffer><Plug>(BujoCheckinsert) <SID>SearchCheckBrackets() ? '<esc>mm:silent! .s/\[\]/\[x\]<Enter>`ma<right>' : '<esc>mm:silent! .s/\[x\]/\[\]<Enter>`ma<left>'
+nnoremap <expr><silent><Plug>(BujoChecknormal) <SID>SearchCheckBrackets() ? 'mm:silent! .s/\[\]/\[x\]<Enter>`m<right>' : 'mm:silent! .s/\[x\]/\[\]<Enter>`m<left>'
+inoremap <expr><silent><Plug>(BujoCheckinsert) <SID>SearchCheckBrackets() ? '<esc>mm:silent! .s/\[\]/\[x\]<Enter>`ma<right>' : '<esc>mm:silent! .s/\[x\]/\[\]<Enter>`ma<left>'
 
-noremap <expr><buffer><Plug>(BujoAddnormal) <SID>SearchCheck() ? '' : 'i- [] '
-inoremap <expr><buffer><Plug>(BujoAddinsert) <SID>SearchCheck() ? '' : '- [] '
+noremap <expr><Plug>(BujoAddnormal) <SID>SearchCheck() ? '' : 'i- [] '
+inoremap <expr><Plug>(BujoAddinsert) <SID>SearchCheck() ? '' : '- [] '
 
 " noremap <expr><buffer><Plug>(BujoAddnormal) <SID>SearchCheck() ? 'i[] ' : 'i- [] '
 " inoremap <expr><buffer><Plug>(BujoAddinsert) <SID>SearchCheck() ? '[] ' : '- [] '

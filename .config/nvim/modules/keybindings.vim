@@ -274,7 +274,7 @@ vnoremap <A-S> :s/\v//gI<Left><Left><Left><Left>
 cnoreabbrev w!! w !sudo tee > /dev/null %
 
 map <leader>rs :!./%<cr>
-nnoremap <silent><leader>rc  :w !sudo chmod +x %<cr>
+nnoremap <silent><leader>lch  :w !sudo chmod +x %<cr>
 map <silent> <F11> /\A\zs\a<cr>
 " ctrl alt
 

@@ -58,17 +58,6 @@ application/x-wine-extension-ini=vim.desktop;
 image/png=inkscape.desktop;org.gnome.gThumb.desktop;
 application/pdf=org.gnome.gThumb.desktop;atril.desktop;
 application/vnd.lotus-organizer=emacs.desktop;
-x-scheme-handler/http=userapp-Firefox-JLX510.desktop;
-x-scheme-handler/https=userapp-Firefox-JLX510.desktop;
-x-scheme-handler/ftp=userapp-Firefox-JLX510.desktop;
-x-scheme-handler/chrome=userapp-Firefox-JLX510.desktop;
-text/html=userapp-Firefox-JLX510.desktop;
-application/x-extension-htm=userapp-Firefox-JLX510.desktop;
-application/x-extension-html=userapp-Firefox-JLX510.desktop;
-application/x-extension-shtml=userapp-Firefox-JLX510.desktop;
-application/xhtml+xml=userapp-Firefox-JLX510.desktop;
-application/x-extension-xhtml=userapp-Firefox-JLX510.desktop;
-application/x-extension-xht=userapp-Firefox-JLX510.desktop;
 
 [Removed Associations]
 application/pdf=wine-extension-pdf.desktop;

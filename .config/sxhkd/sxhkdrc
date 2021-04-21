@@ -75,6 +75,9 @@ ctrl + shift + Escape
 mode_switch + n
     passmenu
 
+mode_switch + N
+    genpass
+
 # hyper + shift + n
 #     retrievemask
 

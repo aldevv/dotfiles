@@ -33,6 +33,8 @@ export SUCKLESS="$HOME/.local/Programs/Suckless"
 export BACKUPS="$HOME/.backups"
 export PROGRAMS="$HOME/.local/Programs"
 export WIKI="$HOME/.local/share/wiki"
+export PASSWORD_STORE_DIR="$HOME/.local/share/.pass"
+export SECRETS_EXTENSION="scr"
 export READER=zathura
 export NVIM_LOG_FILE="$HOME/.config/nvim/log/log"
 
