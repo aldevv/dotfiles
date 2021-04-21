@@ -34,7 +34,8 @@ export BACKUPS="$HOME/.backups"
 export PROGRAMS="$HOME/.local/Programs"
 export WIKI="$HOME/.local/share/wiki"
 export PASSWORD_STORE_DIR="$HOME/.local/share/.pass"
-export SECRETS_EXTENSION="scr"
+export SECRETS_EXTENSION=".scr"
+export SECRETS_DIR=".local/share/.gitscr"
 export READER=zathura
 export NVIM_LOG_FILE="$HOME/.config/nvim/log/log"
 
