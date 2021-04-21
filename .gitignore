@@ -4,3 +4,4 @@
 .config/youtube-viewer/api.json.config/rclone/rclone.conf
 *.orig
 *.o
+.password-store/mp.gpg.password-store/brave-sync.gpg.password-store/github.gpg.password-store/nequi.gpg.password-store/wifi-pass.gpg

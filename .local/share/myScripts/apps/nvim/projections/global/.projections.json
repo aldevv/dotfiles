@@ -18,12 +18,12 @@
   },
 
   "*.c": {
-    "dispatch": "gcc -g -o {basename} {file} && ./{basename}",
+    "dispatch": "gcc -g3 -O0 -o {basename} {file} && ./{basename}",
     "alternate": "{}.h"
   },
 
   "*.cpp": {
-    "dispatch": "g++ -g -o {basename} {file} && ./{basename}",
+    "dispatch": "g++ -g -O0 -o {basename} {file} && ./{basename}",
     "alternate": "{}.h"
   },
   "*.tex": {

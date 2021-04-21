@@ -25,8 +25,11 @@ super + shift + q
 super + shift + delete
 	reboot
 
-alt + shift + q
-	sudo systemctl restart display-manager
+super + shift + a
+	sudo systemctl suspend
+
+# alt + shift + q
+# 	sudo systemctl restart display-manager
 
 #mode_switch + p
 # 	python_docs

@@ -2287,4 +2287,5 @@ alias il = info locals
 alias ia = info args
 alias ib = info break
 alias cn = context
+set output-radix 10
 # gef config context.enable False

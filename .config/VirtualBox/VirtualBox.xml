@@ -9,10 +9,15 @@
   <Global>
     <ExtraData>
       <ExtraDataItem name="GUI/Details/Elements" value="general,system,preview,display,storage,audio,network,usb,sharedFolders,description"/>
-      <ExtraDataItem name="GUI/GroupDefinitions/" value="n=GLOBAL,m=d60b06aa-d1f9-45a3-ac05-cd7b3d6b4490"/>
-      <ExtraDataItem name="GUI/LastItemSelected" value="m=vagrant-test_default_1617271918288_18963"/>
-      <ExtraDataItem name="GUI/LastWindowPosition" value="1943,41,647,704"/>
-      <ExtraDataItem name="GUI/SplitterSizes" value="202,444"/>
+      <ExtraDataItem name="GUI/GroupDefinitions/" value="n=GLOBAL,m=d60b06aa-d1f9-45a3-ac05-cd7b3d6b4490,m=5b8157a6-93d3-41fe-bba8-b3b70505b9ef"/>
+      <ExtraDataItem name="GUI/Input/MachineShortcuts" value="FileManagerPaste=V"/>
+      <ExtraDataItem name="GUI/LastItemSelected" value="m=tallerpowerbi_default_1618951593871_58368"/>
+      <ExtraDataItem name="GUI/LastWindowPosition" value="1940,38,1326,710"/>
+      <ExtraDataItem name="GUI/SoftKeyboardColorTheme" value="Custom,#ff878787,#ff000000,#ff676767,#ff9b6767,#fffafafa"/>
+      <ExtraDataItem name="GUI/SoftKeyboardDialogGeometry" value="23,41,924,1016"/>
+      <ExtraDataItem name="GUI/SoftKeyboardSelectedColorTheme" value="Custom"/>
+      <ExtraDataItem name="GUI/SoftKeyboardSelectedLayout" value="{25867c1e-0455-4303-bf76-1c3ae4cca042}"/>
+      <ExtraDataItem name="GUI/SplitterSizes" value="444,881"/>
       <ExtraDataItem name="GUI/SuppressMessages" value="all"/>
       <ExtraDataItem name="GUI/Toolbar" value="false"/>
       <ExtraDataItem name="GUI/Tools/LastItemsSelected" value="Welcome,Details"/>
@@ -25,7 +30,7 @@
         <DHCPServer networkName="HostInterfaceNetworking-vboxnet0" IPAddress="192.168.56.100" networkMask="255.255.255.0" lowerIP="192.168.56.101" upperIP="192.168.56.254" enabled="1"/>
       </DHCPServers>
     </NetserviceRegistry>
-    <SystemProperties defaultMachineFolder="/home/kanon/.local/VirtualBox VMs" defaultHardDiskFormat="VDI" VRDEAuthLibrary="VBoxAuth" webServiceAuthLibrary="VBoxAuth" LogHistoryCount="3" proxyMode="0" exclusiveHwVirt="true"/>
+    <SystemProperties defaultMachineFolder="/home/kanon/.local/share/VirtualBox VMs" defaultHardDiskFormat="VDI" VRDEAuthLibrary="VBoxAuth" webServiceAuthLibrary="VBoxAuth" LogHistoryCount="3" proxyMode="0" exclusiveHwVirt="true"/>
     <USBDeviceFilters/>
   </Global>
 </VirtualBox>

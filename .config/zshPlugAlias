@@ -118,7 +118,8 @@ alias pkg='sudo eopkg'\
     mydot="git clone --depth=1 https://www.github.com/akuseru1/dotfiles"\
     flas="export FLASK_APP=app.py && flask run"\
     logset="sudo lightdm-settings"\
-    fixpkg="sudo usysconf run -f ssl-certs"\
+    pkgfix="sudo usysconf run -f ssl-certs"\
+    pkgsave="sudo usysconf run -f ssl-certs"\
     gdbfront="gdbfrontend"\
     al="alias"\
     xa='xargs -I{}'\
@@ -166,8 +167,12 @@ alias pkg='sudo eopkg'\
     au="autorandr --change && wal -R"\
     searchCode="firefox https://docs.github.com/en/github/searching-for-information-on-github/searching-code"\
     convertpdf="convert -density 300"\
+    pdfgrep="pdfgrep -n"\
+    z="zathura"\
+    Z="setsid st zathura &>/dev/null"\
 
 
+    # rgp="ruby grep_pptx.rb"\
 alias V='nvr -o'
 alias Vv='nvr -O'
 alias Vt='nvr --remote-tab'
@@ -1015,6 +1020,7 @@ alias dkcc='docker-compose config'
 alias dkcb='docker-compose build'
 alias dkcB='docker-compose build --no-cache'
 alias dkcd='docker-compose down'
+alias dkcD='docker-compose down --volumes'
 alias dkce='docker-compose exec -e COLUMNS=`tput cols` -e LINES=`tput lines`'
 alias dkck='docker-compose kill'
 alias dkclg='docker-compose logs --follow'
@@ -1050,9 +1056,12 @@ alias ghiv='gh issue view --comments $(gh issue list | fzf --no-preview | cut -f
 #=======
 alias dj='python manage.py'
 alias djs='python manage.py shell'
+alias djd='python manage.py dumpdata'
 alias djtp= 'python manage.py test --parallel'
 alias djt='python manage.py test'
 alias djr='python manage.py runserver'
+alias djR='dkcD && dkcU && djm'
+alias djRl='dkcD && dkcU && djm && dj loadfixtures'
 alias djM='python manage.py makemigrations'
 alias djm='python manage.py migrate'
 alias djl='python manage.py loadfixtures'

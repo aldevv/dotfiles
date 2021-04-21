@@ -3,6 +3,7 @@
 dashboard -layout !assembly !source breakpoints !threads !registers expressions history  memory stack variables
 dashboard source -style height 20
 dashboard -enabled off
+# show output of print in decimal base
 
 # you can add your own functions, that work in gdb
 #

@@ -160,22 +160,37 @@ doge() {
     echo doge
   )
 }
+
+# rga-fzf() {
+# 	RG_PREFIX="rga --files-with-matches"
+# 	local file
+# 	file="$(
+# 		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+# 			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+# 				--phony -q "$1" \
+# 				--bind "change:reload:$RG_PREFIX {q}" \
+# 				--preview-window="70%:wrap"
+# 	)" &&
+# 	echo "opening $file" &&
+# 	xdg-open "$file"
+# }
+
 # ripgrep-all with preview
 # check bat-extras : https://github.com/eth-p/bat-extras
-.r() {
-	RG_PREFIX="rga --files-with-matches"
+# .r() {
+# 	RG_PREFIX="rga --files-with-matches"
 	# fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
-	local file
-	file="$(
-		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
-              fzf --sort --preview="[[ ! -z {} ]] && bat --color always {} | rg --pretty --context 5 {q} 2>/dev/null" \
-				--phony -q "$1" \
-				--bind "change:reload:$RG_PREFIX {q}" \
-				--preview-window="70%:wrap"
-	)" &&
-	echo "opening $file" &&
-	xdg-open "$file"
-}
+	# local file
+	# file="$(
+		# FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+              # fzf --sort --preview="[[ ! -z {} ]] && bat --color always {} | rg --pretty --context 5 {q} 2>/dev/null" \
+				# --phony -q "$1" \
+				# --bind "change:reload:$RG_PREFIX {q}" \
+				# --preview-window="70%:wrap"
+	# )" &&
+	# echo "opening $file" &&
+	# xdg-open "$file"
+# }
 
 bindkey -s "^n" "stn^M"
 bindkey -s 'p' 'file=$(fzf); [ -n "$file" ] && nvim "$file"^M'
@@ -189,6 +204,7 @@ bindkey -s 'O' '!*^M'
 bindkey -s 't' '**	'
 # tested, this shows stderr correctly on new terminal window
 bindkey -s '.' 'setsid st &>/dev/null^M'
+bindkey -s 'r' 'setsid st ranger &>/dev/null^M'
 _fzf_compgen_path() {
 
   excluded=".git node_modules plugged .env __pycache__ .wine .npm .icons .vscode */nvm/backups .cache undodir __pycache__ **/node_modules/* env envs "
