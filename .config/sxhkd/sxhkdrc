@@ -22,17 +22,15 @@ super + shift + p
 super + shift + q
 	shutdown now
 
-super + shift + delete
+super + shift + r
 	reboot
 
 super + shift + s
-	sudo systemctl suspend
+	systemctl suspend
 
 super + shift + a
 	sudo systemctl restart display-manager
 
-# alt + shift + q
-# 	sudo systemctl restart display-manager
 
 #mode_switch + p
 # 	python_docs

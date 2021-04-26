@@ -1,0 +1,10 @@
+#!/bin/sh
+
+dotrepo="git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME"
+file="$HOME/.local/share/.pass/pass"
+zip -r "$file" $HOME/.local/share/.pass/*
+mv "$file.zip" "$file"
+eval "$dotrepo secret add $file"
+eval "$dotrepo secret hide"
+eval "$dotrepo add $file.scr"
+rm "$file"

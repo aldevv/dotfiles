@@ -171,7 +171,7 @@ alias pkg='sudo eopkg'\
     retro="$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage"\
     au="autorandr --change && wal -R"\
     searchCode="firefox https://docs.github.com/en/github/searching-for-information-on-github/searching-code"\
-    convertpdf="convert -density 300"\
+    convpdf="convert -density 300"\
     pdfgrep="pdfgrep -n"\
     z="zathura"\
     Z="setsid st zathura &>/dev/null"\
@@ -179,7 +179,7 @@ alias pkg='sudo eopkg'\
     gpgpubbinary="gpg --output kanon.gpg --export jbernal@unal.edu.co"\
     gpgimp="gpg --import"\
     gpgls="gpg --list-keys"\
-    gpgrp="gpgconf --kill all"\
+    rp="gpgconf --kill all"\
 
 
     # rgp="ruby grep_pptx.rb"\
@@ -1067,6 +1067,7 @@ alias ghiv='gh issue view --comments $(gh issue list | fzf --no-preview | cut -f
 alias dj='python manage.py'
 alias djs='python manage.py shell'
 alias djd='python manage.py dumpdata'
+alias djc='python manage.py createsuperuser'
 alias djtp= 'python manage.py test --parallel'
 alias djt='python manage.py test'
 alias djr='python manage.py runserver'

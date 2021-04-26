@@ -1,5 +1,10 @@
+#!/bin/sh
+
+
 # copy and paste!
 sudo eopkg up -y
 sudo eopkg it -y git
 git clone --depth=1 https://github.com/Akuseru1/dotfiles
-# copy and merge files manually
+# copy and merge files manually (try drag and drop to $HOME)
+# haven't tested below
+cp dotfiles/* $HOME
