@@ -8,22 +8,27 @@
 <VirtualBox xmlns="http://www.virtualbox.org/" version="1.12-linux">
   <Global>
     <ExtraData>
-      <ExtraDataItem name="GUI/Details/Elements" value="general,system,preview,display,storage,audio,network,usb,sharedFolders,description"/>
-      <ExtraDataItem name="GUI/GroupDefinitions/" value="n=GLOBAL,m=d60b06aa-d1f9-45a3-ac05-cd7b3d6b4490,m=5b8157a6-93d3-41fe-bba8-b3b70505b9ef"/>
+      <ExtraDataItem name="GUI/Details/Elements" value="general,system,preview,displayClosed,storage,audio,network,usb,sharedFolders,description"/>
+      <ExtraDataItem name="GUI/GroupDefinitions/" value="n=GLOBAL,m=d60b06aa-d1f9-45a3-ac05-cd7b3d6b4490,m=c4144691-91d9-4ed0-89a9-26f86f7ac6fe"/>
+      <ExtraDataItem name="GUI/GuestControl/ProcessControlSplitterHints" value="0,"/>
+      <ExtraDataItem name="GUI/Input/HostKeyCombination" value="65027,65506"/>
       <ExtraDataItem name="GUI/Input/MachineShortcuts" value="FileManagerPaste=V"/>
-      <ExtraDataItem name="GUI/LastItemSelected" value="m=tallerpowerbi_default_1618951593871_58368"/>
-      <ExtraDataItem name="GUI/LastWindowPosition" value="1940,38,1326,710"/>
+      <ExtraDataItem name="GUI/LastItemSelected" value="m=vagrant-test_default_1619873332952_71887"/>
+      <ExtraDataItem name="GUI/LastWindowPosition" value="2613,38,647,704"/>
+      <ExtraDataItem name="GUI/MaxGuestResolution" value="any"/>
+      <ExtraDataItem name="GUI/SessionInformationDialogGeometry" value="20,38,924,1016"/>
       <ExtraDataItem name="GUI/SoftKeyboardColorTheme" value="Custom,#ff878787,#ff000000,#ff676767,#ff9b6767,#fffafafa"/>
       <ExtraDataItem name="GUI/SoftKeyboardDialogGeometry" value="23,41,924,1016"/>
       <ExtraDataItem name="GUI/SoftKeyboardSelectedColorTheme" value="Custom"/>
       <ExtraDataItem name="GUI/SoftKeyboardSelectedLayout" value="{25867c1e-0455-4303-bf76-1c3ae4cca042}"/>
-      <ExtraDataItem name="GUI/SplitterSizes" value="444,881"/>
+      <ExtraDataItem name="GUI/SplitterSizes" value="224,422"/>
       <ExtraDataItem name="GUI/SuppressMessages" value="all"/>
       <ExtraDataItem name="GUI/Toolbar" value="false"/>
       <ExtraDataItem name="GUI/Tools/LastItemsSelected" value="Welcome,Details"/>
     </ExtraData>
     <MachineRegistry>
       <MachineEntry uuid="{d60b06aa-d1f9-45a3-ac05-cd7b3d6b4490}" src="/home/kanon/.local/VirtualBox VMs/vagrant-test_default_1617271918288_18963/vagrant-test_default_1617271918288_18963.vbox"/>
+      <MachineEntry uuid="{c4144691-91d9-4ed0-89a9-26f86f7ac6fe}" src="/home/kanon/.local/share/VirtualBox VMs/vagrant-test_default_1619873332952_71887/vagrant-test_default_1619873332952_71887.vbox"/>
     </MachineRegistry>
     <NetserviceRegistry>
       <DHCPServers>

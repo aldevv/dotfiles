@@ -2065,7 +2065,6 @@ map <silent><leader><leader>P <Plug>(BujoPrivate)
 
 map <M-,> <Plug>(BujoAddnormal)
 imap <M-,> <Plug>(BujoAddinsert)
-"TODO add check insert like the 2 above
 map <M-.> <Plug>(BujoChecknormal)
 imap <M-.> <Plug>(BujoCheckinsert)
 

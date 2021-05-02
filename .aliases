@@ -61,6 +61,7 @@ alias p1='cd ~/Master/Projects/Micro/HTTP-server\ in\ Rust && ls -a'
 alias p2='cd ~/Master/Projects/Micro/Docker && ls -a'
 alias 1='cd ~/Master/Projects/Main/covidalert && ls -a'
 alias aa='cd ~/Master/Classes/2021-1/GERENCIA/imp && ls -a'
+alias zz='cd /home/kanon/Master/Classes/2021-1/GERENCIA/licitacion/licitaciones-2021-I/primera\ -\ ejercito\ (sensores\ de\ red) && ls -a'
 alias sf="$EDITOR ~/.config/shortcuts/sf"
 alias sd="$EDITOR ~/.config/shortcuts/sd"
 alias cfe="$EDITOR ~/.emacs.d/init.el"
