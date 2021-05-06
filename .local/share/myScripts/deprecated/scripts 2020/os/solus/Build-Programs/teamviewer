@@ -1,9 +1,0 @@
-#!/bin/sh
-
-#install teamviewer
-sudo eopkg -y install qt5-quickcontrols
-
-cd "$PROGRAMS"
-wget https://download.teamviewer.com/download/linux/teamviewer_amd64.tar.xz
-tar kvvxf teamviewer_amd64.tar.xz
-rm teamviewer_amd64.tar.xz

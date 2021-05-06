@@ -1,6 +1,0 @@
-#!/bin/sh
-echo "enter output name"
-read -r output
-echo "And the output is: $output"
-[ -z "$output" ] && output="output.mp4" || output="${output}.mp4"
-ffmpeg -i "$1" -vcodec libx264 -crf 20 "$output"

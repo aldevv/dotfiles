@@ -28,7 +28,7 @@ super + shift + r
 super + shift + s
 	systemctl suspend
 
-super + shift + a
+super + shift + d
 	sudo systemctl restart display-manager
 
 
@@ -189,7 +189,7 @@ mode_switch + a
 # 	dwmc togglefullscr
 
 mode_switch + e
-    $SCRIPTS/useful/fun/emojiSelect
+    emoji_select
 
 mode_switch + i
     $UTILITIES/misc/saveImage

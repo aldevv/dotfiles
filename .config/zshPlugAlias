@@ -34,15 +34,12 @@ alias pkg='sudo eopkg'\
     rz="mpv 'http://www.youtube.com/watch?v=w-RUTZBbGwM'"\
     yz="mpv 'https://www.youtube.com/watch?v=mRwcGr8yTws'"\
     rick="curl -s -L http://bit.ly/10hA8iC | bash"\
-    bt="curl rate.sx"\
     cheat="$UTILITIES/sheetmaker.sh"\
     ytu="$UTILITIES/youtube/YT.tcl"\
     yta="$UTILITIES/youtube/downloadAudio.sh"\
     ytv="$UTILITIES/youtube/downloadVideo.sh"\
-    dic="$UTILITIES/dictionary.sh"\
     conv="$UTILITIES/MkvToMp4.sh"\
     par="curl parrot.live"\
-    wtr="$UTILITIES/weather.sh"\
     ssr="simplescreenrecorder"\
     yt="youtube-viewer -q"\
     r=". ranger"\

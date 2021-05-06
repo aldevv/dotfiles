@@ -1,6 +1,0 @@
-#!/bin/sh
-cd "$SUCKLESS/dmenu"
-eopkg -y install libxft-devel libxinerama-devel 
-make clean
-make 
-make install

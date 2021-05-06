@@ -1,8 +1,6 @@
 #something
 h       ~
-ob      ~/dev/Work/PPE/tensorflow-api
-obd     ~/dev/Work/PPE/tensorflow-api/models/research/object_detection
-wo      ~/Master/Work
+wo      ~/Master/Work/covidalert
 bk      ~/Documents/Books
 ba      ~/.backups
 cc      ~/Master/Classes/2021-1
@@ -16,10 +14,11 @@ ms      ~/.local/share/myScripts/
 mo      ~/.local/share/myScripts/os/solus
 mO      ~/.local/share/myScripts/os/solus/Build-Programs
 mu      ~/.local/share/myScripts/utilities
-md      ~/.local/share/myScripts/useful/virtual
-ma      ~/.local/share/myScripts/automation
+md      ~/.local/share/myScripts/programming/virtual/docker-compose
+mau      ~/.local/share/myScripts/automation
 oc      /usr/share/doc
-mp      ~/.local/share/myScripts/apps
+map      ~/.local/share/myScripts/apps
+mp      ~/.local/share/myScripts/programming
 D       ~/Downloads
 d       ~/Documents
 pp      ~/Pictures
@@ -53,14 +52,14 @@ l1      ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swa
 l2      ~/Master/Learn/Rust/Learn Rust by Building Real Applications
 ld      ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
 lr      ~/Master/Learn/Rust/Learn Rust by Building Real Applications
-V       ~/Master/Volumes
-pa      ~/Master/Projects
-po      ~/Master/Projects/Micro
-pO      ~/Master/Projects/Main/
-w1      ~/Master/Work/covidalert
+vo       ~/Master/Volumes
+po      ~/Master/Projects
+pm      ~/Master/Projects/Micro
+pM      ~/Master/Projects/Main/
 p1      ~/Master/Projects/Micro/HTTP-server in Rust
 p2      ~/Master/Projects/Micro/Docker
-1       ~/Master/Projects/Main/covidalert
+
+# temp shortcuts
 aa      ~/Master/Classes/2021-1/GERENCIA/imp
 zz       /home/kanon/Master/Classes/2021-1/GERENCIA/licitacion/licitaciones-2021-I/primera - ejercito (sensores de red)
 
