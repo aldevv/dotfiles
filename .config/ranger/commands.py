@@ -5,6 +5,30 @@ import subprocess
 import os
 
 
+class drive_toggle(Command):
+    def execute(self):
+        import re
+
+        # TODO signals
+        # https://github.com/ranger/ranger/wiki/Signals-and-Hooks
+        p = re.compile(".+Volumes.+drive.*")
+        cur_dir = p.findall(self.fm.thisdir.path)
+        if cur_dir:
+            test = self.fm.execute_console(f"set viewmode multipane")
+        else:
+            test = self.fm.execute_console(f"set viewmode miller")
+
+        # test = 0
+
+        # test = self.fm.execute_console("set viewmode multipane")
+
+        # if self.fm.thisdir == "drive":
+        #     test = self.fm.execute_console("echo " + self.fm.thisdir, stdout=subprocess.PIPE)
+        # self.fm.execute_command("viewmode multipane")
+        # else:
+        # self.fm.execute_command("viewmode miller")
+
+
 class fzf_select(Command):
     """
     :fzf_select
@@ -17,8 +41,6 @@ class fzf_select(Command):
     """
 
     def execute(self):
-        import subprocess
-        import os.path
 
         if self.quantifier:
             # match only directories
@@ -30,8 +52,7 @@ class fzf_select(Command):
             -o -print 2> /dev/null | sed 1d | cut -b3- | fzf +m"
             # not working
             # command="rg . --hidden --follow -g '!{**/node_modules/*,.git,miniconda3,env,envs,__pycache__, libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache}' |fzf"
-        fzf = self.fm.execute_command(
-            command, universal_newlines=True, stdout=subprocess.PIPE)
+        fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
             fzf_file = os.path.abspath(stdout.rstrip("\n"))
@@ -39,6 +60,51 @@ class fzf_select(Command):
                 self.fm.cd(fzf_file)
             else:
                 self.fm.select_file(fzf_file)
+
+
+class rga_select(Command):
+    """
+
+    Find a file using rg and fzf.
+
+    See: https://github.com/junegunn/fzf
+    """
+
+    def execute(self):
+        import subprocess
+        import os.path
+
+        command = """
+            RG_PREFIX="rga --files-with-matches"
+            local file
+            file="$(
+                FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+                        fzf --height=40 --sort --preview="[[ ! -z {} ]] && bat --color always {} | rga --pretty --context 5 {q} 2>/dev/null" \
+                                --phony -q "$1" \
+                                --bind "change:reload:$RG_PREFIX {q}" \
+                                --preview-window="70%:wrap"
+        )" &&
+        echo "$file" """
+
+        # command = """
+        #     RG_PREFIX="rga --files-with-matches"
+        #     local file
+        #     file="$(
+        #         FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+        #                 fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+        #                         --phony -q "$1" \
+        #                         --bind "change:reload:$RG_PREFIX {q}" \
+        #                         --preview-window="70%:wrap"
+        # )" &&
+        # echo "opening $file" &&
+        # xdg-open "$file" """
+
+        fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
+        stdout, stderr = fzf.communicate()
+        if fzf.returncode == 0:
+            fzf_file = os.path.abspath(stdout.rstrip("\n"))
+            self.fm.select_file(fzf_file)
+            self.fm.execute_command("xdg-open " + fzf_file)
 
 
 class rg_select(Command):
@@ -78,8 +144,7 @@ class rg_select(Command):
         # echo "opening $file" &&
         # xdg-open "$file" """
 
-        fzf = self.fm.execute_command(
-            command, universal_newlines=True, stdout=subprocess.PIPE)
+        fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
             fzf_file = os.path.abspath(stdout.rstrip("\n"))
@@ -117,11 +182,134 @@ class YankContent(Command):
         elif file.image:
             cmd += ["-t", file.mimetype, file.path]
             subprocess.check_call(cmd)
-            self.fm.notify(
-                "Content of {} is copied to x clipboard".format(relative_path))
+            self.fm.notify("Content of {} is copied to x clipboard".format(relative_path))
         else:
-            self.fm.notify(
-                "{} is not an image file or a text file.".format(relative_path))
+            self.fm.notify("{} is not an image file or a text file.".format(relative_path))
 
     def tab(self, tabnum):
         return self._tab_directory_content()
+
+
+class fzf_rga_documents_search(Command):
+    """
+    :fzf_rga_search_documents
+    Search in PDFs, E-Books and Office documents in current directory.
+    Allowed extensions: .epub, .odt, .docx, .fb2, .ipynb, .pdf.
+
+    Usage: fzf_rga_search_documents <search string>
+    """
+
+    def execute(self):
+        if self.arg(1):
+            search_string = self.rest(1)
+        else:
+            self.fm.notify("Usage: fzf_rga_search_documents <search string>", bad=True)
+            return
+
+        import subprocess
+        import os.path
+        from ranger.container.file import File
+
+        command = (
+            "rga '%s' . --rga-adapters=pandoc,poppler | fzf +m | awk -F':' '{print $1}'"
+            % search_string
+        )
+        fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
+        stdout, stderr = fzf.communicate()
+        if fzf.returncode == 0:
+            fzf_file = os.path.abspath(stdout.rstrip("\n"))
+            self.fm.execute_file(File(fzf_file))
+
+
+# class fd_search(Command):
+#     """
+#     :fd_search [-d<depth>] <query>
+#     Executes "fd -d<depth> <query>" in the current directory and focuses the
+#     first match. <depth> defaults to 1, i.e. only the contents of the current
+#     directory.
+
+#     See https://github.com/sharkdp/fd
+#     """
+
+#     SEARCH_RESULTS = deque()
+
+#     def execute(self):
+#         import re
+#         import subprocess
+#         from ranger.ext.get_executables import get_executables
+
+#         self.SEARCH_RESULTS.clear()
+
+#         if "fdfind" in get_executables():
+#             fd = "fdfind"
+#         elif "fd" in get_executables():
+#             fd = "fd"
+#         else:
+#             self.fm.notify("Couldn't find fd in the PATH.", bad=True)
+#             return
+
+#         if self.arg(1):
+#             if self.arg(1)[:2] == "-d":
+#                 depth = self.arg(1)
+#                 target = self.rest(2)
+#             else:
+#                 depth = "-d1"
+#                 target = self.rest(1)
+#         else:
+#             self.fm.notify(":fd_search needs a query.", bad=True)
+#             return
+
+#         hidden = "--hidden" if self.fm.settings.show_hidden else ""
+#         exclude = "--no-ignore-vcs --exclude '.git' --exclude '*.py[co]' --exclude '__pycache__'"
+#         command = "{} --follow {} {} {} --print0 {}".format(fd, depth, hidden, exclude, target)
+#         fd = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
+#         stdout, _ = fd.communicate()
+
+#         if fd.returncode == 0:
+#             results = filter(None, stdout.split("\0"))
+#             if not self.fm.settings.show_hidden and self.fm.settings.hidden_filter:
+#                 hidden_filter = re.compile(self.fm.settings.hidden_filter)
+#                 results = filter(
+#                     lambda res: not hidden_filter.search(os.path.basename(res)), results
+#                 )
+#             results = map(
+#                 lambda res: os.path.abspath(os.path.join(self.fm.thisdir.path, res)), results
+#             )
+#             self.SEARCH_RESULTS.extend(sorted(results, key=str.lower))
+#             if len(self.SEARCH_RESULTS) > 0:
+#                 self.fm.notify(
+#                     "Found {} result{}.".format(
+#                         len(self.SEARCH_RESULTS), ("s" if len(self.SEARCH_RESULTS) > 1 else "")
+#                     )
+#                 )
+#                 self.fm.select_file(self.SEARCH_RESULTS[0])
+#             else:
+#                 self.fm.notify("No results found.")
+
+
+# class fd_next(Command):
+#     """
+#     :fd_next
+#     Selects the next match from the last :fd_search.
+#     """
+
+#     def execute(self):
+#         if len(fd_search.SEARCH_RESULTS) > 1:
+#             fd_search.SEARCH_RESULTS.rotate(-1)  # rotate left
+#             self.fm.select_file(fd_search.SEARCH_RESULTS[0])
+#         elif len(fd_search.SEARCH_RESULTS) == 1:
+#             self.fm.select_file(fd_search.SEARCH_RESULTS[0])
+
+
+# class fd_prev(Command):
+#     """
+#     :fd_prev
+#     Selects the next match from the last :fd_search.
+#     """
+
+#     def execute(self):
+#         if len(fd_search.SEARCH_RESULTS) > 1:
+#             fd_search.SEARCH_RESULTS.rotate(1)  # rotate right
+#             self.fm.select_file(fd_search.SEARCH_RESULTS[0])
+#         elif len(fd_search.SEARCH_RESULTS) == 1:
+#             self.fm.select_file(fd_search.SEARCH_RESULTS[0])

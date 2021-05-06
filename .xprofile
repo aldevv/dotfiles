@@ -19,3 +19,5 @@ setsid copyq &
 autorandr --change
 wal -R &
 sxhkd &
+
+rclone mount --daemon ugd:remote $VOLUMES/drive

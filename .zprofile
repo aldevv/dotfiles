@@ -56,6 +56,7 @@ export PATH="$(du $HOME/.local/bin | cut -f2 | tr '\n' ':')$PATH"
 
 export PROGRAMMING="$SCRIPTS/Programming"
 export MYLIBRARIES="$PROGRAMMING/libraries"
+export DRIVE="$VOLUMES/drive"
 
 # Settings for Japanese input
 export GTK_IM_MODULE='ibus'
@@ -103,6 +104,11 @@ export PATH MANPATH LD_LIBRARY_PATH PKG_CONFIG_PATH
 #======================================
 # WORK
 #======================================
+#
+# export PYTHONPATH="$WORK/PPE/tensorflow-api/models/research:$WORK/PPE/tensorflow-api/models/research/slim:$WORK/PPE/tensorflow-api/models:$PYTHONPATH"
+#export PYTHONPATH="$WORK/PPE/workplace/train/images/models/research:$WORK/PPE/workplace/train/images/models/research/slim:$WORK/PPE/workplace/train/images/models:$PYTHONPATH"
+#
+#
 nvm_path="$HOME/.config/nvm/versions/node"
 node=$(ls $nvm_path | sed -n -E '/v[0-9]+\.[0-9]+\.[0-9]+$/p' | sort -r  | sed '1q')
 if [ ! -z "$node" ]; then
@@ -110,18 +116,17 @@ if [ ! -z "$node" ]; then
 else
     export NODE_PATH=""
 fi
-# export PYTHONPATH="$WORK/PPE/tensorflow-api/models/research:$WORK/PPE/tensorflow-api/models/research/slim:$WORK/PPE/tensorflow-api/models:$PYTHONPATH"
-export PYTHONPATH="$WORK/PPE/workplace/train/images/models/research:$WORK/PPE/workplace/train/images/models/research/slim:$WORK/PPE/workplace/train/images/models:$PYTHONPATH"
+export PATH="$PATH:$NODE_PATH"
 export JDK_HOME="/usr/lib64/openjdk-11"
 export JAVA_HOME="$JDK_HOME"
-# TODO update this path to remove cargo
-export PATH="$PATH:$JAVA_HOME/bin:$HOME/.cargo/bin:$NODE_PATH"
+
+export PATH="$PATH:$JAVA_HOME/bin"
 
 export CARGO_HOME="$PROGRAMS/rust/cargo"
 export RUSTUP_HOME="$PROGRAMS/rust/rustup"
 
 export GOPATH=$PROGRAMS/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$JAVA_HOME/bin:$CARGO_HOME/bin"
 #======================================
 #
 #WINE
