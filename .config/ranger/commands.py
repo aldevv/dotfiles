@@ -41,10 +41,12 @@ def hook_ready(fm):
             if viewmode == "miller":
                 fm.execute_console("set viewmode multipane")
         else:
-            if remotes_path in str(prev_dir):
-                if viewmode != "miller":
-                    fm.execute_console("set viewmode miller")
+            if prev_dir:
+                if remotes_path in str(prev_dir):
+                    if viewmode != "miller":
+                        fm.execute_console("set viewmode miller")
 
+    drive_toggle()
     fm.signal_bind("cd", drive_toggle)
     return HOOK_READY_OLD(fm)
 

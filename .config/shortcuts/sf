@@ -1,7 +1,7 @@
 #something
 h       ~
-gr       ~/Master/Remotes
-gd       ~/Master/Remotes/gdrive
+Rr       ~/Master/Remotes
+Rg       ~/Master/Remotes/gdrive
 wo      ~/Master/Work/covidalert
 bk      ~/Documents/Books
 ba      ~/.backups
@@ -26,7 +26,7 @@ d       ~/Documents
 pp      ~/Pictures
 pr      ~/.local/Programs
 vv      ~/Videos
-MM      ~/Master
+Mm      ~/Master
 Md      ~/Master/Debug
 Ml      ~/Master/Learn
 Mp      ~/Master/Projects
