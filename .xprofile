@@ -20,4 +20,4 @@ autorandr --change
 wal -R &
 sxhkd &
 
-rclone mount --daemon ugd:Repo $REMOTES/gdrive
+rclone mount --daemon ugd:Repo $REMOTES/ugd
