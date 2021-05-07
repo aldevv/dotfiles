@@ -1,6 +1,7 @@
 #something
 h       ~
-e      ~/Master/Volumes/drive
+gr       ~/Master/Remotes
+gd       ~/Master/Remotes/gdrive
 wo      ~/Master/Work/covidalert
 bk      ~/Documents/Books
 ba      ~/.backups

@@ -29,6 +29,7 @@ export WORK="$MASTER/Work"
 export CLASS="$MASTER/Classes/2021-1"
 export LEARN="$MASTER/Learn"
 export VOLUMES="$MASTER/Volumes"
+export REMOTES="$MASTER/Remotes"
 export SUCKLESS="$HOME/.local/Programs/Suckless"
 export BACKUPS="$HOME/.backups"
 export PROGRAMS="$HOME/.local/Programs"
@@ -56,7 +57,6 @@ export PATH="$(du $HOME/.local/bin | cut -f2 | tr '\n' ':')$PATH"
 
 export PROGRAMMING="$SCRIPTS/Programming"
 export MYLIBRARIES="$PROGRAMMING/libraries"
-export DRIVE="$VOLUMES/drive"
 
 # Settings for Japanese input
 export GTK_IM_MODULE='ibus'

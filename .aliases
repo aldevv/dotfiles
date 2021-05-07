@@ -1,5 +1,6 @@
 alias h='cd ~ && ls -a'
-alias e='cd ~/Master/Volumes/drive && ls -a'
+alias gr='cd ~/Master/Remotes && ls -a'
+alias gd='cd ~/Master/Remotes/gdrive && ls -a'
 alias wo='cd ~/Master/Work/covidalert && ls -a'
 alias bk='cd ~/Documents/Books && ls -a'
 alias ba='cd ~/.backups && ls -a'

@@ -177,6 +177,9 @@ alias pkg='sudo eopkg'\
     gpgimp="gpg --import"\
     gpgls="gpg --list-keys"\
     rp="gpgconf --kill all"\
+    mypubip="curl -s ifconfig.me | cut -d'%' -f 1"\
+    myip="ip route get 1.2.3.4 | awk '{print \$7; exit}'"\
+    myip6="ip -6 addr |awk '{print \$2}'|grep -P 'fe80' | cut -d '/' -f 1" \
 
 
     # rgp="ruby grep_pptx.rb"\

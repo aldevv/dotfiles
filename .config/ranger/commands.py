@@ -4,29 +4,52 @@ from ranger.ext.get_executables import get_executables
 import subprocess
 import os
 
+import re
+import ranger.api
 
-class drive_toggle(Command):
-    def execute(self):
-        import re
 
-        # TODO signals
-        # https://github.com/ranger/ranger/wiki/Signals-and-Hooks
-        p = re.compile(".+Volumes.+drive.*")
-        cur_dir = p.findall(self.fm.thisdir.path)
-        if cur_dir:
-            test = self.fm.execute_console(f"set viewmode multipane")
+# test = 0
+
+# test = self.fm.execute_console("set viewmode multipane")
+
+# if self.fm.thisdir == "drive":
+#     test = self.fm.execute_console("echo " + self.fm.thisdir, stdout=subprocess.PIPE)
+# self.fm.execute_command("viewmode multipane")
+# else:
+# self.fm.execute_command("viewmode miller")
+
+
+HOOK_READY_OLD = ranger.api.hook_ready
+
+# example hook
+# https://github.com/ranger/ranger/blob/master/examples/plugin_fasd_add.py
+
+
+def hook_ready(fm):
+    def drive_toggle():
+        """ changes viewmode when entering the remotes folder """
+
+        history = fm.thistab.history.history
+        prev_dir = None
+        if len(history) > 1:
+            prev_dir = history[-2]
+
+        viewmode = fm.settings["viewmode"]
+        cur_path = fm.thisdir.path
+        remotes_path = os.getenv("REMOTES")
+        if remotes_path in cur_path:
+            if viewmode == "miller":
+                fm.execute_console("set viewmode multipane")
         else:
-            test = self.fm.execute_console(f"set viewmode miller")
+            if remotes_path in str(prev_dir):
+                if viewmode != "miller":
+                    fm.execute_console("set viewmode miller")
 
-        # test = 0
+    fm.signal_bind("cd", drive_toggle)
+    return HOOK_READY_OLD(fm)
 
-        # test = self.fm.execute_console("set viewmode multipane")
 
-        # if self.fm.thisdir == "drive":
-        #     test = self.fm.execute_console("echo " + self.fm.thisdir, stdout=subprocess.PIPE)
-        # self.fm.execute_command("viewmode multipane")
-        # else:
-        # self.fm.execute_command("viewmode miller")
+ranger.api.hook_ready = hook_ready
 
 
 class fzf_select(Command):
