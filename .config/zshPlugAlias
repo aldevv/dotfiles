@@ -17,6 +17,9 @@
 #
 # Aliases
 alias shock="cd $HOME'/.wine/drive_c/GOG Games/System Shock 2' && wine Shock2.exe"
+unalias -m '_'
+# normally _ is $0 (your interactive shell)
+alias _='sudo'
 
 alias pkg='sudo eopkg'\
     m="mkdir"\

@@ -193,12 +193,13 @@ doge() {
 # }
 
 bindkey -s "^n" "stn^M"
-bindkey -s 'p' 'file=$(fzf); [ -n "$file" ] && nvim "$file"^M'
-bindkey -s 'w' 'file=$(fd . -I -H "$WORK" | fzf); [ -n "$file" ] && nvim "$file"^M'
-bindkey -s 'c' 'file=$(fd . -I -H "$CLASS" | fzf); [ -n "$file" ] && nvim "$file"^M'
-bindkey -s 'M' 'file=$(fd . -I -H "$MASTER" | fzf); [ -n "$file" ] && nvim "$file"^M'
-bindkey -s 'P' 'file=$(fd . -I -H "$PROJECTS" | fzf); [ -n "$file" ] && nvim "$file"^M'
-bindkey -s 'l' 'file=$(fd . -I -H "$LEARN" | fzf); [ -n "$file" ] && nvim "$file"^M'
+bindkey -s 'p' 'file=$(fd . -t f -I -H | fzf -d / --with-nth -5,-4,-3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
+bindkey -s 'w' 'file=$(fd . -t f -I -H "$WORK" | fzf -d / --with-nth -3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
+bindkey -s 'c' 'file=$(fd . -t f -I -H "$CLASS" | fzf -d / --with-nth -3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
+bindkey -s 'M' 'file=$(fd . -t f -I -H "$MASTER" | fzf -d / --with-nth -3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
+bindkey -s 's' 'file=$(fd . -t f -I -H "$SCRIPTS" | fzf -d / --with-nth -3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
+bindkey -s 'P' 'file=$(fd . -t f -I -H "$PROJECTS" | fzf -d / --with-nth -3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
+bindkey -s 'l' 'file=$(fd . -t f -I -H "$LEARN" | fzf -d / --with-nth -3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
 bindkey -s 'o' '!\$^M'
 bindkey -s 'O' '!*^M'
 bindkey -s 't' '**	'
