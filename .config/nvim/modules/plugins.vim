@@ -32,13 +32,14 @@ Plug 'yggdroot/indentLine'
 " Plug 'jupyter-vim/jupyter-vim'
 Plug 'mattn/emmet-vim'
 Plug 'ap/vim-css-color'
-Plug  'alvan/vim-closetag'
 Plug 'mbbill/undotree'
 Plug 'lervag/vimtex'
 Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
 Plug 'liuchengxu/vim-which-key'
 Plug 'junegunn/goyo.vim'
 Plug 'jremmen/vim-ripgrep'
+Plug  'alvan/vim-closetag'
+Plug 'jiangmiao/auto-pairs'
 
 " BUG with lazyredraw!
 Plug 'rhysd/clever-f.vim'
@@ -70,7 +71,6 @@ Plug 'vim-scripts/vis'
 Plug 'matze/vim-move'
 Plug 'francoiscabrol/ranger.vim' |
          \ Plug 'rbgrouleff/bclose.vim'
-Plug 'jiangmiao/auto-pairs'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'kassio/neoterm'
 " for commits

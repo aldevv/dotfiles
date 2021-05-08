@@ -55,8 +55,8 @@ export PATH="$(du $UTILITIES  | cut -f2 | tr '\n' ':')$PATH"
 export PATH="$(du $AUTOMATION | cut -f2 | tr '\n' ':')$PATH"
 export PATH="$(du $HOME/.local/bin | cut -f2 | tr '\n' ':')$PATH"
 
-export PROGRAMMING="$SCRIPTS/Programming"
-export MYLIBRARIES="$PROGRAMMING/libraries"
+export PROGRAMMING="$SCRIPTS/programming"
+export MLIBS="$PROGRAMMING/mlibs"
 
 # Settings for Japanese input
 export GTK_IM_MODULE='ibus'

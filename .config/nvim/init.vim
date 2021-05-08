@@ -64,7 +64,7 @@ endif
 " PLUGINS SETTINGS
 "==================
 if $USER != "root"
- source ~/.config/nvim/modules/plugins-settings.vim
+    source ~/.config/nvim/modules/plugins-settings.vim
 endif
 
 "==================

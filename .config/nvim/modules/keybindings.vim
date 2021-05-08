@@ -148,7 +148,7 @@ function! CreateFileEnter()
   if len(l:filename) == 0
       return
   endif
-  
+
   if l:filename =~ '\v.*/.+'
     exec system('filename=' . l:filename . '; mkdir -p ${filename%\/*}/')
   endif
@@ -167,7 +167,7 @@ function! CreateDir()
   endif
   exe ":!mkdir -p " . l:dir_name
 
-  if !SpecialWindow() 
+  if !SpecialWindow()
     w
   endif
 
@@ -243,7 +243,7 @@ vnoremap <silent><leader>lgr :B !sortListR.py <cr>t]xT[
 
 
 nnoremap gñ :SyntaxQuery<CR>
-nnoremap <silent><leader>Tt :silent call Toggle_transparent()<CR>
+nnoremap <silent><leader>,t :silent call Toggle_transparent()<CR>
 function Toggle_transparent()
   exec ":!toggleTrans"
 endfunction
@@ -361,7 +361,7 @@ function! Runner()
   let l:special_cases = ['java', 'rs', 'go']
   if index(l:special_cases, g:extension) >= 0 " si esta en el arreglo
     let l:runner = 'Dispatch!'
-  else 
+  else
     let l:runner = 'Dispatch '
   endif
   silent execute l:runner
@@ -408,7 +408,6 @@ autocmd FileType python,java,js,jsx,ts iabbrev <buffer> rrt return
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> ffa False
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> ttr True
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> bbr Break
-autocmd FileTYpe c,cpp,java,html imap < <><esc>ha
 
 " use * in visual mode
 function! s:VSetSearch()

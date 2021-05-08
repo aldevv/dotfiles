@@ -65,6 +65,7 @@ alias pkg='sudo eopkg'\
     daa='dotrepo add'\
     dau='dotrepo add -u'\
     dgc='dotrepo commit'\
+    dgd='dotrepo diff'\
     dlg='dotrepo log --oneline --reverse'\
     dgpo='dotrepo push origin HEAD'\
     pgp='uploadProjects'\
