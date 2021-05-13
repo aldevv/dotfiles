@@ -58,6 +58,8 @@ export PATH="$(du $HOME/.local/bin | cut -f2 | tr '\n' ':')$PATH"
 export PROGRAMMING="$SCRIPTS/programming"
 export MLIBS="$PROGRAMMING/mlibs"
 
+export PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains/proxychains.conf"
+
 # Settings for Japanese input
 export GTK_IM_MODULE='ibus'
 export QT_IM_MODULE='ibus'

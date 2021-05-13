@@ -4,4 +4,4 @@
 .config/youtube-viewer/api.json.config/rclone/rclone.conf
 *.orig
 *.o
-.local/share/.pass/secret.zip.local/share/.pass/secret.local/share/.pass/secret.local/share/.pass/secret.local/share/.pass/pass.local/share/.pass/pass.config/rclone/rclone.conf.local/share/.pass/pass
+.local/share/.pass/secret.zip.local/share/.pass/secret.local/share/.pass/secret.local/share/.pass/secret.local/share/.pass/pass.local/share/.pass/pass.config/rclone/rclone.conf.local/share/.pass/pass.config/proxychains/proxychains.conf
