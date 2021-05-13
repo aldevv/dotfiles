@@ -20,17 +20,7 @@ super + shift + p
 	xrandr-dmenu
 
 super + shift + q
-	shutdown now
-
-super + shift + r
-	reboot
-
-super + shift + s
-	systemctl suspend
-
-super + shift + d
-	sudo systemctl restart display-manager
-
+    sudo -E $UTILITIES/base/hardware/power_options
 
 #mode_switch + p
 # 	python_docs

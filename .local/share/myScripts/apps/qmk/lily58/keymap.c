@@ -225,8 +225,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT( \
   _______, _______, _______, _______, _______, _______,                          _______, _______, _______,_______, _______, _______,\
   _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                          KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, LCM_GRV, \
-  _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                             KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  _______, \
-  _______, LCM_LABK, LCM_RABK, LCM_GRV, ROPT(LCM_LCBR), KC_LCBR, _______,    _______, LCM_BSLS, LCM_PIPE, COMM_SPC, LCM_IQUE, LCM_IEXL, _______, \
+  _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                             KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  LCM_IQUE, \
+  _______, LCM_LABK, LCM_RABK, LCM_GRV, LCM_CIRC, LCM_TILD, _______,    _______, LCM_BSLS, LCM_PIPE, COMM_SPC, LCM_DOT , LCM_IEXL, _______, \
                              _______, _______, _______, _______,                  _______,  _______, _______, _______\
 ),
 /* RAISE
@@ -248,7 +248,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, KC_PSCREEN, \
   KC_F11,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F12, \
   KC_CAPS, KC_BRID, KC_BRIU, KC_MUTE, KC_VOLD, KC_VOLU,                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  LSFT(KC_PSCREEN), KC_PSCREEN, \
-  _______, _______, _______, _______, KC_MEDIA_SELECT,_______,_______,  _______, LCM_IEXL,TD(TD_PAR),  SCLN_END, COLN_END, _______, _______, \
+  _______, _______, _______, _______, KC_MEDIA_SELECT,_______,_______,  _______, LCM_IEXL,TD(TD_PAR),  SCLN_END, COLN_END, KC_LCBR, _______, \
                              _______, _______, _______,  _______,               KC_DEL, KC_RCTRL,  LT(_ADJUST,KC_SPC), _______ \
 ),
 
@@ -489,13 +489,13 @@ void matrix_scan_user(void) {
     }
     SEQ_ONE_KEY(LCM_C) {
 
-        //PERMANENT 
+        //PERMANENT
         // sudo localectl set-x11-keymap latam pc104 colemak && sudo localectl set-keymap colemak
         SEND_STRING("rlsy iycaifcgi rfg" SS_TAP(X_MINS) "x11" SS_TAP(X_MINS) "efjma" SS_TAP(X_P) " iagam " SS_TAP(X_P) "c104 cyifmae " SS_LSFT("77") " rlsy iycaifcgi rfg" SS_TAP(X_MINS) "efjma" SS_TAP(X_P) " cyifmae\n");
     }
     SEQ_TWO_KEYS(KC_RSPC, LCM_C) {
-        //TEMPORAL 
-        // setxkbmap latam -variant colemak 
+        //TEMPORAL
+        // setxkbmap latam -variant colemak
         SEND_STRING("rfgxebma" SS_TAP(X_P) " iagam " SS_TAP(X_MINS) "vapuakg cyifmae\n");
     }
     /* SEQ_TWO_KEYS(KC_E, KC_D) { */

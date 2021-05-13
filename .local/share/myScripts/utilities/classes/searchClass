@@ -7,7 +7,7 @@
 # t: time modified
 # p: path to file
 
-fullInfo=$(rclone lsf  --format "imstp" --drive-shared-with-me "gdrive:" | column -t -s ";" | sort -k4,5 | tac)
+fullInfo=$(rclone lsf  --format "imstp" --drive-shared-with-me "ugd:" | column -t -s ";" | sort -k4,5 | tac)
 selections=$(echo "$fullInfo" | awk ' $2 == "video/mp4" {for(i=6;i<=NF;i++){printf "%s ", $i}; printf "\n"}' | dmenu -i -l 5 | sed 's/\s*$//g')
 if [ -z "$selections" ]; then
     exit

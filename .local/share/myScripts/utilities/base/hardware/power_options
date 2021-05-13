@@ -1,0 +1,15 @@
+#!/bin/sh
+
+option=$(printf "shutdown\nreboot\nrestart\nlogout" | /usr/local/bin/dmenu -l 5)
+
+case "$option" in
+    "shutdown")
+        shutdown now ;;
+    "reboot")
+        reboot ;;
+    "restart")
+        systemctl restart display-manager ;;
+    "logout")
+        exec kill -s TERM "$(ps -p "$(pgrep dwm)" -o ppid=)" ;;
+esac
+

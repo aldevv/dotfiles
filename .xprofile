@@ -6,7 +6,6 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 # dunst &
 fcitx & # for languages
 # custom scripts
-startupScripts
 DISPLAY=":0" picom -b
 # so the user can make connections to the xserver (docker)
 xhost local:root
@@ -21,3 +20,4 @@ wal -R &
 sxhkd &
 
 rclone mount --daemon ugd:Repo $REMOTES/ugd
+startupScripts
