@@ -49,13 +49,6 @@
  source ~/.config/nvim/modules/settings.vim
 
 "==================
-" PLUGINS
-"==================
-if $USER != "root"
- source ~/.config/nvim/modules/plugins.vim
-endif
-
-"==================
 " KEYBINDINGS
 "==================
  source ~/.config/nvim/modules/keybindings.vim
@@ -64,6 +57,7 @@ endif
 " PLUGINS SETTINGS
 "==================
 if $USER != "root"
+    source ~/.config/nvim/modules/plugins.vim
     source ~/.config/nvim/modules/plugins-settings.vim
 endif
 

@@ -18,7 +18,8 @@ export ZSH="$HOME/.oh-my-zsh"
 #ZSH_THEME="agnoster"
 # ZSH_THEME="amuse"
 # ZSH_THEME="daivasmara"
-ZSH_THEME="aussiegeek"
+[[ $(whoami) == root ]] && ZSH_THEME="robbyrussell"  || ZSH_THEME="aussiegeek"
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -67,7 +68,7 @@ plugins=(docker)
 # z is a command that takes you to the most probable folder
 export HISTFILE="$XDG_CONFIG_HOME/.zsh_history"
 source $ZSH/oh-my-zsh.sh
-. $XDG_CONFIG_HOME/zshPlugAlias
+. $HOME/.config/zshPlugAlias
 #https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode
 #
 #==============
@@ -137,7 +138,7 @@ bindkey -v '^?' backward-delete-char
 # export ARCHFLAGS="-arch x86_64"
 #
 # less keybindings
-lesskey $XDG_CONFIG_HOME/colemak-less
+lesskey $HOME/.config/colemak-less
 
 source ~/.aliases
 # unsetopt completealiases
@@ -151,7 +152,7 @@ nvml() {
 #
 # fpath=($PROGRAMS/zsh-completions/src $fpath)
 # autoload -U compinit && compinit
-source $PROGRAMS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -d $PROGRAMS/zsh-syntax-highlighting ]] && source $PROGRAMS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 doge() {
   _fzf_complete --multi --reverse --prompt="doge> " -- "$@" < <(
     echo very
@@ -191,6 +192,7 @@ doge() {
 	# echo "opening $file" &&
 	# xdg-open "$file"
 # }
+[[ -d "/usr/local/bin" ]] && export PATH="/usr/local/bin:$PATH"
 
 bindkey -s "^n" "stn^M"
 bindkey -s 'p' 'file=$(fd . -t f -I -H | fzf -d / --with-nth -5,-4,-3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
@@ -219,4 +221,5 @@ _fzf_compgen_dir() {
 # export NVM_DIR="$HOME/.config/nvm"
 [ -f "$HOME/.config/.fzf.zsh" ] && source "$HOME/.config/.fzf.zsh"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

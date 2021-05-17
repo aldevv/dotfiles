@@ -37,6 +37,8 @@ def hook_ready(fm):
         viewmode = fm.settings["viewmode"]
         cur_path = fm.thisdir.path
         remotes_path = os.getenv("REMOTES")
+        if not remotes_path:
+            return
         if remotes_path in cur_path:
             if viewmode == "miller":
                 fm.execute_console("set viewmode multipane")

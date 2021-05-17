@@ -1,0 +1,13 @@
+#!/bin/sh
+
+cd "$PROGRAMS" || exit
+url="https://github.com/vanhauser-thc/thc-hydra"
+latest="$($UTILITIES/programming/github/latestRelease $url)"
+name="vanhauser-thc-thc-hydra-fe930f4"
+sudo -u $SUDO_USER wget -O "$name.tar.gz" $latest
+sudo -u $SUDO_USER tar kvvxf "$name.tar.gz"
+rm "$name.tar.gz"
+cd "$name"
+./configure
+make
+make install

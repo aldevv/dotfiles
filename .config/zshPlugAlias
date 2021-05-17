@@ -86,13 +86,6 @@ alias pkg='sudo eopkg'\
     audio="pavucontrol"\
     plz="sudo"\
     jp="tagainijisho"\
-    ls='exa -a --color=automatic --group-directories-first'\
-    l='exa -al --color=automatic --group-directories-first'\
-    la='exa -a --color=automatic --group-directories-first'\
-    ll='exa -l --color=automatic --group-directories-first'\
-    lt='exa -aT --color=automatic --group-directories-first'\
-    l.='exa -a | egrep "^\."'\
-    lg='exa -a | grep '\
     df='df -h'\
     free='free -m'\
     ..='cd ..'\
@@ -182,7 +175,16 @@ alias pkg='sudo eopkg'\
     mypubip="curl -s ifconfig.me | cut -d'%' -f 1"\
     myip="ip route get 1.2.3.4 | awk '{print \$7; exit}'"\
     myip6="ip -6 addr |awk '{print \$2}'|grep -P 'fe80' | cut -d '/' -f 1" \
-    proxychains="proxychains4" \
+    air="aircrack-ng" \
+
+
+    [[ $(whoami) != "root" ]] && alias ls='exa -a --color=automatic --group-directories-first'\
+    l='exa -al --color=automatic --group-directories-first'\
+    la='exa -a --color=automatic --group-directories-first'\
+    ll='exa -l --color=automatic --group-directories-first'\
+    lt='exa -aT --color=automatic --group-directories-first'\
+    l.='exa -a | egrep "^\."'\
+    lg='exa -a | grep '
 
 
     # rgp="ruby grep_pptx.rb"\

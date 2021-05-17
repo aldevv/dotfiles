@@ -49,11 +49,11 @@ export AUTOMATION="$SCRIPTS/automation"
 export APPS="$SCRIPTS/apps"
 export OS="$SCRIPTS/os/solus"
 #add all files in these directories to the PATH
-export PATH="$(du $SHARED | cut -f2 | tr '\n' ':')$PATH"
-export PATH="$(du $APPS | cut -f2 | tr '\n' ':')$PATH"
-export PATH="$(du $UTILITIES  | cut -f2 | tr '\n' ':')$PATH"
-export PATH="$(du $AUTOMATION | cut -f2 | tr '\n' ':')$PATH"
-export PATH="$(du $HOME/.local/bin | cut -f2 | tr '\n' ':')$PATH"
+[[ -d "$SHARED" ]] && export PATH="$(du $SHARED | cut -f2 | tr '\n' ':')$PATH"
+[[ -d "$APPS" ]] && export PATH="$(du $APPS | cut -f2 | tr '\n' ':')$PATH"
+[[ -d "$UTILITIES" ]] && export PATH="$(du $UTILITIES  | cut -f2 | tr '\n' ':')$PATH"
+[[ -d "$AUTOMATION" ]] && export PATH="$(du $AUTOMATION | cut -f2 | tr '\n' ':')$PATH"
+[[ -d "$HOME/.local/bin" ]] && export PATH="$(du $HOME/.local/bin | cut -f2 | tr '\n' ':')$PATH"
 
 export PROGRAMMING="$SCRIPTS/programming"
 export MLIBS="$PROGRAMMING/mlibs"
@@ -112,7 +112,7 @@ export PATH MANPATH LD_LIBRARY_PATH PKG_CONFIG_PATH
 #
 #
 nvm_path="$HOME/.config/nvm/versions/node"
-node=$(ls $nvm_path | sed -n -E '/v[0-9]+\.[0-9]+\.[0-9]+$/p' | sort -r  | sed '1q')
+node=$(/bin/ls $nvm_path | sed -n -E '/v[0-9]+\.[0-9]+\.[0-9]+$/p' | sort -r  | sed '1q')
 if [ ! -z "$node" ]; then
     export NODE_PATH="$nvm_path/$node/bin"
 else

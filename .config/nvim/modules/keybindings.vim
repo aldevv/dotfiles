@@ -20,18 +20,28 @@ nnoremap º <c-^>
 " nnoremap ^ <c-^>
 
 " move lines without clipboard
-nnoremap E :m .-2<cr>==
-nnoremap N :m .+1<cr>==
-vnoremap E :m '<-2<cr>gv=gv
-vnoremap N :m '>+1<cr>gv=gv
+nnoremap <S-UP> :m .-2<cr>==
+nnoremap <S-DOWN> :m .+1<cr>==
+vnoremap <S-UP> :m '<-2<cr>gv=gv
+vnoremap <S-DOWN> :m '>+1<cr>gv=gv
 
 " vnoremap E :m '<-2<cr>gv=gv
 " vnoremap N :m '>+1<cr>gv=gv
 "
 noremap J E
 vnoremap L I
-noremap ge J
-noremap gE a<cr><esc>k$
+
+noremap ge gk
+noremap gn gj
+
+noremap E J
+
+noremap gE gJ
+
+noremap N i<cr><esc>k$
+vnoremap N :s/\n/ /g<cr>$x
+
+" gN is free
 noremap ' `
 " testing
 noremap I L
