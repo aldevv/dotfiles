@@ -21,6 +21,7 @@ mau      ~/.local/share/myScripts/automation
 oc      /usr/share/doc
 map      ~/.local/share/myScripts/apps
 mp      ~/.local/share/myScripts/programming
+ml      ~/.local/share/myScripts/programming/mlibs
 D       ~/Downloads
 d       ~/Documents
 pp      ~/Pictures

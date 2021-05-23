@@ -99,7 +99,7 @@ endfunction
 nnoremap <leader>Z zMzvzz
 
 nnoremap <silent><leader>,n  :w !npm start 2>/dev/null<cr>
-nnoremap <silent><leader>,ri  :w ! [ ! -e '.env' ] && python3 -m venv .env 2>/dev/null; pip3 install -r requirements.txt 2>/dev/null<cr>
+nnoremap <silent><leader>,ri  :w ! [ ! -e '.env' ] && python3 -m venv .venv 2>/dev/null; .venv/bin/pip3 install -r requirements.txt 2>/dev/null<cr>
 
 
 
@@ -285,6 +285,7 @@ cnoreabbrev w!! w !sudo tee > /dev/null %
 
 map <leader>rs :!./%<cr>
 nnoremap <silent><leader>lch  :w !sudo chmod +x %<cr>
+nnoremap <silent><leader>lco  :w !sudo chown $USER:$USER % 2>/dev/null<cr>
 map <silent> <F11> /\A\zs\a<cr>
 " ctrl alt
 

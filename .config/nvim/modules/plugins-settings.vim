@@ -1616,7 +1616,7 @@ let g:clever_f_use_migemo = 1
 " ==========
 " BRIGHTEST
 " ==========
-noremap <leader>Tb :BrightestToggle<cr>
+noremap <leader>B :BrightestToggle<cr>
 autocmd Filetype * :BrightestDisable
 " let g:brightest#enable_on_CursorHold = 1
 " let g:brightest#enable_clear_highlight_on_CursorMoved = 0

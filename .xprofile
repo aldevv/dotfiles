@@ -19,5 +19,5 @@ autorandr --change
 wal -R &
 sxhkd &
 
-rclone mount --daemon ugd:Repo $REMOTES/ugd
+rclone mount --daemon ugd:Remote $REMOTES/ugd
 startupScripts

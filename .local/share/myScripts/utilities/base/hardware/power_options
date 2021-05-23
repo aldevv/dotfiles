@@ -1,6 +1,6 @@
 #!/bin/sh
 
-option=$(printf "shutdown\nreboot\nrestart\nlogout" | /usr/local/bin/dmenu -l 5)
+option=$(printf "shutdown\nreboot\nrestart\nlogout" | /usr/local/bin/dmenu -l 6)
 
 case "$option" in
     "shutdown")
@@ -9,6 +9,8 @@ case "$option" in
         reboot ;;
     "restart")
         systemctl restart display-manager ;;
+    "suspend")
+        systemctl suspend ;;
     "logout")
         exec kill -s TERM "$(ps -p "$(pgrep dwm)" -o ppid=)" ;;
 esac

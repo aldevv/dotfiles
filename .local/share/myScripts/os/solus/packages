@@ -74,3 +74,4 @@ nmap
 lshw
 openssh-server
 aircrack-ng
+qrencode

@@ -22,6 +22,10 @@ super + shift + p
 super + shift + q
     sudo -E $UTILITIES/base/hardware/power_options
 
+mode_switch + q
+    qrencode -o '/tmp/pass' \"$(xsel -b -o 2>/dev/null)\" && setsid sxiv /tmp/pass; rm /tmp/pass
+
+
 #mode_switch + p
 # 	python_docs
 

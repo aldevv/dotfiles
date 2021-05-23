@@ -176,6 +176,8 @@ alias pkg='sudo eopkg'\
     myip="ip route get 1.2.3.4 | awk '{print \$7; exit}'"\
     myip6="ip -6 addr |awk '{print \$2}'|grep -P 'fe80' | cut -d '/' -f 1" \
     air="aircrack-ng" \
+    qr="qrencode" \
+    qrp="qrencode -o '/tmp/pass' \"$(xsel -b -o 2>/dev/null)\" && sxiv /tmp/pass; rm /tmp/pass" \
 
 
     [[ $(whoami) != "root" ]] && alias ls='exa -a --color=automatic --group-directories-first'\
@@ -1077,7 +1079,7 @@ alias djtp= 'python manage.py test --parallel'
 alias djt='python manage.py test'
 alias djr='python manage.py runserver'
 alias djR='dkcD && dkcU && djm'
-alias djRl='dkcD && dkcU && djm && dj loadfixtures'
+alias djRl='dkcD && sleep 0.05; dkcU && sleep 0.05; djm && dj loadfixtures'
 alias djM='python manage.py makemigrations'
 alias djm='python manage.py migrate'
 alias djl='python manage.py loadfixtures'
@@ -1121,4 +1123,5 @@ alias rc='rclone'
 alias rcls='rclone ls'
 alias rccp='rclone copy'
 alias rcmv='rclone move'
+alias rcmnt='rclone mount --daemon'
 
