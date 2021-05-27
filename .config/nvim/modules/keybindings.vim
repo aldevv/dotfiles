@@ -34,6 +34,8 @@ vnoremap L I
 noremap ge gk
 noremap gn gj
 
+noremap gk gn
+
 noremap E J
 
 noremap gE gJ
@@ -84,7 +86,7 @@ function! ToggleQuickFix(staywindow)
   endif
 endfunction
 
-function! ToggleLocation()
+function! ToggleLocation(staywindow)
   if empty(filter(getwininfo(), 'v:val.quickfix'))
     lopen
     if (!a:staywindow)
@@ -276,9 +278,9 @@ vnoremap <A-R> :g/\v/norm!<Left><Left><Left><Left><Left><Left>
 vnoremap <A-r> :norm!<space>
 
 " Alias replace all to
+nnoremap <A-S-s> :%s/\v<c-r>=expand("<cword>")<cr>//gI<Left><Left><Left>
 nnoremap <A-s> :%s/\v//gI<Left><Left><Left><Left>
 vnoremap <A-s> :s/\v//gI<Left><Left><Left><Left>
-vnoremap <A-S> :s/\v//gI<Left><Left><Left><Left>
 " save with no permission using w!!, could be cnoremap
 "
 cnoreabbrev w!! w !sudo tee > /dev/null %

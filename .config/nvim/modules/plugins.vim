@@ -113,6 +113,7 @@ Plug 'c-brenn/fuzzy-projectionist.vim'
 " TODO check these 3!!
 " https://github.com/kristijanhusak/vim-dadbod-ui
 call plug#end()
+" CocSearch substitute https://github.com/dyng/ctrlsf.vim
 
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'

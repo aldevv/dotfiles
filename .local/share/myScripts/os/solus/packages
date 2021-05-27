@@ -52,7 +52,7 @@ tagainijisho
 github-cli
 cargo
 xsetroot
-xclip
+# xclip
 transmission
 mpv
 lightdm-settings
@@ -75,3 +75,4 @@ lshw
 openssh-server
 aircrack-ng
 qrencode
+duplicity

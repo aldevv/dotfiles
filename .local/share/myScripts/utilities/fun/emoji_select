@@ -4,5 +4,5 @@ files="$(cat "$WIKI/emojis/emojis")"
 selected=$(echo "$files" | awk -F ";" '{print $1}' | sort -k3 | dmenu -i -l 10 -fn "Noto Sans Emoji:size=20")
 if [ -z "$selected" ]; then exit; fi
 emoji=$(echo "$selected" | cut -d " " -f 1)
-echo "$emoji" | xclip -selection clipboard
+echo "$emoji" | xsel -b
 dunstify "copied $emoji to clipboard "

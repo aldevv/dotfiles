@@ -134,8 +134,8 @@ alias pkg='sudo eopkg'\
     apropos='apropos -e'\
     f='nvim $(fzf)'\
     b='bat --wrap never'\
+    bb='bat --paging=always'\
     bat='bat --paging=never'\
-    batl='bat --paging=always'\
     ri='source .env/bin/activate && python3 -m pip install --upgrade pip && pip3 install -r requirements.txt '\
     brave='brave-browser'\
     pyv='python3 -m venv .venv'\
@@ -154,7 +154,7 @@ alias pkg='sudo eopkg'\
     ec='echo'\
     et='entr'\
     mime='xdg-mime query filetype'\
-    chm='sudo chmod +x'\
+    chx='sudo chmod +x'\
     xmod='xmodmap "$HOME/.config/.Xmodmap"'\
     lightdm='sudo lightdm-settings'\
     netstat='busybox netstat'\
@@ -175,10 +175,23 @@ alias pkg='sudo eopkg'\
     mypubip="curl -s ifconfig.me | cut -d'%' -f 1"\
     myip="ip route get 1.2.3.4 | awk '{print \$7; exit}'"\
     myip6="ip -6 addr |awk '{print \$2}'|grep -P 'fe80' | cut -d '/' -f 1" \
+    pi="curl -s ifconfig.me | cut -d'%' -f 1"\
+    i="ip route get 1.2.3.4 | awk '{print \$7; exit}'"\
+    i6="ip -6 addr |awk '{print \$2}'|grep -P 'fe80' | cut -d '/' -f 1" \
     air="aircrack-ng" \
     qr="qrencode" \
     qrp="qrencode -o '/tmp/pass' \"$(xsel -b -o 2>/dev/null)\" && sxiv /tmp/pass; rm /tmp/pass" \
 
+nmapb() {
+    sudo nmap -sC -sV -Pn -O "$1" \
+        | tee -a scan
+}
+
+gob() {
+    dir-list > mywordlist \
+        && gobuster dir -w wordlist -u http://$1 \
+        && rm mywordlist
+}
 
     [[ $(whoami) != "root" ]] && alias ls='exa -a --color=automatic --group-directories-first'\
     l='exa -al --color=automatic --group-directories-first'\
@@ -227,6 +240,12 @@ ex ()
   fi
 }
 
+
+crip() {
+    [ -n $1 ] \
+        && curl rate.sx/$1@4w \
+        || curl rate.sx
+}
 
 alias hig="history | grep -i" hi="history"
 # LOL!!1
@@ -1062,6 +1081,14 @@ alias dkcz='docker-compose down && docker-compose up -d'
 alias dkcR='docker-compose build && docker-compose down && docker-compose up -d'
 
 #=======
+# VPN
+#=======
+alias ovpn='sudo openvpn'
+alias vpnj='sudo openvpn --config /etc/openvpn/ProtonVPN_server_configs/jp-free-01.protonvpn.com.udp.ovpn --auth-user-pass /etc/openvpn/protonvpn --daemon'
+alias vpnu='sudo openvpn --config /etc/openvpn/ProtonVPN_server_configs/us-free-02.protonvpn.com.udp.ovpn --auth-user-pass /etc/openvpn/protonvpn --daemon'
+alias vpnd='sudo killall openvpn'
+
+#=======
 # GITHUB
 #=======
 alias ghprc='gh pr create'
@@ -1078,11 +1105,15 @@ alias djc='python manage.py createsuperuser'
 alias djtp= 'python manage.py test --parallel'
 alias djt='python manage.py test'
 alias djr='python manage.py runserver'
-alias djR='dkcD && dkcU && djm'
-alias djRl='dkcD && sleep 0.05; dkcU && sleep 0.05; djm && dj loadfixtures'
 alias djM='python manage.py makemigrations'
 alias djm='python manage.py migrate'
 alias djl='python manage.py loadfixtures'
+
+function djR() {dkcD && sleep 0.1; dkcU && sleep 0.1; djm $1}
+
+function djRl() {djR $1 && dj loadfixtures}
+function djS() {djR && djs}
+function djMS() {djM $1 && djR && djs}
 #=======
 # REACT
 #=======
@@ -1121,7 +1152,21 @@ alias vgwin='vagrant init gusztavvargadr/windows-10 && vagrant up'
 
 alias rc='rclone'
 alias rcls='rclone ls'
+alias rclsd='rclone lsd'
 alias rccp='rclone copy'
 alias rcmv='rclone move'
+# deletes files only
+# to grep you do: rcrm gd:/dir/ --include '*.{jpg,png,etc}'
+alias rcrm='rclone delete'
+# deletes files and directories
+alias rcrmd='rclone purge'
 alias rcmnt='rclone mount --daemon'
 
+#============
+# DUPLICITY
+#============
+# example ->
+#duplicity test_folder rclone://gd:Test_duplicity
+#duplicity restore rclone://gd:Test_duplicity test_folder
+alias dup='duplicity --encrypt-key=D3501299'
+alias dupr='duplicity restore'
