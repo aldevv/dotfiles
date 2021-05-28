@@ -6,7 +6,7 @@
 # for a list of all available themes
 # bat --list-themes
 # --theme="OneHalfDark"
---theme="gruvbox"
+# --theme="gruvbox"
 
 
 # Show line numbers, Git modifications and file header (but no grid)

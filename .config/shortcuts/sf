@@ -16,12 +16,12 @@ ms      ~/.local/share/myScripts/
 mo      ~/.local/share/myScripts/os/solus
 mO      ~/.local/share/myScripts/os/solus/Build-Programs
 mu      ~/.local/share/myScripts/utilities
-md      ~/.local/share/myScripts/programming/virtual/docker-compose
-mau      ~/.local/share/myScripts/automation
+md      ~/.local/share/myScripts/files/virtual/docker-compose
+ma      ~/.local/share/myScripts/automation
 oc      /usr/share/doc
-map      ~/.local/share/myScripts/apps
-mp      ~/.local/share/myScripts/programming
-ml      ~/.local/share/myScripts/programming/mlibs
+mp      ~/.local/share/myScripts/apps
+mf      ~/.local/share/myScripts/files
+ml      ~/.local/share/myScripts/files/mlibs
 D       ~/Downloads
 d       ~/Documents
 pp      ~/Pictures

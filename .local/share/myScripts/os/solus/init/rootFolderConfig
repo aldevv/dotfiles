@@ -12,7 +12,7 @@ ln -s "$XDG_CONFIG_HOME" "/root/.config"
 ln -s "$HOME/.zshrc" "/root/.zshrc"
 ln -s "$HOME/.zprofile" "/root/.zprofile"
 cp -r "$HOME/.local/share/nvim/site" "/root/.local/share/nvim/site"
-sed -i 's|^Defaults secure_path.\+|Defaults secure_path=\"/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/bin\"|g' /etc/sudoers
+sed -i 's|^Defaults secure_path.\+|Defaults secure_path=\"/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/bin:/usr/local/sbin\"|g' /etc/sudoers
 
 # mkdir -p "/root/.config/ranger"
 # cp "$XDG_CONFIG_HOME/ranger/rc_root.conf" "/root/.config/ranger/rc.conf"

@@ -55,7 +55,7 @@ export OS="$SCRIPTS/os/solus"
 [[ -d "$AUTOMATION" ]] && export PATH="$(du $AUTOMATION | cut -f2 | tr '\n' ':')$PATH"
 [[ -d "$HOME/.local/bin" ]] && export PATH="$(du $HOME/.local/bin | cut -f2 | tr '\n' ':')$PATH"
 
-export PROGRAMMING="$SCRIPTS/programming"
+export FILES="$SCRIPTS/files"
 export MLIBS="$PROGRAMMING/mlibs"
 
 export PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains/proxychains.conf"
@@ -121,6 +121,8 @@ fi
 export PATH="$PATH:$NODE_PATH"
 export JDK_HOME="/usr/lib64/openjdk-11"
 export JAVA_HOME="$JDK_HOME"
+export CABAL_CONFIG="$XDG_CONFIG_HOME/cabal/config"
+export CABAL_DIR="$PROGRAMS/cabal"
 
 export PATH="$PATH:$JAVA_HOME/bin"
 
@@ -129,6 +131,7 @@ export RUSTUP_HOME="$PROGRAMS/rust/rustup"
 
 export GOPATH=$PROGRAMS/go
 export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$JAVA_HOME/bin:$CARGO_HOME/bin"
+
 #======================================
 #
 #WINE

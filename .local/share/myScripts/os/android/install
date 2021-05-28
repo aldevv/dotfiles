@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# install os
+
+# install magisk (is the github apk, just change the extension from apk to zip)
+# https://github.com/topjohnwu/Magisk/releaes
+
+# wget -O magisk.zip $(latestRelease https://github.com/topjohnwu/Magisk/releases apk | head -n 1)
+
+# vanced, get the manager after root (dont try microg)
+
+# install mindthegapps or opengapps
+
+
+

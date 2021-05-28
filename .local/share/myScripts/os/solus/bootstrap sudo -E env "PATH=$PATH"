@@ -41,11 +41,11 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | zsh
 nvm install node
 
 # build suckless programs and progs not in repositories
-find Build-Programs/* -exec {} \;
+find build/* -exec {} \;
 
 # optional progs
 if [ "$1" == "all" ] || [ "$2" == "all" ]; then
-   find optional-programs/* -exec {} \;;
+   find build-optional/* -exec {} \;;
 
 fi
 
