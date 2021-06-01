@@ -16,8 +16,7 @@ noremap K Nzzzv
 " put last searched items into QuickFix window
 nnoremap <leader>- :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
-nnoremap º <c-^>
-" nnoremap ^ <c-^>
+
 
 " move lines without clipboard
 nnoremap <S-UP> :m .-2<cr>==
@@ -59,7 +58,9 @@ noremap <c-w>i <c-w>l
 
 noremap <c-w>k <c-w>n
 
+nnoremap º <c-^>
 " vertical version of <c-w>^
+noremap <silent><c-w>º :vsp #<cr>
 noremap <silent><c-w>V :vsp #<cr>
 noremap <silent><c-w>S :sp #<cr>
 " noremap <a-n> <c-n>
