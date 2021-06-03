@@ -1,6 +1,7 @@
 #!/bin/sh
 
 cd "$PROGRAMS" || exit
+eopkg install -y libssh-devel
 url="https://github.com/vanhauser-thc/thc-hydra"
 latest="$($UTILITIES/programming/github/latestRelease $url)"
 name="vanhauser-thc-thc-hydra-fe930f4"

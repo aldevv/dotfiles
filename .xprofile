@@ -1,3 +1,6 @@
+# lightdm doesn't load it after login
+[[ -f $HOME/.config/zsh/.zprofile ]] && . $HOME/.config/zsh/.zprofile
+
 #to import env variables to dbus
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 

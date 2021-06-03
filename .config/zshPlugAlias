@@ -137,6 +137,7 @@ alias pkg='sudo eopkg'\
     f='nvim $(fzf)'\
     b='bat --wrap never'\
     bb='bat --paging=always'\
+    bbg='batgrep'\
     bat='bat --paging=never'\
     ri='source .env/bin/activate && python3 -m pip install --upgrade pip && pip3 install -r requirements.txt '\
     brave='brave-browser'\
@@ -183,6 +184,8 @@ alias pkg='sudo eopkg'\
     air="aircrack-ng" \
     qr="qrencode" \
     qrp="qrencode -o '/tmp/pass' \"$(xsel -b -o 2>/dev/null)\" && sxiv /tmp/pass; rm /tmp/pass" \
+    john="$PROGRAMS/john/run/john" \
+    tm="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf" \
 
 nmapb() {
     sudo nmap -sC -sV -Pn -O "$1" \
@@ -194,6 +197,7 @@ gob() {
         && gobuster dir -w wordlist -u http://$1 \
         && rm mywordlist
 }
+alias enum="enum4linux"
 
     [[ $(whoami) != "root" ]] && alias ls='exa -a --color=automatic --group-directories-first'\
     l='exa -al --color=automatic --group-directories-first'\
@@ -943,6 +947,7 @@ alias dkv='docker version'
 alias dkw='docker wait'
 alias dkS='docker stop'
 alias dkSa='docker stop $(docker ps -a -q)'
+alias dkkali='dkr -it kalilinux/kali-rolling bash'
 
 ## Container (C)
 alias dkC='docker container'

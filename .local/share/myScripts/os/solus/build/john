@@ -1,0 +1,19 @@
+#!/bin/bash
+
+cd "$PROGRAMS" || exit
+sudo -u $SUDO_USER git clone https://github.com/openwall/john
+cd john/src || exit
+sudo -u $SUDO_USER ./configure
+make -s clean && make -sj4
+
+for executable in "$PROGRAMS"/john/run/*; do
+    if [ -x "$executable" ] && [ -f "$executable" ]; then
+        base=$(basename $executable)
+        if [ "$base" == "john" ]; then
+            continue
+        fi
+        ln -f -s "$executable" /usr/local/bin/${base%%.*}
+    fi
+done
+
+
