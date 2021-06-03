@@ -66,9 +66,9 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # docker adds completion for docker commands, same docker compose
 plugins=(docker)
 # z is a command that takes you to the most probable folder
-export HISTFILE="$XDG_CONFIG_HOME/zsh/.zsh_history"
+export HISTFILE="$ZDOTDIR/.zsh_history"
 source $ZSH/oh-my-zsh.sh
-. $HOME/.config/zshPlugAlias
+. $ZDOTDIR/zsh_plugin_aliases
 #https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode
 #
 #==============
@@ -140,7 +140,7 @@ bindkey -v '^?' backward-delete-char
 # less keybindings
 lesskey $HOME/.config/colemak-less
 
-source ~/.aliases
+source $ZDOTDIR/.aliases
 # unsetopt completealiases
 nvml() {
 . "$NVM_DIR/nvm.sh"
@@ -223,3 +223,4 @@ _fzf_compgen_dir() {
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source $ZDOTDIR/.aliases

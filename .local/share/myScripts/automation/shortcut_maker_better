@@ -1,13 +1,13 @@
 #!/bin/bash
 # Config locations
-folders="$HOME/.config/shortcuts/sf"
-dotfiles="$HOME/.config/shortcuts/sd"
+folders="$XDG_CONFIG_HOME/shortcuts/sf"
+dotfiles="$XDG_CONFIG_HOME/shortcuts/sd"
 
 # Output locations
-shell_shortcuts="$HOME/.aliases"
-ranger_shortcuts="$HOME/.config/ranger/shortcuts.conf"
+shell_shortcuts="$XDG_CONFIG_HOME/zsh/.aliases"
+ranger_shortcuts="$XDG_CONFIG_HOME/ranger/shortcuts.conf"
 
-shellrc="$HOME/.zshrc"
+shellrc="$XDG_CONFIG_HOME/zsh/.zshrc"
 
 #[[ ! -f $folders ]] && curl https://raw.githubusercontent.com/LukeSmithxyz/shortcut-sync/master/folders > "$folders"
 #[[ ! -f $dotfiles ]] && curl https://raw.githubusercontent.com/LukeSmithxyz/shortcut-sync/master/configs > "$dotfiles"
@@ -16,7 +16,7 @@ shellrc="$HOME/.zshrc"
 rm -f "$shell_shortcuts" "$ranger_shortcuts"
 
 #source them if not sourced
-(grep "source ~/.aliases"  $shellrc)>/dev/null || echo "source ~/.aliases" >> $shellrc
+(grep "source $shell_shortcuts"  $shellrc)>/dev/null || echo "source $shell_shortcuts" >> $shellrc
 (grep "source $HOME/.config/ranger/shortcuts.conf" $HOME/.config/ranger/rc.conf)>/dev/null || echo "source $HOME/.config/ranger/shortcuts.conf" >> $HOME/.config/ranger/rc.conf
 
 # directory shortcuts
