@@ -1,7 +1,7 @@
 sf      ~/.config/shortcuts/sf
 sd      ~/.config/shortcuts/sd
 cfe     ~/.emacs.d/init.el
-cfz     ~/.zshrc
+cfz     ~/.config/zsh/.zshrc
 cfp     ~/.zprofile
 cfr     ~/.config/ranger/rc.conf
 cfb     ~/.bashrc
@@ -22,5 +22,5 @@ cfmo    ~/.local/share/myScripts/os/solus/autoInstallSudo -E
 cfmp    ~/.local/share/myScripts/os/solus/packages
 cfl     ~/Master/Projects/Micro/Lily58/qmk_firmware/keyboards/lily58/keymaps/mine-def/keymap.c
 cfK     ~/.local/share/myScripts/apps/qmk/lily58/keymap.c
-cfZ     /root/.zshrc
+cfZ     /root/.config/zsh/.zshrc
 cfP     $APPS/nvim/projections/global/.projections.json

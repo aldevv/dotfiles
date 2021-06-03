@@ -1168,6 +1168,7 @@ alias rcrm='rclone delete'
 # deletes files and directories
 alias rcrmd='rclone purge'
 alias rcmnt='rclone mount --daemon'
+alias rcmntg='rclone mount --daemon gd: $REMOTES/gd'
 
 #============
 # DUPLICITY

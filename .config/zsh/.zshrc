@@ -224,3 +224,4 @@ _fzf_compgen_dir() {
 #
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 source $ZDOTDIR/.aliases
+source /home/kanon/.config/zsh/.aliases

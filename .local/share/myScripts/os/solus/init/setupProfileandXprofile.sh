@@ -8,7 +8,7 @@ echo "Running X session wrapper"
 
 
 # Load profile
-for file in "/etc/profile" "$HOME/.zprofile" "/usr/share/defaults/etc/xprofile" "/etc/xprofile" "$HOME/.xprofile"; do
+for file in "/etc/profile" "$HOME/.config/zsh/.zprofile" "/usr/share/defaults/etc/xprofile" "/etc/xprofile" "$HOME/.xprofile"; do
     if [ -f "$file" ]; then
         echo "Loading profile from $file"
         . "$file"

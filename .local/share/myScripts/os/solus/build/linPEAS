@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cd "$PROGRAMS" || exit
+sudo -u $SUDO_USER mkdir linPEAS
+cd linPEAS
+sudo -u $SUDO_USER curl -o linpeas https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh
+sudo -u $SUDO_USER chmod +x linpeas
+cp linpeas /usr/local/bin/linpeas
