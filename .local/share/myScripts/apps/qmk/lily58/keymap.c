@@ -129,7 +129,8 @@ enum {
     TD_DC, // . -> :
     TD_CS, // , -> ;
     TD_CIRC_PLUS, // ¿ -> par
-    TD_HTTP_TYPE, // ¿ -> par
+    TD_HTTP_TYPE, // 
+    TD_CLOSE_RELOAD, 
     TD_PAR, // ¿ -> par
     TD_PLUS, // - -> +
 };
@@ -145,6 +146,7 @@ void web_finished(qk_tap_dance_state_t *state, void *user_data);
 void web_reset(qk_tap_dance_state_t *state, void *user_data);
 void CIRC_PLUS(qk_tap_dance_state_t *state, void *user_data);
 void HTTP_TYPE(qk_tap_dance_state_t *state, void *user_data);
+void CLOSE_RELOAD(qk_tap_dance_state_t *state, void *user_data);
 
 /* ========= */
 /* MODS */
@@ -200,7 +202,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   LCM_Q,   LCM_W,    LCM_F,    LCM_P,    LCM_G,               LCM_J,    LCM_L,    LCM_U,    LCM_Y,    TD(TD_HTTP_TYPE), KC_LBRC, \
   KC_ESC, LCM_A,   LCM_R,    LCM_S,    LCM_T,    LCM_D,                 LCM_H,    LCM_N,    LCM_E,    LCM_I,    LCM_O, LCM_QUOT, \
   KC_LSPO,  LCM_Z,   LCM_X,    LCM_C,    LCM_V,    LCM_B, LCM_BSLS,   KC_LEAD, LCM_K,    LCM_M,    LCM_COMM, LCM_DOT,  LCM_MINS, KC_RSPC,\
-              OSL(_RAISE),KC_LGUI, LALT_T(KC_ENT), KC_RCTRL,   KC_BSPC, LT(_LOWER,KC_SPC), ROPT_T(KC_DEL), OSL(_LOWER) \
+              OSL(_RAISE),KC_LGUI, LALT_T(KC_ENT), KC_RCTRL,   KC_BSPC, LT(_LOWER,KC_SPC), ROPT_T(KC_F4), LT(_ADJUST, KC_F5) \
 ),
 
  /* /1* [_QWERTY] = LAYOUT( \ */
@@ -250,7 +252,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, KC_PSCREEN, \
   KC_F11,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F12, \
   KC_CAPS, KC_BRID, KC_BRIU, KC_MUTE, KC_VOLD, KC_VOLU,                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  LSFT(KC_PSCREEN), KC_PSCREEN, \
-  _______, _______, _______, _______, KC_MEDIA_SELECT,_______,_______,  _______, LCM_IEXL,TD(TD_PAR),  SCLN_END, COLN_END, KC_LCBR, _______, \
+  _______, KC_MEDIA_SELECT, _______, _______, _______,_______,_______,  _______, LCM_IEXL,TD(TD_PAR),  SCLN_END, COLN_END, KC_LCBR, _______, \
                              _______, _______, _______,  _______,               KC_DEL, KC_RCTRL,  LT(_ADJUST,KC_SPC), _______ \
 ),
 
@@ -630,6 +632,19 @@ void HTTP_TYPE(qk_tap_dance_state_t *state, void *user_data) {
           SEND_STRING("https:");
           tap_code16(LCM_SLSH);
           tap_code16(LCM_SLSH);
+          reset_tap_dance(state);
+          break;
+    }
+}
+
+void CLOSE_RELOAD(qk_tap_dance_state_t *state, void *user_data) {
+  // for ACTION_TAP_DANCE_FN you CANT use a switch, it only runs after a count
+  switch (state->count) {
+      case 1:
+          tap_code(KC_F4);
+          break;
+      case 2:
+          tap_code(KC_F5);
           break;
     }
 }
@@ -661,6 +676,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_CS] = ACTION_TAP_DANCE_DOUBLE(LCM_COMM, LCM_SCLN),
     /* [TD_PLUS] = ACTION_TAP_DANCE_DOUBLE(LCM_NTIL, LCM_PLUS), */
     [TD_HTTP_TYPE] = ACTION_TAP_DANCE_FN(HTTP_TYPE),
+    [TD_CLOSE_RELOAD] = ACTION_TAP_DANCE_FN(CLOSE_RELOAD),
     [TD_CIRC_PLUS] = ACTION_TAP_DANCE_FN(CIRC_PLUS),
     [TD_PAR] = ACTION_TAP_DANCE_FN(parrot),
     [TD_DC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dc_finished, dc_reset),

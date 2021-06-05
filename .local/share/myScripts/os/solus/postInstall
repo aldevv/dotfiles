@@ -1,7 +1,0 @@
-#!/bin/sh
-cd "$HOME"
-(sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)")
-rm -rf .zshrc .zsh_history
-sudo -u "$SUDO_USER" cp dotfiles/.zshrc "$HOME/.zshrc"
-cp  "$HOME/.config/.zshrc_root" "/root/.zshrc"
-# install oh my zsh in root

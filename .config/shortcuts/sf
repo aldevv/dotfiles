@@ -14,7 +14,7 @@ cf      ~/.config
 sp      ~/.config/nvim/my_snippets
 ms      ~/.local/share/myScripts/
 mo      ~/.local/share/myScripts/os/solus
-mO      ~/.local/share/myScripts/os/solus/Build-Programs
+mO      ~/.local/share/myScripts/os/solus/build
 mu      ~/.local/share/myScripts/utilities
 md      ~/.local/share/myScripts/files/virtual/docker-compose
 ma      ~/.local/share/myScripts/automation
