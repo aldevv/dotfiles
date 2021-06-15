@@ -1119,8 +1119,7 @@ alias djl='python manage.py loadfixtures'
 function djR() {dkcD && sleep 0.1; dkcU && sleep 0.1; djm $1}
 
 function djRl() {djR $1 && dj loadfixtures}
-function djS() {djR && djs}
-function djMS() {djM $1 && djR && djs}
+function djS() {djRl && djs}
 #=======
 # REACT
 #=======

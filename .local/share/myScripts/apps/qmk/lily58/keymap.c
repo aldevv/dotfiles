@@ -60,7 +60,7 @@ enum my_macros {
     COMM_SPC,
     SCLN_END,
     COLN_END,
-    CAPS_EMU
+    CAPS_EMU,
 };
 
 enum layer_number {
@@ -129,7 +129,6 @@ enum {
     TD_DC, // . -> :
     TD_CS, // , -> ;
     TD_CIRC_PLUS, // ¿ -> par
-    TD_HTTP_TYPE, // 
     TD_CLOSE_RELOAD, 
     TD_PAR, // ¿ -> par
     TD_PLUS, // - -> +
@@ -145,8 +144,6 @@ void cs_reset(qk_tap_dance_state_t *state, void *user_data);
 void web_finished(qk_tap_dance_state_t *state, void *user_data);
 void web_reset(qk_tap_dance_state_t *state, void *user_data);
 void CIRC_PLUS(qk_tap_dance_state_t *state, void *user_data);
-void HTTP_TYPE(qk_tap_dance_state_t *state, void *user_data);
-void CLOSE_RELOAD(qk_tap_dance_state_t *state, void *user_data);
 
 /* ========= */
 /* MODS */
@@ -197,12 +194,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `-------------------''-------'           '------''--------------------'
  */
 
+ // OSL() layer for one keypress
+ // TG() toggles layer 
+
  [_COLEMAK] = LAYOUT( \
   CAPS_EMU,   WK1,    WK2,     WK3,     WK4,      WK5,                     WK6,     WK7,       WK8,     WK9,      WK0,    LGUI(LCM_W), \
-  KC_TAB,   LCM_Q,   LCM_W,    LCM_F,    LCM_P,    LCM_G,               LCM_J,    LCM_L,    LCM_U,    LCM_Y,    TD(TD_HTTP_TYPE), KC_LBRC, \
+  KC_TAB,   LCM_Q,   LCM_W,    LCM_F,    LCM_P,    LCM_G,               LCM_J,    LCM_L,    LCM_U,    LCM_Y,    LCM_NTIL, KC_LBRC, \
   KC_ESC, LCM_A,   LCM_R,    LCM_S,    LCM_T,    LCM_D,                 LCM_H,    LCM_N,    LCM_E,    LCM_I,    LCM_O, LCM_QUOT, \
   KC_LSPO,  LCM_Z,   LCM_X,    LCM_C,    LCM_V,    LCM_B, LCM_BSLS,   KC_LEAD, LCM_K,    LCM_M,    LCM_COMM, LCM_DOT,  LCM_MINS, KC_RSPC,\
-              OSL(_RAISE),KC_LGUI, LALT_T(KC_ENT), KC_RCTRL,   KC_BSPC, LT(_LOWER,KC_SPC), ROPT_T(KC_F4), LT(_ADJUST, KC_F5) \
+              LT(_RAISE, KC_PSCREEN), KC_LGUI, LALT_T(KC_ENT), CTL_T(KC_DEL),   KC_BSPC, LT(_LOWER,KC_SPC), ROPT_T(KC_F5), TG(_RAISE) \
 ),
 
  /* /1* [_QWERTY] = LAYOUT( \ */
@@ -252,8 +252,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, KC_PSCREEN, \
   KC_F11,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F12, \
   KC_CAPS, KC_BRID, KC_BRIU, KC_MUTE, KC_VOLD, KC_VOLU,                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  LSFT(KC_PSCREEN), KC_PSCREEN, \
-  _______, KC_MEDIA_SELECT, _______, _______, _______,_______,_______,  _______, LCM_IEXL,TD(TD_PAR),  SCLN_END, COLN_END, KC_LCBR, _______, \
-                             _______, _______, _______,  _______,               KC_DEL, KC_RCTRL,  LT(_ADJUST,KC_SPC), _______ \
+  _______, KC_MEDIA_SELECT, _______, _______, LALT(KC_F4),_______,_______,  _______, LCM_IEXL, KC_LALT,  SCLN_END, COLN_END, KC_LCBR, _______, \
+                             _______, _______, _______,  _______,               _______, RCTL_T(KC_SPC),  LT(_ADJUST,KC_SPC), _______ \
 ),
 
 /* ADJUST
@@ -274,7 +274,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   XXXXXXX, KC_POWER, KC_HELP, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   XXXXXXX, LCM_A, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_HOME, KC_PGDOWN, KC_PGUP, KC_END, XXXXXXX, KC_LSFT, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,\
                              _______, _______, _______, _______, _______,  _______, _______, _______ \
   )
 };
@@ -382,13 +382,18 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case LALT_T(KC_ENT):
             return TAPPING_TERM - 10;
 
-        case TD(TD_PLUS):
-            return TAPPING_TERM + 40;
+        /* case TD(TD_PLUS): */
+        /*     return TAPPING_TERM + 40; */
 
         case KC_LSPO:
             return TAPPING_TERM - 20;
         case KC_RSPC:
             return TAPPING_TERM - 50;
+        case LT(_LOWER,KC_SPC):
+            return TAPPING_TERM - 10;
+
+        /* case TD(TD_HTTP_TYPE): */
+        /*     return TAPPING_TERM + 50; */
         /* case LT(1, KC_GRV): */
         /*     return 130; */
         default:
@@ -398,6 +403,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 // MY SIMPLE MACROS
 bool is_caps_emu_active = false;
+uint16_t key_timer;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
 #ifdef OLED_DRIVER_ENABLE
@@ -482,29 +488,31 @@ void matrix_scan_user(void) {
         SEND_STRING("255.255.255.");
     }
 
-    SEQ_ONE_KEY(KC_W) {
-        // Anything you can do in a macro.
-        SEND_STRING(SS_ALGR("w"));
+    SEQ_ONE_KEY(LCM_H) {
+        SEND_STRING("https:" SS_LSFT("77"));
+    }
+    SEQ_TWO_KEYS(KC_LSPO, LCM_H) {
+        SEND_STRING("https:" SS_LSFT("77") "github.com" SS_LSFT("7"));
+    }
+
       /* register_code(KC_LGUI); */
       /* register_code(KC_S); */
       /* unregister_code(KC_S); */
       /* unregister_code(KC_LGUI) */
-
-    }
     SEQ_ONE_KEY(KC_LEAD) {
         /* SEND_STRING(); */
         SEND_STRING("jbernal" SS_ALGR("2") "unal.edu.co");
     }
     SEQ_ONE_KEY(LCM_C) {
-
-        //PERMANENT
-        // sudo localectl set-x11-keymap latam pc104 colemak && sudo localectl set-keymap colemak
-        SEND_STRING("rlsy iycaifcgi rfg" SS_TAP(X_MINS) "x11" SS_TAP(X_MINS) "efjma" SS_TAP(X_P) " iagam " SS_TAP(X_P) "c104 cyifmae " SS_LSFT("77") " rlsy iycaifcgi rfg" SS_TAP(X_MINS) "efjma" SS_TAP(X_P) " cyifmae\n");
-    }
-    SEQ_TWO_KEYS(KC_RSPC, LCM_C) {
         //TEMPORAL
         // setxkbmap latam -variant colemak
         SEND_STRING("rfgxebma" SS_TAP(X_P) " iagam " SS_TAP(X_MINS) "vapuakg cyifmae\n");
+
+    }
+    SEQ_TWO_KEYS(KC_RSPC, LCM_C) {
+        //PERMANENT
+        // sudo localectl set-x11-keymap latam pc104 colemak && sudo localectl set-keymap colemak
+        SEND_STRING("rlsy iycaifcgi rfg" SS_TAP(X_MINS) "x11" SS_TAP(X_MINS) "efjma" SS_TAP(X_P) " iagam " SS_TAP(X_P) "c104 cyifmae " SS_LSFT("77") " rlsy iycaifcgi rfg" SS_TAP(X_MINS) "efjma" SS_TAP(X_P) " cyifmae\n");
     }
     /* SEQ_TWO_KEYS(KC_E, KC_D) { */
     /*   SEND_STRING(SS_LGUI("r") "cmd\n" SS_LCTL("c")); */
@@ -637,29 +645,7 @@ void HTTP_TYPE(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void CLOSE_RELOAD(qk_tap_dance_state_t *state, void *user_data) {
-  // for ACTION_TAP_DANCE_FN you CANT use a switch, it only runs after a count
-  switch (state->count) {
-      case 1:
-          tap_code(KC_F4);
-          break;
-      case 2:
-          tap_code(KC_F5);
-          break;
-    }
-}
-void parrot(qk_tap_dance_state_t *state, void *user_data) {
-  // for ACTION_TAP_DANCE_FN you CANT use a switch, it only runs after a count
-  switch (state->count) {
-      case 1:
-          tap_code(LCM_IQUE);
-          break;
-      case 2:
-          SEND_STRING("par\n");
-          reset_tap_dance(state);
-          break;
-    }
-}
+
 /* ========================================================== */
 /* tap_code registers a key and unregisters it instantly */
 
@@ -672,15 +658,14 @@ void parrot(qk_tap_dance_state_t *state, void *user_data) {
 // for basic doubles do action_tap_dance_double(key1, key2)
 //
 // FOR DANCE_FN only BASIC keycodes work, no modifiers
+
 qk_tap_dance_action_t tap_dance_actions[] = {
-    [TD_CS] = ACTION_TAP_DANCE_DOUBLE(LCM_COMM, LCM_SCLN),
+    /* [TD_CS] = ACTION_TAP_DANCE_DOUBLE(LCM_COMM, LCM_SCLN), */
     /* [TD_PLUS] = ACTION_TAP_DANCE_DOUBLE(LCM_NTIL, LCM_PLUS), */
-    [TD_HTTP_TYPE] = ACTION_TAP_DANCE_FN(HTTP_TYPE),
-    [TD_CLOSE_RELOAD] = ACTION_TAP_DANCE_FN(CLOSE_RELOAD),
-    [TD_CIRC_PLUS] = ACTION_TAP_DANCE_FN(CIRC_PLUS),
-    [TD_PAR] = ACTION_TAP_DANCE_FN(parrot),
-    [TD_DC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dc_finished, dc_reset),
+    /* [TD_CIRC_PLUS] = ACTION_TAP_DANCE_FN(CIRC_PLUS), */
+    /* [TD_DC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dc_finished, dc_reset), */
 };
+
 /* ACTION_TAP_DANCE_LAYER_MOVE(kc, layer):
  * Sends the kc keycode when tapped once, or moves to layer.
  * (this functions like the TO layer keycode). */
