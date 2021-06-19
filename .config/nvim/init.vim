@@ -25,9 +25,6 @@ let IS_MINE=isdirectory($SUCKLESS)
 " DEPENDENCIES
 "===================
 source ~/.config/nvim/modules/dependencies.vim
-" manual installs
-" Install NODE
-" Install npm or yarn
 
 "==================
 " SETTINGS
