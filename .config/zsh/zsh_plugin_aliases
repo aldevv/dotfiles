@@ -195,13 +195,17 @@ gob() {
 }
 alias enum="enum4linux"
 
-    [[ $(whoami) != "root" ]] && alias ls='exa -a --color=automatic --group-directories-first'\
-    l='exa -al --color=automatic --group-directories-first'\
-    la='exa -a --color=automatic --group-directories-first'\
-    ll='exa -l --color=automatic --group-directories-first'\
-    lt='exa -aT --color=automatic --group-directories-first'\
-    l.='exa -a | egrep "^\."'\
-    lg='exa -a | grep '
+
+if [[ $(whoami) != "root" ]] && [[ -x $(command -v exa) ]]; then
+
+alias ls='exa -a --color=automatic --group-directories-first'\
+       l='exa -al --color=automatic --group-directories-first'\
+      la='exa -a --color=automatic --group-directories-first'\
+      ll='exa -l --color=automatic --group-directories-first'\
+      lt='exa -aT --color=automatic --group-directories-first'\
+      l.='exa -a | egrep "^\."'\
+      lg='exa -a | grep '
+fi
 
 
     # rgp="ruby grep_pptx.rb"\

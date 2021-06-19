@@ -370,6 +370,7 @@ highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
 "
             " \ 'coc-python',
 let g:coc_global_extensions = [
+            \ 'coc-python',
             \ 'coc-marketplace',
             \ 'coc-java-debug',
             \ 'coc-cssmodules',
@@ -636,7 +637,9 @@ au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
 ":diffupdate - re-scan the files for differences
 " default diffopt
 " set diffopt=internal,filler,closeoff
-set diffopt=internal,vertical,closeoff,filler
+if has('nvim-0.5.0')
+    set diffopt=internal,vertical,closeoff,filler
+endif
 
 nmap <leader>gi :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>

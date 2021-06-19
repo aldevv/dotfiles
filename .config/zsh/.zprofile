@@ -114,7 +114,7 @@ export PATH MANPATH LD_LIBRARY_PATH PKG_CONFIG_PATH
 #
 #
 nvm_path="$HOME/.config/nvm/versions/node"
-node=$(/bin/ls $nvm_path | sed -n -E '/v[0-9]+\.[0-9]+\.[0-9]+$/p' | sort -r  | sed '1q')
+node=$(ls $nvm_path | sed -n -E '/v[0-9]+\.[0-9]+\.[0-9]+$/p' | sort -r  | sed '1q')
 if [ ! -z "$node" ]; then
     export NODE_PATH="$nvm_path/$node/bin"
 else

@@ -1,3 +1,7 @@
+if !isdirectory($HOME . '/.local/share/nvim/site') && !isdirectory($XDG_CONFIG_HOME . '/nvim/site')
+    exec ':!'.$HOME.'/.config/nvim/install_plug'
+endif
+
 if len($PKG) != 0
   let pkg_manager = $PKG
   let pkg_install = 'sudo ' . $PKG_COMMAND
@@ -26,7 +30,7 @@ if !executable('pip3') && !IS_MINE
 endif
 
 
-if !executable('black') && executable('pip3') && $USER != 'root'
+if !filereadable($HOME . '/.local/bin/black') && executable('pip3') && $USER != 'root'
     :!pip3 install black
 endif
 
@@ -48,7 +52,7 @@ if !executable('prettier') && $USER != 'root'
   endif
 endif
 
-if !executable('clang-format') && executable('pip3') && $USER != 'root'
+if !filereadable($HOME . '/.local/bin/clang-format') && executable('pip3') && $USER != 'root'
     :!pip3 install clang-format
 endif
 
