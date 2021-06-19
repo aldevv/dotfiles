@@ -1,8 +1,4 @@
-" read usr_1 for hard/fast way of learning vimscript
-" read vimscript the hard way easy/slow way of learning vimscript
-"
-
-" ============================
+"=============================
 "   My nvim Colemak dotfile
 "============================
 "     ________ ++     ________
@@ -20,6 +16,48 @@
 "     |VVV/'++/#/+/#/ /#/ /#/
 "     'V/'  /##//##//##//###/
 "              ++
+"
+ set t_Co=256
+ lua require('config')
+let IS_MINE=isdirectory($SUCKLESS)
+
+"===================
+" DEPENDENCIES
+"===================
+source ~/.config/nvim/modules/dependencies.vim
+" manual installs
+" Install NODE
+" Install npm or yarn
+
+"==================
+" SETTINGS
+"==================
+ source ~/.config/nvim/modules/settings.vim
+
+"==================
+" KEYBINDINGS
+"==================
+ source ~/.config/nvim/modules/keybindings.vim
+
+"==================
+" PLUGINS SETTINGS
+"==================
+if $USER != "root"
+    source ~/.config/nvim/modules/plugins.vim
+    source ~/.config/nvim/modules/plugins-settings.vim
+    "source ~/.config/nvim/modules/plugins2.vim
+endif
+
+"==================
+" APPEARANCE
+"==================
+ source ~/.config/nvim/modules/appearance.vim
+
+"==================
+" AUTOMATION
+"==================
+source ~/.config/nvim/modules/automation.vim
+"====================================================
 "
 "create your own text objects
 "https://github.com/kana/vim-textobj-user
@@ -41,33 +79,4 @@
 
 
 "Use Start! to run programs, and Dispatch to compile them
- set t_Co=256
- lua require('config')
-"==================
-" SETTINGS
-"==================
- source ~/.config/nvim/modules/settings.vim
-
-"==================
-" KEYBINDINGS
-"==================
- source ~/.config/nvim/modules/keybindings.vim
-
-"==================
-" PLUGINS SETTINGS
-"==================
-if $USER != "root"
-    source ~/.config/nvim/modules/plugins.vim
-    source ~/.config/nvim/modules/plugins-settings.vim
-endif
-
-"==================
-" APPEARANCE
-"==================
- source ~/.config/nvim/modules/appearance.vim
-
-"==================
-" AUTOMATION
-"==================
-source ~/.config/nvim/modules/automation.vim
 

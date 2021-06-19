@@ -2,7 +2,7 @@ sf      ~/.config/shortcuts/sf
 sd      ~/.config/shortcuts/sd
 cfe     ~/.emacs.d/init.el
 cfz     ~/.config/zsh/.zshrc
-cfp     ~/.zprofile
+cfp     ~/.config/zsh/.zprofile
 cfr     ~/.config/ranger/rc.conf
 cfb     ~/.bashrc
 cfxx    ~/.Xresources

@@ -25,9 +25,11 @@ super + shift + q
 mode_switch + q
     qrencode -o '/tmp/pass' \"$(xsel -b -o 2>/dev/null)\" && setsid sxiv /tmp/pass; rm /tmp/pass
 
+mode_switch + p
+    passmenu
 
-#mode_switch + p
-# 	python_docs
+mode_switch + P
+    genpass
 
 # super + shift + F2
 	# st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
@@ -67,11 +69,6 @@ ctrl + shift + Escape
 # hyper + n
 #     retrieveip
 
-mode_switch + n
-    passmenu
-
-mode_switch + N
-    genpass
 
 # hyper + shift + n
 #     retrievemask
@@ -182,7 +179,7 @@ mode_switch + a
 # mode_switch + b
 # 	dwmc togglefullscr
 
-mode_switch + e
+mode_switch + E
     emoji_select
 
 mode_switch + i

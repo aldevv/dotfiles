@@ -1,7 +1,7 @@
 call plug#begin()
- " Plug 'rhysd/clever-f.vim'
-Plug 'airblade/vim-gitgutter' |
-        \ Plug 'tpope/vim-fugitive'
+ Plug 'rhysd/clever-f.vim'
+" Plug 'airblade/vim-gitgutter' |
+"         \ Plug 'tpope/vim-fugitive'
 
 "" basic editor stuff (mkdir, move etc)
 "" Plug 'tpope/vim-eunuch'

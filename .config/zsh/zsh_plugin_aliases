@@ -23,13 +23,9 @@ alias _='sudo'
 
 # yta="$UTILITIES/youtube/downloadAudio.sh"\
 # ytv="$UTILITIES/youtube/downloadVideo.sh"\
-alias pkg='sudo eopkg'\
+alias pkg="sudo $PKG"\
     m="mkdir"\
-    pkgsi="sudo eopkg li -l | awk '/Name:/ {sub(/,$/,\"\",\$2); name= \$2} /Installed Size:/{print \$5\$6, name}' | sort -h "\
-    pkgl="sudo eopkg li"\
-    pkgs="sudo eopkg sr"\
-    pkgi="sudo eopkg it"\
-    pkgr="sudo eopkg rm"\
+    pkgl="sudo eopkg li -l | awk '/Name:/ {sub(/,$/,\"\",\$2); name= \$2} /Installed Size:/{print \$5\$6, name}' | sort -h "\
     pkgro="sudo eopkg rmo"\
     dockerclean="docker system prune --volumes -all"\
     station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\

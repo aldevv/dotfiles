@@ -94,8 +94,10 @@ Plug 'bfrg/vim-cpp-modern'
 
 "FUN STUFF"
 " needs neovim 0.5
+if has('nvim-0.5.0')
 Plug 'ThePrimeagen/vim-apm'
 Plug 'ThePrimeagen/vim-be-good'
+endif
 Plug 'KabbAmine/zeavim.vim'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter' |

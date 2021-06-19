@@ -874,23 +874,6 @@ let g:neoformat_basic_format_trim = 1
 let g:neoformat_try_formatprg = 1
 " let g:neoformat_only_msg_on_error = 1
 "vvvvvvvvvvvvvvvvv
-if !executable('black')
-    :!pip3 install black
-endif
-
-if !executable('prettier') && $USER != 'root'
-  if !executable('npm')
-    :!yarn global add prettier
-  else
-    :!npm install -g prettier
-  endif
-endif
-if !executable('clang-format')
-    :!pip3 install clang-format
-endif
-" if !executable('uncrustify')
-"     :!sudo eopkg install uncrustify
-" endif
 augroup fmt
     autocmd!
     autocmd BufWritePre *.{js,java,cpp,haskell,json,ts,rs,go} :Neoformat
@@ -1085,8 +1068,8 @@ let g:closetag_shortcut = '>'
 let g:user_emmet_install_global = 0
 autocmd BufReadPre *.{html,css,js,jsx,ts} EmmetInstall
 let g:user_emmet_leader_key='<C-Y>'
-" alt-gr s
-let g:user_emmet_expandabbr_key = 'þ'
+
+let g:user_emmet_expandabbr_key = '€'
 "  let g:user_emmet_expandword_key = '<C-y>;'
 "  let g:user_emmet_update_tag = '<C-y>u'
 "  "highlight tag groups"
@@ -1294,7 +1277,9 @@ vmap <right> <Plug>MoveBlockRight
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_min_count = 1
-let g:airline_powerline_fonts = 1
+if IS_MINE
+  let g:airline_powerline_fonts = 1
+endif
 " let b:airline_disable_statusline = 1
 " let g:airline_statusline_ontop = 1
 "
@@ -2087,7 +2072,9 @@ function! SetProjections()
   call projectionist#append(getcwd(), l:dict)
 endfunction
 " when a projection is found
-autocmd User ProjectionistDetect :call SetProjections()
+if isdirectory($APPS . "/nvim/projections/global/.projections.json")
+  autocmd User ProjectionistDetect :call SetProjections()
+endif
 
 "============
 " ZEAVIM

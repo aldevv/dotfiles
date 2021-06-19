@@ -1,7 +1,9 @@
 syntax enable
 " disable compatibility to vi, to activate vim improvements
 set nocompatible
-set shell=/bin/zsh
+if executable('zsh')
+  set shell=/bin/zsh
+endif
 let mapleader = "\<Space>"
 let maplocalleader="\<BS>"
 "===================
