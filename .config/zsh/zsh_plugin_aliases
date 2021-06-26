@@ -136,6 +136,7 @@ alias pkg="sudo $PKG"\
     bbg='batgrep'\
     bat='bat --paging=never'\
     ri='source .env/bin/activate && python3 -m pip install --upgrade pip && pip3 install -r requirements.txt '\
+    pipr='pip install -r requirements.txt'\
     brave='brave-browser'\
     pyv='python3 -m venv .venv'\
     c='cat'\
@@ -182,6 +183,9 @@ alias pkg="sudo $PKG"\
     qrp="qrencode -o '/tmp/pass' \"$(xsel -b -o 2>/dev/null)\" && sxiv /tmp/pass; rm /tmp/pass" \
     john="$PROGRAMS/john/run/john" \
     tm="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf" \
+    tzo="timedatectl list-timezones" \
+    tzs="timedatectl set-timezone" \
+    tz="timedatectl list-timezones | fzf | read location; timedatectl set-timezone $location" \
 
 nmapb() {
     sudo nmap -sC -sV -Pn -O "$1" \
@@ -543,7 +547,13 @@ alias grbm='git rebase $(git_main_branch)'
 alias grbs='git rebase --skip'
 alias grev='git revert'
 alias gR='git reset'
-alias gRh='git reset --hard'
+gRh() {
+    if [[ -n "$1" ]]; then
+        git reset --hard $1
+    else
+        git reset --hard HEAD
+    fi
+}
 alias gRoh='git reset origin/$(git_current_branch) --hard'
 alias grm='git rm'
 alias grmc='git rm --cached'
@@ -1115,6 +1125,19 @@ alias djr='python manage.py runserver'
 alias djM='python manage.py makemigrations'
 alias djm='python manage.py migrate'
 alias djl='python manage.py loadfixtures'
+
+function djp() {
+    project_name=$(basename $(gitRoot))
+    if [[ -n "$1" ]]; then
+        nvim "$(gitRoot)/${project_name}/$1"
+    else
+        cd "$(gitRoot)/${project_name}"
+    fi
+}
+function djps() {
+    project_name=$(basename $(gitRoot))
+    nvim "$(gitRoot)/${project_name}/settings.py"
+}
 
 function djR() {dkcD && sleep 0.1; dkcU && sleep 0.1; djm $1}
 

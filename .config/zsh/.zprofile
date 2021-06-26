@@ -114,13 +114,16 @@ export PATH MANPATH LD_LIBRARY_PATH PKG_CONFIG_PATH
 #
 #
 nvm_path="$HOME/.config/nvm/versions/node"
-node=$(ls $nvm_path | sed -n -E '/v[0-9]+\.[0-9]+\.[0-9]+$/p' | sort -r  | sed '1q')
-if [ ! -z "$node" ]; then
-    export NODE_PATH="$nvm_path/$node/bin"
-else
-    export NODE_PATH=""
+if [[ -d "$nvm_path" ]]; then
+    node=$(ls $nvm_path | sed -n -E '/v[0-9]+\.[0-9]+\.[0-9]+$/p' | sort -r  | sed '1q')
+    if [ ! -z "$node" ]; then
+        export NODE_PATH="$nvm_path/$node/bin"
+    else
+        export NODE_PATH=""
+    fi
+    export PATH="$PATH:$NODE_PATH"
 fi
-export PATH="$PATH:$NODE_PATH"
+
 export JDK_HOME="/usr/lib64/openjdk-11"
 export JAVA_HOME="$JDK_HOME"
 export CABAL_CONFIG="$XDG_CONFIG_HOME/cabal/config"
@@ -149,7 +152,10 @@ export RG_DEFAULT="rg --files --hidden --no-heading --smart-case --follow -g '!{
 # not working for fd
 # excluded='{node_modules,*.class,.git,**/*~,plugged,__pycache__,.wine,.npm,.icons,*/nvim/backups,.emacs.d,.cache,undodir}'
 export FD_DEFAULT="fd --follow --exclude $excluded"
-export FZF_DEFAULT_COMMAND=$RG_DEFAULT
+
+if [[ -x $(command -v rg) ]]; then
+    export FZF_DEFAULT_COMMAND=$RG_DEFAULT
+fi
 # export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 # to unhide preview window, change to --preview-window=right:hidden:wrap"
 # for prompt at the bottom, change layout to "default"
