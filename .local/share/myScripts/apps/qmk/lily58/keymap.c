@@ -202,7 +202,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   LCM_Q,   LCM_W,    LCM_F,    LCM_P,    LCM_G,               LCM_J,    LCM_L,    LCM_U,    LCM_Y,    LCM_NTIL, KC_LBRC, \
   KC_ESC, LCM_A,   LCM_R,    LCM_S,    LCM_T,    LCM_D,                 LCM_H,    LCM_N,    LCM_E,    LCM_I,    LCM_O, LCM_QUOT, \
   KC_LSPO,  LCM_Z,   LCM_X,    LCM_C,    LCM_V,    LCM_B, LCM_BSLS,   KC_LEAD, LCM_K,    LCM_M,    LCM_COMM, LCM_DOT,  LCM_MINS, KC_RSPC,\
-              LT(_RAISE, KC_PSCREEN), KC_LGUI, LALT_T(KC_ENT), CTL_T(KC_DEL),   KC_BSPC, LT(_LOWER,KC_SPC), ROPT_T(KC_F5), TG(_RAISE) \
+              OSL(_RAISE), KC_LGUI, LALT_T(KC_ENT), CTL_T(KC_DEL),   KC_BSPC, LT(_LOWER,KC_SPC), ROPT_T(KC_F5), TG(_RAISE) \
 ),
 
  /* /1* [_QWERTY] = LAYOUT( \ */
@@ -252,7 +252,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______, \
   KC_PSCREEN,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  LSFT(KC_PSCREEN), \
   KC_CAPS, KC_BRID, KC_BRIU, KC_MUTE, KC_VOLD, KC_VOLU,                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  KC_F11, KC_F12, \
-  _______, XXXXXXX, KC_MEDIA_SELECT, _______, LALT(KC_F4),_______,_______,  _______, XXXXXXX, KC_LALT,  SCLN_END, COLN_END, _______, _______, \
+  _______, XXXXXXX, KC_MEDIA_SELECT, KC_MEDIA_PLAY_PAUSE, LALT(KC_F4),_______,_______,  _______, XXXXXXX, KC_LALT,  SCLN_END, COLN_END, _______, _______, \
                              _______, _______, _______,  _______,               _______, RCTL_T(KC_SPC),  LT(_ADJUST,KC_SPC), _______ \
 ),
 
@@ -273,7 +273,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_ADJUST] = LAYOUT( \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   XXXXXXX, KC_POWER, KC_HELP, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, LCM_A, XXXXXXX, XXXXXXX, XXXXXXX, KC_MEDIA_PLAY_PAUSE,         KC_HOME, KC_PGDOWN, KC_PGUP, KC_END, XXXXXXX, KC_LSFT, \
+  XXXXXXX, LCM_A, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         KC_HOME, KC_PGDOWN, KC_PGUP, KC_END, XXXXXXX, KC_LSFT, \
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,\
                              _______, _______, _______, _______, _______,  _______, _______, _______ \
   )

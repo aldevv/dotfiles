@@ -22,6 +22,7 @@ lynx
 expect
 tcl-devel
 mpd
+mpc-client
 ncmpcpp
 asciidoc
 feh

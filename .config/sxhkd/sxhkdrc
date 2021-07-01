@@ -211,3 +211,5 @@ XF86MonBrightnessDown
 XF86TouchpadToggle
 	synclient TouchpadOff={1,0}
 
+XF86AudioPlay
+	mpc toggle

@@ -183,9 +183,6 @@ alias pkg="sudo $PKG"\
     qrp="qrencode -o '/tmp/pass' \"$(xsel -b -o 2>/dev/null)\" && sxiv /tmp/pass; rm /tmp/pass" \
     john="$PROGRAMS/john/run/john" \
     tm="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf" \
-    tzo="timedatectl list-timezones" \
-    tzs="timedatectl set-timezone" \
-    tz="timedatectl list-timezones | fzf | read location; timedatectl set-timezone $location" \
 
 nmapb() {
     sudo nmap -sC -sV -Pn -O "$1" \
@@ -503,15 +500,24 @@ alias grf="git reflog"
 
 alias glp="_git_log_prettily"
 
+alias glgm="git log --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr)' --max-count=10"
+alias glGm='git log --graph --max-count=10'
+alias glGom='git log --oneline --decorate --graph --max-count=10'
+alias glGoam='git log --oneline --decorate --graph --all --max-count=10'
+alias glgsm='git log --stat --max-count=10'
+alias glgpm='git log --stat -p --max-count=10'
+alias glgam='git log --decorate --all --max-count=10'
+alias glGam='git log --graph --decorate --all --max-count=10'
+
 alias glg="git log --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr)'"
 alias glG='git log --graph'
-alias glgs='git log --stat'
-alias glgp='git log --stat -p'
-alias glGa='git log --graph --decorate --all'
-alias glGm='git log --graph --max-count=10'
-alias glgo='git log --oneline --decorate'
 alias glGo='git log --oneline --decorate --graph'
 alias glGoa='git log --oneline --decorate --graph --all'
+alias glgs='git log --stat'
+alias glgp='git log --stat -p'
+alias glga='git log --decorate --all'
+alias glGa='git log --graph --decorate --all'
+# alias glgo='git log --oneline --decorate'
 
 alias glGol="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias glGols="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --stat"
@@ -587,7 +593,7 @@ is-at-least 2.13 "$(git --version 2>/dev/null | awk '{print $3}')" \
 alias gsa='git stash apply'
 alias gsc='git stash clear'
 alias gsd='git stash drop'
-alias gsl='git stash list'
+alias gsls='git stash list'
 alias gsP='git stash pop'
 alias gss='git stash show --text'
 alias gspu='git stash push --include-untracked'

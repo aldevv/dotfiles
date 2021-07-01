@@ -15,7 +15,7 @@ xset r rate 300 80
 # xcape -e "Shift_L=Shift_L|bracketleft"
 # xcape -e "Shift_R=Shift_L|bracketright"
 
-sleep 1
+sleep 1.5
 # TODO
 # changed to the xdg auto start in .config/autostart
 xmodmap "$HOME/.config/.Xmodmap"
