@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ ! -e "$PROGRAMS/rust/cargo" ]; then
-    $OS/Build-Programs/rust
+if [ ! -e "$CARGO_HOME" ]; then
+    $OS/build/main/rust
 fi
 
 # --locked because of bug in the ripgrep_all AT THE MOMENT OF CREATION

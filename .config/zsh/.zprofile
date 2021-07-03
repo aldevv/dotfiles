@@ -33,9 +33,9 @@ export CLASS="$MASTER/Classes/2021-1"
 export LEARN="$MASTER/Learn"
 export VOLUMES="$MASTER/Volumes"
 export REMOTES="$MASTER/Remotes"
-export SUCKLESS="$HOME/.local/Programs/Suckless"
 export BACKUPS="$HOME/.backups"
-export PROGRAMS="$HOME/.local/Programs"
+export PROGRAMS="$HOME/.local/programs"
+export SUCKLESS="$PROGRAMS/suckless"
 export WIKI="$HOME/.local/share/wiki"
 export PASSWORD_STORE_DIR="$HOME/.local/share/.pass"
 export SECRETS_EXTENSION=".scr"
@@ -75,7 +75,7 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 #breaks copyq
 # export QT_QPA_PLATFORMTHEME="gtk2"
 # export QT_PLUGIN_PATH=/usr/lib/qt5/plugins
-export PREFIX_DIR="$HOME/.local/Programs/prefix-installs"
+export PREFIX_DIR="$PROGRAMS/prefix-installs"
 if [[ -d $PREFIX_DIR ]]; then
     for dir in "$PREFIX_DIR"/*; do
         dir=${dir:A}

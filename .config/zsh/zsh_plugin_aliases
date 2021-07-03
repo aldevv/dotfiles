@@ -201,7 +201,7 @@ alias netstat='busybox netstat'
 
 if [[ $(whoami) != "root" ]] && [[ -x $(command -v exa) ]]; then
 
-alias ls='exa -a --color=automatic --group-directories-first'\
+alias ls='exa --color=automatic --group-directories-first'\
        l='exa -al --color=automatic --group-directories-first'\
       la='exa -a --color=automatic --group-directories-first'\
       ll='exa -l --color=automatic --group-directories-first'\

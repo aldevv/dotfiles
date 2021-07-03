@@ -8,7 +8,7 @@ ba      ~/.backups
 cc      ~/Master/Classes/2021-1
 ll      ~/Master/Learn
 tt      ~/.local/share/Trash/files
-sk      ~/.local/Programs/Suckless
+sk      ~/.local/Programs/suckless
 bl      ~/Documents/Books/LN
 cf      ~/.config
 sp      ~/.config/nvim/my_snippets
@@ -47,6 +47,7 @@ ruli    /usr/lib
 rv      /var
 rb      /bin
 rr      /root
+ro      /opt
 rmn     /mnt
 sc      ~/Pictures/screenshots
 rtk     ~/Books/japanese/heisig

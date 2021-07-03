@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd "$PROGRAMS" || exit
-sudo -u $SUDO_USER git clone https://github.com/CiscoCXSecurity/enum4linux
-cd enum4linux
-cp enum4linux.pl /usr/local/bin/enum4linux
+git clone --depth=1 https://github.com/CiscoCXSecurity/enum4linux /opt/enum4linux
+ln -sf /opt/enum4linux/enum4linux.pl /usr/local/bin/enum4linux
+[ -n "$PROGRAMS" ] && \
+    ln -sf /opt/enum4linux "$PROGRAMS/enum4linux"

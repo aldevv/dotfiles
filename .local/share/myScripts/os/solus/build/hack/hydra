@@ -1,14 +1,19 @@
 #!/bin/sh
 
-cd "$PROGRAMS" || exit
+# cd "$PROGRAMS" || exit
 eopkg install -y libssh-devel
 url="https://github.com/vanhauser-thc/thc-hydra"
 latest="$($UTILITIES/programming/github/latestRelease $url)"
 name="vanhauser-thc-thc-hydra-fe930f4"
-sudo -u $SUDO_USER wget -O "$name.tar.gz" $latest
-sudo -u $SUDO_USER tar kvvxf "$name.tar.gz"
+cd /opt
+wget -O "$name.tar.gz" $latest
+tar kvvxf "$name.tar.gz"
 rm "$name.tar.gz"
-cd "$name"
+mv "$name" "hydra"
+cd "hydra"
 ./configure
 make
 make install
+
+[ -n "$PROGRAMS" ] \
+    && ln -sf "/opt/hydra" "$PROGRAMS/hacking/hydra"
