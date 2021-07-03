@@ -8,6 +8,7 @@ export PKG_COMMAND='eopkg install'
 export LESS="-isSMRQJ"
 # export PAGER='bat'
 export PAGER='less'
+export READER=zathura
 # export MANPAGER="less"
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # export MANPAGER="nvim -c ' set ft=man' -"
@@ -29,18 +30,19 @@ export BOOKS="$HOME/Documents/Books"
 export MASTER="$HOME/Master"
 export PROJECTS="$MASTER/Projects"
 export WORK="$MASTER/Work"
-export CLASS="$MASTER/Classes/2021-1"
+export CLASS="$MASTER/Classes"
 export LEARN="$MASTER/Learn"
 export VOLUMES="$MASTER/Volumes"
 export REMOTES="$MASTER/Remotes"
-export BACKUPS="$HOME/.backups"
+export BACKUPS="$HOME/.local/share/.backups"
 export PROGRAMS="$HOME/.local/programs"
 export SUCKLESS="$PROGRAMS/suckless"
 export WIKI="$HOME/.local/share/wiki"
+export FILES="$SCRIPTS/files"
+export TRASH="$HOME/.local/share/Trash/files"
 export PASSWORD_STORE_DIR="$HOME/.local/share/.pass"
 export SECRETS_EXTENSION=".scr"
 export SECRETS_DIR=".local/share/.gitscr"
-export READER=zathura
 export NVIM_LOG_FILE="$HOME/.config/nvim/log/log"
 
 export PYTHONPATH="$PYTHONPATH:$PROGRAMS/cpython/Tools/gdb:$PROGRAMS/cpython"
@@ -58,8 +60,7 @@ export OS="$SCRIPTS/os/solus"
 [[ -d "$AUTOMATION" ]] && export PATH="$(du $AUTOMATION | cut -f2 | tr '\n' ':')$PATH"
 [[ -d "$HOME/.local/bin" ]] && export PATH="$(du $HOME/.local/bin | cut -f2 | tr '\n' ':')$PATH"
 
-export FILES="$SCRIPTS/files"
-export MLIBS="$PROGRAMMING/mlibs"
+export MLIBS="$FILES/mlibs"
 
 export PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains/proxychains.conf"
 

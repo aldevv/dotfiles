@@ -68,7 +68,6 @@ plugins=(docker)
 # z is a command that takes you to the most probable folder
 export HISTFILE="$ZDOTDIR/.zsh_history"
 source $ZSH/oh-my-zsh.sh
-. $ZDOTDIR/zsh_plugin_aliases
 #https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode
 #
 #==============
@@ -137,10 +136,6 @@ bindkey -v '^?' backward-delete-char
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 #
-# less keybindings
-lesskey $HOME/.config/colemak-less
-
-source $ZDOTDIR/.aliases
 # unsetopt completealiases
 nvml() {
 . "$NVM_DIR/nvm.sh"
@@ -238,7 +233,10 @@ _fzf_compgen_dir() {
 
 bindkey "^ " autosuggest-execute
 # bindkey "^" autosuggest-toggle
-
+#
+lesskey $HOME/.config/colemak-less
 # aliases
 source $ZDOTDIR/.aliases
+. $ZDOTDIR/.zsh_plugin_aliases
+
 source /home/kanon/.config/zsh/.aliases

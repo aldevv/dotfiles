@@ -1,41 +1,40 @@
 #something
 h       ~
-uu       ~/Master/Remotes
-ug       ~/Master/Remotes/ugd
-wo      ~/Master/Work/covidalert
-bk      ~/Documents/Books
-ba      ~/.backups
-cc      ~/Master/Classes/2021-1
-ll      ~/Master/Learn
-tt      ~/.local/share/Trash/files
-sk      ~/.local/Programs/suckless
-bl      ~/Documents/Books/LN
-cf      ~/.config
-sp      ~/.config/nvim/my_snippets
-ms      ~/.local/share/myScripts/
-mo      ~/.local/share/myScripts/os/solus
-mO      ~/.local/share/myScripts/os/solus/build
-mu      ~/.local/share/myScripts/utilities
-md      ~/.local/share/myScripts/files/virtual/docker-compose
-ma      ~/.local/share/myScripts/automation
-oc      /usr/share/doc
-mp      ~/.local/share/myScripts/apps
-mf      ~/.local/share/myScripts/files
-ml      ~/.local/share/myScripts/files/mlibs
+uu       $REMOTES
+ug       $REMOTES/ugd
+wo      $WORK/covidalert
+bk      $BOOKS
+ba      $BACKUPS
+cc      $CLASS/2021-1
+ll      $LEASN
+tt      $TRASH
+sk      $SUCKLESS
+bl      $BOOKS/LN
+cf      $XDG_CONFIG_HOME
+sp      $XDG_CONFIG_HOME/nvim/my_snippets
+ms      $SCRIPTS
+mo      $OS
+mO      $OS/build
+mu      $UTILITIES
+mf      $FILES
+md      $FILES/virtual/docker-compose
+ma      $AUTOMATIONS
+mp      $APPS
+ml      $MLIBS
+pr      $PROGRAMS
 D       ~/Downloads
 d       ~/Documents
 pp      ~/Pictures
-pr      ~/.local/Programs
 vv      ~/Videos
 Mm      ~/Master
 Md      ~/Master/Debug
 Ml      ~/Master/Learn
-Mp      ~/Master/Projects
-Mv      ~/Master/Volumes
-Mc      ~/Master/Classes
-Mw      ~/Master/Work
+Mp      $PROJECTS
+Mv      $VOLUMES
+Mc      $CLASS
+Mw      $WORK
+wi      $WIKI
 mm      ~/Music
-wi      ~/.local/share/wiki
 lo      ~/.local
 re      /etc
 rU      /usr
@@ -52,18 +51,18 @@ rmn     /mnt
 sc      ~/Pictures/screenshots
 rtk     ~/Books/japanese/heisig
 wa      ~/.cache/wal
-l1      ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
-l2      ~/Master/Learn/Rust/Learn Rust by Building Real Applications
-ld      ~/Master/Learn/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
-lr      ~/Master/Learn/Rust/Learn Rust by Building Real Applications
-vo       ~/Master/Volumes
-po      ~/Master/Projects
-pm      ~/Master/Projects/Micro
-pM      ~/Master/Projects/Main/
-p1      ~/Master/Projects/Micro/HTTP-server in Rust
-p2      ~/Master/Projects/Micro/Docker
+l1      $LEARN/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
+l2      $LEARN/Rust/Learn Rust by Building Real Applications
+ld      $LEARN/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
+lr      $LEARN/Rust/Learn Rust by Building Real Applications
+vo      $VOLUMES
+po      $PROJECTS
+pm      $PROJECTS/Micro
+pM      $PROJECTS/Main/
+p1      $PROJECTS/Micro/HTTP-server in Rust
+p2      $PROJECTS/Micro/Docker
 
 # temp shortcuts
-aa      ~/Master/Classes/2021-1/GERENCIA/imp
-zz       /home/kanon/Master/Classes/2021-1/GERENCIA/licitacion/licitaciones-2021-I/primera - ejercito (sensores de red)
+aa      $CLASS/2021-1/GERENCIA/imp
+zz      $CLASS/2021-1/GERENCIA/licitacion/licitaciones-2021-I/primera - ejercito (sensores de red)
 

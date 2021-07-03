@@ -1,0 +1,86 @@
+#!/bin/zsh
+#
+cd "$HOME" || exit
+path_dot="$(find "$HOME" -name 'dotfiles')"
+
+#==============
+# VIM CONFIG
+#==============
+vim_folder="/etc/vim"
+cp "$path_dot/.config/nvim/modules/keybindings.vim" "$HOME/.config/nvim/init.vim"
+cp "$path_dot/.config/nvim/modules/keybindings.vim" "$vim_folder/vimrc.local"
+sourced=$(grep 'source .*vimrc\.local' "$vim_folder/vimrc")
+[[ -d "$vim_folder" && -z "$sourced" ]] \
+    && echo "source $vim_folder/vimrc.local" >> "$vim_folder/vimrc" \
+    || echo "/etc/vim/vimrc doesn't exist or vimrc.local is not sourced"
+
+#==============
+# ZSH CONFIG
+#==============
+cp "$path_dot/.config/zsh/.aliases" "$HOME/.config"
+cp "$path_dot/.config/zsh/.zsh_plugin_aliases" "$HOME/.config"
+aliases='source $HOME/.config/.aliases'
+plug_aliases='source $HOME/.config/.zsh_plugin_aliases'
+lesskey='lesskey $HOME/.config/colemak-less'
+echo \
+"$aliases
+$plug_aliases
+$lesskey" >> "$HOME/.zshrc"
+
+cp "$path_dot/.config/colemak-less" "$HOME/.config/colemak-less"
+
+# INSTALL PROGRAMS
+
+options=("kali" "solus" "arch")
+current=$(grep "^ID=" /etc/os-release | cut -d '=' -f 2 | tr -d '"')
+programs=("tmux")
+echo "Install programs?"
+for prog in ${programs[@]}; do
+    echo "$prog"
+end
+select opt in "si" "no"; do
+    case opt in
+        'no') exit ;;
+        'n') exit ;;
+    esac
+done
+
+for opt in "${options[@]}"; do
+        if $opt == "kali"
+            for prog in ${programs[@]}; do
+                sudo apt install $prog
+            done
+            exit
+        fi
+
+        if $opt == "solus"
+            for prog in ${programs[@]}; do
+                sudo eopkg install $prog
+            done
+            exit
+        fi
+
+        if $opt == "arch"
+            for prog in ${programs[@]}; do
+                sudo eopkg -S $prog
+            done
+            exit
+        fi
+end
+
+installers=("eopkg" "apt" "pacman")
+select opt in "${installers[@]}"
+do
+    case $opt in
+        'eopkg')
+            sudo eopkg install tmux
+            ;;
+        'apt')
+            sudo apt install tmux
+            ;;
+        'pacman')
+            sudo pacman -S tmux
+            ;;
+        *) echo "invalid option";;
+    esac
+done
