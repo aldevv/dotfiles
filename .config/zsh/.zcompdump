@@ -974,7 +974,7 @@ _comps=(
 'noglob' '_precommand'
 'nohup' '_precommand'
 'nova' '_openstack'
-'npm' '_npm'
+'npm' '_npm_completion'
 'ns' '_hosts'
 'nslookup' '_nslookup'
 'ntalk' '_other_accounts'

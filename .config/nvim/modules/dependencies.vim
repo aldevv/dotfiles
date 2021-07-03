@@ -22,7 +22,7 @@ if !executable('npm') && !executable('yarn') && !IS_MINE
 endif
 
 if !executable('node') && !IS_MINE
-  exec ":!" . pkg_install . " node"
+  exec ":!" . pkg_install . " nodejs"
 endif
 
 if !executable('pip3') && !IS_MINE

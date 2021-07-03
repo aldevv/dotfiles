@@ -157,9 +157,6 @@ alias pkg="sudo $PKG"\
     chx='sudo chmod +x'\
     xmod='xmodmap "$HOME/.config/.Xmodmap"'\
     lightdm='sudo lightdm-settings'\
-    netstat='busybox netstat'\
-    netcat='busybox nc'\
-    nc='busybox nc'\
     retro="$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage"\
     au="autorandr --change && wal -R"\
     searchCode="firefox https://docs.github.com/en/github/searching-for-information-on-github/searching-code"\
@@ -175,7 +172,7 @@ alias pkg="sudo $PKG"\
     mypubip="curl -s ifconfig.me | cut -d'%' -f 1"\
     myip="ip route get 1.2.3.4 | awk '{print \$7; exit}'"\
     myip6="ip -6 addr |awk '{print \$2}'|grep -P 'fe80' | cut -d '/' -f 1" \
-    pi="curl -s ifconfig.me | cut -d'%' -f 1"\
+    I="curl -s ifconfig.me | cut -d'%' -f 1"\
     i="ip route get 1.2.3.4 | awk '{print \$7; exit}'"\
     i6="ip -6 addr |awk '{print \$2}'|grep -P 'fe80' | cut -d '/' -f 1" \
     air="aircrack-ng" \
@@ -196,6 +193,11 @@ gob() {
 }
 alias enum="enum4linux"
 
+
+alias netstat='busybox netstat'
+[[ ! -x $(command -v nc) ]] \
+    && alias nc='busybox nc' \
+    && alias netcat='busybox nc'
 
 if [[ $(whoami) != "root" ]] && [[ -x $(command -v exa) ]]; then
 
@@ -1106,7 +1108,7 @@ alias dkcR='docker-compose build && docker-compose down && docker-compose up -d'
 #=======
 # VPN
 #=======
-alias ovpn='sudo openvpn'
+alias vpn='sudo openvpn'
 alias vpnj='sudo openvpn --config /etc/openvpn/ProtonVPN_server_configs/jp-free-01.protonvpn.com.udp.ovpn --auth-user-pass /etc/openvpn/protonvpn --daemon'
 alias vpnu='sudo openvpn --config /etc/openvpn/ProtonVPN_server_configs/us-free-02.protonvpn.com.udp.ovpn --auth-user-pass /etc/openvpn/protonvpn --daemon'
 alias vpnd='sudo killall openvpn'
@@ -1195,8 +1197,8 @@ alias rcmv='rclone move'
 alias rcrm='rclone delete'
 # deletes files and directories
 alias rcrmd='rclone purge'
-alias rcmnt='rclone mount --daemon'
-alias rcmntg='rclone mount --daemon gd: $REMOTES/gd'
+alias rcmu='rclone mount --daemon'
+alias rcmg='rclone mount --daemon gd: $REMOTES/gd'
 
 #============
 # DUPLICITY

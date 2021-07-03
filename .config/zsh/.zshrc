@@ -150,9 +150,8 @@ nvml() {
 #completion and highlighting
 # source ~/.config/completion_fzf.zsh
 #
-# fpath=($PROGRAMS/zsh-completions/src $fpath)
 # autoload -U compinit && compinit
-[[ -d $PROGRAMS/zsh-syntax-highlighting ]] && source $PROGRAMS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 doge() {
   _fzf_complete --multi --reverse --prompt="doge> " -- "$@" < <(
     echo very
@@ -191,7 +190,8 @@ doge() {
 	# )" &&
 	# echo "opening $file" &&
 	# xdg-open "$file"
-# }
+
+# PATH
 [[ -d "/usr/local/bin" ]] && export PATH="/usr/local/bin:$PATH"
 
 bindkey -s "^n" "stn^M"
@@ -223,5 +223,22 @@ _fzf_compgen_dir() {
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[[ -d $PROGRAMS/zsh-syntax-highlighting ]] && source $PROGRAMS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -d $PROGRAMS/zsh-autosuggestions ]] && source $PROGRAMS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
+# autosuggestions keybindings
+    # autosuggest-accept: Accepts the current suggestion.
+    # autosuggest-execute: Accepts and executes the current suggestion.
+    # autosuggest-clear: Clears the current suggestion.
+    # autosuggest-fetch: Fetches a suggestion (works even when suggestions are disabled).
+    # autosuggest-disable: Disables suggestions.
+    # autosuggest-enable: Re-enables suggestions.
+    # autosuggest-toggle: Toggles between enabled/disabled suggestions.
+
+bindkey "^I" autosuggest-execute
+bindkey "^ " autosuggest-toggle
+
+# aliases
 source $ZDOTDIR/.aliases
 source /home/kanon/.config/zsh/.aliases
