@@ -10,7 +10,7 @@
 # Magisk 23
 # gapps android 10
 
-# wget -O magisk.zip $(latestRelease https://github.com/topjohnwu/Magisk/releases apk | head -n 1)
+# wget -O magisk.zip $(latest https://github.com/topjohnwu/Magisk/releases apk | head -n 1)
 
 # vanced, get the manager after root (dont try microg)
 

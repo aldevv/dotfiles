@@ -1,11 +1,11 @@
 #something
 h       ~
-uu       $REMOTES
-ug       $REMOTES/ugd
+uu      $REMOTES
+ug      $REMOTES/ugd
 wo      $WORK/covidalert
 bk      $BOOKS
 ba      $BACKUPS
-cc      $CLASS/2021-1
+cc      $CLASS
 ll      $LEASN
 tt      $TRASH
 sk      $SUCKLESS
@@ -42,6 +42,7 @@ rus     /usr/share
 rub     /usr/bin
 rui     /usr/include
 rulo    /usr/local
+rulob    /usr/local/bin
 ruli    /usr/lib
 rv      /var
 rb      /bin

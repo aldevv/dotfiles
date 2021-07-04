@@ -13,6 +13,9 @@ super + alt + w
 super + w
 	"$BROWSER"
 
+super + l
+	betterlockscreen -l blur -t "How about a little rest!?"
+
 super + p
 	dmenu_run
 
