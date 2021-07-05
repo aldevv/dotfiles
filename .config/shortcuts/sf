@@ -34,6 +34,8 @@ Mv      $VOLUMES
 Mc      $CLASS
 Mw      $WORK
 wi      $WIKI
+wp      $WIKI/personal
+wc      $WIKI/cheatsheets
 mm      ~/Music
 lo      ~/.local
 re      /etc

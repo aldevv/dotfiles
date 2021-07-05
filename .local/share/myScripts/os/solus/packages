@@ -1,7 +1,7 @@
 # do comments like this
 zsh
 sxhkd
-dmenu
+#dmenu
 dash
 python3-devel
 #fzf

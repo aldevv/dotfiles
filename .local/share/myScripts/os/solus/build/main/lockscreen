@@ -19,4 +19,4 @@ sudo -u $SUDO_USER git clone --depth=1 https://github.com/pavanjadhaw/betterlock
 
 ln -sf "$PROGRAMS/lockscreens/betterlockscreen/betterlockscreen" "$HOME/.local/bin/betterlockscreen"
 
-betterlockscreen -u $HOME/Pictures/Wallpapers/all_time blur -b 1
+sudo -u $SUDO_USER betterlockscreen -u $HOME/Pictures/Wallpapers/all_time -b 1.2 -r 1920x1080

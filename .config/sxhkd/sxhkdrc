@@ -216,3 +216,6 @@ XF86TouchpadToggle
 
 XF86AudioPlay
 	mpc toggle
+
+XF86PowerDown
+	sudo systemctl suspend

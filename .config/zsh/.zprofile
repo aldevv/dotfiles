@@ -26,6 +26,7 @@ export SXHKD_SHELL="/bin/zsh"
 # export SI=https://meet.google.com/ixe-gxnu-ovp
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export BROWSER=firefox
+export WALL="$HOME/Pictures/Wallpapers/all_time"
 export BOOKS="$HOME/Documents/Books"
 export MASTER="$HOME/Master"
 export PROJECTS="$MASTER/Projects"
