@@ -46,27 +46,27 @@ select opt in "si" "no"; do
 done
 
 for opt in "${options[@]}"; do
-        if $opt == "kali"
+        if $opt == "kali"; then
             for prog in ${programs[@]}; do
                 sudo apt install $prog
             done
             exit
         fi
 
-        if $opt == "solus"
+        if $opt == "solus"; then
             for prog in ${programs[@]}; do
                 sudo eopkg install $prog
             done
             exit
         fi
 
-        if $opt == "arch"
+        if $opt == "arch"; then
             for prog in ${programs[@]}; do
                 sudo eopkg -S $prog
             done
             exit
         fi
-end
+    done
 
 installers=("eopkg" "apt" "pacman")
 select opt in "${installers[@]}"

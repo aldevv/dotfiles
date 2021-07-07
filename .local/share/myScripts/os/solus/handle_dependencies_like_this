@@ -1,0 +1,5 @@
+declare -A dependencies=( \
+    ["eopkg"]="intel-compute-runtime"\
+)
+
+eval "$PKG_COMMAND ${dependencies[$PKG]}"

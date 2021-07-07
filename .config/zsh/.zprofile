@@ -2,8 +2,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export EDITOR=nvim
 export VISUAL=nvim
-export PKG='eopkg'
-export PKG_COMMAND='eopkg install'
 # export LESS="-isSMRQJ -j.5" for middle screen when searching
 export LESS="-isSMRQJ"
 # export PAGER='bat'
@@ -62,6 +60,8 @@ export OS="$SCRIPTS/os/solus"
 [[ -d "$UTILITIES" ]] && export PATH="$(du $UTILITIES  | cut -f2 | tr '\n' ':')$PATH"
 [[ -d "$AUTOMATION" ]] && export PATH="$(du $AUTOMATION | cut -f2 | tr '\n' ':')$PATH"
 [[ -d "$HOME/.local/bin" ]] && export PATH="$(du $HOME/.local/bin | cut -f2 | tr '\n' ':')$PATH"
+export PKG=$($UTILITIES/linux/get_package_manager)
+export PKG_COMMAND=$($UTILITIES/linux/get_package_manager "command")
 
 export MLIBS="$FILES/mlibs"
 
