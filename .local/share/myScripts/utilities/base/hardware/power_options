@@ -1,6 +1,6 @@
 #!/bin/sh
 
-option=$(printf "shutdown\nreboot\nrestart\nlogout" | /usr/local/bin/dmenu -l 6)
+option=$(printf "shutdown\nreboot\nsuspend\nrestart\nlogout" | /usr/local/bin/dmenu -l 6)
 
 case "$option" in
     "shutdown")

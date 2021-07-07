@@ -6,8 +6,10 @@ wo      $WORK/covidalert
 bk      $BOOKS
 ba      $BACKUPS
 cc      $CLASS
-ll      $LEASN
+ll      $LEARN
+lh      $LEARN/Hack
 tt      $TRASH
+T      $HOME/Downloads/torrents
 sk      $SUCKLESS
 bl      $BOOKS/LN
 cf      $XDG_CONFIG_HOME
@@ -18,7 +20,7 @@ mO      $OS/build
 mu      $UTILITIES
 mf      $FILES
 md      $FILES/virtual/docker-compose
-ma      $AUTOMATIONS
+ma      $AUTOMATION
 mp      $APPS
 ml      $MLIBS
 pr      $PROGRAMS
@@ -33,6 +35,7 @@ Mp      $PROJECTS
 Mv      $VOLUMES
 Mc      $CLASS
 Mw      $WORK
+wa      $WALL
 wi      $WIKI
 wp      $WIKI/personal
 wc      $WIKI/cheatsheets
@@ -46,6 +49,7 @@ rui     /usr/include
 rulo    /usr/local
 rulob    /usr/local/bin
 ruli    /usr/lib
+exp     /opt/exploitdb/exploits
 rv      /var
 rb      /bin
 rr      /root
@@ -53,7 +57,6 @@ ro      /opt
 rmn     /mnt
 sc      ~/Pictures/screenshots
 rtk     ~/Books/japanese/heisig
-wa      ~/.cache/wal
 l1      $LEARN/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
 l2      $LEARN/Rust/Learn Rust by Building Real Applications
 ld      $LEARN/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain

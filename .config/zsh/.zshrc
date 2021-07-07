@@ -1,4 +1,4 @@
-setopt KSH_GLOB
+# setopt KSH_GLOB
 # only source if you dont login from a terminal
 # source ~/.zprofile
 #COLEMAK DOTFILES
