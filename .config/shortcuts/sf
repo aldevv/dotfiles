@@ -38,7 +38,7 @@ Mw      $WORK
 wa      $WALL
 wi      $WIKI
 wp      $WIKI/personal
-wc      $WIKI/cheatsheets
+ws      $WIKI/cheatsheets
 mm      ~/Music
 lo      ~/.local
 re      /etc

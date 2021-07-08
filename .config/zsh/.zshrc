@@ -1,4 +1,15 @@
+#==============
 # setopt KSH_GLOB
+#==============
+# enables: rm -- !(*.dmg|*.txt)
+#-------------o---------------
+
+#=====================
+setopt extended_glob
+#=====================
+# enables: rm -- ^*.dmg, rm -- ^*.(dmg|txt)
+#-------------o---------------
+
 # only source if you dont login from a terminal
 # source ~/.zprofile
 #COLEMAK DOTFILES
