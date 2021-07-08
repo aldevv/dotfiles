@@ -3,7 +3,7 @@ declare -A dependencies=( \
     ["eopkg"]="intel-compute-runtime"\
 )
 
-eval "$PKG_COMMAND ${dependencies[$PKG]}"
+install_dependencies ${dependencies[$PKG]}
 
 name="hashcat"
 version="6.2.2"

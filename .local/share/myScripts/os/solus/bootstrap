@@ -5,7 +5,7 @@
 #	   $2 all: optional programs
 
 if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
-  echo "Usage: sudo -E env 'PATH=\$PATH' `basename $0` [all] [optional] [hack] [old]"
+  echo "Usage: sudo -E env \"PATH=\$PATH\" `basename $0` [all] [optional] [hack] [old]"
   exit 0
 fi
 

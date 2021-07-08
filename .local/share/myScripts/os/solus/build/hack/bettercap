@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# credentials: user, pass
+declare -A dependencies=(\
+['eopkg']="
+libpcap-devel
+libusb-devel
+libnetfilter-queue-devel"\
+)
+install_dependencies "${dependencies[$PKG]}"
+
+go get github.com/bettercap/bettercap
+ln -sf "$GOPATH/bin/bettercap" "/usr/local/bin/bettercap"
+bettercap -eval "caplets.update; ui.update; q"

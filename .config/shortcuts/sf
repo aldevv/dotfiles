@@ -48,6 +48,7 @@ rub     /usr/bin
 rui     /usr/include
 rulo    /usr/local
 rulob    /usr/local/bin
+rulos    /usr/local/share
 ruli    /usr/lib
 exp     /opt/exploitdb/exploits
 rv      /var

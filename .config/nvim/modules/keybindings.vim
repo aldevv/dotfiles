@@ -440,9 +440,9 @@ nnoremap <leader>V V`]
 " clear search highlights
 noremap <silent><leader>H :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
 " nnoremap <silent><leader>hh :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>l1 :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>l2 :execute '2match DiffChange /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>l3 :execute '3match IncSearch /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent><leader>h1 :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent><leader>h2 :execute '2match DiffChange /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent><leader>h3 :execute '3match IncSearch /\<<c-r><c-w>\>/'<cr>
 
 " to search only selected text with * and #
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR><c-o>
