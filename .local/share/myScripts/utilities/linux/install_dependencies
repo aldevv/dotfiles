@@ -5,4 +5,5 @@
 command_="$PKG_COMMAND $(echo "$@" | tr '\n' ' ')"
 user=$(whoami)
 [[ $user == 'root' ]] \
-    && eval "$command_"
+    && eval "$command_"\
+    || sudo -i eval "$command_"

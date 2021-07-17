@@ -1,6 +1,7 @@
 # do comments like this
 zsh
 sxhkd
+neovim
 #dmenu
 dash
 python3-devel
@@ -78,3 +79,5 @@ aircrack-ng
 qrencode
 duplicity
 openbox
+wireshark
+openfortivpn

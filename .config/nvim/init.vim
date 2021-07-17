@@ -21,10 +21,6 @@
  lua require('config')
 let IS_MINE=isdirectory($SUCKLESS)
 
-"===================
-" DEPENDENCIES
-"===================
-source ~/.config/nvim/modules/dependencies.vim
 
 "==================
 " SETTINGS
@@ -36,13 +32,19 @@ source ~/.config/nvim/modules/dependencies.vim
 "==================
  source ~/.config/nvim/modules/keybindings.vim
 
-"==================
-" PLUGINS SETTINGS
-"==================
+
 if $USER != "root"
-    source ~/.config/nvim/modules/plugins.vim
-    source ~/.config/nvim/modules/plugins-settings.vim
-    "source ~/.config/nvim/modules/plugins2.vim
+  "===================
+  " DEPENDENCIES
+  "===================
+  source ~/.config/nvim/modules/dependencies.vim
+
+  "==================
+  " PLUGINS SETTINGS
+  "==================
+      source ~/.config/nvim/modules/plugins.vim
+      source ~/.config/nvim/modules/plugins-settings.vim
+      "source ~/.config/nvim/modules/plugins2.vim
 endif
 
 "==================
