@@ -10,6 +10,9 @@ setopt extended_glob
 # enables: rm -- ^*.dmg, rm -- ^*.(dmg|txt)
 #-------------o---------------
 
+# adds completion to alias arguments
+setopt complete_aliases
+
 # only source if you dont login from a terminal
 # source ~/.zprofile
 #COLEMAK DOTFILES
@@ -17,36 +20,42 @@ setopt extended_glob
 #
 #autoload -U colors && colors   # Load colors
 #PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-export SXHKD_SHELL="/usr/bin/sh"
-export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
+nomyzsh() {autoload -Uz compinit && compinit}
+export SXHKD_SHELL="/usr/bin/sh"
+[ -d "$HOME/.oh-my-zsh" ] \
+  && export ZSH="$HOME/.oh-my-zsh" \
+  || nomyzsh
+
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# the cursor is after the path, which is a pain
+#echo $RANDOM_THEME
+#ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+#ZSH_THEME="random"
+#
 # ZSH_THEME="af-magic"
 #ZSH_THEME="agnoster"
 # ZSH_THEME="amuse"
 # ZSH_THEME="daivasmara"
-[[ $(whoami) == root ]] && ZSH_THEME="robbyrussell"  || ZSH_THEME="aussiegeek"
+[[ $(whoami) == root ]] \
+  && ZSH_THEME="robbyrussell" \
+  || ZSH_THEME="aussiegeek"
 
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='nvim'
+# fi
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-
-#functions
+#==========
+#FUNCTIONS
+#==========
 #to open man in vim
 # function manv() {
 #     for arg in "$@"; do
         # nvim -c 'execute "normal! :let no_man_maps = 1\<cr>:runtime ftplugin/man.vim\<cr>:Man '"${arg}"'\<cr>:wincmd o\<cr>"'
     # done
 # }
-
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -71,19 +80,15 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 
 
-# Add wisely, as too many plugins slow down shell startup.
 # # in archlinux put the archlinux plugin!
-
 # docker adds completion for docker commands, same docker compose
 plugins=(docker)
-# z is a command that takes you to the most probable folder
 export HISTFILE="$ZDOTDIR/.zsh_history"
-source $ZSH/oh-my-zsh.sh
-#https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode
-#
-#==============
-# Keybindings
+. $ZSH/oh-my-zsh.sh
 
+#==============
+# KEYBINDINGS
+#==============
 # so you can use backspace after esc
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line
@@ -131,19 +136,6 @@ bindkey -M menuselect 'i' vi-forward-char
 bindkey -M menuselect 'n' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-#
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 #
@@ -151,12 +143,6 @@ bindkey -v '^?' backward-delete-char
 nvml() {
 . "$NVM_DIR/nvm.sh"
 }
-# MAKES IT SLOW
-
-#completion and highlighting
-# source ~/.config/completion_fzf.zsh
-#
-# autoload -U compinit && compinit
 
 doge() {
   _fzf_complete --multi --reverse --prompt="doge> " -- "$@" < <(
@@ -198,24 +184,33 @@ doge() {
 	# xdg-open "$file"
 
 # PATH
-[[ -d "/usr/local/bin" ]] && export PATH="/usr/local/bin:$PATH"
+[[ -d "/usr/local/bin" ]]\
+  && export PATH="/usr/local/bin:$PATH"
 
+# FZF
+lf_() {
+  # lookup file
+  folder="$1"
+  file=$(fd . -t f -I -H $(echo "$folder")| fzf -d / --with-nth -5,-4,-3,-2,-1)
+  [ -n "$file" ] \
+    && nvim "$file"
+}
 bindkey -s "^n" "stn^M"
-bindkey -s 'p' 'file=$(fd . -t f -I -H | fzf -d / --with-nth -5,-4,-3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
-bindkey -s 'w' 'file=$(fd . -t f -I -H "$WORK" | fzf -d / --with-nth -3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
-bindkey -s 'c' 'file=$(fd . -t f -I -H "$CLASS" | fzf -d / --with-nth -3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
-bindkey -s 'M' 'file=$(fd . -t f -I -H "$MASTER" | fzf -d / --with-nth -3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
-bindkey -s 'm' 'file=$(fd . -t f -I -H "$SCRIPTS" | fzf -d / --with-nth -3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
-bindkey -s 'P' 'file=$(fd . -t f -I -H "$PROJECTS" | fzf -d / --with-nth -3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
-bindkey -s 'l' 'file=$(fd . -t f -I -H "$LEARN" | fzf -d / --with-nth -3,-2,-1); [ -n "$file" ] && nvim "$file"^M'
+bindkey -s 'p' 'lf_^M'
+bindkey -s 'w' 'lf_ "$WORK"^M'
+bindkey -s 'c' 'lf_ "$CLASS"^M'
+bindkey -s 'M' 'lf_ "$MASTER"^M'
+bindkey -s 'm' 'lf_ "$SCRIPTS"^M'
+bindkey -s 'P' 'lf_ "$PROJECTS"^M'
+bindkey -s 'L' 'lf_ "$LEARN"^M'
 bindkey -s 'o' '!\$^M'
 bindkey -s 'O' '!*^M'
 bindkey -s 't' '**	'
 # tested, this shows stderr correctly on new terminal window
 bindkey -s '.' 'setsid st &>/dev/null^M'
 bindkey -s 'r' 'setsid st ranger &>/dev/null^M'
-_fzf_compgen_path() {
 
+_fzf_compgen_path() {
   excluded=".git node_modules plugged .env __pycache__ .wine .npm .icons .vscode */nvm/backups .cache undodir __pycache__ **/node_modules/* env envs "
   fd --hidden --follow --exclude "$excluded" . "$1"
 }
@@ -230,8 +225,10 @@ _fzf_compgen_dir() {
 #
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-[[ -d $PROGRAMS/zsh-plugins/zsh-syntax-highlighting ]] && source $PROGRAMS/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[[ -d $PROGRAMS/zsh-plugins/zsh-autosuggestions ]] && source $PROGRAMS/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+[[ -d $PROGRAMS/zsh-plugins/zsh-syntax-highlighting ]] \
+  && . $PROGRAMS/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -d $PROGRAMS/zsh-plugins/zsh-autosuggestions ]] \
+  && . $PROGRAMS/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 # autosuggestions keybindings
     # autosuggest-accept: Accepts the current suggestion.
@@ -244,10 +241,9 @@ _fzf_compgen_dir() {
 
 bindkey "^ " autosuggest-execute
 # bindkey "^" autosuggest-toggle
-#
+
 lesskey $HOME/.config/colemak-less
 # aliases
-source $ZDOTDIR/.aliases
+alias src_=". $ZDOTDIR/.zshrc"
 . $ZDOTDIR/.zsh_plugin_aliases
-
-source /home/kanon/.config/zsh/.aliases
+. $ZDOTDIR/.aliases

@@ -60,8 +60,10 @@ export OS="$SCRIPTS/os/solus"
 [[ -d "$UTILITIES" ]] && export PATH="$(du $UTILITIES  | cut -f2 | tr '\n' ':')$PATH"
 [[ -d "$AUTOMATION" ]] && export PATH="$(du $AUTOMATION | cut -f2 | tr '\n' ':')$PATH"
 [[ -d "$HOME/.local/bin" ]] && export PATH="$(du $HOME/.local/bin | cut -f2 | tr '\n' ':')$PATH"
-export PKG=$($UTILITIES/linux/get_package_manager)
-export PKG_COMMAND=$($UTILITIES/linux/get_package_manager "command")
+
+[[ -f $UTILITIES/linux/get_package_manager ]] \
+    && export PKG=$($UTILITIES/linux/get_package_manager) \
+    && export PKG_COMMAND=$($UTILITIES/linux/get_package_manager "command")
 
 export MLIBS="$FILES/mlibs"
 

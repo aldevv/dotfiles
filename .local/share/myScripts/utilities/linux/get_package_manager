@@ -11,16 +11,16 @@ fi
 
 packagemanagers=("apt" "eopkg" "pacman")
 declare -A packagemanagers_commands=(\
-    ["apt"]="apt install -y"\
-    ["eopkg"]="eopkg install -y"\
-    ["pacman"]="pacman -S"\
+    ["apt"]="apt install -y" \
+    ["eopkg"]="eopkg install -y" \
+    ["pacman"]="pacman -S" \
 )
-    for pkg in "${packagemanagers[@]}"; do
-        if [[ -x $(command -v "$pkg") ]]; then
-            echo "$pkg" > "$HOME/.cache/pkg"
-            echo "${packagemanagers_commands[$pkg]}" > "$HOME/.cache/pkg_command"
-            echo "$pkg"
-            exit
-        fi
-    done
+for pkg in "${packagemanagers[@]}"; do
+    if [[ -x $(command -v "$pkg") ]]; then
+        echo "$pkg" > "$HOME/.cache/pkg"
+        echo "${packagemanagers_commands[$pkg]}" > "$HOME/.cache/pkg_command"
+        echo "$pkg"
+        exit
+    fi
+done
 

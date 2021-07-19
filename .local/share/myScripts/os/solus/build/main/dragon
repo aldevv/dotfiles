@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 # for drag and drop (dragon)
-#git clone https://github.com/mwh/dragon $HOME/Documents/Suckless
-
-eopkg install -y libgtk-3-devel
+declare -A req=(\
+['eopkg']="libgtk-3-devel" \
+)
+install_ "${req[$PKG]}"
+sudo -u $SUDO_USER git clone https://github.com/mwh/dragon "$SUCKLESS/dragon"
 cd "$SUCKLESS/dragon"
-
 make
 make install

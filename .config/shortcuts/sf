@@ -6,7 +6,7 @@ wo      $WORK/covidalert
 bk      $BOOKS
 ba      $BACKUPS
 cc      $CLASS
-ll      $LEARN
+L       $LEARN
 lh      $LEARN/Hack
 tt      $TRASH
 T      $HOME/Downloads/torrents
