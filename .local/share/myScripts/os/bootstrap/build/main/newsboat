@@ -1,0 +1,26 @@
+#!/bin/sh
+
+if [ ! -e "$CARGO_HOME" ]; then
+    $OS/build/main/rust
+fi
+
+cd "$PROGRAMS"
+eopkg install -y stfl-devel curl-devel sqlite3-devel json-c-devel
+gem install asciidoctor
+sudo -u "$SUDO_USER" wget https://newsboat.org/releases/2.22.1/newsboat-2.22.1.tar.xz
+tar kvvxf "newsboat-2.22.1.tar.xz"
+rm "newsboat-2.22.1.tar.xz"
+cd "newsboat-2.22.1"
+make
+make install
+
+# for make version
+
+# newsboat dependencies theres also snap version
+# you need rust, cargo (change installation folder in makefile if you want)
+# eopkg -y install json-c-devel stfl-devel curl-devel sqlite3-devel
+#cd "$PROGRAMS"
+#git clone https://github.com/newsboat/newsboat
+#make
+#make install
+

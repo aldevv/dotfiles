@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# dont move the dotfiles from its cloned location
 
 #args: $1 WM:dwm or xmonad (not working), all: optional programs
 #	   $2 all: optional programs
@@ -9,42 +10,46 @@ if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
   exit 0
 fi
 
+
+sudo -u $user mkdir -p "$BACKUPS" "$HOME/.local/bin" "$HOME/Pictures/Screenshots" "$VOLUMES"
+rm -rf $HOME/{.zshrc,.zsh_history,.zshenv}
+cp ../../../../../../dotfiles/* "$HOME"
+
+. "$HOME/.config/zsh/.zprofile"
 user="$SUDO_USER"
-. "$XDG_DATA_HOME/zsh/.zprofile"
 
 #================
 # INSTALL OHMYZSH
 #================
 echo "y" | sudo -u "$user" sh -c "$(sudo -u $user curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-sudo eopkg up -y
-sudo eopkg it -y git
-rm -rf .zshrc .zsh_history
-cp ../../../../../../dotfiles/* "$HOME"
-
-#=======================
-# ADD ACCESS TO SUDOERS
-#=======================
+case $PKG in
+   'eopkg')
+      eval "$PKG ur && $PKG up -y" ;;
+   'apt')
+      eval "$PKG-get update && $PKG-get upgrade" ;;
+   'pacman')
+      eval "$PKG -Syu" ;;
+esac
+install_ "git"
 awk -i inplace -v user="$user" '/#includedir /etc/sudoers.d/{print; print user " ALL=(ALL) NOPASSWD:ALL";next}1' /etc/sudoers
 
 sudo -u $user git clone https://github.com/Akuseru1/Wiki "$WIKI"
 sudo -u $user git clone https://github.com/Akuseru1/suckless-configs "$SUCKLESS"
+sudo -u $user git clone https://github.com/Akuseru1/wallpapers "$HOME/Pictures/Wallpapers"
 
-
-
-sudo -u $user mkdir -p "$BACKUPS" "$HOME/.local/bin" "$HOME/Pictures/Screenshots" "$VOLUMES"
 
 #==================
 # INSTALL PACKAGES
 #==================
 case "$PKG" in
    'eopkg')
-      packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' eopkg-packages) \
-      $PKG_COMMAND -c system.devel ;;
+      packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/eopkg-packages) \
+      $PKG_INSTALL -c system.devel ;;
    'apt')
-      packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' apt-packages) \
+      packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/apt-packages) \
       ;;
    'pacman')
-      packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' pacman-packages) \
+      packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/pacman-packages) \
       ;;
    *)
       echo 'package manager not found'

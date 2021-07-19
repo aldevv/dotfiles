@@ -1,0 +1,20 @@
+#!/bin/bash
+#https://www.reddit.com/r/suckless/comments/euwhff/libxft_add_support_for_bgra_glyphs_and_scaling/
+declare -A req=(\
+['eopkg']="
+util-macros-devel" \
+['apt']="
+autoconf
+autogen
+libtool"\
+)
+install_ "${req[$PKG]}"
+
+cd "$SCRIPTS"
+sudo -u "$SUDO_USER" git clone https://gitlab.freedesktop.org/xorg/lib/libxft.git
+cd libxft
+sudo -u "$SUDO_USER" wget -qO- 'https://gitlab.com/et-8/glarbs-deploy/-/raw/master/etc/portage/patches/x11-libs/libXft/libXft-bgra-commit-7808631e7a9a605d5fe7a1077129c658d9ec47fc.patch' | patch -p1
+./autogen.sh
+./configure --prefix=/usr --sysconfdir=/etc --disable-static
+make
+make install

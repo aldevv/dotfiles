@@ -41,11 +41,8 @@ export SXHKD_SHELL="/usr/bin/sh"
   || ZSH_THEME="aussiegeek"
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
+[[ -n $SSH_CONNECTION ]]\
+  && color echo "came to visit? enjoy your stay"
 
 #==========
 #FUNCTIONS
