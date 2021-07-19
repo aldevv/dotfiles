@@ -1,0 +1,1 @@
+patch --merge < patches/dwm-tagswapmon-6.2.diff

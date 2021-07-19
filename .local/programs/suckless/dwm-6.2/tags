@@ -1,0 +1,74 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Button4	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	2;"	d
+Button4	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	3;"	d
+Button6	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	4;"	d
+Button7	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	5;"	d
+Button8	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	6;"	d
+Button9	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	7;"	d
+MODKEY	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	147;"	d
+SHCMD	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	163;"	d
+STACKKEYS	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	153;"	d
+Sp	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^} Sp;$/;"	t	typeref:struct:__anon1
+TAGKEYS	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	148;"	d
+borderpx	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static unsigned int borderpx  = 3;        \/* border pixel of windows *\/$/;"	v
+buttons	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static Button buttons[] = {$/;"	v
+cmd	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^	const void *cmd;$/;"	m	struct:__anon1
+col_cyan	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const char col_cyan[]        = "#005577";$/;"	v
+col_gray3	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const char col_gray3[]       = "#bbbbbb";$/;"	v
+col_gray4	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const char col_gray4[]       = "#eeeeee";$/;"	v
+col_urgborder	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const char col_urgborder[]   = "#ff0000";$/;"	v
+dmenucmd	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };$/;"	v
+dmenufont	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const char dmenufont[]       = "Fira Code Nerd Font:size=10";$/;"	v
+dmenumon	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static char dmenumon[2] = "0"; \/* component of dmenucmd, manipulated in spawn() *\/$/;"	v
+firefox	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const char *firefox[]  = { "firefox", NULL };$/;"	v
+floatposgrid_x	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static int floatposgrid_x           = 5;        \/* float grid columns *\/$/;"	v
+floatposgrid_y	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static int floatposgrid_y           = 5;        \/* float grid rows *\/$/;"	v
+fonts	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const char *fonts[]          = {$/;"	v
+gappih	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const unsigned int gappih    = 20; \/\/ def 10     \/* horiz inner gap between windows *\/$/;"	v
+gappiv	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const unsigned int gappiv    = 20; \/\/ def 10     \/* vert inner gap between windows *\/$/;"	v
+gappoh	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const unsigned int gappoh    = 20; \/\/ def 10     \/* horiz outer gap between windows and screen edge *\/$/;"	v
+gappov	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const unsigned int gappov    = 20; \/\/ def 10     \/* vert outer gap between windows and screen edge *\/$/;"	v
+keys	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static Key keys[] = {$/;"	v
+layouts	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const Layout layouts[] = {$/;"	v
+mfact	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static float mfact     = 0.50; \/* factor of master area size [0.05..0.95] *\/$/;"	v
+mountUsb	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const char *mountUsb[]  = { "mountDrive", NULL };$/;"	v
+name	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^	const char *name;$/;"	m	struct:__anon1
+nmaster	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static int nmaster     = 1;    \/* number of clients in master area *\/$/;"	v
+normbgcolor	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static char normbgcolor[]           = "#222222";$/;"	v
+normbordercolor	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static char normbordercolor[]       = "#444444";$/;"	v
+normfgcolor	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static char normfgcolor[]           = "#bbbbbb";$/;"	v
+resizehints	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static int resizehints = 0;    \/* 1 means respect size hints in tiled resizals *\/$/;"	v
+resources	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^ResourcePref resources[] = {$/;"	v
+rules	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const Rule rules[] = {$/;"	v
+scratchpads	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static Sp scratchpads[] = {$/;"	v
+selbgcolor	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static char selbgcolor[]            = "#005577";$/;"	v
+selbordercolor	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static char selbordercolor[]        = "#770000"; \/\/border of selected window$/;"	v
+selfgcolor	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static char selfgcolor[]            = "#eeeeee";$/;"	v
+setlayoutex	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^setlayoutex(const Arg *arg)$/;"	f
+showbar	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static int showbar            = 1;        \/* 0 means no bar *\/$/;"	v
+signals	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static Signal signals[] = {$/;"	v
+smartgaps	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const int smartgaps          = 0;        \/* 1 means no outer gap when there is only one window *\/$/;"	v
+snap	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static unsigned int snap      = 3;       \/* snap pixel *\/$/;"	v
+spcmd1	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^const char *spcmd1[] = {"st", "-n", "spterm", "-f", "monospace:size=8", NULL };$/;"	v
+spcmd2	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };$/;"	v
+spcmd3	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^const char *spcmd3[] = {"st", "-n", "spman", "-f", "monospace:size=10", "-e", "bash", "-c", "openManPage;$SHELL",  NULL };$/;"	v
+spcmd4	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^const char *spcmd4[] = {"st", "-n", "sptab", "-f", "monospace:size=10", "-e", "bash", "-c", "tableContents;$SHELL",  NULL };$/;"	v
+spcmd5	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^const char *spcmd5[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-e", "bc", "-liq", NULL };$/;"	v
+spcmd6	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^const char *spcmd6[] = {"st", "-n", "sppydoc", "-f", "monospace:size=12", "-e", "bash", "-c", "python_docs;$SHELL", NULL };$/;"	v
+swallowfloating	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const int swallowfloating    = 1;        \/* 1 means swallow floating windows by default *\/$/;"	v
+tagall	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^tagall(const Arg *arg)$/;"	f
+tagex	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^tagex(const Arg *arg)$/;"	f
+tags	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const char *tags[] = { "一", "ニ", "三", "四", "五", "六", "七", "八", "九", "ゼロ" };$/;"	v
+termcmd	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const char *termcmd[]  = { "st", NULL };$/;"	v
+toggletagex	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^toggletagex(const Arg *arg)$/;"	f
+toggleviewex	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^toggleviewex(const Arg *arg)$/;"	f
+topbar	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static int topbar             = 1;        \/* 0 means bottom bar *\/$/;"	v
+umountUsb	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const char *umountUsb[]  = { "umountDrive", NULL };$/;"	v
+viewall	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^viewall(const Arg *arg)$/;"	f
+viewex	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^viewex(const Arg *arg)$/;"	f
+volumeMcmd	/home/solus/.cache/nvim/vista/607e7a7480e47d58ac023f2c4b727310cebaee51b3c820c19a67beb02b1f605d.h	/^static const char *volumeMcmd[]  = { "pactl","--","set-sink-mute", "0","toggle", NULL };$/;"	v

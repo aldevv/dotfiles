@@ -1,0 +1,26 @@
+# ghc 8.6.5
+resolver: lts-14.20
+
+packages:
+ - .
+
+flags:
+ xmobar:
+   all_extensions: true
+   with_threaded: true
+
+extra-deps:
+ - netlink-1.1.1.0
+
+nix:
+    packages:
+      - alsaLib
+      - pkgconfig
+      - wirelesstools
+      - xorg.libX11
+      - xorg.libXext
+      - xorg.libXft
+      - xorg.libXpm
+      - xorg.libXrandr
+      - xorg.libXScrnSaver
+      - zlib
