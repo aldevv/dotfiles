@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# for vim and ranger
-sudo -u "$SUDO_USER" mkdir -p "$HOME/.config/nvim/backups"
-sudo -u "$SUDO_USER" pip3 install wheel
-sudo -u "$SUDO_USER" pip3 install ranger-fm ueberzug
-# for sudo (cant use same binary)
-pip3 install ranger-fm ueberzug
-ln -s $(which ranger) /usr/bin/ranger

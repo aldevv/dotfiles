@@ -53,7 +53,7 @@ export SHARED="$SCRIPTS/shared"
 export UTILITIES="$SCRIPTS/utilities"
 export AUTOMATION="$SCRIPTS/automation"
 export APPS="$SCRIPTS/apps"
-export OS="$SCRIPTS/os/solus"
+export OS="$SCRIPTS/os/bootstrap"
 #add all files in these directories to the PATH
 [[ -d "$SHARED" ]] && export PATH="$(du $SHARED | cut -f2 | tr '\n' ':')$PATH"
 [[ -d "$APPS" ]] && export PATH="$(du $APPS | cut -f2 | tr '\n' ':')$PATH"
@@ -63,7 +63,7 @@ export OS="$SCRIPTS/os/solus"
 
 [[ -f $UTILITIES/linux/get_package_manager ]] \
     && export PKG=$($UTILITIES/linux/get_package_manager) \
-    && export PKG_COMMAND=$($UTILITIES/linux/get_package_manager "command")
+    && export PKG_INSTALL=$($UTILITIES/linux/get_package_manager "install")
 
 export MLIBS="$FILES/mlibs"
 

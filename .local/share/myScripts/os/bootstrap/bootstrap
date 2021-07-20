@@ -62,8 +62,8 @@ install_ "$packages"
 # INSTALL WINDOW MANAGER
 #========================
 
-
-find init/* -type f -exec {} \;
+# xargs is 6 times faster than -exec
+find init/* -type f | xargs -n1 -P8 bash
 
 # check latest nvm link
 # this is for nvm, otherwise just install npm and do npm install -g neovim
@@ -75,7 +75,7 @@ nvm install node
 #======================================================
 # BUILD SUCKLESS PROGRAMS AND PROGS NOT IN REPOSITORIES
 #======================================================
-find build/main/* -exec {} \;
+find build/main/* | xargs -n1 -P3 bash
 
 #================
 # BUILD PROGRAMS
@@ -86,10 +86,10 @@ while [ $# -gt 0 ]; do
    case $1 in
       'optional' | 'all')
          shift
-         find build/optional/* -exec {} \; ;;
+         find build/optional/* | xargs -n1 -P8 bash ;;
       'hack' | 'all')
          shift
-         find build/hack/* -exec {} \; ;;
+         find build/hack/* | xargs -n1 -P8 bash ;;
       'xmonad' | 'all-wm')
          shift
          [ "$1" == 'xmonad' ]\
