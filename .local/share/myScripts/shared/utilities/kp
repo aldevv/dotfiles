@@ -11,7 +11,7 @@ if [ -z "$1" ]; then
 else
   pid=$(ps -ef | sed 1d | eval "dmenu -l 30 -p '[kill:process]'" | awk '{print $2}')
 fi
-
+shift
 if [ "x$pid" != "x" ]; then
   echo $pid | xargs kill -${1:-9}
   kp

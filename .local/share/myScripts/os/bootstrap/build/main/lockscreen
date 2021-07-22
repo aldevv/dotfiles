@@ -2,7 +2,7 @@
 
 # xidlehook
 if [ ! -e "$CARGO_HOME" ]; then
-    $OS/build/main/rust
+    $OS/bootstrap/build/main/rust
 fi
 sudo -u $SUDO_USER -E PATH="$PATH" "$CARGO_HOME/bin/cargo" install xidlehook --bins
 
