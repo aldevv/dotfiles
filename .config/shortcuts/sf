@@ -7,9 +7,9 @@ bk      $BOOKS
 ba      $BACKUPS
 cc      $CLASS/2021-1
 ci      $CLASS/2021-1/ISII
-cg      $CLASS/2021-1/GERENCIA
-cd      $CLASS/2021-1/DBII
-ca      $CLASS/2021-1/AUDITII
+cG      $CLASS/2021-1/GERENCIA
+cD      $CLASS/2021-1/DBII
+cA      $CLASS/2021-1/AUDITII
 L       $LEARN
 lh      $LEARN/Hack
 tt      $TRASH

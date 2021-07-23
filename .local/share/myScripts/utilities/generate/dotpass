@@ -1,8 +1,15 @@
-#!/bin/sh
+#!/bin/bash
 
-dotrepo="git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME"
-file="$HOME/.local/share/.pass/pass"
-zip -r "$file" $HOME/.local/share/.pass/*
+dotrepo=$(cat $XDG_CONFIG_HOME/zsh/.zsh_plugin_aliases | rg 'dotfiles' | rg -- '--git-dir' | cut -d\" -f2)
+path="$1"
+
+filename=${path##*/}
+filename=${filename#*.}
+file="$path/$filename"
+[ -z $path ] \
+    && path="$HOME/.local/share/.pass" \
+    && file="$path/pass"
+zip -r "$file" $path/*
 mv "$file.zip" "$file"
 eval "$dotrepo secret add $file"
 eval "$dotrepo secret hide"
