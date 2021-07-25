@@ -9,7 +9,7 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 # dunst &
 fcitx & # for languages
 # custom scripts
-DISPLAY=":0" picom -b
+DISPLAY=":0" picom -b --experimental-backend
 # so the user can make connections to the xserver (docker)
 xhost local:root
 # this is for when picom 9 releases

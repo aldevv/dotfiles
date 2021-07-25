@@ -81,3 +81,6 @@ duplicity
 openbox
 wireshark
 openfortivpn
+gimp
+# for easy pdf manipulation
+pdfarranger
