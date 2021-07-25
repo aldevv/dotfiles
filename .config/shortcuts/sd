@@ -3,7 +3,7 @@ sd      ~/.config/shortcuts/sd
 cfe     ~/.emacs.d/init.el
 cfz     ~/.config/zsh/.zshrc
 cfp     ~/.config/zsh/.zprofile
-cfpi     ~/.config/picom/picom.conf
+cfP     ~/.config/picom/picom.conf
 cfr     ~/.config/ranger/rc.conf
 cfb     ~/.bashrc
 cfxx    ~/.Xresources

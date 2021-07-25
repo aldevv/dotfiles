@@ -1,0 +1,8 @@
+#!/bin/bash
+
+dotrepo=$(cat $XDG_CONFIG_HOME/zsh/.zsh_plugin_aliases | rg 'dotfiles' | rg -- '--git-dir' | cut -d\" -f2)
+files=$(eval "$dotrepo secret list")
+
+for file in $files; do
+    rm "$HOME/$file.scr"
+done
