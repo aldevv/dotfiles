@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dotrepo=$(cat $XDG_CONFIG_HOME/zsh/.zsh_plugin_aliases | rg 'dotfiles' | rg -- '--git-dir' | cut -d\" -f2)
+dotrepo=$(cat $XDG_CONFIG_HOME/zsh/.aliases | rg 'dotfiles' | rg -- '--git-dir' | cut -d\" -f2)
 file="$1"
 [ -z $file ] \
     && echo "choose a file to hide" \

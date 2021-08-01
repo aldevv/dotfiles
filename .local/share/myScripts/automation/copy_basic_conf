@@ -22,14 +22,14 @@ sourced=$(grep 'source .*vimrc\.local' "$vim_folder/vimrc")
 #==============
 # ZSH CONFIG
 #==============
+cp "$path_dot/.config/zsh/.auto_aliases" "$HOME/.config"
 cp "$path_dot/.config/zsh/.aliases" "$HOME/.config"
-cp "$path_dot/.config/zsh/.zsh_plugin_aliases" "$HOME/.config"
+auto_aliases='source $HOME/.config/.auto_aliases'
 aliases='source $HOME/.config/.aliases'
-plug_aliases='source $HOME/.config/.zsh_plugin_aliases'
 lesskey='lesskey $HOME/.config/colemak-less'
 echo \
-"$aliases
-$plug_aliases
+"$auto_aliases
+$aliases
 $lesskey" >> "$HOME/.zshrc"
 
 cp "$path_dot/.config/colemak-less" "$HOME/.config/colemak-less"

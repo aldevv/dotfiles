@@ -5,7 +5,6 @@
 mkdir -p "/root/.local/bin"
 mkdir -p "/root/.config/nvim"
 ln -s "$HOME/.zprofile" "/root"
-ln -s "$HOME/.aliases" "/root"
 ln -s "$SCRIPTS" "/root/.local/share/myScripts"
 ln -s "$PROGRAMS" "/root/.local/programs"
 ln -s "$XDG_CONFIG_HOME" "/root/.config"
@@ -20,12 +19,10 @@ sed -i 's|^Defaults secure_path.\+|Defaults secure_path=\"/usr/sbin:/usr/bin:/sb
 # cp "$XDG_CONFIG_HOME/ranger/rifle.conf" "/root/.config/ranger/rifle.conf"
 # cp "$XDG_CONFIG_HOME/ranger/scope.sh" "/root/.config/ranger/scope.sh"
 # cp "$XDG_CONFIG_HOME/nvim/init_root.vim" "/root/.config/nvim/init.vim"
-# cp "$XDG_CONFIG_HOME/zshPlugAlias" "/root/.config/zshPlugAlias"
 # cp "$XDG_CONFIG_HOME/colemak-less" "/root/.config/colemak-less"
 # cp -r "$XDG_CONFIG_HOME/ranger/plugins" "/root/.config/ranger/plugins"
 
 # cp "$XDG_CONFIG_HOME/completion_fzf.zsh" "/root/.config/completion_fzf.zsh"
-# cp "$XDG_CONFIG_HOME/zshPlugAlias" "/root/.config/zshPlugAlias"
 # cp "$XDG_CONFIG_HOME/colemak-less" "/root/.config/colemak-less"
 
 

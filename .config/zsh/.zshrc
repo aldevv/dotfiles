@@ -242,5 +242,5 @@ bindkey "^ " autosuggest-execute
 lesskey $HOME/.config/colemak-less
 # aliases
 alias src_=". $ZDOTDIR/.zshrc"
-. $ZDOTDIR/.zsh_plugin_aliases
 . $ZDOTDIR/.aliases
+. $ZDOTDIR/.auto_aliases

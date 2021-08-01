@@ -5,15 +5,15 @@ dotfiles="$XDG_CONFIG_HOME/shortcuts/sd"
 
 # Output locations
 shellrc="$ZDOTDIR/.zshrc"
-shell_shortcuts="$ZDOTDIR/.aliases"
+shell_shortcuts="$ZDOTDIR/.auto_aliases"
 ranger_shortcuts="$XDG_CONFIG_HOME/ranger/shortcuts.conf"
 
 # Remove
 rm -f "$shell_shortcuts" "$ranger_shortcuts"
 
 #source them if not sourced
-(grep "\. \$ZDOTDIR/.aliases"  $shellrc)>/dev/null \
-    || echo '. $ZDOTDIR/.aliases' >> $shellrc
+(grep "\. \$ZDOTDIR/.auto_aliases"  $shellrc)>/dev/null \
+    || echo '. $ZDOTDIR/.auto_aliases' >> $shellrc
 
 (grep "source $ranger_shortcuts" $XDG_CONFIG_HOME/ranger/rc.conf)>/dev/null \
     || echo "source $ranger_shortcuts" >> $XDG_CONFIG_HOME/ranger/rc.conf
