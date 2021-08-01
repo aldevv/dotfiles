@@ -18,7 +18,7 @@ sed -i 's|^Defaults secure_path.\+|Defaults secure_path=\"/usr/sbin:/usr/bin:/sb
 # cp "$XDG_CONFIG_HOME/ranger/rc_root.conf" "/root/.config/ranger/rc.conf"
 # cp "$XDG_CONFIG_HOME/ranger/rifle.conf" "/root/.config/ranger/rifle.conf"
 # cp "$XDG_CONFIG_HOME/ranger/scope.sh" "/root/.config/ranger/scope.sh"
-# cp "$XDG_CONFIG_HOME/nvim/init_root.vim" "/root/.config/nvim/init.vim"
+# cp "$XDG_CONFIG_HOME/nvim/init_root.vim" "/root/.config/nvim/init.lua"
 # cp "$XDG_CONFIG_HOME/colemak-less" "/root/.config/colemak-less"
 # cp -r "$XDG_CONFIG_HOME/ranger/plugins" "/root/.config/ranger/plugins"
 

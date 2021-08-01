@@ -608,8 +608,7 @@
             "after": ["l"]
         },
     ],
-    "vscode-neovim.neovimExecutablePaths.linux": "/home/kanon/.local/Programs/prefix-installs/neovim/bin/nvim",
-    "vscode-neovim.neovimInitVimPaths.linux": "/home/kanon/.config/nvim/init.vim",
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
     "vscode-neovim.highlightGroups.highlights": {
     
         "Directory": "vim",

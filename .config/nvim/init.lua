@@ -12,7 +12,7 @@ vim.cmd('source ~/.config/nvim/modules/settings.vim')
 
 vim.cmd('source ~/.config/nvim/modules/keybindings.vim')
 
-if (vim.fn.expand('$USER') ~= 'root') then
+if (vim.fn.getenv('USER') ~= 'root') then
 --===================
 -- DEPENDENCIES
 --===================
