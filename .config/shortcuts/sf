@@ -19,6 +19,7 @@ bl      $BOOKS/LN
 cf      $XDG_CONFIG_HOME
 sp      $XDG_CONFIG_HOME/nvim/my_snippets
 ms      $SCRIPTS
+mf      $FILES
 mo      $OS
 mO      $OS/build
 mu      $UTILITIES

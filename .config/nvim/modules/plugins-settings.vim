@@ -381,6 +381,7 @@ let g:coc_global_extensions = [
             \ 'coc-tsserver',
             \ 'coc-css',
             \ 'coc-vimlsp',
+            \ 'coc-lua',
             \ 'coc-sh',
             \ 'coc-diagnostic',
             \ 'coc-java',
@@ -1716,7 +1717,7 @@ function! Open_terminal()
 
   " only the first time
   let exists_name = bufname("neoterm-*")
-  if len(exists_name) == 0 
+  if len(exists_name) == 0
     let project_root = git#find_current_root()
     exec ':botright T cd ' . project_root
     call chansend(b:terminal_job_id, "")"
@@ -1747,7 +1748,7 @@ function! Switch_terminal()
   " if exists == -1
   " FIRST TIME ONLY
   let exists_name = bufname("neoterm-*")
-  if len(exists_name) == 0 
+  if len(exists_name) == 0
     let project_root = git#find_current_root()
     exec ':botright T cd ' . project_root
     call chansend(b:terminal_job_id, "")"
@@ -1868,7 +1869,7 @@ noremap <leader>Tr :RainbowToggle<cr>
 "==============
 "If projectionist.vim is present,
 "you can run a test command from an application file,
-"and test.vim will automatically try to run the 
+"and test.vim will automatically try to run the
 "command on the "alternate" test file.
 
 nmap <silent> <leader>tn :TestNearest<CR>
@@ -2069,13 +2070,13 @@ map <leader>N <Plug>(Vman)
 " heuristics, for general files
 
 function! SetProjections()
-  let l:global_projection = $APPS . "/nvim/projections/global/.projections.json"
+  let l:global_projection = $FILES . "/projections/global/.projections.json"
   let l:json = readfile(l:global_projection)
   let l:dict = projectionist#json_parse(l:json)
   call projectionist#append(getcwd(), l:dict)
 endfunction
 " when a projection is found
-if isdirectory($APPS . "/nvim/projections/global/.projections.json")
+if filereadable($FILES . "/projections/global/.projections.json")
   autocmd User ProjectionistDetect :call SetProjections()
 endif
 

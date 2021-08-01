@@ -465,6 +465,9 @@ vnoremap <silent><leader>S y:execute @@<cr>
 nnoremap <silent><leader>S ^vg_y:execute @@<cr>
 noremap <leader>0 :Colors<cr>
 
+vnoremap <silent><leader>ss y:lua <c-r>+<cr>
+nnoremap <silent><leader>ss ^vg_y:lua <c-r>+<cr>
+
 " help current word
 nnoremap gw :h <c-r>=expand('<cword>')<cr><bar>resize 15<cr>
 

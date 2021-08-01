@@ -8,7 +8,7 @@ cfr     ~/.config/ranger/rc.conf
 cfb     ~/.bashrc
 cfxx    ~/.Xresources
 cfxp    ~/.xprofile
-cfv     ~/.config/nvim/init.vim
+cfv     ~/.config/nvim/init.lua
 cfk     ~/.config/sxhkd/sxhkdrc
 cfxm    ~/.xmonad/xmonad.hs
 cfi     ~/.xinitrc
@@ -22,4 +22,4 @@ cfmo    $SCRIPTS/os/bootstrap
 cfmp    $SCRIPTS/os/bootstrap/packages/eopkg-packages
 cfK     $SCRIPTS/apps/qmk/lily58/keymap.c
 cfZ     /root/.config/zsh/.zshrc
-cfPr     $APPS/nvim/projections/global/.projections.json
+cfPr     $FILES/projections/global/.projections.json

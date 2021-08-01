@@ -17,45 +17,45 @@
 "     'V/'  /##//##//##//###/
 "              ++
 "
- set t_Co=256
+ " set t_Co=256
  lua require('config')
-let IS_MINE=isdirectory($SUCKLESS)
+" let IS_MINE=isdirectory($SUCKLESS)
 
 
 "==================
 " SETTINGS
 "==================
- source ~/.config/nvim/modules/settings.vim
+ " source ~/.config/nvim/modules/settings.vim
 
 "==================
 " KEYBINDINGS
 "==================
- source ~/.config/nvim/modules/keybindings.vim
+ " source ~/.config/nvim/modules/keybindings.vim
 
 
-if $USER != "root"
-  "===================
-  " DEPENDENCIES
-  "===================
-  source ~/.config/nvim/modules/dependencies.vim
+"if $USER != "root"
+"  "===================
+"  " DEPENDENCIES
+"  "===================
+"  source ~/.config/nvim/modules/dependencies.vim
 
-  "==================
-  " PLUGINS SETTINGS
-  "==================
-      source ~/.config/nvim/modules/plugins.vim
-      source ~/.config/nvim/modules/plugins-settings.vim
-      "source ~/.config/nvim/modules/plugins2.vim
-endif
+"  "==================
+"  " PLUGINS SETTINGS
+"  "==================
+"      source ~/.config/nvim/modules/plugins.vim
+"      source ~/.config/nvim/modules/plugins-settings.vim
+"      "source ~/.config/nvim/modules/plugins2.vim
+"endif
 
-"==================
-" APPEARANCE
-"==================
- source ~/.config/nvim/modules/appearance.vim
+""==================
+"" APPEARANCE
+""==================
+" source ~/.config/nvim/modules/appearance.vim
 
 "==================
 " AUTOMATION
 "==================
-source ~/.config/nvim/modules/automation.vim
+" source ~/.config/nvim/modules/automation.vim
 "====================================================
 "
 "create your own text objects
