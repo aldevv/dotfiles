@@ -96,7 +96,6 @@ alias ___='sudo -E env "PATH=$PATH" '
 # yta="$UTILITIES/youtube/downloadAudio.sh"\
 # ytv="$UTILITIES/youtube/downloadVideo.sh"\
 alias vim=nvim
-alias sex="setopt extendedglob"
 alias \
     pkg="sudo $PKG" \
     m="mkdir"\
@@ -117,6 +116,8 @@ alias \
     ssr="simplescreenrecorder"\
     yt="youtube-viewer -q"\
     r=". ranger"\
+    retro="$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage"\
+    R="retro --profile 'Futuristic' --workdir . &>/dev/null"\
     todoist="cd $PROGRAMS/todoist-linux && make up"\
     xi='sudo vim /etc/X11/xinit/xinitrc'\
     tord="$HOME/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads"\
@@ -203,8 +204,7 @@ alias \
     mime='xdg-mime query filetype'\
     chx='sudo chmod +x'\
     xmod='xmodmap "$HOME/.config/.Xmodmap"'\
-    lightdm='sudo lightdm-settings'\
-    retro="$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage"\
+    lds='sudo lightdm-settings'\
     au="autorandr --change && wal -R"\
     searchCode="firefox https://docs.github.com/en/github/searching-for-information-on-github/searching-code"\
     convpdf2="convert -density 600"\
