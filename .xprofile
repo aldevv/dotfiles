@@ -24,6 +24,9 @@ sxhkd &
 
 rclone mount --daemon ugd:Remote $REMOTES/ugd
 startupScripts
+
 # 30 minutes, you can do dim or dimblur
-xidlehook --detect-sleep --not-when-fullscreen --timer 4800 'betterlockscreen -l blur -t "i feel forgotten"' --timer 20000 'betterlockscreen -s blur -t "i was just taking a nap"' - &
+# this
+# xidlehook --detect-sleep --not-when-fullscreen --timer 4800 'betterlockscreen -l blur -t "i feel forgotten"' --timer 20000 'betterlockscreen -s blur -t "i was just taking a nap"' - &
+
 # xidlehook --detect-sleep --not-when-fullscreen --timer 4800 'i3lock -F -i $WALL/1559506908863.png' --timer 20000 'systemctl suspend' - &

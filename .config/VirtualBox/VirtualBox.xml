@@ -14,18 +14,19 @@
       <ExtraDataItem name="GUI/Input/HostKeyCombination" value="65027,65506"/>
       <ExtraDataItem name="GUI/Input/MachineShortcuts" value="FileManagerPaste=V,GuestAutoresize=Z"/>
       <ExtraDataItem name="GUI/LastItemSelected" value="m=vagrant-test_default_1619873332952_71887"/>
-      <ExtraDataItem name="GUI/LastWindowPosition" value="693,38,647,704"/>
+      <ExtraDataItem name="GUI/LastWindowPosition" value="20,38,1880,1022"/>
       <ExtraDataItem name="GUI/LogViewerOptions" value="Clear Sans,noFontStyleName,12"/>
       <ExtraDataItem name="GUI/LogWindowGeometry" value="23,41,924,1016"/>
       <ExtraDataItem name="GUI/MaxGuestResolution" value="any"/>
       <ExtraDataItem name="GUI/RecentFolderHD" value="/home/kanon/.vagrant.d/boxes/kalilinux-VAGRANTSLASH-rolling/2021.1.0/virtualbox"/>
       <ExtraDataItem name="GUI/RecentListHD" value="/home/kanon/.vagrant.d/boxes/kalilinux-VAGRANTSLASH-rolling/2021.1.0/virtualbox/packer-virtualbox-iso-1614012676-disk001.vmdk"/>
       <ExtraDataItem name="GUI/SessionInformationDialogGeometry" value="20,38,924,1016"/>
+      <ExtraDataItem name="GUI/SnapshotManager/Details/Expanded" value="true"/>
       <ExtraDataItem name="GUI/SoftKeyboardColorTheme" value="Custom,#ff878787,#ff000000,#ff676767,#ff9b6767,#fffafafa"/>
       <ExtraDataItem name="GUI/SoftKeyboardDialogGeometry" value="23,41,924,1016"/>
       <ExtraDataItem name="GUI/SoftKeyboardSelectedColorTheme" value="Custom"/>
       <ExtraDataItem name="GUI/SoftKeyboardSelectedLayout" value="{25867c1e-0455-4303-bf76-1c3ae4cca042}"/>
-      <ExtraDataItem name="GUI/SplitterSizes" value="226,420"/>
+      <ExtraDataItem name="GUI/SplitterSizes" value="692,1187"/>
       <ExtraDataItem name="GUI/SuppressMessages" value="all"/>
       <ExtraDataItem name="GUI/Toolbar" value="false"/>
       <ExtraDataItem name="GUI/Toolbar/Text" value="false"/>

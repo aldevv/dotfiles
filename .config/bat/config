@@ -6,7 +6,7 @@
 # for a list of all available themes
 # bat --list-themes
 # --theme="OneHalfDark"
-# --theme="gruvbox"
+--theme="gruvbox-dark"
 
 
 # Show line numbers, Git modifications and file header (but no grid)
@@ -17,6 +17,7 @@
 
 # Use ".gitignore"-style highlighting for ".ignore" files
 --map-syntax ".ignore:Git Ignore"
+# can be never, auto or character
 --wrap "never"
 
 # Enable this to use italic text on the terminal. This is not supported on all
@@ -26,7 +27,7 @@
 # Uncomment the following line to disable automatic paging:
 # --paging=always
 # --paging=auto
---paging=auto
+--paging "never"
 --color=auto
 
 # Uncomment the following line if you are using less version >= 551 and want to

@@ -2,7 +2,7 @@
 h       ~
 uu      $REMOTES
 ug      $REMOTES/ugd
-wo      $WORK/covidalert
+wo      $WORK
 bk      $BOOKS
 ba      $BACKUPS
 cc      $CLASS/2021-1
@@ -10,10 +10,10 @@ ci      $CLASS/2021-1/ISII
 cG      $CLASS/2021-1/GERENCIA
 cD      $CLASS/2021-1/DBII
 cA      $CLASS/2021-1/AUDITII
-L       $LEARN
+ll      $LEARN
 lh      $LEARN/Hack
 tt      $TRASH
-T      $HOME/Downloads/torrents
+T       $HOME/Downloads/torrents
 sk      $SUCKLESS
 bl      $BOOKS/LN
 cf      $XDG_CONFIG_HOME

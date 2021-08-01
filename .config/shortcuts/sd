@@ -3,7 +3,7 @@ sd      ~/.config/shortcuts/sd
 cfe     ~/.emacs.d/init.el
 cfz     ~/.config/zsh/.zshrc
 cfp     ~/.config/zsh/.zprofile
-cfP     ~/.config/picom/picom.conf
+cfPi     ~/.config/picom/picom.conf
 cfr     ~/.config/ranger/rc.conf
 cfb     ~/.bashrc
 cfxx    ~/.Xresources
@@ -18,8 +18,8 @@ cfd     $SUCKLESS/dwm-6.2/config.h
 cfs     $SUCKLESS/st-0.8.4/config.h
 cn      $UTILITIES/classes/network/typenet
 cfa     ~/.config/zsh/.zsh_plugin_aliases
-cfmo    $SCRIPTS/os/solus/bootstrap
-cfmp    $SCRIPTS/os/solus/packages
+cfmo    $SCRIPTS/os/bootstrap
+cfmp    $SCRIPTS/os/bootstrap/packages/eopkg-packages
 cfK     $SCRIPTS/apps/qmk/lily58/keymap.c
 cfZ     /root/.config/zsh/.zshrc
-cfP     $APPS/nvim/projections/global/.projections.json
+cfPr     $APPS/nvim/projections/global/.projections.json
