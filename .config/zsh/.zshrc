@@ -38,7 +38,7 @@ export SXHKD_SHELL="/usr/bin/sh"
 # ZSH_THEME="daivasmara"
 [[ $(whoami) == root ]] \
   && ZSH_THEME="robbyrussell" \
-  || ZSH_THEME="aussiegeek"
+  || ZSH_THEME="aussiegeek_edited"
 
 # Preferred editor for local and remote sessions
 [[ -n $SSH_CONNECTION ]]\

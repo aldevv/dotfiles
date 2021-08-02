@@ -190,7 +190,7 @@ function! CreateDir()
 endfunction
 
 nnoremap <silent><leader>sn  :silent call CreateFileEnter()<cr>
-nnoremap <silent><leader>st  :silent call CreateFileTouch()<cr>
+nnoremap <silent><leader>sN  :silent call CreateFileTouch()<cr>
 nnoremap <silent><leader>sf  :silent call CreateDir()<cr>
 " nnoremap <leader>sF  :call RemoveDir()<cr>
 " nnoremap <leader>sN  :call RemoveFile()<cr>
