@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# set -xe
 # path="$WIKI/cheatsheets"
 # folder=$(ls $path  | dmenu -i -p "choose")
 # path="${path}/${folder}/${folder} cheatsheet.pdf"
@@ -10,10 +10,20 @@ folder=$(ls $path  | dmenu -i -p "Cheatsheet:")
 if [[ -z $folder ]]; then
     exit
 fi
-file=$(ls "${path}/${folder}/" | dmenu -i -l 5 -p "Cheatsheet:")
+files=$(ls "${path}/${folder}/")
+echo "$files" | wc -l
+if [[ $(echo "$files" | wc -l ) == 1 ]]; then
+    filePath="${path}/${folder}/$files"
+    echo  "$filePath"
+    echo  "$filePath" | $AUTOMATION/open_with
+    exit
+fi
+
+file=$(echo "$files" | dmenu -i -l 10 -p "Cheatsheet:")
 filePath="${path}/${folder}/$file"
 if [[ -z $file ]]; then
     exit
 fi
-echo "$filePath" | $AUTOMATION/open_with
+
+echo  "$filePath" | $AUTOMATION/open_with
 

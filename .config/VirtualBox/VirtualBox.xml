@@ -9,7 +9,7 @@
   <Global>
     <ExtraData>
       <ExtraDataItem name="GUI/Details/Elements" value="general,system,preview,displayClosed,storage,audio,network,usb,sharedFolders,description"/>
-      <ExtraDataItem name="GUI/GroupDefinitions/" value="n=GLOBAL,m=c4144691-91d9-4ed0-89a9-26f86f7ac6fe,m=a7ac13df-3b26-4910-803b-12b351309889"/>
+      <ExtraDataItem name="GUI/GroupDefinitions/" value="n=GLOBAL,m=c4144691-91d9-4ed0-89a9-26f86f7ac6fe"/>
       <ExtraDataItem name="GUI/GuestControl/ProcessControlSplitterHints" value="0,"/>
       <ExtraDataItem name="GUI/Input/HostKeyCombination" value="65027,65506"/>
       <ExtraDataItem name="GUI/Input/MachineShortcuts" value="FileManagerPaste=V,GuestAutoresize=Z"/>
@@ -26,7 +26,7 @@
       <ExtraDataItem name="GUI/SoftKeyboardDialogGeometry" value="23,41,924,1016"/>
       <ExtraDataItem name="GUI/SoftKeyboardSelectedColorTheme" value="Custom"/>
       <ExtraDataItem name="GUI/SoftKeyboardSelectedLayout" value="{25867c1e-0455-4303-bf76-1c3ae4cca042}"/>
-      <ExtraDataItem name="GUI/SplitterSizes" value="692,1187"/>
+      <ExtraDataItem name="GUI/SplitterSizes" value="658,1221"/>
       <ExtraDataItem name="GUI/SuppressMessages" value="all"/>
       <ExtraDataItem name="GUI/Toolbar" value="false"/>
       <ExtraDataItem name="GUI/Toolbar/Text" value="false"/>
@@ -34,7 +34,6 @@
     </ExtraData>
     <MachineRegistry>
       <MachineEntry uuid="{c4144691-91d9-4ed0-89a9-26f86f7ac6fe}" src="/home/kanon/.local/share/VirtualBox VMs/vagrant-test_default_1619873332952_71887/vagrant-test_default_1619873332952_71887.vbox"/>
-      <MachineEntry uuid="{a7ac13df-3b26-4910-803b-12b351309889}" src="/home/kanon/.local/share/VirtualBox VMs/kali_default_1625155675483_22328/kali_default_1625155675483_22328.vbox"/>
     </MachineRegistry>
     <MediaRegistry>
       <HardDisks>

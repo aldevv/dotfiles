@@ -249,9 +249,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_RAISE] = LAYOUT( \
-  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______, \
-  KC_PSCREEN,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  LSFT(KC_PSCREEN), \
-  KC_CAPS, KC_BRID, KC_BRIU, KC_MUTE, KC_VOLD, KC_VOLU,                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  KC_F11, KC_F12, \
+          _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______, \
+        KC_PSCREEN,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  LSFT(KC_PSCREEN), \
+           KC_CAPS, KC_BRID, KC_BRIU, KC_MUTE, KC_VOLD, KC_VOLU,                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  KC_F11, KC_F12, \
   _______, XXXXXXX, KC_MEDIA_SELECT, KC_MEDIA_PLAY_PAUSE, LALT(KC_F4),_______,_______,  _______, XXXXXXX, KC_LALT,  SCLN_END, COLN_END, _______, _______, \
                              _______, _______, _______,  _______,               _______, RCTL_T(KC_SPC),  LT(_ADJUST,KC_SPC), _______ \
 ),
