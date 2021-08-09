@@ -1213,7 +1213,7 @@ alias ovpnu='_ openvpn --config /etc/openvpn/ProtonVPN_server_configs/us-free-02
 alias ovpnd='_ killall openvpn'
 alias openconn="_ cat $WORK/vpn/pass | _ openconnect --config=$WORK/vpn/config --passwd-on-stdin -b vpn.unal.edu.co > $WORK/vpn/vpn-output.log 2>&1"
 alias ofv='_ openfortivpn'
-alias ofvc='sudo ofv -c config > vpn.log 2>&1 &'
+alias ofvc='ofv -c config > $WORK/../covidalert/vpn/vpn.log 2>&1 &'
 
 #=======
 # GITHUB
