@@ -10,7 +10,6 @@ export READER=zathura
 # export MANPAGER="less"
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # export MANPAGER="nvim -c ' set ft=man' -"
-export C_INCLUDE_PATH=.:~/Documents/mlibs
 export EPISODES=~/Downloads
 export TERMINAL=st
 export TERM=st
@@ -189,3 +188,10 @@ export LESS_TERMCAP_se=$( printf '\E[0m')
 export LESS_TERMCAP_so=$( printf '\E[01;47;34m')
 export LESS_TERMCAP_ue=$( printf '\E[0m')
 export LESS_TERMCAP_us=$( printf '\E[01;32m')
+
+
+#=======================================
+# LIBS
+#=======================================
+export LD_LIBRARY_PATH=.:/usr/local/lib
+export C_INCLUDE_PATH=.:$FILES/mlibs

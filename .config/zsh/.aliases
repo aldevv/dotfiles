@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-
 ##==============
 # MISC
 #==============
@@ -165,7 +164,7 @@ alias \
     nvmls="nvm ls-remote"\
     nvmch=". $SCRIPTS/useful/node/nvmch"\
     mydot="git clone --depth=1 https://www.github.com/akuseru1/dotfiles && cd dotfiles"\
-    logset="sudo lightdm-settings"\
+    lightsettings="sudo lightdm-settings"\
     pkgfix="sudo usysconf run -f ssl-certs"\
     pkgsave="sudo usysconf run -f ssl-certs"\
     gdbfront="gdbfrontend"\
@@ -456,6 +455,7 @@ alias ggcall='git commit -v -a'
 alias gcb='git checkout -b'
 alias gcfl='git config --global --list'
 alias gcf='git config --global'
+alias gauthor='git commit --amend --author="Juan Alejandro Bernal <jbernal@unal.edu.co>" --no-edit'
 # alias gcl='git clone --recurse-submodules'
 alias gcld='git clone --depth=1'
 alias gcl='git clone'
