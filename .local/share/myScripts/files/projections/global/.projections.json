@@ -47,6 +47,9 @@
   "*.go": {
     "dispatch": "go run {file}"
   },
+  "*.h": {
+    "dispatch": "sudo make && sudo make install"
+  },
   "*": {
     "dispatch": "chmod +x %; ./%"
   }

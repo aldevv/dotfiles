@@ -2,7 +2,7 @@
 h       ~
 uu      $REMOTES
 ug      $REMOTES/ugd
-wo      $WORK
+wo      $WORK/API/
 bk      $BOOKS
 ba      $BACKUPS
 cc      $CLASS/2021-1
@@ -38,6 +38,7 @@ Md      ~/Master/Debug
 Ml      ~/Master/Learn
 Mp      $PROJECTS
 Mv      $VOLUMES
+Mg      $GAMES
 Mc      $CLASS
 Mw      $WORK
 wa      $WALL

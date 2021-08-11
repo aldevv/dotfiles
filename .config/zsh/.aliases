@@ -21,6 +21,8 @@ alias \
     dst='dotrepo status'\
     daa='dotrepo add'\
     dau='dotrepo add -u'\
+    drm='dotrepo rm'\
+    drmc='dotrepo rm --cached'\
     dgc='dotrepo commit -v'\
     dgca='dgc -a'\
     dgcA='dgc --amend'\
@@ -198,6 +200,7 @@ alias \
     stn='setsid st >/dev/null 2>&1 & disown'\
     .c='sudo ./configure'\
     sm='sudo make'\
+    smc='sudo make clean'\
     smi='sudo make install'\
     rs='rsync'\
         ec='echo'\
@@ -1214,6 +1217,7 @@ alias ovpnd='_ killall openvpn'
 alias openconn="_ cat $WORK/vpn/pass | _ openconnect --config=$WORK/vpn/config --passwd-on-stdin -b vpn.unal.edu.co > $WORK/vpn/vpn-output.log 2>&1"
 alias ofv='_ openfortivpn'
 alias ofvc='ofv -c config > $WORK/../covidalert/vpn/vpn.log 2>&1 &'
+alias wvpn='openconn'
 
 #=======
 # GITHUB

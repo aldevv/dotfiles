@@ -1,6 +1,7 @@
 /*transparency from 0 to 255*/
 /* *.alpha: .90 */
-*.alpha: .8
+/* *.alpha: .8 */
+*.alpha: 1
 /* *.font: monospace:size=10 */
 /* *.font: Fira Code Nerd Font Mono:size=10 */
 /* *.font: Fira Code Nerd Font:pixelsize=13:antialias=true:autohint=true */

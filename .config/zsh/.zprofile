@@ -34,6 +34,8 @@ export WORK="$MASTER/Work/horus"
 export CLASS="$MASTER/Classes"
 export LEARN="$MASTER/Learn"
 export VOLUMES="$MASTER/Volumes"
+export GAMES="$MASTER/Games"
+export DEBUG="$MASTER/Debug"
 export REMOTES="$MASTER/Remotes"
 export BACKUPS="$HOME/.local/share/.backups"
 export PROGRAMS="$HOME/.local/programs"
@@ -142,7 +144,10 @@ export CARGO_HOME="$PROGRAMS/rust/cargo"
 export RUSTUP_HOME="$PROGRAMS/rust/rustup"
 
 export GOPATH=$PROGRAMS/go
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$JAVA_HOME/bin:$CARGO_HOME/bin"
+
+export PYENV_ROOT="$HOME/.local/share/.pyenv"
+
+export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$GOROOT/bin:$CARGO_HOME/bin:${PATH}:$JAVA_HOME/bin:$GOPATH/bin"
 
 #======================================
 #

@@ -185,7 +185,6 @@ nnoremap <leader>ac :Commands<cr>
 " <c-c> is viable too
 nnoremap <leader>am :Maps<cr>
 " TODO, make it auto from the bookmarks files
-" TODO, check whichkey issue
 nnoremap <localleader>ms :FilesScripts<cr>
 nnoremap <localleader>M  :FilesMaster<cr>
 nnoremap <localleader>sp :FilesSnips<cr>
