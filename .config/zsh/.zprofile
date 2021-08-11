@@ -146,6 +146,8 @@ export RUSTUP_HOME="$PROGRAMS/rust/rustup"
 export GOPATH=$PROGRAMS/go
 
 export PYENV_ROOT="$HOME/.local/share/.pyenv"
+export PIPENV_VENV_IN_PROJECT="enabled"
+
 
 export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$GOROOT/bin:$CARGO_HOME/bin:${PATH}:$JAVA_HOME/bin:$GOPATH/bin"
 

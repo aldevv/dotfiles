@@ -7,6 +7,8 @@ alias NF="awk -F',' '{print NF;exit}'"
 alias srcp=". $ZDOTDIR/.zprofile"
 alias srcz=". $ZDOTDIR/.zshrc"
 alias teams="flatpak run com.microsoft.Teams"
+alias pe="pipenv"
+alias va="pipenv shell"
 
 #==============
 # SETUP DOTREPO
@@ -25,7 +27,8 @@ alias \
     drmc='dotrepo rm --cached'\
     dgc='dotrepo commit -v'\
     dgca='dgc -a'\
-    dgcA='dgc --amend'\
+    dgcA='dgc -v --amend'\
+    dgcAn='dgc -v --amend --no-edit'\
     drgo='dotrepo remote get-url origin'\
     drao='dotrepo remote add origin'\
     dgd='dotrepo diff'\
@@ -448,6 +451,7 @@ alias gbss='git bisect start'
 alias ggc='git commit -v'
 alias ggca='ggc -a'
 alias ggcA='git commit -v --amend'
+alias ggcAn='git commit -v --amend --no-edit'
 # alias gcn='git commit -v --no-edit --amend'
 alias ggcall='git commit -v -a'
 # alias gca!='git commit -v -a --amend'
