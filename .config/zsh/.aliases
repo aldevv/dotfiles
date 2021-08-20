@@ -9,6 +9,13 @@ alias srcz=". $ZDOTDIR/.zshrc"
 alias teams="flatpak run com.microsoft.Teams"
 alias pe="pipenv"
 alias va="pipenv shell"
+alias sshconfig="man ssh_config"
+alias picomr="DISPLAY=':0' picom -b --experimental-backend"
+
+[[ -n $RG_IGNORE_FILE ]] \
+        && alias rg="rg  --ignore-file=$RG_IGNORE_FILE $@" \
+        || alias rg="rg $@"
+
 
 #==============
 # SETUP DOTREPO
@@ -169,7 +176,7 @@ alias \
     nvmls="nvm ls-remote"\
     nvmch=". $SCRIPTS/useful/node/nvmch"\
     mydot="git clone --depth=1 https://www.github.com/akuseru1/dotfiles && cd dotfiles"\
-    lightsettings="sudo lightdm-settings"\
+    lights="sudo lightdm-settings"\
     pkgfix="sudo usysconf run -f ssl-certs"\
     pkgsave="sudo usysconf run -f ssl-certs"\
     gdbfront="gdbfrontend"\
@@ -1239,7 +1246,6 @@ alias fr="export FLASK_APP=app.py && flask run"
 # DJANGO
 #=======
 alias dj='python manage.py'
-alias djs='python manage.py shell'
 alias djd='python manage.py dumpdata'
 alias djc='python manage.py createsuperuser'
 alias djtp= 'python manage.py test --parallel'
@@ -1248,8 +1254,14 @@ alias djr='python manage.py runserver'
 alias djM='python manage.py makemigrations'
 alias djm='python manage.py migrate'
 alias djl='python manage.py loadfixtures'
+alias djs='python manage.py shell'
 
-function djp() {
+djsr() {
+    file=".misc/scripts/$1"
+    djs -c "exec(open(\"$file\").read())"
+}
+
+djp() {
     project_name=$(basename $(gitRoot))
     if [[ -n "$1" ]]; then
         nvim "$(gitRoot)/${project_name}/$1"
@@ -1257,15 +1269,18 @@ function djp() {
         cd "$(gitRoot)/${project_name}"
     fi
 }
-function djps() {
+djps() {
     project_name=$(basename $(gitRoot))
     nvim "$(gitRoot)/${project_name}/settings.py"
 }
 
-function djR() {dkcD && sleep 0.1; dkcU && sleep 0.1; djm $1}
+djR() {dkcD && sleep 0.1; dkcU && sleep 0.1; djm $1}
 
-function djRl() {djR $1 && dj loadfixtures}
-function djS() {djRl && djs}
+djRl() {djR $1 && dj loadfixtures}
+
+djS() {djRl && djs}
+
+
 #=======
 # REACT
 #=======
@@ -1329,3 +1344,23 @@ alias dupr='duplicity restore'
 #============
 
 alias k='kubectl'
+
+#===========
+# RSYNC
+#===========
+
+# alias rplz='rsync --partial --progress --update --rsh="ssh -p 22"'
+# could be -e instead of --rsh
+# --update or -u only uploads files that have changed
+# -v verbose
+# -r recursive (folders)
+alias rplz='rsync -Puvr'
+ # same as --partial --progress, --rsh is ssh by default
+
+vimr() {
+    vim rsync://$1:$2
+}
+vimR() {
+    # in case rsync is not installed in remote machine
+    vim scp://$1/$2
+}

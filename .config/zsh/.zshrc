@@ -188,7 +188,7 @@ doge() {
 lf_() {
   # lookup file
   folder="$1"
-  file=$(fd . -t f -I -H $(echo "$folder")| fzf -d / --with-nth -5,-4,-3,-2,-1)
+  file=$(fd . -t f -uu $(echo "$folder")| fzf -d / --with-nth -5,-4,-3,-2,-1)
   [ -n "$file" ] \
     && nvim "$file"
 }
@@ -208,13 +208,11 @@ bindkey -s '.' 'setsid st &>/dev/null^M'
 bindkey -s 'r' 'setsid st ranger &>/dev/null^M'
 
 _fzf_compgen_path() {
-  excluded=".git node_modules plugged .env __pycache__ .wine .npm .icons .vscode */nvm/backups .cache undodir __pycache__ **/node_modules/* env envs "
-  fd --hidden --follow --exclude "$excluded" . "$1"
+  fd --hidden --follow . "$1"
 }
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  excluded=".git node_modules plugged .env __pycache__ .wine .npm .icons .vscode */nvm/backups .cache undodir __pycache__ **/node_modules/* env envs "
-  fd --type d --hidden --follow --exclude "$excluded" . "$1"
+  fd --type d --hidden --follow . "$1"
 }
 # export NVM_DIR="$HOME/.config/nvm"
 [ -f "$HOME/.config/.fzf.zsh" ] && source "$HOME/.config/.fzf.zsh"

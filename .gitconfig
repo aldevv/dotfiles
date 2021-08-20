@@ -1,5 +1,5 @@
 [user]
-	name = Alejandro Bernal
+	name = Juan Alejandro Bernal
 	email = jbernal@unal.edu.co
 
 [user]
@@ -8,5 +8,6 @@
 	hidden = ! git ls-files -v | grep '^h' | cut -c3-
 [author]
 	name = Juan Alejandro Bernal
+	email = jbernal@unal.edu.co
 [email]
 	name = jbernal@unal.edu.co

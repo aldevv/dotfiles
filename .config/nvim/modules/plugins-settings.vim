@@ -261,7 +261,9 @@ function RemoveFileUpdateNerdtree(files)
     :NERDTreeRefreshRoot
   endif
 endfunction
-let remove_files_command = "rg --files -u -u --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --""
+" TODO modify!!, not needed anymore
+" let remove_files_command = "rg --files -uu --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --""
+let remove_files_command = "rg --files -uu --no-heading --follow --ignore-file=". $RG_IGNORE_FILE." --"
 command! -bang -bar -complete=dir RemoveFiles
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(
             \ {
@@ -410,7 +412,10 @@ nmap , <Plug>(coc-diagnostic-next)
 nmap <silent> g; <Plug>(coc-diagnostic-prev-error)
 nmap <silent> g, <Plug>(coc-diagnostic-next-error)
 nmap <silent> g. <Plug>(coc-fix-current)
-nnoremap <silent> + :call CocAction('doHover')<cr>
+nnoremap <silent> +  :call CocAction('definitionHover')<cr>
+" alt + -
+inoremap <silent> <a--> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<cr>
+
 nmap <F2> <Plug>(coc-rename)
 nmap cr :CocSearch <C-R>=expand('<cword>')<cr>
 nmap cR :CocSearch <C-R>=expand('<cword>')<cr><cr>
@@ -421,7 +426,7 @@ nmap cR :CocSearch <C-R>=expand('<cword>')<cr><cr>
 nmap <leader>cl <Plug>(coc-codelens-action)
 nnoremap <silent><nowait> <leader>cL  :<C-u>CocOpenLog<CR>
 nmap <leader>+ <Plug>(coc-diagnostic-info)
-nmap <leader>* <Plug>(coc-fix-current)
+" nmap <leader>* <Plug>(coc-fix-current)
 nmap <leader>cA <Plug>(coc-codeaction)
 nmap <leader>ca <Plug>(coc-codeaction-line)
 vmap <leader>ca <Plug>(coc-codeaction-selected)

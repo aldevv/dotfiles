@@ -23,3 +23,4 @@ cfmp    $SCRIPTS/os/bootstrap/packages/eopkg-packages
 cfK     $SCRIPTS/apps/qmk/lily58/keymap.c
 cfZ     /root/.config/zsh/.zshrc
 cfPr     $FILES/projections/global/.projections.json
+cfS     $HOME/.ssh/config

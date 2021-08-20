@@ -6,6 +6,7 @@ wo      $WORK/API/
 bk      $BOOKS
 ba      $BACKUPS
 cc      $CLASS/2021-1
+cP      $CLASS/2021-1/DBII/taller_mongo
 ci      $CLASS/2021-1/ISII
 cG      $CLASS/2021-1/GERENCIA
 cD      $CLASS/2021-1/DBII
@@ -80,3 +81,4 @@ p2      $PROJECTS/Micro/Docker
 aa      $CLASS/2021-1/GERENCIA/imp
 zz      $CLASS/2021-1/GERENCIA/licitacion/licitaciones-2021-I/primera - ejercito (sensores de red)
 
+wf   $WINEPREFIX/drive_c

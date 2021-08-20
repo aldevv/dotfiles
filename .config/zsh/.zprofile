@@ -13,6 +13,7 @@ export READER=zathura
 export EPISODES=~/Downloads
 export TERMINAL=st
 export TERM=st
+export WINEPREFIX="$HOME/.local/share/wine"
 export COLORTERM=truecolor
 # export BAT_PAGER='less -R'
 export BAT_PAGER='less -R'
@@ -107,6 +108,10 @@ if [[ -d $PROGRAMS ]]; then
         if [[ -d "$dir/man" ]]; then
             MANPATH="$dir/man:$MANPATH"
         fi
+
+        if [[ -d "$dir/bin" ]]; then
+            PATH="$dir/bin:$PATH"
+        fi
     done
 fi
 export PATH MANPATH LD_LIBRARY_PATH PKG_CONFIG_PATH
@@ -161,11 +166,12 @@ export FZF_COMPLETION_TRIGGER='**'
 # Options to fzf command
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
-export RG_DEFAULT="rg --files --hidden --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,**/*~,**/plugged/*,**/venv/*,**/__pycache__/*,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*,ftplugin/keymap.c.vim}' --"
 
-# not working for fd
-# excluded='{node_modules,*.class,.git,**/*~,plugged,__pycache__,.wine,.npm,.icons,*/nvim/backups,.emacs.d,.cache,undodir}'
-export FD_DEFAULT="fd --follow --exclude $excluded"
+# not official env variables
+export RG_IGNORE_FILE="$XDG_CONFIG_HOME/rg/.rgignore"
+export RG_FOR_FZF_DEFAULT="rg --files --hidden --no-heading --smart-case --follow --ignore-file $RG_IGNORE_FILE  --"
+export FD_DEFAULT="fd --follow"
+# export FD_DEFAULT="fd --follow
 
 if [[ -x $(command -v rg) ]]; then
     export FZF_DEFAULT_COMMAND=$RG_DEFAULT
