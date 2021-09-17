@@ -6,223 +6,225 @@
 #
 #st -t scratchpad -g 120x34 -e bash -c "man -P cat curl 2>/dev/null | grep -E -- \"\s-s\" 2>/dev/null;$SHELL"
 # you can use chords Shift + a; shift + b
-alt + shift + space
-    "$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage" --profile "Futuristic" &>/dev/null
-    # "$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage" --profile "IBM 3278" &>/dev/null
-
-super + alt + w
-	"$UTILITIES/misc/toggle_chat"
-
-super + w
-	"$BROWSER"
-
-super + l
-	betterlockscreen -l blur -t "How about a little rest!?"
-
-super + p
-	dmenu_run
-
-super + shift + p
-	xrandr-dmenu
-
-super + shift + q
-    sudo -E $UTILITIES/base/hardware/power_options
-
-mode_switch + q
-    qrencode -o '/tmp/pass' \"$(xsel -b -o 2>/dev/null)\" && setsid sxiv /tmp/pass; rm /tmp/pass
-
-mode_switch + p
-    passmenu
-
-mode_switch + P
-    genpass
-
-# super + shift + F2
-	# st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
-
-super + alt + p
-	mpv "$($UTILITIES/anime/run_episode)"
-
-mode_switch + w
-    emacs $WIKI/wiki.org
-
-super + r
-    st -e ranger >/dev/null 2>&1
-
-super + R
-    st -e sudo ranger >/dev/null 2>&1
-
-super + m
-    setsid st -e "$AUTOMATION/ncmpcppStart"
 
 # mode_switch + Return
 alt + space
     st >/dev/null 2>&1
 
-mode_switch + shift + o
-    opacity_toggle
+#alt + shift + space
+#    "$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage" --profile "Futuristic" &>/dev/null
+#    # "$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage" --profile "IBM 3278" &>/dev/null
 
-mode_switch + shift + Return
-    $PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage 2>/dev/null
+#super + alt + w
+#	"$UTILITIES/misc/toggle_chat"
 
-ctrl + shift + Escape
-    sudo -i kp dmenu
+#super + w
+#	"$BROWSER"
 
-# menu button
-# mode_switch +  k
-#     st -e bash -c "newsboat;$SHELL"
+#super + l
+#	betterlockscreen -l blur -t "How about a little rest!?"
 
-# hyper + n
-#     retrieveip
+#super + p
+#	dmenu_run
 
+#super + shift + p
+#	xrandr-dmenu
 
-# hyper + shift + n
-#     retrievemask
+#super + shift + q
+#    sudo -E $UTILITIES/base/hardware/power_options
 
-# fn + c
+#mode_switch + q
+#    qrencode -o '/tmp/pass' \"$(xsel -b -o 2>/dev/null)\" && setsid sxiv /tmp/pass; rm /tmp/pass
 
-mode_switch + minus
-    xdotool search --onlyvisible --classname Navigator windowactivate --sync key shift+F10
+#mode_switch + p
+#    passmenu
 
-# XF86Launch1
-mode_switch + c
-	copyq toggle
+#mode_switch + P
+#    genpass
 
-button8
-	xdotool key ctrl+v
+## super + shift + F2
+#	# st -e pydoc "$($HOME/Documents/myScripts/python_general.sh)"
 
-button9
-	xclip -out -selection primary | xclip -selection clipboard
+#super + alt + p
+#	mpv "$($UTILITIES/anime/run_episode)"
 
-# super +  a
-#     st -e mate-calculator
+#mode_switch + w
+#    emacs $WIKI/wiki.org
 
-# super + y
-#     st -e "$($UTILITIES/youtube/YT.tcl)"
+#super + r
+#    st -e ranger >/dev/null 2>&1
 
-mode_switch + v
-    bash -c code-oss
+#super + R
+#    st -e sudo ranger >/dev/null 2>&1
 
-super + F1
-    "$UTILITIES/searchDocs"
-
-super + F2
-    "$UTILITIES/japanese/hiraganaTable"
-
-super + F3
-    "$UTILITIES/japanese/katakanaTable"
-
-super + F4
-    "$UTILITIES/japanese/notesJap"
-
-super + F5
-    "$UTILITIES/japanese/translate/toEnglish"
-
-super + F6
-    "$UTILITIES/japanese/dicSearch"
-
-super + F7
-    "$UTILITIES/japanese/kanjiSearch"
-
-# super + F8
-#     "$UTILITIES/japanese/rtkSearch"
+#super + m
+#    setsid st -e "$AUTOMATION/ncmpcppStart"
 
 
+#mode_switch + shift + o
+#    opacity_toggle
 
-# super + shift + F1
-# 	 st -e zathura "$SCRIPTS/cheatsheet/sheet.pdf" 2>/dev/null
+#mode_switch + shift + Return
+#    $PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage 2>/dev/null
 
-# super + shift + F1
-# 	 $UTILITIES/cheatsheet/browseCheatsheets
+#ctrl + shift + Escape
+#    sudo -i kp dmenu
 
-super + Escape
-	 $UTILITIES/cheatsheet/browseCheatsheets
+## menu button
+## mode_switch +  k
+##     st -e bash -c "newsboat;$SHELL"
 
-mode_switch + g
-    searchBrowser
+## hyper + n
+##     retrieveip
 
-# super + shift + s
-# 	 flatpak --installation=extra run com.spotify.Client 2>/dev/null
 
-mode_switch + j
-	 st -e joplin 2>/dev/null
+## hyper + shift + n
+##     retrievemask
 
-mode_switch + shift + j
-	 $HOME/.joplin/Joplin.AppImage 2>/dev/null
+## fn + c
 
-shift + Print
-	 windowScreen
+#mode_switch + minus
+#    xdotool search --onlyvisible --classname Navigator windowactivate --sync key shift+F10
 
-# works on release
-@Print
-	 allScreen2
+## XF86Launch1
+#mode_switch + c
+#	copyq toggle
 
-control + Print
-	 allScreen2
+#button8
+#	xdotool key ctrl+v
 
-mode_switch + b
- 	 searchClassBook
+#button9
+#	xclip -out -selection primary | xclip -selection clipboard
 
-mode_switch + shift + b
-	 $UTILITIES/search/searchBook
+## super +  a
+##     st -e mate-calculator
 
-mode_switch + C
-	 $UTILITIES/classes/searchClass
+## super + y
+##     st -e "$($UTILITIES/youtube/YT.tcl)"
 
-mode_switch + †
-    xmodmap "$HOME/.config/.Xmodmap"
+#mode_switch + v
+#    bash -c code-oss
 
-mode_switch + shift c
-	 searchDocs
+#super + F1
+#    "$UTILITIES/searchDocs"
 
-hyper + u
- 	 ts $UTILITIES/api/urlShortener
+#super + F2
+#    "$UTILITIES/japanese/hiraganaTable"
 
-#using a task spooler
-mode_switch + shift + u
-	 ts sh -c $AUTOMATION/drive/uploadToDrive
+#super + F3
+#    "$UTILITIES/japanese/katakanaTable"
 
-mode_switch + a
-	st -e bash -c "cd $HOME/.local/Programs/todoist-linux && make up"
-	 # $UTILITIES/misc/calcDmenu
+#super + F4
+#    "$UTILITIES/japanese/notesJap"
 
-# mode_switch + b
-# 	dwmc togglefullscr
+#super + F5
+#    "$UTILITIES/japanese/translate/toEnglish"
 
-mode_switch + E
-    emoji_select
+#super + F6
+#    "$UTILITIES/japanese/dicSearch"
 
-mode_switch + i
-    $UTILITIES/misc/saveImage
+#super + F7
+#    "$UTILITIES/japanese/kanjiSearch"
 
-# mode_switch + m
-#     ts st -e bash -c "$UTILITIES/misc/sectionManPage;$SHELL"
-    # st -e $UTILITIES/misc/runCommand $(dmenu -p "prompt:")
-	 # dunstify $(sh -c "$(dmenu -i -p "prompt:")")
+## super + F8
+##     "$UTILITIES/japanese/rtkSearch"
 
-XF86AudioMute
-     $SCRIPTS/shared/volume mute; $APPS/dwm/refreshVolume
-     # pactl set-sink-mute 0 toggle
 
-XF86AudioRaiseVolume
-     $SCRIPTS/shared/volume up; $APPS/dwm/refreshVolume
-     # pactl set-sink-volume 0 +5%
 
-XF86AudioLowerVolume
-     $SCRIPTS/shared/volume down; $APPS/dwm/refreshVolume
-     # pactl set-sink-volume 0 -5%
+## super + shift + F1
+## 	 st -e zathura "$SCRIPTS/cheatsheet/sheet.pdf" 2>/dev/null
 
-XF86MonBrightnessUp
-    xbacklight -inc 10
+## super + shift + F1
+## 	 $UTILITIES/cheatsheet/browseCheatsheets
 
-XF86MonBrightnessDown
-    xbacklight -dec 10
+#super + Escape
+#	 $UTILITIES/cheatsheet/browseCheatsheets
 
-XF86TouchpadToggle
-	synclient TouchpadOff={1,0}
+#mode_switch + g
+#    searchBrowser
 
-XF86AudioPlay
-	mpc toggle
+## super + shift + s
+## 	 flatpak --installation=extra run com.spotify.Client 2>/dev/null
 
-XF86PowerDown
-	sudo systemctl suspend
+#mode_switch + j
+#	 st -e joplin 2>/dev/null
+
+#mode_switch + shift + j
+#	 $HOME/.joplin/Joplin.AppImage 2>/dev/null
+
+#shift + Print
+#	 windowScreen
+
+## works on release
+#@Print
+#	 allScreen2
+
+#control + Print
+#	 allScreen2
+
+#mode_switch + b
+# 	 searchClassBook
+
+#mode_switch + shift + b
+#	 $UTILITIES/search/searchBook
+
+#mode_switch + C
+#	 $UTILITIES/classes/searchClass
+
+#mode_switch + †
+#    xmodmap "$HOME/.config/.Xmodmap"
+
+#mode_switch + shift c
+#	 searchDocs
+
+#hyper + u
+# 	 ts $UTILITIES/api/urlShortener
+
+##using a task spooler
+#mode_switch + shift + u
+#	 ts sh -c $AUTOMATION/drive/uploadToDrive
+
+#mode_switch + a
+#	st -e bash -c "cd $HOME/.local/Programs/todoist-linux && make up"
+#	 # $UTILITIES/misc/calcDmenu
+
+## mode_switch + b
+## 	dwmc togglefullscr
+
+#mode_switch + E
+#    emoji_select
+
+#mode_switch + i
+#    $UTILITIES/misc/saveImage
+
+## mode_switch + m
+##     ts st -e bash -c "$UTILITIES/misc/sectionManPage;$SHELL"
+#    # st -e $UTILITIES/misc/runCommand $(dmenu -p "prompt:")
+#	 # dunstify $(sh -c "$(dmenu -i -p "prompt:")")
+
+#XF86AudioMute
+#     $SCRIPTS/shared/volume mute; $APPS/dwm/refreshVolume
+#     # pactl set-sink-mute 0 toggle
+
+#XF86AudioRaiseVolume
+#     $SCRIPTS/shared/volume up; $APPS/dwm/refreshVolume
+#     # pactl set-sink-volume 0 +5%
+
+#XF86AudioLowerVolume
+#     $SCRIPTS/shared/volume down; $APPS/dwm/refreshVolume
+#     # pactl set-sink-volume 0 -5%
+
+#XF86MonBrightnessUp
+#    xbacklight -inc 10
+
+#XF86MonBrightnessDown
+#    xbacklight -dec 10
+
+#XF86TouchpadToggle
+#	synclient TouchpadOff={1,0}
+
+#XF86AudioPlay
+#	mpc toggle
+
+#XF86PowerDown
+#	sudo systemctl suspend

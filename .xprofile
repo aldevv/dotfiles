@@ -1,29 +1,29 @@
-# lightdm doesn't load it after login unless edit /usr/bin/lightdm-wrapper
-# [[ -f $HOME/.config/zsh/.zprofile ]] && . $HOME/.config/zsh/.zprofile
+## lightdm doesn't load it after login unless edit /usr/bin/lightdm-wrapper
+## [[ -f $HOME/.config/zsh/.zprofile ]] && . $HOME/.config/zsh/.zprofile
 
-#to import env variables to dbus
-dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+##to import env variables to dbus
+#dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
-# dunst is started by dbus-daemon now
-# the display manager is also taken care of by dbus, in case you want to change to startx, havent tested
-# dunst &
-fcitx & # for languages
-# custom scripts
-DISPLAY=":0" picom -b --experimental-backend
-# so the user can make connections to the xserver (docker)
-xhost local:root
-# this is for when picom 9 releases
-# DISPLAY=":0" picom -b --experimental-backends
-dwmstatus &
-xrdb -merge ~/.Xresources
-setsid copyq &
-# cm
-autorandr --change
-wal -R &
+## dunst is started by dbus-daemon now
+## the display manager is also taken care of by dbus, in case you want to change to startx, havent tested
+## dunst &
+#fcitx & # for languages
+## custom scripts
+#DISPLAY=":0" picom -b --experimental-backend
+## so the user can make connections to the xserver (docker)
+#xhost local:root
+## this is for when picom 9 releases
+## DISPLAY=":0" picom -b --experimental-backends
+#dwmstatus &
+#xrdb -merge ~/.Xresources
+#setsid copyq &
+## cm
+#autorandr --change
+#wal -R &
 sxhkd &
 
-rclone mount --daemon ugd:Remote $REMOTES/ugd
-startupScripts
+# rclone mount --daemon ugd:Remote $REMOTES/ugd
+# startupScripts
 
 # 30 minutes, you can do dim or dimblur
 # this

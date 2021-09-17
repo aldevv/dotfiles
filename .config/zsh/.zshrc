@@ -79,7 +79,7 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # # in archlinux put the archlinux plugin!
 # docker adds completion for docker commands, same docker compose
-plugins=(docker)
+plugins=(docker docker-compose)
 export HISTFILE="$ZDOTDIR/.zsh_history"
 . $ZSH/oh-my-zsh.sh
 
@@ -236,8 +236,8 @@ _fzf_compgen_dir() {
 
 bindkey "^ " autosuggest-execute
 # bindkey "^" autosuggest-toggle
-
-lesskey $HOME/.config/colemak-less
+#TODO find alternative to lesskey (deprecated)
+# lesskey $HOME/.config/colemak-less
 # aliases
 alias src_=". $ZDOTDIR/.zshrc"
 . $ZDOTDIR/.aliases

@@ -19,11 +19,7 @@ cp ../../../../../../dotfiles/* "$HOME"
 . "$HOME/.config/zsh/.zprofile"
 user="$SUDO_USER"
 
-#================
-# INSTALL OHMYZSH
-#================
-echo "y" | sudo -u "$user" sh -c "$(sudo -u $user curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-cp -r $HOME/.config/zsh/{themes,plugins} $HOME/.oh-my-zsh/custom/
+
 
 case $PKG in
    'eopkg')
@@ -32,9 +28,11 @@ case $PKG in
       eval "$PKG-get update && $PKG-get upgrade" ;;
    'pacman')
       eval "$PKG -Syu" ;;
+   'zypper')
+      eval "$PKG up" ;;
 esac
 install_ "git"
-awk -i inplace -v user="$user" '/#includedir /etc/sudoers.d/{print; print user " ALL=(ALL) NOPASSWD:ALL";next}1' /etc/sudoers
+awk -i inplace -v user="$user" '/#includedir \/etc\/sudoers.d/{print; print user " ALL=(ALL) NOPASSWD:ALL";next}1' /etc/sudoers
 
 sudo -u $user git clone https://github.com/Akuseru1/Wiki "$WIKI"
 sudo -u $user git clone https://github.com/Akuseru1/suckless-configs "$SUCKLESS"
@@ -54,12 +52,26 @@ case "$PKG" in
    'pacman')
       packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/pacman-packages) \
       ;;
+   'zypper')
+      packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/zypper-packages) \
+      # add repo
+      zypper ar -cfp 90 https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/ packman
+      zypper dup --from packman --allow-vendor-change
+
+      zypper ar -f https://download.opensuse.org/repositories/server:/database/openSUSE_Tumbleweed/ database
+      ;;
    *)
       echo 'package manager not found'
       exit
 esac
 
 install_ "$packages"
+
+#================
+# INSTALL OHMYZSH
+#================
+echo "y" | sudo -u "$user" sh -c "$(sudo -u $user curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+cp -r $HOME/.config/zsh/{themes,plugins} $HOME/.oh-my-zsh/custom/
 
 
 #========================

@@ -1,3 +1,7 @@
+-- checkout:
+-- telescope.nvim
+-- refactor.lua
+-- navigator.lua
 vim.cmd('set t_Co=256')
 vim.cmd('let IS_MINE=isdirectory($SUCKLESS)')
 

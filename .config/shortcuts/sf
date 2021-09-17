@@ -6,7 +6,7 @@ wo      $WORK/API/
 bk      $BOOKS
 ba      $BACKUPS
 cc      $CLASS/2021-1
-cP      $CLASS/2021-1/DBII/taller_mongo
+cP      $CLASS/2021-1/ISII/ultimo_parcial
 ci      $CLASS/2021-1/ISII
 cG      $CLASS/2021-1/GERENCIA
 cD      $CLASS/2021-1/DBII
@@ -16,7 +16,7 @@ lh      $LEARN/Hack
 tt      $TRASH
 T       $HOME/Downloads/torrents
 sk      $SUCKLESS
-ln      $BOOKS/LN
+bkl      $BOOKS/LN
 cf      $XDG_CONFIG_HOME
 sp      $XDG_CONFIG_HOME/nvim/my_snippets
 ms      $SCRIPTS

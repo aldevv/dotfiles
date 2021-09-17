@@ -154,8 +154,8 @@ export PYENV_ROOT="$HOME/.local/share/.pyenv"
 export PIPENV_VENV_IN_PROJECT="enabled"
 
 
-export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$GOROOT/bin:$CARGO_HOME/bin:${PATH}:$JAVA_HOME/bin:$GOPATH/bin"
-
+export PATH="$GOROOT/bin:$CARGO_HOME/bin:${PATH}:$JAVA_HOME/bin:$GOPATH/bin"
+export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:${PATH}"
 #======================================
 #
 #WINE
@@ -206,5 +206,5 @@ export LESS_TERMCAP_us=$( printf '\E[01;32m')
 #=======================================
 # LIBS
 #=======================================
-export LD_LIBRARY_PATH=.:/usr/local/lib
-export C_INCLUDE_PATH=.:$FILES/mlibs
+# export LD_LIBRARY_PATH=.:/usr/local/lib
+# export C_INCLUDE_PATH=.:$FILES/mlibs
