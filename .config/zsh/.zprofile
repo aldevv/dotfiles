@@ -10,16 +10,15 @@ export READER=zathura
 # export MANPAGER="less"
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # export MANPAGER="nvim -c ' set ft=man' -"
-export EPISODES=~/Downloads
 export TERMINAL=st
 export TERM=st
+export DEFAULT_DMENU_FONT="Cascadia:style=Italic"
 export WINEPREFIX="$HOME/.local/share/wine"
 export COLORTERM=truecolor
 # export BAT_PAGER='less -R'
 export BAT_PAGER='less -R'
 export BAT_CONFIG_PATH="$XDG_CONFIG_HOME/bat/config"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/rg/.ripgreprc"
-export SHELL=/bin/zsh
 # you can source sxhkd & here if you login from console
 export SXHKD_SHELL="/bin/zsh"
 # export SI=https://meet.google.com/ixe-gxnu-ovp
@@ -57,18 +56,11 @@ export AUTOMATION="$SCRIPTS/automation"
 export APPS="$SCRIPTS/apps"
 export OS="$SCRIPTS/os/bootstrap"
 export FILES="$SCRIPTS/files"
-#add all files in these directories to the PATH
-[[ -d "$SHARED" ]] && export PATH="$(du $SHARED | cut -f2 | tr '\n' ':')$PATH"
-[[ -d "$APPS" ]] && export PATH="$(du $APPS | cut -f2 | tr '\n' ':')$PATH"
-[[ -d "$UTILITIES" ]] && export PATH="$(du $UTILITIES  | cut -f2 | tr '\n' ':')$PATH"
-[[ -d "$AUTOMATION" ]] && export PATH="$(du $AUTOMATION | cut -f2 | tr '\n' ':')$PATH"
-[[ -d "$HOME/.local/bin" ]] && export PATH="$(du $HOME/.local/bin | cut -f2 | tr '\n' ':')$PATH"
 
 [[ -f $UTILITIES/linux/get_package_manager ]] \
     && export PKG=$($UTILITIES/linux/get_package_manager) \
     && export PKG_INSTALL=$($UTILITIES/linux/get_package_manager "install")
 
-export MLIBS="$FILES/mlibs"
 
 export PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains/proxychains.conf"
 
@@ -84,37 +76,40 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 #breaks copyq
 # export QT_QPA_PLATFORMTHEME="gtk2"
 # export QT_PLUGIN_PATH=/usr/lib/qt5/plugins
-export PREFIX_DIR="$PROGRAMS/prefix-installs"
-if [[ -d $PREFIX_DIR ]]; then
-    for dir in "$PREFIX_DIR"/*; do
-        dir=${dir:A}
-        if [[ -d "$dir/bin" ]]; then
-            PATH="$dir/bin:$PATH"
-        fi
-        if [[ -d "$dir/share/man" ]]; then
-            MANPATH="$dir/share/man:$MANPATH"
-        fi
-        if [[ -d "$dir/lib" ]]; then
-            LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$dir/lib"
-        fi
-        if [[ -d "$dir/lib/pkgconfig" ]]; then
-            PKG_CONFIG_PATH="$dir/lib/pkgconfig:$PKG_CONFIG_PATH"
-        fi
-    done
-fi
 
-if [[ -d $PROGRAMS ]]; then
-    for dir in "$PROGRAMS"/*; do
-        if [[ -d "$dir/man" ]]; then
-            MANPATH="$dir/man:$MANPATH"
-        fi
+# BETTER ADD SYMLINKS
 
-        if [[ -d "$dir/bin" ]]; then
-            PATH="$dir/bin:$PATH"
-        fi
-    done
-fi
-export PATH MANPATH LD_LIBRARY_PATH PKG_CONFIG_PATH
+# export PREFIX_DIR="$PROGRAMS/prefix-installs"
+# if [[ -d $PREFIX_DIR ]]; then
+#     for dir in "$PREFIX_DIR"/*; do
+#         dir=${dir:A}
+#         if [[ -d "$dir/bin" ]]; then
+#             PATH="$dir/bin:$PATH"
+#         fi
+#         if [[ -d "$dir/share/man" ]]; then
+#             MANPATH="$dir/share/man:$MANPATH"
+#         fi
+#         if [[ -d "$dir/lib" ]]; then
+#             LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$dir/lib"
+#         fi
+#         if [[ -d "$dir/lib/pkgconfig" ]]; then
+#             PKG_CONFIG_PATH="$dir/lib/pkgconfig:$PKG_CONFIG_PATH"
+#         fi
+#     done
+# fi
+
+# if [[ -d $PROGRAMS ]]; then
+#     for dir in "$PROGRAMS"/*; do
+#         if [[ -d "$dir/man" ]]; then
+#             MANPATH="$dir/man:$MANPATH"
+#         fi
+
+#         if [[ -d "$dir/bin" ]]; then
+#             PATH="$dir/bin:$PATH"
+#         fi
+#     done
+# fi
+# export PATH MANPATH LD_LIBRARY_PATH PKG_CONFIG_PATH
 
 #and this is how I uninstall programs in the prefix-install directory :
 #rm -rf ~/.user-prefixes/nvim
@@ -128,21 +123,21 @@ export PATH MANPATH LD_LIBRARY_PATH PKG_CONFIG_PATH
 #
 #
 nvm_path="$HOME/.config/nvm/versions/node"
-if [[ -d "$nvm_path" ]]; then
-    node=$(ls $nvm_path | sed -n -E '/v[0-9]+\.[0-9]+\.[0-9]+$/p' | sort -r  | sed '1q')
-    if [ ! -z "$node" ]; then
-        export NODE_PATH="$nvm_path/$node/bin"
-    else
-        export NODE_PATH=""
-    fi
-    export PATH="$PATH:$NODE_PATH"
-fi
+# if [[ -d "$nvm_path" ]]; then
+    # node=$(ls $nvm_path | sed -n -E '/v[0-9]+\.[0-9]+\.[0-9]+$/p' | sort -r  | sed '1q')
+    # if [ ! -z "$node" ]; then
+        # export NODE_PATH="$nvm_path/$node/bin"
+    # else
+        # export NODE_PATH=""
+    # fi
+    # export PATH="$PATH:$NODE_PATH"
+# fi
 
-export JDK_HOME="/usr/lib64/openjdk-11"
-export JAVA_HOME="$JDK_HOME"
 export CABAL_CONFIG="$XDG_CONFIG_HOME/cabal/config"
 export CABAL_DIR="$PROGRAMS/cabal"
 
+export JDK_HOME="/usr/lib64/openjdk-11"
+export JAVA_HOME="$JDK_HOME"
 export PATH="$PATH:$JAVA_HOME/bin"
 
 export CARGO_HOME="$PROGRAMS/rust/cargo"
@@ -185,26 +180,17 @@ export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type directory"
 # ctrl t -> paste selected into command line(multiple)
 # ctrl r -> paste command from history
 #colors less
-#export  LESS_TERMCAP_mb=$'\e[1;31m'
-#export  LESS_TERMCAP_md=$'\e[1;31m'
-#export  LESS_TERMCAP_me=$'\e[0m'
-#export  LESS_TERMCAP_se=$'\e[0m'
-#export  LESS_TERMCAP_so=$'\e[1;44;33m'
-#export  LESS_TERMCAP_ue=$'\e[0m'
-#export  LESS_TERMCAP_us=$'\e[1;32m'
-
-export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
-export LESS_TERMCAP_mb=$( printf '\E[01;31m')
-export LESS_TERMCAP_md=$( printf '\E[01;31m')
-export LESS_TERMCAP_me=$( printf '\E[0m')
-export LESS_TERMCAP_se=$( printf '\E[0m')
-export LESS_TERMCAP_so=$( printf '\E[01;47;34m')
-export LESS_TERMCAP_ue=$( printf '\E[0m')
-export LESS_TERMCAP_us=$( printf '\E[01;32m')
-
+export  LESS_TERMCAP_mb=$'\e[1;31m'
+export  LESS_TERMCAP_md=$'\e[1;31m'
+export  LESS_TERMCAP_me=$'\e[0m'
+export  LESS_TERMCAP_se=$'\e[0m'
+# export  LESS_TERMCAP_so=$'\e[1;44;33m' # better no color
+export  LESS_TERMCAP_ue=$'\e[0m'
+export  LESS_TERMCAP_us=$'\e[1;32m'
 
 #=======================================
 # LIBS
 #=======================================
-# export LD_LIBRARY_PATH=.:/usr/local/lib
-# export C_INCLUDE_PATH=.:$FILES/mlibs
+export LD_LIBRARY_PATH=.:/usr/local/lib
+export MLIBS="$FILES/mlibs"
+export C_INCLUDE_PATH=.:$MLIBS

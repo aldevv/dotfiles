@@ -182,6 +182,7 @@ alias \
     nvmch=". $SCRIPTS/useful/node/nvmch"\
     mydot="git clone --depth=1 https://www.github.com/akuseru1/dotfiles && cd dotfiles"\
     lights="sudo lightdm-settings"\
+    sddms="sudo sddm-config-editor"\
     pkgfix="sudo usysconf run -f ssl-certs"\
     pkgsave="sudo usysconf run -f ssl-certs"\
     gdbfront="gdbfrontend"\

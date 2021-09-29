@@ -12,7 +12,7 @@ fi
 declare -A packagemanagers_commands=(\
     ["apt"]="apt install -y" \
     ["eopkg"]="eopkg install -y" \
-    ["pacman"]="pacman -S" \
+    ["pacman"]="pacman -S --noconfirm" \
     ["zypper"]="zypper install -y"\
 )
 for pkg in "${!packagemanagers_commands[@]}"; do

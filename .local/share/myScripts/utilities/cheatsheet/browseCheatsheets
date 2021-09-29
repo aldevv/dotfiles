@@ -6,7 +6,7 @@
 # zathura "$path"
 
 path="$WIKI/cheatsheets"
-folder=$(ls $path  | dmenu -i -p "Cheatsheet:")
+folder=$(ls $path  | dmenu -i -p "Cheatsheet:" -fn $DEFAULT_DMENU_FONT)
 if [[ -z $folder ]]; then
     exit
 fi
@@ -19,7 +19,7 @@ if [[ $(echo "$files" | wc -l ) == 1 ]]; then
     exit
 fi
 
-file=$(echo "$files" | dmenu -i -l 10 -p "Cheatsheet:")
+file=$(echo "$files" | dmenu -i -l 10 -p "Cheatsheet:" -fn $DEFAULT_DMENU_FONT)
 filePath="${path}/${folder}/$file"
 if [[ -z $file ]]; then
     exit

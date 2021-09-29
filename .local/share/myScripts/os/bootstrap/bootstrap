@@ -45,7 +45,7 @@ sudo -u $user git clone https://github.com/Akuseru1/wallpapers "$HOME/Pictures/W
 case "$PKG" in
    'eopkg')
       packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/eopkg-packages) \
-      $PKG_INSTALL -c system.devel ;;
+      $PKG_COMMAND -c system.devel ;;
    'apt')
       packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/apt-packages) \
       ;;
