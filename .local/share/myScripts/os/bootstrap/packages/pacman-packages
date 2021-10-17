@@ -1,1 +1,33 @@
+# vital
 base-devel
+cmake
+npm
+rclone
+autorandr
+wal
+fcitx
+picom
+sxhkd
+autorandr
+dunst
+noto-fonts-emoji
+sxiv
+pavucontrol
+firefox
+zathura
+zathura-pdf-mupdf
+xsel
+xclip
+fcitx
+fzf
+
+# misc
+docker
+docker-compose
+fd
+chromium
+github-cli
+
+# aur
+libxft-bgra-git
+xidlehook

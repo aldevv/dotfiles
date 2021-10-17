@@ -3,6 +3,7 @@
 ##==============
 # MISC
 #==============
+alias postman="$PROGRAMS/Postman/Postman"
 alias NF="awk -F',' '{print NF;exit}'"
 alias srcp=". $ZDOTDIR/.zprofile"
 alias srcz=". $ZDOTDIR/.zshrc"
@@ -11,7 +12,10 @@ alias pe="pipenv"
 alias va="pipenv shell"
 alias sshconfig="man ssh_config"
 alias picomr="DISPLAY=':0' picom -b --experimental-backend"
-alias robo="$PROGRAMS/robo3t-1.4.3-linux-x86_64-48f7dfd/bin/robo3t"
+alias robo="$PROGRAMS/robo3t-1.4.4-linux-x86_64-e6ac9ec/bin/robo3t"
+alias post="$PROGRAMS/Postman/Postman"
+alias installNvm="curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | zsh"
+alias pitr="nvim scp://pi//etc/transmission-rss.conf"
 
 getpdffont(){
     strings $1 | grep Font
@@ -1195,34 +1199,38 @@ alias dkmv='docker-machine version '
 alias dkmS='docker-machine stop '
 
 # Docker Compose (c)
-alias dkc='docker-compose '
-alias dkcc='docker-compose config '
-alias dkcb='docker-compose build '
-alias dkcB='docker-compose build --no-cache '
-alias dkcd='docker-compose down '
-alias dkcD='docker-compose down --volumes '
-alias dkce='docker-compose exec -e COLUMNS=`tput cols` -e LINES=`tput lines` '
-alias dkck='docker-compose kill '
-alias dkclg='docker-compose logs --follow '
-alias dkclG='docker-compose logs -f '
-alias dkcls='docker-compose ps '
-alias dkcz='docker-compose pause '
-alias dkcZ='docker-compose unpause '
-alias dkcP='docker-compose pull '
-alias dkcp='docker-compose push '
-alias dkcps='docker-compose ps '
-alias dkcr='docker-compose run -e COLUMNS=`tput cols` -e LINES=`tput lines` '
-alias dkcR='docker-compose run -e COLUMNS=`tput cols` -e LINES=`tput lines` --rm '
-alias dkcrm='docker-compose rm '
-alias dkcs='docker-compose start '
-alias dkcsc='docker-compose scale '
-alias dkcx='docker-compose restart '
-alias dkcu='docker-compose up '
-alias dkcU='docker-compose up -d '
-alias dkcv='docker-compose version '
-alias dkcS='docker-compose stop '
-alias dkcz='docker-compose down && docker-compose up -d '
-alias dkcR='docker-compose build && docker-compose down && docker-compose up -d '
+alias dkc='docker compose '
+alias dkcc='docker compose config '
+alias dkcb='docker compose build '
+alias dkcB='docker compose build --no-cache '
+alias dkcd='docker compose down '
+alias dkcD='docker compose down --volumes '
+alias dkce='docker compose exec -e COLUMNS=`tput cols` -e LINES=`tput lines` '
+alias dkck='docker compose kill '
+alias dkclg='docker compose logs --follow '
+alias dkclG='docker compose logs -f '
+alias dkcls='docker compose ps '
+alias dkcz='docker compose pause '
+alias dkcZ='docker compose unpause '
+alias dkcP='docker compose pull '
+alias dkcp='docker compose push '
+alias dkcps='docker compose ps '
+alias dkcr='docker compose run -e COLUMNS=`tput cols` -e LINES=`tput lines` '
+alias dkcR='docker compose run -e COLUMNS=`tput cols` -e LINES=`tput lines` --rm '
+alias dkcrm='docker compose rm '
+alias dkcs='docker compose start '
+alias dkcsc='docker compose scale '
+alias dkcx='docker compose restart '
+alias dkcu='docker compose up '
+alias dkcU='docker compose up -d '
+alias dkcv='docker compose version '
+alias dkcS='docker compose stop '
+alias dkcz='docker compose down && docker compose up -d '
+alias dkcR='docker compose build && docker compose down && docker compose up -d '
+
+dkceb() {
+    docker compose exec -e COLUMNS=`tput cols` -e LINES=`tput lines` "$1" bash
+}
 
 #=======
 # VPN
@@ -1233,7 +1241,7 @@ alias ovpnu='_ openvpn --config /etc/openvpn/ProtonVPN_server_configs/us-free-02
 alias ovpnd='_ killall openvpn'
 alias openconn="_ cat $WORK/vpn/pass | _ openconnect --config=$WORK/vpn/config --passwd-on-stdin -b vpn.unal.edu.co > $WORK/vpn/vpn-output.log 2>&1"
 alias ofv='_ openfortivpn'
-alias ofvc='ofv -c config > $WORK/../covidalert/vpn/vpn.log 2>&1 &'
+alias ofvc='ofv -c $WORK/../covidalert/.vpn/config > $WORK/../covidalert/.vpn/vpn.log 2>&1 &'
 alias wvpn='openconn'
 
 #=======

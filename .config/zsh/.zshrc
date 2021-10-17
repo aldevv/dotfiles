@@ -141,6 +141,11 @@ nvml() {
 . "$NVM_DIR/nvm.sh"
 }
 
+# comment this for faster loads
+# export NVM_DIR="$HOME/.config/nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 doge() {
   _fzf_complete --multi --reverse --prompt="doge> " -- "$@" < <(
     echo very
@@ -214,11 +219,7 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow . "$1"
 }
-# export NVM_DIR="$HOME/.config/nvm"
 [ -f "$HOME/.config/.fzf.zsh" ] && source "$HOME/.config/.fzf.zsh"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [[ -d $PROGRAMS/zsh-plugins/zsh-syntax-highlighting ]] \
   && . $PROGRAMS/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -371,7 +371,7 @@ highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
 "
             " \ 'coc-python',
 let g:coc_global_extensions = [
-            \ 'coc-python',
+            \ 'coc-pyright',
             \ 'coc-marketplace',
             \ 'coc-java-debug',
             \ 'coc-cssmodules',

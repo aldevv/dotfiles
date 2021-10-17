@@ -11,9 +11,6 @@
 alt + space
     st >/dev/null 2>&1
 
-super + w
-    [[ -n $(command -v firefox) ]] && firefox || [[ -n $(command -v chromium) ]] && chromium
-
 alt + shift + space
     "$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage" --profile "Futuristic" &>/dev/null
     # "$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage" --profile "IBM 3278" &>/dev/null
@@ -23,6 +20,9 @@ super + alt + w
 
 super + w
 	"$BROWSER"
+
+super + W
+	chromium
 
 super + l
 	betterlockscreen -l blur -t "How about a little rest!?"

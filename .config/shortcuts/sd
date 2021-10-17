@@ -15,12 +15,12 @@ cfi     ~/.xinitrc
 cfn     ~/.config/newsboat/urls
 cfy     ~/.config/youtube-dl/config
 cfd     $SUCKLESS/dwm-6.2/config.h
-cfs     $SUCKLESS/st-0.8.4/config.h
+cfS     $SUCKLESS/st-0.8.4/config.h
 cn      $UTILITIES/classes/network/typenet
 cfa     ~/.config/zsh/.aliases
 cfmo    $SCRIPTS/os/bootstrap/bootstrap
-cfmp    $SCRIPTS/os/bootstrap/packages/zypper-packages
+cfmp    $SCRIPTS/os/bootstrap/packages/pacman-packages
 cfK     $SCRIPTS/apps/qmk/lily58/keymap.c
 cfZ     /root/.config/zsh/.zshrc
 cfPr     $FILES/projections/global/.projections.json
-cfS     $HOME/.ssh/config
+cfs     $HOME/.ssh/config

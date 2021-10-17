@@ -1,14 +1,7 @@
 
-xmonad.hs:866:78: error:
-    • Variable not in scope: xmproc1 :: GHC.IO.Handle.Types.Handle
-    • Perhaps you meant ‘xmproc0’ (line 843)
-    |
-866 |                         { ppOutput = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x
-    |                                                                              ^^^^^^^
-
-xmonad.hs:866:102: error:
-    • Variable not in scope: xmproc2 :: GHC.IO.Handle.Types.Handle
-    • Perhaps you meant ‘xmproc0’ (line 843)
-    |
-866 |                         { ppOutput = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x
-    |                                                                                                      ^^^^^^^
+xmonad.hs:24:1: error:
+    Could not find module ‘Data.Tuple.Extra’
+    Use -v (or `:set -v` in ghci) to see a list of the files searched for.
+   |
+24 | import qualified Data.Tuple.Extra as TE
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

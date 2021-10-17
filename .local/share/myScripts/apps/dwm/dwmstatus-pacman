@@ -2,7 +2,7 @@
 #change to dash
 updateCheck() {
     packages="$(sudo pacman -Qu | wc -l)更新"
-    if [[ $packages == "1更新" ]]; then
+    if [[ $packages == "0更新" ]]; then
         # packages=""
         printf ""
     else

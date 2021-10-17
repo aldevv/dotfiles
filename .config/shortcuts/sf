@@ -3,9 +3,10 @@ h       ~
 uu      $REMOTES
 ug      $REMOTES/ugd
 wo      $WORK/API/
+wO      $WORK/../covidalert_new/
 bk      $BOOKS
 ba      $BACKUPS
-cc      $CLASS/2021-1
+cc      $CLASS/2021-2
 cP      $CLASS/2021-1/ISII/ultimo_parcial
 ci      $CLASS/2021-1/ISII
 cG      $CLASS/2021-1/GERENCIA

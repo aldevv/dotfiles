@@ -1,0 +1,16 @@
+#!/bin/bash
+
+remove_dashes() {
+    echo "$1" | sed 's/-//g'
+}
+
+folder="/anime"
+current_date=$(remove_dashes $(date +"%Y-%m-%d"))
+
+echo $DIFF
+
+for file in $folder/*; do
+    date_file_last_modified=$(remove_dashes $(stat -c %y -- "$file" | cut -d' ' -f1))
+    let DIFF=(`date +%s -d $current_date `-`date +%s -d $date_file_last_modified`)/86400
+    [[ "$DIFF" -ge 21 ]] && rm $file
+done

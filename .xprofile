@@ -13,27 +13,36 @@
 
 ## dunst is started by dbus-daemon now
 ## the display manager is also taken care of by dbus, in case you want to change to startx, havent tested
-dunst &
-#fcitx & # for languages
+[[ -n $(command -v dunst) ]] \
+    && dunst &
+[[ -n $(command -v fcitx) ]] \
+    && fcitx & # for languages
 ## custom scripts
-DISPLAY=":0" picom -b --experimental-backend
-## so the user can make connections to the xserver (docker)
+ DISPLAY=":0" picom -b --experimental-backend
+# so the user can make connections to the xserver (docker)
 xhost local:root
-[[ $DESKTOP_SESSION = "dwm" ]] \
+[[ $DESKTOP_SESSION = "dwm" ]] && [[ -n $(command -v dwmstatus-pacman) ]] \
     && dwmstatus-pacman &
 
 xrdb -merge ~/.Xresources
-setsid copyq &
+[[ -n $(command -v copyq) ]] \
+     && setsid copyq &
 
-autorandr --change
-wal -R &
-sxhkd &
+[[ -n $(command -v autorandr) ]] \
+    && autorandr --change
+[[ -n $(command -v wal) ]] \
+    && wal -R &
+[[ -n $(command -v sxhkd) ]] \
+    && sxhkd &
+[[ -n $(command -v rclone) ]] \
+    && rclone mount --daemon ugd:Remote $REMOTES/ugd
 
-rclone mount --daemon ugd:Remote $REMOTES/ugd
-startupScripts
+[[ -n $(command -v startupScripts) ]] \
+    && startupScripts
 
 # 30 minutes, you can do dim or dimblur
 # this
 # xidlehook --detect-sleep --not-when-fullscreen --timer 4800 'betterlockscreen -l blur -t "i feel forgotten"' --timer 20000 'betterlockscreen -s blur -t "i was just taking a nap"' - &
 
-xidlehook --detect-sleep --not-when-fullscreen --timer 4800 'i3lock -F -i $WALL/1559506908863.png' --timer 20000 'systemctl suspend' - &
+[[ -n $(command -v xidlehook) ]] \
+    && xidlehook --detect-sleep --not-when-fullscreen --timer 4800 'i3lock -F -i $WALL/1559506908863.png' --timer 20000 'systemctl suspend' - &
