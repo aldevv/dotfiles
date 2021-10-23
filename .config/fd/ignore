@@ -8,3 +8,5 @@ plugged
 undodir
 .emacs.d
 nvim/backups
+plugged/*
+*~

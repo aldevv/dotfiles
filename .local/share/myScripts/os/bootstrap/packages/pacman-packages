@@ -19,6 +19,7 @@ zathura-pdf-mupdf
 xsel
 xclip
 fcitx
+fcitx-mozc
 fzf
 
 # misc

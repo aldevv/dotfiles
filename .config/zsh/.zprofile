@@ -164,13 +164,12 @@ export FZF_COMPLETION_TRIGGER='**'
 
 # not official env variables
 export RG_IGNORE_FILE="$XDG_CONFIG_HOME/rg/.rgignore"
-export RG_FOR_FZF_DEFAULT="rg --files --hidden --no-heading --smart-case --follow --ignore-file $RG_IGNORE_FILE  --"
-export FD_DEFAULT="fd --follow"
-# export FD_DEFAULT="fd --follow
+export RG_DEFAULT_FOR_FZF="rg --files --hidden --no-heading --smart-case --follow --ignore-file $RG_IGNORE_FILE  --"
+export FD_DEFAULT_FOR_FZF="fd  --type f --hidden --follow"
 
-if [[ -x $(command -v rg) ]]; then
-    export FZF_DEFAULT_COMMAND=$RG_DEFAULT
-fi
+[[ -x $(command -v rg) ]] \
+    && export FZF_DEFAULT_COMMAND=$FD_DEFAULT_FOR_FZF
+
 # export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 # to unhide preview window, change to --preview-window=right:hidden:wrap"
 # for prompt at the bottom, change layout to "default"

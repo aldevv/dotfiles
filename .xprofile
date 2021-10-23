@@ -15,8 +15,12 @@
 ## the display manager is also taken care of by dbus, in case you want to change to startx, havent tested
 [[ -n $(command -v dunst) ]] \
     && dunst &
-[[ -n $(command -v fcitx) ]] \
-    && fcitx & # for languages
+if [[ -n $(command -v fcitx) ]]; then
+    export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
+    export XMODIFIERS=@im=fcitx
+    fcitx & # for languages
+fi
 ## custom scripts
  DISPLAY=":0" picom -b --experimental-backend
 # so the user can make connections to the xserver (docker)

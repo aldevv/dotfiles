@@ -152,7 +152,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 nnoremap <F5> :UndotreeToggle<cr>
 
 " =======
-" FZF
+" FZF  (to change ignored files, change the .rgignore)
 " =======
 " :Colors
 " :Commands
@@ -197,6 +197,9 @@ nnoremap <localleader>cf :FilesDots<cr>
 nnoremap <localleader>mo :FilesOs<cr>
 nnoremap <leader>sN :RemoveFiles<cr>
 nnoremap <leader>sF :RemoveDirs<cr>
+
+nnoremap <localleader>,cfv :e $XDG_CONFIG_HOME/nvim/init.lua<cr>
+
 "made myself
 nnoremap <BS>b :Bookm<cr>
 nnoremap <leader>sb :Buffers<cr>
@@ -262,7 +265,6 @@ function RemoveFileUpdateNerdtree(files)
   endif
 endfunction
 " TODO modify!!, not needed anymore
-" let remove_files_command = "rg --files -uu --no-heading --smart-case --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --""
 let remove_files_command = "rg --files -uu --no-heading --follow --ignore-file=". $RG_IGNORE_FILE." --"
 command! -bang -bar -complete=dir RemoveFiles
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(
@@ -295,7 +297,7 @@ command! -bang -bar -complete=dir RemoveDirs
 "             \ call fzf#vim#grep(
 "             \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
 "             \   fzf#vim#with_preview({'window':{'width':1,  'height':0.7},'dir': s:find_current_root()}), <bang>0)
-let rg_command_nofiles = "rg --column --no-heading --color=always --smart-case --line-number --follow -g '!{**/node_modules/*,*.class,**/.git/*,miniconda3/*,**/*~,plugged/**,env,envs,__pycache__,libs,lib,.wine,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache,**/undodir/*}' --"
+let rg_command_nofiles = "rg --column --no-heading --color=always --smart-case --line-number --follow --ignore-file=". $RG_IGNORE_FILE." --"
 command! -bang -nargs=* Rgfzf
             \ call fzf#vim#grep(
             \   rg_command_nofiles . ' ' . shellescape(<q-args>), 1,

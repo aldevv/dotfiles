@@ -120,6 +120,8 @@ Plug 'plasticboy/vim-markdown'
 call plug#end()
 " CocSearch substitute https://github.com/dyng/ctrlsf.vim
 
+" for fcitx (when writting in jap)
+"https://aur.archlinux.org/packages/vim-fcitx/
 "not working because of conflict with polyglot
 " Plug 'wellle/context.vim'
 " deleted

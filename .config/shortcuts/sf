@@ -15,6 +15,7 @@ cA      $CLASS/2021-1/AUDITII
 ll      $LEARN
 lh      $LEARN/Hack
 tt      $TRASH
+tm      ~/.cache/tmp
 T       $HOME/Downloads/torrents
 sk      $SUCKLESS
 bkl      $BOOKS/LN
