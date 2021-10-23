@@ -177,8 +177,8 @@ mode_switch + C
 mode_switch + †
     xmodmap "$HOME/.config/.Xmodmap"
 
-mode_switch + shift c
-	 searchDocs
+# mode_switch + shift c
+# 	 searchDocs
 
 hyper + u
  	 ts $UTILITIES/api/urlShortener

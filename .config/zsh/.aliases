@@ -22,6 +22,10 @@ alias post="$PROGRAMS/Postman/Postman"
 alias installNvm="curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | zsh"
 alias pitr="nvim scp://pi//etc/transmission-rss.conf"
 
+vcmd() {
+    v $(which $1)
+}
+
 quick() {
     a="$@"
     alias | grep "$a"

@@ -64,11 +64,6 @@ export FILES="$SCRIPTS/files"
 
 export PROXYCHAINS_CONF_FILE="$XDG_CONFIG_HOME/proxychains/proxychains.conf"
 
-# Settings for Japanese input
-export GTK_IM_MODULE='ibus'
-export QT_IM_MODULE='ibus'
-export XMODIFIERS=@im='ibus'
-
 #qt5ct colorscheme
 export GTK_THEME='Nordic-darker'
 export QT_QPA_PLATFORMTHEME="qt5ct"

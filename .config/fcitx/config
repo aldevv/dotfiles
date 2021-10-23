@@ -139,7 +139,7 @@ TriggerKey=SUPER_SPACE
 # Do not show input window if there is only preedit string
 # Available Value:
 # True False
-HideInputWindowWhenOnlyPreeditString=True
+#HideInputWindowWhenOnlyPreeditString=False
 # Do not show input window if there is only one candidate and preedit
 # Available Value:
 # True False

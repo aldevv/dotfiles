@@ -18,8 +18,12 @@
 if [[ -n $(command -v fcitx) ]]; then
     export GTK_IM_MODULE=fcitx
     export QT_IM_MODULE=fcitx
+    export SDL_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
-    fcitx & # for languages
+    fcitx --replace -d & # for languages
+    # dbus-launch --exit-with-x11
+    # export DBUS_SESSION_BUS_ADDRESS
+    # dbus-launch fcitx-autostart
 fi
 ## custom scripts
  DISPLAY=":0" picom -b --experimental-backend

@@ -9,6 +9,7 @@ endif
 " Vertically center document when entering insert mode
 " autocmd InsertEnter * norm zz
 
+  autocmd BufReadPre .xprofile :set ft=sh
 " Utilities
 
 " auto compile status bar dwm
@@ -50,7 +51,7 @@ endif
            return
         endif
         let file = expand('%:p')
-         
+
         let destinationFile = system("printf \"$(basename ". file. " .md).pdf\"")
         let destinationPath = expand('%:p:h')
         let destination = destinationPath .'/'. destinationFile
@@ -92,7 +93,7 @@ augroup set_latex_env
    if g:extension == 'tex'
        let maplocalleader = ','
    endif
-   
+
    autocmd FileType tex nnoremap <silent><localleader> :<c-u>WhichKey  ','<CR>
 
 "======================

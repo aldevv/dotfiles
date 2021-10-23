@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 #有難うございます
 isBookmark() {
 ARRAY=( "l:b-ok.cc"
@@ -29,7 +31,7 @@ ARRAY=( "l:b-ok.cc"
     return 1
 }
 
-words=$(dmenu -p "search")
+words=$(dmenu -p "search" &>/dev/null)
 # words="!l"
 [[ -z $words ]] && exit
 if isBookmark $words; then
