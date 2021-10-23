@@ -24,15 +24,15 @@ set splitright
 set splitbelow
 set title
 " set titlestring=:\ %-25.55F\ %a%r%m titlelen=70
-" set title titlestring=%{expand(\"%:p\")}\ %a%r%m 
+" set title titlestring=%{expand(\"%:p\")}\ %a%r%m
 " set title titlestring=%{expand('%:p:h:t')}/%t
- 
+
 " set title titlestring=...%{strpart(expand(\"%:p:h\"),stridx(expand(\"%:p:h\"),\"/\",strlen(expand(\"%:p:h\"))-12))}/%{expand(\"%:t:r\")}\ %m\ %Y\ %l\ of\ %L
 " set titlestring=%{expand(\"%:p:~\")}\ %a%r%m
 " let &titlestring = '%t%( %m%r%)%( <%{get(g:, "cur_project", "")}>%)' .
 "             \ '%( (%{expand("%:~:.:h")})%)' .
             " \ '%( (%{getcwd()})%)%( %a%) - %(%{v:servername}%)'
-  set titlestring=\ %{expand(\"%:p:~\")}%a%r%m 
+  set titlestring=\ %{expand(\"%:p:~\")}%a%r%m
 " set titlestring=%t
 " set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
 " set title titlestring=%<%F%=%l/%L-%P titlelen=70
@@ -62,70 +62,6 @@ let g:extension = expand('%:e')
 " autocmd FileType * set foldmethod=syntax
 " autocmd FileType python set foldmethod=indent
 
-function! FoldForJava()
-    let line = getline(v:lnum) "v:lnum gives you the line number
-    if match(line,'\v^\s+(private|public|protected)?\s+\S+\s+\S+\s+\S+\s*\(.*\)\s*\{$') > -1
-        return ">1"
-    elseif match(line, '\v^\s*(for|while)\s*\(.+\)\s*?\{') > -1
-        return ">2"
-    elseif match(line, '\v^\s*if\s*\(.+\)') > -1
-        return ">3"
-    else
-        return "="
-    endif
-endfunction
-
-function! FoldForPython()
-" the smaller the number, the more priority it has
-    let line = getline(v:lnum) "v:lnum gives you the line number
-    if match(line,'\v^class\s+\S+\(?.+\)?\s?:') > -1
-        return ">3"
-    elseif match(line, '\v^\s*def\s\S+\(.*\)\s?:') > -1
-        return ">4"
-    elseif match(line, '\v^\s+(if|for|while)\s.+\s?:$') > -1
-        return ">5"
-    elseif match(line, '\v^(if|for|while).+\s?:$') > -1
-        return ">2"
-    elseif match(line, '\v^\S+\s?\=\s?.+$') > -1
-        return ">0"
-    else
-        return "="
-    endif
-endfunction
-
-function! FoldForJavascript()
-    let line = getline(v:lnum) "v:lnum gives you the line number
-    if match(line,'\v^class\s.+\{$') > -1
-        return ">1"
-    elseif match(line,'\v^\s*function\s+\S+\(.*\)\s*\{$') > -1
-        return ">2"
-    elseif  match(line,'\v^\s*(if)@!(while)@!(for)@!.*\(.*\)\s*\{$') > -1
-        return ">2"
-    elseif  match(line,'\v^\s*\S+\s?\=\s?\(.*\)\s?\=\>.+\{$') > -1
-        return ">2"
-    elseif match(line, '\v^\s*(for|while)\s*\(.+\)\s*\{?$') > -1
-        return ">3"
-    elseif match(line, '\v^\s*if\s*\(.+\)\s*\{?$') > -1
-        return ">4"
-    else
-        return "="
-    endif
-endfunction
-
-function! FoldForVim()
-    let line = getline(v:lnum) "v:lnum gives you the line number
-    if match(line,'\v^function!?\s.+$') > -1
-        return ">2"
-    elseif match(line, '\v^\s*(augroup|aug)\s(END)@!.+$') > -1
-        return ">2"
-    elseif match(line, '\v^\s*(if|for|while).+\(.+\)\s?$') > -1
-        return ">1"
-    elseif match(line, '\v^(endfunction|endif|augroup END)@!\S*$') > -1
-        return ">0"
-    else
-        return "="
-    endif
-endfunction
 
 if has('folding')
   " set nofoldenable
@@ -135,12 +71,6 @@ if has('folding')
   set foldnestmax=5
 endif
 
-autocmd FileType java setlocal foldmethod=expr foldexpr=FoldForJava()
-autocmd FileType python setlocal foldmethod=expr foldexpr=FoldForPython()
-autocmd FileType javascript setlocal foldmethod=expr foldexpr=FoldForJavascript()
-autocmd FileType vim setlocal foldmethod=expr foldexpr=FoldForVim()
-" these work
-autocmd FileType c,cpp setlocal foldmethod=syntax
 set list                              " show whitespace
 set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
 set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)

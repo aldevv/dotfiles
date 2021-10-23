@@ -112,6 +112,9 @@ Plug 'tpope/vim-dotenv'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-cheat.sh'
 Plug 'c-brenn/fuzzy-projectionist.vim'
+" MARKDOWN
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 " TODO check these 3!!
 " https://github.com/kristijanhusak/vim-dadbod-ui
 call plug#end()

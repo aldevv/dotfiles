@@ -35,7 +35,7 @@ xrdb -merge ~/.Xresources
 [[ -n $(command -v sxhkd) ]] \
     && sxhkd &
 [[ -n $(command -v rclone) ]] \
-    && rclone mount --daemon ugd:Remote $REMOTES/ugd
+    && rclone mount --daemon --dir-cache-time 3h --vfs-cache-mode full ugd:Remote $REMOTES/ugd
 
 [[ -n $(command -v startupScripts) ]] \
     && startupScripts
@@ -45,4 +45,5 @@ xrdb -merge ~/.Xresources
 # xidlehook --detect-sleep --not-when-fullscreen --timer 4800 'betterlockscreen -l blur -t "i feel forgotten"' --timer 20000 'betterlockscreen -s blur -t "i was just taking a nap"' - &
 
 [[ -n $(command -v xidlehook) ]] \
-    && xidlehook --detect-sleep --not-when-fullscreen --timer 4800 'i3lock -F -i $WALL/1559506908863.png' --timer 20000 'systemctl suspend' - &
+    && xidlehook --detect-sleep --not-when-fullscreen --timer 4800 'i3lock -F -i $WALL/1559506908863.png' --timer 20000 'systemctl suspend' '' &
+    # the last empty string is the canceller, is any command you define that runs after you come back

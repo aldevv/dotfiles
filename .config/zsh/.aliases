@@ -1,4 +1,9 @@
 #!/bin/zsh
+##==============
+# WORK
+#==============
+alias mongodumpwork='ssh HORUS_BACKEND "mongodump -d VT  --archive" > mongo_dump_10.2021.dump'
+alias mongorestorework='dkce mongo-dump "mongorestore -d VT --archive" < mongo_dump_10.2021.dump '
 
 ##==============
 # MISC
@@ -16,6 +21,11 @@ alias robo="$PROGRAMS/robo3t-1.4.4-linux-x86_64-e6ac9ec/bin/robo3t"
 alias post="$PROGRAMS/Postman/Postman"
 alias installNvm="curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | zsh"
 alias pitr="nvim scp://pi//etc/transmission-rss.conf"
+
+quick() {
+    a="$@"
+    alias | grep "$a"
+}
 
 getpdffont(){
     strings $1 | grep Font
@@ -1044,6 +1054,7 @@ function dkmd {
 
 # Docker
 alias dk='docker '
+alias dkcat='bat Dockerfile'
 alias dka='docker attach '
 alias dkb='docker build '
 alias dkd='docker diff '
@@ -1199,6 +1210,7 @@ alias dkmv='docker-machine version '
 alias dkmS='docker-machine stop '
 
 # Docker Compose (c)
+alias dkccat='bat docker-compose.yml'
 alias dkc='docker compose '
 alias dkcc='docker compose config '
 alias dkcb='docker compose build '
