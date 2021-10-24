@@ -20,6 +20,7 @@ if [[ -n $(command -v fcitx) ]]; then
     export QT_IM_MODULE=fcitx
     export SDL_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
+    export XIM_PROGRAM=fcitx
     fcitx --replace -d & # for languages
     # dbus-launch --exit-with-x11
     # export DBUS_SESSION_BUS_ADDRESS
