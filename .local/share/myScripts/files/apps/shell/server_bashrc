@@ -1,0 +1,84 @@
+#!/bin/sh
+
+dev() {
+	alias sudo='sudo '
+	alias c="cd $HOME/Projects/covidalert"
+	alias p="cd $HOME/Projects"
+
+	alias re="cd /etc"
+	alias lo="cd ~/.local"
+	alias rv="cd /var"
+	alias rb="cd /bin"
+	alias rr="cd /root"
+	alias ro="cd /opt"
+	alias rU="cd /usr"
+	alias rus="cd /usr/share"
+	alias rub="cd /usr/bin"
+	alias rui="cd /usr/include"
+	alias rulo="cd /usr/local"
+	alias rulob="cd /usr/local/bin"
+	alias rulos="cd /usr/local/share"
+	alias rmn="cd /mnt"
+	alias n="cd /etc/nginx/sites-enabled"
+	alias s="cd /etc/systemd/system"
+
+
+	alias sv="sudo vim"
+	alias v="vim"
+	alias cfb="v $HOME/.bashrc"
+	alias srcb=". $HOME/.bashrc"
+
+
+	alias dkccat='bat docker-compose.yml'
+	alias dkc='sudo docker-compose '
+	alias dkcc='sudo docker-compose config '
+	alias dkcb='sudo docker-compose build '
+	alias dkcB='sudo docker-compose build --no-cache '
+	alias dkcd='sudo docker-compose down '
+	alias dkcD='sudo docker-compose down --volumes '
+	alias dkce='sudo docker-compose exec -e COLUMNS=`tput cols` -e LINES=`tput lines` '
+	alias dkck='sudo docker-compose kill '
+	alias dkclg='sudo docker-compose logs --follow '
+	alias dkclG='sudo docker-compose logs -f '
+	alias dkcls='sudo docker-compose ps '
+	alias dkcz='sudo docker-compose pause '
+	alias dkcZ='sudo docker-compose unpause '
+	alias dkcP='sudo docker-compose pull '
+	alias dkcp='sudo docker-compose push '
+	alias dkcps='sudo docker-compose ps '
+	alias dkcr='sudo docker-compose run -e COLUMNS=`tput cols` -e LINES=`tput lines` '
+	alias dkcR='sudo docker-compose run -e COLUMNS=`tput cols` -e LINES=`tput lines` --rm '
+	alias dkcrm='sudo docker-compose rm '
+	alias dkcs='sudo docker-compose start '
+	alias dkcsc='sudo docker-compose scale '
+	alias dkcx='sudo docker-compose restart '
+	alias dkcu='sudo docker-compose up '
+	alias dkcU='sudo docker-compose up -d '
+	alias dkcv='sudo nvim docker-compose.yml '
+	alias dkcS='sudo docker-compose stop '
+
+	alias dkcz='sudo docker-compose down && sudo docker compose up -d '
+	alias dkcR='sudo docker-compose build && sudo docker compose down && sudo docker compose up -d '
+
+
+	dkcue() {
+		    sudo docker-compose --env-file=$1 up ${@:2}
+	    }
+
+    	dkcee() {
+	       sudo docker-compose --env-file=$1 exec -e COLUMNS=`tput cols` -e LINES=`tput lines` ${@:2}
+	}
+
+	dkcUe() {
+	    sudo docker-compose --env-file=$1 up  ${@:2} -d
+    	}
+
+	dkceb() {
+	    sudo docker-compose exec -e COLUMNS=`tput cols` -e LINES=`tput lines` "$0" bash
+    	}
+
+}
+
+alias cftd="v /etc/transmission-daemon/settings.json"
+alias cftr="v /etc/transmission-rss.conf"
+

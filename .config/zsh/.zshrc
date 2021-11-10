@@ -5,6 +5,7 @@
 #-------------o---------------
 
 #=====================
+setopt GLOB_DOTS
 setopt extended_glob
 #=====================
 # enables: rm -- ^*.dmg, rm -- ^*.(dmg|txt)
@@ -79,8 +80,12 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # # in archlinux put the archlinux plugin!
 # docker adds completion for docker commands, same docker compose
-plugins=(docker docker-compose)
 export HISTFILE="$ZDOTDIR/.zsh_history"
+# plugins=(copybuffer dirhistory jsontools)
+plugins=(
+docker
+docker-compose
+)
 . $ZSH/oh-my-zsh.sh
 
 #==============
@@ -135,16 +140,19 @@ bindkey -v '^?' backward-delete-char
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-#
-# unsetopt completealiases
+
+# this makes autocompletion work on aliased programs
+unsetopt completealiases
 nvml() {
-. "$NVM_DIR/nvm.sh"
+  . "$NVM_DIR/nvm.sh"
+}
+nvmL() {
+  export NVM_DIR="$HOME/.config/nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 }
 
 # comment this for faster loads
-# export NVM_DIR="$HOME/.config/nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 doge() {
   _fzf_complete --multi --reverse --prompt="doge> " -- "$@" < <(
@@ -221,6 +229,9 @@ _fzf_compgen_dir() {
 }
 [ -f "$HOME/.config/.fzf.zsh" ] && source "$HOME/.config/.fzf.zsh"
 
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE
+#ZSH_AUTOSUGGEST_STRATEGY
+#
 [[ -d $PROGRAMS/zsh-plugins/zsh-syntax-highlighting ]] \
   && . $PROGRAMS/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [[ -d $PROGRAMS/zsh-plugins/zsh-autosuggestions ]] \

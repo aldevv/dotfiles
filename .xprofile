@@ -43,8 +43,21 @@ xrdb -merge ~/.Xresources
     && wal -R &
 [[ -n $(command -v sxhkd) ]] \
     && sxhkd &
+
+rclone_mounts() {
+    ugd="$REMOTES/ugd"
+    ugd_starred="$REMOTES/ugd_starred"
+    # ugd_shared="$REMOTES/ugd_shared"
+    [ ! -d $ugd ] && mkdir $ugd
+    [ ! -d $ugd_starred ] && mkdir $ugd_starred
+    # [ ! -d $ugd_shared ] && mkdir $ugd_shared
+    rclone mount ugd:Remote $ugd --daemon --dir-cache-time 3h --vfs-cache-mode writes --drive-use-trash
+    rclone mount ugd: $ugd_starred --daemon --read-only --dir-cache-time 3h --vfs-cache-mode writes --drive-use-trash --drive-starred-only
+    # rclone mount --daemon --dir-cache-time 3h --vfs-cache-mode full --drive-shared-with-me ugd: $ugd_shared
+}
+
 [[ -n $(command -v rclone) ]] \
-    && rclone mount --daemon --dir-cache-time 3h --vfs-cache-mode full ugd:Remote $REMOTES/ugd
+    && rclone_mounts
 
 [[ -n $(command -v startupScripts) ]] \
     && startupScripts

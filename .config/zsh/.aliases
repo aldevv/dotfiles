@@ -8,6 +8,21 @@ alias mongorestorework='dkce mongo-dump "mongorestore -d VT --archive" < mongo_d
 ##==============
 # MISC
 #==============
+
+temp_fix() {
+    sudo modprobe -rf rtw88_8822be
+    sudo modprobe rtw88_8822be
+}
+
+getpid() {
+    pidof $1 | cut -d' ' -f1
+}
+
+alias uuid='uui=$(python -c "import uuid; print(uuid.uuid4())"); echo $uui | xsel -b; echo $uui '
+alias wireshark="sudo wireshark"
+alias vid="neovide"
+alias _v="sudo nvim"
+alias cfh="_v /etc/hosts"
 alias postman="$PROGRAMS/Postman/Postman"
 alias NF="awk -F',' '{print NF;exit}'"
 alias srcp=". $ZDOTDIR/.zprofile"
@@ -21,6 +36,13 @@ alias robo="$PROGRAMS/robo3t-1.4.4-linux-x86_64-e6ac9ec/bin/robo3t"
 alias post="$PROGRAMS/Postman/Postman"
 alias installNvm="curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | zsh"
 alias pitr="nvim scp://pi//etc/transmission-rss.conf"
+alias addTr="ssh pi transmission-cli $(xsel -b)"
+alias serve="rclone serve dlna --addr=:9092 --name=HaganeMedia $1"
+alias cpP="pwd | xsel -b"
+
+cpF (){
+cat $1 | xsel -b
+}
 
 vcmd() {
     v $(which $1)
@@ -243,7 +265,6 @@ alias \
     smk='sudo make'\
     smkc='sudo make clean'\
     smki='sudo make install'\
-    rs='rsync'\
         ec='echo'\
     et='entr'\
     mime='xdg-mime query filetype'\
@@ -460,6 +481,7 @@ function git_main_branch() {
 
 alias g='git'
 
+alias groot='cd "$(git rev-parse --show-toplevel)"'
 alias gaa='git add'
 alias ga='git add'
 alias gA='git add --all'
@@ -1106,7 +1128,7 @@ alias dkt='docker tag '
 alias dktop='docker top '
 alias dkup='docker update '
 alias dkV='docker volume '
-alias dkv='docker version '
+alias dkv='nvim Dockerfile'
 alias dkw='docker wait '
 alias dkS='docker stop '
 alias dkSa='docker stop $(docker ps -a -q) '
@@ -1222,37 +1244,52 @@ alias dkmS='docker-machine stop '
 
 # Docker Compose (c)
 alias dkccat='bat docker-compose.yml'
-alias dkc='docker compose '
-alias dkcc='docker compose config '
-alias dkcb='docker compose build '
-alias dkcB='docker compose build --no-cache '
-alias dkcd='docker compose down '
-alias dkcD='docker compose down --volumes '
-alias dkce='docker compose exec -e COLUMNS=`tput cols` -e LINES=`tput lines` '
-alias dkck='docker compose kill '
-alias dkclg='docker compose logs --follow '
-alias dkclG='docker compose logs -f '
-alias dkcls='docker compose ps '
-alias dkcz='docker compose pause '
-alias dkcZ='docker compose unpause '
-alias dkcP='docker compose pull '
-alias dkcp='docker compose push '
-alias dkcps='docker compose ps '
-alias dkcr='docker compose run -e COLUMNS=`tput cols` -e LINES=`tput lines` '
-alias dkcR='docker compose run -e COLUMNS=`tput cols` -e LINES=`tput lines` --rm '
-alias dkcrm='docker compose rm '
-alias dkcs='docker compose start '
-alias dkcsc='docker compose scale '
-alias dkcx='docker compose restart '
-alias dkcu='docker compose up '
-alias dkcU='docker compose up -d '
-alias dkcv='docker compose version '
-alias dkcS='docker compose stop '
-alias dkcz='docker compose down && docker compose up -d '
-alias dkcR='docker compose build && docker compose down && docker compose up -d '
+alias dkc='docker-compose '
+alias dkcc='docker-compose config '
+alias dkcb='docker-compose build '
+alias dkcB='docker-compose build --no-cache '
+alias dkcd='docker-compose down '
+alias dkcD='docker-compose down --volumes '
+alias dkce='docker-compose exec -e COLUMNS=`tput cols` -e LINES=`tput lines` '
+alias dkck='docker-compose kill '
+alias dkclg='docker-compose logs --follow '
+alias dkclG='docker-compose logs -f '
+alias dkcls='docker-compose ps '
+alias dkcz='docker-compose pause '
+alias dkcZ='docker-compose unpause '
+alias dkcP='docker-compose pull '
+alias dkcp='docker-compose push '
+alias dkcps='docker-compose ps '
+alias dkcr='docker-compose run -e COLUMNS=`tput cols` -e LINES=`tput lines` '
+alias dkcR='docker-compose run -e COLUMNS=`tput cols` -e LINES=`tput lines` --rm '
+alias dkcrm='docker-compose rm '
+alias dkcs='docker-compose start '
+alias dkcsc='docker-compose scale '
+alias dkcx='docker-compose restart '
+alias dkcu='docker-compose up '
+alias dkcU='docker-compose up -d '
+alias dkcUl='docker-compose -f docker-compose.local.yml up -d '
+alias dkcv='nvim docker-compose.yml '
+alias dkcS='docker-compose stop '
+
+alias dkcz='docker-compose down && docker compose up -d '
+alias dkcR='docker-compose build && docker compose down && docker compose up -d '
+
+
+dkcue() {
+    docker-compose --env-file=$1 up ${@:2}
+}
+
+dkcee() {
+    docker-compose --env-file=$1 exec -e COLUMNS=`tput cols` -e LINES=`tput lines` ${@:2}
+}
+
+dkcUe() {
+    docker-compose --env-file=$1 up  ${@:2} -d
+}
 
 dkceb() {
-    docker compose exec -e COLUMNS=`tput cols` -e LINES=`tput lines` "$1" bash
+    docker-compose exec -e COLUMNS=`tput cols` -e LINES=`tput lines` "$1" bash
 }
 
 #=======
@@ -1264,7 +1301,7 @@ alias ovpnu='_ openvpn --config /etc/openvpn/ProtonVPN_server_configs/us-free-02
 alias ovpnd='_ killall openvpn'
 alias openconn="_ cat $WORK/vpn/pass | _ openconnect --config=$WORK/vpn/config --passwd-on-stdin -b vpn.unal.edu.co > $WORK/vpn/vpn-output.log 2>&1"
 alias ofv='_ openfortivpn'
-alias ofvc='ofv -c $WORK/../covidalert/.vpn/config > $WORK/../covidalert/.vpn/vpn.log 2>&1 &'
+alias ofvc='ofv -c $MASTER/Work/local/covidalert-back/.vpn/config > $MASTER/Work/local/covidalert-back/.vpn/vpn.log 2>&1 &'
 alias wvpn='openconn'
 
 #=======
@@ -1392,7 +1429,55 @@ alias k='kubectl'
 # -v verbose
 # -r recursive (folders)
 alias rplz='rsync -Puvr'
+alias rs="rsync -rlptzv "
  # same as --partial --progress, --rsh is ssh by default
+
+ # DO ALL THESE FROM THE ROOT OF THE DOWNLOAD (where you did sshP)
+rsclone() {
+#https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client
+    rsync -rlptzv --progress --delete --exclude=.git $1 $2
+}
+
+rsupload() {
+#https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client
+    rsync -rlptzv --progress --delete --exclude=.git $1 $2
+}
+
+sshp() {
+    if [[ -n $1 ]]; then
+        echo $1 > .remote
+    fi
+
+    if [[ -f .remote ]]; then
+        folder="$(basename $(cat .remote))"
+        rsync -rlptzv --backup-dir=$PLAYGROUND/SSH_BACKUPS --backup --progress --exclude=.git --exclude=env --exclude=.venv --exclude=.remote * "$(cat .remote)"
+        exit
+    fi
+    echo "argument or .remote file found"
+}
+
+sshP() {
+
+    if [[ -n $1 ]]; then
+        echo $1 > .remote
+    fi
+
+    if [[ -f .remote ]]; then
+        folder="$(basename $(cat .remote))"
+        rsync -rlptzv --backup-dir=$PLAYGROUND/SSH_BACKUPS --backup --progress  --exclude=.git --exclude=env --exclude=.venv --exclude=.remote "$(cat .remote)/*" .
+        exit
+    fi
+    echo ".remote not found, add argument to create one"
+}
+
+sshcl() {
+    if [[ -n $1 ]]; then
+        folder="$(basename $1)"
+        rsync -rlptzv --backup-dir=$PLAYGROUND/SSH_BACKUPS --backup --progress  --exclude=.git --exclude=env --exclude=.venv --exclude=.remote "$1" .
+        echo $1 > $folder/.remote
+    fi
+    echo "$1 not found, change argument"
+}
 
 vimr() {
     vim rsync://$1:$2

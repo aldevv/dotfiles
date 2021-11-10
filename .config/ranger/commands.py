@@ -37,14 +37,27 @@ def hook_ready(fm):
         viewmode = fm.settings["viewmode"]
         cur_path = fm.thisdir.path
         remotes_path = os.getenv("REMOTES")
-        if not remotes_path:
+        playground_path = os.getenv("PLAYGROUND")
+
+        sub_folders = ['SSH']
+        paths_creator = lambda main_folder: [ f'{main_folder}/{sub_folder}' for sub_folder in sub_folders ]
+        path_check = lambda x, y: x in y
+
+        if not remotes_path and not playground_path:
             return
-        if remotes_path in cur_path:
+
+        # add new paths here
+        # paths = [remotes_path, *paths_creator(playground_path)]
+        paths = [remotes_path]
+
+        paths_exist = [path_check(path, cur_path) for path in paths ]
+        if any(paths_exist) :
             if viewmode == "miller":
                 fm.execute_console("set viewmode multipane")
         else:
             if prev_dir:
-                if remotes_path in str(prev_dir):
+                prev_dir_exists = [path_check(path, str(prev_dir)) for path in paths ]
+                if any(prev_dir_exists):
                     if viewmode != "miller":
                         fm.execute_console("set viewmode miller")
 
@@ -75,10 +88,9 @@ class fzf_select(Command):
             -o -type d -print 2> /dev/null | sed 1d | cut -b3- | fzf +m"
         else:
             # match files and directories
-            command = "find -L . \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune \
-            -o -print 2> /dev/null | sed 1d | cut -b3- | fzf +m"
-            # not working
-            # command="rg . --hidden --follow -g '!{**/node_modules/*,.git,miniconda3,env,envs,__pycache__, libs,lib,.wine,core,.npm,.icons,.vscode,*/nvim/backups,.emacs.d/**,.cache}' |fzf"
+            # command = "find -L . \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune \
+            # -o -print 2> /dev/null | sed 1d | cut -b3- | fzf +m"
+            command = "fzf +m"
         fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:

@@ -11,3 +11,5 @@
 	email = jbernal@unal.edu.co
 [email]
 	name = jbernal@unal.edu.co
+[init]
+	defaultBranch = main

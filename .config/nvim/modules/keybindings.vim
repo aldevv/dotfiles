@@ -484,3 +484,13 @@ cnoreabbrev Sne CocCommand snippets.editSnippets
 
 " this is to exit select mode when using snips
 snoremap <Esc> <c-c>
+
+function! QuicktypeFunc(lang)
+  normal mm
+  let code = execute("!xclip -sel c -o | quicktype --lang " . a:lang)
+  silent put =code
+  normal! 'mjjdd
+endfunction
+
+command! -bang -nargs=? Quicktype call QuicktypeFunc(<q-args>)
+

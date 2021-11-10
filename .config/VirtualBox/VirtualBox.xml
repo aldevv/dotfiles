@@ -9,14 +9,14 @@
   <Global>
     <ExtraData>
       <ExtraDataItem name="GUI/Details/Elements" value="general,system,preview,displayClosed,storage,audio,network,usb,sharedFolders,description"/>
-      <ExtraDataItem name="GUI/GroupDefinitions/" value="n=GLOBAL,m=d200d4e2-6bc0-4f9d-b479-4941d00c13b6"/>
+      <ExtraDataItem name="GUI/GroupDefinitions/" value="n=GLOBAL"/>
       <ExtraDataItem name="GUI/GuestControl/ProcessControlSplitterHints" value="0,"/>
       <ExtraDataItem name="GUI/Input/HostKeyCombination" value="65027,65506"/>
       <ExtraDataItem name="GUI/Input/MachineShortcuts" value="FileManagerPaste=V,GuestAutoresize=Z"/>
-      <ExtraDataItem name="GUI/LastItemSelected" value="m=vagrant-test_default_1634323033194_79396"/>
-      <ExtraDataItem name="GUI/LastWindowPosition" value="20,36,1880,1024,max"/>
-      <ExtraDataItem name="GUI/LogViewerOptions" value="Clear Sans,noFontStyleName,12"/>
-      <ExtraDataItem name="GUI/LogWindowGeometry" value="23,41,924,1016"/>
+      <ExtraDataItem name="GUI/LastItemSelected" value="n=GLOBAL"/>
+      <ExtraDataItem name="GUI/LastWindowPosition" value="0,15,1920,1065,max"/>
+      <ExtraDataItem name="GUI/LogViewerOptions" value="monospace,noFontStyleName,9"/>
+      <ExtraDataItem name="GUI/LogWindowGeometry" value="22,37,926,1021"/>
       <ExtraDataItem name="GUI/MaxGuestResolution" value="any"/>
       <ExtraDataItem name="GUI/RecentFolderHD" value="/home/kanon/.vagrant.d/boxes/kalilinux-VAGRANTSLASH-rolling/2021.1.0/virtualbox"/>
       <ExtraDataItem name="GUI/RecentListHD" value="/home/kanon/.vagrant.d/boxes/kalilinux-VAGRANTSLASH-rolling/2021.1.0/virtualbox/packer-virtualbox-iso-1614012676-disk001.vmdk"/>
@@ -26,15 +26,13 @@
       <ExtraDataItem name="GUI/SoftKeyboardDialogGeometry" value="23,41,924,1016"/>
       <ExtraDataItem name="GUI/SoftKeyboardSelectedColorTheme" value="Custom"/>
       <ExtraDataItem name="GUI/SoftKeyboardSelectedLayout" value="{25867c1e-0455-4303-bf76-1c3ae4cca042}"/>
-      <ExtraDataItem name="GUI/SplitterSizes" value="657,1222"/>
+      <ExtraDataItem name="GUI/SplitterSizes" value="670,1249"/>
       <ExtraDataItem name="GUI/SuppressMessages" value="all"/>
       <ExtraDataItem name="GUI/Toolbar" value="false"/>
       <ExtraDataItem name="GUI/Toolbar/Text" value="false"/>
       <ExtraDataItem name="GUI/Tools/LastItemsSelected" value="Welcome,Snapshots"/>
     </ExtraData>
-    <MachineRegistry>
-      <MachineEntry uuid="{d200d4e2-6bc0-4f9d-b479-4941d00c13b6}" src="/home/kanon/.local/share/VirtualBox VMs/vagrant-test_default_1634323033194_79396/vagrant-test_default_1634323033194_79396.vbox"/>
-    </MachineRegistry>
+    <MachineRegistry/>
     <MediaRegistry>
       <HardDisks>
         <HardDisk uuid="{ab3aa936-e2e7-4139-b7c8-9afc0836409e}" location="/home/kanon/.vagrant.d/boxes/kalilinux-VAGRANTSLASH-rolling/2021.1.0/virtualbox/packer-virtualbox-iso-1614012676-disk001.vmdk" format="VMDK" type="Normal">

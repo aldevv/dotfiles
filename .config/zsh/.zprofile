@@ -35,7 +35,7 @@ export CLASS="$MASTER/Classes"
 export LEARN="$MASTER/Learn"
 export VOLUMES="$MASTER/Volumes"
 export GAMES="$MASTER/Games"
-export DEBUG="$MASTER/Debug"
+export PLAYGROUND="$MASTER/Playground"
 export REMOTES="$MASTER/Remotes"
 export BACKUPS="$HOME/.local/share/.backups"
 export PROGRAMS="$HOME/.local/programs"
@@ -152,7 +152,7 @@ export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:${PATH}"
 export DISPLAY=:0
 
 #fzf
-export FZF_COMPLETION_TRIGGER='**'
+export FZF_COMPLETION_TRIGGER='º'
 # Options to fzf command
 # export FZF_DEFAULT_COMMAND="find * -type f -not -path "
 # export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
@@ -160,10 +160,11 @@ export FZF_COMPLETION_TRIGGER='**'
 # not official env variables
 export RG_IGNORE_FILE="$XDG_CONFIG_HOME/rg/.rgignore"
 export RG_DEFAULT_FOR_FZF="rg --files --hidden --no-heading --smart-case --follow --ignore-file $RG_IGNORE_FILE  --"
-export FD_DEFAULT_FOR_FZF="fd  --type f --hidden --follow"
+export FD_DEFAULT_FOR_FZF="fd --type f --follow -uuu"
 
-[[ -x $(command -v rg) ]] \
-    && export FZF_DEFAULT_COMMAND=$FD_DEFAULT_FOR_FZF
+export FZF_DEFAULT_COMMAND=$FD_DEFAULT_FOR_FZF \
+# export FZF_DEFAULT_COMMAND=$RG_DEFAULT_FOR_FZF
+# export FZF_DEFAULT_COMMAND='find .'
 
 # export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 # to unhide preview window, change to --preview-window=right:hidden:wrap"

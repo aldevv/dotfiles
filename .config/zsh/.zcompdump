@@ -135,6 +135,7 @@ _comps=(
 'cabal' '_cabal'
 'cal' '_cal'
 'calendar' '_calendar'
+'cargo' '_cargo'
 'cat' '_cat'
 'catchsegv' '_precommand'
 'cc' '_gcc'
@@ -889,6 +890,7 @@ _comps=(
 'pacstrap' '_archinstallscripts'
 'pactl' '_pulseaudio'
 'padsp' '_pulseaudio'
+'pamac' '_pamac'
 'pandoc' '_pandoc'
 'paplay' '_pulseaudio'
 '-parameter-' '_parameter'
@@ -1660,13 +1662,13 @@ bindkey '^[,' _history-complete-newer
 bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
-autoload -Uz _docker-compose _docker _docker-compose _docker _alacritty \
-            _archinstallscripts _autorandr _bluetoothctl _bootctl _bspc \
-            _busctl _bwrap _code _code-oss _coredumpctl \
-            _curl _docker _fd _flatpak _gh \
-            _hostnamectl _journalctl _kernel-install _libinput _localectl \
-            _loginctl _machinectl _mkinitcpio _mpv _networkctl \
-            _nvme _pacman _paru _pass _playerctl \
+autoload -Uz _docker-compose _docker _alacritty _archinstallscripts _autorandr \
+            _bluetoothctl _bootctl _bspc _busctl _bwrap \
+            _cargo _code _code-oss _coredumpctl _curl \
+            _docker _fd _flatpak _gh _hostnamectl \
+            _journalctl _kernel-install _libinput _localectl _loginctl \
+            _machinectl _mkinitcpio _mpv _networkctl _nvme \
+            _pacman _pamac _paru _pass _playerctl \
             _polybar _polybar_msg _pulseaudio _qpdf _rclone \
             _resolvectl _rg _sd_hosts_or_user_at_host _sd_machines _sd_outputmodes \
             _sd_unit_files _snap _systemctl _systemd _systemd-analyze \

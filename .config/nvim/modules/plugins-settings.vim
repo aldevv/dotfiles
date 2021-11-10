@@ -875,6 +875,7 @@ autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.{vim,jsx,json,t
 "
 " let g:neoformat_run_all_formatters = 1
 " Enable alignment globally
+let g:neoformat_only_msg_on_error = 1
 let g:neoformat_basic_format_align = 1
 " Enable tab to spaces conversion globally
 let g:neoformat_basic_format_retab = 1
@@ -886,15 +887,15 @@ let g:neoformat_try_formatprg = 1
 "vvvvvvvvvvvvvvvvv
 augroup fmt
     autocmd!
-    autocmd BufWritePre *.{js,java,cpp,haskell,json,ts,rs,go} :Neoformat
+    autocmd BufWritePre *.{js,java,cpp,haskell,json,ts,rs,go,html} :Neoformat
 augroup END
 
 function FormatSelector() abort
   let l:special_cases = ['py']
   if index(l:special_cases, g:extension) >= 0 " si esta en el arreglo
-    nmap <silent><leader>cp <Plug>(coc-format)
+    nmap <silent><leader>cf <Plug>(coc-format)
   else
-    nmap <silent><Leader>cp :Neoformat<cr>
+    nmap <silent><Leader>cf :Neoformat<cr>
   endif
 endfunction
 call FormatSelector()
@@ -925,6 +926,7 @@ let g:neoformat_javascript_prettier = {
             \ 'args': ['--stdin-filepath','"%:p"','--print-width','90', '--no-semi'],
             \ 'replace': 0,
             \ 'stdin': 1,
+            \ 'try_node_exe': 1,
             \ }
 let g:neoformat_enabled_javascript = ['prettier']
 
@@ -943,6 +945,30 @@ let g:neoformat_cpp_clangformat = {
             \ 'stdin': 1,
             \ }
 let g:neoformat_enabled_cpp = ['clangformat']
+
+let g:neoformat_html_jsbeautify = {
+            \ 'exe': 'js-beautify',
+            \ 'stdin': 1,
+            \ 'try_node_exe': 1,
+            \ }
+
+let g:neoformat_html_prettier = {
+            \ 'exe': 'prettier',
+            \ 'args': ['--stdin-filepath','"%:p"','--print-width','90', '--no-semi'],
+            \ 'replace': 0,
+            \ 'stdin': 1,
+            \ 'try_node_exe': 1,
+            \}
+
+let g:neoformat_css_prettier = {
+            \ 'exe': 'prettier',
+            \ 'args': ['--stdin-filepath','"%:p"','--print-width','90', '--no-semi'],
+            \ 'replace': 0,
+            \ 'stdin': 1,
+            \ 'try_node_exe': 1,
+            \}
+let g:neoformat_enabled_html = ['prettier']
+let g:neoformat_enabled_css = ['prettier']
 
 "rust
 " if !executable('rustfmt-nightly') && $USER != 'root'
@@ -1077,7 +1103,7 @@ let g:closetag_shortcut = '>'
 " enable just for desired filetypes
 let g:user_emmet_install_global = 0
 autocmd BufReadPre *.{html,css,js,jsx,ts} EmmetInstall
-let g:user_emmet_leader_key='<C-Y>'
+" let g:user_emmet_leader_key='<C-Y>'
 
 let g:user_emmet_expandabbr_key = '€'
 "  let g:user_emmet_expandword_key = '<C-y>;'

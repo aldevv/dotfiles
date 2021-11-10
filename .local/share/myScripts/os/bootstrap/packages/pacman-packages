@@ -28,6 +28,7 @@ fzf
 docker
 docker-compose
 fd
+rust
 chromium
 github-cli
 

@@ -2,12 +2,13 @@
 h       ~
 uu      $REMOTES
 ug      $REMOTES/ugd
+uw      $PLAYGROUND/SSH
 wo      $WORK/API/
-wO      $WORK/../covidalert_new/
+wO      $WORK/../local/covidalert-back/
 bk      $BOOKS
 ba      $BACKUPS
 cc      $CLASS/2021-2
-cP      $CLASS/2021-2/Metodología de investigación/ensayos/ensayo 1/articulos
+c1      $CLASS/2021-2/Metodología de investigación/ensayos/ensayo 2/articulos
 ci      $CLASS/2021-1/ISII
 cG      $CLASS/2021-1/GERENCIA
 cD      $CLASS/2021-1/DBII
@@ -37,7 +38,7 @@ d       ~/Documents
 pp      ~/Pictures
 vv      ~/Videos
 Mm      ~/Master
-Md      ~/Master/Debug
+Md      ~/Master/Playground
 Ml      ~/Master/Learn
 Mp      $PROJECTS
 Mv      $VOLUMES

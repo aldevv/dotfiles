@@ -410,7 +410,6 @@
     "vsicons.dontShowNewVersionMessage": true,
     "workbench.colorCustomizations": {},
     "explorer.confirmDelete": false,
-    "workbench.statusBar.visible": true,
     "[latex]": {},
     "latex-workshop.view.pdf.viewer": "tab",
     // "cSpell.language": "es",
@@ -626,7 +625,6 @@
         "Conceal": "vim",
         "Substitute": "vim"
     },
-    "window.menuBarVisibility": "toggle",
     "gruvboxMaterial.darkContrast": "hard",
     "vscode-neovim.mouseSelectionStartVisualMode": true,
     "vscode-neovim.useCtrlKeysForInsertMode": false,
@@ -637,6 +635,10 @@
             "filenamePattern": "*.ipynb"
         }
     ],
-    "workbench.activityBar.visible": false,
+    "editor.suggest.showStatusBar": true,
+    "problems.showCurrentInStatus": true,
+    "window.menuBarVisibility": "visible",
+    "remote.SSH.configFile": "~/.ssh/config",
+    "remote.SSH.showLoginTerminal": true,
 
 }
