@@ -2,8 +2,9 @@
 ##==============
 # WORK
 #==============
-alias mongodumpwork='ssh HORUS_BACKEND "mongodump -d VT  --archive" > mongo_dump_10.2021.dump'
-alias mongorestorework='dkce mongo-dump "mongorestore -d VT --archive" < mongo_dump_10.2021.dump '
+alias mongodumpwork='ssh HORUS_BACKEND "mongodump -d VT  --archive" > .misc/backups/mongo_dump_11.2021.dump'
+# need to use volume, not finishing
+# alias mongorestorework='docker-compose exec mongo mongorestore -d VT --archive < .misc/backups/mongo_dump_11.2021.dump'
 
 ##==============
 # MISC
@@ -23,7 +24,6 @@ alias wireshark="sudo wireshark"
 alias vid="neovide"
 alias _v="sudo nvim"
 alias cfh="_v /etc/hosts"
-alias postman="$PROGRAMS/Postman/Postman"
 alias NF="awk -F',' '{print NF;exit}'"
 alias srcp=". $ZDOTDIR/.zprofile"
 alias srcz=". $ZDOTDIR/.zshrc"
@@ -33,7 +33,6 @@ alias va="pipenv shell"
 alias sshconfig="man ssh_config"
 alias picomr="DISPLAY=':0' picom -b --experimental-backend"
 alias robo="$PROGRAMS/robo3t-1.4.4-linux-x86_64-e6ac9ec/bin/robo3t"
-alias post="$PROGRAMS/Postman/Postman"
 alias installNvm="curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | zsh"
 alias pitr="nvim scp://pi//etc/transmission-rss.conf"
 alias addTr="ssh pi transmission-cli $(xsel -b)"
@@ -400,7 +399,6 @@ alias hig="history | grep -i" hi="history"
 alias wtf='dmesg'
 alias onoz='cat /var/log/errors.log'
 alias :3='echo'
-alias tldr='less'
 alias alwayz='tail -f'
 
 alias icanhas='mkdir'
@@ -477,7 +475,32 @@ function git_main_branch() {
 #
 # Aliases
 # (sorted alphabetically)
-#
+
+
+
+alias gF='git flow'
+alias gFf='git flow feature'
+alias gFfs='git flow feature start'
+alias gFfp='git flow feature publish'
+alias gFfP='git flow feature pull'
+alias gFft='git flow feature track'
+alias gFff='git flow feature finish'
+
+alias gFr='git flow release'
+alias gFrs='git flow release start'
+alias gFrp='git flow release publish'
+alias gFrt='git flow release track'
+alias gFrf='git flow release finish'
+
+alias gFh='git flow hotfix'
+alias gFh='git flow hotfix start'
+alias gFh='git flow hotfix finish'
+
+alias gFss='git flow support start'
+alias gFsf='git flow support finish'
+
+alias gFbs='git flow bugfix start'
+alias gFbf='git flow bugfix finish'
 
 alias g='git'
 
@@ -538,6 +561,11 @@ alias gcp='git cherry-pick'
 alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
 alias ggcs='git commit -S'
+
+gcL() {
+    repo="$1"
+    git clone git@github.com:$1
+}
 
 alias gd='git diff'
 alias gdca='git diff --cached'

@@ -1,6 +1,6 @@
 .npm
 .cache
-.git
+.git/*
 *.class
 .icons
 ftplugin/keymap.c.vim'
@@ -10,3 +10,4 @@ undodir
 nvim/backups
 plugged/*
 *~
+__pycache*

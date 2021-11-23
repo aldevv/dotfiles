@@ -23,6 +23,7 @@ fcitx-qt5
 fcitx-configtool
 fcitx-mozc
 fzf
+tldr
 
 # misc
 docker
@@ -35,3 +36,5 @@ github-cli
 # aur
 libxft-bgra-git
 xidlehook
+ngrok
+gitflow-avh
