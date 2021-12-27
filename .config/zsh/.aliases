@@ -2,9 +2,14 @@
 ##==============
 # WORK
 #==============
-alias mongodumpwork='ssh HORUS_BACKEND "mongodump -d VT  --archive" > .misc/backups/mongo_dump_11.2021.dump'
-# need to use volume, not finishing
-# alias mongorestorework='docker-compose exec mongo mongorestore -d VT --archive < .misc/backups/mongo_dump_11.2021.dump'
+# alias mongodumpwork='ssh HORUS_BACKEND "mongodump -d VT  --archive" >'
+alias mongodumpwork='ssh HORUS_TESTING "mongodump -u mongo-root --archive" >'
+alias mongorestorework='docker exec -i api-mongo-1 mongorestore -d VT --archive <'
+mongoupdatedb() {
+    # password is $2
+    echo $2 | mongodumpwork $1 && mongorestorework $1
+}
+# alias mongorestorework='docker-compose exec mongo mongorestore -d VT --archive < .misc/backups/mongo_dump_11_29.2021.dump'
 
 ##==============
 # MISC
@@ -39,6 +44,17 @@ alias addTr="ssh pi transmission-cli $(xsel -b)"
 alias serve="rclone serve dlna --addr=:9092 --name=HaganeMedia $1"
 alias cpP="pwd | xsel -b"
 
+
+# TMUX
+alias tm="tmux" # attach
+alias tmls="tmux ls" # list sessions
+alias tmA="tmux a -t" # attach
+alias tmn="tmux new -s"
+alias tma="tmux new -A -s" # attach or create new one
+alias tmk="tmux kill-server"
+alias tmK="tmux list-keys"
+# for remote connections
+alias fixtmux="echo 'set -g default-terminal \"screen-256color\"  | xsel -b"
 cpF (){
 cat $1 | xsel -b
 }
@@ -1115,7 +1131,7 @@ function dkmd {
 
 # Docker
 alias dk='docker '
-alias dkcat='bat Dockerfile'
+alias dk.='bat Dockerfile'
 alias dka='docker attach '
 alias dkb='docker build '
 alias dkd='docker diff '
@@ -1271,9 +1287,10 @@ alias dkmv='docker-machine version '
 alias dkmS='docker-machine stop '
 
 # Docker Compose (c)
-alias dkccat='bat docker-compose.yml'
+alias dkcl.='bat docker-compose.local.yml'
+alias dkc.='bat docker-compose.yml'
 alias dkc='docker-compose '
-alias dkcc='docker-compose config '
+alias dkcC='docker-compose config '
 alias dkcb='docker-compose build '
 alias dkcB='docker-compose build --no-cache '
 alias dkcd='docker-compose down '
@@ -1296,13 +1313,17 @@ alias dkcsc='docker-compose scale '
 alias dkcx='docker-compose restart '
 alias dkcu='docker-compose up '
 alias dkcU='docker-compose up -d '
-alias dkcUl='docker-compose -f docker-compose.local.yml up -d '
 alias dkcv='nvim docker-compose.yml '
 alias dkcS='docker-compose stop '
 
 alias dkcz='docker-compose down && docker compose up -d '
 alias dkcR='docker-compose build && docker compose down && docker compose up -d '
 
+alias dkcul='docker-compose -f docker-compose.local.yml up'
+alias dkcUl='docker-compose -f docker-compose.local.yml up -d'
+alias dkcDl='docker-compose -f docker-compose.local.yml down -v'
+alias dkcul='docker-compose -f docker-compose.local.yml down'
+alias dkcel='docker-compose -f docker-compose.local.yml exec'
 
 dkcue() {
     docker-compose --env-file=$1 up ${@:2}

@@ -6,6 +6,8 @@
 	hide = update-index --assume-unchanged
     unhide = update-index --no-assume-unchanged
 	hidden = ! git ls-files -v | grep '^h' | cut -c3-
+	signing = key
+	signingkey = F2BC4837D3501299
 [author]
 	name = Juan Alejandro Bernal
 	email = jbernal@unal.edu.co

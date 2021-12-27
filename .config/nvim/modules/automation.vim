@@ -38,7 +38,7 @@ endif
     autocmd BufWritePost,CursorHold,CursorHoldI *.tex :silent call CompileTex()
 
 " auto compile markdown
-    autocmd BufWritePost *.md :silent call CompileMd()
+  autocmd BufWritePost *.md :silent call CompileMd()
 
     function CompileTex()
         :w | silent Dispatch! latexmk -pdf %

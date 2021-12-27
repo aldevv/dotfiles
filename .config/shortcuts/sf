@@ -5,15 +5,15 @@ ug      $REMOTES/ugd
 uw      $PLAYGROUND/SSH
 wo      $WORK/API/
 wO      $WORK/../local/covidalert-back/
+ws      $WORK/../server/
 bk      $BOOKS
 ba      $BACKUPS
 cc      $CLASS/2021-2
-c1      $CLASS/2021-2/Metodología de investigación/ensayos/ensayo 3
+c1      $CLASS/2021-2/Metodología de investigación/propuesta/resources
 ci      $CLASS/2021-2/io2
 ll      $LEARN
 lh      $LEARN/Hack
 tt      $TRASH
-tm      ~/.cache/tmp
 T       $HOME/Downloads/torrents
 sk      $SUCKLESS
 bkl      $BOOKS/LN
@@ -45,7 +45,7 @@ Mw      $WORK
 wa      $WALL
 wi      $WIKI
 wp      $WIKI/personal
-ws      $WIKI/cheatsheets
+wS      $WIKI/cheatsheets
 mm      ~/Music
 lo      ~/.local
 re      /etc

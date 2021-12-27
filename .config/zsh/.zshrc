@@ -80,6 +80,8 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # # in archlinux put the archlinux plugin!
 # docker adds completion for docker commands, same docker compose
+##set history size
+export HISTSIZE=7000
 export HISTFILE="$ZDOTDIR/.zsh_history"
 # plugins=(copybuffer dirhistory jsontools)
 plugins=(
@@ -237,6 +239,17 @@ _fzf_compgen_dir() {
 [[ -d $PROGRAMS/zsh-plugins/zsh-autosuggestions ]] \
   && . $PROGRAMS/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
+
+.e(){
+# load .env file or any other file
+  file=$1
+  [ -z $file ] && file=".env"
+  zsh -c "set -o allexport; source $file; echo 'loaded'; set +o allexport; zsh -i"
+}
+
+.ec(){
+  bat .env
+  }
 # autosuggestions keybindings
     # autosuggest-accept: Accepts the current suggestion.
     # autosuggest-execute: Accepts and executes the current suggestion.

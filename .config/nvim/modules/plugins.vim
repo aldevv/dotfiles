@@ -39,7 +39,8 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'junegunn/goyo.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug  'alvan/vim-closetag'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs' old
+Plug 'LunarWatcher/auto-pairs'
 
 " BUG with lazyredraw!
 Plug 'rhysd/clever-f.vim'
@@ -115,6 +116,12 @@ Plug 'c-brenn/fuzzy-projectionist.vim'
 " MARKDOWN
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" pending
+" hop.nvim
+" refactor.nvim
+" harpoon.nvim
 " TODO check these 3!!
 " https://github.com/kristijanhusak/vim-dadbod-ui
 call plug#end()

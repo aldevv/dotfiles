@@ -417,7 +417,6 @@ endf
 "====================
 " ABBREVIATIONS
 "====================
-autocmd FileType python,java,js,jsx,ts iabbrev <buffer> im import
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> rrt return
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> ffa False
 autocmd FileType python,java,js,jsx,ts iabbrev <buffer> ttr True

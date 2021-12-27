@@ -28,6 +28,7 @@ tldr
 # misc
 docker
 docker-compose
+ctags
 fd
 rust
 chromium
@@ -38,3 +39,4 @@ libxft-bgra-git
 xidlehook
 ngrok
 gitflow-avh
+notion-app

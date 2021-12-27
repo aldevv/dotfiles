@@ -9,7 +9,7 @@
 
 # mode_switch + Return
 alt + space
-    st >/dev/null 2>&1
+    st -e >/dev/null 2>&1
 
 alt + shift + space
     "$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage" --profile "Futuristic" &>/dev/null
@@ -55,7 +55,7 @@ mode_switch + w
     emacs $WIKI/wiki.org
 
 super + r
-    st -e ranger >/dev/null 2>&1
+    st -e  ranger >/dev/null 2>&1
 
 super + R
     st -e sudo ranger >/dev/null 2>&1

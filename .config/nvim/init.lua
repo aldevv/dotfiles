@@ -27,7 +27,7 @@ vim.cmd('source ~/.config/nvim/modules/dependencies.vim')
 --==================
 vim.cmd([[
   source ~/.config/nvim/modules/plugins.vim
-" source ~/.config/nvim/modules/plugins2.vim
+"  source ~/.config/nvim/modules/plugins2.vim
   source ~/.config/nvim/modules/plugins-settings.vim
 ]])
 end

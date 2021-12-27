@@ -34,9 +34,9 @@ esac
 install_ "git"
 awk -i inplace -v user="$user" '/#includedir \/etc\/sudoers.d/{print; print user " ALL=(ALL) NOPASSWD:ALL";next}1' /etc/sudoers
 
-sudo -u $user git clone https://github.com/Akuseru1/Wiki "$WIKI"
-sudo -u $user git clone https://github.com/Akuseru1/suckless-configs "$SUCKLESS"
-sudo -u $user git clone https://github.com/Akuseru1/wallpapers "$HOME/Pictures/Wallpapers"
+sudo -u $user git clone https://github.com/aldevv/Wiki "$WIKI"
+sudo -u $user git clone https://github.com/aldevv/suckless-configs "$SUCKLESS"
+sudo -u $user git clone https://github.com/aldevv/wallpapers "$HOME/Pictures/Wallpapers"
 
 
 #==================

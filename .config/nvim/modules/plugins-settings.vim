@@ -360,7 +360,7 @@ nnoremap <silent> <leader><space>cL       :<C-u>CocFzfListResume<CR>
 "COC
 "=====
 
-nmap <silent><leader>ccp <Plug>(coc-format)
+nmap <silent><leader>ccf <Plug>(coc-format)
 highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
 " \ 'coc-html',
 " \ 'coc-json',
@@ -882,8 +882,11 @@ let g:neoformat_basic_format_retab = 1
 " Enable trimmming of trailing whitespace globally
 let g:neoformat_basic_format_trim = 1
 
-let g:neoformat_try_formatprg = 1
-" let g:neoformat_only_msg_on_error = 1
+" TODO turn on
+" allows to search binary in node_modules
+let g:neoformat_try_node_exe = 1
+let g:neoformat_try_formatprg = 0
+let g:neoformat_only_msg_on_error = 1
 "vvvvvvvvvvvvvvvvv
 augroup fmt
     autocmd!
@@ -891,6 +894,7 @@ augroup fmt
 augroup END
 
 function FormatSelector() abort
+  " use coc-format for python
   let l:special_cases = ['py']
   if index(l:special_cases, g:extension) >= 0 " si esta en el arreglo
     nmap <silent><leader>cf <Plug>(coc-format)
@@ -903,23 +907,12 @@ call FormatSelector()
 "-----------
 " PYTHON
 "-----------
-"'replace': 0 replace the file, instead of updating buffer (default: 0),
 " let g:neoformat_python_black = {
 "             \ 'exe': 'black',
 "             \ 'args': ['-','--quiet','--line-length', '100'],
-"             \ 'replace': 0,
 "             \ 'stdin': 1,
 "             \ }
-" lets you use gq
 " let g:neoformat_enabled_python = ['black', 'autopep8']
-
-"-----------
-" Javascript
-"-----------
-autocmd FileType javascript,typescript let &l:formatprg='prettier --stdin-filepath ' .expand('%'). ' --print-width 90'
-" uses google style
-" autocmd FileType  let &l:formatprg='clang-format --assume-filename=' . expand('%:t'). ' -style=google'
-autocmd FileType java,c,c++ let &l:formatprg='clang-format --assume-filename="' . expand('%:t'). '" -style=file'
 
 let g:neoformat_javascript_prettier = {
             \ 'exe': 'prettier',
@@ -946,19 +939,14 @@ let g:neoformat_cpp_clangformat = {
             \ }
 let g:neoformat_enabled_cpp = ['clangformat']
 
-let g:neoformat_html_jsbeautify = {
-            \ 'exe': 'js-beautify',
-            \ 'stdin': 1,
-            \ 'try_node_exe': 1,
-            \ }
+let g:neoformat_html_htmlbeautify = extend(neoformat#formatters#html#htmlbeautify(),{'try_node_exe': 1})
+let g:neoformat_css_cssbeautify = extend(neoformat#formatters#css#cssbeautify(),{'try_node_exe': 1})
 
-let g:neoformat_html_prettier = {
-            \ 'exe': 'prettier',
-            \ 'args': ['--stdin-filepath','"%:p"','--print-width','90', '--no-semi'],
-            \ 'replace': 0,
-            \ 'stdin': 1,
-            \ 'try_node_exe': 1,
-            \}
+" let g:neoformat_html_htmlbeautify = {
+            " \ 'exe': 'html-beautify',
+            " \ 'stdin': 1,
+            " \ 'try_node_exe': 1,
+            "\ }
 
 let g:neoformat_css_prettier = {
             \ 'exe': 'prettier',
@@ -967,8 +955,44 @@ let g:neoformat_css_prettier = {
             \ 'stdin': 1,
             \ 'try_node_exe': 1,
             \}
-let g:neoformat_enabled_html = ['prettier']
-let g:neoformat_enabled_css = ['prettier']
+" neoformat#formatters#html#htmlbeautify() --> brings the config by default on neoformat
+" if there is a default config, there is no need for let g:neoformat_filetype_formatter = {}
+" if you wish to extend it, use extend(neoformat#formatters#html#htmlbeautify(),{'try_node_exe': 1})
+" try_node_exe looks for binary in node_modules
+let g:neoformat_enabled_html = ['prettier', 'htmlbeautify']
+let g:neoformat_enabled_css = ['prettier', 'cssbeautify']
+
+
+" lets you use gq
+let s:formatprg_for_filetype = {
+      \ "html"       : 'prettier --stdin-filepath ' . expand('%:p') . ' --print-width 90',
+      \ "javascript" : 'prettier --stdin-filepath ' .expand('%'). ' --print-width 90',
+      \ "css"        : 'prettier --stdin-filepath ' .expand('%'). ' --print-width 90',
+      \ "c"          : 'clang-format --assume-filename="' . expand('%:t'). '" -style=file',
+      \ "cpp"        : 'clang-format --assume-filename="' . expand('%:t'). '" -style=file',
+      \ "cmake"      : "cmake-format --command-case lower -",
+      \ "java"       : 'clang-format --assume-filename="' . expand('%:t'). '" -style=file',
+      \ "go"         : "gofmt",
+      \ "json"       : "js-beautify -s 2",
+      \ "python"     : "autopep8 -",
+      \ "sql"        : "sqlformat -k upper -r -",
+      \}
+
+for [ft, fp] in items(s:formatprg_for_filetype)
+  execute "autocmd FileType ".ft." let &l:formatprg=\"".fp."\" | setlocal formatexpr="
+endfor
+
+" \ "css"        : "css-beautify -s 2 --space-around-combinator",
+" \ "javascript" : "js-beautify -s 2",
+" \ "c"          : "uncrustify --l C base kr mb",
+" google style
+" \ "c": 'clang-format --assume-filename=' . expand('%:t'). ' -style=google'
+" \ "cpp"        : "uncrustify --l CPP base kr mb stroustrup",
+"\ "java"       : "uncrustify --l JAVA base kr mb java",
+"=============
+"EDITORCONFIG
+"=============
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 "rust
 " if !executable('rustfmt-nightly') && $USER != 'root'
@@ -1703,13 +1727,32 @@ let g:context_enabled = 0
 "     { n n{ e n
 "     << ()
 
+" testing
+let g:AutoPairsFlyMode = 1
+
 let g:AutoPairsMultilineClose = 0
 let g:AutoPairsMapBS=1
+let g:AutoPairsMapCh = 0 "use pars mapBS better"
+
 autocmd Filetype tex let b:AutoPairs = {"(": ")", "[": "]"}
-let g:AutoPairsMapCh = '<c-h>'
+" check the docs g:AutoPairsSingleQuotePrefixGroup
+ let g:AutoPairsSingleQuoteExpandFor = "fbr" " they are not gonna mess much in english for f''
+let g:AutoPairsDoubleQuoteExpandFor = 'fbr'
+let g:AutoPairsSingleQuoteMode = 2
+let g:AutoPairsDoubleQuoteMode = 2
+"
+" let g:AutoPairsLanguagePairs = {
+        " \ "erlang": {'<<': '>>'},
+        " \ "tex": {'``': "''" },
+        " \ "html": {'<': '>'},
+        " \ 'vim': {'\v(^\s*\zs"\ze|".*"\s*\zs"\ze$|^(\s*[a-zA-Z]+\s*([a-zA-Z]*\s*\=\s*)?)@!(\s*\zs"\ze(\\\"|[^"])*$))': ''},
+        " \ 'rust': {'\w\zs<': '>', '&\zs''': ''},
+        " \ 'php': {'<?': '?>//k]', '<?php': '?>//k]'}
+        " \ }
 let g:AutoPairsShortcutFastWrap = '<a-a>'
-let g:AutoPairsShortcutToggle = '<a-b>'
 let g:AutoPairsShortcutJump = '<a-w>'
+let g:AutoPairsShortcutToggle = '<a-h>'
+let g:AutoPairsShortcutBackInsert = '<a-b>'
 " let g:AutoPairsShortcutBackInsert = '<Nop>'
 
 "
@@ -2154,3 +2197,10 @@ nnoremap <silent> <leader>K :Cheat<cr>
 "===================
 " do F and any movement command for fuzzy search, examgle Fmodels
 
+"===================
+"TREE SITTER
+"===================
+
+set foldlevel=20
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()

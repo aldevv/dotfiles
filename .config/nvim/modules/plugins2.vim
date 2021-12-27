@@ -1,5 +1,6 @@
 call plug#begin()
- Plug 'rhysd/clever-f.vim'
+ " Plug 'rhysd/clever-f.vim'
+Plug 'jiangmiao/auto-pairs'
 " Plug 'airblade/vim-gitgutter' |
 "         \ Plug 'tpope/vim-fugitive'
 
