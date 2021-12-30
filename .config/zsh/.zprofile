@@ -146,30 +146,27 @@ export PIPENV_VENV_IN_PROJECT="enabled"
 
 export PATH="$GOROOT/bin:$CARGO_HOME/bin:${PATH}:$JAVA_HOME/bin:$GOPATH/bin"
 export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:${PATH}"
-#======================================
-#
+#=============================================================================
+
+#====
 #WINE
+#====
 export DISPLAY=:0
 
-#fzf
+#====
+#FZF
+#====
 export FZF_COMPLETION_TRIGGER='º'
-# Options to fzf command
-# export FZF_DEFAULT_COMMAND="find * -type f -not -path "
-# export FZF_DEFAULT_COMMAND="find * -type f build -not \( -path miniconda3/* -prune \) -not \( -path node_modules/* -prune \) "
-
-# not official env variables
-export RG_IGNORE_FILE="$XDG_CONFIG_HOME/rg/.rgignore"
+export RG_IGNORE_FILE="$XDG_CONFIG_HOME/rg/.ignore"
+export FD_IGNORE_FILE="$XDG_CONFIG_HOME/fd/.ignore"
 export RG_DEFAULT_FOR_FZF="rg --files --hidden --no-heading --smart-case --follow --ignore-file $RG_IGNORE_FILE  --"
-export FD_DEFAULT_FOR_FZF="fd --type f --follow -uuu"
+export FD_DEFAULT_FOR_FZF="fd --type f --follow -uuu --ignore-file $FD_IGNORE_FILE"
+export FZF_DEFAULT_COMMAND=$FD_DEFAULT_FOR_FZF
 
-export FZF_DEFAULT_COMMAND=$FD_DEFAULT_FOR_FZF \
-# export FZF_DEFAULT_COMMAND=$RG_DEFAULT_FOR_FZF
-# export FZF_DEFAULT_COMMAND='find .'
-
+export FZF_DEFAULT_OPTS=" --height=15 --layout=reverse --multi --bind=alt-e:up,alt-n:down,+:toggle-preview,ctrl-a:select-all+accept --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) > /dev/null | head -200' --preview-window=right:wrap"
 # export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
 # to unhide preview window, change to --preview-window=right:hidden:wrap"
 # for prompt at the bottom, change layout to "default"
-export FZF_DEFAULT_OPTS=" --height=15 --layout=reverse --multi --bind=alt-e:up,alt-n:down,+:toggle-preview,ctrl-a:select-all+accept --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) > /dev/null | head -200' --preview-window=right:wrap"
 export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type directory"
 # alt r -> cd into selected dir
 # ctrl t -> paste selected into command line(multiple)

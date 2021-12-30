@@ -16,6 +16,7 @@
     "coc-sh": ">=0.6.0",
     "coc-snippets": ">=2.4.6",
     "coc-tag": ">=1.2.5",
+    "coc-tailwindcss": ">=0.7.0",
     "coc-tsserver": ">=1.8.6",
     "coc-vimlsp": ">=0.12.5",
     "coc-vimtex": ">=1.0.4",

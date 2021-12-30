@@ -1,9 +1,9 @@
 call plug#begin()
 
-" basic editor stuff (mkdir, move etc)
-" Plug 'tpope/vim-eunuch'
-" themes
-" Plug 'morhetz/gruvbox'
+" Plug 'tpope/vim-eunuch' basic editor stuff (mkdir, move etc)
+" =============
+" THEMES
+" =============
 Plug 'gruvbox-community/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'crusoexia/vim-monokai'
@@ -17,10 +17,14 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" programming
+" =============
+" PROGRAMMING
+" =============
 Plug 'bkad/CamelCaseMotion'"
+if empty($NOCOC)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
+endif
 Plug 'preservim/tagbar'
 Plug 'AndrewRadev/switch.vim'
 Plug 'sbdchd/neoformat'
@@ -39,66 +43,55 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'junegunn/goyo.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug  'alvan/vim-closetag'
-" Plug 'jiangmiao/auto-pairs' old
 Plug 'LunarWatcher/auto-pairs'
 
-" BUG with lazyredraw!
+" BUG with macros!
 Plug 'rhysd/clever-f.vim'
 
-"essential
+"=============
+" ESSENTIAL
+"=============
 Plug 'wellle/targets.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/ReplaceWithRegister'
-
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  } |
          \ Plug 'Xuyuanp/nerdtree-git-plugin' |
          \ Plug 'ryanoasis/vim-devicons' |
          \ Plug 'vwxyutarooo/nerdtree-devicons-syntax'
+
+" Plug 'vuciv/vim-bujo' " task manager
+" Plug 'tpope/vim-dadbod'
+" Plug 'dbeniamine/cheat.sh-vim'
 " Plug 'tpope/vim-vinegar'
-"" text objects
-Plug 'kana/vim-textobj-user'
 " Plug 'kana/vim-textobj-indent'
+
+"=============
+" TEXT OBJECTS
+"=============
+Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-entire'
 Plug 'bps/vim-textobj-python'
 Plug 'tommcdo/vim-exchange' "
 Plug 'glts/vim-textobj-comment'
 Plug 'AndrewRadev/splitjoin.vim'
-
-" to do operations on visual mode
+Plug 'matze/vim-move' "to do operations on visual mode
 Plug 'vim-scripts/vis'
-Plug 'matze/vim-move'
 Plug 'francoiscabrol/ranger.vim' |
          \ Plug 'rbgrouleff/bclose.vim'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'kassio/neoterm'
-" for commits
-Plug 'junegunn/gv.vim'
-"enables gbrowse and also hub instead of git (if hub installed)
-Plug 'tpope/vim-rhubarb'
-" Plug 'dense-analysis/ale'
+Plug 'junegunn/gv.vim' " for commits
+Plug 'tpope/vim-rhubarb' "enables gbrowse and also hub instead of git (if hub installed)
 Plug 'frazrepo/vim-rainbow'
 Plug 'wincent/vcs-jump'
 Plug 'szw/vim-maximizer'
 Plug 'stefandtw/quickfix-reflector.vim'
-" task manager
-" Plug 'vuciv/vim-bujo'
 Plug 'vim-utils/vim-man'
 Plug 'osyo-manga/vim-brightest'
 Plug 'bfrg/vim-cpp-modern'
-" Plug 'puremourning/vimspector'
-" Plug 'srydell/vim-skeleton'
-"  Plug 'akuseru1/vim-skeleton'
-" Plug 'SirVer/ultisnips'
-
-"FUN STUFF"
-" needs neovim 0.5
-if has('nvim-0.5.0')
-Plug 'ThePrimeagen/vim-apm'
-Plug 'ThePrimeagen/vim-be-good'
-endif
 Plug 'KabbAmine/zeavim.vim'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter' |
@@ -108,23 +101,24 @@ Plug 'vim-test/vim-test'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-dotenv'
-" Plug 'tpope/vim-dadbod'
-" Plug 'dbeniamine/cheat.sh-vim'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-cheat.sh'
 Plug 'c-brenn/fuzzy-projectionist.vim'
-" MARKDOWN
-Plug 'godlygeek/tabular'
+Plug 'godlygeek/tabular' " for markdown
 Plug 'plasticboy/vim-markdown'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+if !empty(glob("$XDG_CONFIG_HOME/nvim/modules/lua_plugins.vim"))
+    source $XDG_CONFIG_HOME/nvim/modules/lua_plugins.vim
+endif
+call plug#end()
+
 " pending
 " hop.nvim
 " refactor.nvim
 " harpoon.nvim
 " TODO check these 3!!
 " https://github.com/kristijanhusak/vim-dadbod-ui
-call plug#end()
 " CocSearch substitute https://github.com/dyng/ctrlsf.vim
 
 " for fcitx (when writting in jap)

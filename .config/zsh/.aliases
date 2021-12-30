@@ -1,4 +1,10 @@
 #!/bin/zsh
+alias forthelols="while [ 1 ]; do echo 'apt list | wc -l' | lolcat; done"
+
+activateVerified() {
+git config --global user.signingkey $1
+git config --global commit.gpgsign true
+}
 ##==============
 # WORK
 #==============
@@ -24,6 +30,7 @@ getpid() {
     pidof $1 | cut -d' ' -f1
 }
 
+alias Nvim="NOCOC='true' nvim"
 alias uuid='uui=$(python -c "import uuid; print(uuid.uuid4())"); echo $uui | xsel -b; echo $uui '
 alias wireshark="sudo wireshark"
 alias vid="neovide"

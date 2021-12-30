@@ -8,40 +8,50 @@ vim.cmd('let IS_MINE=isdirectory($SUCKLESS)')
 --==================
 -- SETTINGS
 --==================
-vim.cmd('source ~/.config/nvim/modules/settings.vim')
+vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/settings.vim')
 
 --==================
 -- KEYBINDINGS
 --==================
-
-vim.cmd('source ~/.config/nvim/modules/keybindings.vim')
-
-if (vim.fn.getenv('USER') ~= 'root') then
+vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/keybindings.vim')
+if (os.getenv('USER') == 'root') then
+  vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/appearance.vim')
+  vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/automation.vim')
+  return
+end
 --===================
 -- DEPENDENCIES
 --===================
-vim.cmd('source ~/.config/nvim/modules/dependencies.vim')
+vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/dependencies.vim')
 
 --==================
--- PLUGINS SETTINGS
+-- PLUGINS
 --==================
+if (os.getenv("DEBUG")) then
 vim.cmd([[
-  source ~/.config/nvim/modules/plugins.vim
-"  source ~/.config/nvim/modules/plugins2.vim
-  source ~/.config/nvim/modules/plugins-settings.vim
+  source $XDG_CONFIG_HOME/nvim/modules/plugins2.vim
+]])
+else
+vim.cmd([[
+  source $XDG_CONFIG_HOME/nvim/modules/plugins.vim
+  source $XDG_CONFIG_HOME/nvim/modules/plugins-settings.vim
 ]])
 end
+
+
+if (os.getenv('NOCOC')) then
+  require("lua-plugins-settings")
+end
+
 --==================
 -- APPEARANCE
 --==================
-
-
-vim.cmd('source ~/.config/nvim/modules/appearance.vim')
+vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/appearance.vim')
 
 --==================
 -- AUTOMATION
 --==================
-vim.cmd('source ~/.config/nvim/modules/automation.vim')
+vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/automation.vim')
 
 --====================================================
 -- create your own text objects
@@ -61,6 +71,4 @@ vim.cmd('source ~/.config/nvim/modules/automation.vim')
 -- :verbose imap <leader>
 -- :verbose nmap <localleader>
 -- :verbose xmap <leader>
---
---
 -- Use Start! to run programs, and Dispatch to compile them

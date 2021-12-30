@@ -7,7 +7,7 @@
     unhide = update-index --no-assume-unchanged
 	hidden = ! git ls-files -v | grep '^h' | cut -c3-
 	signing = key
-	signingkey = F2BC4837D3501299
+	signingkey = B7A9B5574B12E12F271D6596F2BC4837D3501299
 [author]
 	name = Juan Alejandro Bernal
 	email = jbernal@unal.edu.co
@@ -15,3 +15,5 @@
 	name = jbernal@unal.edu.co
 [init]
 	defaultBranch = main
+[commit]
+	gpgsign = true
