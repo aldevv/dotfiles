@@ -97,6 +97,18 @@ function! s:syntax_query() abort
 endfunction
 command! SyntaxQuery call s:syntax_query()
 
+"================
+" FORMATTING
+"================
+"
+" autocmd FileType python setlocal formatprg=black\ -\ \
+"             \--quiet\ \
+"             \--line-length\ 100
+
+autocmd FileType python setlocal formatprg=autopep8
+
+
+
 "===============
 " FOLDING
 "===============
@@ -166,22 +178,14 @@ function! FoldForVim()
     endif
 endfunction
 
-autocmd FileType java setlocal foldmethod=expr foldexpr=FoldForJava()
-autocmd FileType python setlocal foldmethod=expr foldexpr=FoldForPython()
-autocmd FileType javascript setlocal foldmethod=expr foldexpr=FoldForJavascript()
-autocmd FileType vim setlocal foldmethod=expr foldexpr=FoldForVim()
-autocmd FileType c,cpp setlocal foldmethod=syntax
 
-
-"================
-" FORMATTING
-"================
-"
-" autocmd FileType python setlocal formatprg=black\ -\ \
-"             \--quiet\ \
-"             \--line-length\ 100
-
-autocmd FileType python setlocal formatprg=autopep8
+if empty(getenv('NOCOC'))
+  autocmd FileType java setlocal foldmethod=expr foldexpr=FoldForJava()
+  autocmd FileType python setlocal foldmethod=expr foldexpr=FoldForPython()
+  autocmd FileType javascript setlocal foldmethod=expr foldexpr=FoldForJavascript()
+  autocmd FileType vim setlocal foldmethod=expr foldexpr=FoldForVim()
+  autocmd FileType c,cpp setlocal foldmethod=syntax
+endif
 
 
 

@@ -1930,14 +1930,3 @@ nnoremap <silent> <leader>K :Cheat<cr>
 "===================
 " do F and any movement command for fuzzy search, examgle Fmodels
 
-"===================
-"TREE SITTER
-"===================
-
-set foldlevel=20
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-
-
-
-

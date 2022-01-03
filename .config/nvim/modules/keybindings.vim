@@ -229,13 +229,6 @@ nmap <leader>gp "+gp
 " copy default register into the main clipboard
 " nnoremap <silent> <leader>. :let @+ = @"<cr>
 
-"fold
-noremap ze zk
-noremap zn zj
-noremap zD zE
-noremap z[ [z
-noremap z] ]z
-
 "useful
 nnoremap Y y$
 nnoremap V v$

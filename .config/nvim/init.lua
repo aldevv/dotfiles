@@ -40,8 +40,10 @@ end
 
 
 if (os.getenv('NOCOC')) then
-  require("lua-plugins-settings")
+  require("lsp")
+  require("experimental")
 end
+require("lua-plugins-settings")
 
 --==================
 -- APPEARANCE

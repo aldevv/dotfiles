@@ -1,11 +1,14 @@
-syntax enable
-" disable compatibility to vi, to activate vim improvements
-set nocompatible
+if empty(getenv('NOCOC'))
+  " TODO treesitter has an option to enable this, remove it once the migration is done
+  syntax enable
+endif
+set nocompatible " disable compatibility to vi, to activate vim improvements
 if executable('zsh')
   set shell=/bin/zsh
 endif
 let mapleader = "\<Space>"
 let maplocalleader="\<BS>"
+
 "===================
 " WHICHKEY
 "===================
@@ -48,28 +51,13 @@ filetype plugin indent on
 filetype plugin on
 " set lazyredraw
 " set signcolumn=yes
-" set foldmethod=indent
 
 let &t_8f = '\<esc>[38;2;%lu;%lu;%lum'
 let &t_8b = '\<esc>[48;2;%lu;%lu;%lum'
 set textwidth=95
-" set nofoldenable
-" set foldmethod=indent
 set viewoptions=folds,cursor
 set sessionoptions=folds
 let g:extension = expand('%:e')
-" set foldmethod=manual
-" autocmd FileType * set foldmethod=syntax
-" autocmd FileType python set foldmethod=indent
-
-
-if has('folding')
-  " set nofoldenable
-  set foldenable
-  " set foldmethod=indent               " not as cool as syntax, but faster
-  set foldlevelstart=99               " start unfolded
-  set foldnestmax=5
-endif
 
 set list                              " show whitespace
 set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
@@ -79,17 +67,16 @@ set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION M
 set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
 set listchars+=trail:•
 
+if has('folding')
+  set foldenable
+  set foldlevelstart=99               " start unfolded
+  set foldnestmax=5
+endif
 
-" autocmd FileType vim set foldmethod=marker
-" set foldlevel=4
-" set foldlevelstart=2
-augroup AutoSaveFolds
+augroup remember_folds
   autocmd!
-  " view files are about 500 bytes
-  " bufleave but not bufwinleave captures closing 2nd tab
-  " nested is needed by bufwrite* (if triggered via other autocmd)
-  autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
-  autocmd BufWinEnter ?* silent! loadview
+  autocmd BufWinLeave *.* mkview
+  autocmd BufWinEnter *.* silent! loadview
 augroup END
 
 " better folding style
@@ -112,13 +99,10 @@ function! MyFoldText() abort
   return l:first . concatspaces . l:lines
   " return s:raquo . s:middot . s:middot . l:lines . l:dashes . ': ' . l:first
 endfunction
-
-set inccommand=split
 set foldtext=MyFoldText()
-" set wrap
-set formatoptions=qrn1
 
-" set foldcolumn=1
+set formatoptions=qrn1
+set inccommand=split
 set wildmode=longest,list,full
 set expandtab "always use spaces and not tabs
 set noerrorbells
