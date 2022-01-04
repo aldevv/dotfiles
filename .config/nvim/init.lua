@@ -28,22 +28,22 @@ vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/dependencies.vim')
 -- PLUGINS
 --==================
 if (os.getenv("DEBUG")) then
-vim.cmd([[
-  source $XDG_CONFIG_HOME/nvim/modules/plugins2.vim
-]])
+  vim.cmd([[
+    source $XDG_CONFIG_HOME/nvim/modules/plugins2.vim
+  ]])
 else
-vim.cmd([[
-  source $XDG_CONFIG_HOME/nvim/modules/plugins.vim
-  source $XDG_CONFIG_HOME/nvim/modules/plugins-settings.vim
-]])
+  vim.cmd([[
+    source $XDG_CONFIG_HOME/nvim/modules/plugins.vim
+    source $XDG_CONFIG_HOME/nvim/modules/plugins-settings.vim
+  ]])
 end
 
 
 if (os.getenv('NOCOC')) then
   require("lsp")
-  require("experimental")
+  require("core")
+  require("config")
 end
-require("lua-plugins-settings")
 
 --==================
 -- APPEARANCE

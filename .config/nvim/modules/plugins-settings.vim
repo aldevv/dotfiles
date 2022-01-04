@@ -27,6 +27,7 @@ let color_options = {
             \}
 " let current_colorscheme = color_options["ayu"]
 let current_colorscheme = color_options["gruvbox"]
+
 if current_colorscheme == 0
     let g:gruvbox_invert_selection = '0'
     let g:airline_theme='gruvbox'
@@ -39,11 +40,13 @@ let g:gruvbox_contrast_dark = "hard"
     " fix colors for highlighting spelling mistakes
     autocmd ColorScheme gruvbox hi! SpellBad cterm=reverse ctermfg=214 ctermbg=235 gui=reverse guifg=#fabd2f guibg=#282828
 endif
+
 if current_colorscheme == 1
     colorscheme dracula
     let g:dracula_italic = 1
     let g:airline_theme='dracula'
 endif
+
 if current_colorscheme == 2
     colorscheme monokai
     let g:airline_theme='monokai'
@@ -57,6 +60,7 @@ if current_colorscheme == 3
     " lightline
     " let g:lightline = { 'colorscheme': 'onehalfdark' }
 endif
+
 if current_colorscheme == 4
     let ayu_comment_italic=0 " enable italic for comments
     let ayu_string_italic=0  " enable italic for strings
@@ -68,6 +72,7 @@ if current_colorscheme == 4
     let g:airline_theme='ayu'
     colorscheme ayu
 endif
+
 set background=dark
 " ==============
 " UndoTreeToggle
@@ -265,16 +270,11 @@ function RemoveFileUpdateNerdtree(files)
     :NERDTreeRefreshRoot
   endif
 endfunction
-" TODO modify!!, not needed anymore
-let remove_files_command = "rg --files -uu --no-heading --follow --ignore-file=". $RG_IGNORE_FILE." --"
-command! -bang -bar -complete=dir RemoveFiles
-            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(
-            \ {
-            \   'source': remove_files_command,
-            \   'sink': function('RemoveFileUpdateNerdtree'),
-            \   'options': ['--layout=reverse', '--info=inline']
-            \ }), <bang>0)
 
+" TODO modify!!, not needed anymore
+
+let remove_files_command = "rg --files -uu --no-heading --follow --ignore-file=". $RG_IGNORE_FILE." --"
+let remove_dir_command = "fd -t d -H -d 1""
 function RemoveDirUpdateNerdtree(dir)
   exec system('rm -r ' . a:dir)
   if !SpecialWindow()
@@ -284,14 +284,25 @@ function RemoveDirUpdateNerdtree(dir)
     :NERDTreeRefreshRoot
   endif
 endfunction
-let remove_dir_command = "fd -t d -H -d 1""
-command! -bang -bar -complete=dir RemoveDirs
+
+"----------------------------------------------------------------
+command! -bang -bar -nargs=1 -complete=dir RemoveFiles
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(
+            \ {
+            \   'source': remove_files_command,
+            \   'sink': function('RemoveFileUpdateNerdtree'),
+            \   'options': ['--layout=reverse', '--info=inline']
+            \ }), <bang>0)
+
+
+command! -bang -bar -nargs=1 -complete=dir RemoveDirs
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(
             \ {
             \   'source': remove_dir_command,
             \   'sink': function('RemoveDirUpdateNerdtree'),
             \   'options': ['--layout=reverse', '--info=inline']
             \ }), <bang>0)
+"----------------------------------------------------------------
 
 " for ripgrep
 " command! -bang -nargs=* Rgfzf
@@ -601,179 +612,15 @@ autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.{vim,jsx,json,t
 "these 2 only work with real tabs, not expanded tabs"
 "set listchars=tab:┆.,trail:.,extends:>,precedes:<
 "set list
-"====================
-" NEOFORMAT
-"====================
-" let g:neoformat_verbose = 1
-"
-" let g:neoformat_run_all_formatters = 1
-" Enable alignment globally
-let g:neoformat_only_msg_on_error = 1
-let g:neoformat_basic_format_align = 1
-" Enable tab to spaces conversion globally
-let g:neoformat_basic_format_retab = 1
-" Enable trimmming of trailing whitespace globally
-let g:neoformat_basic_format_trim = 1
 
-" TODO turn on
-" allows to search binary in node_modules
-let g:neoformat_try_node_exe = 1
-let g:neoformat_try_formatprg = 0
-let g:neoformat_only_msg_on_error = 1
-"vvvvvvvvvvvvvvvvv
-augroup fmt
-    autocmd!
-    autocmd BufWritePre *.{js,java,cpp,haskell,json,ts,rs,go,html} :Neoformat
-augroup END
+if !empty(glob("$XDG_CONFIG_HOME/nvim/modules/format.vim")) && empty($NOCOC)
+    source $XDG_CONFIG_HOME/nvim/modules/coc.vim
+endif
 
-function FormatSelector() abort
-  " use coc-format for python
-  let l:special_cases = ['py']
-  if index(l:special_cases, g:extension) >= 0 " si esta en el arreglo
-    nmap <silent><leader>cf <Plug>(coc-format)
-  else
-    nmap <silent><Leader>cf :Neoformat<cr>
-  endif
-endfunction
-call FormatSelector()
-" js,java,c,cpp,haskell,json,ts,rs,go
-"-----------
-" PYTHON
-"-----------
-" let g:neoformat_python_black = {
-"             \ 'exe': 'black',
-"             \ 'args': ['-','--quiet','--line-length', '100'],
-"             \ 'stdin': 1,
-"             \ }
-" let g:neoformat_enabled_python = ['black', 'autopep8']
-
-let g:neoformat_javascript_prettier = {
-            \ 'exe': 'prettier',
-            \ 'args': ['--stdin-filepath','"%:p"','--print-width','90', '--no-semi'],
-            \ 'replace': 0,
-            \ 'stdin': 1,
-            \ 'try_node_exe': 1,
-            \ }
-let g:neoformat_enabled_javascript = ['prettier']
-
-
-" \ 'args': ['-assume-filename=' . expand('%:t'), '-style=google'],
-let g:neoformat_java_clangformat = {
-            \ 'exe': 'clang-format',
-            \ 'args': ['-assume-filename="' . expand('%:t').'"', '-style=file'],
-            \ 'stdin': 1,
-            \ }
-let g:neoformat_enabled_java = ['clangformat']
-
-let g:neoformat_cpp_clangformat = {
-            \ 'exe': 'clang-format',
-            \ 'args': ['-assume-filename="' . expand('%:t').'"', '-style=file'],
-            \ 'stdin': 1,
-            \ }
-let g:neoformat_enabled_cpp = ['clangformat']
-
-let g:neoformat_html_htmlbeautify = extend(neoformat#formatters#html#htmlbeautify(),{'try_node_exe': 1})
-let g:neoformat_css_cssbeautify = extend(neoformat#formatters#css#cssbeautify(),{'try_node_exe': 1})
-
-" let g:neoformat_html_htmlbeautify = {
-            " \ 'exe': 'html-beautify',
-            " \ 'stdin': 1,
-            " \ 'try_node_exe': 1,
-            "\ }
-
-let g:neoformat_css_prettier = {
-            \ 'exe': 'prettier',
-            \ 'args': ['--stdin-filepath','"%:p"','--print-width','90', '--no-semi'],
-            \ 'replace': 0,
-            \ 'stdin': 1,
-            \ 'try_node_exe': 1,
-            \}
-" neoformat#formatters#html#htmlbeautify() --> brings the config by default on neoformat
-" if there is a default config, there is no need for let g:neoformat_filetype_formatter = {}
-" if you wish to extend it, use extend(neoformat#formatters#html#htmlbeautify(),{'try_node_exe': 1})
-" try_node_exe looks for binary in node_modules
-let g:neoformat_enabled_html = ['prettier', 'htmlbeautify']
-let g:neoformat_enabled_css = ['prettier', 'cssbeautify']
-
-
-" lets you use gq
-let s:formatprg_for_filetype = {
-      \ "html"       : 'prettier --stdin-filepath ' . expand('%:p') . ' --print-width 90',
-      \ "javascript" : 'prettier --stdin-filepath ' .expand('%'). ' --print-width 90',
-      \ "css"        : 'prettier --stdin-filepath ' .expand('%'). ' --print-width 90',
-      \ "c"          : 'clang-format --assume-filename="' . expand('%:t'). '" -style=file',
-      \ "cpp"        : 'clang-format --assume-filename="' . expand('%:t'). '" -style=file',
-      \ "cmake"      : "cmake-format --command-case lower -",
-      \ "java"       : 'clang-format --assume-filename="' . expand('%:t'). '" -style=file',
-      \ "go"         : "gofmt",
-      \ "json"       : "js-beautify -s 2",
-      \ "python"     : "autopep8 -",
-      \ "sql"        : "sqlformat -k upper -r -",
-      \}
-
-for [ft, fp] in items(s:formatprg_for_filetype)
-  execute "autocmd FileType ".ft." let &l:formatprg=\"".fp."\" | setlocal formatexpr="
-endfor
-
-" \ "css"        : "css-beautify -s 2 --space-around-combinator",
-" \ "javascript" : "js-beautify -s 2",
-" \ "c"          : "uncrustify --l C base kr mb",
-" google style
-" \ "c": 'clang-format --assume-filename=' . expand('%:t'). ' -style=google'
-" \ "cpp"        : "uncrustify --l CPP base kr mb stroustrup",
-"\ "java"       : "uncrustify --l JAVA base kr mb java",
 "=============
 "EDITORCONFIG
 "=============
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-"rust
-" if !executable('rustfmt-nightly') && $USER != 'root'
-"   rustup component add rls rust-analysis rust-src
-" endif
-" autocmd BufWritePre python Neoformat
-"====================
-" PRETTIER AND BLACK
-"====================
-" autocmd BufWritePre *.py :Black
-" autocmd BufWritePre *.js,*.json,*.jsx,*. :Prettier
-"======================
-"black
-"======================
-"
-"(defaults to 0)
-"let g:black_fast = 0
-""(defaults to 88)
-"let g:black_linelength = 88
-"" (defaults to 0)
-"let g:black_skip_string_normalization = 0
-""======================
-""prettier
-""======================
-"" let g:prettier#config#print_width = 'auto'
-"let g:prettier#config#print_width = 95
-""(defaults to ~/.vim/black or ~/.local/share/nvim/black)
-""let g:black_virtualenv ="~/.local/share/nvim/black"
-"" nmap <Leader>p <Plug>(Prettier)
-"nmap <silent><Leader>lp :call Formatting()<cr>
-"" nmap <Leader>lp <Plug>(Prettier)
-
-"function Formatting()
-"    " the [:-2] is to take away the last new line character
-"    let extension = expand('%:e')
-"    if extension =~ '\v(j|t)s'
-"        :execute "normal \<Plug>(Prettier)"
-"        return
-"    else
-"        if extension =~ "py"
-"            echo worked
-"            " :call CocAction('format')
-"            :Black
-"            return
-"        endif
-"        :!clear && shellcheck %<CR>
-"    endif
-"endfunction
 
 "=============
 " EASYMOTION
@@ -1461,6 +1308,7 @@ let g:context_enabled = 0
 "     << ()
 
 " testing
+"
 let g:AutoPairsFlyMode = 0
 
 let g:AutoPairsMultilineClose = 0
@@ -1930,3 +1778,12 @@ nnoremap <silent> <leader>K :Cheat<cr>
 "===================
 " do F and any movement command for fuzzy search, examgle Fmodels
 
+"=====================
+" COPILOT
+" ====================
+let g:copilot_enabled  = v:false
+let g:copilot_filetypes = {
+      \'xml': v:false
+      \ }
+imap <silent><script><expr> <C-C> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true

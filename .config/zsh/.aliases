@@ -30,7 +30,9 @@ getpid() {
     pidof $1 | cut -d' ' -f1
 }
 
-alias Nvim="NOCOC='true' nvim"
+alias gv="neovide"
+alias gV="NOCOC=true neovide"
+alias V="NOCOC='true' nvim"
 alias uuid='uui=$(python -c "import uuid; print(uuid.uuid4())"); echo $uui | xsel -b; echo $uui '
 alias wireshark="sudo wireshark"
 alias vid="neovide"
@@ -371,9 +373,6 @@ fi
 
 
     # rgp="ruby grep_pptx.rb"\
-alias V='nvr -o'
-alias Vv='nvr -O'
-alias Vt='nvr --remote-tab'
 alias su="su -" # the - lets you have env variables in root
     # sudo="sudo -E"\
 
@@ -725,7 +724,6 @@ alias gpf='git push --force'
 alias gpoat='git push origin --all && git push origin --tags'
 # alias gpu='git push upstream'
 alias gpv='git push -v'
-alias gv='git --version'
 
 alias gr='git remote'
 alias gra='git remote add'

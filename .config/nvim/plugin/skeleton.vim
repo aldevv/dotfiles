@@ -28,30 +28,31 @@ function! s:undo_workaround() abort
   normal! 2u
   nunmap <buffer> u
 endfunction
+
 " for ultisnips
-" function! s:try_insert(skel)
-"   execute 'normal! i_' . a:skel . "\<C-r>=UltiSnips#ExpandSnippet()\<CR>"
-"   if g:ulti_expand_res == 0
-"     silent! undo
-"   endif
-"   return g:ulti_expand_res
-" endfunction
+function! s:try_insert(skel)
+  execute 'normal! i_' . a:skel . "\<C-r>=UltiSnips#ExpandSnippet()\<CR>"
+  if g:ulti_expand_res == 0
+    silent! undo
+  endif
+  return g:ulti_expand_res
+endfunction
 
 " for coc_snippets
-let g:snippet_expanded = 0
-function! s:try_insert(skel)
-    silent execute 'normal! i_' . a:skel . "\<C-r>=<sid>coc_expand()\<cr>"
-    if g:snippet_expanded == 0
-        silent! undo
-    endif
-    return g:snippet_expanded
-endfunction
+" let g:snippet_expanded = 0
+" function! s:try_insert(skel)
+"     silent execute 'normal! i_' . a:skel . "\<C-r>=<sid>coc_expand()\<cr>"
+"     if g:snippet_expanded == 0
+"         silent! undo
+"     endif
+"     return g:snippet_expanded
+" endfunction
 
-function! s:coc_expand()
-    if coc#expandable()
-        let g:snippet_expanded = 1
-        return coc#rpc#request('doKeymap', ['snippets-expand-jump',''])
-    endif
-    let g:snippet_expanded = 0
-    return
-endfunction
+" function! s:coc_expand()
+"     if coc#expandable()
+"         let g:snippet_expanded = 1
+"         return coc#rpc#request('doKeymap', ['snippets-expand-jump',''])
+"     endif
+"     let g:snippet_expanded = 0
+"     return
+" endfunction

@@ -468,8 +468,12 @@ nnoremap <silent><leader>cP :silent call FormatMyCode()<cr>
 autocmd BufNewFile *.cpp,*.c,*.java call FormatMyCode()
 
 function! FormatMyCode()
-  execute '!$APPS/vim/programming/formatCode ' . g:extension .' '. expand('%:p')
-  :CocRestart
+  execute '!$APPS/nvim/programming/formatCode ' . g:extension .' '. expand('%:p')
+  if empty(getenv('NOCOC'))
+    :CocRestart
+  else
+    :LspRestart
+  endif
 endfunction
 
 cnoreabbrev Sne CocCommand snippets.editSnippets

@@ -9,10 +9,9 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'crusoexia/vim-monokai'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 " Plug 'ayu-theme/ayu-vim'
-Plug 'kuntau/ayu-vim'
+" Plug 'kuntau/ayu-vim'
+
 " Plug 'KeitaNakamura/highlighter.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'uiiaoo/java-syntax.vim'
-Plug 'sheerun/vim-polyglot'
 " Plug 'tomasiser/vim-code-dark'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -20,17 +19,23 @@ Plug 'vim-airline/vim-airline-themes'
 " =============
 " PROGRAMMING
 " =============
-Plug 'bkad/CamelCaseMotion'"
-if empty($NOCOC)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'antoinemadec/coc-fzf'
-endif
-Plug 'preservim/tagbar'
-Plug 'AndrewRadev/switch.vim'
-Plug 'sbdchd/neoformat'
-Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+if empty($NOCOC)
+  " formatting 
+  Plug 'sheerun/vim-polyglot'
+  Plug 'uiiaoo/java-syntax.vim'
+  Plug 'bfrg/vim-cpp-modern'
+
+  " lsp
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'antoinemadec/coc-fzf'
+  Plug 'sbdchd/neoformat'
+endif
+
+Plug 'preservim/tagbar'
+Plug 'AndrewRadev/switch.vim' " luasnips will cover this functionality
 Plug 'chengzeyi/fzf-preview.vim'
 Plug 'yggdroot/indentLine'
 " Plug 'jupyter-vim/jupyter-vim'
@@ -53,9 +58,16 @@ Plug 'rhysd/clever-f.vim'
 "=============
 Plug 'wellle/targets.vim'
 Plug 'tpope/vim-repeat'
+Plug 'tommcdo/vim-exchange' "
 Plug 'tpope/vim-surround'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-entire'
+Plug 'bkad/CamelCaseMotion'"
+Plug 'tpope/vim-projectionist'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  } |
          \ Plug 'Xuyuanp/nerdtree-git-plugin' |
          \ Plug 'ryanoasis/vim-devicons' |
@@ -70,11 +82,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  } |
 "=============
 " TEXT OBJECTS
 "=============
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-line'
-Plug 'kana/vim-textobj-entire'
 Plug 'bps/vim-textobj-python'
-Plug 'tommcdo/vim-exchange' "
 Plug 'glts/vim-textobj-comment'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'matze/vim-move' "to do operations on visual mode
@@ -82,7 +90,7 @@ Plug 'vim-scripts/vis'
 Plug 'francoiscabrol/ranger.vim' |
          \ Plug 'rbgrouleff/bclose.vim'
 Plug 'stsewd/fzf-checkout.vim'
-Plug 'kassio/neoterm'
+Plug 'kassio/neoterm' " change to nvim builtin term
 Plug 'junegunn/gv.vim' " for commits
 Plug 'tpope/vim-rhubarb' "enables gbrowse and also hub instead of git (if hub installed)
 Plug 'frazrepo/vim-rainbow'
@@ -91,14 +99,12 @@ Plug 'szw/vim-maximizer'
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'vim-utils/vim-man'
 Plug 'osyo-manga/vim-brightest'
-Plug 'bfrg/vim-cpp-modern'
 Plug 'KabbAmine/zeavim.vim'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter' |
          \ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
 Plug 'vim-test/vim-test'
-Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-dotenv'
 Plug 'RishabhRD/popfix'
@@ -106,13 +112,14 @@ Plug 'RishabhRD/nvim-cheat.sh'
 Plug 'c-brenn/fuzzy-projectionist.vim'
 Plug 'godlygeek/tabular' " for markdown
 Plug 'plasticboy/vim-markdown'
-Plug 'editorconfig/editorconfig-vim'
+Plug 'github/copilot.vim'
 
 if !empty(glob("$XDG_CONFIG_HOME/nvim/modules/lua_plugins.vim"))
     source $XDG_CONFIG_HOME/nvim/modules/lua_plugins.vim
 endif
 call plug#end()
 
+" TODO remove neoterm
 " pending
 " hop.nvim
 " refactor.nvim

@@ -48,6 +48,8 @@ wp      $WIKI/personal
 wS      $WIKI/cheatsheets
 mm      ~/Music
 lo      ~/.local
+los      ~/.local/share
+lob      ~/.local/bin
 re      /etc
 rU      /usr
 rus     /usr/share
