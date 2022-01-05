@@ -8,6 +8,7 @@ if executable('zsh')
 endif
 let mapleader = "\<Space>"
 let maplocalleader="\<BS>"
+" use ñ for text obj?
 
 "===================
 " WHICHKEY

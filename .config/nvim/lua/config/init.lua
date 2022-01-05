@@ -1,4 +1,4 @@
 require('config.settings')
 require('config.keybindings')
 require('config.automation')
-require('config.folding')
+require('config.appearance')

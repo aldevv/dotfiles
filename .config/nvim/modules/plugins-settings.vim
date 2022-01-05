@@ -18,6 +18,8 @@ set pumblend=15
 "try codedark
 "
 "(gruvbox dracula monokai codedark ayu)
+
+if empty(getenv('NOCOC'))
 let color_options = {
             \ "gruvbox":0,
             \ "dracula":1,
@@ -71,6 +73,7 @@ if current_colorscheme == 4
     let ayucolor="dark"   " for dark version of theme
     let g:airline_theme='ayu'
     colorscheme ayu
+endif
 endif
 
 set background=dark
@@ -343,31 +346,6 @@ nnoremap <leader>gda :Diffany<CR>
 " nnoremap <leader>fs :FZFBTags<CR>
 " nnoremap <leader>fc :FClass<CR>
 
-"===========
-" COC-FZF
-" ==========
-" you can fill quickfix window with multiselect
-let g:coc_fzf_preview_toggle_key = ''
-let g:coc_fzf_preview = 'up:50%:hidden'
-let g:coc_fzf_opts = []
-
-"to make the command same as other fzf commands
-" let g:coc_fzf_preview = ''
-
-nnoremap <silent> <leader><space>a :<C-u>CocFzfList<CR>
-nnoremap <silent> <leader><space>cd       :<C-u>CocFzfList diagnostics<CR>
-nnoremap <silent> <leader><space>cD       :<C-u>CocFzfList diagnostics --current-buf<CR>
-nnoremap <silent> <leader><space>cm       :<C-u>CocFzfList commands<CR>
-nnoremap <silent> <leader><leader>ce       :<C-u>CocFzfList extensions<CR>
-nnoremap <silent> <leader><space>cl       :<C-u>CocFzfList location<CR>
-" nnoremap <silent> <leader>cv        :<C-u>CocFzfList outline<CR>
-" nnoremap <silent> <a-n>            :<C-u>CocFzfList outline<CR>
-nnoremap <silent> <leader><space>cS       :<C-u>CocFzfList sources<CR>
-nnoremap <silent> <leader><space>cs       :<C-u>CocFzfList symbols<CR>
-nnoremap <silent> <leader>cS       :<C-u>CocFzfList sources<CR>
-nnoremap <silent> <leader>cs       :<C-u>CocFzfList symbols<CR>
-nnoremap <silent> <leader><space>cL       :<C-u>CocFzfListResume<CR>
-
 "=====
 "COC
 "=====
@@ -622,13 +600,6 @@ endif
 "=============
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-"=============
-" EASYMOTION
-"=============
-let g:Easymotion_do_mapping = 0
-map ¿ <Plug>(easymotion-prefix)
-nmap s <Plug>(easymotion-s)
-let g:EasyMotion_smartcase = 1
 
 " devicons
 " let g:webdevicons_enable = 1
@@ -1113,7 +1084,7 @@ let g:tagbar_map_hidenonpublic = 'h'
 let g:ranger_replace_netrw = 1
 let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0
-nmap <leader>sr :Ranger<cr>
+nmap <leader>or :Ranger<cr>
 
 
 "=========
@@ -1242,7 +1213,8 @@ let g:clever_f_use_migemo = 1
 " BRIGHTEST
 " ==========
 noremap <leader>B :BrightestToggle<cr>
-autocmd Filetype * :BrightestDisable
+"TODO check this one" autocmd Filetype * :BrightestDisable
+
 " let g:brightest#enable_on_CursorHold = 1
 " let g:brightest#enable_clear_highlight_on_CursorMoved = 0
 " highlights all instances of a the word under the cursor in the buffer
@@ -1518,7 +1490,6 @@ let g:ale_linters =  {
 " RAINBOW PARENTHESIS
 "======================
 let g:rainbow_active = 0
-noremap <leader>Tr :RainbowToggle<cr>
 
 "==============
 "VIM-TEST
@@ -1528,11 +1499,11 @@ noremap <leader>Tr :RainbowToggle<cr>
 "and test.vim will automatically try to run the
 "command on the "alternate" test file.
 
-nmap <silent> <leader>tn :TestNearest<CR>
-nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>ts :TestSuite<CR>
-nmap <silent> <leader>tl :TestLast<CR>
-nmap <silent> <leader>tg :TestVisit<CR>
+nmap <silent> <leader>Tn :TestNearest<CR>
+nmap <silent> <leader>Tf :TestFile<CR>
+nmap <silent> <leader>Ts :TestSuite<CR>
+nmap <silent> <leader>Tl :TestLast<CR>
+nmap <silent> <leader>Tg :TestVisit<CR>
 " https://github.com/vim-test/vim-test
 "
 " PROJECTIONIST INTEGRATION                       *test-projectionist*
@@ -1665,9 +1636,11 @@ let g:VcsJumpMode="cwd" "can be buffer
 "===========
 " nnoremap <silent><F3> :MaximizerToggle<CR>
 " vnoremap <silent><F3> :MaximizerToggle<CR>gv
+"
+let g:maximizer_set_default_mapping = 0
 nnoremap <silent><leader>m :MaximizerToggle<CR>
 vnoremap <silent><leader>m :MaximizerToggle<CR>gv
-inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
+" inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
 
 "===========
 " QUICKFIX-REFLECTOR
@@ -1713,13 +1686,6 @@ map <M-.> <Plug>(BujoChecknormal)
 imap <M-.> <Plug>(BujoCheckinsert)
 
 "========================
-" VIM-MAN
-"========================
-" map <leader>k <Plug>(Man) - open man page for word under cursor in a horizontal split
-map <leader>N <Plug>(Vman)
-
-"
-"t========================
 " VIM-PROJECTIONIST
 "========================
 "
@@ -1787,3 +1753,14 @@ let g:copilot_filetypes = {
       \ }
 imap <silent><script><expr> <C-C> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
+"===================
+"DEPRECATED
+"===================
+""=============
+" EASYMOTION
+"=============
+" let g:Easymotion_do_mapping = 0
+" map ¿ <Plug>(easymotion-prefix)
+" nmap s <Plug>(easymotion-s)
+" let g:EasyMotion_smartcase = 1
+

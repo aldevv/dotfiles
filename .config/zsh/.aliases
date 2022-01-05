@@ -776,15 +776,16 @@ is-at-least 2.13 "$(git --version 2>/dev/null | awk '{print $3}')" \
   && alias gsp='git stash push' \
   || alias gsp='git stash save'
 
-alias gsa='git stash apply'
-alias gsc='git stash clear'
-alias gsd='git stash drop'
-alias gsls='git stash list'
-alias gsP='git stash pop'
-alias gss='git stash show --text'
-alias gspu='git stash push --include-untracked'
-alias gstall='git stash --all'
-alias gSu='git submodule update'
+alias gS='git stash'
+alias gSa='git stash apply'
+alias gSc='git stash clear'
+alias gSd='git stash drop'
+alias gSt='git stash list'
+alias gSP='git stash pop'
+alias gSs='git stash show --text'
+alias gSpu='git stash push --include-untracked'
+alias gStall='git stash --all'
+
 alias gsw='git switch'
 alias gswc='git switch -c'
 
@@ -825,11 +826,11 @@ function gbR() {
 }
 
 alias\
-    gSr='git secret reveal'\
-    gSh='git secret hide'\
-    gSls='git secret list'\
-    gSrm='git secret remove'\
-    gSaa='git secret add'
+    gser='git secret reveal'\
+    gseh='git secret hide'\
+    gsels='git secret list'\
+    gserm='git secret remove'\
+    gsea='git secret add'
 
 
 

@@ -74,10 +74,10 @@ ld      $LEARN/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from 
 lr      $LEARN/Rust/Learn Rust by Building Real Applications
 vo      $VOLUMES
 po      $PROJECTS
-pm      $PROJECTS/Micro
-pM      $PROJECTS/Main/
-p1      $PROJECTS/Micro/HTTP-server in Rust
-p2      $PROJECTS/Micro/Docker
+pm      $PROJECTS/micro
+pM      $PROJECTS/main/
+p1      $PROJECTS/micro/HTTP-server in Rust
+p2      $PROJECTS/micro/Docker
 
 # temp shortcuts
 aa      $CLASS/2021-1/GERENCIA/imp

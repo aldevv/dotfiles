@@ -2,60 +2,60 @@
 -- telescope.nvim
 -- refactor.lua
 -- navigator.lua
-vim.cmd('set t_Co=256')
-vim.cmd('let IS_MINE=isdirectory($SUCKLESS)')
+vim.cmd("set t_Co=256")
+vim.cmd("let IS_MINE=isdirectory($SUCKLESS)")
 
 --==================
 -- SETTINGS
 --==================
-vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/settings.vim')
+vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/settings.vim")
 
 --==================
 -- KEYBINDINGS
 --==================
-vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/keybindings.vim')
-if (os.getenv('USER') == 'root') then
-  vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/appearance.vim')
-  vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/automation.vim')
-  return
+vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/keybindings.vim")
+if os.getenv("USER") == "root" then
+    vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/appearance.vim")
+    vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/automation.vim")
+    return
 end
 --===================
 -- DEPENDENCIES
 --===================
-vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/dependencies.vim')
+vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/dependencies.vim")
 
 --==================
 -- PLUGINS
 --==================
-if (os.getenv("DEBUG")) then
-  vim.cmd([[
+if os.getenv("DEBUG") then
+    vim.cmd([[
     source $XDG_CONFIG_HOME/nvim/modules/plugins2.vim
   ]])
 else
-  vim.cmd([[
+    vim.cmd([[
     source $XDG_CONFIG_HOME/nvim/modules/plugins.vim
     source $XDG_CONFIG_HOME/nvim/modules/plugins-settings.vim
   ]])
 end
 
-
-if (os.getenv('NOCOC')) then
-  require("lsp")
-  require("core")
-  require("config")
-end
-
 --==================
 -- APPEARANCE
 --==================
-vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/appearance.vim')
+vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/appearance.vim")
 
 --==================
 -- AUTOMATION
 --==================
-vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/automation.vim')
-
+vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/automation.vim")
 --====================================================
+
+if os.getenv("NOCOC") then
+    require("lsp")
+    require("plugins")
+    require("config")
+    require("core")
+end
+
 -- create your own text objects
 -- https://github.com/kana/vim-textobj-user
 --
@@ -67,10 +67,4 @@ vim.cmd('source $XDG_CONFIG_HOME/nvim/modules/automation.vim')
 -- cgn change <highlighted item>, useful when you searched something
 -- commands
 --
---  see operator pending mappings (omap) for keybinding mappings
 --
--- SEE WHAT KEYS ARE MAPPED!
--- :verbose imap <leader>
--- :verbose nmap <localleader>
--- :verbose xmap <leader>
--- Use Start! to run programs, and Dispatch to compile them

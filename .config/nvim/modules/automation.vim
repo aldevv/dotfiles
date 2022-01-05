@@ -40,11 +40,11 @@ endif
 " auto compile markdown
   autocmd BufWritePost *.md :silent call CompileMd()
 
-    function CompileTex()
-        :w | silent Dispatch! latexmk -pdf %
-    endfunction
+  function CompileTex()
+      :w | silent Dispatch! latexmk -pdf %
+  endfunction
 
-    function CompileMd()
+  function CompileMd()
         " the space at the end .pdf " is caused by the \n character
         let l:buffer = bufname()
         if l:buffer =~ '\v.*/?todo.md'
@@ -60,10 +60,7 @@ endif
         if v:shell_error == 0
             :exec "!setsid zathura " . shellescape(destination)
         endif
-    endfunction
-
-" auto compile vim
-    autocmd BufWritePost *.vim source %
+  endfunction
 
 " auto compile xresources
     autocmd BufWritePost *.Xresources !xrdb -merge ~/.Xresources

@@ -1,3 +1,31 @@
+"===========
+" COC-FZF
+" ==========
+" you can fill quickfix window with multiselect
+let g:coc_fzf_preview_toggle_key = ''
+let g:coc_fzf_preview = 'up:50%:hidden'
+let g:coc_fzf_opts = []
+
+"to make the command same as other fzf commands
+" let g:coc_fzf_preview = ''
+
+nnoremap <silent> <leader><space>a :<C-u>CocFzfList<CR>
+nnoremap <silent> <leader><space>cd       :<C-u>CocFzfList diagnostics<CR>
+nnoremap <silent> <leader><space>cD       :<C-u>CocFzfList diagnostics --current-buf<CR>
+nnoremap <silent> <leader><space>cm       :<C-u>CocFzfList commands<CR>
+nnoremap <silent> <leader><leader>ce       :<C-u>CocFzfList extensions<CR>
+nnoremap <silent> <leader><space>cl       :<C-u>CocFzfList location<CR>
+" nnoremap <silent> <leader>cv        :<C-u>CocFzfList outline<CR>
+" nnoremap <silent> <a-n>            :<C-u>CocFzfList outline<CR>
+nnoremap <silent> <leader><space>cS       :<C-u>CocFzfList sources<CR>
+nnoremap <silent> <leader><space>cs       :<C-u>CocFzfList symbols<CR>
+nnoremap <silent> <leader>cS       :<C-u>CocFzfList sources<CR>
+nnoremap <silent> <leader>cs       :<C-u>CocFzfList symbols<CR>
+nnoremap <silent> <leader><space>cL       :<C-u>CocFzfListResume<CR>
+
+"=====
+"COC
+"=====
 
 nmap <silent><leader>ccf <Plug>(coc-format)
 highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
@@ -48,8 +76,8 @@ nmap gi <Plug>(coc-implementation)
 " nmap <silent> <leader>cp <Plug>(coc-format)
 " g{ and g} are usable
 nnoremap <silent><nowait> <leader>cd  :<C-u>CocDiagnostics<cr>
-nmap ; <Plug>(coc-diagnostic-prev)
-nmap , <Plug>(coc-diagnostic-next)
+" nmap ; <Plug>(coc-diagnostic-prev)
+" nmap , <Plug>(coc-diagnostic-next)
 nmap <silent> g; <Plug>(coc-diagnostic-prev-error)
 nmap <silent> g, <Plug>(coc-diagnostic-next-error)
 nmap <silent> g. <Plug>(coc-fix-current)

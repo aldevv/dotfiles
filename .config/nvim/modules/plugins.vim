@@ -13,37 +13,33 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 " Plug 'KeitaNakamura/highlighter.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'tomasiser/vim-code-dark'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 " =============
 " PROGRAMMING
 " =============
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 
 if empty($NOCOC)
-  " formatting 
+  " formatting
   Plug 'sheerun/vim-polyglot'
   Plug 'uiiaoo/java-syntax.vim'
   Plug 'bfrg/vim-cpp-modern'
-
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'stsewd/fzf-checkout.vim'
+  Plug 'antoinemadec/coc-fzf'
+  Plug 'chengzeyi/fzf-preview.vim'
   " lsp
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'antoinemadec/coc-fzf'
   Plug 'sbdchd/neoformat'
 endif
 
 Plug 'preservim/tagbar'
 Plug 'AndrewRadev/switch.vim' " luasnips will cover this functionality
-Plug 'chengzeyi/fzf-preview.vim'
 Plug 'yggdroot/indentLine'
 " Plug 'jupyter-vim/jupyter-vim'
 Plug 'mattn/emmet-vim'
 Plug 'ap/vim-css-color'
 Plug 'mbbill/undotree'
-Plug 'lervag/vimtex'
-Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
 Plug 'liuchengxu/vim-which-key'
 Plug 'junegunn/goyo.vim'
 Plug 'jremmen/vim-ripgrep'
@@ -51,7 +47,7 @@ Plug  'alvan/vim-closetag'
 Plug 'LunarWatcher/auto-pairs'
 
 " BUG with macros!
-Plug 'rhysd/clever-f.vim'
+" Plug 'rhysd/clever-f.vim' " check lightspeed
 
 "=============
 " ESSENTIAL
@@ -65,19 +61,8 @@ Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-entire'
 Plug 'bkad/CamelCaseMotion'"
 Plug 'tpope/vim-projectionist'
-Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  } |
-         \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-         \ Plug 'ryanoasis/vim-devicons' |
-         \ Plug 'vwxyutarooo/nerdtree-devicons-syntax'
-
-" Plug 'vuciv/vim-bujo' " task manager
-" Plug 'tpope/vim-dadbod'
-" Plug 'dbeniamine/cheat.sh-vim'
-" Plug 'tpope/vim-vinegar'
-" Plug 'kana/vim-textobj-indent'
 
 "=============
 " TEXT OBJECTS
@@ -89,21 +74,18 @@ Plug 'matze/vim-move' "to do operations on visual mode
 Plug 'vim-scripts/vis'
 Plug 'francoiscabrol/ranger.vim' |
          \ Plug 'rbgrouleff/bclose.vim'
-Plug 'stsewd/fzf-checkout.vim'
-Plug 'kassio/neoterm' " change to nvim builtin term
 Plug 'junegunn/gv.vim' " for commits
 Plug 'tpope/vim-rhubarb' "enables gbrowse and also hub instead of git (if hub installed)
 Plug 'frazrepo/vim-rainbow'
 Plug 'wincent/vcs-jump'
 Plug 'szw/vim-maximizer'
 Plug 'stefandtw/quickfix-reflector.vim'
-Plug 'vim-utils/vim-man'
 Plug 'osyo-manga/vim-brightest'
 Plug 'KabbAmine/zeavim.vim'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter' |
          \ Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-dispatch'
+" Plug 'tpope/vim-dispatch' --> used in packer
 Plug 'vim-test/vim-test'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-dotenv'
@@ -114,9 +96,26 @@ Plug 'godlygeek/tabular' " for markdown
 Plug 'plasticboy/vim-markdown'
 Plug 'github/copilot.vim'
 
+
 if !empty(glob("$XDG_CONFIG_HOME/nvim/modules/lua_plugins.vim"))
     source $XDG_CONFIG_HOME/nvim/modules/lua_plugins.vim
 endif
+" ================
+" NO LONGER USED
+" ================
+" Plug 'easymotion/vim-easymotion'  --> changed for hop
+" Plug 'lervag/vimtex' " works, but i don't use latex natively
+" Plug 'KeitaNakamura/tex-conceal.vim' "this is for latex equations
+" Plug 'vim-utils/vim-man'
+" Plug 'vuciv/vim-bujo' " task manager
+" Plug 'tpope/vim-dadbod'
+" Plug 'dbeniamine/cheat.sh-vim'
+" Plug 'tpope/vim-vinegar'
+" Plug 'kana/vim-textobj-indent'
+" Plug 'kassio/neoterm' " change to nvim builtin term
+
+
+
 call plug#end()
 
 " TODO remove neoterm

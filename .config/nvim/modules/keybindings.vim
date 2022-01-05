@@ -72,31 +72,6 @@ noremap <silent><c-w>S :sp #<cr>
 noremap - /\v
 vnoremap - /\v
 noremap / -
-noremap <silent><leader>q :call ToggleQuickFix(0)<cr>
-noremap <silent><leader>Q :call ToggleQuickFix(1)<cr>
-noremap <silent><leader>ll :call ToggleLocation(0)<cr>
-
-function! ToggleQuickFix(staywindow)
-  if empty(filter(getwininfo(), 'v:val.quickfix'))
-    copen
-    if (a:staywindow == 0)
-      execute "normal! \<c-w>k"
-    endif
-  else
-    cclose
-  endif
-endfunction
-
-function! ToggleLocation(staywindow)
-  if empty(filter(getwininfo(), 'v:val.quickfix'))
-    lopen
-    if (!a:staywindow)
-      execute "normal! \<c-w>k"
-    endif
-  else
-    lclose
-  endif
-endfunction
 
 " for folds
 nnoremap <leader>Z zMzvzz
@@ -233,8 +208,8 @@ nmap <leader>gp "+gp
 nnoremap Y y$
 nnoremap V v$
 nnoremap gl gi
-nnoremap , ;
-nnoremap ; ,
+" nnoremap , ;
+" nnoremap ; ,
 nnoremap <leader>cct :!ctags -R<cr>
 
 
@@ -249,7 +224,7 @@ vnoremap <silent><leader>lgr :B !sortListR.py <cr>t]xT[
 
 
 nnoremap gñ :SyntaxQuery<CR>
-nnoremap <silent><leader>,t :silent call Toggle_transparent()<CR>
+nnoremap <silent><leader>.T :silent call Toggle_transparent()<CR>
 function Toggle_transparent()
   exec ":!toggleTrans"
 endfunction
@@ -262,26 +237,22 @@ inoremap <a-k> <Esc>/<++><Enter>"_c4l
 vnoremap <a-k> <Esc>/<++><Enter>"_c4l
 
 
-" shell
-noremap <leader>rb i#!/bin/sh<CR><CR>
-
 "global do
-nnoremap <A-R> :%g/\v/norm!<Left><Left><Left><Left><Left><Left>
-nnoremap <A-r> :%norm!<space>
-vnoremap <A-R> :g/\v/norm!<Left><Left><Left><Left><Left><Left>
-vnoremap <A-r> :norm!<space>
+nnoremap <C-s-_> :%g/\v/norm!<Left><Left><Left><Left><Left><Left>
+nnoremap <C--> :%norm!<space>
+vnoremap <C-s-_> :g/\v/norm!<Left><Left><Left><Left><Left><Left>
+vnoremap <C--> :norm!<space>
 
 " Alias replace all to
-nnoremap <A-S-s> :%s/\v<c-r>=expand("<cword>")<cr>//gI<Left><Left><Left>
-nnoremap <A-s> :%s/\v//gI<Left><Left><Left><Left>
-vnoremap <A-s> :s/\v//gI<Left><Left><Left><Left>
+nnoremap <C-S-s> :%s/\v<c-r>=expand("<cword>")<cr>//gI<Left><Left><Left>
+nnoremap <C-s> :%s/\v//gI<Left><Left><Left><Left>
+vnoremap <C-s> :s/\v//gI<Left><Left><Left><Left>
 " save with no permission using w!!, could be cnoremap
 "
 cnoreabbrev w!! w !sudo tee > /dev/null %
 
-map <leader>rs :!./%<cr>
-nnoremap <silent><leader>lch  :w !sudo chmod +x %<cr>
-nnoremap <silent><leader>lco  :w !sudo chown $USER:$USER % 2>/dev/null<cr>
+nnoremap <silent><leader>.ch  :w !sudo chmod +x %<cr>
+nnoremap <silent><leader>.co  :w !sudo chown $USER:$USER % 2>/dev/null<cr>
 map <silent> <F11> /\A\zs\a<cr>
 " ctrl alt
 
@@ -301,8 +272,6 @@ nnoremap <leader>e <c-w>k
 nnoremap <leader>i <c-w>l
 noremap <tab> %
 vnoremap <tab> %
-nnoremap <M-i> <c-i>
-nnoremap <M-o> <c-o>
 
 
 " noremap <c-i> <c-i>
@@ -315,7 +284,8 @@ nnoremap <M-o> <c-o>
 
 " map <leader>i :setlocal autoindent<cr>
 " map <leader>I :setlocal noautoindent<cr>
-map  <leader>o :w<CR>
+map <a-o> :w<CR>
+
 map  <silent><leader>O :silent w !sudo tee %<CR>
 " map  <leader>ss :wq<CR>
 " map <leader><F1> :e ~/.config/nvim/init.vim<cr>
@@ -430,11 +400,11 @@ nnoremap <leader>V V`]
 
 
 " clear search highlights
-noremap <silent><leader>H :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
+noremap <silent><leader>HH :nohlsearch<bar>match none<bar>2match none<bar>3match none<Esc>
 " nnoremap <silent><leader>hh :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>h1 :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>h2 :execute '2match DiffChange /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent><leader>h3 :execute '3match IncSearch /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent><leader>H1 :execute '3match IncSearch /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent><leader>H2 :execute '2match DiffChange /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent><leader>H3 :execute 'match DiffAdd /\<<c-r><c-w>\>/'<cr>
 
 " to search only selected text with * and #
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR><c-o>

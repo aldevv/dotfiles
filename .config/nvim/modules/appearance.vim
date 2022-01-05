@@ -22,14 +22,6 @@ set cursorcolumn
 " and use this
 " let &t_SI = "\<Esc>]12;red\x7"
 
-" use custom highlights (italics)
-let custom_highlights = 1
-if custom_highlights == 1
-    autocmd FileType python call MyPythonHighlights()
-    autocmd FileType javascript call MyJsHighlights()
-    autocmd FileType java call MyJavaHighlights()
-    autocmd FileType markdown call MyMarkdownHighlights()
-endif
 
 
 
@@ -107,7 +99,17 @@ command! SyntaxQuery call s:syntax_query()
 
 autocmd FileType python setlocal formatprg=autopep8
 
+" use custom highlights (italics)
 
+if empty(getenv('NOCOC'))
+let custom_highlights = 1
+if custom_highlights == 1
+    autocmd FileType python call MyPythonHighlights()
+    autocmd FileType javascript call MyJsHighlights()
+    autocmd FileType java call MyJavaHighlights()
+    autocmd FileType markdown call MyMarkdownHighlights()
+endif
+endif
 
 "===============
 " FOLDING

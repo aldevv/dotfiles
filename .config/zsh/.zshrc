@@ -263,6 +263,7 @@ bindkey "^ " autosuggest-execute
 # bindkey "^" autosuggest-toggle
 #TODO find alternative to lesskey (deprecated)
 # lesskey $HOME/.config/colemak-less
+export NOCOC=true
 # aliases
 alias src_=". $ZDOTDIR/.zshrc"
 . $ZDOTDIR/.aliases
