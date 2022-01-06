@@ -50,8 +50,8 @@ vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/automation.vim")
 --====================================================
 
 if os.getenv("NOCOC") then
-    require("lsp")
     require("plugins")
+    require("lsp")
     require("config")
     require("core")
 end

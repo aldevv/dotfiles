@@ -31,4 +31,3 @@ require("telescope").setup({
     },
     -- other configuration values here
 })
-require("core.extensions.telescope")

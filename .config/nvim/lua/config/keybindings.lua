@@ -11,12 +11,11 @@
 -- <leader>, --> config
 -- <leader>. --> commands
 
-local uv = require('utils.vanilla.core')
+local uv = require("utils.vanilla.core")
 local s = { silent = true }
 local nor = { noremap = true }
-local nor_s = vim.tbl_extend('keep', nor, s)
+local nor_s = vim.tbl_extend("keep", nor, s)
 local map = vim.api.nvim_set_keymap
-
 
 -- backlog
 -- <a-i>
@@ -26,15 +25,17 @@ local map = vim.api.nvim_set_keymap
 local h = "$XDG_CONFIG_HOME/nvim"
 -- essential
 
-map("n", "<F1>", ":e "..h.."/lua/config/keybindings.lua<cr>", nor_s)
-map("n", "<F2>", ":e "..h.."/modules/keybindings.vim<cr>", nor_s)
-map("n", "<F3>", ":e "..h.."/modules/plugins-settings.vim<cr>", nor_s)
-map("n", "<F4>", ":e "..h.."/lua/plugins.lua<cr>", nor_s)
-map("n", "<F5>", ":e "..h.."/modules/plugins.vim<cr>", nor_s)
-map("n", "<F6>", ":e "..h.."/lua/lsp/lsp.lua<cr>", nor_s)
-map("n", "<F7>", ":e "..h.."/lua/lsp/formatters.lua<cr>", nor_s)
-map("n", "<F8>", ":e "..h.."/init.lua<cr>", nor_s)
+map("n", "<F1>", ":e " .. h .. "/lua/config/keybindings.lua<cr>", nor_s)
+map("n", "<F2>", ":e " .. h .. "/modules/keybindings.vim<cr>", nor_s)
+map("n", "<F3>", ":e " .. h .. "/modules/plugins-settings.vim<cr>", nor_s)
+map("n", "<F4>", ":e " .. h .. "/lua/plugins.lua<cr>", nor_s)
+map("n", "<F5>", ":e " .. h .. "/modules/plugins.vim<cr>", nor_s)
+map("n", "<F6>", ":e " .. h .. "/lua/lsp/lsp.lua<cr>", nor_s)
+map("n", "<F7>", ":e " .. h .. "/lua/lsp/formatters.lua<cr>", nor_s)
+map("n", "<F8>", ":e " .. h .. "/init.lua<cr>", nor_s)
 -- map('n', '<leader>h', ':ctoggle<cr>', nor_s)
+-- help
+map("", "gh", ":h <c-r><c-w><cr>", nor)
 
 -- folding
 map("", "ze", "zk", nor)
@@ -104,7 +105,6 @@ map("n", "<leader>sQ", ":call ToggleQuickFix(1)<cr>", nor_s)
 map("n", "<leader>sL", ":call ToggleLocation(1)<cr>", nor_s)
 map("n", "<leader>sl", ":call ToggleLocation(0)<cr>", nor_s)
 
-
 -- prefix w --> workspace
 map("n", "<leader>ws", ":lua vim.lsp.buf.workspace_symbol()<cr>", nor_s)
 map("n", "<leader>wf", ":lua vim.lsp.buf.add_workspace_folder()<cr>", nor_s)
@@ -119,14 +119,12 @@ map("n", "<leader>on", ":lua vim.lsp.diagnostic.get_namespace()<cr>", nor_s)
 map("n", "<leader>ol", ":lua vim.diagnostic.setloclist()<cr>", nor_s)
 map("n", "<leader>oq", ":lua vim.diagnostic.setqflist()<cr>", nor_s)
 
-
 -- telescope
-map("n", "<a-p>", ':lua require("telescope.builtin").find_files()<cr>', nor_s)
+map("n", "<a-p>", ':lua require("telescope.builtin").find_files( {cwd = vim.fn.expand("%:p:h")} )<cr>', nor_s)
 map("n", "<a-g>", ':lua require("telescope.builtin").git_files()<cr>', nor_s)
 map("n", "<a-b>", ':lua require("telescope.builtin").buffers()<cr>', nor_s)
 map("n", "<a-r>", ':lua require("telescope.builtin").live_grep()<cr>', nor_s)
 map("n", "<a-s-r>", ':lua require("telescope.builtin").grep_string()<cr>', nor_s)
-
 
 -- deprecated 05/01/2022
 -- map('n', '<a-f>', ':lua require("telescope.builtin").file_browser()<cr>',nor_s) https://github.com/nvim-telescope/telescope-file-browser.nvim/issues/3
@@ -134,7 +132,7 @@ map("n", "<a-s-r>", ':lua require("telescope.builtin").grep_string()<cr>', nor_s
 map("n", "<leader>tt", ":Telescope<cr>", nor_s)
 map("n", "<a-h>", ':lua require("telescope.builtin").help_tags()<cr>', nor_s)
 -- t core
-map("n", "<leader>tch", ':Telescope harpoon marks<cr>', nor_s)
+map("n", "<leader>tch", ":Telescope harpoon marks<cr>", nor_s)
 
 -- t config
 map("n", "<leader>tC", ':lua require("telescope.builtin").colorscheme()<cr>', nor_s)
@@ -162,7 +160,7 @@ map("n", "<leader>tgb", ':lua require("telescope.builtin").git_branches()<cr>', 
 map("n", "<leader>tgs", ':lua require("telescope.builtin").git_status()<cr>', nor_s)
 map("n", "<leader>tgS", ':lua require("telescope.builtin").git_stash()<cr>', nor_s)
 
-map("n", "<leader>tp", ':lua require("telescope.builtin").planets()<cr>', nor_s) -- use the telescope!
+map("n", "<leader>tp", ':Telescope projects<cr>', nor_s)
 
 -- nvim-tree
 map("n", "<leader>se", ":NvimTreeToggle<cr>", nor_s)
@@ -175,7 +173,14 @@ map("n", "<leader>sc", ":TSHighlightCapturesUnderCursor<cr>", nor_s)
 map("n", "<leader>sr", ":RainbowToggle<cr>", nor_s)
 
 -- prefix c --> core (plugin toggles)
---
+
+-- packer
+map("n", "<leader>cps", ":PackerStatus<cr>", nor)
+map("n", "<leader>cpi", ":PackerInstall<cr>", nor)
+map("n", "<leader>cpC", ":PackerClean<cr>", nor)
+map("n", "<leader>cpu", ":PackerUpdate<cr>", nor)
+map("n", "<leader>cpc", ":PackerCompile<cr>", nor)
+
 -- harpoon
 map("n", "<leader>cha", ":lua require('harpoon.mark').add_file()<cr>", nor)
 map("n", "<leader>chv", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", nor_s)
@@ -205,16 +210,39 @@ map("n", "<leader>7", ":lua require('harpoon.ui').nav_file(7)<cr>", nor_s)
 map("n", "<leader>8", ":lua require('harpoon.ui').nav_file(8)<cr>", nor_s)
 map("n", "<leader>9", ":lua require('harpoon.ui').nav_file(9)<cr>", nor_s)
 
-
 -- nvim-dap
+map("n", "<leader>cdl", ":lua require'dap'.list_breakpoints()<cr>", nor_s)
 map("n", "<leader>cdb", ":lua require'dap'.toggle_breakpoint()<cr>", nor_s)
+
+map("n", "<leader>cdBc", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", nor_s)
+map("n", "<leader>cdBh", ":lua require'dap'.set_breakpoint(nil, vim.fn.input('Hit count: '))<cr>", nor_s)
+map("n", "<leader>cdBl", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>", nor_s)
+map("n", "<leader>cdBe", ":lua require'dap'.set_exception_breakpoints()<cr>", nor_s) -- 'never' | 'always' | 'unhandled' | 'userUnhandled';
+map("n", "<leader>cdBC", ":lua require'dap'.run_to_cursor()<cr>", nor_s)
+
+-- docs:
+-- h dap.reverse_continue
+map("n", "<leader>cdmc", ":lua require'dap'.close()<cr>", nor_s) -- closes the session (can be reopened)
+map("n", "<leader>cdmt", ":lua require'dap'.terminate()<cr>", nor_s) -- terminates debugging (cannot be reopened)
+map("n", "<leader>cdmd", ":lua require'dap'.disconnect()<cr>", nor_s) -- disconect (terminate and close)
+
+map("n", "<leader>cdu", ":lua require'dap'.up()<cr>", nor_s)
+map("n", "<leader>cdd", ":lua require'dap'.down()<cr>", nor_s)
+map("n", "<leader>cdg", ":lua require'dap'.goto_()<cr>", nor_s) -- not all debuggers support it
+map("n", "<leader>cdh", ":lua require'dap.ui.widgets'.hover()<cr>", nor_s)
+map("n", "<leader>cdp", ":lua require'dap'.pause()<cr>", nor_s)
 map("n", "<leader>cdc", ":lua require'dap'.continue()<cr>", nor_s)
-map("n", "<leader>cdn", ":lua require'dap'.step_over()<cr>", nor_s)
-map("n", "<leader>cds", ":lua require'dap'.step_into()<cr>", nor_s)
-map("n", "<leader>cdr", ":lua require('dapui').toggle()<cr>", nor_s)
-map("n", "<leader>cdR", ":lua require'dap'.repl.open()<cr>", nor_s)
+map("n", "<leader>cdC", ":lua require'dap'.reverse_continue()<cr>", nor_s) -- Continues execution reverse in time until last breakpoint. Debug adapter must support reverse debugging.
+-- map("n", "<leader>cdr", ":lua require'dap'.run()<cr>", nor_s) -- continue already calls this
+map("n", "<leader>cdr", ":lua require'dap'.run_last()<cr>", nor_s)
 map("n", "<leader>cde", ":lua require('utils.lua.dap').eval()<cr>", nor_s)
 map("v", "<leader>cde", ":lua require('dapui').eval()<cr>", nor_s)
 
--- prefix . --> commands
+map("n", "<leader>cdsn", ":lua require'dap'.step_over()<cr>", nor_s)
+map("n", "<leader>cdsi", ":lua require'dap'.step_into()<cr>", nor_s)
+map("n", "<leader>cdso", ":lua require'dap'.step_out()<cr>", nor_s)
+map("n", "<leader>cdsb", ":lua require'dap'.step_back()<cr>", nor_s)
 
+-- map("n", "<leader>cdr", ":lua require('dapui').toggle()<cr>", nor_s)
+-- map("n", "<leader>cdR", ":lua require'dap'.repl.open()<cr>", nor_s)
+-- prefix . --> commands

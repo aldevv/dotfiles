@@ -21,7 +21,7 @@ if !empty($NOCOC)
   Plug 'SirVer/ultisnips'
 endif
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'nvim-lualine/lualine.nvim'
 " Plug 'phaazon/hop.nvim'

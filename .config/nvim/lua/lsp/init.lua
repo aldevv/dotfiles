@@ -3,4 +3,5 @@
 require('lsp.cmp')
 require('lsp.lsp')
 require('lsp.formatters')
-require('lsp.dap')
+-- require('lsp.dap')
+require('lsp.projects')
