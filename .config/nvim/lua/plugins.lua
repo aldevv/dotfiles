@@ -22,7 +22,10 @@ return require("packer").startup({
             run = ":TSUpdate",
             config = req("core.treesitter"),
         })
-        use("ahmedkhalf/project.nvim") -- change pwd to git root
+        use({
+            "ahmedkhalf/project.nvim",
+            config = req("lsp.project"),
+        })
 
         -- Lazy loading:
         -- Load on specific commands

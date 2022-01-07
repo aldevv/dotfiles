@@ -2,8 +2,6 @@
 
 # argument: all programs to install as a string, separated by spaces/\n
 
-command_="$PKG_COMMAND $(echo "$@" | tr '\n' ' ')"
-user=$(whoami)
-[[ $user != 'root' ]] \
-    && sudo -i eval "$command_" \
-    || eval "$command_"
+command_="$PKG_INSTALL $(echo "$@" | tr '\n' ' ')"
+echo "$command_"
+eval "$command_"

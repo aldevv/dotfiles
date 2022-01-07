@@ -1,5 +1,18 @@
 #!/bin/bash
+VIM_PLUGINS=1
+SET_SUDO=1
+INSTALL_PACKAGES=1
+RUN_INIT_SCRIPTS=1
+CONFIG_PATH=0 # mkdir $MASTER $WORK etc
+NVM=0
+DOWNLOAD_REPOS=0
+BUILD_MAIN=0
+BUILD_OPTIONAL=0
+BUILD_HACK=0
 
+
+
+user="$SUDO_USER"
 # dont move the dotfiles from its cloned location
 
 #args: $1 WM:dwm or xmonad (not working), all: optional programs
@@ -10,15 +23,14 @@ if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
   exit 0
 fi
 
-
-sudo -u $user mkdir -p "$MASTER" "$HOME/.local/bin" "$HOME/Pictures/Screenshots" \
+if [[ ! -f "$MASTER" ]] && [[ $CONFIG_PATH == 1 ]]; then
+    sudo -u $user mkdir -p "$MASTER" "$HOME/.local/bin" "$HOME/Pictures/Screenshots" \
    "$VOLUMES" "$GAMES" "$REMOTES" "$PROGRAMS" "$TRASH" "$BACKUPS" "$DEBUG" "$LEARN" "$WORK" "$PROJECTS" "$WALL" "$BOOKS"
-rm -rf $HOME/{.zshrc,.zsh_history,.zshenv}
-cp ../../../../../../dotfiles/* "$HOME"
 
-. "$HOME/.config/zsh/.zprofile"
-user="$SUDO_USER"
-
+    rm -rf $HOME/{.zshrc,.zsh_history,.zshenv}
+    cp ../../../../../../dotfiles/* "$HOME"
+    . "$HOME/.config/zsh/.zprofile"
+fi
 
 
 case $PKG in
@@ -31,110 +43,113 @@ case $PKG in
    'zypper')
       eval "$PKG up" ;;
 esac
-install_ "git"
-awk -i inplace -v user="$user" '/#includedir \/etc\/sudoers.d/{print; print user " ALL=(ALL) NOPASSWD:ALL";next}1' /etc/sudoers
 
-sudo -u $user git clone https://github.com/aldevv/Wiki "$WIKI"
-sudo -u $user git clone https://github.com/aldevv/suckless-configs "$SUCKLESS"
-sudo -u $user git clone https://github.com/aldevv/wallpapers "$HOME/Pictures/Wallpapers"
+if [[ $SET_SUDO == 1 ]]
+    awk -i inplace -v user="$user" '/root ALL/{print; print user " ALL=(ALL) NOPASSWD:ALL";next}1' /etc/sudoers
+fi
+
+if [[ $DOWNLOAD_REPOS == 1 ]]; then
+    install_ "git"
+    sudo -u $user git clone https://github.com/aldevv/Wiki "$WIKI"
+    sudo -u $user git clone https://github.com/aldevv/suckless-configs "$SUCKLESS"
+    sudo -u $user git clone https://github.com/aldevv/wallpapers "$HOME/Pictures/Wallpapers"
+fi
 
 
 #==================
 # INSTALL PACKAGES
 #==================
-case "$PKG" in
-   'eopkg')
-      packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/eopkg-packages) \
-      $PKG_COMMAND -c system.devel ;;
-   'apt')
-      packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/apt-packages) \
-      ;;
-   'pacman')
-      packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/pacman-packages) \
-      ;;
-   'zypper')
-      packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/zypper-packages) \
-      # add repo
-      zypper ar -cfp 90 https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/ packman
-      zypper dup --from packman --allow-vendor-change
+if [[ $INSTALL_PACKAGES == 1 ]]; then
+    community_installer=""
+    community=""
+    case "$PKG" in
+       'eopkg')
+          packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/eopkg-packages) \
+          $PKG_COMMAND -c system.devel ;;
+       'apt')
+          packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/apt-packages) \
+          ;;
+       'pacman')
+          packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/arch/pacman) \
+          community_pkg=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/arch/aur) \
+          community_installe="yes | yay -S --needed --noconfirm"
+          ;;
+       'zypper')
+          packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/zypper-packages) \
+          # add repo
+          zypper ar -cfp 90 https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/ packman
+          zypper dup --from packman --allow-vendor-change
 
-      zypper ar -f https://download.opensuse.org/repositories/server:/database/openSUSE_Tumbleweed/ database
-      ;;
-   *)
-      echo 'package manager not found'
-      exit
-esac
+          zypper ar -f https://download.opensuse.org/repositories/server:/database/openSUSE_Tumbleweed/ database
+          ;;
+       *)
+          echo 'package manager not found'
+          exit
+    esac
 
-install_ "$packages"
+    install_ "$packages"
 
-#================
-# INSTALL OHMYZSH
-#================
-echo "y" | sudo -u "$user" sh -c "$(sudo -u $user curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-cp -r $HOME/.config/zsh/{themes,plugins} $HOME/.oh-my-zsh/custom/
+    # NOT TESTED
+    if [[ -n $community_pkg ]]; then
+        command_="$community_installer $community_pkg"
+        eval "sudo -u $user $community_installer $community_pkg"
+    fi
+
+    #================
+    # INSTALL OHMYZSH
+    #================
+    if [ ! -d "$HOME/.oh-my-zsh" ]; then
+        echo "y" | sudo -u "$user" sh -c "$(sudo -u $user curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        cp -r $HOME/.config/zsh/{themes,plugins} $HOME/.oh-my-zsh/custom/
+    fi
+
+fi
 
 
-#========================
-# INSTALL WINDOW MANAGER
-#========================
-
-# xargs is 6 times faster than -exec
-find init/* -type f | xargs -n1 -P8 bash
+# xrgs is 6 times faster than -exec
+if [[ $RUN_INIT_SCRIPTS == 1 ]]; then
+    find init/* -type f | xargs -n1 -P8 bash
+fi
 
 # check latest nvm link
 # this is for nvm, otherwise just install npm and do npm install -g neovim
-sudo -u $user curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | zsh
-. "$XDG_DATA_HOME/nvm/nvm.sh"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | zsh
-nvm install node
+if [[ $NVM == 1 ]]; then
+    sudo -u $user curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | zsh
+    . "$XDG_DATA_HOME/nvm/nvm.sh"
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | zsh
+    nvm install node
+fi
 
 #======================================================
 # BUILD SUCKLESS PROGRAMS AND PROGS NOT IN REPOSITORIES
 #======================================================
-find build/main/* | xargs -n1 -P3 bash
+if [[ $BUILD_MAIN == 1 ]]; then
+    find build/main/* | xargs -n1 -P3 bash
+    # find build/hack/* | xargs -n1 -P3 bash
+fi
 
-#================
-# BUILD PROGRAMS
-#================
-
-custom_wm=0
-while [ $# -gt 0 ]; do
-   case $1 in
-      'optional' | 'all')
-         shift
-         find build/optional/* | xargs -n1 -P8 bash ;;
-      'hack' | 'all')
-         shift
-         find build/hack/* | xargs -n1 -P8 bash ;;
-      'xmonad' | 'all-wm')
-         shift
-         [ "$1" == 'xmonad' ]\
-            && custom_wm=1
-         WM/xmonad
-         DM/setupXmonad
-      *)
-         shift
-         echo "invalid flag" ;;
-   esac
-done
-
-# default wm
-if [[ $custom_wm == 0 ]]; then
-   WM/dwm
-   DM/setupDwm
+if [[ $BUILD_OPTIONAL == 1 ]]; then
+    find build/optional/* | xargs -n1 -P3 bash
+fi
+if [[ $BUILD_HACK == 1 ]]; then
+    find build/hack/* | xargs -n1 -P3 bash
 fi
 
 # fixes npm bug
 chown -R 1000:1000 "$HOME/.npm"
-nvim -c 'PlugInstall'
+
+if [[ $VIM_PLUGINS == 1 ]]; then
+    nvim -c 'PackerInstall'
+fi
 
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
 # so it uses docker without sudo
 usermod -a -G docker $user
 
-python_packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/python-packages) \
-pip3 install $(echo $python_packages)
+if [[ $PYTHON_PACKAGES == 1 ]]; then
+    python_packages=$(awk '{ if (substr($1,1,1) != "#" ) printf "%s ", $0}' packages/python-packages) \
+    pip3 install $(echo $python_packages)
+fi
 
 # logout and login
 # systemctl restart display-manager

@@ -1,10 +1,10 @@
 # vital
 base-devel
 cmake
+flatpak
 npm
 rclone
 autorandr
-wal
 fcitx
 picom
 sxhkd
@@ -33,12 +33,5 @@ fd
 rust
 chromium
 github-cli
-
-# aur
-libxft-bgra-git
-xidlehook
-ngrok
-gitflow-avh
-stylua
-selene-linter
-notion-app
+rsync
+alacritty

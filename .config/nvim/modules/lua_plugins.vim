@@ -15,10 +15,10 @@ if !empty($NOCOC)
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-nvim-lua'
   Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
   Plug 'onsails/lspkind-nvim'
   Plug 'jose-elias-alvarez/null-ls.nvim' " requires plenary
-  Plug 'SirVer/ultisnips'
+  " Plug 'SirVer/ultisnips'
+  " Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 endif
 
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
