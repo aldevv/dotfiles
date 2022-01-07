@@ -1,0 +1,12 @@
+.npm
+.cache
+.git
+*.class
+.icons
+ftplugin/keymap.c.vim'
+plugged
+undodir
+.emacs.d
+nvim/backups
+plugged/*
+*~

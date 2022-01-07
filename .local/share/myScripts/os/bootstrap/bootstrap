@@ -45,7 +45,7 @@ case $PKG in
 esac
 
 if [[ $SET_SUDO == 1 ]]
-    awk -i inplace -v user="$user" '/root ALL/{print; print user " ALL=(ALL) NOPASSWD:ALL";next}1' /etc/sudoers
+    sudo bash -c "echo '$user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers"
 fi
 
 if [[ $DOWNLOAD_REPOS == 1 ]]; then

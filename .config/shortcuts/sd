@@ -9,6 +9,9 @@ cfb     ~/.bashrc
 cfxx    ~/.Xresources
 cfxp    ~/.xprofile
 cfv     ~/.config/nvim/init.lua
+cfvl     ~/.config/nvim/lua
+cfvp     ~/.config/nvim/lua/plugins.lua
+cfvP     ~/.config/nvim/modules/plugins.vim
 cfk     ~/.config/sxhkd/sxhkdrc
 cfxm    ~/.xmonad/xmonad.hs
 cfi     ~/.xinitrc

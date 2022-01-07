@@ -16,9 +16,10 @@ end
 
 local debuggers = { "python" }
 for _, d in ipairs(debuggers) do
-    if not is_installed(d, dbg_list) then
-        vim.cmd(":DII " .. d)
-    end
+    -- TODO not working since it opens new terminal, check later 06/01/22
+    -- if not is_installed(d, dbg_list) then
+    --     vim.cmd(":DII " .. d)
+    -- end
 
     local opts = {}
     dap_install.config(d, opts)

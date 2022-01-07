@@ -18,6 +18,7 @@ T       $HOME/Downloads/torrents
 sk      $SUCKLESS
 bkl      $BOOKS/LN
 cf      $XDG_CONFIG_HOME
+cv      $XDG_CONFIG_HOME/nvim/lua/
 sp      $XDG_CONFIG_HOME/nvim/my_snippets
 ms      $SCRIPTS
 mf      $FILES

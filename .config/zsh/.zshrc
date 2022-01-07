@@ -267,3 +267,4 @@ bindkey "^ " autosuggest-execute
 alias src_=". $ZDOTDIR/.zshrc"
 . $ZDOTDIR/.aliases
 . $ZDOTDIR/.auto_aliases
+

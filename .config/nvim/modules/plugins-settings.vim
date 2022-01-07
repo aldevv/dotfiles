@@ -1081,10 +1081,10 @@ let g:tagbar_map_hidenonpublic = 'h'
 "=========
 " RANGER.VIM
 "=========
-let g:ranger_replace_netrw = 1
-let g:ranger_map_keys = 0
-let g:NERDTreeHijackNetrw = 0
-nmap <leader>or :Ranger<cr>
+" let g:ranger_replace_netrw = 1
+" let g:ranger_map_keys = 0
+" let g:NERDTreeHijackNetrw = 0
+" nmap <leader>or :Ranger<cr>
 
 
 "=========

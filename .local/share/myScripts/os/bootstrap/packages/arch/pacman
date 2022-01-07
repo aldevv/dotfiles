@@ -24,6 +24,8 @@ fcitx-configtool
 fcitx-mozc
 fzf
 tldr
+shfmt
+python-pipenv
 
 # misc
 docker

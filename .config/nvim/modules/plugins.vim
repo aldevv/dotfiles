@@ -72,8 +72,7 @@ Plug 'glts/vim-textobj-comment'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'matze/vim-move' "to do operations on visual mode
 Plug 'vim-scripts/vis'
-Plug 'francoiscabrol/ranger.vim' |
-         \ Plug 'rbgrouleff/bclose.vim'
+Plug 'rbgrouleff/bclose.vim'
 Plug 'junegunn/gv.vim' " for commits
 Plug 'tpope/vim-rhubarb' "enables gbrowse and also hub instead of git (if hub installed)
 Plug 'frazrepo/vim-rainbow'
