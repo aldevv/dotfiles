@@ -17,31 +17,22 @@ end
 return require("packer").startup({
     function(use)
         use("wbthomason/packer.nvim")
-        use({
-            "nvim-treesitter/nvim-treesitter",
-            run = ":TSUpdate",
-            config = req("core.treesitter"),
-        })
-        use({
-            "ahmedkhalf/project.nvim",
-            config = req("lsp.project"),
-        })
 
-        -- Lazy loading:
-        -- Load on specific commands
         use({
-            "tpope/vim-dispatch",
-            opt = true,
-            cmd = { "Dispatch", "Make", "Focus", "Start" },
-            ft = { "sh", "python", "c", "cpp", "js", "ts" },
+            "folke/tokyonight.nvim",
+            branch = "main",
+            config = req("config.appearance.themes.tokyonight"),
         })
 
         use({
-            "kyazdani42/nvim-tree.lua",
-            requires = "kyazdani42/nvim-web-devicons", -- optional, for file icon
-            wants = "nvim-web-devicons",
-            config = req("core.nvim-tree"),
-            cmd = { "NvimTreeToggle", "NvimTreeOpen" },
+            "neovim/nvim-lspconfig",
+            config = req("lsp.lsp"),
+        })
+
+        use({
+            "jose-elias-alvarez/null-ls.nvim",
+            requires = { "nvim-lua/plenary.nvim", module_pattern = "plenary" },
+            config = req("lsp.formatters"),
         })
 
         use({
@@ -54,10 +45,37 @@ return require("packer").startup({
         })
 
         use({
+            "nvim-treesitter/nvim-treesitter",
+            run = ":TSUpdate",
+            config = req("core.treesitter"),
+        })
+
+        use({
+            "ahmedkhalf/project.nvim",
+            config = req("lsp.project"),
+            event = "BufWinEnter",
+        })
+
+        -- Lazy loading:
+        -- Load on specific commands
+        use({
+            "tpope/vim-dispatch",
+            cmd = { "Dispatch", "Make", "Focus", "Start" },
+            ft = { "sh", "python", "c", "cpp", "js", "ts", "rs", "go" }, -- test for no filetype
+        })
+
+        use({
+            "kyazdani42/nvim-tree.lua",
+            requires = { "kyazdani42/nvim-web-devicons", module = "nvim-web-devicons" }, -- optional, for file icons
+            config = req("core.nvim-tree"),
+            cmd = { "NvimTreeToggle", "NvimTreeOpen" },
+        })
+
+        use({
             "ThePrimeagen/harpoon",
-            opt = true,
-            requires = { { "nvim-lua/plenary.nvim" } },
+            requires = { "nvim-lua/plenary.nvim", module_pattern = "plenary" },
             config = req("core.harpoon"),
+            module = "harpoon",
         })
 
         use({
@@ -66,19 +84,26 @@ return require("packer").startup({
             config = function()
                 require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
             end,
+            cmd = { "HopChar1" },
         })
 
         use({
             "mfussenegger/nvim-dap",
+            opt = true,
             requires = {
-                {
-                    "Pocco81/DAPInstall.nvim",
-                    "rcarriga/nvim-dap-ui",
-                    "theHamsta/nvim-dap-virtual-text",
-                },
+                { "Pocco81/DAPInstall.nvim" },
+                { "rcarriga/nvim-dap-ui" },
+                { "theHamsta/nvim-dap-virtual-text" },
             },
-            -- keys = { "<leader>cdb", "<leader>cdBc", "<leader>cdBC", "<leader>cdBe", "<leader>cdBl","<leader>cdBh" },
+            module_pattern = "dap",
             config = req("lsp.dap"),
+        })
+
+        -- add gitsigns
+
+        use({
+            "github/copilot.vim",
+            cmd = { "Copilot" },
         })
     end,
     config = {

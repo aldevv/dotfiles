@@ -9,6 +9,8 @@ cfb     ~/.bashrc
 cfxx    ~/.Xresources
 cfxp    ~/.xprofile
 cfv     ~/.config/nvim/init.lua
+cfvv     ~/.config/nvim/init.lua
+cfvk     ~/.config/nvim/lua/config/keybindings/init.lua
 cfvl     ~/.config/nvim/lua
 cfvp     ~/.config/nvim/lua/plugins.lua
 cfvP     ~/.config/nvim/modules/plugins.vim
@@ -19,7 +21,6 @@ cfn     ~/.config/newsboat/urls
 cfy     ~/.config/youtube-dl/config
 cfd     $SUCKLESS/dwm-6.2/config.h
 cfS     $SUCKLESS/st-0.8.4/config.h
-cn      $UTILITIES/classes/network/typenet
 cfa     ~/.config/zsh/.aliases
 cfmo    $SCRIPTS/os/bootstrap/bootstrap
 cfmp    $SCRIPTS/os/bootstrap/packages/arch/pacman

@@ -1,5 +1,6 @@
+local M = {}
 -- creates a floating window
-function show_window()
+M.show_window = function()
     local buf = vim.api.nvim_create_buf(false, true)
 
     vim.api.nvim_open_win(buf, true, {
@@ -11,3 +12,5 @@ function show_window()
         border = 'double',
     })
 end
+
+return M

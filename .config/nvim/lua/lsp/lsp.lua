@@ -40,8 +40,8 @@ local handlers = {}
 -- ===================
 
 -- this is so is not overwritten by my colorscheme
-vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]]
-vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+vim.cmd([[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]])
+vim.cmd([[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]])
 
 -- local border = {
 --       {"🭽", "FloatBorder"},
@@ -61,7 +61,6 @@ vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]
 local border = "rounded"
 -- local border = "solid"
 
-
 -- ==============
 -- HANDLERS
 -- ==============
@@ -71,7 +70,6 @@ local lsp_handlers = {
     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
     ["textDocument/completion"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
 }
-
 
 for k, v in pairs(lsp_handlers) do
     handlers[k] = v
@@ -95,7 +93,6 @@ for k, v in pairs(diagnostic_handlers) do
     handlers[k] = v
 end
 
-
 -- =====
 -- LSP
 -- =====
@@ -107,10 +104,17 @@ local lsp_installer = require("nvim-lsp-installer")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
+local on_attach = function()
+    -- these are callbacks that run after the server has loaded
+    require("config.keybindings.lsp").load_mappings()
+    require("config.automation.lsp").diagnostics_in_loclist()
+end
+
 lsp_installer.on_server_ready(function(server)
     local opts = {
         capabilities = capabilities,
         handlers = handlers,
+        on_attach = on_attach,
     }
 
     if lsp_opts.enhanceable(server.name) then

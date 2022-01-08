@@ -13,3 +13,11 @@ cmd([[
         autocmd BufWritePost *.{lua,vim} source %
     augroup END
 ]])
+
+require("config.automation.packer")
+-- cmd([[
+--     augroup LspConfig
+--         autocmd!
+--         autocmd! BufWrite,BufEnter,InsertLeave * :lua vim.diagnostic.setloclist({open=false})
+--     augroup END
+-- ]])

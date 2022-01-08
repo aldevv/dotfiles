@@ -48,7 +48,6 @@ vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/appearance.vim")
 --==================
 vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/automation.vim")
 --====================================================
-
 if os.getenv("NOCOC") then
     require("plugins")
     require("lsp")

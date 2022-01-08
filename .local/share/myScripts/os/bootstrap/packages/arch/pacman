@@ -26,6 +26,7 @@ fzf
 tldr
 shfmt
 python-pipenv
+pass
 
 # misc
 docker

@@ -1744,15 +1744,6 @@ nnoremap <silent> <leader>K :Cheat<cr>
 "===================
 " do F and any movement command for fuzzy search, examgle Fmodels
 
-"=====================
-" COPILOT
-" ====================
-let g:copilot_enabled  = v:false
-let g:copilot_filetypes = {
-      \'xml': v:false
-      \ }
-imap <silent><script><expr> <C-C> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
 "===================
 "DEPRECATED
 "===================

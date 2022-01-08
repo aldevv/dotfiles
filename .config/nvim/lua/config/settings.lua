@@ -3,7 +3,8 @@ vim.opt.exrc = true
 -- https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 -- neovide
 vim.g.neovide_refresh_rate=140
-vim.g.neovide_transparency=0.9
+-- vim.g.neovide_transparency=1
+--
 -- vim.g.neovide_cursor_animation_length=0.13 -- in seconds
 --let g:neovide_cursor_trail_length=0.8
 -- vim.g.neovide_cursor_vfx_mode = "railgun" -- torpedo, pixiedust, sonicboom, ripple, wireframe

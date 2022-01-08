@@ -31,6 +31,7 @@ if empty($NOCOC)
   " lsp
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'sbdchd/neoformat'
+  Plug 'ap/vim-css-color'
 endif
 
 Plug 'preservim/tagbar'
@@ -38,7 +39,6 @@ Plug 'AndrewRadev/switch.vim' " luasnips will cover this functionality
 Plug 'yggdroot/indentLine'
 " Plug 'jupyter-vim/jupyter-vim'
 Plug 'mattn/emmet-vim'
-Plug 'ap/vim-css-color'
 Plug 'mbbill/undotree'
 Plug 'liuchengxu/vim-which-key'
 Plug 'junegunn/goyo.vim'
@@ -90,10 +90,11 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-dotenv'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-cheat.sh'
+
 Plug 'c-brenn/fuzzy-projectionist.vim'
+
 Plug 'godlygeek/tabular' " for markdown
 Plug 'plasticboy/vim-markdown'
-Plug 'github/copilot.vim'
 
 
 if !empty(glob("$XDG_CONFIG_HOME/nvim/modules/lua_plugins.vim"))

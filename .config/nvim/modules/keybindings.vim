@@ -2,6 +2,8 @@
 " nnoremap db dvb
 " nnoremap dB dvB
 " colemak movement
+" ---------------- -- putting this in lua, breaks targets.vim (because the order of sourcing)
+" migrate targets.vim first then this
 noremap n j
 noremap e k
 noremap j e
@@ -9,10 +11,15 @@ noremap gj ge
 noremap gJ gE
 nnoremap l i
 nnoremap i l
-" vnoremap l i
 vnoremap i l
 noremap k nzzzv
 noremap K Nzzzv
+noremap ge gk
+noremap gn gj
+noremap gk gn
+noremap gE gJ
+" ----------------
+
 " put last searched items into QuickFix window
 nnoremap <leader>- :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
@@ -28,16 +35,9 @@ vnoremap <S-DOWN> :m '>+1<cr>gv=gv
 " vnoremap N :m '>+1<cr>gv=gv
 "
 noremap J E
+
 vnoremap L I
 
-noremap ge gk
-noremap gn gj
-
-noremap gk gn
-
-noremap E J
-
-noremap gE gJ
 
 noremap N i<cr><esc>k$
 vnoremap N :s/\n/ /g<cr>$x
@@ -266,10 +266,6 @@ noremap  <Left> 5<c-w><
 " noremap  - 5<c-w><
 
 " split movement , cant be <c-i> because that is mapped to be the opposite of <c-o>
-nnoremap <leader>h <c-w>h
-nnoremap <leader>n <c-w>j
-nnoremap <leader>e <c-w>k
-nnoremap <leader>i <c-w>l
 noremap <tab> %
 vnoremap <tab> %
 

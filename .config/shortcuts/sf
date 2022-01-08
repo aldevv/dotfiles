@@ -18,8 +18,13 @@ T       $HOME/Downloads/torrents
 sk      $SUCKLESS
 bkl      $BOOKS/LN
 cf      $XDG_CONFIG_HOME
-cv      $XDG_CONFIG_HOME/nvim/lua/
+.vv      $XDG_CONFIG_HOME/nvim
+.l      $XDG_CONFIG_HOME/nvim/lua
+.vc      $XDG_CONFIG_HOME/nvim/lua/config
+.vC      $XDG_CONFIG_HOME/nvim/lua/core
+.p      $HOME/.local/share/nvim/site/pack
 sp      $XDG_CONFIG_HOME/nvim/my_snippets
+
 ms      $SCRIPTS
 mf      $FILES
 mo      $OS
@@ -61,7 +66,7 @@ rulob    /usr/local/bin
 rulos    /usr/local/share
 ruloi    /usr/local/include
 ruli    /usr/lib
-exp     /opt/exploitdb/exploits
+.ex     /opt/exploitdb/exploits
 rv      /var
 rb      /bin
 rr      /root
