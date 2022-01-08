@@ -59,6 +59,9 @@ map("i", "<c-c>", "copilot#Accept('<CR>')", vim.tbl_extend("keep", s_e, { script
 map("", "<leader>cc", ":lua require('utils.lua.keybindings').toggle_copilot()<cr>", nor_s)
 -- map("", "<leader>cc", ":Copilot enable<cr>", nor_s)
 
+-- snippets
+map("n", "<leader>si", "<Plug>(InsertSkeleton)", s)
+
 -- terminal
 map("t", "<a-'>", "<c-\\><c-n>", nor_s)
 
@@ -143,3 +146,20 @@ require("config.keybindings.harpoon").load_mappings()
 
 -- .p commands for projects
 map("n", "<leader>.pfp", ":!create_projection_file", nor)
+
+
+map("v", "ll", "<Plug>(textobj-line-i)", s)
+map("o", "ll", "<Plug>(textobj-line-i)", s)
+map("v", "al", "<Plug>(textobj-line-a)", s)
+map("o", "al", "<Plug>(textobj-line-a)", s)
+
+map("v", "le", "<Plug>(textobj-entire-i)", s)
+map("o", "le", "<Plug>(textobj-entire-i)", s)
+map("v", "ae", "<Plug>(textobj-entire-a)", s)
+map("o", "ae", "<Plug>(textobj-entire-a)", s)
+
+-- fun
+map("n", "<leader>cfb", ":VimBeGood<cr>", nor)
+map("n", "<leader>cfa", ":VimApm<cr>", nor)
+map("n", "<leader>cfA", ":VimApmShutdown<cr>", nor)
+

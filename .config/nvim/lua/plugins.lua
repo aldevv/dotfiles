@@ -23,10 +23,34 @@ return require("packer").startup({
             branch = "main",
             config = req("config.appearance.themes.tokyonight"),
         })
+        use({
+            "nvim-lualine/lualine.nvim",
+            requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        })
 
         use({
             "neovim/nvim-lspconfig",
+            requires = {
+                "williamboman/nvim-lsp-installer",
+            },
             config = req("lsp.lsp"),
+        })
+
+        use({
+            "SirVer/ultisnips",
+            config = req("core.snippets"),
+        })
+        use({
+            "hrsh7th/nvim-cmp",
+            requires = {
+                "onsails/lspkind-nvim",
+                "hrsh7th/cmp-nvim-lsp",
+                { "hrsh7th/cmp-nvim-lua", ft = "lua" },
+                "hrsh7th/cmp-path",
+                "hrsh7th/cmp-buffer",
+                { "quangnguyen30192/cmp-nvim-ultisnips", requires = "SirVer/ultisnips" },
+            },
+            config = req("lsp.cmp"),
         })
 
         use({
@@ -51,9 +75,14 @@ return require("packer").startup({
         })
 
         use({
+            "nvim-treesitter/playground",
+            requires = "nvim-treesitter/nvim-treesitter",
+            cmd = { "TSSPlaygroundToggle" },
+        })
+
+        use({
             "ahmedkhalf/project.nvim",
             config = req("lsp.project"),
-            event = "BufWinEnter",
         })
 
         -- Lazy loading:
@@ -66,7 +95,7 @@ return require("packer").startup({
 
         use({
             "kyazdani42/nvim-tree.lua",
-            requires = { "kyazdani42/nvim-web-devicons", module = "nvim-web-devicons" }, -- optional, for file icons
+            requires = { "kyazdani42/nvim-web-devicons", opt = true }, -- optional, for file icons
             config = req("core.nvim-tree"),
             cmd = { "NvimTreeToggle", "NvimTreeOpen" },
         })
@@ -105,6 +134,58 @@ return require("packer").startup({
             "github/copilot.vim",
             cmd = { "Copilot" },
         })
+
+        use({
+            "wellle/targets.vim",
+            config = function()
+                vim.g.targets_aiAI = { "a", "l", "A", "L" }
+                vim.g.targets_mapped_aiAI = { "a", "i", "A", "I" }
+                vim.g.targets_nl = { "n", "N" }
+                -- this script lets you apply macros to multiple lines
+                vim.cmd("source ~/.config/nvim/modules/visual-at.vim")
+            end,
+        })
+        use("tpope/vim-repeat")
+        use("tommcdo/vim-exchange")
+        use("tpope/vim-surround")
+        use("kana/vim-textobj-user")
+        use({
+            "kana/vim-textobj-line",
+            config = function()
+                vim.g.textobj_line_no_default_key_mappings = 1
+            end,
+        })
+        use({
+            "kana/vim-textobj-entire",
+            config = function()
+                vim.g.textobj_entire_no_default_key_mappings = 1
+            end,
+        })
+
+        use({
+            "plasticboy/vim-markdown",
+            requires = "godlygeek/tabular",
+            ft = "md",
+        })
+
+        -- check if there is a file .projections.json
+        use({
+            "tpope/vim-projectionist",
+            after = "ahmedkhalf/project.nvim",
+            cond = function()
+                return require("utils.lua.files").file_exists({ file = ".env" })
+            end
+        })
+
+        -- check if there is a file .env
+        use({
+            "tpope/vim-dotenv",
+            requires = { "tpope/vim-projectionist" },
+        })
+
+        -- fun
+        use("ThePrimeagen/vim-apm")
+        use("ThePrimeagen/vim-be-good")
     end,
     config = {
         display = {

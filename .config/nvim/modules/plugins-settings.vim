@@ -472,22 +472,12 @@ nnoremap <leader>gB :GBrowse<CR>
 "=====================
 "   ULTISNIPS ( changed for coc-snippets )
 "=====================
-" autocmd BufNewFile,BufRead .vimspector.json UltiSnipsAddFiletypes vimspector.json
-" this plugin enables the use of skeletons
-" let g:did_UltiSnips_vim = 1
-" let g:did_UltiSnips_vim_after = 1
-let g:UltiSnipsExpandTrigger='<a-t>'
-let g:UltiSnipsJumpForwardTrigger='<a-t>'
-let g:UltiSnipsJumpBackwardTrigger='<a-s>'
-let g:UltiSnipsListSnippets='<c-tab>'
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
-" for normal mode
-" nnoremap <a-t> i<c-r>=UltiSnips#JumpForwards()<cr>
-" snoremap <a-t> <Esc>:call UltiSnips#JumpForwards()<cr>
-
-nmap <silent><leader>si <Plug>(InsertSkeleton)
-" doesn't work for autocmd because of ultisnip
-" autocmd BufNewFile * :silent call feedkeys("\<space>I")
+" let g:UltiSnipsExpandTrigger='<a-t>'
+" let g:UltiSnipsJumpForwardTrigger='<a-t>'
+" let g:UltiSnipsJumpBackwardTrigger='<a-s>'
+" let g:UltiSnipsListSnippets='<c-tab>'
+" let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
+" nmap <silent><leader>si <Plug>(InsertSkeleton)
 
 "==========
 " VIMTEX
@@ -610,15 +600,11 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " TARGETS
 "=========
 
-let g:targets_aiAI = 'alAL'
-" let g:targets_aiAI = 'aiAi'
-let g:targets_mapped_aiAI = 'aiAI'
-let g:targets_nl = 'nN'
-" let g:targets_aiAI = ['<Space>a', '<Space>l', '<Space>A', '<Space>L']
-" let g:targets_mapped_aiAI = ['<Space>a', '<Space>l', '<Space>A', '<Space>L']
-"
+" let g:targets_aiAI = 'alAL'
+" let g:targets_mapped_aiAI = 'aiAI'
+" let g:targets_nl = 'nN'
 "this script lets you apply macros to multiple lines
-source ~/.config/nvim/modules/visual-at.vim
+" source ~/.config/nvim/modules/visual-at.vim
 
 " =============
 " MACROS
@@ -790,35 +776,20 @@ xmap gp  <Plug>ReplaceWithRegisterVisual
 " INDENT-TEXT-OBJECT 2, deprecated
 " ===================
 "
-" Note: the iI mapping is mostly included simply for completeness, it is effectively a synonym for ii.
-" let g:textobj_indent_no_default_key_mappings = 1
-" let g:indent_object_except_first_level = 0
-" vmap li <Plug>(textobj-indent-i)
-" omap li <Plug>(textobj-indent-i)
-" vmap ai <Plug>(textobj-indent-a)
-" omap ai <Plug>(textobj-indent-a)
-" vmap lI <Plug>(textobj-indent-same-i)
-" omap lI <Plug>(textobj-indent-same-i)
-" vmap aI <Plug>(textobj-indent-same-a)
-" omap aI <Plug>(textobj-indent-same-a)
-"
 " line text object
 " only use for selecting, not for other stuff, has bugs
+" let g:textobj_line_no_default_key_mappings = 1
+" vmap <silent> ll <Plug>(textobj-line-i)
+" omap <silent> ll <Plug>(textobj-line-i)
+" vmap <silent> al <Plug>(textobj-line-a)
+" omap <silent> al <Plug>(textobj-line-a)
 
-let g:textobj_line_no_default_key_mappings = 1
-vmap <silent> ll <Plug>(textobj-line-i)
-omap <silent> ll <Plug>(textobj-line-i)
-vmap <silent> al <Plug>(textobj-line-a)
-omap <silent> al <Plug>(textobj-line-a)
-
-" entire text object
-let g:textobj_entire_no_default_key_mappings = 1
-" vmap <silent> le  <Plug>(textobj-entire-i)
-" omap <silent> le  <Plug>(textobj-entire-i)
-vmap <silent> le    <Plug>(textobj-entire-i)
-omap <silent> le    <Plug>(textobj-entire-i)
-vmap <silent> ae    <Plug>(textobj-entire-a)
-omap <silent> ae    <Plug>(textobj-entire-a)
+" " entire text object
+" let g:textobj_entire_no_default_key_mappings = 1
+" vmap <silent> le    <Plug>(textobj-entire-i)
+" omap <silent> le    <Plug>(textobj-entire-i)
+" vmap <silent> ae    <Plug>(textobj-entire-a)
+" omap <silent> ae    <Plug>(textobj-entire-a)
 
 " python text objects
 let g:textobj_python_no_default_key_mappings = 1
@@ -1666,9 +1637,9 @@ let g:qf_write_changes = 1
 "if you with to set fixed offset set vim_be_good_delete_me_offset to desired value.
 " let g:vim_be_good_delete_me_offset = 35
 "
-nnoremap <leader>.v :VimBeGood<cr>
-nnoremap <leader>.w :VimApm<cr>
-nnoremap <leader>.s :VimApmShutdown<cr>
+" nnoremap <leader>.v :VimBeGood<cr>
+" nnoremap <leader>.w :VimApm<cr>
+" nnoremap <leader>.s :VimApmShutdown<cr>
 
 
 "========================

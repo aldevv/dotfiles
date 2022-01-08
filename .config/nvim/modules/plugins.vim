@@ -52,15 +52,16 @@ Plug 'LunarWatcher/auto-pairs'
 "=============
 " ESSENTIAL
 "=============
-Plug 'wellle/targets.vim'
-Plug 'tpope/vim-repeat'
-Plug 'tommcdo/vim-exchange' "
-Plug 'tpope/vim-surround'
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-line'
-Plug 'kana/vim-textobj-entire'
+" Plug 'wellle/targets.vim'
+" Plug 'tpope/vim-repeat'
+" Plug 'tommcdo/vim-exchange' "
+" Plug 'tpope/vim-surround'
+" Plug 'kana/vim-textobj-user'
+" Plug 'kana/vim-textobj-line'
+" Plug 'kana/vim-textobj-entire'
+
 Plug 'bkad/CamelCaseMotion'"
-Plug 'tpope/vim-projectionist'
+" Plug 'tpope/vim-projectionist'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'editorconfig/editorconfig-vim'
 
@@ -87,14 +88,16 @@ Plug 'airblade/vim-gitgutter' |
 " Plug 'tpope/vim-dispatch' --> used in packer
 Plug 'vim-test/vim-test'
 Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-dotenv'
+
+" Plug 'tpope/vim-dotenv'
+
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-cheat.sh'
 
 Plug 'c-brenn/fuzzy-projectionist.vim'
 
-Plug 'godlygeek/tabular' " for markdown
-Plug 'plasticboy/vim-markdown'
+" Plug 'godlygeek/tabular' " for markdown
+" Plug 'plasticboy/vim-markdown'
 
 
 if !empty(glob("$XDG_CONFIG_HOME/nvim/modules/lua_plugins.vim"))
