@@ -33,10 +33,17 @@ lspkind.init({
 -- ==========
 -- COMPLETION
 -- ==========
+local cmp = require("cmp")
 vim.api.nvim_set_option("completeopt", "menu,menuone,noselect")
 
-local cmp = require("cmp")
 cmp.setup({
+    snippet = {
+        expand = function(args)
+            -- require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+            vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        end,
+    },
+
     formatting = {
         format = function(entry, vim_item)
             vim_item.kind = string.format("%s %s", lspkind.presets.default[vim_item.kind], vim_item.kind)
@@ -66,6 +73,22 @@ cmp.setup({
         -- native_menu = true
     },
     mapping = {
+        -- snippets
+        -- ["<a-t>"] = cmp.mapping(function(fallback)
+        --     if require("luasnip").expand_or_jumpable() then
+        --         require("luasnip").expand_or_jump()
+        --     else
+        --         fallback()
+        --     end
+        -- end, { "i", "s" }),
+        -- ["<a-s>"] = cmp.mapping(function(fallback)
+        --     if require("luasnip").jumpable(-1) then
+        --         require("luasnip").jump(-1)
+        --     else
+        --         fallback()
+        --     end
+        -- end, { "i", "s" }),
+
         ["<a-e>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
         ["<a-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
         ["<a-u>"] = function(fallback)
@@ -96,12 +119,13 @@ cmp.setup({
         }),
         ["<CR>"] = cmp.mapping.confirm({
             cmp.ConfirmBehavior.Insert, -->https://github.com/hrsh7th/nvim-cmp/issues/664
-            select = true,
+            select = true, -- auto select on enter (even if not selected with <a-n>)
         }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     },
     sources = {
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
+        -- { name = "luasnip" },
         { name = "ultisnips" }, -- For ultisnips users.
         -- these below also need a plugin like cmp-nvim-ultisnips
         { name = "path", max_item_count = 10 },
@@ -111,3 +135,5 @@ cmp.setup({
         -- { name = 'treesitter' },
     },
 })
+
+-- If you want insert `(` after select function or method item

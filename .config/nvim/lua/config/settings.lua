@@ -13,3 +13,13 @@ vim.g.neovide_refresh_rate=140
 --vim.g.neovide_cursor_vfx_particle_speed=10.0 -- particle speed
 --vim.g.neovide_cursor_vfx_particle_phase=1.5 -- particle phase
 --vim.g.neovide_cursor_vfx_particle_curl=1.0 -- particle curl
+
+vim.o.grepprg="rg --vimgrep --no-heading --smart-case"
+
+-- for the help menu
+vim.o.wildmenu=true
+vim.o.wildmode="full"
+
+-- vim.opt.timeoutlen=700
+-- vim.g.mapleader = t("<Space>")
+-- vim.g.maplocalleader=t("<BS>")

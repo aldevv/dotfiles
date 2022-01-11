@@ -1,4 +1,5 @@
 require('config.settings')
-require('config.keybindings')
-require('config.automation')
 require('config.appearance')
+require('config.keybindings')
+require('config.commands')
+require('config.automation')

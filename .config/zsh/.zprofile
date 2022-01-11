@@ -166,8 +166,8 @@ export RG_DEFAULT_FOR_FZF="rg --files --hidden --no-heading --smart-case --follo
 export FD_DEFAULT_FOR_FZF="fd --type f --follow -uuu --ignore-file $FD_IGNORE_FILE"
 export FZF_DEFAULT_COMMAND=$FD_DEFAULT_FOR_FZF
 
-export FZF_DEFAULT_OPTS=" --height=15 --layout=reverse --multi --bind=alt-e:up,alt-n:down,+:toggle-preview,ctrl-a:select-all+accept --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) > /dev/null | head -200' --preview-window=right:wrap"
 # export FZF_DEFAULT_OPTS='--bind=ctrl-e:up,ctrl-n:down'
+export FZF_DEFAULT_OPTS=" --height=75% --layout=reverse --multi --bind=alt-e:up,alt-n:down,+:toggle-preview,ctrl-a:select-all+accept --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) > /dev/null | head -200' --preview-window=50%:rounded:wrap"
 # to unhide preview window, change to --preview-window=right:hidden:wrap"
 # for prompt at the bottom, change layout to "default"
 export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type directory"

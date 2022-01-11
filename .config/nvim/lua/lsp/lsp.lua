@@ -4,13 +4,14 @@
 -- this installs them automatically
 local servers = {
     "bashls",
-    "pyright",
+    "pyright", --more complete
+    -- "pylsp", -- snippets completion
     "html",
     "cssls",
     "jdtls", -- java
     "zk", -- markdown
     "tsserver",
-    "tailwindcss",
+    -- "tailwindcss",
     "svelte",
     "sumneko_lua",
     "vimls",
@@ -103,11 +104,20 @@ local lsp_installer = require("nvim-lsp-installer")
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+------------------------------
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local on_attach = function()
+------------------------------
+
+local on_attach = function(client, buffnr)
     -- these are callbacks that run after the server has loaded
     require("config.keybindings.lsp").load_mappings()
     require("config.automation.lsp").diagnostics_in_loclist()
+    -- this disables the lsp's formatting functions
+    -- is so null-ls can take charge of formatting
+
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
 end
 
 lsp_installer.on_server_ready(function(server)
@@ -115,6 +125,7 @@ lsp_installer.on_server_ready(function(server)
         capabilities = capabilities,
         handlers = handlers,
         on_attach = on_attach,
+        -- commmands = table  :h lspconfig-configurations
     }
 
     if lsp_opts.enhanceable(server.name) then
@@ -124,3 +135,14 @@ lsp_installer.on_server_ready(function(server)
     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
     server:setup(opts)
 end)
+
+-- Levels by name: "trace", "debug", "info", "warn", "error"
+-- vim.lsp.set_log_level()
+
+-- local test = require('lspconfig.util').root_pattern('.git')(vim.fn.getcwd())
+-- if test ~= nil then
+--     print(test)
+--     vim.cmd(':cd "' .. test ..'"' )
+-- else
+-- end
+

@@ -8,6 +8,16 @@ vim.cmd("let IS_MINE=isdirectory($SUCKLESS)")
 --==================
 -- SETTINGS
 --==================
+if os.getenv("DEBUG_VIM") then
+    require("utils.lua.globals")
+    require('config.pre-settings')
+    require("plugins-debug")
+    return
+else
+
+
+require("utils.lua.globals")
+require('config.pre-settings')
 vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/settings.vim")
 
 --==================
@@ -27,11 +37,6 @@ vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/dependencies.vim")
 --==================
 -- PLUGINS
 --==================
-if os.getenv("DEBUG") then
-    vim.cmd([[
-    source $XDG_CONFIG_HOME/nvim/modules/plugins2.vim
-  ]])
-else
     vim.cmd([[
     source $XDG_CONFIG_HOME/nvim/modules/plugins.vim
     source $XDG_CONFIG_HOME/nvim/modules/plugins-settings.vim
@@ -50,9 +55,9 @@ vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/automation.vim")
 --====================================================
 if os.getenv("NOCOC") then
     require("plugins")
+    require("core")
     require("lsp")
     require("config")
-    require("core")
 end
 
 -- create your own text objects

@@ -1,4 +1,5 @@
 -- local cmd = vim.api.nvim_command
+
 local cmd = vim.cmd
 cmd([[
   augroup FormatOnSave
@@ -21,3 +22,9 @@ require("config.automation.packer")
 --         autocmd! BufWrite,BufEnter,InsertLeave * :lua vim.diagnostic.setloclist({open=false})
 --     augroup END
 -- ]])
+--
+
+-- cmd('autocmd BufReadPre *.{html,css,js,jsx,ts} EmmetInstall')
+
+-- cmd('autocmd Filetype tex let b:AutoPairs = {"(": ")", "[": "]"}')
+-- cmd('autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.{vim,jsx,json,ts,js} :IndentLines')

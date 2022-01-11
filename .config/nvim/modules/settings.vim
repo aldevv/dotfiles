@@ -6,19 +6,19 @@ set nocompatible " disable compatibility to vi, to activate vim improvements
 if executable('zsh')
   set shell=/bin/zsh
 endif
-let mapleader = "\<Space>"
-let maplocalleader="\<BS>"
+" set timeoutlen=700
+" let mapleader = "\<Space>"
+" let maplocalleader="\<BS>"
 " use ñ for text obj?
 
 "===================
 " WHICHKEY
 "===================
-" set timeoutlen=1500
-set timeoutlen=700
-nnoremap <silent><leader> :<c-u>WhichKey '<Space>'<CR>
-vnoremap <silent><leader> :<c-u>WhichKeyVisual '<Space>'<CR>
-nnoremap <silent><localleader> :<c-u>WhichKey "\<BS\>" <CR>
-nnoremap <silent> <leader><space>   :<c-u>WhichKey '<leader><leader>'<CR>
+" nnoremap <silent><leader> :<c-u>WhichKey '<Space>'<CR>
+" vnoremap <silent><leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+" nnoremap <silent><localleader> :<c-u>WhichKey "\<BS\>" <CR>
+" nnoremap <silent> <leader><space>   :<c-u>WhichKey '<leader><leader>'<CR>
+
 "======================
 
 set updatetime=1500 " this is for autosave in tex files(every cursorhold event)
@@ -67,6 +67,7 @@ set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B
 set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
 set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
 set listchars+=trail:•
+set listchars+=eol:↲
 
 if has('folding')
   set foldenable

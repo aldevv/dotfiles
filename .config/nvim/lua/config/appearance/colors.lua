@@ -1,7 +1,8 @@
 -- cmp
+-- do nvim --headless to see errors, guifg was MISSING
 vim.cmd([[
     augroup cmp
-        execute 'hi! CmpItemAbbr ' . HighGet("String")
+        execute 'hi! CmpItemAbbr guifg=' . HighGet("String")
     augroup END
 ]])
 

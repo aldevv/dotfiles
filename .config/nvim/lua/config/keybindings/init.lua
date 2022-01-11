@@ -14,6 +14,7 @@ local nor_e = vim.tbl_extend("keep", nor, e)
 local nor_e_s = vim.tbl_extend("keep", nor, e, s)
 
 local map = vim.api.nvim_set_keymap
+local h = "$XDG_CONFIG_HOME/nvim"
 -- backlog
 -- <a-?>
 -- <a-i>
@@ -21,7 +22,6 @@ local map = vim.api.nvim_set_keymap
 -- <a-h>
 -- ¿
 -- <leader>N
-local h = "$XDG_CONFIG_HOME/nvim"
 -- essential
 
 -- colemak
@@ -39,7 +39,7 @@ local h = "$XDG_CONFIG_HOME/nvim"
 -- map("", "gn", "gj", nor)
 -- map("", "gk", "gn", nor)
 -- map("", "gE", "gJ", nor) -- lines
--- map("", "E", "mzJ`z", nor) -- lines
+map("", "E", "mzJ`z", nor) -- lines
 
 map("n", "<leader>cdb", ":lua require'dap'.toggle_breakpoint()<cr>", nor_s)
 
@@ -55,8 +55,9 @@ map("i", "<a-n>", "<esc>:m .+1<cr>==a", nor)
 map("n", "<a-e>", ":m .-2<cr>==", nor)
 map("n", "<a-n>", ":m .+1<cr>==", nor)
 
-map("i", "<c-c>", "copilot#Accept('<CR>')", vim.tbl_extend("keep", s_e, { script = true }))
-map("", "<leader>cc", ":lua require('utils.lua.keybindings').toggle_copilot()<cr>", nor_s)
+map("i", "<c-y>", "copilot#Accept('<CR>')", vim.tbl_extend("keep", s_e, { script = true }))
+map('n', "ß", "<Plug>(Switch)", nor_s)
+map("", "<leader>cc", ":lua require('utils.lua.keybindings').toggle_copilot()<cr>", nor)
 -- map("", "<leader>cc", ":Copilot enable<cr>", nor_s)
 
 -- snippets
@@ -109,11 +110,17 @@ map("n", "s", ":HopChar1<cr>", nor_s)
 
 -- leader commands
 -- -----------------
+-- whichkey workaround (no BS allowed)
+map("n", "<BS>", ":WhichKey \\<cr>", nor_s)
+
 -- telescope
 require("config.keybindings.telescope").load_mappings()
 
 -- nvim-tree
 map("n", "<leader>se", ":NvimTreeToggle<cr>", nor_s)
+
+-- true-zen
+map("n", "<leader>sz", ":<cr>", nor_s)
 
 -- treesitter
 map("n", "<leader>st", ":TSPlaygroundToggle<cr>", nor_s)
@@ -143,6 +150,9 @@ require("config.keybindings.harpoon").load_mappings()
 -- nnoremap <leader>glp :cprev<CR>:call search(_search_term)<CR>-
 
 -- prefix . --> commands
+map("n", "<leader>.vo", ":noautocmd w | luafile %<cr>", nor_s)
+map("n", "<leader>.vd", ":lua require('osv').launch({port=3333})<cr>", nor_s)
+map("n", "<leader>.vD", ":lua require('osv').run_this()<cr>", nor_s)
 
 -- .p commands for projects
 map("n", "<leader>.pfp", ":!create_projection_file", nor)
@@ -163,3 +173,17 @@ map("n", "<leader>cfb", ":VimBeGood<cr>", nor)
 map("n", "<leader>cfa", ":VimApm<cr>", nor)
 map("n", "<leader>cfA", ":VimApmShutdown<cr>", nor)
 
+
+map("i", "€", "<plug>(emmet-expand-abbr)", {})
+map('n', "<leader>su", ":UndotreeToggle<cr>", nor_s)
+map('n', "<leader>sv", ":IndentLinesToggle<cr>", nor_s)
+
+-- map('n', "gp", "<Plug>(ReplaceWithRegisterOperator)", nor_s)
+-- map('n', "gpp", "<Plug>(ReplaceWithRegisterLine)", nor_s)
+-- map('x', "gp", "<Plug>(ReplaceWithRegisterVisual)", nor_s)
+--  only works like this
+vim.cmd([[
+nmap gp  <Plug>ReplaceWithRegisterOperator
+nmap gpp <Plug>ReplaceWithRegisterLine
+xmap gp  <Plug>ReplaceWithRegisterVisual
+]])

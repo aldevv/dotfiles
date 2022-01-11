@@ -28,23 +28,19 @@ if empty($NOCOC)
   Plug 'stsewd/fzf-checkout.vim'
   Plug 'antoinemadec/coc-fzf'
   Plug 'chengzeyi/fzf-preview.vim'
-  " lsp
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'sbdchd/neoformat'
   Plug 'ap/vim-css-color'
 endif
 
-Plug 'preservim/tagbar'
-Plug 'AndrewRadev/switch.vim' " luasnips will cover this functionality
-Plug 'yggdroot/indentLine'
-" Plug 'jupyter-vim/jupyter-vim'
-Plug 'mattn/emmet-vim'
-Plug 'mbbill/undotree'
-Plug 'liuchengxu/vim-which-key'
-Plug 'junegunn/goyo.vim'
-Plug 'jremmen/vim-ripgrep'
-Plug  'alvan/vim-closetag'
-Plug 'LunarWatcher/auto-pairs'
+" Plug 'AndrewRadev/switch.vim' " luasnips will cover this functionality
+" Plug 'junegunn/goyo.vim'
+" Plug 'yggdroot/indentLine'
+" Plug 'mbbill/undotree'
+" Plug 'mattn/emmet-vim'
+" Plug 'preservim/tagbar'
+" Plug  'alvan/vim-closetag'
+" Plug 'LunarWatcher/auto-pairs'
 
 " BUG with macros!
 " Plug 'rhysd/clever-f.vim' " check lightspeed
@@ -62,7 +58,9 @@ Plug 'LunarWatcher/auto-pairs'
 
 Plug 'bkad/CamelCaseMotion'"
 " Plug 'tpope/vim-projectionist'
-Plug 'vim-scripts/ReplaceWithRegister'
+"
+" Plug 'vim-scripts/ReplaceWithRegister'
+
 Plug 'editorconfig/editorconfig-vim'
 
 "=============

@@ -10,7 +10,8 @@
 
 -- Local plugins can be included
 -- use '~/projects/personal/hover.nvim'
-function req(module)
+
+local function req(module)
     return string.format('require("%s")', module)
 end
 
@@ -38,7 +39,20 @@ return require("packer").startup({
 
         use({
             "SirVer/ultisnips",
-            config = req("core.snippets"),
+            config = req("lsp.ultisnippets"),
+            requires = "quangnguyen30192/cmp-nvim-ultisnips",
+        })
+        use("honza/vim-snippets")
+
+        -- use({
+        --     "L3MON4D3/LuaSnip"
+        -- })
+        --
+        -- use({ "windwp/nvim-autopairs", config = req("core.autopairs") }) -- no one key
+        -- fastwrap
+        use({
+            "ray-x/lsp_signature.nvim",
+            config = req("lsp.lsp-signature"),
         })
         use({
             "hrsh7th/nvim-cmp",
@@ -48,7 +62,8 @@ return require("packer").startup({
                 { "hrsh7th/cmp-nvim-lua", ft = "lua" },
                 "hrsh7th/cmp-path",
                 "hrsh7th/cmp-buffer",
-                { "quangnguyen30192/cmp-nvim-ultisnips", requires = "SirVer/ultisnips" },
+                -- "saadparwaiz1/cmp_luasnip",
+                { "quangnguyen30192/cmp-nvim-ultisnips" },
             },
             config = req("lsp.cmp"),
         })
@@ -83,6 +98,7 @@ return require("packer").startup({
         use({
             "ahmedkhalf/project.nvim",
             config = req("lsp.project"),
+            event = "VimEnter",
         })
 
         -- Lazy loading:
@@ -118,13 +134,12 @@ return require("packer").startup({
 
         use({
             "mfussenegger/nvim-dap",
-            opt = true,
             requires = {
-                { "Pocco81/DAPInstall.nvim" },
-                { "rcarriga/nvim-dap-ui" },
-                { "theHamsta/nvim-dap-virtual-text" },
+                { "Pocco81/DAPInstall.nvim", module = "dap-install" },
+                { "rcarriga/nvim-dap-ui", module = "dapui" },
+                { "theHamsta/nvim-dap-virtual-text", module = "nvim-dap-virtual-text" },
             },
-            module_pattern = "dap",
+            module = "dap",
             config = req("lsp.dap"),
         })
 
@@ -167,22 +182,74 @@ return require("packer").startup({
             requires = "godlygeek/tabular",
             ft = "md",
         })
+        use({
+            "folke/which-key.nvim",
+            config = req("config.appearance.whichkey"),
+        })
+        use({
+            "yggdroot/indentLine",
+            config = function()
+                vim.g.indentLine_char = "┆"
+                vim.g.indentLine_enabled = 0
+            end,
+        })
+        use({
+            "Pocco81/TrueZen.nvim",
+            config = req("core.truezen"),
+            cmd = { "TZMinimalist", "TZFocus", "TZAtaraxis", "TZBottom", "TZLeft", "TZTop" },
+        })
 
-        -- check if there is a file .projections.json
+        use({ "AndrewRadev/switch.vim", config = req("core.switch") }) -- luasnips will cover this functionality
+        use({
+            "mbbill/undotree",
+            cmd = { "UndotreeToggle" },
+        })
+        use("inkarkat/vim-ReplaceWithRegister")
+        use({ "preservim/tagbar", cmd = { "TagbarToggle" } })
+        use({
+            "mattn/emmet-vim",
+            config = function()
+                vim.g.user_emmet_install_global = 0
+            end,
+            ft = { "html", "js", "ts", "css", "vue", "svelte", "jsx", "tsx" },
+        })
+        use({
+            "alvan/vim-closetag",
+            config = req("core.closetags"),
+            ft = { "html", "js", "ts", "css", "vue", "svelte", "jsx", "tsx" },
+        })
+
+        use({
+            "LunarWatcher/auto-pairs",
+            config = req("core.autopairs"),
+        })
+
         use({
             "tpope/vim-projectionist",
-            after = "ahmedkhalf/project.nvim",
-            cond = function()
-                return require("utils.lua.files").file_exists({ file = ".env" })
-            end
+            -- requires = "ahmedkhalf/project.nvim",
+            -- after = "project",
+            -- this breaks _skel!!
+            -- cond = function()
+            --     print(vim.fn.getcwd())
+            --     return require("lspconfig.util").find_git_ancestor(vim.fn.getcwd()) ~= nil
+            -- end,
         })
 
         -- check if there is a file .env
         use({
             "tpope/vim-dotenv",
-            requires = { "tpope/vim-projectionist" },
+            requires = {
+                "tpope/vim-projectionist",
+            },
+            cond = function()
+                local cwd = require("lspconfig.util").find_git_ancestor(vim.fn.getcwd())
+                if cwd ~= nil then
+                    return vim.fn.glob(cwd .. "/" .. ".env*") ~= ""
+                end
+                return false
+            end,
         })
-
+        use("jbyuki/one-small-step-for-vimkind") -- debug lua files
         -- fun
         use("ThePrimeagen/vim-apm")
         use("ThePrimeagen/vim-be-good")

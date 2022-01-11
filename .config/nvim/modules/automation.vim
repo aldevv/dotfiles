@@ -91,8 +91,6 @@ augroup set_latex_env
        let maplocalleader = ','
    endif
 
-   autocmd FileType tex nnoremap <silent><localleader> :<c-u>WhichKey  ','<CR>
-
 "======================
 augroup END
 " setfiletype doesn't change the filetype if already set

@@ -77,87 +77,60 @@ endif
 endif
 
 set background=dark
-" ==============
-" UndoTreeToggle
-" ==============
-map <silent><leader>u :UndotreeToggle<CR>
 
 " NERDTreeToggle
-" check mappings here
-"https://github.com/preservim/nerdtree/blob/master/doc/NERDTree.txt
-let g:nerdFirsttime = 0
-function s:UpdateNerd() " updates the  tree when a new file is saved
-    if g:nerdFirsttime == 0
-        if exists("g:NERDTree") && g:NERDTree.IsOpen()
-            autocmd BufWritePost * :NERDTreeRefreshRoot
-        endif
-    endif
-    let g:nerdFirsttime = 1
-    :NERDTreeRefreshRoot
-endfunction
-" map <leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
-noremap <silent><leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
-
-
-
-" enable line numbers
-let NERDTreeShowLineNumbers=1
-" make sure relative line numbers are used
-autocmd FileType nerdtree setlocal relativenumber
-
-" close vim if only nerdtree is open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-" to avoid crashes with vim-plug functions while cursor in nerdtree
-let NERDTreeShowHidden=1
-let g:plug_window = 'noautocmd vertical topleft new'
-let NERDTreeShowHidden=1
-" change root, not cwd
-let NERDTreeMapChangeRoot= 'cv'
-" change cwd
-let NERDTreeMapChdir = 'cr'
-" go back to cwd
-let NERDTreeMapCWD= 'd'
-let NERDTreeMenuUp   = 'e'
-let NERDTreeMenuDown = 'n'
-
-let NERDTreeMapOpenExpl = 'w'
-let NERDTreeMapOpenSplit = "s"
-let NERDTreeMapPreview = "o"
-let NERDTreeMapOpenRecursively= "I"
-let NERDTreeMapCloseChildren = "H"
-let NERDTreeMapActivateNode = "go"
-let NERDTreeMapOpenVSplit = "v"
-let NERDTreeMapPreviewSplit = "gs"
-let NERDTreeMapPreviewVSplit = "gv"
-let NERDTreeMapJumpFirstChild = "E"
-let NERDTreeMapJumpLastChild = "N"
-let NERDTreeMapJumpPrevSibling = "<C-E>"
-let NERDTreeMapJumpNextSibling = "<C-N>"
-let NERDTreeMapToggleHidden = "<BS>"
-" you can open with o
-let NERDTreeMapCustomOpen = "i"
-
-let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-            \ 'Modified'  :'✹ ',
-            \ 'Staged'    :'➕',
-            \ 'Untracked' :'✭ ',
-            \ 'Renamed'   :'➜',
-            \ 'Unmerged'  :'═',
-            \ 'Deleted'   :'✖',
-            \ 'Dirty'     :'✗',
-            \ 'Ignored'   :'☒',
-            \ 'Clean'     :'✔︎',
-            \ 'Unknown'   :'?',
-            \ }
-
-" =========
-" Undo tree
-" =========
-nnoremap <F5> :UndotreeToggle<cr>
+" let g:nerdFirsttime = 0
+" function s:UpdateNerd() " updates the  tree when a new file is saved
+"     if g:nerdFirsttime == 0
+"         if exists("g:NERDTree") && g:NERDTree.IsOpen()
+"             autocmd BufWritePost * :NERDTreeRefreshRoot
+"         endif
+"     endif
+"     let g:nerdFirsttime = 1
+"     :NERDTreeRefreshRoot
+" endfunction
+" noremap <silent><leader>se :NERDTreeToggle<CR>:call <SID>UpdateNerd()<CR>
+" let NERDTreeShowLineNumbers=1
+" autocmd FileType nerdtree setlocal relativenumber
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" let g:NERDTreeDirArrowExpandable = '▸'
+" let g:NERDTreeDirArrowCollapsible = '▾'
+" let NERDTreeShowHidden=1
+" let g:plug_window = 'noautocmd vertical topleft new'
+" let NERDTreeShowHidden=1
+" let NERDTreeMapChangeRoot= 'cv'
+" let NERDTreeMapChdir = 'cr'
+" let NERDTreeMapCWD= 'd'
+" let NERDTreeMenuUp   = 'e'
+" let NERDTreeMenuDown = 'n'
+" let NERDTreeMapOpenExpl = 'w'
+" let NERDTreeMapOpenSplit = "s"
+" let NERDTreeMapPreview = "o"
+" let NERDTreeMapOpenRecursively= "I"
+" let NERDTreeMapCloseChildren = "H"
+" let NERDTreeMapActivateNode = "go"
+" let NERDTreeMapOpenVSplit = "v"
+" let NERDTreeMapPreviewSplit = "gs"
+" let NERDTreeMapPreviewVSplit = "gv"
+" let NERDTreeMapJumpFirstChild = "E"
+" let NERDTreeMapJumpLastChild = "N"
+" let NERDTreeMapJumpPrevSibling = "<C-E>"
+" let NERDTreeMapJumpNextSibling = "<C-N>"
+" let NERDTreeMapToggleHidden = "<BS>"
+" let NERDTreeMapCustomOpen = "i"
+" let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
+" let g:NERDTreeGitStatusIndicatorMapCustom = {
+"             \ 'Modified'  :'✹ ',
+"             \ 'Staged'    :'➕',
+"             \ 'Untracked' :'✭ ',
+"             \ 'Renamed'   :'➜',
+"             \ 'Unmerged'  :'═',
+"             \ 'Deleted'   :'✖',
+"             \ 'Dirty'     :'✗',
+"             \ 'Ignored'   :'☒',
+"             \ 'Clean'     :'✔︎',
+"             \ 'Unknown'   :'?',
+"             \ }
 
 " =======
 " FZF  (to change ignored files, change the .rgignore)
@@ -560,27 +533,11 @@ let g:haskell_backpack = 1                " to enable highlighting of backpack k
 "INDENTLINE
 "==========
 "let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_char = '┆'
-let g:indentLine_enabled = 0
-
-"==========
-"VIM-INDENTLINE
-"==========
-" let g:indentguides_ignorelist = ['cpp']
-" let g:indentguides_spacechar = '┆'
-" let g:indentguides_tabchar = '|'
-
-" enable vertical lines in javascript and typescript files
-function VerticalLines()
-    :IndentLinesToggle
-    set shiftwidth=2
-endfunction
-nmap <leader>Tl :call VerticalLines()<cr>
-autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.{vim,jsx,json,ts,js} :call VerticalLines()
-"these 2 only work with real tabs, not expanded tabs"
-"set listchars=tab:┆.,trail:.,extends:>,precedes:<
-"set list
-
+" let g:indentLine_char = '┆'
+" let g:indentLine_enabled = 0
+" nmap <leader>sv :IndentLinesToggle<cr>
+" autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.{vim,jsx,json,ts,js} :IndentLines
+"------------------------------------------------------------------------------------
 if !empty(glob("$XDG_CONFIG_HOME/nvim/modules/format.vim")) && empty($NOCOC)
     source $XDG_CONFIG_HOME/nvim/modules/coc.vim
 endif
@@ -618,55 +575,16 @@ nnoremap <leader>ri :g/x/normal @a<cr>
 "============
 " CLOSE TAGS
 "============
-"
-" filetypes like xml, html, xhtml, ...
-" These are the file types where this plugin is enabled.
-"
-let g:closetag_filetypes = 'html,xhtml,phtml,js,jsx,ts,tsx,xml'
+" cant be migrated 
+" let g:closetag_regions = {
+"             \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+"             \ 'javascript.jsx': 'jsxRegion',
+"             \ }
 
-" filetypes like xml, xhtml, ...
-" This will make the list of non-closing tags self-closing in the specified files.
-"
-let g:closetag_xhtml_filetypes = 'xhtml,jsx,ts,js,html,xml'
-
-" integer value [0|1]
-" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
-"
-let g:closetag_emptyTags_caseSensitive = 1
-
-" dict
-" Disables auto-close if not in a "valid" region (based on filetype)
-"
-let g:closetag_regions = {
-            \ 'typescript.tsx': 'jsxRegion,tsxRegion',
-            \ 'javascript.jsx': 'jsxRegion',
-            \ }
-
-" Shortcut for closing tags, default is '>'
-"
-let g:closetag_shortcut = '>'
-
-" Add > at current position without closing the current tag, default is ''
-"this is for adding a single > with no pair, bug with space
-" let g:closetag_close_shortcut = '<leader>>'
-
-
-" load folds that you did previously, breaks which-key
-" augroup remember_folds
-"   autocmd!
-"   autocmd BufWinLeave * mkview
-"   autocmd BufWinEnter * silent! loadview
-" augroup END
-"
 " ==========
 " Emmet
 " ==========
 " enable just for desired filetypes
-let g:user_emmet_install_global = 0
-autocmd BufReadPre *.{html,css,js,jsx,ts} EmmetInstall
-" let g:user_emmet_leader_key='<C-Y>'
-
-let g:user_emmet_expandabbr_key = '€'
 "  let g:user_emmet_expandword_key = '<C-y>;'
 "  let g:user_emmet_update_tag = '<C-y>u'
 "  "highlight tag groups"
@@ -747,9 +665,10 @@ omap <silent><leader>lj <Plug>CamelCaseMotion_ie
 xmap <silent><leader>lj <Plug>CamelCaseMotion_ie
 
 " replace with register
-nmap gp  <Plug>ReplaceWithRegisterOperator
-nmap gpp <Plug>ReplaceWithRegisterLine
-xmap gp  <Plug>ReplaceWithRegisterVisual
+"
+" nmap gp  <Plug>ReplaceWithRegisterOperator
+" nmap gpp <Plug>ReplaceWithRegisterLine
+" xmap gp  <Plug>ReplaceWithRegisterVisual
 "USAGE                         *ReplaceWithRegister-usage*
 "
 "                                *gr* *grr* *v_gr*
@@ -1026,30 +945,6 @@ let g:splitjoin_join_mapping = 'gS'
 " autocmd Filetype python,c,cpp,java,javascript,go,skell,vim nmap <leader>cV :Vista finder<cr>
 
 "=========
-" TAGBAR
-"=========
-" nmap <leader>cv :TagbarToggle<CR>
-" let g:tagbar_position = 'rightbelow'
-" let g:tagbar_iconchars = ['▶ ', '▼ ']
-let g:tagbar_iconchars = ['▸ ', '▾ ']
-        " let g:tagbar_iconchars = ['▷', '◢']
-        " let g:tagbar_iconchars = ['+', '-']  (default on Windows)
-
-" so it opens focused
-let g:tagbar_autofocus = 1
-let g:tagbar_width = 30
-
-let g:tagbar_map_nexttag = '<c-n>'
-let g:tagbar_map_prevtag = '<c-e>'
-
-let g:tagbar_map_showproto = 'd'
-let g:tagbar_map_openfold = 'zo'
-let g:tagbar_map_closefold = 'zc'
-let g:tagbar_map_openallfolds = 'zR'
-let g:tagbar_map_closeallfolds = 'zM'
-let g:tagbar_map_hidenonpublic = 'h'
-
-"=========
 " RANGER.VIM
 "=========
 " let g:ranger_replace_netrw = 1
@@ -1082,73 +977,50 @@ let g:bclose_no_plugin_maps=1
 "===============
 " SWITCH
 "===============
-" there are many options, lists, dicts, dicts of dicts, and custom mappings
-" separate from the global ones
 "https://github.com/AndrewRadev/switch.vim
-"
-let g:switch_mapping = "ß"
-" autocmd FileType eruby let b:switch_custom_definitions =
-"     \ [
-"     \   {
-"     \     ':\(\k\+\)\s\+=>': '\1:',
-"     \     '\<\(\k\+\):':     ':\1 =>',
-"     \   },
-"     \ ]
-" if the plugin encounters "foo" under the cursor, it will be changed to "bar".
-" If it sees "bar", it will change it to "baz", and "baz" would be turned into "foo".
-" let g:switch_custom_definitions =
-"     \ [
-"     \   ['foo', 'bar', 'baz']
-"     \ ]
-
-
-" for react
-let b:switch_custom_definitions = [
-            \   {
-            \     '\(\k\+=\){\([[:keyword:].]\+\)}':      '\1{`${\2}`}',
-            \     '\(\k\+=\){`${\([[:keyword:].]\+\)}`}': '\1{\2}',
-            \     '==': '!=',
-            \     '!=': '=='
-            \   },
-            \ ]
-" it does this
-"<Thing foo={data} />
-"<Thing foo={`${data}`} />
-
-" for latex
-autocmd FileType tex,plaintex let b:switch_custom_definitions =
-            \ [
-            \    [ '\\tiny', '\\scriptsize', '\\footnotesize', '\\small', '\\normalsize', '\\large', '\\Large', '\\LARGE', '\\huge', '\\Huge' ],
-            \    [ '\\displaystyle', '\\scriptstyle', '\\scriptscriptstyle', '\\textstyle' ],
-            \    [ '\\part', '\\chapter', '\\section', '\\subsection', '\\subsubsection', '\\paragraph', '\\subparagraph' ],
-            \    [ 'part:', 'chap:', 'sec:', 'subsec:', 'subsubsec:' ],
-            \    [ 'article', 'report', 'book', 'letter', 'slides' ],
-            \    [ 'a4paper', 'a5paper', 'b5paper', 'executivepaper', 'legalpaper', 'letterpaper', 'beamer', 'subfiles', 'standalone' ],
-            \    [ 'onecolumn', 'twocolumn' ],
-            \    [ 'oneside', 'twoside' ],
-            \    [ 'draft', 'final' ],
-            \    [ 'AnnArbor', 'Antibes', 'Bergen', 'Berkeley',
-            \      'Berlin', 'Boadilla', 'CambridgeUS', 'Copenhagen', 'Darmstadt',
-            \      'Dresden', 'Frankfurt', 'Goettingen', 'Hannover', 'Ilmenau',
-            \      'JuanLesPins', 'Luebeck', 'Madrid', 'Malmoe', 'Marburg',
-            \      'Montpellier', 'PaloAlto', 'Pittsburgh', 'Rochester', 'Singapore',
-            \      'Szeged', 'Warsaw' ]
-            \ ]
-" map <--> noremap
-" wrapscan <--> nowrapscan
-" set inccommand=
-"  "<Bar> <--> \|
-autocmd FileType vim let b:switch_custom_definitions = [
-            \ { '\<\([invoxtcl]\?\)noremap\>': '\1map'},
-            \ { '\<\([invoxtcl]\?\)map\>': '\1noremap'},
-            \ { '\<\(allowrevins\|ari\|autochdir\|acd\|arabic\|arab\|arabicshape\|arshape\|autoindent\|ai\|autoread\|ar\|autowrite\|aw\|autowriteall\|awa\|backup\|bk\|ballooneval\|beval\|binary\|bin\|bomb\|buflisted\|bl\|cindent\|cin\|confirm\|cf\|copyindent\|ci\|cscoperelative\|csre\|cscopetag\|cst\|cursorbind\|crb\|cursorcolumn\|cuc\|cursorline\|cul\|delcombine\|deco\|diff\|digraph\|dg\|endofline\|eol\|equalalways\|ea\|errorbells\|eb\|expandtab\|et\|fileignorecase\|fic\|fixendofline\|fixeol\|foldenable\|fen\|gdefault\|gd\|hidden\|hid\|hkmap\|hk\|hkmapp\|hkp\|hlsearch\|hls\|icon\|ignorecase\|ic\|imcmdline\|imc\|imdisable\|imd\|incsearch\|is\|infercase\|inf\|insertmode\|im\|joinspaces\|js\|langremap\|lrm\|lazyredraw\|lz\|linebreak\|lbr\|lisp\|list\|lpl\|loadplugins\|magic\|modeline\|ml\|modelineexpr\|mle\|modifiable\|ma\|modified\|mod\|more\|mousefocus\|mousef\|mousehide\|mh\|number\|nu\|opendevice\|odev\|paste\|preserveindent\|pi\|previewwindow\|pvw\|prompt\|readonly\|ro\|relativenumber\|rnu\|remap\|revins\|ri\|rightleft\|rl\|ruler\|ru\|scrollbind\|scb\|secure\|shellslash\|ssl\|shelltemp\|stmp\|shiftround\|sr\|showcmd\|sc\|showfulltag\|sft\|showmatch\|sm\|showmode\|smd\|smartcase\|scs\|smartindent\|si\|smarttab\|sta\|spell\|splitbelow\|sb\|splitright\|sr\|startofline\|sol\|swapfile\|swf\|tagbsearch\|tbs\|tagrelative\|tr\|tagstack\|tgst\|termbidi\|tbidi\|terse\|tildeop\|top\|timeout\|to\|ttimeout\|title\|ttyfast\|tf\|undofile\|udf\|visualbell\|vb\|warn\|wildignorecase\|wic\|wildmenu\|wmnu\|winfixheight\|wfh\|winfixwidth\|wfw\|wrap\|wrapscan\|ws\|write\|writeany\|wa\|writebackup\|wb\)\>': 'no\1'},
-            \ { '\<no\(allowrevins\|ari\|autochdir\|acd\|arabic\|arab\|arabicshape\|arshape\|autoindent\|ai\|autoread\|ar\|autowrite\|aw\|autowriteall\|awa\|backup\|bk\|ballooneval\|beval\|binary\|bin\|bomb\|buflisted\|bl\|cindent\|cin\|confirm\|cf\|copyindent\|ci\|cscoperelative\|csre\|cscopetag\|cst\|cursorbind\|crb\|cursorcolumn\|cuc\|cursorline\|cul\|delcombine\|deco\|diff\|digraph\|dg\|endofline\|eol\|equalalways\|ea\|errorbells\|eb\|expandtab\|et\|fileignorecase\|fic\|fixendofline\|fixeol\|foldenable\|fen\|gdefault\|gd\|hidden\|hid\|hkmap\|hk\|hkmapp\|hkp\|hlsearch\|hls\|icon\|ignorecase\|ic\|imcmdline\|imc\|imdisable\|imd\|incsearch\|is\|infercase\|inf\|insertmode\|im\|joinspaces\|js\|langremap\|lrm\|lazyredraw\|lz\|linebreak\|lbr\|lisp\|list\|lpl\|loadplugins\|magic\|modeline\|ml\|modelineexpr\|mle\|modifiable\|ma\|modified\|mod\|more\|mousefocus\|mousef\|mousehide\|mh\|number\|nu\|opendevice\|odev\|paste\|preserveindent\|pi\|previewwindow\|pvw\|prompt\|readonly\|ro\|relativenumber\|rnu\|remap\|revins\|ri\|rightleft\|rl\|ruler\|ru\|scrollbind\|scb\|secure\|shellslash\|ssl\|shelltemp\|stmp\|shiftround\|sr\|showcmd\|sc\|showfulltag\|sft\|showmatch\|sm\|showmode\|smd\|smartcase\|scs\|smartindent\|si\|smarttab\|sta\|spell\|splitbelow\|sb\|splitright\|sr\|startofline\|sol\|swapfile\|swf\|tagbsearch\|tbs\|tagrelative\|tr\|tagstack\|tgst\|termbidi\|tbidi\|terse\|tildeop\|top\|timeout\|to\|ttimeout\|title\|ttyfast\|tf\|undofile\|udf\|visualbell\|vb\|warn\|wildignorecase\|wic\|wildmenu\|wmnu\|winfixheight\|wfh\|winfixwidth\|wfw\|wrap\|wrapscan\|ws\|write\|writeany\|wa\|writebackup\|wb\)\>': '\1'},
-            \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)$': '\1split' },
-            \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)split\>': '\1nosplit' },
-            \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)nosplit\>': '\1' },
-            \ { '\c<Bar>': '\\|' },
-            \ { '\\|': '<Bar>' }
-            \]
+" let g:switch_mapping = "ß"
+" " let g:switch_custom_definitions =
+" "     \ [
+" "     \   ['foo', 'bar', 'baz']
+" "     \ ]
+" " for react
+" let b:switch_custom_definitions = [
+"             \   {
+"             \     '\(\k\+=\){\([[:keyword:].]\+\)}':      '\1{`${\2}`}',
+"             \     '\(\k\+=\){`${\([[:keyword:].]\+\)}`}': '\1{\2}',
+"             \     '==': '!=',
+"             \     '!=': '=='
+"             \   },
+"             \ ]
+" autocmd FileType tex,plaintex let b:switch_custom_definitions =
+"             \ [
+"             \    [ '\\tiny', '\\scriptsize', '\\footnotesize', '\\small', '\\normalsize', '\\large', '\\Large', '\\LARGE', '\\huge', '\\Huge' ],
+"             \    [ '\\displaystyle', '\\scriptstyle', '\\scriptscriptstyle', '\\textstyle' ],
+"             \    [ '\\part', '\\chapter', '\\section', '\\subsection', '\\subsubsection', '\\paragraph', '\\subparagraph' ],
+"             \    [ 'part:', 'chap:', 'sec:', 'subsec:', 'subsubsec:' ],
+"             \    [ 'article', 'report', 'book', 'letter', 'slides' ],
+"             \    [ 'a4paper', 'a5paper', 'b5paper', 'executivepaper', 'legalpaper', 'letterpaper', 'beamer', 'subfiles', 'standalone' ],
+"             \    [ 'onecolumn', 'twocolumn' ],
+"             \    [ 'oneside', 'twoside' ],
+"             \    [ 'draft', 'final' ],
+"             \    [ 'AnnArbor', 'Antibes', 'Bergen', 'Berkeley',
+"             \      'Berlin', 'Boadilla', 'CambridgeUS', 'Copenhagen', 'Darmstadt',
+"             \      'Dresden', 'Frankfurt', 'Goettingen', 'Hannover', 'Ilmenau',
+"             \      'JuanLesPins', 'Luebeck', 'Madrid', 'Malmoe', 'Marburg',
+"             \      'Montpellier', 'PaloAlto', 'Pittsburgh', 'Rochester', 'Singapore',
+"             \      'Szeged', 'Warsaw' ]
+"             \ ]
+" autocmd FileType vim let b:switch_custom_definitions = [
+"             \ { '\<\([invoxtcl]\?\)noremap\>': '\1map'},
+"             \ { '\<\([invoxtcl]\?\)map\>': '\1noremap'},
+"             \ { '\<\(allowrevins\|ari\|autochdir\|acd\|arabic\|arab\|arabicshape\|arshape\|autoindent\|ai\|autoread\|ar\|autowrite\|aw\|autowriteall\|awa\|backup\|bk\|ballooneval\|beval\|binary\|bin\|bomb\|buflisted\|bl\|cindent\|cin\|confirm\|cf\|copyindent\|ci\|cscoperelative\|csre\|cscopetag\|cst\|cursorbind\|crb\|cursorcolumn\|cuc\|cursorline\|cul\|delcombine\|deco\|diff\|digraph\|dg\|endofline\|eol\|equalalways\|ea\|errorbells\|eb\|expandtab\|et\|fileignorecase\|fic\|fixendofline\|fixeol\|foldenable\|fen\|gdefault\|gd\|hidden\|hid\|hkmap\|hk\|hkmapp\|hkp\|hlsearch\|hls\|icon\|ignorecase\|ic\|imcmdline\|imc\|imdisable\|imd\|incsearch\|is\|infercase\|inf\|insertmode\|im\|joinspaces\|js\|langremap\|lrm\|lazyredraw\|lz\|linebreak\|lbr\|lisp\|list\|lpl\|loadplugins\|magic\|modeline\|ml\|modelineexpr\|mle\|modifiable\|ma\|modified\|mod\|more\|mousefocus\|mousef\|mousehide\|mh\|number\|nu\|opendevice\|odev\|paste\|preserveindent\|pi\|previewwindow\|pvw\|prompt\|readonly\|ro\|relativenumber\|rnu\|remap\|revins\|ri\|rightleft\|rl\|ruler\|ru\|scrollbind\|scb\|secure\|shellslash\|ssl\|shelltemp\|stmp\|shiftround\|sr\|showcmd\|sc\|showfulltag\|sft\|showmatch\|sm\|showmode\|smd\|smartcase\|scs\|smartindent\|si\|smarttab\|sta\|spell\|splitbelow\|sb\|splitright\|sr\|startofline\|sol\|swapfile\|swf\|tagbsearch\|tbs\|tagrelative\|tr\|tagstack\|tgst\|termbidi\|tbidi\|terse\|tildeop\|top\|timeout\|to\|ttimeout\|title\|ttyfast\|tf\|undofile\|udf\|visualbell\|vb\|warn\|wildignorecase\|wic\|wildmenu\|wmnu\|winfixheight\|wfh\|winfixwidth\|wfw\|wrap\|wrapscan\|ws\|write\|writeany\|wa\|writebackup\|wb\)\>': 'no\1'},
+"             \ { '\<no\(allowrevins\|ari\|autochdir\|acd\|arabic\|arab\|arabicshape\|arshape\|autoindent\|ai\|autoread\|ar\|autowrite\|aw\|autowriteall\|awa\|backup\|bk\|ballooneval\|beval\|binary\|bin\|bomb\|buflisted\|bl\|cindent\|cin\|confirm\|cf\|copyindent\|ci\|cscoperelative\|csre\|cscopetag\|cst\|cursorbind\|crb\|cursorcolumn\|cuc\|cursorline\|cul\|delcombine\|deco\|diff\|digraph\|dg\|endofline\|eol\|equalalways\|ea\|errorbells\|eb\|expandtab\|et\|fileignorecase\|fic\|fixendofline\|fixeol\|foldenable\|fen\|gdefault\|gd\|hidden\|hid\|hkmap\|hk\|hkmapp\|hkp\|hlsearch\|hls\|icon\|ignorecase\|ic\|imcmdline\|imc\|imdisable\|imd\|incsearch\|is\|infercase\|inf\|insertmode\|im\|joinspaces\|js\|langremap\|lrm\|lazyredraw\|lz\|linebreak\|lbr\|lisp\|list\|lpl\|loadplugins\|magic\|modeline\|ml\|modelineexpr\|mle\|modifiable\|ma\|modified\|mod\|more\|mousefocus\|mousef\|mousehide\|mh\|number\|nu\|opendevice\|odev\|paste\|preserveindent\|pi\|previewwindow\|pvw\|prompt\|readonly\|ro\|relativenumber\|rnu\|remap\|revins\|ri\|rightleft\|rl\|ruler\|ru\|scrollbind\|scb\|secure\|shellslash\|ssl\|shelltemp\|stmp\|shiftround\|sr\|showcmd\|sc\|showfulltag\|sft\|showmatch\|sm\|showmode\|smd\|smartcase\|scs\|smartindent\|si\|smarttab\|sta\|spell\|splitbelow\|sb\|splitright\|sr\|startofline\|sol\|swapfile\|swf\|tagbsearch\|tbs\|tagrelative\|tr\|tagstack\|tgst\|termbidi\|tbidi\|terse\|tildeop\|top\|timeout\|to\|ttimeout\|title\|ttyfast\|tf\|undofile\|udf\|visualbell\|vb\|warn\|wildignorecase\|wic\|wildmenu\|wmnu\|winfixheight\|wfh\|winfixwidth\|wfw\|wrap\|wrapscan\|ws\|write\|writeany\|wa\|writebackup\|wb\)\>': '\1'},
+"             \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)$': '\1split' },
+"             \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)split\>': '\1nosplit' },
+"             \ { '\<\(set\s\+\(inccommand\|icm\)\s*=\s*\)nosplit\>': '\1' },
+"             \ { '\c<Bar>': '\\|' },
+"             \ { '\\|': '<Bar>' }
+"             \]
 
 " sneak (eye candy and vertical movement)
 " let g:sneak#s_next = 1
@@ -1239,77 +1111,35 @@ let g:context_enabled = 0
 "==========
 " AUTO-PAIRS
 "==========
-" System Shortcuts:
-"     <CR> : Insert new indented line after return if cursor in blank brackets
-"            or quotes.
-"     <BS> : Delete brackets in pair
-"     <M-p>: Toggle Autopairs (|g:AutoPairsShortcutToggle|)
-"     <M-n>: Jump to next closed pair (|g:AutoPairsShortcutJump|)
-"     <M-b>: BackInsert { (|g:AutoPairsShortcutBackInsert|) }
-"     <M-e>: 'Fast' 'Wrap' (g:AutoPairsShortcutFastWrap)
-"     { n n{ e n
-"     << ()
+" let g:AutoPairsFlyMode = 0
+" let g:AutoPairsMultilineClose = 0
+" let g:AutoPairsMapBS=1
+" let g:AutoPairsMapCh = 0 "use pars mapBS better"
 
-" testing
-"
-let g:AutoPairsFlyMode = 0
+" autocmd Filetype tex let b:AutoPairs = {"(": ")", "[": "]"}
+"  let g:AutoPairsSingleQuoteExpandFor = "fbr" " they are not gonna mess much in english for f''
+" let g:AutoPairsDoubleQuoteExpandFor = 'fbr'
+" let g:AutoPairsSingleQuoteMode = 2
+" let g:AutoPairsDoubleQuoteMode = 2
+" let g:AutoPairsShortcutFastWrap = '<a-a>'
+" let g:AutoPairsShortcutJump = '<a-w>'
+" let g:AutoPairsShortcutToggle = ''
+" let g:AutoPairsShortcutBackInsert = '<a-b>' " only for flymode
 
-let g:AutoPairsMultilineClose = 0
-let g:AutoPairsMapBS=1
-let g:AutoPairsMapCh = 0 "use pars mapBS better"
 
-autocmd Filetype tex let b:AutoPairs = {"(": ")", "[": "]"}
-" check the docs g:AutoPairsSingleQuotePrefixGroup
- let g:AutoPairsSingleQuoteExpandFor = "fbr" " they are not gonna mess much in english for f''
-let g:AutoPairsDoubleQuoteExpandFor = 'fbr'
-let g:AutoPairsSingleQuoteMode = 2
-let g:AutoPairsDoubleQuoteMode = 2
-"
-" let g:AutoPairsLanguagePairs = {
-        " \ "erlang": {'<<': '>>'},
-        " \ "tex": {'``': "''" },
-        " \ "html": {'<': '>'},
-        " \ 'vim': {'\v(^\s*\zs"\ze|".*"\s*\zs"\ze$|^(\s*[a-zA-Z]+\s*([a-zA-Z]*\s*\=\s*)?)@!(\s*\zs"\ze(\\\"|[^"])*$))': ''},
-        " \ 'rust': {'\w\zs<': '>', '&\zs''': ''},
-        " \ 'php': {'<?': '?>//k]', '<?php': '?>//k]'}
-        " \ }
-let g:AutoPairsShortcutFastWrap = '<a-a>'
-let g:AutoPairsShortcutJump = '<a-w>'
-let g:AutoPairsShortcutToggle = ''
-let g:AutoPairsShortcutBackInsert = '<a-b>' " only for flymode
-" let g:AutoPairsShortcutBackInsert = '<Nop>'
-
-"
 " ================
 " NEOTERM
 " ================
 
-" let g:neoterm_size="10"
 let g:neoterm_size="20"
 let g:neoterm_autoinsert = 1
-" let g:neoterm_default_mod = 'rightbelow'
 let g:neoterm_default_mod = 'rightbelow'
 let g:neoterm_automap_keys='¡tt'
 let g:neoterm_keep_term_open = 0
-" map <silent><Leader>T :Ttoggle<cr>
-
-" open terminal
-" map <Leader>st :new term://zsh \| resize 10<CR>a
-
-"To map <Esc> to exit terminal-mode:
 tmap <silent><a-t> <C-\><C-n>
-
-" go up from terminal
 tmap <silent><a-d> <a-t><c-w>e
-
-" close terminal
-" botright makes it appear at the bottom of all splits (or to the right of all, depending on
-" the type of split (not determined by botright))
 map <silent><a-q> :call Open_terminal()<CR>
-" map <silent><a-q> :botright Ttoggle<CR>
 tmap <silent><a-q> <a-t>:q<CR>
-
-" noremap <a-d> <c-w>ja
 nnoremap <silent><a-d> :call Switch_terminal()<CR>
 
 function! Open_terminal()
@@ -1322,7 +1152,6 @@ function! Open_terminal()
     call chansend(b:terminal_job_id, "")"
     return
   endif
-
   " if closed, open it
   let exists = bufwinnr("neoterm-*")
   if exists == -1

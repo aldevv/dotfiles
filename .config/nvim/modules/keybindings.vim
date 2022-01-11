@@ -71,7 +71,7 @@ noremap <silent><c-w>S :sp #<cr>
 "
 noremap - /\v
 vnoremap - /\v
-noremap / -
+" noremap / -
 
 " for folds
 nnoremap <leader>Z zMzvzz
