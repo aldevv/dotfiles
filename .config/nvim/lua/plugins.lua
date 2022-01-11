@@ -143,6 +143,12 @@ return require("packer").startup({
             config = req("lsp.dap"),
         })
 
+        use({
+            "jbyuki/one-small-step-for-vimkind",
+            requires = "mfussenegger/nvim-dap",
+            module = "osv",
+        }) -- debug lua files
+
         -- add gitsigns
 
         use({
@@ -196,7 +202,7 @@ return require("packer").startup({
         use({
             "Pocco81/TrueZen.nvim",
             config = req("core.truezen"),
-            cmd = { "TZMinimalist", "TZFocus", "TZAtaraxis"}
+            cmd = { "TZMinimalist", "TZFocus", "TZAtaraxis" },
         })
 
         use({ "AndrewRadev/switch.vim", config = req("core.switch") }) -- luasnips will cover this functionality
@@ -226,29 +232,24 @@ return require("packer").startup({
 
         use({
             "tpope/vim-projectionist",
-            -- requires = "ahmedkhalf/project.nvim",
-            -- after = "project",
-            -- this breaks _skel!!
-            -- cond = function()
-            --     return require("lspconfig.util").find_git_ancestor(vim.fn.getcwd()) ~= nil
-            -- end,
+            requires = "neovim/nvim-lspconfig",
+            cond = function()
+                return require("lspconfig.util").root_pattern(".projections.json")(vim.fn.getcwd()) ~= nil
+            end,
         })
 
         -- check if there is a file .env
-        -- use({
-        --     "tpope/vim-dotenv",
-        --     cond = function()
-        --         local cwd = require("lspconfig.util").find_git_ancestor(vim.fn.getcwd())
-        --         if cwd ~= nil then
-        --             return vim.fn.glob(cwd .. "/" .. ".env*") ~= ""
-        --         end
-        --         return false
-        --     end,
-        -- })
-        use("jbyuki/one-small-step-for-vimkind") -- debug lua files
+        use({
+            "tpope/vim-dotenv",
+            requires = "neovim/nvim-lspconfig",
+            cond = function()
+                return require("lspconfig.util").root_pattern(".env*")(vim.fn.getcwd()) ~= nil
+            end,
+        })
         -- fun
         use("ThePrimeagen/vim-apm")
         use("ThePrimeagen/vim-be-good")
+        use({ "ThePrimeagen/git-worktree.nvim", config = req("core.git-worktree") })
     end,
     config = {
         display = {

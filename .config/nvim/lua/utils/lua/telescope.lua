@@ -47,12 +47,12 @@ M.select_bg = function()
     })
 end
 
-M.git_files_or_parent = function()
+M.git_files_or_cwd = function()
     local opts = {}
     local ok = pcall(t.git_files, opts)
     opts = {
         prompt_title = "<PARENT DIR>",
-        cwd = "..",
+        cwd = ".",
     }
     if not ok then
         t.find_files(opts)

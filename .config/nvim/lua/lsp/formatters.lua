@@ -31,6 +31,7 @@ null_ls.setup({
         formatting.shfmt,
         formatting.clang_format,
         formatting.gofmt,
+        formatting.json_tool,
         diagnostics.eslint,
         -- diagnostics.selene,
         -- formatting.eslint,

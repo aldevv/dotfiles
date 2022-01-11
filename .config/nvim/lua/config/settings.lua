@@ -24,6 +24,9 @@ vim.g.netrw_winsize = '25%'
 -- for the help menu
 vim.o.wildmenu=true
 vim.o.wildmode="full"
+vim.o.backupdir=vim.fn.stdpath('cache') .. '/backups'
+vim.o.undodir=vim.fn.stdpath('cache') .. '/undodir'
+vim.o.autochdir=false
 
 -- vim.opt.timeoutlen=700
 -- vim.g.mapleader = t("<Space>")

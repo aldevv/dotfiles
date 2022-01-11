@@ -23,9 +23,8 @@ M.load_mappings = function()
 
     -- docs:
     -- h dap.reverse_continue
-    map("n", "<leader>cdmc", ":lua require'dap'.close()<cr>", nor_s) -- closes the session (can be reopened)
-    map("n", "<leader>cdmt", ":lua require'dap'.terminate()<cr>", nor_s) -- terminates debugging (cannot be reopened)
-    map("n", "<leader>cdmd", ":lua require'dap'.disconnect()<cr>", nor_s) -- disconect (terminate and close)
+    map("n", "<leader>cdmt", ":lua require'dap'.terminate{}<cr>", nor_s) -- terminate
+    map("n", "<leader>cdmr", ":lua require'dap'.restart()<cr>", nor_s)
 
     map("n", "<leader>cdu", ":lua require'dap'.up()<cr>", nor_s)
     map("n", "<leader>cdd", ":lua require'dap'.down()<cr>", nor_s)
@@ -39,11 +38,11 @@ M.load_mappings = function()
     map("n", "<leader>cde", ":lua require('utils.lua.dap').eval()<cr>", nor_s)
     map("v", "<leader>cde", ":lua require('dapui').eval()<cr>", nor_s)
 
+    map("n", "<leader>cdn", ":lua require'dap'.step_over()<cr>", nor_s)
     map("n", "<leader>cdsn", ":lua require'dap'.step_over()<cr>", nor_s)
     map("n", "<leader>cdsi", ":lua require'dap'.step_into()<cr>", nor_s)
     map("n", "<leader>cdso", ":lua require'dap'.step_out()<cr>", nor_s)
     map("n", "<leader>cdsb", ":lua require'dap'.step_back()<cr>", nor_s)
-    -- map("n", "<leader>cdr", ":lua require('dapui').toggle()<cr>", nor_s)
-    -- map("n", "<leader>cdR", ":lua require'dap'.repl.open()<cr>", nor_s)
 end
+
 return M

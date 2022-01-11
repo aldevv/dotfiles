@@ -26,7 +26,7 @@ vu      $XDG_CONFIG_HOME/nvim/lua/utils
 vk      $XDG_CONFIG_HOME/nvim/lua/config/keybindings
 vC      $XDG_CONFIG_HOME/nvim/lua/core
 p      $HOME/.local/share/nvim/site/pack
-sp      $XDG_CONFIG_HOME/nvim/my_snippets
+sp      ~/.local/share/nvim/my_snippets
 
 ms      $SCRIPTS
 mf      $FILES

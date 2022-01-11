@@ -117,9 +117,9 @@ set smartindent
 set nowrap
 set noswapfile
 set backup
-set backupdir=~/.config/nvim/backups
-set undodir=~/.config/nvim/undodir
 set autoindent
+" set backupdir=~/.config/nvim/backups
+" set undodir=~/.config/nvim/undodir
 "persistent undo
 set undofile
 set incsearch
@@ -130,7 +130,6 @@ set cmdheight=1
 set mouse=a
 " to show stuff under the modeline
 set noshowmode
-set autochdir
 " change buffers without saving
 set hidden
 " ask to save when not saved

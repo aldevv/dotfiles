@@ -41,17 +41,17 @@ local h = "$XDG_CONFIG_HOME/nvim"
 -- map("", "gE", "gJ", nor) -- lines
 map("", "E", "mzJ`z", nor) -- lines
 
-map("n", "<leader>cdb", ":lua require'dap'.toggle_breakpoint()<cr>", nor_s)
-
 -- generate checkpoints for undo
 map("i", ",", ",<c-g>u", nor)
 map("i", ".", ".<c-g>u", nor)
 map("i", "!", "!<c-g>u", nor)
 map("i", "?", "?<c-g>u", nor)
 
+map("", "<c-d>", "<c-d>zz", nor)
+map("", "<c-u>", "<c-u>zz", nor)
+
 --
 map("n", "<leader>sp", ":Lex<cr>", nor)
-
 
 map("v", "<a-n>", ":m '>+1<cr>gv=gv", nor)
 map("v", "<a-e>", ":m '<-2<cr>gv=gv", nor)
@@ -61,12 +61,22 @@ map("n", "<a-e>", ":m .-2<cr>==", nor)
 map("n", "<a-n>", ":m .+1<cr>==", nor)
 
 map("i", "<c-y>", "copilot#Accept('<CR>')", vim.tbl_extend("keep", s_e, { script = true }))
-map('n', "ß", "<Plug>(Switch)", nor_s)
-map("", "<leader>cc", ":lua require('utils.lua.keybindings').toggle_copilot()<cr>", nor)
--- map("", "<leader>cc", ":Copilot enable<cr>", nor_s)
+map("n", "ß", "<Plug>(Switch)", nor_s)
+
+map("n", "<leader>.vg", ":%g/\v/norm!<Left><Left><Left><Left><Left><Left>", nor_s)
+map("n", "<leader>.vn", ":%norm!<space>", nor_s)
+map("v", "<leader>.vg", ":g/\v/norm!<Left><Left><Left><Left><Left><Left>", nor_s)
+map("v", "<leader>.vs", ":norm!<space>", nor_s)
+
+-- not working in lua
+-- map('n', "<leader>.vs", ":%s/\v<c-r>=expand('<cword>')<cr>//gI<Left><Left><Left>", nor_s)
+map("v", "<leader>.vs", ":s/\v//gI<Left><Left><Left><Left>", nor)
+map("n", "<leader>.vs", ":%s/\v//gI<Left><Left><Left><Left>", nor)
 
 -- snippets
 map("n", "<leader>si", "<Plug>(InsertSkeleton)", s)
+
+map("", "<leader>cc", ":lua require('utils.lua.keybindings').toggle_copilot()<cr>", nor)
 
 -- terminal
 map("t", "<a-'>", "<c-\\><c-n>", nor_s)
@@ -88,9 +98,8 @@ map("n", "<localleader>Va", ":e " .. h .. "/lua/config/automation/init.lua<cr>",
 map("n", "<localleader>Vk", ":e " .. h .. "/lua/config/keybindings/init.lua<cr>", nor_s)
 map("n", "<localleader>VP", ":e " .. h .. "/modules/plugins.vim<cr>", nor_s)
 
-
 -- defaults override
-map("", "gh", ":h <c-r><c-w><cr>", nor) -- select mode, not used
+map("", "gh", ":h <c-r><c-w>|resize 15<cr>", nor) -- select mode, not used
 map("", "<leader>sh", "<c-l>", {})
 
 local uv = require("utils.vanilla.core")
@@ -153,8 +162,7 @@ map("n", "<leader>cpc", ":PackerCompile<cr>", nor)
 require("config.keybindings.harpoon").load_mappings()
 
 -- dap
-require("config.keybindings.harpoon").load_mappings()
-
+require("config.keybindings.dap").load_mappings()
 --fugitive
 -- nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<CR>
 -- nnoremap <leader>gln :cnext<CR>:call search(_search_term)<CR>
@@ -168,7 +176,6 @@ map("n", "<leader>.vD", ":lua require('osv').run_this()<cr>", nor_s)
 -- .p commands for projects
 map("n", "<leader>.pfp", ":!create_projection_file", nor)
 
-
 map("v", "ll", "<Plug>(textobj-line-i)", s)
 map("o", "ll", "<Plug>(textobj-line-i)", s)
 map("v", "al", "<Plug>(textobj-line-a)", s)
@@ -179,15 +186,21 @@ map("o", "le", "<Plug>(textobj-entire-i)", s)
 map("v", "ae", "<Plug>(textobj-entire-a)", s)
 map("o", "ae", "<Plug>(textobj-entire-a)", s)
 
+-- git worktrees
+map("n", "gwc", ":Telescope git_worktree create_git_worktree<cr>", nor)
+map("n", "gww", ":Telescope git_worktree git_worktrees<cr>", nor)
+-- <Enter> - switches to that worktree
+-- <c-d> - deletes that worktree
+-- <c-f> - toggles forcing of the next deletion
+
 -- fun
-map("n", "<leader>cfb", ":VimBeGood<cr>", nor)
+map("n", "<leader>cfv", ":VimBeGood<cr>", nor)
 map("n", "<leader>cfa", ":VimApm<cr>", nor)
 map("n", "<leader>cfA", ":VimApmShutdown<cr>", nor)
 
-
 map("i", "€", "<plug>(emmet-expand-abbr)", {})
-map('n', "<leader>su", ":UndotreeToggle<cr>", nor_s)
-map('n', "<leader>sv", ":IndentLinesToggle<cr>", nor_s)
+map("n", "<leader>su", ":UndotreeToggle<cr>", nor_s)
+map("n", "<leader>sv", ":IndentLinesToggle<cr>", nor_s)
 
 -- map('n', "gp", "<Plug>(ReplaceWithRegisterOperator)", nor_s)
 -- map('n', "gpp", "<Plug>(ReplaceWithRegisterLine)", nor_s)

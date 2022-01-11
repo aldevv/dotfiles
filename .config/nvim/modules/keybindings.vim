@@ -238,17 +238,10 @@ vnoremap <a-k> <Esc>/<++><Enter>"_c4l
 
 
 "global do
-nnoremap <C-s-_> :%g/\v/norm!<Left><Left><Left><Left><Left><Left>
-nnoremap <C--> :%norm!<space>
-vnoremap <C-s-_> :g/\v/norm!<Left><Left><Left><Left><Left><Left>
-vnoremap <C--> :norm!<space>
+" not working in lua KEEP IT
+nnoremap <leader>.vS :%s/\v<c-r>=expand("<cword>")<cr>//gI<Left><Left><Left>
 
-" Alias replace all to
-nnoremap <C-S-s> :%s/\v<c-r>=expand("<cword>")<cr>//gI<Left><Left><Left>
-nnoremap <C-s> :%s/\v//gI<Left><Left><Left><Left>
-vnoremap <C-s> :s/\v//gI<Left><Left><Left><Left>
 " save with no permission using w!!, could be cnoremap
-"
 cnoreabbrev w!! w !sudo tee > /dev/null %
 
 nnoremap <silent><leader>.ch  :w !sudo chmod +x %<cr>
@@ -429,7 +422,7 @@ vnoremap <silent><leader>ss y:lua <c-r>+<cr>
 nnoremap <silent><leader>ss ^vg_y:lua <c-r>+<cr>
 
 " help current word
-nnoremap gw :h <c-r>=expand('<cword>')<cr><bar>resize 15<cr>
+" nnoremap gw :h <c-r>=expand('<cword>')<cr><bar>resize 15<cr>
 
 " nnoremap <silent><leader>cp :silent call FormatMyCode()<cr>
 nnoremap <silent><leader>cP :silent call FormatMyCode()<cr>

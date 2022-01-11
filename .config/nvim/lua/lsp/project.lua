@@ -8,15 +8,15 @@ require("project_nvim").setup({
   -- order matters: if one is not detected, the other is used as fallback. You
   -- can also delete or rearangne the detection methods.
   -- detection_methods = { "lsp", "pattern" },
-  detection_methods = { "pattern", "lsp" },
+  detection_methods = { "lsp"},
 
   -- All the patterns used to detect root dir, when **"pattern"** is in
   -- detection_methods
-  patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", ".projections.json" },
+  patterns = { ".git", ".projections.json", "Makefile", "package.json" },
 
   -- Table of lsp clients to ignore by name
   -- eg: { "efm", ... }
-  ignore_lsp = {},
+  ignore_lsp = {"null-ls"},
 
   -- Don't calculate root dir on specific directories
   -- Ex: { "~/.cargo/*", ... }

@@ -11,7 +11,7 @@ V.     ~/.config/nvim/init.lua
 Va     ~/.config/nvim/lua/config/automation/init.lua
 Vs     ~/.config/nvim/lua/config/settings.lua
 Vk     ~/.config/nvim/lua/config/keybindings/init.lua
-Vl     ~/.config/nvim/lua
+Vl     ~/.config/nvim/lua/lsp/
 Vp     ~/.config/nvim/lua/plugins.lua
 VP     ~/.config/nvim/modules/plugins.vim
 fk     ~/.config/sxhkd/sxhkdrc

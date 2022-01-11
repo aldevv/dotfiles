@@ -32,9 +32,10 @@ M.load_mappings = function()
     -- custom
     -- folders
     map("n", "<leader>tb", ':lua require("utils.lua.telescope").select_bg()<cr>', nor_s)
-    map("n", "<a-s-p>", ':lua require("utils.lua.telescope").git_files_or_parent()<cr>', nor_s)
+    map("n", "<a-s-p>", ':lua require("utils.lua.telescope").git_files_or_cwd()<cr>', nor_s)
     map("n", "<localleader>f.", ':lua require("utils.lua.telescope").dotfiles()<cr>', nor_s)
     map("n", "<localleader>v.", ':lua require("utils.lua.telescope").nvim()<cr>', nor_s)
+    map("n", "<localleader>vk", ':lua require("utils.lua.telescope").nvim({path = "lua/config/keybindings"})<cr>', nor_s)
     map("n", "<localleader>vc", ':lua require("utils.lua.telescope").nvim({path = "lua/config/"})<cr>', nor_s)
     map("n", "<localleader>vC", ':lua require("utils.lua.telescope").nvim({path = "lua/core/"})<cr>', nor_s)
     map("n", "<localleader>vu", ':lua require("utils.lua.telescope").nvim({path = "lua/utils/"})<cr>', nor_s)

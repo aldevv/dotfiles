@@ -33,7 +33,6 @@ end
 -- DEPENDENCIES
 --===================
 vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/dependencies.vim")
-
 --==================
 -- PLUGINS
 --==================

@@ -575,6 +575,7 @@ alias gauthor='git commit --amend --author="Juan Alejandro Bernal <jbernal@unal.
 # alias gcl='git clone --recurse-submodules'
 alias gcld='git clone --depth=1'
 alias gcl='git clone'
+alias gclb='git clone --bare'
 alias gclean='git clean -id'
 alias gpristine='git reset --hard && git clean -dffx'
 alias gcm='git checkout $(git_main_branch)'
