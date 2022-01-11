@@ -196,7 +196,7 @@ return require("packer").startup({
         use({
             "Pocco81/TrueZen.nvim",
             config = req("core.truezen"),
-            cmd = { "TZMinimalist", "TZFocus", "TZAtaraxis", "TZBottom", "TZLeft", "TZTop" },
+            cmd = { "TZMinimalist", "TZFocus", "TZAtaraxis"}
         })
 
         use({ "AndrewRadev/switch.vim", config = req("core.switch") }) -- luasnips will cover this functionality
@@ -230,25 +230,21 @@ return require("packer").startup({
             -- after = "project",
             -- this breaks _skel!!
             -- cond = function()
-            --     print(vim.fn.getcwd())
             --     return require("lspconfig.util").find_git_ancestor(vim.fn.getcwd()) ~= nil
             -- end,
         })
 
         -- check if there is a file .env
-        use({
-            "tpope/vim-dotenv",
-            requires = {
-                "tpope/vim-projectionist",
-            },
-            cond = function()
-                local cwd = require("lspconfig.util").find_git_ancestor(vim.fn.getcwd())
-                if cwd ~= nil then
-                    return vim.fn.glob(cwd .. "/" .. ".env*") ~= ""
-                end
-                return false
-            end,
-        })
+        -- use({
+        --     "tpope/vim-dotenv",
+        --     cond = function()
+        --         local cwd = require("lspconfig.util").find_git_ancestor(vim.fn.getcwd())
+        --         if cwd ~= nil then
+        --             return vim.fn.glob(cwd .. "/" .. ".env*") ~= ""
+        --         end
+        --         return false
+        --     end,
+        -- })
         use("jbyuki/one-small-step-for-vimkind") -- debug lua files
         -- fun
         use("ThePrimeagen/vim-apm")

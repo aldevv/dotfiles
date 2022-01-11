@@ -119,9 +119,6 @@ require("config.keybindings.telescope").load_mappings()
 -- nvim-tree
 map("n", "<leader>se", ":NvimTreeToggle<cr>", nor_s)
 
--- true-zen
-map("n", "<leader>sz", ":<cr>", nor_s)
-
 -- treesitter
 map("n", "<leader>st", ":TSPlaygroundToggle<cr>", nor_s)
 map("n", "<leader>sc", ":TSHighlightCapturesUnderCursor<cr>", nor_s)
