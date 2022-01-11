@@ -55,8 +55,8 @@ require("telescope").setup({
                 ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse, --select
                 ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
                 ["<a-p>"] = actions_layout.toggle_preview,
-                ["<a-s>"] = actions.select_horizontal,
-                ["<a-v>"] = actions.select_vertical,
+                ["<c-s>"] = actions.select_horizontal,
+                ["<c-v>"] = actions.select_vertical,
                 ["?"] = actions.which_key,
                 ["<a-n>"] = actions.move_selection_next,
                 ["<a-e>"] = actions.move_selection_previous,

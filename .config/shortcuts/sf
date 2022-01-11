@@ -1,5 +1,5 @@
 #something
-h       ~
+H       ~
 uu      $REMOTES
 ug      $REMOTES/ugd
 uw      $PLAYGROUND/SSH
@@ -17,14 +17,15 @@ tt      $TRASH
 T       $HOME/Downloads/torrents
 sk      $SUCKLESS
 bkl      $BOOKS/LN
-cf      $XDG_CONFIG_HOME
-.vv      $XDG_CONFIG_HOME/nvim
-.vl      $XDG_CONFIG_HOME/nvim/lua/lsp
-.vc      $XDG_CONFIG_HOME/nvim/lua/config
-.vu      $XDG_CONFIG_HOME/nvim/lua/utils
-.vk      $XDG_CONFIG_HOME/nvim/lua/config/keybindings
-.vC      $XDG_CONFIG_HOME/nvim/lua/core
-.p      $HOME/.local/share/nvim/site/pack
+f.      $XDG_CONFIG_HOME
+v.      $XDG_CONFIG_HOME/nvim
+vl      $XDG_CONFIG_HOME/nvim/lua/lsp
+va      $XDG_CONFIG_HOME/nvim/lua/config/automation
+vc      $XDG_CONFIG_HOME/nvim/lua/config
+vu      $XDG_CONFIG_HOME/nvim/lua/utils
+vk      $XDG_CONFIG_HOME/nvim/lua/config/keybindings
+vC      $XDG_CONFIG_HOME/nvim/lua/core
+p      $HOME/.local/share/nvim/site/pack
 sp      $XDG_CONFIG_HOME/nvim/my_snippets
 
 ms      $SCRIPTS

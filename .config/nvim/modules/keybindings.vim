@@ -328,6 +328,8 @@ function! RunnerEnter()
 endfunction
 
 
+" dispatch takes values from the global projections file
+" /home/kanon/.local/share/myScripts/files/projections/global/.projections.json
 function! Runner()
   exec 'silent w'
   let l:runner = 'Dispatch! '

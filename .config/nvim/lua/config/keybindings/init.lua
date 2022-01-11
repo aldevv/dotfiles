@@ -43,10 +43,15 @@ map("", "E", "mzJ`z", nor) -- lines
 
 map("n", "<leader>cdb", ":lua require'dap'.toggle_breakpoint()<cr>", nor_s)
 
+-- generate checkpoints for undo
 map("i", ",", ",<c-g>u", nor)
 map("i", ".", ".<c-g>u", nor)
 map("i", "!", "!<c-g>u", nor)
 map("i", "?", "?<c-g>u", nor)
+
+--
+map("n", "<leader>sp", ":Lex<cr>", nor)
+
 
 map("v", "<a-n>", ":m '>+1<cr>gv=gv", nor)
 map("v", "<a-e>", ":m '<-2<cr>gv=gv", nor)
@@ -66,6 +71,7 @@ map("n", "<leader>si", "<Plug>(InsertSkeleton)", s)
 -- terminal
 map("t", "<a-'>", "<c-\\><c-n>", nor_s)
 
+-- folders
 map("n", "<F1>", ":e " .. h .. "/lua/config/keybindings/init.lua<cr>", nor_s)
 map("n", "<F2>", ":e " .. h .. "/modules/keybindings.vim<cr>", nor_s)
 map("n", "<F3>", ":e " .. h .. "/modules/plugins-settings.vim<cr>", nor_s)
@@ -74,6 +80,14 @@ map("n", "<F5>", ":e " .. h .. "/modules/plugins.vim<cr>", nor_s)
 map("n", "<F6>", ":e " .. h .. "/lua/lsp/lsp.lua<cr>", nor_s)
 map("n", "<F7>", ":e " .. h .. "/lua/lsp/formatters.lua<cr>", nor_s)
 map("n", "<F8>", ":e " .. h .. "/init.lua<cr>", nor_s)
+
+map("n", "<localleader>V.", ":e " .. h .. "/init.lua<cr>", nor_s)
+map("n", "<localleader>Vs", ":e " .. h .. "/lua/config/settings.lua<cr>", nor_s)
+map("n", "<localleader>Vp", ":e " .. h .. "/lua/plugins.lua<cr>", nor_s)
+map("n", "<localleader>Va", ":e " .. h .. "/lua/config/automation/init.lua<cr>", nor_s)
+map("n", "<localleader>Vk", ":e " .. h .. "/lua/config/keybindings/init.lua<cr>", nor_s)
+map("n", "<localleader>VP", ":e " .. h .. "/modules/plugins.vim<cr>", nor_s)
+
 
 -- defaults override
 map("", "gh", ":h <c-r><c-w><cr>", nor) -- select mode, not used

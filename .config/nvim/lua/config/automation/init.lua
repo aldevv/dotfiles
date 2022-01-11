@@ -1,5 +1,3 @@
--- local cmd = vim.api.nvim_command
-
 local cmd = vim.cmd
 cmd([[
   augroup FormatOnSave
@@ -16,6 +14,7 @@ cmd([[
 ]])
 
 require("config.automation.packer")
+
 -- cmd([[
 --     augroup LspConfig
 --         autocmd!
@@ -24,7 +23,16 @@ require("config.automation.packer")
 -- ]])
 --
 
+-- so far is working
 -- cmd('autocmd BufReadPre *.{html,css,js,jsx,ts} EmmetInstall')
 
 -- cmd('autocmd Filetype tex let b:AutoPairs = {"(": ")", "[": "]"}')
--- cmd('autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.{vim,jsx,json,ts,js} :IndentLines')
+cmd('autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.{vim,jsx,json,ts,js,svelte,vue} :IndentLinesToggle')
+
+cmd([[
+    augroup NetrwSettings
+        autocmd!
+        autocmd FileType netrw nnoremap ? :help netrw-quickmap<CR>
+        autocmd BufEnter * if &ft != "netrw" | execute 'silent! nunmap ?' | endif
+    augroup END
+]])

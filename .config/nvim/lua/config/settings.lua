@@ -16,10 +16,15 @@ vim.g.neovide_refresh_rate=140
 
 vim.o.grepprg="rg --vimgrep --no-heading --smart-case"
 
+-- netrw
+vim.g.netrw_bufsettings = 'noma nomod nu nowrap ro nobl' -- add line numbers
+-- hide hidden files
+vim.g.netrw_hide =  1
+vim.g.netrw_winsize = '25%'
 -- for the help menu
 vim.o.wildmenu=true
 vim.o.wildmode="full"
 
 -- vim.opt.timeoutlen=700
 -- vim.g.mapleader = t("<Space>")
--- vim.g.maplocalleader=t("<BS>")
+-- vim.g.maplocalleader=t("BS>")

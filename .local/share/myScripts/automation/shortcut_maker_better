@@ -21,10 +21,10 @@ rm -f "$shell_shortcuts" "$ranger_shortcuts"
 # directory shortcuts
 sed "/^#/d; /^$/d" $folders | tee \
     >(awk '{shortcut=""; for ( i = 2; i <= NF; i++ ) if (shortcut != "") shortcut =shortcut"\\ "$i; else shortcut=$i}; {print "alias "$1"='\''cd "shortcut" && ls -a'\''"}' >> $shell_shortcuts) \
-    >(envsubst | awk '{shortcut=""; for ( i = 2; i <= NF; i++ ) if (shortcut != "") shortcut =shortcut" "$i; else shortcut=$i}; {print "map g"$1" cd "shortcut"\nmap t"$1" tab_new "shortcut"\nmap m"$1" shell mv -v %s "shortcut"\nmap Y"$1" shell cp -rv %s "shortcut}' >> $ranger_shortcuts) >/dev/null
+    >(envsubst | awk '{shortcut=""; for ( i = 2; i <= NF; i++ ) if (shortcut != "") shortcut =shortcut" "$i; else shortcut=$i}; {print "map <backspace>"$1" cd "shortcut"\nmap t"$1" tab_new "shortcut"\nmap m"$1" shell mv -v %s "shortcut"\nmap Y"$1" shell cp -rv %s "shortcut}' >> $ranger_shortcuts) >/dev/null
 # envsubst changes $HOME -> /home/myuser
 
 # dotfile shortcuts
 sed "/^#/d; /^$/d" $dotfiles |tee \
     >(awk '{shortcut=""; for ( i = 2; i <= NF; i++ ) if (shortcut != "") shortcut =shortcut"\\ "$i; else shortcut=$i}; {print "alias "$1"=\"$EDITOR "shortcut"\""}' >> $shell_shortcuts) \
-    >(envsubst | awk '{shortcut=""; for ( i = 2; i <= NF; i++ ) if (shortcut != "") shortcut =shortcut"\\ "$i; else shortcut=$i}; {print "map "$1" shell $EDITOR "shortcut}' >> $ranger_shortcuts) >/dev/null
+    >(envsubst | awk '{shortcut=""; for ( i = 2; i <= NF; i++ ) if (shortcut != "") shortcut =shortcut"\\ "$i; else shortcut=$i}; {print "map <backspace>"$1" shell $EDITOR "shortcut}' >> $ranger_shortcuts) >/dev/null
