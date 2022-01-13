@@ -1,25 +1,7 @@
-if empty(getenv('NOCOC'))
-  " TODO treesitter has an option to enable this, remove it once the migration is done
-  syntax enable
-endif
 set nocompatible " disable compatibility to vi, to activate vim improvements
 if executable('zsh')
   set shell=/bin/zsh
 endif
-" set timeoutlen=700
-" let mapleader = "\<Space>"
-" let maplocalleader="\<BS>"
-" use ñ for text obj?
-
-"===================
-" WHICHKEY
-"===================
-" nnoremap <silent><leader> :<c-u>WhichKey '<Space>'<CR>
-" vnoremap <silent><leader> :<c-u>WhichKeyVisual '<Space>'<CR>
-" nnoremap <silent><localleader> :<c-u>WhichKey "\<BS\>" <CR>
-" nnoremap <silent> <leader><space>   :<c-u>WhichKey '<leader><leader>'<CR>
-
-"======================
 
 set updatetime=1500 " this is for autosave in tex files(every cursorhold event)
 set encoding=utf-8
@@ -27,32 +9,11 @@ scriptencoding utf-8
 set splitright
 set splitbelow
 set title
-" set titlestring=:\ %-25.55F\ %a%r%m titlelen=70
-" set title titlestring=%{expand(\"%:p\")}\ %a%r%m
-" set title titlestring=%{expand('%:p:h:t')}/%t
-
-" set title titlestring=...%{strpart(expand(\"%:p:h\"),stridx(expand(\"%:p:h\"),\"/\",strlen(expand(\"%:p:h\"))-12))}/%{expand(\"%:t:r\")}\ %m\ %Y\ %l\ of\ %L
-" set titlestring=%{expand(\"%:p:~\")}\ %a%r%m
-" let &titlestring = '%t%( %m%r%)%( <%{get(g:, "cur_project", "")}>%)' .
-"             \ '%( (%{expand("%:~:.:h")})%)' .
-            " \ '%( (%{getcwd()})%)%( %a%) - %(%{v:servername}%)'
   set titlestring=\ %{expand(\"%:p:~\")}%a%r%m
-" set titlestring=%t
-" set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
-" set title titlestring=%<%F%=%l/%L-%P titlelen=70
-"fix for yankring and neovim
 let g:yankring_clipboard_monitor=0
-
-"setlocal spell
-" set spelllang=es
 set spelllang=en_us,es
-"set spelllang=en_us
-
 filetype plugin indent on
 filetype plugin on
-" set lazyredraw
-" set signcolumn=yes
-
 let &t_8f = '\<esc>[38;2;%lu;%lu;%lum'
 let &t_8b = '\<esc>[48;2;%lu;%lu;%lum'
 set textwidth=95
@@ -69,13 +30,6 @@ set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MA
 set listchars+=trail:•
 set listchars+=eol:↲
 
-" augroup remember_folds
-"   autocmd!
-"   autocmd BufWinLeave *.* mkview
-"   autocmd BufWinEnter *.* silent! loadview
-" augroup END
-
-
 set inccommand=split
 set wildmode=longest,list,full
 set expandtab "always use spaces and not tabs
@@ -90,9 +44,6 @@ set nowrap
 set noswapfile
 set backup
 set autoindent
-" set backupdir=~/.config/nvim/backups
-" set undodir=~/.config/nvim/undodir
-"persistent undo
 set undofile
 set incsearch
 set relativenumber
@@ -114,10 +65,6 @@ endif
 
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
-" let g:python_highlight_all = 1
-" if exists("python_highlight_all")
-"   let python_space_error_highlight = 1
-"  endif
 let g:termdebug_popup = 0
 let g:termdebug_wide = 163
 

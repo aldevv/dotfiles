@@ -226,7 +226,7 @@ map("n", "<leader>sr", ":RainbowToggle<cr>", nor_s)
 require('config.keybindings.fugitive')
 
 -- obsession
-map("n", "<leader>col", ":source %:h/Session.vim<bar> :Obsession<CR>", nor_s)
+map("n", "<leader>col", ":source %:h/Session.vim<bar> :Obsession<cr>", nor_s)
 map("n", "<leader>cos", ":Obsession<CR>", nor_s)
 
 -- vim-test
@@ -236,3 +236,6 @@ map("n", "<leader>Tf", ":TestFile<cr>", nor_s)
 map("n", "<leader>Ts", ":TestSuite<cr>", nor_s)
 map("n", "<leader>Tl", ":TestLast<cr>", nor_s)
 map("n", "<leader>Tg", ":TestVisit<cr>", nor_s)
+
+-- macro range
+map("x", "@", ":<C-u>call ExecuteMacroOverVisualRange()<cr>", nor_s)

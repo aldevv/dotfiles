@@ -11,13 +11,33 @@
 -- Local plugins can be included
 -- use '~/projects/personal/hover.nvim'
 
+local disabled_builtins = {
+"gzip",
+"zip",
+"zipPlugin",
+"tar",
+"tarPlugin",
+"getscript",
+"getscriptPlugin",
+"vimball",
+"vimballPlugin",
+"2html_plugin",
+"logipat",
+"rrhelper",
+"spellfile_plugin"
+}
+
+for _, plugin in pairs(disabled_builtins) do
+    vim.g["loaded_" .. plugin] = 1
+end
+
 local function req(module)
     return string.format('require("%s")', module)
 end
 
 return require("packer").startup({
     function(use)
-        use("wbthomason/packer.nvim")
+        use({ "wbthomason/packer.nvim" })
 
         use({
             "folke/tokyonight.nvim",
@@ -157,7 +177,6 @@ return require("packer").startup({
 
         use({
             "github/copilot.vim",
-            cmd = { "Copilot" },
             config = function()
                 vim.g.copilot_no_tab_map = "v:true"
             end,
@@ -212,7 +231,6 @@ return require("packer").startup({
             cmd = { "TZMinimalist", "TZFocus", "TZAtaraxis" },
         })
 
-        use({ "AndrewRadev/switch.vim", config = req("core.switch") }) -- luasnips will cover this functionality
         use({
             "mbbill/undotree",
             cmd = { "UndotreeToggle" },
@@ -259,11 +277,20 @@ return require("packer").startup({
             "ThePrimeagen/vim-be-good",
             cmd = { "VimBeGood" },
         })
-        use({ "ThePrimeagen/git-worktree.nvim", config = req("core.git-worktree") })
+        use({
+            "ThePrimeagen/git-worktree.nvim",
+            config = req("core.git-worktree"),
+            cond = function()
+                return require("lspconfig.util").root_pattern(".git")(vim.fn.getcwd()) ~= nil
+            end,
+        })
         use({
             "lewis6991/gitsigns.nvim",
             requires = { "nvim-lua/plenary.nvim" },
             config = req("core.gitsigns"),
+            cond = function()
+                return require("lspconfig.util").root_pattern(".git")(vim.fn.getcwd()) ~= nil
+            end,
         })
 
         use({
@@ -276,6 +303,9 @@ return require("packer").startup({
             "editorconfig/editorconfig-vim",
             config = function()
                 vim.g.EditorConfig_exclude_patterns = { "fugitive://.*" }
+            end,
+            cond = function()
+                return require("lspconfig.util").root_pattern(".editorconfig")(vim.fn.getcwd()) ~= nil
             end,
         })
         use({ "bps/vim-textobj-python", ft = "python" })
@@ -298,6 +328,7 @@ return require("packer").startup({
 
         use({
             "szw/vim-maximizer",
+            cmd="MaximizerToggle",
             config = function()
                 vim.g.maximizer_set_default_mapping = 0
             end,
@@ -321,6 +352,7 @@ return require("packer").startup({
 
         use({
             "frazrepo/vim-rainbow",
+            cmd="RainbowToggle",
             config = function()
                 vim.g.rainbow_active = 0
             end,
@@ -353,9 +385,9 @@ return require("packer").startup({
         })
         use({ "brooth/far.vim", cmd = { "Far", "Fardo", "Farr" } })
         -- colors
-        use("gruvbox-community/gruvbox")
-        use("dracula/vim")
-        use("crusoexia/vim-monokai")
+        -- use("gruvbox-community/gruvbox")
+        -- use("dracula/vim")
+        -- use("crusoexia/vim-monokai")
     end,
     config = {
         display = {
@@ -365,3 +397,4 @@ return require("packer").startup({
         },
     },
 })
+

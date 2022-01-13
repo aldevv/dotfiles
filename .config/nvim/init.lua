@@ -2,6 +2,7 @@
 -- telescope.nvim
 -- refactor.lua
 -- navigator.lua
+vim.opt.shadafile = "NONE" -- optimization
 vim.cmd("set t_Co=256")
 vim.cmd("let IS_MINE=isdirectory($SUCKLESS)")
 
@@ -37,11 +38,9 @@ vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/dependencies.vim")
 -- PLUGINS
 --==================
     vim.cmd([[
-    source $XDG_CONFIG_HOME/nvim/modules/plugins.vim
     source $XDG_CONFIG_HOME/nvim/modules/plugins-settings.vim
   ]])
-end
-
+  end
 --==================
 -- APPEARANCE
 --==================
@@ -52,22 +51,43 @@ vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/appearance.vim")
 --==================
 vim.cmd("source $XDG_CONFIG_HOME/nvim/modules/automation.vim")
 --====================================================
-if os.getenv("NOCOC") then
-    require("plugins")
-    require("lsp")
-    require("core")
-    require("config")
+-- require("plugins")
+-- require("lsp")
+-- require("core")
+-- require("config")
+
+local init_modules = {
+    "plugins",
+    "lsp",
+    "config",
+}
+
+local sys_modules = {
+    "core",
+}
+
+for i = 1, #init_modules, 1 do
+    local ok, res = xpcall(require, debug.traceback, init_modules[i])
+    if not (ok) then
+        print("NVDope [E0]: There was an error loading the module '" .. init_modules[i] .. "' -->")
+        print(res)
+    end
 end
 
--- create your own text objects
--- https://github.com/kana/vim-textobj-user
---
---  for popular text objects
--- https://github.com/kana/vim-textobj-user/wiki
---
--- run in the background use jobstart
--- map <leader>ra :call jobstart('setsid st -e ranger $(dirname %) 2>&1')<cr>
--- cgn change <highlighted item>, useful when you searched something
--- commands
---
---
+local async
+async =
+    vim.loop.new_async(
+    vim.schedule_wrap(
+        function()
+            for i = 1, #sys_modules, 1 do
+                local ok, res = xpcall(require, debug.traceback, sys_modules[i])
+                if not (ok) then
+                    print("NVDope [E0]: There was an error loading the module '" .. sys_modules[i] .. "' -->")
+                    print(res)
+                end
+            end
+            async:close()
+        end
+    )
+)
+vim.opt.shadafile = "" -- optimization

@@ -1,7 +1,6 @@
 "===================
 "for transparent vim
 "===================
-
 let g:makeTransparent=0
 if g:makeTransparent
     "soft, medium and hard.
@@ -9,22 +8,9 @@ if g:makeTransparent
      hi! CursorLineNr gui=bold guifg=#fabd2f guibg=NONE
      " hi! folded ctermbg=yellow cterm=bold guifg=none guibg=NONE
 endif
-
-"deletes the signcolumn background
-" highlight clear LineNr
-" highlight CursorLineNr guifg=#050505
 highlight clear SignColumn
-
 set cursorline
 set cursorcolumn
-" for cursor color you need this st patch
-" https://st.suckless.org/patches/osc_10_11_12/
-" and use this
-" let &t_SI = "\<Esc>]12;red\x7"
-
-
-
-
 " use this to FOLLOW links in highlight groups (can make persistent in
 " colorscheme changes)
 function! g:HighGet(name)
@@ -89,18 +75,7 @@ function! s:syntax_query() abort
 endfunction
 command! SyntaxQuery call s:syntax_query()
 
-"================
-" FORMATTING
-"================
-"
-" autocmd FileType python setlocal formatprg=black\ -\ \
-"             \--quiet\ \
-"             \--line-length\ 100
-
-autocmd FileType python setlocal formatprg=autopep8
-
 " use custom highlights (italics)
-
 if empty(getenv('NOCOC'))
 let custom_highlights = 1
 if custom_highlights == 1
@@ -110,84 +85,4 @@ if custom_highlights == 1
     autocmd FileType markdown call MyMarkdownHighlights()
 endif
 endif
-
-"===============
-" FOLDING
-"===============
-
-function! FoldForJava()
-    let line = getline(v:lnum) "v:lnum gives you the line number
-    if match(line,'\v^\s+(private|public|protected)?\s+\S+\s+\S+\s+\S+\s*\(.*\)\s*\{$') > -1
-        return ">1"
-    elseif match(line, '\v^\s*(for|while)\s*\(.+\)\s*?\{') > -1
-        return ">2"
-    elseif match(line, '\v^\s*if\s*\(.+\)') > -1
-        return ">3"
-    else
-        return "="
-    endif
-endfunction
-
-function! FoldForPython()
-" the smaller the number, the more priority it has
-    let line = getline(v:lnum) "v:lnum gives you the line number
-    if match(line,'\v^class\s+\S+\(?.+\)?\s?:') > -1
-        return ">3"
-    elseif match(line, '\v^\s*def\s\S+\(.*\)\s?:') > -1
-        return ">4"
-    elseif match(line, '\v^\s+(if|for|while)\s.+\s?:$') > -1
-        return ">5"
-    elseif match(line, '\v^(if|for|while).+\s?:$') > -1
-        return ">2"
-    elseif match(line, '\v^\S+\s?\=\s?.+$') > -1
-        return ">0"
-    else
-        return "="
-    endif
-endfunction
-
-function! FoldForJavascript()
-    let line = getline(v:lnum) "v:lnum gives you the line number
-    if match(line,'\v^class\s.+\{$') > -1
-        return ">1"
-    elseif match(line,'\v^\s*function\s+\S+\(.*\)\s*\{$') > -1
-        return ">2"
-    elseif  match(line,'\v^\s*(if)@!(while)@!(for)@!.*\(.*\)\s*\{$') > -1
-        return ">2"
-    elseif  match(line,'\v^\s*\S+\s?\=\s?\(.*\)\s?\=\>.+\{$') > -1
-        return ">2"
-    elseif match(line, '\v^\s*(for|while)\s*\(.+\)\s*\{?$') > -1
-        return ">3"
-    elseif match(line, '\v^\s*if\s*\(.+\)\s*\{?$') > -1
-        return ">4"
-    else
-        return "="
-    endif
-endfunction
-
-function! FoldForVim()
-    let line = getline(v:lnum) "v:lnum gives you the line number
-    if match(line,'\v^function!?\s.+$') > -1
-        return ">2"
-    elseif match(line, '\v^\s*(augroup|aug)\s(END)@!.+$') > -1
-        return ">2"
-    elseif match(line, '\v^\s*(if|for|while).+\(.+\)\s?$') > -1
-        return ">1"
-    elseif match(line, '\v^(endfunction|endif|augroup END)@!\S*$') > -1
-        return ">0"
-    else
-        return "="
-    endif
-endfunction
-
-
-if empty(getenv('NOCOC'))
-  autocmd FileType java setlocal foldmethod=expr foldexpr=FoldForJava()
-  autocmd FileType python setlocal foldmethod=expr foldexpr=FoldForPython()
-  autocmd FileType javascript setlocal foldmethod=expr foldexpr=FoldForJavascript()
-  autocmd FileType vim setlocal foldmethod=expr foldexpr=FoldForVim()
-  autocmd FileType c,cpp setlocal foldmethod=syntax
-endif
-
-
 

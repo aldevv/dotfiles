@@ -42,3 +42,9 @@ cmd([[
 --autopairs disabled
 cmd("autocmd FileType TelescopePrompt let b:autopairs_enabled = 0")
 
+cmd([[
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+]])
