@@ -51,10 +51,10 @@ M.load_mappings = function() -- use these on_attach
     map("n", "<leader>lcr", ":lua vim.lsp.codelens.run()<cr>", nor)
 
     -- prefix w --> workspace
-    map("n", "<leader>ws", ":lua vim.lsp.buf.workspace_symbol()<cr>", nor)
-    map("n", "<leader>wf", ":lua vim.lsp.buf.add_workspace_folder()<cr>", nor)
-    map("n", "<leader>wl", ":lua vim.lsp.buf.list_workspace_folders()<cr>", nor)
-    map("n", "<leader>wr", ":lua vim.lsp.buf.remove_workspace_folder()<cr>", nor)
+    map("n", "<leader>lws", ":lua vim.lsp.buf.workspace_symbol()<cr>", nor)
+    map("n", "<leader>lwf", ":lua vim.lsp.buf.add_workspace_folder()<cr>", nor)
+    map("n", "<leader>lwl", ":lua vim.lsp.buf.list_workspace_folders()<cr>", nor)
+    map("n", "<leader>lwr", ":lua vim.lsp.buf.remove_workspace_folder()<cr>", nor)
 
     -- prefix o --> diagnostics
     map("n", "<leader>oo", ":lua vim.diagnostic.open_float()<cr>", nor)

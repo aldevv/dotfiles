@@ -24,9 +24,9 @@ setopt complete_aliases
 
 nomyzsh() {autoload -Uz compinit && compinit}
 export SXHKD_SHELL="/usr/bin/sh"
-[ -d "$HOME/.oh-my-zsh" ] \
-  && export ZSH="$HOME/.oh-my-zsh" \
-  || nomyzsh
+[ -d "$HOME/.oh-my-zsh" ] &&
+	export ZSH="$HOME/.oh-my-zsh" ||
+	nomyzsh
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #echo $RANDOM_THEME
@@ -37,13 +37,13 @@ export SXHKD_SHELL="/usr/bin/sh"
 #ZSH_THEME="agnoster"
 # ZSH_THEME="amuse"
 # ZSH_THEME="daivasmara"
-[[ $(whoami) == root ]] \
-  && ZSH_THEME="robbyrussell" \
-  || ZSH_THEME="aussiegeek_edited"
+[[ $(whoami) == root ]] &&
+	ZSH_THEME="robbyrussell" ||
+	ZSH_THEME="aussiegeek_edited"
 
 # Preferred editor for local and remote sessions
-[[ -n $SSH_CONNECTION ]]\
-  && color echo "came to visit? enjoy your stay"
+[[ -n $SSH_CONNECTION ]] &&
+	color echo "came to visit? enjoy your stay"
 
 #==========
 #FUNCTIONS
@@ -51,32 +51,30 @@ export SXHKD_SHELL="/usr/bin/sh"
 #to open man in vim
 # function manv() {
 #     for arg in "$@"; do
-        # nvim -c 'execute "normal! :let no_man_maps = 1\<cr>:runtime ftplugin/man.vim\<cr>:Man '"${arg}"'\<cr>:wincmd o\<cr>"'
-    # done
+# nvim -c 'execute "normal! :let no_man_maps = 1\<cr>:runtime ftplugin/man.vim\<cr>:Man '"${arg}"'\<cr>:wincmd o\<cr>"'
+# done
 # }
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
+	if [[ ${KEYMAP} == vicmd ]] ||
+		[[ $1 = 'block' ]]; then
+		echo -ne '\e[1 q'
+	elif [[ ${KEYMAP} == main ]] ||
+		[[ ${KEYMAP} == viins ]] ||
+		[[ ${KEYMAP} = '' ]] ||
+		[[ $1 = 'beam' ]]; then
+		echo -ne '\e[5 q'
+	fi
 }
 zle -N zle-keymap-select
 zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
+	zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+	echo -ne "\e[5 q"
 }
 zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
-
+echo -ne '\e[5 q'                # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q'; } # Use beam shape cursor for each new prompt.
 
 # # in archlinux put the archlinux plugin!
 # docker adds completion for docker commands, same docker compose
@@ -85,8 +83,8 @@ export HISTSIZE=25000
 export HISTFILE="$ZDOTDIR/.zsh_history"
 # plugins=(copybuffer dirhistory jsontools)
 plugins=(
-docker
-docker-compose
+	docker
+	docker-compose
 )
 . $ZSH/oh-my-zsh.sh
 
@@ -146,23 +144,23 @@ bindkey -v '^?' backward-delete-char
 # this makes autocompletion work on aliased programs
 unsetopt completealiases
 nvml() {
-  . "$NVM_DIR/nvm.sh"
+	. "$NVM_DIR/nvm.sh"
 }
 nvmL() {
-  export NVM_DIR="$HOME/.config/nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+	export NVM_DIR="$HOME/.config/nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 }
 
 # comment this for faster loads
 
 doge() {
-  _fzf_complete --multi --reverse --prompt="doge> " -- "$@" < <(
-    echo very
-    echo wow
-    echo such
-    echo doge
-  )
+	_fzf_complete --multi --reverse --prompt="doge> " -- "$@" < <(
+		echo very
+		echo wow
+		echo such
+		echo doge
+	)
 }
 
 # rga-fzf() {
@@ -183,29 +181,29 @@ doge() {
 # check bat-extras : https://github.com/eth-p/bat-extras
 # .r() {
 # 	RG_PREFIX="rga --files-with-matches"
-	# fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
-	# local file
-	# file="$(
-		# FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
-              # fzf --sort --preview="[[ ! -z {} ]] && bat --color always {} | rg --pretty --context 5 {q} 2>/dev/null" \
-				# --phony -q "$1" \
-				# --bind "change:reload:$RG_PREFIX {q}" \
-				# --preview-window="70%:wrap"
-	# )" &&
-	# echo "opening $file" &&
-	# xdg-open "$file"
+# fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+# local file
+# file="$(
+# FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+# fzf --sort --preview="[[ ! -z {} ]] && bat --color always {} | rg --pretty --context 5 {q} 2>/dev/null" \
+# --phony -q "$1" \
+# --bind "change:reload:$RG_PREFIX {q}" \
+# --preview-window="70%:wrap"
+# )" &&
+# echo "opening $file" &&
+# xdg-open "$file"
 
 # PATH
-[[ -d "/usr/local/bin" ]]\
-  && export PATH="/usr/local/bin:$PATH"
+[[ -d "/usr/local/bin" ]] &&
+	export PATH="/usr/local/bin:$PATH"
 
 # FZF
 lf_() {
-  # lookup file
-  folder="$1"
-  file=$(fd . -t f -uu $(echo "$folder")| fzf -d / --with-nth -5,-4,-3,-2,-1)
-  [ -n "$file" ] \
-    && nvim "$file"
+	# lookup file
+	folder="$1"
+	file=$(fd . -t f -uu $(echo "$folder") | fzf -d / --with-nth -5,-4,-3,-2,-1)
+	[ -n "$file" ] &&
+		nvim "$file"
 }
 bindkey -s "^n" "stn^M"
 bindkey -s 'p' 'lf_^M'
@@ -223,41 +221,30 @@ bindkey -s '.' 'setsid st &>/dev/null^M'
 bindkey -s 'r' 'setsid st ranger &>/dev/null^M'
 
 _fzf_compgen_path() {
-  fd --hidden --follow . "$1"
+	fd --hidden --follow . "$1"
 }
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  fd --type d --hidden --follow . "$1"
+	fd --type d --hidden --follow . "$1"
 }
 [ -f "$HOME/.config/.fzf.zsh" ] && source "$HOME/.config/.fzf.zsh"
 
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE
 #ZSH_AUTOSUGGEST_STRATEGY
 #
-[[ -d $PROGRAMS/zsh-plugins/zsh-syntax-highlighting ]] \
-  && . $PROGRAMS/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[[ -d $PROGRAMS/zsh-plugins/zsh-autosuggestions ]] \
-  && . $PROGRAMS/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+[[ -d $PROGRAMS/zsh-plugins/zsh-syntax-highlighting ]] &&
+	. $PROGRAMS/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -d $PROGRAMS/zsh-plugins/zsh-autosuggestions ]] &&
+	. $PROGRAMS/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
-
-.e(){
-# load .env file or any other file
-  file=$1
-  [ -z $file ] && file=".env"
-  zsh -c "set -o allexport; source $file; echo 'loaded'; set +o allexport; zsh -i"
-}
-
-.ec(){
-  bat .env
-  }
 # autosuggestions keybindings
-    # autosuggest-accept: Accepts the current suggestion.
-    # autosuggest-execute: Accepts and executes the current suggestion.
-    # autosuggest-clear: Clears the current suggestion.
-    # autosuggest-fetch: Fetches a suggestion (works even when suggestions are disabled).
-    # autosuggest-disable: Disables suggestions.
-    # autosuggest-enable: Re-enables suggestions.
-    # autosuggest-toggle: Toggles between enabled/disabled suggestions.
+# autosuggest-accept: Accepts the current suggestion.
+# autosuggest-execute: Accepts and executes the current suggestion.
+# autosuggest-clear: Clears the current suggestion.
+# autosuggest-fetch: Fetches a suggestion (works even when suggestions are disabled).
+# autosuggest-disable: Disables suggestions.
+# autosuggest-enable: Re-enables suggestions.
+# autosuggest-toggle: Toggles between enabled/disabled suggestions.
 
 bindkey "^ " autosuggest-execute
 # bindkey "^" autosuggest-toggle
@@ -267,4 +254,3 @@ bindkey "^ " autosuggest-execute
 alias src_=". $ZDOTDIR/.zshrc"
 . $ZDOTDIR/.aliases
 . $ZDOTDIR/.auto_aliases
-

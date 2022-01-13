@@ -5,6 +5,7 @@
 local servers = {
     "bashls",
     "pyright", --more complete
+    "clangd",
     -- "pylsp", -- snippets completion
     "html",
     "cssls",
@@ -145,4 +146,6 @@ end)
 --     vim.cmd(':cd "' .. test ..'"' )
 -- else
 -- end
+--
+-- nvim_set_current_dir({dir})                           *nvim_set_current_dir()*
 

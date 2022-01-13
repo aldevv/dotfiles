@@ -90,8 +90,11 @@ mode_switch + minus
     xdotool search --onlyvisible --classname Navigator windowactivate --sync key shift+F10
 
 # XF86Launch1
+# mode_switch + c
+# 	copyq toggle
+
 mode_switch + c
-	copyq toggle
+	clipcat-menu
 
 button8
 	xdotool key ctrl+v

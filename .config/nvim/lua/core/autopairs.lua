@@ -55,3 +55,4 @@ vim.g.AutoPairsShortcutFastWrap = '<a-a>'
 vim.g.AutoPairsShortcutJump = '<a-w>'
 vim.g.AutoPairsShortcutToggle = ''
 vim.g.AutoPairsShortcutBackInsert = '<a-b>' -- only for flymode
+vim.g.autopairs_enable=1

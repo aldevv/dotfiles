@@ -36,6 +36,9 @@ xrdb -merge ~/.Xresources
 [[ -n $(command -v copyq) ]] \
      && setsid copyq &
 
+[[ -n $(command -v clipcatd) ]] \
+     && setsid clipcatd
+
 [[ -n $(command -v autorandr) ]] \
     && autorandr --change
 [[ -n $(command -v wal) ]] \

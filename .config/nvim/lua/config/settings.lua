@@ -21,13 +21,14 @@ vim.g.netrw_bufsettings = 'noma nomod nu nowrap ro nobl' -- add line numbers
 -- hide hidden files
 vim.g.netrw_hide =  1
 vim.g.netrw_winsize = '25%'
+vim.g.netrw_banner=0
 -- for the help menu
 vim.o.wildmenu=true
 vim.o.wildmode="full"
 vim.o.backupdir=vim.fn.stdpath('cache') .. '/backups'
 vim.o.undodir=vim.fn.stdpath('cache') .. '/undodir'
-vim.o.autochdir=false
+vim.o.autochdir=false -- for netrw
 
--- vim.opt.timeoutlen=700
+vim.opt.timeoutlen=700
 -- vim.g.mapleader = t("<Space>")
 -- vim.g.maplocalleader=t("BS>")

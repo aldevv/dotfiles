@@ -28,8 +28,9 @@ null_ls.setup({
     sources = {
         formatting.black.with({ extra_args = { "--fast" } }),
         formatting.stylua.with({ extra_args = { "--indent-type", "Spaces" } }),
-        formatting.shfmt,
-        formatting.clang_format,
+        formatting.shfmt.with({ filetypes = { "sh", "zsh", "bash" } }),
+        -- formatting.clang_format,
+        formatting.uncrustify,
         formatting.gofmt,
         formatting.json_tool,
         diagnostics.eslint,
@@ -37,8 +38,9 @@ null_ls.setup({
         -- formatting.eslint,
         -- diagnostics.eslint,
         -- formatting.prettier,
-        diagnostics.flake8,
+        diagnostics.flake8.with({ filetypes = { "python" } }),
         -- completion.spell,
         -- code_actions.gitsigns,
+        code_actions.gitsigns,
     },
 })

@@ -17,6 +17,9 @@ table.insert(runtime_path, "lua/?/init.lua")
 -- table.insert(runtime_path, "lua/?.lua")
 -- table.insert(runtime_path, "lua/?/init.lua")
 local enhance_server_opts = {
+    ["bashls"] = function(opts)
+        opts.filetypes = {"sh", "zsh", "bash"}
+    end,
     ["tsserver"] = function(opts)
         -- :h lspconfig-root-advanced
         -- :h lspconfig-root-composition

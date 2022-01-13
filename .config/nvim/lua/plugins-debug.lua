@@ -180,10 +180,15 @@ return require("packer").startup({
         --    requires = "godlygeek/tabular",
         --    ft = "md",
         --})
-        use({
-            "folke/which-key.nvim",
-            config = req("config.appearance.whichkey"),
-        })
+        -- use({
+        --     "folke/which-key.nvim",
+        --     config = req("config.appearance.whichkey"),
+        -- })
+
+        -- use({
+        --     "numToStr/Comment.nvim",
+        --     config=req('core.comment')
+        -- })
         --use({
         --    "yggdroot/indentLine",
         --    config = function()

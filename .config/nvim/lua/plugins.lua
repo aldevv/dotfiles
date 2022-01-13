@@ -34,12 +34,12 @@ return require("packer").startup({
             requires = {
                 "williamboman/nvim-lsp-installer",
             },
-            config = req("lsp.lsp"),
+            config = req("lsp"),
         })
 
         use({
             "SirVer/ultisnips",
-            config = req("lsp.ultisnippets"),
+            config = req("lsp.ultisnips"),
             requires = "quangnguyen30192/cmp-nvim-ultisnips",
         })
         use("honza/vim-snippets")
@@ -92,13 +92,17 @@ return require("packer").startup({
         use({
             "nvim-treesitter/playground",
             requires = "nvim-treesitter/nvim-treesitter",
-            cmd = { "TSSPlaygroundToggle" },
+            cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
         })
 
         use({
             "ahmedkhalf/project.nvim",
+            requires = "nvim-telescope/telescope.nvim",
             config = req("lsp.project"),
-            event = "VimEnter",
+        })
+        use({
+            "numToStr/Comment.nvim",
+            config = req("core.comment"),
         })
 
         -- Lazy loading:
@@ -154,6 +158,9 @@ return require("packer").startup({
         use({
             "github/copilot.vim",
             cmd = { "Copilot" },
+            config = function()
+                vim.g.copilot_no_tab_map = "v:true"
+            end,
         })
 
         use({
@@ -247,9 +254,108 @@ return require("packer").startup({
             end,
         })
         -- fun
-        use("ThePrimeagen/vim-apm")
-        use("ThePrimeagen/vim-be-good")
+        use({ "ThePrimeagen/vim-apm", cmd = { "VimApm" } })
+        use({
+            "ThePrimeagen/vim-be-good",
+            cmd = { "VimBeGood" },
+        })
         use({ "ThePrimeagen/git-worktree.nvim", config = req("core.git-worktree") })
+        use({
+            "lewis6991/gitsigns.nvim",
+            requires = { "nvim-lua/plenary.nvim" },
+            config = req("core.gitsigns"),
+        })
+
+        use({
+            "bkad/CamelCaseMotion",
+            config = function()
+                vim.g.camelcasemotion_key = "<leader>"
+            end,
+        })
+        use({
+            "editorconfig/editorconfig-vim",
+            config = function()
+                vim.g.EditorConfig_exclude_patterns = { "fugitive://.*" }
+            end,
+        })
+        use({ "bps/vim-textobj-python", ft = "python" })
+        use("glts/vim-textobj-comment")
+
+        use({
+            "AndrewRadev/splitjoin.vim",
+            config = function()
+                vim.g.splitjoin_split_mapping = "gs"
+                vim.g.splitjoin_join_mapping = "gS"
+            end,
+        })
+        use({
+            "matze/vim-move",
+            config = function()
+                vim.g.move_key_modifier = "C"
+                vim.g.move_map_keys = 0
+            end,
+        }) --to do operations on visual mode
+
+        use({
+            "szw/vim-maximizer",
+            config = function()
+                vim.g.maximizer_set_default_mapping = 0
+            end,
+        })
+
+        -- :h vis commands for visual selection
+        use("vim-scripts/vis")
+
+        use({ "osyo-manga/vim-brightest", cmd = "BrightestToggle" })
+
+        use({ "junegunn/gv.vim", cmd = "GV" })
+
+        use({
+            "rbgrouleff/bclose.vim",
+            cmd = "Bclose",
+            config = function()
+                --The :Bclose command deletes a buffer without changing the window layout, unlike :bd.
+                vim.g.bclose_no_plugin_maps = 1
+            end,
+        })
+
+        use({
+            "frazrepo/vim-rainbow",
+            config = function()
+                vim.g.rainbow_active = 0
+            end,
+        })
+
+        use({
+            "tpope/vim-fugitive",
+            requires = "tpope/vim-rhubarb",
+            config = function()
+                vim.opt.diffopt = "internal,vertical,closeoff,filler"
+            end,
+        })
+        use({
+            "tpope/vim-obsession",
+            cmd = { "Obsession", "Obsession!" },
+            config = function()
+                vim.g.obsession_no_bufenter = 1
+                vim.opt.statusline = "%{ObsessionStatus()}"
+            end,
+        })
+        use({
+            "vim-test/vim-test",
+            config = req("core.vim-test"),
+            cmd = {
+                "TestNearest",
+                "TestFile",
+                "TestSuite",
+                "TestVisit",
+            },
+        })
+        use({ "brooth/far.vim", cmd = { "Far", "Fardo", "Farr" } })
+        -- colors
+        use("gruvbox-community/gruvbox")
+        use("dracula/vim")
+        use("crusoexia/vim-monokai")
     end,
     config = {
         display = {

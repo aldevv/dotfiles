@@ -69,6 +69,18 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  CamelCaseMotion = {
+    config = { "\27LJ\1\2>\0\0\2\0\4\0\0054\0\0\0007\0\1\0%\1\3\0:\1\2\0G\0\1\0\r<leader>\24camelcasemotion_key\6g\bvim\0" },
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/CamelCaseMotion",
+    url = "https://github.com/bkad/CamelCaseMotion"
+  },
+  ["Comment.nvim"] = {
+    config = { 'require("core.comment")' },
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    url = "https://github.com/numToStr/Comment.nvim"
+  },
   ["DAPInstall.nvim"] = {
     loaded = false,
     needs_bufread = false,
@@ -90,6 +102,15 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kanon/.local/share/nvim/site/pack/packer/start/auto-pairs",
     url = "https://github.com/LunarWatcher/auto-pairs"
+  },
+  ["bclose.vim"] = {
+    commands = { "Bclose" },
+    config = { "\27LJ\1\0027\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\1\0:\1\2\0G\0\1\0\26bclose_no_plugin_maps\6g\bvim\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/bclose.vim",
+    url = "https://github.com/rbgrouleff/bclose.vim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -121,11 +142,18 @@ _G.packer_plugins = {
   },
   ["copilot.vim"] = {
     commands = { "Copilot" },
+    config = { "\27LJ\1\2;\0\0\2\0\4\0\0054\0\0\0007\0\1\0%\1\3\0:\1\2\0G\0\1\0\vv:true\23copilot_no_tab_map\6g\bvim\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
     path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/copilot.vim",
     url = "https://github.com/github/copilot.vim"
+  },
+  ["editorconfig-vim"] = {
+    config = { '\27LJ\1\2Q\0\0\2\0\4\0\0054\0\0\0007\0\1\0003\1\3\0:\1\2\0G\0\1\0\1\2\0\0\18fugitive://.*"EditorConfig_exclude_patterns\6g\bvim\0' },
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/editorconfig-vim",
+    url = "https://github.com/editorconfig/editorconfig-vim"
   },
   ["emmet-vim"] = {
     config = { "\27LJ\1\2;\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\0\0:\1\2\0G\0\1\0\30user_emmet_install_global\6g\bvim\0" },
@@ -135,11 +163,38 @@ _G.packer_plugins = {
     path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/emmet-vim",
     url = "https://github.com/mattn/emmet-vim"
   },
+  ["far.vim"] = {
+    commands = { "Far", "Fardo", "Farr" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/far.vim",
+    url = "https://github.com/brooth/far.vim"
+  },
   ["git-worktree.nvim"] = {
     config = { 'require("core.git-worktree")' },
     loaded = true,
     path = "/home/kanon/.local/share/nvim/site/pack/packer/start/git-worktree.nvim",
     url = "https://github.com/ThePrimeagen/git-worktree.nvim"
+  },
+  ["gitsigns.nvim"] = {
+    config = { 'require("core.gitsigns")' },
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  gruvbox = {
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/gruvbox",
+    url = "https://github.com/gruvbox-community/gruvbox"
+  },
+  ["gv.vim"] = {
+    commands = { "GV" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/gv.vim",
+    url = "https://github.com/junegunn/gv.vim"
   },
   harpoon = {
     config = { 'require("core.harpoon")' },
@@ -220,7 +275,7 @@ _G.packer_plugins = {
     url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
-    config = { 'require("lsp.lsp")' },
+    config = { 'require("lsp")' },
     loaded = true,
     path = "/home/kanon/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
@@ -258,7 +313,7 @@ _G.packer_plugins = {
     url = "https://github.com/wbthomason/packer.nvim"
   },
   playground = {
-    commands = { "TSSPlaygroundToggle" },
+    commands = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
     loaded = false,
     needs_bufread = true,
     only_cond = false,
@@ -272,11 +327,15 @@ _G.packer_plugins = {
   },
   ["project.nvim"] = {
     config = { 'require("lsp.project")' },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/project.nvim",
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/project.nvim",
     url = "https://github.com/ahmedkhalf/project.nvim"
+  },
+  ["splitjoin.vim"] = {
+    config = { "\27LJ\1\2f\0\0\2\0\6\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0%\1\5\0:\1\4\0G\0\1\0\agS\27splitjoin_join_mapping\ags\28splitjoin_split_mapping\6g\bvim\0" },
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/splitjoin.vim",
+    url = "https://github.com/AndrewRadev/splitjoin.vim"
   },
   ["switch.vim"] = {
     config = { 'require("core.switch")' },
@@ -321,7 +380,7 @@ _G.packer_plugins = {
     url = "https://github.com/folke/tokyonight.nvim"
   },
   ultisnips = {
-    config = { 'require("lsp.ultisnippets")' },
+    config = { 'require("lsp.ultisnips")' },
     loaded = true,
     path = "/home/kanon/.local/share/nvim/site/pack/packer/start/ultisnips",
     url = "https://github.com/SirVer/ultisnips"
@@ -334,20 +393,39 @@ _G.packer_plugins = {
     path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  vim = {
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim",
+    url = "https://github.com/dracula/vim"
+  },
   ["vim-ReplaceWithRegister"] = {
     loaded = true,
     path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-ReplaceWithRegister",
     url = "https://github.com/inkarkat/vim-ReplaceWithRegister"
   },
   ["vim-apm"] = {
-    loaded = true,
-    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-apm",
+    commands = { "VimApm" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/vim-apm",
     url = "https://github.com/ThePrimeagen/vim-apm"
   },
   ["vim-be-good"] = {
-    loaded = true,
-    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-be-good",
+    commands = { "VimBeGood" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/vim-be-good",
     url = "https://github.com/ThePrimeagen/vim-be-good"
+  },
+  ["vim-brightest"] = {
+    commands = { "BrightestToggle" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/vim-brightest",
+    url = "https://github.com/osyo-manga/vim-brightest"
   },
   ["vim-closetag"] = {
     config = { 'require("core.closetags")' },
@@ -378,12 +456,44 @@ _G.packer_plugins = {
     path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-exchange",
     url = "https://github.com/tommcdo/vim-exchange"
   },
+  ["vim-fugitive"] = {
+    config = { "\27LJ\1\2M\0\0\2\0\4\0\0054\0\0\0007\0\1\0%\1\3\0:\1\2\0G\0\1\0&internal,vertical,closeoff,filler\fdiffopt\bopt\bvim\0" },
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
   ["vim-markdown"] = {
     loaded = false,
     needs_bufread = true,
     only_cond = false,
     path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/vim-markdown",
     url = "https://github.com/plasticboy/vim-markdown"
+  },
+  ["vim-maximizer"] = {
+    config = { "\27LJ\1\2?\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\0\0:\1\2\0G\0\1\0\"maximizer_set_default_mapping\6g\bvim\0" },
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-maximizer",
+    url = "https://github.com/szw/vim-maximizer"
+  },
+  ["vim-monokai"] = {
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-monokai",
+    url = "https://github.com/crusoexia/vim-monokai"
+  },
+  ["vim-move"] = {
+    config = { "\27LJ\1\2S\0\0\2\0\5\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0'\1\0\0:\1\4\0G\0\1\0\18move_map_keys\6C\22move_key_modifier\6g\bvim\0" },
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-move",
+    url = "https://github.com/matze/vim-move"
+  },
+  ["vim-obsession"] = {
+    commands = { "Obsession", "Obsession!" },
+    config = { "\27LJ\1\2k\0\0\2\0\6\0\t4\0\0\0007\0\1\0'\1\1\0:\1\2\0004\0\0\0007\0\3\0%\1\5\0:\1\4\0G\0\1\0\25%{ObsessionStatus()}\15statusline\bopt\26obsession_no_bufenter\6g\bvim\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/vim-obsession",
+    url = "https://github.com/tpope/vim-obsession"
   },
   ["vim-projectionist"] = {
     cond = { "\27LJ\1\2\1\0\0\2\0\a\0\0174\0\0\0%\1\1\0>\0\2\0027\0\2\0%\1\3\0>\0\2\0024\1\4\0007\1\5\0017\1\6\1>\1\1\0=\0\0\2\v\0\0\0T\0\2€)\0\1\0T\1\1€)\0\2\0H\0\2\0\vgetcwd\afn\bvim\22.projections.json\17root_pattern\19lspconfig.util\frequire\0" },
@@ -393,10 +503,21 @@ _G.packer_plugins = {
     path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/vim-projectionist",
     url = "https://github.com/tpope/vim-projectionist"
   },
+  ["vim-rainbow"] = {
+    config = { "\27LJ\1\0020\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\0\0:\1\2\0G\0\1\0\19rainbow_active\6g\bvim\0" },
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-rainbow",
+    url = "https://github.com/frazrepo/vim-rainbow"
+  },
   ["vim-repeat"] = {
     loaded = true,
     path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-repeat",
     url = "https://github.com/tpope/vim-repeat"
+  },
+  ["vim-rhubarb"] = {
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-rhubarb",
+    url = "https://github.com/tpope/vim-rhubarb"
   },
   ["vim-snippets"] = {
     loaded = true,
@@ -407,6 +528,20 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-test"] = {
+    commands = { "TestNearest", "TestFile", "TestSuite", "TestVisit" },
+    config = { 'require("core.vim-test")' },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/vim-test",
+    url = "https://github.com/vim-test/vim-test"
+  },
+  ["vim-textobj-comment"] = {
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-textobj-comment",
+    url = "https://github.com/glts/vim-textobj-comment"
   },
   ["vim-textobj-entire"] = {
     config = { "\27LJ\1\2H\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\1\0:\1\2\0G\0\1\0+textobj_entire_no_default_key_mappings\6g\bvim\0" },
@@ -420,10 +555,22 @@ _G.packer_plugins = {
     path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-textobj-line",
     url = "https://github.com/kana/vim-textobj-line"
   },
+  ["vim-textobj-python"] = {
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/vim-textobj-python",
+    url = "https://github.com/bps/vim-textobj-python"
+  },
   ["vim-textobj-user"] = {
     loaded = true,
     path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-textobj-user",
     url = "https://github.com/kana/vim-textobj-user"
+  },
+  vis = {
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vis",
+    url = "https://github.com/vim-scripts/vis"
   },
   ["which-key.nvim"] = {
     config = { 'require("config.appearance.whichkey")' },
@@ -475,10 +622,10 @@ time([[Config for lsp_signature.nvim]], false)
 time([[Config for nvim-treesitter]], true)
 require("core.treesitter")
 time([[Config for nvim-treesitter]], false)
--- Config for: targets.vim
-time([[Config for targets.vim]], true)
-try_loadstring("\27LJ\1\2Í\1\0\0\2\0\n\0\0174\0\0\0007\0\1\0003\1\3\0:\1\2\0004\0\0\0007\0\1\0003\1\5\0:\1\4\0004\0\0\0007\0\1\0003\1\a\0:\1\6\0004\0\0\0007\0\b\0%\1\t\0>\0\2\1G\0\1\0000source ~/.config/nvim/modules/visual-at.vim\bcmd\1\3\0\0\6n\6N\15targets_nl\1\5\0\0\6a\6i\6A\6I\24targets_mapped_aiAI\1\5\0\0\6a\6l\6A\6L\17targets_aiAI\6g\bvim\0", "config", "targets.vim")
-time([[Config for targets.vim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require("lsp.cmp")
+time([[Config for nvim-cmp]], false)
 -- Config for: which-key.nvim
 time([[Config for which-key.nvim]], true)
 require("config.appearance.whichkey")
@@ -487,50 +634,90 @@ time([[Config for which-key.nvim]], false)
 time([[Config for indentLine]], true)
 try_loadstring("\27LJ\1\2X\0\0\2\0\5\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0'\1\0\0:\1\4\0G\0\1\0\23indentLine_enabled\bâ”†\20indentLine_char\6g\bvim\0", "config", "indentLine")
 time([[Config for indentLine]], false)
--- Config for: null-ls.nvim
-time([[Config for null-ls.nvim]], true)
-require("lsp.formatters")
-time([[Config for null-ls.nvim]], false)
--- Config for: vim-textobj-entire
-time([[Config for vim-textobj-entire]], true)
-try_loadstring("\27LJ\1\2H\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\1\0:\1\2\0G\0\1\0+textobj_entire_no_default_key_mappings\6g\bvim\0", "config", "vim-textobj-entire")
-time([[Config for vim-textobj-entire]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-require("lsp.lsp")
-time([[Config for nvim-lspconfig]], false)
--- Config for: tokyonight.nvim
-time([[Config for tokyonight.nvim]], true)
-require("config.appearance.themes.tokyonight")
-time([[Config for tokyonight.nvim]], false)
--- Config for: vim-textobj-line
-time([[Config for vim-textobj-line]], true)
-try_loadstring("\27LJ\1\2F\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\1\0:\1\2\0G\0\1\0)textobj_line_no_default_key_mappings\6g\bvim\0", "config", "vim-textobj-line")
-time([[Config for vim-textobj-line]], false)
--- Config for: git-worktree.nvim
-time([[Config for git-worktree.nvim]], true)
-require("core.git-worktree")
-time([[Config for git-worktree.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require("core.telescope")
-time([[Config for telescope.nvim]], false)
+-- Config for: editorconfig-vim
+time([[Config for editorconfig-vim]], true)
+try_loadstring('\27LJ\1\2Q\0\0\2\0\4\0\0054\0\0\0007\0\1\0003\1\3\0:\1\2\0G\0\1\0\1\2\0\0\18fugitive://.*"EditorConfig_exclude_patterns\6g\bvim\0', "config", "editorconfig-vim")
+time([[Config for editorconfig-vim]], false)
 -- Config for: switch.vim
 time([[Config for switch.vim]], true)
 require("core.switch")
 time([[Config for switch.vim]], false)
+-- Config for: CamelCaseMotion
+time([[Config for CamelCaseMotion]], true)
+try_loadstring("\27LJ\1\2>\0\0\2\0\4\0\0054\0\0\0007\0\1\0%\1\3\0:\1\2\0G\0\1\0\r<leader>\24camelcasemotion_key\6g\bvim\0", "config", "CamelCaseMotion")
+time([[Config for CamelCaseMotion]], false)
+-- Config for: ultisnips
+time([[Config for ultisnips]], true)
+require("lsp.ultisnips")
+time([[Config for ultisnips]], false)
+-- Config for: project.nvim
+time([[Config for project.nvim]], true)
+require("lsp.project")
+time([[Config for project.nvim]], false)
+-- Config for: vim-rainbow
+time([[Config for vim-rainbow]], true)
+try_loadstring("\27LJ\1\0020\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\0\0:\1\2\0G\0\1\0\19rainbow_active\6g\bvim\0", "config", "vim-rainbow")
+time([[Config for vim-rainbow]], false)
+-- Config for: vim-move
+time([[Config for vim-move]], true)
+try_loadstring("\27LJ\1\2S\0\0\2\0\5\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0'\1\0\0:\1\4\0G\0\1\0\18move_map_keys\6C\22move_key_modifier\6g\bvim\0", "config", "vim-move")
+time([[Config for vim-move]], false)
+-- Config for: targets.vim
+time([[Config for targets.vim]], true)
+try_loadstring("\27LJ\1\2Í\1\0\0\2\0\n\0\0174\0\0\0007\0\1\0003\1\3\0:\1\2\0004\0\0\0007\0\1\0003\1\5\0:\1\4\0004\0\0\0007\0\1\0003\1\a\0:\1\6\0004\0\0\0007\0\b\0%\1\t\0>\0\2\1G\0\1\0000source ~/.config/nvim/modules/visual-at.vim\bcmd\1\3\0\0\6n\6N\15targets_nl\1\5\0\0\6a\6i\6A\6I\24targets_mapped_aiAI\1\5\0\0\6a\6l\6A\6L\17targets_aiAI\6g\bvim\0", "config", "targets.vim")
+time([[Config for targets.vim]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+require("core.comment")
+time([[Config for Comment.nvim]], false)
+-- Config for: splitjoin.vim
+time([[Config for splitjoin.vim]], true)
+try_loadstring("\27LJ\1\2f\0\0\2\0\6\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0%\1\5\0:\1\4\0G\0\1\0\agS\27splitjoin_join_mapping\ags\28splitjoin_split_mapping\6g\bvim\0", "config", "splitjoin.vim")
+time([[Config for splitjoin.vim]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+require("lsp")
+time([[Config for nvim-lspconfig]], false)
+-- Config for: vim-textobj-entire
+time([[Config for vim-textobj-entire]], true)
+try_loadstring("\27LJ\1\2H\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\1\0:\1\2\0G\0\1\0+textobj_entire_no_default_key_mappings\6g\bvim\0", "config", "vim-textobj-entire")
+time([[Config for vim-textobj-entire]], false)
+-- Config for: vim-textobj-line
+time([[Config for vim-textobj-line]], true)
+try_loadstring("\27LJ\1\2F\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\1\0:\1\2\0G\0\1\0)textobj_line_no_default_key_mappings\6g\bvim\0", "config", "vim-textobj-line")
+time([[Config for vim-textobj-line]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("core.telescope")
+time([[Config for telescope.nvim]], false)
+-- Config for: vim-fugitive
+time([[Config for vim-fugitive]], true)
+try_loadstring("\27LJ\1\2M\0\0\2\0\4\0\0054\0\0\0007\0\1\0%\1\3\0:\1\2\0G\0\1\0&internal,vertical,closeoff,filler\fdiffopt\bopt\bvim\0", "config", "vim-fugitive")
+time([[Config for vim-fugitive]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+require("core.gitsigns")
+time([[Config for gitsigns.nvim]], false)
+-- Config for: vim-maximizer
+time([[Config for vim-maximizer]], true)
+try_loadstring("\27LJ\1\2?\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\0\0:\1\2\0G\0\1\0\"maximizer_set_default_mapping\6g\bvim\0", "config", "vim-maximizer")
+time([[Config for vim-maximizer]], false)
+-- Config for: tokyonight.nvim
+time([[Config for tokyonight.nvim]], true)
+require("config.appearance.themes.tokyonight")
+time([[Config for tokyonight.nvim]], false)
 -- Config for: auto-pairs
 time([[Config for auto-pairs]], true)
 require("core.autopairs")
 time([[Config for auto-pairs]], false)
--- Config for: ultisnips
-time([[Config for ultisnips]], true)
-require("lsp.ultisnippets")
-time([[Config for ultisnips]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require("lsp.cmp")
-time([[Config for nvim-cmp]], false)
+-- Config for: null-ls.nvim
+time([[Config for null-ls.nvim]], true)
+require("lsp.formatters")
+time([[Config for null-ls.nvim]], false)
+-- Config for: git-worktree.nvim
+time([[Config for git-worktree.nvim]], true)
+require("core.git-worktree")
+time([[Config for git-worktree.nvim]], false)
 -- Conditional loads
 time([[Conditional loading of vim-projectionist]], true)
   require("packer.load")({"vim-projectionist"}, {}, _G.packer_plugins)
@@ -545,16 +732,31 @@ pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Make lua require("
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TZAtaraxis lua require("packer.load")({'TrueZen.nvim'}, { cmd = "TZAtaraxis", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TagbarToggle lua require("packer.load")({'tagbar'}, { cmd = "TagbarToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeOpen lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeOpen", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Dispatch lua require("packer.load")({'vim-dispatch'}, { cmd = "Dispatch", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TZFocus lua require("packer.load")({'TrueZen.nvim'}, { cmd = "TZFocus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TZMinimalist lua require("packer.load")({'TrueZen.nvim'}, { cmd = "TZMinimalist", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Focus lua require("packer.load")({'vim-dispatch'}, { cmd = "Focus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file HopChar1 lua require("packer.load")({'hop.nvim'}, { cmd = "HopChar1", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file UndotreeToggle lua require("packer.load")({'undotree'}, { cmd = "UndotreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TestSuite lua require("packer.load")({'vim-test'}, { cmd = "TestSuite", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[au CmdUndefined Obsession! ++once lua require"packer.load"({'vim-obsession'}, {}, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Copilot lua require("packer.load")({'copilot.vim'}, { cmd = "Copilot", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Farr lua require("packer.load")({'far.vim'}, { cmd = "Farr", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSHighlightCapturesUnderCursor lua require("packer.load")({'playground'}, { cmd = "TSHighlightCapturesUnderCursor", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file VimBeGood lua require("packer.load")({'vim-be-good'}, { cmd = "VimBeGood", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file GV lua require("packer.load")({'gv.vim'}, { cmd = "GV", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TZFocus lua require("packer.load")({'TrueZen.nvim'}, { cmd = "TZFocus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Start lua require("packer.load")({'vim-dispatch'}, { cmd = "Start", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TZMinimalist lua require("packer.load")({'TrueZen.nvim'}, { cmd = "TZMinimalist", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TestNearest lua require("packer.load")({'vim-test'}, { cmd = "TestNearest", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Dispatch lua require("packer.load")({'vim-dispatch'}, { cmd = "Dispatch", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file HopChar1 lua require("packer.load")({'hop.nvim'}, { cmd = "HopChar1", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file VimApm lua require("packer.load")({'vim-apm'}, { cmd = "VimApm", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Bclose lua require("packer.load")({'bclose.vim'}, { cmd = "Bclose", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file BrightestToggle lua require("packer.load")({'vim-brightest'}, { cmd = "BrightestToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TestFile lua require("packer.load")({'vim-test'}, { cmd = "TestFile", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Obsession lua require("packer.load")({'vim-obsession'}, { cmd = "Obsession", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Focus lua require("packer.load")({'vim-dispatch'}, { cmd = "Focus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Fardo lua require("packer.load")({'far.vim'}, { cmd = "Fardo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Far lua require("packer.load")({'far.vim'}, { cmd = "Far", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSPlaygroundToggle lua require("packer.load")({'playground'}, { cmd = "TSPlaygroundToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TestVisit lua require("packer.load")({'vim-test'}, { cmd = "TestVisit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file UndotreeToggle lua require("packer.load")({'undotree'}, { cmd = "UndotreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSSPlaygroundToggle lua require("packer.load")({'playground'}, { cmd = "TSSPlaygroundToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
@@ -565,23 +767,19 @@ vim.cmd [[au FileType lua ++once lua require("packer.load")({'cmp-nvim-lua'}, { 
 vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim', 'vim-closetag'}, { ft = "html" }, _G.packer_plugins)]]
 vim.cmd [[au FileType vue ++once lua require("packer.load")({'emmet-vim', 'vim-closetag'}, { ft = "vue" }, _G.packer_plugins)]]
 vim.cmd [[au FileType svelte ++once lua require("packer.load")({'emmet-vim', 'vim-closetag'}, { ft = "svelte" }, _G.packer_plugins)]]
-vim.cmd [[au FileType md ++once lua require("packer.load")({'vim-markdown'}, { ft = "md" }, _G.packer_plugins)]]
 vim.cmd [[au FileType go ++once lua require("packer.load")({'vim-dispatch'}, { ft = "go" }, _G.packer_plugins)]]
+vim.cmd [[au FileType sh ++once lua require("packer.load")({'vim-dispatch'}, { ft = "sh" }, _G.packer_plugins)]]
 vim.cmd [[au FileType c ++once lua require("packer.load")({'vim-dispatch'}, { ft = "c" }, _G.packer_plugins)]]
-vim.cmd [[au FileType python ++once lua require("packer.load")({'vim-dispatch'}, { ft = "python" }, _G.packer_plugins)]]
-vim.cmd [[au FileType jsx ++once lua require("packer.load")({'emmet-vim', 'vim-closetag'}, { ft = "jsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType js ++once lua require("packer.load")({'emmet-vim', 'vim-dispatch', 'vim-closetag'}, { ft = "js" }, _G.packer_plugins)]]
+vim.cmd [[au FileType python ++once lua require("packer.load")({'vim-dispatch', 'vim-textobj-python'}, { ft = "python" }, _G.packer_plugins)]]
 vim.cmd [[au FileType rs ++once lua require("packer.load")({'vim-dispatch'}, { ft = "rs" }, _G.packer_plugins)]]
 vim.cmd [[au FileType css ++once lua require("packer.load")({'emmet-vim', 'vim-closetag'}, { ft = "css" }, _G.packer_plugins)]]
-vim.cmd [[au FileType sh ++once lua require("packer.load")({'vim-dispatch'}, { ft = "sh" }, _G.packer_plugins)]]
-vim.cmd [[au FileType ts ++once lua require("packer.load")({'emmet-vim', 'vim-dispatch', 'vim-closetag'}, { ft = "ts" }, _G.packer_plugins)]]
-vim.cmd [[au FileType js ++once lua require("packer.load")({'emmet-vim', 'vim-dispatch', 'vim-closetag'}, { ft = "js" }, _G.packer_plugins)]]
-vim.cmd [[au FileType cpp ++once lua require("packer.load")({'vim-dispatch'}, { ft = "cpp" }, _G.packer_plugins)]]
 vim.cmd [[au FileType tsx ++once lua require("packer.load")({'emmet-vim', 'vim-closetag'}, { ft = "tsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType jsx ++once lua require("packer.load")({'emmet-vim', 'vim-closetag'}, { ft = "jsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType md ++once lua require("packer.load")({'vim-markdown'}, { ft = "md" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cpp ++once lua require("packer.load")({'vim-dispatch'}, { ft = "cpp" }, _G.packer_plugins)]]
+vim.cmd [[au FileType ts ++once lua require("packer.load")({'emmet-vim', 'vim-dispatch', 'vim-closetag'}, { ft = "ts" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
-  -- Event lazy-loads
-time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'project.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
 time([[Sourcing ftdetect script at: /home/kanon/.local/share/nvim/site/pack/packer/opt/vim-markdown/ftdetect/markdown.vim]], true)

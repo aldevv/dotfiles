@@ -1,4 +1,16 @@
 #!/bin/zsh
+#
+# arcolinux fix gpg
+#/usr/local/bin/arcolinux-fix-pacman-gpg-conf
+#
+#fix 2 for gpg
+#https://forum.manjaro.org/t/maintainer-pgp-keys-expired/76545/43
+#sudo rm -r /etc/pacman.d/gnupg
+#sudo pacman-key --init
+#sudo pacman-key --populate arcolinux
+#sudo pacman-key --populate archlinux --didn't try with this one
+#sudo pacman -Syvv arcolinux-keyring
+#
 alias forthelols="while [ 1 ]; do echo 'apt list | wc -l' | lolcat; done"
 
 activateVerified() {
@@ -34,10 +46,24 @@ fm(){
     nvim "$(which $1)"
 }
 
+
+.e(){
+# load .env file or any other file
+  file=$1
+  [ -z $file ] && file=".env"
+  zsh -c "set -o allexport; source $file; echo 'loaded'; set +o allexport; zsh -i"
+}
+
+.ec(){
+  bat .env
+  }
+
+
+alias .a="pipenv shell"
 alias gv="neovide"
 alias gV="NOCOC=true neovide"
 alias V="NOCOC='' nvim"
-alias f='nvim $(fzf)'\
+alias f='file=$(fzf); [[ -n $file ]] && nvim $file'
 alias uuid='uui=$(python -c "import uuid; print(uuid.uuid4())"); echo $uui | xsel -b; echo $uui '
 alias wireshark="sudo wireshark"
 alias vid="neovide"
@@ -48,7 +74,6 @@ alias srcp=". $ZDOTDIR/.zprofile"
 alias srcz=". $ZDOTDIR/.zshrc"
 alias teams="flatpak run com.microsoft.Teams"
 alias pe="pipenv"
-alias va="pipenv shell"
 alias sshconfig="man ssh_config"
 alias picomr="DISPLAY=':0' picom -b --experimental-backend"
 alias robo="$PROGRAMS/robo3t-1.4.4-linux-x86_64-e6ac9ec/bin/robo3t"
@@ -94,7 +119,7 @@ getpdffont(){
 #==============
 # SETUP DOTREPO
 #==============
-#git clone --bare https://github.com/akuseru1/dotfiles
+#it clone --bare https://github.com/akuseru1/dotfiles
 # or
 #git init --bare $HOME/<repo_name>
 #dotrepo config --local status.showUntrackedFiles no
@@ -457,6 +482,10 @@ alias boosto='chmod +x'
 #=====================================================
 #           git
 #=====================================================
+fzfgd() {
+  preview="git diff $@ --color=always -- {-1}"
+  git diff $@ --name-only | fzf -m --ansi --preview $preview
+}
 alias hackzor='git init'
 alias readyperfectoni='git commit -am'
 yolo() {
@@ -831,11 +860,12 @@ function gbR() {
 }
 
 alias\
-    gser='git secret reveal'\
-    gseh='git secret hide'\
-    gsels='git secret list'\
-    gserm='git secret remove'\
-    gsea='git secret add'
+    gse='git secret'\
+    gser='git secrets reveal'\
+    gseh='git secrets hide'\
+    gsels='git secrets list'\
+    gserm='git secrets remove'\
+    gsea='git secrets add'
 
 
 

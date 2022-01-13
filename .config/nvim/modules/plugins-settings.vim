@@ -12,122 +12,6 @@ if !empty(glob("$XDG_CONFIG_HOME/nvim/modules/coc.vim")) && empty($NOCOC)
     source $XDG_CONFIG_HOME/nvim/modules/coc.vim
 endif
 
-" =====================
-" Sweet Sweet FuGITive
-" =====================
-" vimdiff commnads
-""]c :        - next difference
-"[c :        - previous difference
-"do          - diff obtain
-"dp          - diff put
-"zo          - open folded text
-"zc          - close folded text
-":diffupdate - re-scan the files for differences
-" default diffopt
-" set diffopt=internal,filler,closeoff
-if has('nvim-0.5.0')
-    set diffopt=internal,vertical,closeoff,filler
-endif
-
-nmap <leader>gi :diffget //3<CR>
-nmap <leader>gh :diffget //2<CR>
-nmap <leader>gst :G<CR>
-" nnoremap <leader>gst :Gstatus<CR>
-nmap <leader>g<space> :G init<CR>
-
-" use ctrl + d to delete branches
-" alt + enter to track from origin, locally : origin/ foo becomes foo
-" - Press <alt-enter> to track a remote branch locally (`origin/foo` becomes `foo`)
-" - Press <ctrl-b> to create a branch or tag with the current query as name
-" - Press <ctrl-d> to delete a branch or tag
-" - Press <ctrl-e> to merge a branch
-" - Press <ctrl-r> to rebase a branch
-nnoremap <leader>gc :GBranches<CR>
-nnoremap <leader>gsp :G stash push<CR>
-nnoremap <leader>gsP :G stash pop<CR>
-nnoremap <leader>gsl :G stash list<CR>
-
-nnoremap <leader>ggc :G commit<CR>
-nnoremap <leader>gm :Git merge<CR>
-" nnoremap <leader>gd ::Gvdiff<CR>
-nnoremap <leader>gds :Gdiffsplit!<CR>
-nnoremap <leader>gdd :Gvdiffsplit!<CR>
-nnoremap <leader>gdD :Git difftool<CR>
-" this works like VS jumper, test to see if i deprecate the other one
-nnoremap <leader>gM :Git mergetool<CR>
-nnoremap <leader>gloG :Gclog --reverse<CR>
-nnoremap Q :Glog --reverse<CR>
-nnoremap <leader>ggp :Git push<CR>
-nnoremap <leader>guu :Git pull<CR>
-nnoremap <leader>gb :Git blame<CR>
-nnoremap <leader>gB :GBrowse<CR>
-" nnoremap <leader>gw :Gwrite<CR>
-" nnoremap <leader>gr :Gread<CR>
-" nnoremap <leader>ga :tab sp \| Gvedit :1 \| windo diffthis<CR>
-" for aliases:
-" command Gst G
-" command Ggc Gcommit
-" command Gc Gcheckout
-" command Gbl Gblame
-" command Ggp Gpush
-" command Gf Gfetch
-" command Glg Glog --reverse
-" command Gm Gmerge
-" command Guu Gpull
-" command Grb Grebase
-" command Grev Grevert
-" command Gd Gdiff
-" command Gds Gsdiff
-" command Gdv Gvdiff
-" command Gs Gsplit
-" command Gv Gvsplit
-" Gremove*
-" Gbrowse*
-" Gdelete*
-" Gmove*
-" Grename*
-" Git!*
-" Gpedit!*
-" Gtabsplit!*
-""Fugitive extensions
-"nnoremap <silent> <leader>gm :tab sp<CR>:Glistmod<CR>
-"nnoremap <silent> ]d :call g:DiffNextLoc()<CR>
-"nnoremap <silent> [d :call g:DiffPrevLoc()<CR>
-"function! g:ViewCommits(num_commits)
-"    let commit=0
-"    while commit < a:num_commits
-"        execute "Gedit HEAD~".commit
-"        topleft vsp
-"        let commit += 1
-"    endwhile
-"    q
-"endfunction
-
-"command! Glistmod only | call g:ListModified() | Gdiff
-"function! g:ListModified()
-"    let old_makeprg=&makeprg
-"    "let &makeprg = "git diff --cached --name-only"
-"    let &makeprg = "git ls-files -m"
-"    let old_errorformat=&errorformat
-"    let &errorformat="%f"
-"    lmake
-"    let &makeprg=old_makeprg
-"    let &errorformat=old_errorformat
-"endfunction
-
-"function! g:DiffNextLoc()
-"    windo set nodiff
-"    only
-"    lnext
-"    Gdiff
-"endfunction
-"function! g:DiffPrevLoc()
-"    windo set nodiff
-"    only
-"    lprevious
-"    Gdiff
-"endfunction
-
 "==========
 " VIMTEX
 "==========
@@ -207,17 +91,6 @@ if !empty(glob("$XDG_CONFIG_HOME/nvim/modules/format.vim")) && empty($NOCOC)
     source $XDG_CONFIG_HOME/nvim/modules/coc.vim
 endif
 
-"=============
-"EDITORCONFIG
-"=============
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-
-" devicons
-" let g:webdevicons_enable = 1
-" let g:DevIconsEnableFoldersOpenClose = 1
-" let g:DevIconsEnableFolderExtensionPatternMatching = 1
-
 " =============
 " MACROS
 " =============
@@ -278,126 +151,17 @@ autocmd FileType python :call SetupJupyter()
 " Debugging maps
 " nnoremap <buffer> <silent> <localleader>b :PythonSetBreak<CR>
 
-" polyglot
-" removes annoying red highlight from every space you put
-let g:python_highlight_space_errors = 0
-
-" ================
-" CAMELCASE MOTION
-" ================
-" let g:camelcasemotion_key = '<leader>'
-map <silent> <leader>j <Plug>CamelCaseMotion_e
-map <silent> <leader>gj <Plug>CamelCaseMotion_ge
-map <silent> <leader>w <Plug>CamelCaseMotion_w
-map <silent> <leader>b <Plug>CamelCaseMotion_b
-
-omap <silent><leader>lw <Plug>CamelCaseMotion_iw
-xmap <silent><leader>lw <Plug>CamelCaseMotion_iw
-omap <silent><leader>lb <Plug>CamelCaseMotion_ib
-xmap <silent><leader>lb <Plug>CamelCaseMotion_ib
-omap <silent><leader>lj <Plug>CamelCaseMotion_ie
-xmap <silent><leader>lj <Plug>CamelCaseMotion_ie
-
-" replace with register
-"
-" nmap gp  <Plug>ReplaceWithRegisterOperator
-" nmap gpp <Plug>ReplaceWithRegisterLine
-" xmap gp  <Plug>ReplaceWithRegisterVisual
-"USAGE                         *ReplaceWithRegister-usage*
-"
-"                                *gr* *grr* *v_gr*
-"[count]["x]gr{motion}  Replace {motion} text with the contents of register x.
-"           Especially when using the unnamed register, this is
-"           quicker than "_d{motion}P or "_c{motion}<C-R>"
-"[count]["x]grr     Replace [count] lines with the contents of register x.
-"           To replace from the cursor position to the end of the
-"           line use ["x]gr$
-"{Visual}["x]gr     Replace the selection with the contents of register x.
-
-" ===================
-" INDENT-TEXT-OBJECT current
-" ===================
-" if no docs, do :helptags doc to load it into memory
-"<count>ai 	An Indentation level and line above.
-" <count>ii 	Inner Indentation level (no line above).
-" <count>aI 	An Indentation level and lines above/below.
-" <count>iI 	Inner Indentation level (no lines above/below).
-"Note: the iI mapping is mostly included simply for completeness, it is effectively a synonym for ii. ===================
-
-
-" ===================
-" INDENT-TEXT-OBJECT 2, deprecated
-" ===================
-"
-" line text object
-" only use for selecting, not for other stuff, has bugs
-" let g:textobj_line_no_default_key_mappings = 1
-" vmap <silent> ll <Plug>(textobj-line-i)
-" omap <silent> ll <Plug>(textobj-line-i)
-" vmap <silent> al <Plug>(textobj-line-a)
-" omap <silent> al <Plug>(textobj-line-a)
-
-" " entire text object
-" let g:textobj_entire_no_default_key_mappings = 1
-" vmap <silent> le    <Plug>(textobj-entire-i)
-" omap <silent> le    <Plug>(textobj-entire-i)
-" vmap <silent> ae    <Plug>(textobj-entire-a)
-" omap <silent> ae    <Plug>(textobj-entire-a)
-
-" python text objects
-let g:textobj_python_no_default_key_mappings = 1
-" silent! TextobjPythonDefaultKeyMappings!
-" af: a function
-" lf: inner function
-" ac: a class
-" lc: inner class
-" [f previous function
-" ]f next function
-" [c previous class
-" ]c next class
-call textobj#user#map('python', {
-            \   'class': {
-            \     'select-a': '<buffer>ax',
-            \     'select-i': '<buffer>lx',
-            \     'move-n': '<buffer>]x',
-            \     'move-p': '<buffer>[x',
-            \   },
-            \   'function': {
-            \     'select-a': '<buffer>af',
-            \     'select-i': '<buffer>lf',
-            \     'move-n': '<buffer>]f',
-            \     'move-p': '<buffer>[f',
-            \   }
-            \ })
-
-" text object comments
-" silent! TextobjCommentDefaultKeyMappings!
-let g:textobj_comment_no_default_key_mappings = 1
-vmap ac <Plug>(textobj-comment-a)
-omap ac <Plug>(textobj-comment-a)
-vmap lc <Plug>(textobj-comment-i)
-omap lc <Plug>(textobj-comment-i)
-" vmap lc <Plug>(textobj-comment-i)
-" omap lc <Plug>(textobj-comment-i)
-" a big comment
-" whitespace after the comment, or if there isn't any,
-"           whitespace before the comment.
-"           Select linewise for full-line comments, characterwise
-"           for inline and end-of-line comments.
-vmap aC <Plug>(textobj-comment-big-a)
-omap aC <Plug>(textobj-comment-big-a)
-
 
 "=======================
 " VISUAL MODE MOVE BLOCK
 "=======================
-let g:move_key_modifier = 'C'
+" let g:move_key_modifier = 'C'
 " disable default bindings"
-let g:move_map_keys = 0
-vmap <down> <Plug>MoveBlockDown
-vmap <up> <Plug>MoveBlockUp
-vmap <left> <Plug>MoveBlockLeft
-vmap <right> <Plug>MoveBlockRight
+" let g:move_map_keys = 0
+" vmap <down> <Plug>MoveBlockDown
+" vmap <up> <Plug>MoveBlockUp
+" vmap <left> <Plug>MoveBlockLeft
+" vmap <right> <Plug>MoveBlockRight
 
 " smooth scroll
 " change the second parameter to change the duration of the scroll
@@ -412,17 +176,9 @@ endif
 "===============
 " VIM-COMMENTARY
 "===============
-autocmd FileType json setlocal commentstring=//%s
-autocmd FileType sxhkdrc setlocal commentstring=#%s
+" autocmd FileType json setlocal commentstring=//%s
+" autocmd FileType sxhkdrc setlocal commentstring=#%s
 
-" ==========
-" SPLITJOIN
-" ==========
-let g:splitjoin_split_mapping = 'gs'
-let g:splitjoin_join_mapping = 'gS'
-
-" nmap gs :SplitjoinSplit<cr>
-" nmap gS :SplitjoinJoin<cr>
 
 "=========
 " VISTA
@@ -444,13 +200,8 @@ let g:splitjoin_join_mapping = 'gS'
 " " nmap <leader>cv :Vista!!<cr>
 " autocmd Filetype python,c,cpp,java,javascript,go,skell,vim nmap <leader>cV :Vista finder<cr>
 
-"=========
-" BCLOSE
-"=========
-"The :Bclose command deletes a buffer without changing the window layout, unlike :bd.
-let g:bclose_no_plugin_maps=1
 
-" eunuch (Basic filesystem settings)
+" EUNUCH (BASIC FILESYSTEM SETTINGS)
 " map <leader>sm :Move
 " map <leader>sr :Rename
 " map <leader>sc :Chmod
@@ -468,44 +219,6 @@ let g:bclose_no_plugin_maps=1
 " ==========
 " BRIGHTEST
 " ==========
-noremap <leader>B :BrightestToggle<cr>
-"TODO check this one" autocmd Filetype * :BrightestDisable
-
-" let g:brightest#enable_on_CursorHold = 1
-" let g:brightest#enable_clear_highlight_on_CursorMoved = 0
-" highlights all instances of a the word under the cursor in the buffer
-" \   "group" : "BrightestUnderline"
-let g:brightest#highlight = {
-            \   "group" : "WildMenu"
-            \}
-
-let g:brightest#highlight_in_cursorline = {
-            \ "group": "Wildmenu"
-            \}
-
-let g:brightest#pattern = '\k\+'
-
-let g:brightest#enable_filetypes = {
-            \ "_": 1
-            \}
-" let g:brightest#enable_filetypes = {
-"             \   ""   : 0,
-"             \   "csv"   : 0,
-"             \   "tex"   : 0,
-"             \   "markdown" : 0,
-"             \   "vim" : 0,
-"             \   "cpp" : 0,
-"             \   "python" : 0,
-"             \   "javascript" : 0,
-"             \   "java" : 0,
-"             \   "typescript" : 0,
-"             \}
-
-"==========
-" Ripgrep
-"==========
-nnoremap <leader>rg :Rg<space>
-nnoremap <leader>rG :Rg <c-r>=expand('<cword>')<cr><cr>
 
 "==========
 "Anyfold
@@ -571,7 +284,7 @@ nnoremap <leader>glog :GV?<cr>
 "======================
 " RAINBOW PARENTHESIS
 "======================
-let g:rainbow_active = 0
+" let g:rainbow_active = 0
 
 "==============
 "VIM-TEST
@@ -581,11 +294,11 @@ let g:rainbow_active = 0
 "and test.vim will automatically try to run the
 "command on the "alternate" test file.
 
-nmap <silent> <leader>Tn :TestNearest<CR>
-nmap <silent> <leader>Tf :TestFile<CR>
-nmap <silent> <leader>Ts :TestSuite<CR>
-nmap <silent> <leader>Tl :TestLast<CR>
-nmap <silent> <leader>Tg :TestVisit<CR>
+" nmap <silent> <leader>Tn :TestNearest<CR>
+" nmap <silent> <leader>Tf :TestFile<CR>
+" nmap <silent> <leader>Ts :TestSuite<CR>
+" nmap <silent> <leader>Tl :TestLast<CR>
+" nmap <silent> <leader>Tg :TestVisit<CR>
 " https://github.com/vim-test/vim-test
 "
 " PROJECTIONIST INTEGRATION                       *test-projectionist*
@@ -600,70 +313,70 @@ nmap <silent> <leader>Tg :TestVisit<CR>
 " <
 
 " let test#strategy = "dispatch"
-let test#strategy = "neoterm"
-
-autocmd BufReadPost * let test#project_root = git#find_current_root(1)
-
-augroup TestType
-" autocmd User ProjectionistActivate call <SID>choose_test_runner()
-autocmd User ProjectionistActivate call <SID>get_testrunner()
-augroup END
-
-function s:get_testrunner()
-  " better way to do this? FileType autocmd didnt work
-
-  " if defined in projectionist, choose it, otherwise, let the plugin choose
-  let l:value = projectionist#query('testrunner')
-  if len(value) < 1
-    return
-  endif
-  let l:value = l:value[-1][1]
-  let l:extensions = ['ts', 'scala', 'js', 'py', 'java', 'rs', 'go', 'php']
-
-  if index(l:extensions, g:extension) >= 0 " si esta en el arreglo
-    if g:extension == "py"
-      let g:test#python#runner = l:value
-      return
-    endif
-    if g:extension == "java"
-      let g:test#java#runner = l:value
-      return
-    endif
-    if g:extension == "ts"
-      let g:test#typescript#runner = l:value
-      return
-    endif
-    if g:extension == "js"
-      let g:test#javascript#runner = l:value
-      return
-    endif
-    if g:extension == "go"
-      let g:test#go#runner = l:value
-      return
-    endif
-    if g:extension == "rs"
-      let g:test#rust#runner = l:value
-      return
-    endif
-    if g:extension == "scala"
-      let g:test#scala#runner = l:value
-      return
-    endif
-    if g:extension == "php"
-      let g:test#php#runner = l:value
-      return
-    endif
-  endif
-endfunction
-
-function s:choose_test_runner()
-autocmd FileType python let g:test#python#runner = projectionist#query('testrunner')[1][1]
-autocmd FileType javascript,typescript let g:test#javascript#runner = projectionist#query('testrunner')[1][1]
-  autocmd FileType java let g:test#java#runner = projectionist#query('testrunner')[1][1]
-  autocmd FileType go let g:test#go#runner = projectionist#query('testrunner')[1][1]
-  autocmd FileType scala let g:test#scala#runner = projectionist#query('testrunner')[1][1]
-  autocmd FileType php let g:test#php#runner = projectionist#query('testrunner')[1][1]
-endfunction
+" let test#strategy = "neoterm"
+"
+" autocmd BufReadPost * let test#project_root = git#find_current_root(1)
+"
+" augroup TestType
+" " autocmd User ProjectionistActivate call <SID>choose_test_runner()
+" autocmd User ProjectionistActivate call <SID>get_testrunner()
+" augroup END
+"
+" function s:get_testrunner()
+"   " better way to do this? FileType autocmd didnt work
+"
+"   " if defined in projectionist, choose it, otherwise, let the plugin choose
+"   let l:value = projectionist#query('testrunner')
+"   if len(value) < 1
+"     return
+"   endif
+"   let l:value = l:value[-1][1]
+"   let l:extensions = ['ts', 'scala', 'js', 'py', 'java', 'rs', 'go', 'php']
+"
+"   if index(l:extensions, g:extension) >= 0 " si esta en el arreglo
+"     if g:extension == "py"
+"       let g:test#python#runner = l:value
+"       return
+"     endif
+"     if g:extension == "java"
+"       let g:test#java#runner = l:value
+"       return
+"     endif
+"     if g:extension == "ts"
+"       let g:test#typescript#runner = l:value
+"       return
+"     endif
+"     if g:extension == "js"
+"       let g:test#javascript#runner = l:value
+"       return
+"     endif
+"     if g:extension == "go"
+"       let g:test#go#runner = l:value
+"       return
+"     endif
+"     if g:extension == "rs"
+"       let g:test#rust#runner = l:value
+"       return
+"     endif
+"     if g:extension == "scala"
+"       let g:test#scala#runner = l:value
+"       return
+"     endif
+"     if g:extension == "php"
+"       let g:test#php#runner = l:value
+"       return
+"     endif
+"   endif
+" endfunction
+"
+" function s:choose_test_runner()
+" autocmd FileType python let g:test#python#runner = projectionist#query('testrunner')[1][1]
+" autocmd FileType javascript,typescript let g:test#javascript#runner = projectionist#query('testrunner')[1][1]
+"   autocmd FileType java let g:test#java#runner = projectionist#query('testrunner')[1][1]
+"   autocmd FileType go let g:test#go#runner = projectionist#query('testrunner')[1][1]
+"   autocmd FileType scala let g:test#scala#runner = projectionist#query('testrunner')[1][1]
+"   autocmd FileType php let g:test#php#runner = projectionist#query('testrunner')[1][1]
+" endfunction
 
 
 " let test#strategy = "neoterm"
@@ -713,16 +426,6 @@ nnoremap <silent><Leader>vm :VcsJump merge<cr>
 nnoremap <Leader>vg :call EnterNameToGrep()<cr>
 
 let g:VcsJumpMode="cwd" "can be buffer
-"===========
-" MAXIMIZER
-"===========
-" nnoremap <silent><F3> :MaximizerToggle<CR>
-" vnoremap <silent><F3> :MaximizerToggle<CR>gv
-"
-let g:maximizer_set_default_mapping = 0
-nnoremap <silent><leader>m :MaximizerToggle<CR>
-vnoremap <silent><leader>m :MaximizerToggle<CR>gv
-" inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
 
 "===========
 " QUICKFIX-REFLECTOR
@@ -800,12 +503,6 @@ let g:zv_file_types = {
             \   '\v^.+\.js' : 'javascript,nodejs',
             \ }
 
-"==========
-"OBSESSION
-"==========
-noremap <leader>co :source %:h/Session.vim<bar> :Obsession<CR>
-noremap <leader>cO :Obsession<CR>
-set statusline=%{ObsessionStatus()}
 
 "==========
 "DOTENV

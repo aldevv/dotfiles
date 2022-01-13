@@ -39,6 +39,7 @@ M.load_mappings = function()
     map("n", "<localleader>vc", ':lua require("utils.lua.telescope").nvim({path = "lua/config/"})<cr>', nor_s)
     map("n", "<localleader>vC", ':lua require("utils.lua.telescope").nvim({path = "lua/core/"})<cr>', nor_s)
     map("n", "<localleader>vu", ':lua require("utils.lua.telescope").nvim({path = "lua/utils/"})<cr>', nor_s)
+    map("n", "<localleader>vl", ':lua require("utils.lua.telescope").nvim({path = "lua/lsp/"})<cr>', nor_s)
     map("n", "<localleader>vp", ':lua require("utils.lua.telescope").plugins_def()<cr>', nor_s)
     map("n", "<localleader>ms", ':lua require("utils.lua.telescope").scripts()<cr>', nor_s)
     map("n", "<localleader>mf", ':lua require("utils.lua.telescope").files()<cr>', nor_s)
@@ -80,6 +81,6 @@ M.load_mappings = function()
     map("n", "<leader>tgs", ':lua require("telescope.builtin").git_status()<cr>', nor_s)
     map("n", "<leader>tgS", ':lua require("telescope.builtin").git_stash()<cr>', nor_s)
 
-    map("n", "<leader>tp", ":Telescope projects<cr>", nor_s) -- recently opened porjects!!
+    map("n", "<leader>tp", ":Telescope projects<cr>", nor) -- recently opened porjects!!
 end
 return M

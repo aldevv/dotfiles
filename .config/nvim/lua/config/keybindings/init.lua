@@ -63,16 +63,6 @@ map("n", "<a-n>", ":m .+1<cr>==", nor)
 map("i", "<c-y>", "copilot#Accept('<CR>')", vim.tbl_extend("keep", s_e, { script = true }))
 map("n", "ß", "<Plug>(Switch)", nor_s)
 
-map("n", "<leader>.vg", ":%g/\v/norm!<Left><Left><Left><Left><Left><Left>", nor_s)
-map("n", "<leader>.vn", ":%norm!<space>", nor_s)
-map("v", "<leader>.vg", ":g/\v/norm!<Left><Left><Left><Left><Left><Left>", nor_s)
-map("v", "<leader>.vs", ":norm!<space>", nor_s)
-
--- not working in lua
--- map('n', "<leader>.vs", ":%s/\v<c-r>=expand('<cword>')<cr>//gI<Left><Left><Left>", nor_s)
-map("v", "<leader>.vs", ":s/\v//gI<Left><Left><Left><Left>", nor)
-map("n", "<leader>.vs", ":%s/\v//gI<Left><Left><Left><Left>", nor)
-
 -- snippets
 map("n", "<leader>si", "<Plug>(InsertSkeleton)", s)
 
@@ -87,7 +77,7 @@ map("n", "<F2>", ":e " .. h .. "/modules/keybindings.vim<cr>", nor_s)
 map("n", "<F3>", ":e " .. h .. "/modules/plugins-settings.vim<cr>", nor_s)
 map("n", "<F4>", ":e " .. h .. "/lua/plugins.lua<cr>", nor_s)
 map("n", "<F5>", ":e " .. h .. "/modules/plugins.vim<cr>", nor_s)
-map("n", "<F6>", ":e " .. h .. "/lua/lsp/lsp.lua<cr>", nor_s)
+map("n", "<F6>", ":e " .. h .. "/lua/lsp/init.lua<cr>", nor_s)
 map("n", "<F7>", ":e " .. h .. "/lua/lsp/formatters.lua<cr>", nor_s)
 map("n", "<F8>", ":e " .. h .. "/init.lua<cr>", nor_s)
 
@@ -96,6 +86,7 @@ map("n", "<localleader>Vs", ":e " .. h .. "/lua/config/settings.lua<cr>", nor_s)
 map("n", "<localleader>Vp", ":e " .. h .. "/lua/plugins.lua<cr>", nor_s)
 map("n", "<localleader>Va", ":e " .. h .. "/lua/config/automation/init.lua<cr>", nor_s)
 map("n", "<localleader>Vk", ":e " .. h .. "/lua/config/keybindings/init.lua<cr>", nor_s)
+map("n", "<localleader>Vl", ":e " .. h .. "/lua/lsp/init.lua<cr>", nor_s)
 map("n", "<localleader>VP", ":e " .. h .. "/modules/plugins.vim<cr>", nor_s)
 
 -- defaults override
@@ -130,6 +121,7 @@ map("n", ";", ",", nor_s)
 
 -- hop
 map("n", "s", ":HopChar1<cr>", nor_s)
+map("o", "S", ":HopChar1<cr>", nor_s)
 
 -- leader commands
 -- -----------------
@@ -143,11 +135,9 @@ require("config.keybindings.telescope").load_mappings()
 map("n", "<leader>se", ":NvimTreeToggle<cr>", nor_s)
 
 -- treesitter
-map("n", "<leader>st", ":TSPlaygroundToggle<cr>", nor_s)
-map("n", "<leader>sc", ":TSHighlightCapturesUnderCursor<cr>", nor_s)
+map("n", "<leader>stt", ":TSPlaygroundToggle<cr>", nor_s)
+map("n", "<leader>sth", ":TSHighlightCapturesUnderCursor<cr>", nor_s)
 
--- rainbow
-map("n", "<leader>sr", ":RainbowToggle<cr>", nor_s)
 
 -- prefix c --> core (plugin toggles)
 
@@ -173,18 +163,7 @@ map("n", "<leader>.vo", ":noautocmd w | luafile %<cr>", nor_s)
 map("n", "<leader>.vd", ":lua require('osv').launch({port=3333})<cr>", nor_s)
 map("n", "<leader>.vD", ":lua require('osv').run_this()<cr>", nor_s)
 
--- .p commands for projects
-map("n", "<leader>.pfp", ":!create_projection_file", nor)
-
-map("v", "ll", "<Plug>(textobj-line-i)", s)
-map("o", "ll", "<Plug>(textobj-line-i)", s)
-map("v", "al", "<Plug>(textobj-line-a)", s)
-map("o", "al", "<Plug>(textobj-line-a)", s)
-
-map("v", "le", "<Plug>(textobj-entire-i)", s)
-map("o", "le", "<Plug>(textobj-entire-i)", s)
-map("v", "ae", "<Plug>(textobj-entire-a)", s)
-map("o", "ae", "<Plug>(textobj-entire-a)", s)
+require('config.keybindings.text-objs')
 
 -- git worktrees
 map("n", "gwc", ":Telescope git_worktree create_git_worktree<cr>", nor)
@@ -206,8 +185,54 @@ map("n", "<leader>sv", ":IndentLinesToggle<cr>", nor_s)
 -- map('n', "gpp", "<Plug>(ReplaceWithRegisterLine)", nor_s)
 -- map('x', "gp", "<Plug>(ReplaceWithRegisterVisual)", nor_s)
 --  only works like this
+
+
+
+-- camelcase motion
+map('', '<leader>j', '<Plug>CamelCaseMotion_e', s)
+map('', '<leader>gj', '<Plug>CamelCaseMotion_ge', s)
+map('', '<leader>w', '<Plug>CamelCaseMotion_w', s)
+map('', '<leader>b', '<Plug>CamelCaseMotion_b', s)
+
+map('o', '<leader>lw', '<Plug>CamelCaseMotion_iw', s)
+map('x', '<leader>lw', '<Plug>CamelCaseMotion_iw', s)
+map('o', '<leader>lb', '<Plug>CamelCaseMotion_ib', s)
+map('x', '<leader>lb', '<Plug>CamelCaseMotion_ib', s)
+map('o', '<leader>lj', '<Plug>CamelCaseMotion_ie', s)
+map('x', '<leader>lj', '<Plug>CamelCaseMotion_ie', s)
+
+-- visual move block
+
 vim.cmd([[
-nmap gp  <Plug>ReplaceWithRegisterOperator
-nmap gpp <Plug>ReplaceWithRegisterLine
-xmap gp  <Plug>ReplaceWithRegisterVisual
+vmap <down> <Plug>MoveBlockDown
+vmap <up> <Plug>MoveBlockUp
+vmap <left> <Plug>MoveBlockLeft
+vmap <right> <Plug>MoveBlockRight
 ]])
+
+-- maximizer
+map('n', '<leader>sm', ':MaximizerToggle<CR>', nor_s)
+map('v', '<leader>sm', ':MaximizerToggle<CR>gv', nor_s)
+
+-- brightest
+map('n', '<leader>sb', ':BrightestToggle<cr>', nor)
+
+-- gv
+map('n', '<leader>gv', ':GVcr>', nor)
+
+-- rainbow
+map("n", "<leader>sr", ":RainbowToggle<cr>", nor_s)
+
+require('config.keybindings.fugitive')
+
+-- obsession
+map("n", "<leader>col", ":source %:h/Session.vim<bar> :Obsession<CR>", nor_s)
+map("n", "<leader>cos", ":Obsession<CR>", nor_s)
+
+-- vim-test
+
+map("n", "<leader>Tn", ":TestNearest<cr>", nor_s)
+map("n", "<leader>Tf", ":TestFile<cr>", nor_s)
+map("n", "<leader>Ts", ":TestSuite<cr>", nor_s)
+map("n", "<leader>Tl", ":TestLast<cr>", nor_s)
+map("n", "<leader>Tg", ":TestVisit<cr>", nor_s)

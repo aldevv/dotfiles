@@ -15,24 +15,30 @@ cmd([[
 
 require("config.automation.packer")
 
--- cmd([[
---     augroup LspConfig
---         autocmd!
---         autocmd! BufWrite,BufEnter,InsertLeave * :lua vim.diagnostic.setloclist({open=false})
---     augroup END
--- ]])
---
+require("config.automation.lsp").diagnostics_in_loclist()--
 
 -- so far is working
 -- cmd('autocmd BufReadPre *.{html,css,js,jsx,ts} EmmetInstall')
 
 -- cmd('autocmd Filetype tex let b:AutoPairs = {"(": ")", "[": "]"}')
-cmd('autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.{vim,jsx,json,ts,js,svelte,vue} :IndentLinesToggle')
+cmd(
+    "autocmd VimEnter,WinEnter,BufNewFile,BufRead,BufEnter,TabEnter *.{vim,jsx,json,ts,js,svelte,vue} :IndentLinesToggle"
+)
 
 cmd([[
+    function! NetrwMaps()
+        :nnoremap ? :help netrw-quickmap<CR>
+        nmap <buffer> P <C-w>z
+        "open file and close netrw
+        nmap <buffer> L <CR>:Lexplore<CR>
+    endfunction
+
     augroup NetrwSettings
         autocmd!
-        autocmd FileType netrw nnoremap ? :help netrw-quickmap<CR>
-        autocmd BufEnter * if &ft != "netrw" | execute 'silent! nunmap ?' | endif
+        autocmd FileType netrw execute 'call NetrwMaps()'
     augroup END
 ]])
+
+--autopairs disabled
+cmd("autocmd FileType TelescopePrompt let b:autopairs_enabled = 0")
+

@@ -239,7 +239,13 @@ vnoremap <a-k> <Esc>/<++><Enter>"_c4l
 
 "global do
 " not working in lua KEEP IT
+"-----------------------
 nnoremap <leader>.vS :%s/\v<c-r>=expand("<cword>")<cr>//gI<Left><Left><Left>
+vnoremap <leader>.vs :%g/\v/norm!<Left><Left><Left><Left><Left><Left>"
+nnoremap <leader>.vg :%g/\v/norm!<Left><Left><Left><Left><Left><Left>
+nnoremap <leader>.vn :%norm!<space>
+vnoremap <leader>.vg :g/\v/norm!<Left><Left><Left><Left><Left><Left> 
+"-----------------------
 
 " save with no permission using w!!, could be cnoremap
 cnoreabbrev w!! w !sudo tee > /dev/null %

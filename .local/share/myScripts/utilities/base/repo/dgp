@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # task spooler
-ts -K
+tsp -K
 wiki=0
 dotfiles=0
 
@@ -20,7 +20,7 @@ if [ "$status" = "DIRTY" ]; then
         printf "\n\n"
         git commit -m "$message"
         # git push origin master
-        ts git push origin master > /dev/null
+        tsp git push origin master > /dev/null
     fi
 fi
 
@@ -41,23 +41,23 @@ if [ "$status" = "DIRTY" ]; then
         printf "\n\n"
         dotrepo commit -m "$message"
         # dotrepo push origin master
-        ts git --git-dir=$repoPath --work-tree=${HOME} push origin master > /dev/null
+        tsp git --git-dir=$repoPath --work-tree=${HOME} push origin master > /dev/null
     fi
 fi
 
 if [ $wiki = 1 ] && [ $dotfiles = 1 ]; then
-    ts -t 0
-    ts -t 1
+    tsp -t 0
+    tsp -t 1
     exit
 fi
 
 if [ $wiki = 1 ]; then
-    ts -t 0
+    tsp -t 0
     exit
 fi
 
 if [ $dotfiles = 1 ]; then
-    ts -t 0
+    tsp -t 0
     exit
 fi
 

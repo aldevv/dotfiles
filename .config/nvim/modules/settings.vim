@@ -69,41 +69,13 @@ set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MA
 set listchars+=trail:•
 set listchars+=eol:↲
 
-if has('folding')
-  set foldenable
-  set foldlevelstart=99               " start unfolded
-  set foldnestmax=5
-endif
+" augroup remember_folds
+"   autocmd!
+"   autocmd BufWinLeave *.* mkview
+"   autocmd BufWinEnter *.* silent! loadview
+" augroup END
 
-augroup remember_folds
-  autocmd!
-  autocmd BufWinLeave *.* mkview
-  autocmd BufWinEnter *.* silent! loadview
-augroup END
 
-" better folding style
-let s:middot='·'
-let s:raquo='»'
-let s:small_l='ℓ'
-function! MyFoldText() abort
-  let l:lines='[' . (v:foldend - v:foldstart + 1) . s:small_l . ']'
-  let line = getline(v:foldstart)
-  let l:first=substitute(line, '\v *', '', '')
-  let l:dashes=substitute(v:folddashes, '-', s:middot, 'g')
-  let nucolwidth = max([strlen(line('$')), &numberwidth-1])
-  let l:padding = wincol()-virtcol('.')
-  let l:padding += nucolwidth
-  " let nucolwidth = &fdc + &relativenumber * &numberwidth
-  let windowwidth = winwidth(0) - l:padding
-  let foldedlinecount = v:foldend - v:foldstart + 3 " because of [ℓ]"
-  let fillcharcount = windowwidth - len(l:first) - len(foldedlinecount)
-  let concatspaces = repeat('·',fillcharcount)
-  return l:first . concatspaces . l:lines
-  " return s:raquo . s:middot . s:middot . l:lines . l:dashes . ': ' . l:first
-endfunction
-set foldtext=MyFoldText()
-
-set formatoptions=qrn1
 set inccommand=split
 set wildmode=longest,list,full
 set expandtab "always use spaces and not tabs

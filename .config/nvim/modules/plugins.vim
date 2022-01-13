@@ -4,10 +4,6 @@ call plug#begin()
 " =============
 " THEMES
 " =============
-Plug 'gruvbox-community/gruvbox'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'crusoexia/vim-monokai'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
 " Plug 'ayu-theme/ayu-vim'
 " Plug 'kuntau/ayu-vim'
 
@@ -31,8 +27,10 @@ if empty($NOCOC)
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'sbdchd/neoformat'
   Plug 'ap/vim-css-color'
+  Plug 'tpope/vim-commentary'
 endif
 
+  " Plug 'airblade/vim-gitgutter' |
 " Plug 'AndrewRadev/switch.vim' " luasnips will cover this functionality
 " Plug 'junegunn/goyo.vim'
 " Plug 'yggdroot/indentLine'
@@ -56,51 +54,38 @@ endif
 " Plug 'kana/vim-textobj-line'
 " Plug 'kana/vim-textobj-entire'
 
-Plug 'bkad/CamelCaseMotion'"
 " Plug 'tpope/vim-projectionist'
 "
 " Plug 'vim-scripts/ReplaceWithRegister'
 
-Plug 'editorconfig/editorconfig-vim'
+" Plug 'bkad/CamelCaseMotion'"
+" Plug 'editorconfig/editorconfig-vim'
 
 "=============
 " TEXT OBJECTS
 "=============
-Plug 'bps/vim-textobj-python'
-Plug 'glts/vim-textobj-comment'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'matze/vim-move' "to do operations on visual mode
-Plug 'vim-scripts/vis'
-Plug 'rbgrouleff/bclose.vim'
-Plug 'junegunn/gv.vim' " for commits
-Plug 'tpope/vim-rhubarb' "enables gbrowse and also hub instead of git (if hub installed)
-Plug 'frazrepo/vim-rainbow'
-Plug 'wincent/vcs-jump'
-Plug 'szw/vim-maximizer'
-Plug 'stefandtw/quickfix-reflector.vim'
-Plug 'osyo-manga/vim-brightest'
-Plug 'KabbAmine/zeavim.vim'
-Plug 'tpope/vim-commentary'
-Plug 'airblade/vim-gitgutter' |
-         \ Plug 'tpope/vim-fugitive'
+" Plug 'bps/vim-textobj-python'
+" Plug 'glts/vim-textobj-comment'
+
+" Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'matze/vim-move' "to do operations on visual mode
+" Plug 'szw/vim-maximizer'
 " Plug 'tpope/vim-dispatch' --> used in packer
-Plug 'vim-test/vim-test'
-Plug 'tpope/vim-obsession'
 
+" Plug 'vim-scripts/vis'
+" Plug 'osyo-manga/vim-brightest'
+
+" Plug 'junegunn/gv.vim' " for commits
+" Plug 'rbgrouleff/bclose.vim'
+" Plug 'frazrepo/vim-rainbow'
+
+" Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-obsession'
+" Plug 'vim-test/vim-test'
 " Plug 'tpope/vim-dotenv'
-
-Plug 'RishabhRD/popfix'
-Plug 'RishabhRD/nvim-cheat.sh'
-
-Plug 'c-brenn/fuzzy-projectionist.vim'
-
 " Plug 'godlygeek/tabular' " for markdown
 " Plug 'plasticboy/vim-markdown'
 
-
-if !empty(glob("$XDG_CONFIG_HOME/nvim/modules/lua_plugins.vim"))
-    source $XDG_CONFIG_HOME/nvim/modules/lua_plugins.vim
-endif
 " ================
 " NO LONGER USED
 " ================

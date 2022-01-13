@@ -143,7 +143,8 @@ class rga_select(Command):
         if fzf.returncode == 0:
             fzf_file = os.path.abspath(stdout.rstrip("\n"))
             self.fm.select_file(fzf_file)
-            self.fm.execute_command("xdg-open " + fzf_file)
+            # self.fm.execute_command("xdg-open " + fzf_file)
+            self.fm.execute_command("nvim " + fzf_file)
 
 
 class rg_select(Command):

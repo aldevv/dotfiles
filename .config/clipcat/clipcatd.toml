@@ -1,0 +1,13 @@
+daemonize = true          # run as a traditional UNIX daemon
+max_history = 1000          # max clip history limit
+history_file_path = '/home/kanon/.cache/clipcat/clipcatd/db'
+log_level = 'INFO'        # log level
+
+[monitor]
+load_current = true       # load current clipboard content at startup
+enable_clipboard = true   # watch X11 clipboard
+enable_primary = false     # watch X11 primary clipboard
+
+[grpc]
+host = '127.0.0.1'        # host address for gRPC
+port = 45045

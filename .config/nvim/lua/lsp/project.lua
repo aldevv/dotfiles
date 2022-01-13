@@ -34,3 +34,5 @@ require("project_nvim").setup({
   -- telescope
   datapath = vim.fn.stdpath("data"),
 })
+
+require('telescope').load_extension('projects') -- this is in the lsp module
