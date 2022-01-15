@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+pipenv shell
+pip install qmk
+git clone https://github.com/qmk/qmk_firmware
+cd qmk_firmware
+git checkout -b working 2d71ac7541e81ae4313cecc7e7597d45f9a96809
+cp -r $APPS/qmk/lily58 ./qmk_firmware/keyboards/lily58/keymaps/mine
+yes | qmk setup
+qmk compile -kb lily58 -km mine && qmk flash -kb lily58 -km mine"
+
