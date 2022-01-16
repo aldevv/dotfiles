@@ -244,7 +244,7 @@ nnoremap <leader>.vS :%s/\v<c-r>=expand("<cword>")<cr>//gI<Left><Left><Left>
 vnoremap <leader>.vs :%g/\v/norm!<Left><Left><Left><Left><Left><Left>"
 nnoremap <leader>.vg :%g/\v/norm!<Left><Left><Left><Left><Left><Left>
 nnoremap <leader>.vn :%norm!<space>
-vnoremap <leader>.vg :g/\v/norm!<Left><Left><Left><Left><Left><Left> 
+vnoremap <leader>.vg :g/\v/norm!<Left><Left><Left><Left><Left><Left>
 "-----------------------
 
 " save with no permission using w!!, could be cnoremap
@@ -265,8 +265,8 @@ noremap  <Left> 5<c-w><
 " noremap  - 5<c-w><
 
 " split movement , cant be <c-i> because that is mapped to be the opposite of <c-o>
-noremap <tab> %
-vnoremap <tab> %
+" noremap <tab> %
+" vnoremap <tab> %
 
 
 " noremap <c-i> <c-i>

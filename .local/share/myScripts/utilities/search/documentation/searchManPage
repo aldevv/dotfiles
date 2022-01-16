@@ -1,3 +1,0 @@
-#!/bin/bash
-program=$(select-manpage)
-batman $program 2>/dev/null;$SHELL

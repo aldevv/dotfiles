@@ -58,7 +58,21 @@ fm(){
   bat .env
   }
 
+vman() {
+    nvim -c "Man $1" -c "silent only"
+}
 
+# tmux
+function tms() (
+    if [ -n "$1" ]
+      then
+         tmux switch -t $1
+      else
+         echo "no session name"
+     fi
+  )
+
+alias openports="sudo netstat -putln | grep LISTEN"
 alias .a="pipenv shell"
 alias gv="neovide"
 alias gV="NOCOC=true neovide"
@@ -299,7 +313,7 @@ alias \
     bwatch='batwatch'\
     bpretty='prettybat'\
     bdiff='batdiff'\
-    bman='batman'\
+    bman='batman --paging=always'\
     ri='source .env/bin/activate && python3 -m pip install --upgrade pip && pip3 install -r requirements.txt '\
     pipr='pip install -r requirements.txt'\
     brave='brave-browser'\
@@ -604,7 +618,9 @@ alias gauthor='git commit --amend --author="Juan Alejandro Bernal <jbernal@unal.
 # alias gcl='git clone --recurse-submodules'
 alias gcld='git clone --depth=1'
 alias gcl='git clone'
-alias gclb='git clone --bare'
+gclb() {
+    git clone --bare $1 $(basename $1)
+}
 alias gclean='git clean -id'
 alias gpristine='git reset --hard && git clean -dffx'
 alias gcm='git checkout $(git_main_branch)'

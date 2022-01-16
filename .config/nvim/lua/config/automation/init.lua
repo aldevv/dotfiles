@@ -3,7 +3,7 @@ cmd([[
   augroup FormatOnSave
     autocmd!
     " so when it saves it stays saved
-    autocmd BufWritePre *.{js,java,cpp,haskell,json,ts,rs,go,html,svelte,vue,python,hs,sh} :lua vim.lsp.buf.formatting_sync()
+    autocmd BufWritePre *.{js,java,cpp,haskell,json,ts,rs,go,html,svelte,vue,python,hs,sh,lua} :lua vim.lsp.buf.formatting_sync()
   augroup END
 ]])
 
@@ -15,7 +15,7 @@ cmd([[
 
 require("config.automation.packer")
 
-require("config.automation.lsp").diagnostics_in_loclist()--
+require("config.automation.lsp").diagnostics_in_loclist() --
 
 -- so far is working
 -- cmd('autocmd BufReadPre *.{html,css,js,jsx,ts} EmmetInstall')
@@ -40,7 +40,7 @@ cmd([[
 ]])
 
 --autopairs disabled
-cmd("autocmd FileType TelescopePrompt let b:autopairs_enabled = 0")
+-- cmd("autocmd FileType TelescopePrompt let b:autopairs_enabled = 0")
 
 cmd([[
 function! ExecuteMacroOverVisualRange()

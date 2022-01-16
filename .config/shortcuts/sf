@@ -2,8 +2,8 @@
 H       ~
 uu      $REMOTES
 ug      $REMOTES/ugd
-uw      $PLAYGROUND/SSH
-wo      $WORK/API/
+p      $PLAYGROUND/
+wo      $WORK
 wO      $WORK/../local/covidalert-back/
 ws      $WORK/../server/
 bk      $BOOKS
@@ -21,10 +21,10 @@ f.      $XDG_CONFIG_HOME
 v.      $XDG_CONFIG_HOME/nvim
 vl      $XDG_CONFIG_HOME/nvim/lua/lsp
 va      $XDG_CONFIG_HOME/nvim/lua/config/automation
-vc      $XDG_CONFIG_HOME/nvim/lua/config
+v,      $XDG_CONFIG_HOME/nvim/lua/config
 vu      $XDG_CONFIG_HOME/nvim/lua/utils
 vk      $XDG_CONFIG_HOME/nvim/lua/config/keybindings
-vC      $XDG_CONFIG_HOME/nvim/lua/core
+vc      $XDG_CONFIG_HOME/nvim/lua/core
 p      $HOME/.local/share/nvim/site/pack
 sp      ~/.local/share/nvim/my_snippets
 
@@ -36,9 +36,9 @@ mu      $UTILITIES
 mf      $FILES
 md      $FILES/virtual/docker-compose
 ma      $AUTOMATION
-mp      $APPS
+mP      $APPS
 ml      $MLIBS
-pr      $PROGRAMS
+lop     $PROGRAMS
 D       ~/Downloads
 d       ~/Documents
 pp      ~/Pictures
@@ -46,10 +46,12 @@ vv      ~/Videos
 Mm      ~/Master
 Md      ~/Master/Playground
 Ml      ~/Master/Learn
-Mp      $PROJECTS
-Mv      $VOLUMES
-Mg      $GAMES
-Mc      $CLASS
+pr      $PROJECTS
+pl      $PLAYGROUND
+mp      $PROJECTS
+mvo     $VOLUMES
+mg      $GAMES
+mc      $CLASS
 Mw      $WORK
 wa      $WALL
 wi      $WIKI

@@ -206,12 +206,13 @@ lf_() {
 		nvim "$file"
 }
 bindkey -s "^n" "stn^M"
-bindkey -s 'p' 'lf_^M'
-bindkey -s 'w' 'lf_ "$WORK"^M'
+bindkey -s 'P' 'lf_^M'
 bindkey -s 'c' 'lf_ "$CLASS"^M'
 bindkey -s 'M' 'lf_ "$MASTER"^M'
 bindkey -s 'm' 'lf_ "$SCRIPTS"^M'
-bindkey -s 'P' 'lf_ "$PROJECTS"^M'
+# bindkey -s 'w' 'lf_ "$WORK"^M'
+# bindkey -s 'p' 'lf_ "$PROJECTS"^M'
+bindkey -s 'p' '$UTILITIES/tmux/tmux-sessionizer^M' # projects and work
 bindkey -s 'L' 'lf_ "$LEARN"^M'
 bindkey -s 'o' '!\$^M'
 bindkey -s 'O' '!*^M'
@@ -227,7 +228,9 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
 	fd --type d --hidden --follow . "$1"
 }
-[ -f "$HOME/.config/.fzf.zsh" ] && source "$HOME/.config/.fzf.zsh"
+
+. /usr/share/fzf/key-bindings.zsh
+. /usr/share/fzf/completion.zsh
 
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE
 #ZSH_AUTOSUGGEST_STRATEGY

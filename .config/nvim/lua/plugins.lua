@@ -12,19 +12,19 @@
 -- use '~/projects/personal/hover.nvim'
 
 local disabled_builtins = {
-"gzip",
-"zip",
-"zipPlugin",
-"tar",
-"tarPlugin",
-"getscript",
-"getscriptPlugin",
-"vimball",
-"vimballPlugin",
-"2html_plugin",
-"logipat",
-"rrhelper",
-"spellfile_plugin"
+    "gzip",
+    "zip",
+    "zipPlugin",
+    "tar",
+    "tarPlugin",
+    "getscript",
+    "getscriptPlugin",
+    "vimball",
+    "vimballPlugin",
+    "2html_plugin",
+    "logipat",
+    "rrhelper",
+    "spellfile_plugin",
 }
 
 for _, plugin in pairs(disabled_builtins) do
@@ -178,8 +178,11 @@ return require("packer").startup({
         use({
             "github/copilot.vim",
             config = function()
-                vim.g.copilot_no_tab_map = "v:true"
+                vim.g.copilot_enabled = false
+                vim.g.copilot_filetypes = { xml = false }
+                vim.g.copilot_no_tab_map = true
             end,
+            cmd = "Copilot",
         })
 
         use({
@@ -250,17 +253,22 @@ return require("packer").startup({
             ft = { "html", "js", "ts", "css", "vue", "svelte", "jsx", "tsx" },
         })
 
+        -- use({
+        --     "LunarWatcher/auto-pairs",
+        --     config = req("core.autopairs"),
+        -- })
         use({
-            "LunarWatcher/auto-pairs",
-            config = req("core.autopairs"),
+            "windwp/nvim-autopairs",
+            config = req("core.autopairs2"),
         })
 
         use({
             "tpope/vim-projectionist",
             requires = "neovim/nvim-lspconfig",
-            cond = function()
-                return require("lspconfig.util").root_pattern(".projections.json")(vim.fn.getcwd()) ~= nil
-            end,
+            -- breaks <leader>si
+            -- cond = function()
+            --     return require("lspconfig.util").root_pattern(".projections.json")(vim.fn.getcwd()) ~= nil
+            -- end,
         })
 
         -- check if there is a file .env
@@ -279,10 +287,6 @@ return require("packer").startup({
         })
         use({
             "ThePrimeagen/git-worktree.nvim",
-            config = req("core.git-worktree"),
-            cond = function()
-                return require("lspconfig.util").root_pattern(".git")(vim.fn.getcwd()) ~= nil
-            end,
         })
         use({
             "lewis6991/gitsigns.nvim",
@@ -293,12 +297,7 @@ return require("packer").startup({
             end,
         })
 
-        use({
-            "bkad/CamelCaseMotion",
-            config = function()
-                vim.g.camelcasemotion_key = "<leader>"
-            end,
-        })
+        use("bkad/CamelCaseMotion")
         use({
             "editorconfig/editorconfig-vim",
             config = function()
@@ -328,7 +327,7 @@ return require("packer").startup({
 
         use({
             "szw/vim-maximizer",
-            cmd="MaximizerToggle",
+            cmd = "MaximizerToggle",
             config = function()
                 vim.g.maximizer_set_default_mapping = 0
             end,
@@ -352,7 +351,7 @@ return require("packer").startup({
 
         use({
             "frazrepo/vim-rainbow",
-            cmd="RainbowToggle",
+            cmd = "RainbowToggle",
             config = function()
                 vim.g.rainbow_active = 0
             end,
@@ -384,6 +383,44 @@ return require("packer").startup({
             },
         })
         use({ "brooth/far.vim", cmd = { "Far", "Fardo", "Farr" } })
+        use({
+            "ThePrimeagen/refactoring.nvim",
+            requires = {
+                { "nvim-lua/plenary.nvim" },
+                { "nvim-treesitter/nvim-treesitter" },
+            },
+            config = req("lsp.refactoring"),
+            module = "refactoring",
+        })
+        use({ "rcarriga/nvim-notify", config = req("core.notify"), module = "notify" })
+
+        use({ "michaelb/sniprun", run = "bash ./install.sh", config = req("core.sniprun"), cmd = "SnipRun" })
+        use({
+            "pwntester/octo.nvim",
+            requires = {
+                "nvim-lua/plenary.nvim",
+                "nvim-telescope/telescope.nvim",
+                "kyazdani42/nvim-web-devicons",
+            },
+            cmd = "Octo",
+            config = req("core.octo"),
+        })
+
+        -- not working with sshconfig as of 13 jan 2021
+        -- use({
+        --     "chipsenkbeil/distant.nvim",
+        --     config = function()
+        --         require("distant").setup({
+        --             -- Applies Chip's personal settings to every machine you connect to
+        --             --
+        --             -- 1. Ensures that distant servers terminate with no connections
+        --             -- 2. Provides navigation bindings for remote directories
+        --             -- 3. Provides keybinding to jump into a remote file's parent directory
+        --             ["*"] = require("distant.settings").chip_default(),
+        --         })
+        --     end,
+        -- })
+
         -- colors
         -- use("gruvbox-community/gruvbox")
         -- use("dracula/vim")
@@ -397,4 +434,3 @@ return require("packer").startup({
         },
     },
 })
-

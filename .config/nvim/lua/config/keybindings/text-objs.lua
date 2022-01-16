@@ -28,7 +28,6 @@ map("o", "le", "<Plug>(textobj-entire-i)", s)
 map("v", "ae", "<Plug>(textobj-entire-a)", s)
 map("o", "ae", "<Plug>(textobj-entire-a)", s)
 
-
 -- " python text objects
 vim.g.textobj_python_no_default_key_mappings = 1
 -- " silent! TextobjPythonDefaultKeyMappings!
@@ -67,4 +66,3 @@ map("v", "lc", "<Plug>(textobj-comment-i)", {})
 map("o", "lc", "<Plug>(textobj-comment-i)", {})
 map("v", "aC", "<Plug>(textobj-comment-big-a)", {})
 map("o", "aC", "<Plug>(textobj-comment-big-a)", {})
-

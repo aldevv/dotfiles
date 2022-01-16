@@ -9,7 +9,6 @@ M.load_mappings = function() -- use these on_attach
 
     -- prefix , --> config
 
-
     -- prefix l --> lsp
     map("n", "<leader>lf", ":lua vim.lsp.buf.formatting()<cr>", nor)
     map("v", "<leader>lf", ":lua vim.lsp.buf.range_formatting()<cr>", nor)
@@ -23,7 +22,7 @@ M.load_mappings = function() -- use these on_attach
 
     map("n", "<c-space>", ":lua vim.lsp.buf.completion()<cr>", nor)
 
-    map("n", "<leader>lS", ":lua vim.lsp.buf.document_symbol()<cr>", nor)
+    map("n", "<leader>ls", ":lua vim.lsp.buf.document_symbol()<cr>", nor)
     map("n", "<leader>ldd", ":lua vim.lsp.buf.declaration()<cr>", nor)
     map("n", "<leader>ldl", ":lua vim.diagnostic.setloclist{ title = 'Buffer diagnostics' }<cr>", nor)
     map("n", "<leader>ldq", ":lua vim.diagnostic.setqflist{ title = 'Workspace diagnostics' }<cr>", nor)

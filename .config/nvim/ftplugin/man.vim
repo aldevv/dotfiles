@@ -14,7 +14,6 @@ setlocal wrap breakindent linebreak
 " specific characters matched by `@`.
 setlocal iskeyword=@-@,:,a-z,A-Z,48-57,_,.,-,(,)
 
-setlocal nonumber norelativenumber
 setlocal foldcolumn=0 colorcolumn=0 nolist nofoldenable
 
 setlocal tagfunc=man#goto_tag
@@ -26,7 +25,11 @@ if !exists('g:no_plugin_maps') && !exists('g:no_man_maps')
   nnoremap <silent> <buffer> <2-LeftMouse> :Man<CR>
   nnoremap <silent> <buffer> <nowait> q :lclose<CR><C-W>c
 endif
-
+autocmd FileType man execute('hi! manUnderline guifg=#A6A923')
+autocmd FileType man execute('hi! manBold guifg=Tomato')
+nnoremap <silent> <buffer> <nowait> q :lclose<CR>:q!<CR>
+nnoremap <silent> <buffer> <nowait> d <c-d>zz
+nnoremap <silent> <buffer> <nowait> u <c-u>zz
 if get(g:, 'ft_man_folding_enable', 0)
   setlocal foldenable
   setlocal foldmethod=indent

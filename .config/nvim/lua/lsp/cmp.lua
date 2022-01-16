@@ -119,7 +119,8 @@ cmp.setup({
         }),
         ["<CR>"] = cmp.mapping.confirm({
             cmp.ConfirmBehavior.Insert, -->https://github.com/hrsh7th/nvim-cmp/issues/664
-            select = true, -- auto select on enter (even if not selected with <a-n>)
+            --  check for examples https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings
+            select = false, -- auto select on enter (even if not selected with <a-n>)
         }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     },
     sources = {

@@ -5,7 +5,7 @@
 local servers = {
     "bashls",
     "pyright", --more complete
-    "clangd",
+    "ccls",
     -- "pylsp", -- snippets completion
     "html",
     "cssls",

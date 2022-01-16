@@ -32,13 +32,10 @@ while true; do
 
     [[ -z "$packages" ]] && packages=$(updateCheck) || packages=""
 
-    #wifi connected
-    # [[ $(nmcli d status | sed -n '2p' | cut -d" " -f 9) == "connected" ]] && internet=🍥 ||internet=🐡
     wifi_stat=$([ $(timeout 1 nm-online | cut -d\[ -f2 | cut -d\] -f1) == "online" ]\
         && echo '上'\
         || echo '下')
 
 	xsetroot -name "${packages}| ${volume} | ${battery} | ${wifi_stat} | ${time} | ${date}"
-	# xsetroot -name "| ${internet} | ${packages} | ${volume} | ${battery} | ${time} | ${date}"
 	sleep 1m
 done

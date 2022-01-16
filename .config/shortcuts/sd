@@ -8,14 +8,15 @@ fr     ~/.config/ranger/rc.conf
 fb     ~/.bashrc
 fxx    ~/.Xresources
 fxp    ~/.xprofile
+ft    ~/.config/tmux/tmux.conf
 V.     ~/.config/nvim/init.lua
 Va     ~/.config/nvim/lua/config/automation/init.lua
 Vs     ~/.config/nvim/lua/config/settings.lua
 Vk     ~/.config/nvim/lua/config/keybindings/init.lua
 VK     ~/.config/nvim/lua/config/keybindings/dap.lua
 Vl     ~/.config/nvim/lua/lsp/init.lua
-Vc     ~/.config/nvim/lua/config/init.lua
-VC     ~/.config/nvim/lua/core/init.lua
+V,     ~/.config/nvim/lua/config/init.lua
+Vc     ~/.config/nvim/lua/core/init.lua
 Vp     ~/.config/nvim/lua/plugins.lua
 VP     ~/.config/nvim/modules/plugins.vim
 fk     ~/.config/sxhkd/sxhkdrc

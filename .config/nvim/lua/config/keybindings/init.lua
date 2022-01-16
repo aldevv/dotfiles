@@ -41,6 +41,10 @@ local h = "$XDG_CONFIG_HOME/nvim"
 -- map("", "gE", "gJ", nor) -- lines
 map("", "E", "mzJ`z", nor) -- lines
 
+-- jumplist mutations
+map("n", "e", '(v:count > 5  ? "m\'" . v:count : "") . \'k\'', nor_e)
+map("n", "n", '(v:count > 5  ? "m\'" . v:count : "") . \'j\'', nor_e)
+
 -- generate checkpoints for undo
 map("i", ",", ",<c-g>u", nor)
 map("i", ".", ".<c-g>u", nor)
@@ -61,12 +65,10 @@ map("n", "<a-e>", ":m .-2<cr>==", nor)
 map("n", "<a-n>", ":m .+1<cr>==", nor)
 
 map("i", "<c-y>", "copilot#Accept('<CR>')", vim.tbl_extend("keep", s_e, { script = true }))
-map("n", "ß", "<Plug>(Switch)", nor_s)
+map("", "<leader>cc", ":lua require('utils.lua.keybindings').toggle_copilot()<cr>", nor)
 
 -- snippets
 map("n", "<leader>si", "<Plug>(InsertSkeleton)", s)
-
-map("", "<leader>cc", ":lua require('utils.lua.keybindings').toggle_copilot()<cr>", nor)
 
 -- terminal
 map("t", "<a-'>", "<c-\\><c-n>", nor_s)
@@ -114,7 +116,7 @@ map("", "zn", "zk", nor)
 map("", "zD", "zE", nor)
 
 -- tagbar
-map("n", "<leader>ls", ":TagbarToggle<cr>", nor_s)
+map("n", "<c-h>", ":TagbarToggle<cr>", nor_s)
 
 map("n", ",", ";", nor_s)
 map("n", ";", ",", nor_s)
@@ -137,7 +139,6 @@ map("n", "<leader>se", ":NvimTreeToggle<cr>", nor_s)
 -- treesitter
 map("n", "<leader>stt", ":TSPlaygroundToggle<cr>", nor_s)
 map("n", "<leader>sth", ":TSHighlightCapturesUnderCursor<cr>", nor_s)
-
 
 -- prefix c --> core (plugin toggles)
 
@@ -163,7 +164,7 @@ map("n", "<leader>.vo", ":noautocmd w | luafile %<cr>", nor_s)
 map("n", "<leader>.vd", ":lua require('osv').launch({port=3333})<cr>", nor_s)
 map("n", "<leader>.vD", ":lua require('osv').run_this()<cr>", nor_s)
 
-require('config.keybindings.text-objs')
+require("config.keybindings.text-objs")
 
 -- git worktrees
 map("n", "gwc", ":Telescope git_worktree create_git_worktree<cr>", nor)
@@ -186,20 +187,18 @@ map("n", "<leader>sv", ":IndentLinesToggle<cr>", nor_s)
 -- map('x', "gp", "<Plug>(ReplaceWithRegisterVisual)", nor_s)
 --  only works like this
 
-
-
 -- camelcase motion
-map('', '<leader>j', '<Plug>CamelCaseMotion_e', s)
-map('', '<leader>gj', '<Plug>CamelCaseMotion_ge', s)
-map('', '<leader>w', '<Plug>CamelCaseMotion_w', s)
-map('', '<leader>b', '<Plug>CamelCaseMotion_b', s)
+map("", "<leader>j", "<Plug>CamelCaseMotion_e", s)
+map("", "<leader>gj", "<Plug>CamelCaseMotion_ge", s)
+map("", "<leader>w", "<Plug>CamelCaseMotion_w", s)
+map("", "<leader>b", "<Plug>CamelCaseMotion_b", s)
 
-map('o', '<leader>lw', '<Plug>CamelCaseMotion_iw', s)
-map('x', '<leader>lw', '<Plug>CamelCaseMotion_iw', s)
-map('o', '<leader>lb', '<Plug>CamelCaseMotion_ib', s)
-map('x', '<leader>lb', '<Plug>CamelCaseMotion_ib', s)
-map('o', '<leader>lj', '<Plug>CamelCaseMotion_ie', s)
-map('x', '<leader>lj', '<Plug>CamelCaseMotion_ie', s)
+map("o", "<leader>lw", "<Plug>CamelCaseMotion_iw", s)
+map("x", "<leader>lw", "<Plug>CamelCaseMotion_iw", s)
+map("o", "<leader>lb", "<Plug>CamelCaseMotion_ib", s)
+map("x", "<leader>lb", "<Plug>CamelCaseMotion_ib", s)
+map("o", "<leader>lj", "<Plug>CamelCaseMotion_ie", s)
+map("x", "<leader>lj", "<Plug>CamelCaseMotion_ie", s)
 
 -- visual move block
 
@@ -211,19 +210,19 @@ vmap <right> <Plug>MoveBlockRight
 ]])
 
 -- maximizer
-map('n', '<leader>sm', ':MaximizerToggle<CR>', nor_s)
-map('v', '<leader>sm', ':MaximizerToggle<CR>gv', nor_s)
+map("n", "<leader>sm", ":MaximizerToggle<CR>", nor_s)
+map("v", "<leader>sm", ":MaximizerToggle<CR>gv", nor_s)
 
 -- brightest
-map('n', '<leader>sb', ':BrightestToggle<cr>', nor)
+map("n", "<leader>sb", ":BrightestToggle<cr>", nor)
 
 -- gv
-map('n', '<leader>gv', ':GVcr>', nor)
+map("n", "<leader>gv", ":GVcr>", nor)
 
 -- rainbow
 map("n", "<leader>sr", ":RainbowToggle<cr>", nor_s)
 
-require('config.keybindings.fugitive')
+require("config.keybindings.fugitive")
 
 -- obsession
 map("n", "<leader>col", ":source %:h/Session.vim<bar> :Obsession<cr>", nor_s)
@@ -239,3 +238,15 @@ map("n", "<leader>Tg", ":TestVisit<cr>", nor_s)
 
 -- macro range
 map("x", "@", ":<C-u>call ExecuteMacroOverVisualRange()<cr>", nor_s)
+
+-- sniprun
+--keymaps not working
+-- sniprun
+-- map('v', '<leader>csr', '<Plug>SnipRun', s)
+-- map('n', '<leader>cso', '<Plug>SnipRunOperator', s)
+-- map('n', '<leader>csr', '<Plug>SnipRun', s)
+vim.cmd([[
+nmap <leader>csr <Plug>SnipRun
+nmap <leader>cso <Plug>SnipRunOperator
+vmap <leader>csr <Plug>SnipRun
+]])
