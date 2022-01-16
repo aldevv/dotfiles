@@ -25,14 +25,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Select hand configuration */
 
  // #define SPLIT_USB_DETECT
-//#define MASTER_LEFT
-//#define MASTER_RIGHT
+#define MASTER_LEFT
+// #define MASTER_RIGHT
 // needed to flash with make lily58:mine-def:avrdude-split-left with only left side connected
 // needed to flash with make lily58:mine-def:avrdude-split-right with only right side connected
 // then it can detect the master alone
-#define EE_HANDS
+// #define EE_HANDS  // this is so that any of both sides can be master
+// #define SPLIT_WPM_ENABLE
 
-//#define OLED_DRIVER
+#define OLED_DRIVER
 
 #define USE_SERIAL_PD2
 
