@@ -13,4 +13,3 @@ cd qmk_firmware
 cp -r $APPS/qmk/lily58 ./qmk_firmware/keyboards/lily58/keymaps/mine
 qmk setup
 qmk compile -kb lily58 -km mine && qmk flash -kb lily58 -km mine"
-
