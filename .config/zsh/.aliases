@@ -42,7 +42,7 @@ getpid() {
     pidof $1 | cut -d' ' -f1
 }
 
-fm(){
+vw(){
     nvim "$(which $1)"
 }
 
@@ -51,7 +51,7 @@ fm(){
 # load .env file or any other file
   file=$1
   [ -z $file ] && file=".env"
-  zsh -c "set -o allexport; source $file; echo 'loaded'; set +o allexport; zsh -i"
+  [ -f $file ] && zsh -c "set -o allexport; source $file; echo 'loaded'; set +o allexport; zsh -i"
 }
 
 .ec(){

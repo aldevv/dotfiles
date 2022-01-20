@@ -42,9 +42,7 @@ set shiftwidth=4
 set smartindent
 set nowrap
 set noswapfile
-set backup
 set autoindent
-set undofile
 set incsearch
 set relativenumber
 set laststatus=0

@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find $WORK/* $PROJECTS/* -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find $WORK/* $PROJECTS/* -mindepth 1 -maxdepth 1 -type d | fzf --no-preview -d / --with-nth -5,-4,-3,-2,-1)
 fi
 
 if [[ -z $selected ]]; then

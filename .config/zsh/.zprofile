@@ -121,6 +121,8 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 #export PYTHONPATH="$WORK/PPE/workplace/train/images/models/research:$WORK/PPE/workplace/train/images/models/research/slim:$WORK/PPE/workplace/train/images/models:$PYTHONPATH"
 #
 #
+# use node_module binaries
+export PATH="$PATH:./node_modules/.bin"
 nvm_path="$HOME/.config/nvm/versions/node"
 # if [[ -d "$nvm_path" ]]; then
     # node=$(ls $nvm_path | sed -n -E '/v[0-9]+\.[0-9]+\.[0-9]+$/p' | sort -r  | sed '1q')
@@ -172,7 +174,8 @@ export FZF_DEFAULT_COMMAND=$FD_DEFAULT_FOR_FZF
 export FZF_DEFAULT_OPTS=" --height=75% --layout=reverse --multi --bind=ctrl-e:preview-up,ctrl-n:preview-down,alt-e:up,alt-n:down,+:toggle-preview,ctrl-a:select-all+accept --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) > /dev/null | head -200' --preview-window=50%:rounded:wrap"
 # to unhide preview window, change to --preview-window=right:hidden:wrap"
 # for prompt at the bottom, change layout to "default"
-export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type directory"
+
+
 # alt r -> cd into selected dir
 # ctrl t -> paste selected into command line(multiple)
 # ctrl r -> paste command from history

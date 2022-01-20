@@ -115,10 +115,12 @@ local on_attach = function(client, buffnr)
     require("config.keybindings.lsp").load_mappings()
     require("config.automation.lsp").diagnostics_in_loclist()
     -- this disables the lsp's formatting functions
-    -- is so null-ls can take charge of formatting
 
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    -- is so null-ls can take charge of formatting (no asking)
+    if vim.tbl_contains({ "pyright", "sumneko_lua" }, client.name) then
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+    end
 end
 
 lsp_installer.on_server_ready(function(server)

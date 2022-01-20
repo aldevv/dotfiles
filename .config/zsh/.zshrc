@@ -143,14 +143,7 @@ bindkey -v '^?' backward-delete-char
 
 # this makes autocompletion work on aliased programs
 unsetopt completealiases
-nvml() {
-	. "$NVM_DIR/nvm.sh"
-}
-nvmL() {
-	export NVM_DIR="$HOME/.config/nvm"
-	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-}
+
 
 # comment this for faster loads
 
@@ -197,23 +190,17 @@ doge() {
 [[ -d "/usr/local/bin" ]] &&
 	export PATH="/usr/local/bin:$PATH"
 
-# FZF
-lf_() {
-	# lookup file
-	folder="$1"
-	file=$(fd . -t f -uu $(echo "$folder") | fzf -d / --with-nth -5,-4,-3,-2,-1)
-	[ -n "$file" ] &&
-		nvim "$file"
-}
+
 bindkey -s "^n" "stn^M"
-bindkey -s 'P' 'lf_^M'
-bindkey -s 'c' 'lf_ "$CLASS"^M'
-bindkey -s 'M' 'lf_ "$MASTER"^M'
-bindkey -s 'm' 'lf_ "$SCRIPTS"^M'
-# bindkey -s 'w' 'lf_ "$WORK"^M'
-# bindkey -s 'p' 'lf_ "$PROJECTS"^M'
-bindkey -s 'p' '$UTILITIES/tmux/tmux-sessionizer^M' # projects and work
-bindkey -s 'L' 'lf_ "$LEARN"^M'
+bindkey -s 'f' '$UTILITIES/tmux/tmux-sessionizer^M' # projects and work
+bindkey -s 'p' 'vf ^M'
+bindkey -s 'P' '. cf ^M'
+bindkey -s 'a' 'vf $HOME/.config ^M'
+bindkey -s 'A' '. cf $HOME/.config ^M'
+bindkey -s 'z' 'vf  "$LEARN"^M'
+bindkey -s 'z' '. cf  "$LEARN"^M'
+bindkey -s 'm' 'vf  "$SCRIPTS"^M'
+bindkey -s 'M' '. cf  "$SCRIPTS"^M'
 bindkey -s 'o' '!\$^M'
 bindkey -s 'O' '!*^M'
 bindkey -s 't' '**	'
@@ -257,3 +244,19 @@ bindkey "^ " autosuggest-execute
 alias src_=". $ZDOTDIR/.zshrc"
 . $ZDOTDIR/.aliases
 . $ZDOTDIR/.auto_aliases
+
+# fnm
+nvml() {
+	. "$NVM_DIR/nvm.sh"
+}
+nvmL() {
+	export NVM_DIR="$HOME/.config/nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+}
+
+fnml() {
+    export PATH=/home/kanon/.fnm:$PATH
+    eval "`fnm env`"
+}
+

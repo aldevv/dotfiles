@@ -69,8 +69,8 @@ noremap <silent><c-w>S :sp #<cr>
 " nnoremap <S-CR> O<Esc>
 " nnoremap [13;2u o
 "
-noremap - /\v
-vnoremap - /\v
+noremap - /
+vnoremap - /
 " noremap / -
 
 " for folds
@@ -225,7 +225,7 @@ vnoremap <silent><leader>lgr :B !sortListR.py <cr>t]xT[
 
 nnoremap gñ :SyntaxQuery<CR>
 nnoremap <silent><leader>.T :silent call Toggle_transparent()<CR>
-function Toggle_transparent()
+function! Toggle_transparent()
   exec ":!toggleTrans"
 endfunction
 

@@ -17,7 +17,8 @@ local code_actions = null_ls.builtins.code_actions
 -- ~/.local/share/nvim/site/pack/packer/start/null-ls.nvim/lua/null-ls/builtins/formatting
 null_ls.setup({
     -- Displays all possible log messages and writes them to the null-ls log, which you can view with the command :NullLsLog. This option can slow down Neovim, so it's strongly recommended to disable it for normal use.
-    debug = false,
+    -- debug = false,
+    debug = true,
 
     log = {
         enable = true,
@@ -33,7 +34,10 @@ null_ls.setup({
         formatting.uncrustify,
         formatting.gofmt,
         formatting.json_tool,
-        diagnostics.eslint,
+        -- formatting.prettier,
+        -- formatting.eslint, --> pretty bad
+        -- formatting.eslint_d,
+        -- diagnostics.eslint_d,
         -- diagnostics.selene,
         -- formatting.eslint,
         -- diagnostics.eslint,
