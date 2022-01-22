@@ -40,3 +40,4 @@ github-cli
 rsync
 alacritty
 unzip
+shellcheck

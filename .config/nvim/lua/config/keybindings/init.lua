@@ -54,8 +54,17 @@ map("i", "?", "?<c-g>u", nor)
 map("", "<c-d>", "<c-d>zz", nor)
 map("", "<c-u>", "<c-u>zz", nor)
 
---
-map("n", "<leader>sp", ":Lex<cr>", nor)
+-- netrw
+map(
+    "n",
+    "<leader>sp",
+    ":if &ft != 'netrw' && !exists('g:netrw_buffer') | :execute ':Lex ' . expand(\"%:p:h\") | let g:netrw_buffer=bufnr('%') | else | :Lex | unlet g:netrw_buffer | endif<cr>",
+    nor_s
+)
+map("n", "<leader>sP", ":Lex<cr>", nor_s)
+
+-- file path
+map("n", "<leader>sg", ":lua print(vim.fn.expand('%:p'))<cr>", nor)
 
 map("v", "<a-n>", ":m '>+1<cr>gv=gv", nor)
 map("v", "<a-e>", ":m '<-2<cr>gv=gv", nor)
@@ -66,6 +75,9 @@ map("n", "<a-n>", ":m .+1<cr>==", nor)
 
 map("i", "<c-y>", "copilot#Accept('<CR>')", vim.tbl_extend("keep", s_e, { script = true }))
 map("", "<leader>cc", ":lua require('utils.lua.keybindings').toggle_copilot()<cr>", nor)
+
+-- terminal
+map("n", "<leader>sñ", ":botright terminal<cr>", nor)
 
 -- snippets
 map("n", "<leader>si", "<Plug>(InsertSkeleton)", s)

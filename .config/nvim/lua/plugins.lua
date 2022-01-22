@@ -212,11 +212,14 @@ return require("packer").startup({
             end,
         })
 
+        -- meh
         use({
             "plasticboy/vim-markdown",
             requires = "godlygeek/tabular",
             ft = "md",
         })
+        --
+
         use({
             "folke/which-key.nvim",
             config = req("config.appearance.whichkey"),
@@ -238,7 +241,9 @@ return require("packer").startup({
             "mbbill/undotree",
             cmd = { "UndotreeToggle" },
         })
-        use("inkarkat/vim-ReplaceWithRegister")
+
+        -- use("inkarkat/vim-ReplaceWithRegister")
+
         use({ "preservim/tagbar", cmd = { "TagbarToggle" } })
         use({
             "mattn/emmet-vim",
@@ -266,6 +271,7 @@ return require("packer").startup({
             "tpope/vim-projectionist",
             requires = "neovim/nvim-lspconfig",
             -- breaks <leader>si
+            -- needs to start for skel files
             -- cond = function()
             --     return require("lspconfig.util").root_pattern(".projections.json")(vim.fn.getcwd()) ~= nil
             -- end,

@@ -117,7 +117,7 @@ local on_attach = function(client, buffnr)
     -- this disables the lsp's formatting functions
 
     -- is so null-ls can take charge of formatting (no asking)
-    if vim.tbl_contains({ "pyright", "sumneko_lua" }, client.name) then
+    if vim.tbl_contains({ "pyright", "sumneko_lua", "bashls" }, client.name) then
         client.resolved_capabilities.document_formatting = false
         client.resolved_capabilities.document_range_formatting = false
     end

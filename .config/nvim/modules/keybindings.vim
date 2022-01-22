@@ -40,7 +40,7 @@ vnoremap L I
 
 
 noremap N i<cr><esc>k$
-vnoremap N :s/\n/ /g<cr>$x
+vnoremap N : s/\n/ /g<cr>$x
 
 " gN is free
 noremap ' `
@@ -226,7 +226,7 @@ vnoremap <silent><leader>lgr :B !sortListR.py <cr>t]xT[
 nnoremap gñ :SyntaxQuery<CR>
 nnoremap <silent><leader>.T :silent call Toggle_transparent()<CR>
 function! Toggle_transparent()
-  exec ":!toggleTrans"
+  exec ':!toggleTrans'
 endfunction
 
 " general insert commands
@@ -240,30 +240,22 @@ vnoremap <a-k> <Esc>/<++><Enter>"_c4l
 "global do
 " not working in lua KEEP IT
 "-----------------------
-nnoremap <leader>.vS :%s/\v<c-r>=expand("<cword>")<cr>//gI<Left><Left><Left>
-vnoremap <leader>.vs :%g/\v/norm!<Left><Left><Left><Left><Left><Left>"
-nnoremap <leader>.vg :%g/\v/norm!<Left><Left><Left><Left><Left><Left>
+
+nnoremap <leader>.vS :%s/<c-r>=expand("<cword>")<cr>//gI<Left><Left><Left>
+nnoremap <leader>.vs :%s///gI<Left><Left><Left><Left>
+vnoremap <leader>.vs :%s///gI<Left><Left><Left><Left>
+nnoremap <leader>.vg :%g//norm!<Left><Left><Left><Left><Left><Left>
 nnoremap <leader>.vn :%norm!<space>
-vnoremap <leader>.vg :g/\v/norm!<Left><Left><Left><Left><Left><Left>
+vnoremap <leader>.vg :g//norm!<Left><Left><Left><Left><Left><Left>
 "-----------------------
-
 " save with no permission using w!!, could be cnoremap
-cnoreabbrev w!! w !sudo tee > /dev/null %
-
 nnoremap <silent><leader>.ch  :w !sudo chmod +x %<cr>
 nnoremap <silent><leader>.co  :w !sudo chown $USER:$USER % 2>/dev/null<cr>
 map <silent> <F11> /\A\zs\a<cr>
-" ctrl alt
-
 noremap  <Down> 5<c-w>-
 noremap  <Up> 5<c-w>+
 noremap  <Right> 5<c-w>>
 noremap  <Left> 5<c-w><
-" noremap  N 5<c-w>-
-" noremap  E 5<c-w>+
-" noremap  + 5<c-w>>
-" noremap  - 5<c-w><
-
 " split movement , cant be <c-i> because that is mapped to be the opposite of <c-o>
 " noremap <tab> %
 " vnoremap <tab> %
@@ -280,6 +272,7 @@ noremap  <Left> 5<c-w><
 " map <leader>i :setlocal autoindent<cr>
 " map <leader>I :setlocal noautoindent<cr>
 map <a-o> :w<CR>
+map <a-O> :w !sudo tee %<CR>
 
 map  <silent><leader>O :silent w !sudo tee %<CR>
 " map  <leader>ss :wq<CR>

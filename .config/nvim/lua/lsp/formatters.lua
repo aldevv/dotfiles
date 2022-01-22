@@ -18,7 +18,7 @@ local code_actions = null_ls.builtins.code_actions
 null_ls.setup({
     -- Displays all possible log messages and writes them to the null-ls log, which you can view with the command :NullLsLog. This option can slow down Neovim, so it's strongly recommended to disable it for normal use.
     -- debug = false,
-    debug = true,
+    debug = false,
 
     log = {
         enable = true,
@@ -26,18 +26,27 @@ null_ls.setup({
         use_console = "async",
     },
     on_attach = nil,
+    -- conf options
+    -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
     sources = {
         formatting.black.with({ extra_args = { "--fast" } }),
         formatting.stylua.with({ extra_args = { "--indent-type", "Spaces" } }),
-        formatting.shfmt.with({ filetypes = { "sh", "zsh", "bash" } }),
+        formatting.shfmt.with({
+            extra_filetypes = { "zsh", "bash" },
+        }),
         -- formatting.clang_format,
         formatting.uncrustify,
         formatting.gofmt,
         formatting.json_tool,
-        -- formatting.prettier,
-        -- formatting.eslint, --> pretty bad
+        formatting.prettier,
+        diagnostics.vint, --> for vim
         -- formatting.eslint_d,
-        -- diagnostics.eslint_d,
+        diagnostics.shellcheck.with({ extra_filetypes = { "zsh", "bash" } }),
+        diagnostics.eslint_d.with({
+            condition = function(utils)
+                return utils.root_has_file({ ".eslintrc.json" })
+            end,
+        }),
         -- diagnostics.selene,
         -- formatting.eslint,
         -- diagnostics.eslint,

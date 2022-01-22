@@ -1,5 +1,5 @@
-#!/bin/zsh
-#
+#!/bin/bash
+
 # arcolinux fix gpg
 #/usr/local/bin/arcolinux-fix-pacman-gpg-conf
 #
@@ -14,8 +14,8 @@
 alias forthelols="while [ 1 ]; do echo 'apt list | wc -l' | lolcat; done"
 
 activateVerified() {
-git config --global user.signingkey $1
-git config --global commit.gpgsign true
+	git config --global user.signingkey $1
+	git config --global commit.gpgsign true
 }
 ##==============
 # WORK
@@ -24,8 +24,8 @@ git config --global commit.gpgsign true
 alias mongodumpwork='ssh HORUS_TESTING "mongodump -u mongo-root --archive" >'
 alias mongorestorework='docker exec -i api-mongo-1 mongorestore -d VT --archive <'
 mongoupdatedb() {
-    # password is $2
-    echo $2 | mongodumpwork $1 && mongorestorework $1
+	# password is $2
+	echo $2 | mongodumpwork $1 && mongorestorework $1
 }
 # alias mongorestorework='docker-compose exec mongo mongorestore -d VT --archive < .misc/backups/mongo_dump_11_29.2021.dump'
 
@@ -34,43 +34,41 @@ mongoupdatedb() {
 #==============
 
 temp_fix() {
-    sudo modprobe -rf rtw88_8822be
-    sudo modprobe rtw88_8822be
+	sudo modprobe -rf rtw88_8822be
+	sudo modprobe rtw88_8822be
 }
 
 getpid() {
-    pidof $1 | cut -d' ' -f1
+	pidof $1 | cut -d' ' -f1
 }
 
-vw(){
-    nvim "$(which $1)"
+vw() {
+	nvim "$(which $1)"
 }
 
-
-.e(){
-# load .env file or any other file
-  file=$1
-  [ -z $file ] && file=".env"
-  [ -f $file ] && zsh -c "set -o allexport; source $file; echo 'loaded'; set +o allexport; zsh -i"
+.e() {
+	# load .env file or any other file
+	file=$1
+	[ -z $file ] && file=".env"
+	[ -f $file ] && zsh -c "set -o allexport; source $file; echo 'loaded'; set +o allexport; zsh -i"
 }
 
-.ec(){
-  bat .env
-  }
+.ec() {
+	bat .env
+}
 
 vman() {
-    nvim -c "Man $1" -c "silent only"
+	nvim -c "Man $1" -c "silent only"
 }
 
 # tmux
 function tms() (
-    if [ -n "$1" ]
-      then
-         tmux switch -t $1
-      else
-         echo "no session name"
-     fi
-  )
+	if [ -n "$1" ]; then
+		tmux switch -t $1
+	else
+		echo "no session name"
+	fi
+)
 
 alias openports="sudo netstat -putln | grep LISTEN"
 alias .a="pipenv shell"
@@ -97,10 +95,9 @@ alias addTr="ssh pi transmission-cli $(xsel -b)"
 alias serve="rclone serve dlna --addr=:9092 --name=HaganeMedia $1"
 alias cpP="pwd | xsel -b"
 
-
 # TMUX
-alias tm="tmux" # attach
-alias tmls="tmux ls" # list sessions
+alias tm="tmux"       # attach
+alias tmls="tmux ls"  # list sessions
 alias tmA="tmux a -t" # attach
 alias tmn="tmux new -s"
 alias tma="tmux new -A -s" # attach or create new one
@@ -108,27 +105,30 @@ alias tmk="tmux kill-server"
 alias tmK="tmux list-keys"
 # for remote connections
 alias fixtmux="echo 'set -g default-terminal \"screen-256color\"  | xsel -b"
-cpF (){
-cat $1 | xsel -b
+cpF() {
+	cat $1 | xsel -b
 }
 
 vcmd() {
-    v $(which $1)
+	v $(which $1)
 }
 
 quick() {
-    a="$@"
-    alias | grep "$a"
+	a="$@"
+	alias | grep "$a"
 }
 
-getpdffont(){
-    strings $1 | grep Font
+getpdffont() {
+	strings $1 | grep Font
 }
 
-[[ -n $RG_IGNORE_FILE ]] \
-        && alias rg="rg  --ignore-file=$RG_IGNORE_FILE $@" \
-        || alias rg="rg $@"
-
+if [[ -n $RG_IGNORE_FILE ]]; then
+	args="$@"
+	alias rg="rg  --ignore-file=$RG_IGNORE_FILE $args" \
+		else
+	args="$@"
+	alias rg="rg $args"
+fi
 
 #==============
 # SETUP DOTREPO
@@ -140,62 +140,62 @@ getpdffont(){
 
 alias dotrepo="git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME"
 alias \
-    dst='dotrepo status'\
-    daa='dotrepo add'\
-    dau='dotrepo add -u'\
-    drm='dotrepo rm'\
-    drmc='dotrepo rm --cached'\
-    dgc='dotrepo commit -v'\
-    dgca='dgc -a'\
-    dgcA='dgc -v --amend'\
-    dgcAn='dgc -v --amend --no-edit'\
-    drgo='dotrepo remote get-url origin'\
-    drao='dotrepo remote add origin'\
-    dgd='dotrepo diff'\
-    dlg='dotrepo log --oneline'\
-    dlG='dotrepo log --graph '\
-    dgpo='dotrepo push origin HEAD'\
-    dSr='dotrepo secret reveal'\
-    dSh='dotrepo secret hide'\
-    dSls='dotrepo secret list'\
-    dSrm='dotrepo secret remove'\
-    dSaa='dotrepo secret add'\
-    dp='dotpass'\
-    dpf='dotpassfile'\
+	dst='dotrepo status' \
+	daa='dotrepo add' \
+	dau='dotrepo add -u' \
+	drm='dotrepo rm' \
+	drmc='dotrepo rm --cached' \
+	dgc='dotrepo commit -v' \
+	dgca='dgc -a' \
+	dgcA='dgc -v --amend' \
+	dgcAn='dgc -v --amend --no-edit' \
+	drgo='dotrepo remote get-url origin' \
+	drao='dotrepo remote add origin' \
+	dgd='dotrepo diff' \
+	dlg='dotrepo log --oneline' \
+	dlG='dotrepo log --graph ' \
+	dgpo='dotrepo push origin HEAD' \
+	dSr='dotrepo secret reveal' \
+	dSh='dotrepo secret hide' \
+	dSls='dotrepo secret list' \
+	dSrm='dotrepo secret remove' \
+	dSaa='dotrepo secret add' \
+	dp='dotpass' \
+	dpf='dotpassfile'
 
 dgcm() {
-    if [[ -n "$1" ]]; then
-        dgc -m "$1"
-    else
-        echo "message:"
-        read message
-        dgc -m "$message"
-    fi
+	if [[ -n "$1" ]]; then
+		dgc -m "$1"
+	else
+		echo "message:"
+		read message
+		dgc -m "$message"
+	fi
 }
 dgcam() {
-    if [[ -n "$1" ]]; then
-        dgc -am "$1"
-    else
-        echo "message:"
-        read message
-        dgc -am "$message"
-    fi
+	if [[ -n "$1" ]]; then
+		dgc -am "$1"
+	else
+		echo "message:"
+		read message
+		dgc -am "$message"
+	fi
 }
 
 dgap() {
-    if [[ -n "$1" ]]; then
-        dotrepo commit -am "$1" && dgpo
-    else
-        echo "message:"
-        read message
-        dotrepo commit -am "$message" && dgpo
-    fi
+	if [[ -n "$1" ]]; then
+		dotrepo commit -am "$1" && dgpo
+	else
+		echo "message:"
+		read message
+		dotrepo commit -am "$message" && dgpo
+	fi
 }
 
 high() {
-    [ -z "$2" ] \
-        && grep --color -E "$1|$" \
-        || grep --color -E "$1|$" "$2"\
+	[ -z "$2" ] &&
+		grep --color -E "$1|$" ||
+		grep --color -E "$1|$" "$2"
 }
 
 #==============
@@ -206,7 +206,6 @@ high() {
 # then do (when everything backed up)
 #dotrepo checkout
 #force it if you have to
-
 
 # normally _ is $0 (your interactive shell)
 unalias -m '_'
@@ -223,238 +222,238 @@ alias ___='sudo -E env "PATH=$PATH" '
 # ytv="$UTILITIES/youtube/downloadVideo.sh"\
 alias vim=nvim
 alias \
-    pkg="sudo $PKG" \
-    m="mkdir"\
-    pkgl="sudo eopkg li -l | awk '/Name:/ {sub(/,$/,\"\",\$2); name= \$2} /Installed Size:/{print \$5\$6, name}' | sort -h "\
-    pkgro="sudo eopkg rmo"\
-    dockerclean="docker system prune --volumes -all"\
-    station="~/.local/bin/Station-1.65.0-x86_64.AppImage"\
-    xc="xclip -selection clipboard"\
-    j="joplin"\
-    xmonad="$HOME/.cabal/bin/xmonad"\
-    rz="mpv 'http://www.youtube.com/watch?v=w-RUTZBbGwM'"\
-    yz="mpv 'https://www.youtube.com/watch?v=mRwcGr8yTws'"\
-    cu="curl"\
-    wg="wget"\
-    rick="curl -s -L http://bit.ly/10hA8iC | bash"\
-    conv="$UTILITIES/video/MkvToMp4.sh"\
-    par="curl parrot.live"\
-    ssr="simplescreenrecorder"\
-    yt="youtube-viewer -q"\
-    r="ranger"\
-    retro="$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage"\
-    R="retro --profile 'Futuristic' --workdir . &>/dev/null"\
-    todoist="cd $PROGRAMS/todoist-linux && make up"\
-    xi='sudo vim /etc/X11/xinit/xinitrc'\
-    tord="$HOME/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads"\
-    pgp='uploadProjects'\
-    rtx='sudo systemctl restart display-manager'\
-    wclass='xprop WM_CLASS'\
-    wname='xprop WM_NAME'\
-    wrole='xprop WM_ROLE'\
-    spot='flatpak --installation=extra run com.spotify.Client'\
-    zealu='zeal-user-contrib'\
-    ph='python_help'\
-    trc='transmission-remote-cli'\
-    py='python'\
-    py3='python3'\
-    audio="pavucontrol"\
-    plz="sudo"\
-    jp="tagainijisho"\
-    df='df -h'\
-    free='free -m'\
-    ..='cd ..'\
-    ...='cd ../..'\
-    .3='cd ../../..'\
-    .4='cd ../../..'\
-    .5='cd ../../../..'\
-    .6='cd ../../../../..'\
-    yta-aac="youtube-dl --extract-audio --audio-format aac "\
-    ytab="youtube-dl --extract-audio --audio-format best"\
-    yta="youtube-dl --extract-audio --audio-format mp3"\
-    yta-flac="youtube-dl --extract-audio --audio-format flac "\
-    yta-m4a="youtube-dl --extract-audio --audio-format m4a "\
-    yta-opus="youtube-dl --extract-audio --audio-format opus "\
-    yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "\
-    yta-wav="youtube-dl --extract-audio --audio-format wav "\
-    ytv="youtube-dl -f bestvideo+bestaudio "\
-    du="du -hd 1"\
-    team="$PROGRAMS/teamviewer/teamviewer"\
-    zm="$HOME/.local/Programs/zoom/ZoomLauncher"\
-    nm1="nmcli d wifi connect HYPERION "\
-    nm2="nmcli d wifi connect Hyperion_R "\
-    nmone='nmcli d wifi connect "One plus" '\
-    nmc="nmcli d wifi connect"\
-    nm="nmcli d wifi"\
-    nvmls="nvm ls-remote"\
-    nvmch=". $SCRIPTS/useful/node/nvmch"\
-    mydot="git clone --depth=1 https://www.github.com/akuseru1/dotfiles && cd dotfiles"\
-    lights="sudo lightdm-settings"\
-    sddms="sudo sddm-config-editor"\
-    pkgfix="sudo usysconf run -f ssl-certs"\
-    pkgsave="sudo usysconf run -f ssl-certs"\
-    gdbfront="gdbfrontend"\
-    xa='xargs -I{}'\
-    blue='blueman-manager'\
-    vl='vimpager'\
-    shm='mount -t tmpfs tmpfs /mnt/tmp'\
-    mpva='mpv --no-video'\
-    mpvas='mpv --no-video --shuffle'\
-    mpvs='mpv --shuffle'\
-    aniplay='mpv --no-video --shuffle https://www.youtube.com/playlist\?list\=PLjNlQ2vXx1xbt30X8TcUfNzw_akVISXEu'\
-    lofiplay="mpv --no-video --shuffle 'https://www.youtube.com/watch?v=0te6noMKffA'"\
-    aniplayv='mpv --shuffle https://www.youtube.com/playlist\?list\=PLjNlQ2vXx1xbt30X8TcUfNzw_akVISXEu'\
-    apropos='apropos -e'\
-    bat='bat'\
-    b='bat'\
-    bb='bat --paging=always'\
-    bp='batpipe'\
-    bgrep='batgrep'\
-    bwatch='batwatch'\
-    bpretty='prettybat'\
-    bdiff='batdiff'\
-    bman='batman --paging=always'\
-    ri='source .env/bin/activate && python3 -m pip install --upgrade pip && pip3 install -r requirements.txt '\
-    pipr='pip install -r requirements.txt'\
-    brave='brave-browser'\
-    pyv='python3 -m venv .venv'\
-    c='cat'\
-    fla='qmk flash'\
-    stn='setsid st >/dev/null 2>&1 & disown'\
-    .c='sudo ./configure'\
-    mk='make'\
-    mkc='make clean'\
-    mk='make'\
-    mkc='make clean'\
-    mki='make install'\
-    smk='sudo make'\
-    smkc='sudo make clean'\
-    smk='sudo make'\
-    smkc='sudo make clean'\
-    smki='sudo make install'\
-        ec='echo'\
-    et='entr'\
-    mime='xdg-mime query filetype'\
-    chx='sudo chmod +x'\
-    xmod='xmodmap "$HOME/.config/.Xmodmap"'\
-    lds='sudo lightdm-settings'\
-    au="autorandr --change && wal -R"\
-    searchCode="firefox https://docs.github.com/en/github/searching-for-information-on-github/searching-code"\
-    convpdf2="convert -density 600"\
-    pdfgrep="pdfgrep -n"\
-    Z="zathura"\
-    Z="setsid st zathura &>/dev/null"\
-    gpgpub="gpg --armor --export jbernal@unal.edu.co > kanon_pub_key"\
-    gpgpubbinary="gpg --output kanon.gpg --export jbernal@unal.edu.co"\
-    gpgimp="gpg --import"\
-    gpgls="gpg --list-keys"\
-    rp="gpgconf --kill all" \
-    I="curl -s ifconfig.me | cut -d'%' -f 1"\
-    i="ip route get 1.2.3.4 | awk '{print \$7; exit}'" \
-    i6="ip -6 addr |awk '{print \$2}'|grep -P 'fe80' | cut -d '/' -f 1" \
-    air="aircrack-ng" \
-    qr="qrencode" \
-    qrc='qrencode -o "/tmp/pass" "$(xsel -b -o 2>/dev/null)" && sxiv /tmp/pass; rm /tmp/pass' \
-    nmap_scripts="bb /usr/share/nmap/scripts/script.db" \
-    # flat='flatpak'\
-    # flatrm='flatpak uninstall $($APPS/flatpak/flatlistinstalled)'\
-    # flatr='flatpak run $($APPS/flatpak/flatlistinstalled)'\
-    # flatrmo='flatpak uninstall --unused'\
+	pkg="sudo $PKG" \
+	m="mkdir" \
+	pkgro="sudo eopkg rmo" \
+	dockerclean="docker system prune --volumes -all" \
+	station="~/.local/bin/Station-1.65.0-x86_64.AppImage" \
+	xc="xclip -selection clipboard" \
+	j="joplin" \
+	xmonad="$HOME/.cabal/bin/xmonad" \
+	rz="mpv 'http://www.youtube.com/watch?v=w-RUTZBbGwM'" \
+	yz="mpv 'https://www.youtube.com/watch?v=mRwcGr8yTws'" \
+	cu="curl" \
+	wg="wget" \
+	rick="curl -s -L http://bit.ly/10hA8iC | bash" \
+	conv="$UTILITIES/video/MkvToMp4.sh" \
+	par="curl parrot.live" \
+	ssr="simplescreenrecorder" \
+	yt="youtube-viewer -q" \
+	r="ranger" \
+	retro="$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage" \
+	R="retro --profile 'Futuristic' --workdir . &>/dev/null" \
+	todoist="cd $PROGRAMS/todoist-linux && make up" \
+	xi='sudo vim /etc/X11/xinit/xinitrc' \
+	tord="$HOME/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads" \
+	pgp='uploadProjects' \
+	rtx='sudo systemctl restart display-manager' \
+	wclass='xprop WM_CLASS' \
+	wname='xprop WM_NAME' \
+	wrole='xprop WM_ROLE' \
+	spot='flatpak --installation=extra run com.spotify.Client' \
+	zealu='zeal-user-contrib' \
+	ph='python_help' \
+	trc='transmission-remote-cli' \
+	py='python' \
+	py3='python3' \
+	audio="pavucontrol" \
+	plz="sudo" \
+	jp="tagainijisho" \
+	df='df -h' \
+	free='free -m' \
+	..='cd ..' \
+	...='cd ../..' \
+	.3='cd ../../..' \
+	.4='cd ../../..' \
+	.5='cd ../../../..' \
+	.6='cd ../../../../..' \
+	yta-aac="youtube-dl --extract-audio --audio-format aac " \
+	ytab="youtube-dl --extract-audio --audio-format best" \
+	yta="youtube-dl --extract-audio --audio-format mp3" \
+	yta-flac="youtube-dl --extract-audio --audio-format flac " \
+	yta-m4a="youtube-dl --extract-audio --audio-format m4a " \
+	yta-opus="youtube-dl --extract-audio --audio-format opus " \
+	yta-vorbis="youtube-dl --extract-audio --audio-format vorbis " \
+	yta-wav="youtube-dl --extract-audio --audio-format wav " \
+	ytv="youtube-dl -f bestvideo+bestaudio " \
+	du="du -hd 1" \
+	team="$PROGRAMS/teamviewer/teamviewer" \
+	zm="$HOME/.local/Programs/zoom/ZoomLauncher" \
+	nm1="nmcli d wifi connect HYPERION " \
+	nm2="nmcli d wifi connect Hyperion_R " \
+	nmone='nmcli d wifi connect "One plus" ' \
+	nmc="nmcli d wifi connect" \
+	nm="nmcli d wifi" \
+	nvmls="nvm ls-remote" \
+	nvmch=". $SCRIPTS/useful/node/nvmch" \
+	mydot="git clone --depth=1 https://www.github.com/akuseru1/dotfiles && cd dotfiles" \
+	lights="sudo lightdm-settings" \
+	sddms="sudo sddm-config-editor" \
+	pkgfix="sudo usysconf run -f ssl-certs" \
+	pkgsave="sudo usysconf run -f ssl-certs" \
+	gdbfront="gdbfrontend" \
+	xa='xargs -I{}' \
+	blue='blueman-manager' \
+	vl='vimpager' \
+	shm='mount -t tmpfs tmpfs /mnt/tmp' \
+	mpva='mpv --no-video' \
+	mpvas='mpv --no-video --shuffle' \
+	mpvs='mpv --shuffle' \
+	aniplay='mpv --no-video --shuffle https://www.youtube.com/playlist\?list\=PLjNlQ2vXx1xbt30X8TcUfNzw_akVISXEu' \
+	lofiplay="mpv --no-video --shuffle 'https://www.youtube.com/watch?v=0te6noMKffA'" \
+	aniplayv='mpv --shuffle https://www.youtube.com/playlist\?list\=PLjNlQ2vXx1xbt30X8TcUfNzw_akVISXEu' \
+	apropos='apropos -e' \
+	bat='bat' \
+	b='bat' \
+	bb='bat --paging=always' \
+	bp='batpipe' \
+	bgrep='batgrep' \
+	bwatch='batwatch' \
+	bpretty='prettybat' \
+	bdiff='batdiff' \
+	bman='batman --paging=always' \
+	ri='source .env/bin/activate && python3 -m pip install --upgrade pip && pip3 install -r requirements.txt ' \
+	pipr='pip install -r requirements.txt' \
+	brave='brave-browser' \
+	pyv='python3 -m venv .venv' \
+	c='cat' \
+	fla='qmk flash' \
+	stn='setsid st >/dev/null 2>&1 & disown' \
+	.c='sudo ./configure' \
+	mk='make' \
+	mkc='make clean' \
+	mk='make' \
+	mkc='make clean' \
+	mki='make install' \
+	smk='sudo make' \
+	smkc='sudo make clean' \
+	smk='sudo make' \
+	smkc='sudo make clean' \
+	smki='sudo make install' \
+	ec='echo' \
+	et='entr' \
+	mime='xdg-mime query filetype' \
+	chx='sudo chmod +x' \
+	xmod='xmodmap "$HOME/.config/.Xmodmap"' \
+	lds='sudo lightdm-settings' \
+	au="autorandr --change && wal -R" \
+	searchCode="firefox https://docs.github.com/en/github/searching-for-information-on-github/searching-code" \
+	convpdf2="convert -density 600" \
+	pdfgrep="pdfgrep -n" \
+	Z="zathura" \
+	Z="setsid st zathura &>/dev/null" \
+	gpgpub="gpg --armor --export jbernal@unal.edu.co > kanon_pub_key" \
+	gpgpubbinary="gpg --output kanon.gpg --export jbernal@unal.edu.co" \
+	gpgimp="gpg --import" \
+	gpgls="gpg --list-keys" \
+	rp="gpgconf --kill all" \
+	I="curl -s ifconfig.me | cut -d'%' -f 1" \
+	air="aircrack-ng" \
+	qr="qrencode" \
+	qrc='qrencode -o "/tmp/pass" "$(xsel -b -o 2>/dev/null)" && sxiv /tmp/pass; rm /tmp/pass' \
+	nmap_scripts="bb /usr/share/nmap/scripts/script.db"
+# flat='flatpak'\
+# flatrm='flatpak uninstall $($APPS/flatpak/flatlistinstalled)'\
+# flatr='flatpak run $($APPS/flatpak/flatlistinstalled)'\
+# flatrmo='flatpak uninstall --unused'\
 
-
+i() {
+	ip route get 1.2.3.4 | awk '{print \$7; exit}'
+}
+i6() {
+	ip -6 addr | awk '{print \$2}' | grep -P 'fe80' | cut -d '/' -f 1
+}
 
 # bb() {
 #     bat --paging=never "$1" | less -R
 # }
 Il() {
-    curl -s https://freegeoip.app/xml/$(I) | sed -n '4p' | cut -d '>' -f2 | cut -d '<' -f1
+	curl -s https://freegeoip.app/xml/$(I) | sed -n '4p' | cut -d '>' -f2 | cut -d '<' -f1
 }
 convpdf() {
-    # first arguments are the other files
-    # last arg is the file name
-    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=${@:$#} ${@:1:${#}-1} 2>/dev/null
+	# first arguments are the other files
+	# last arg is the file name
+	out="${@:$#}"
+	out2="${@:1:${#}-1}"
+	gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="$out" "$out2" 2>/dev/null
 }
 nmapb() {
-    sudo nmap -sC -sV -Pn -O "$1" \
-        | tee -a scan
+	sudo nmap -sC -sV -Pn -O "$1" |
+		tee -a scan
 }
 
 gob() {
-    dir-list > mywordlist \
-        && gobuster dir -w mywordlist -u http://$1 \
-        && rm mywordlist
+	dir-list >mywordlist &&
+		gobuster dir -w mywordlist -u http://$1 &&
+		rm mywordlist
 }
 alias enum="enum4linux"
-
 
 # ====
 # NET
 # ====
 alias bsb="busybox"
-[[ ! -x $(command -v arp) ]] \
-    && alias arp='ip neighbor'
+[[ ! -x $(command -v arp) ]] &&
+	alias arp='ip neighbor'
 
-[[ ! -x $(command -v netstat) ]] \
-    && alias netstat='bsb netstat'
+[[ ! -x $(command -v netstat) ]] &&
+	alias netstat='bsb netstat'
 
-[[ ! -x $(command -v nc) ]] \
-    && alias ncl='bsb nc -lvp' \
-    && alias nc='bsb nc' \
-    && alias netcat='bsb nc'
+[[ ! -x $(command -v nc) ]] &&
+	alias ncl='bsb nc -lvp' &&
+	alias nc='bsb nc' &&
+	alias netcat='bsb nc'
 
 # ===============================
 if [[ $(whoami) != "root" ]] && [[ -x $(command -v exa) ]]; then
 
-alias ls='exa --color=automatic --group-directories-first'\
-       l='exa -l --color=automatic --group-directories-first'\
-      la='exa -a --color=automatic --group-directories-first'\
-      ll='exa -l --color=automatic --group-directories-first'\
-      lt='exa -aT --color=automatic --group-directories-first'\
-      l.='exa -a | egrep "^\."'\
-      lg='exa -a | grep '
+	alias ls='exa --color=automatic --group-directories-first' \
+		l='exa -l --color=automatic --group-directories-first' \
+		la='exa -a --color=automatic --group-directories-first' \
+		ll='exa -l --color=automatic --group-directories-first' \
+		lt='exa -aT --color=automatic --group-directories-first' \
+		l.='exa -a | egrep "^\."' \
+		lg='exa -a | grep '
 fi
 
-
-    # rgp="ruby grep_pptx.rb"\
+# rgp="ruby grep_pptx.rb"\
 alias su="su -" # the - lets you have env variables in root
-    # sudo="sudo -E"\
+# sudo="sudo -E"\
 
-    # colab="echo \"!wget https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip
-    # !unzip ijava-1.3.0.zip
-    # !python install.py --sys-prefix\" | xclip -sel clipboard"\
+# colab="echo \"!wget https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip
+# !unzip ijava-1.3.0.zip
+# !python install.py --sys-prefix\" | xclip -sel clipboard"\
 
 # lol git systemd vscode npm
 #
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *.deb)       ar x $1      ;;
-      *.tar.xz)    tar xf $1    ;;
-      *.tar.zst)   unzstd $1    ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+ex() {
+	if [ -f $1 ]; then
+		case $1 in
+		*.tar.bz2) tar xjf $1 ;;
+		*.tar.gz) tar xzf $1 ;;
+		*.bz2) bunzip2 $1 ;;
+		*.rar) unrar x $1 ;;
+		*.gz) gunzip $1 ;;
+		*.tar) tar xf $1 ;;
+		*.tbz2) tar xjf $1 ;;
+		*.tgz) tar xzf $1 ;;
+		*.zip) unzip $1 ;;
+		*.Z) uncompress $1 ;;
+		*.7z) 7z x $1 ;;
+		*.deb) ar x $1 ;;
+		*.tar.xz) tar xf $1 ;;
+		*.tar.zst) unzstd $1 ;;
+		*) echo "'$1' cannot be extracted via ex()" ;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
 }
 
-
 cripto() {
-    [ -n $1 ] \
-        && curl rate.sx/$1@4w \
-        || curl rate.sx
+	[[ -n $1 ]] &&
+		curl rate.sx/$1@4w ||
+		curl rate.sx
 }
 
 alias hig="history | grep -i" hi="history"
@@ -491,19 +490,36 @@ alias kthxbai='halt'
 alias pwned='ssh'
 alias boosto='chmod +x'
 
-
-
 #=====================================================
 #           git
 #=====================================================
+
+tobare() {
+    # commit the initial structure!
+    folder="$(basename $(pwd))"
+    bare_name="$folder.tmp"
+    mv .git "../$bare_name"
+	cd ..
+	rm -fr "$folder"
+    mv "$bare_name" "$folder"
+	cd "$folder"
+	git config --bool core.bare true
+    git worktree add main # requires at least 1 commit!
+    cd main
+}
+alias gw="git worktree"
+alias gwa="git worktree add"
+alias gwl="git worktree list"
+
 fzfgd() {
-  preview="git diff $@ --color=always -- {-1}"
-  git diff $@ --name-only | fzf -m --ansi --preview $preview
+	preview="git diff $@ --color=always -- {-1}"
+	args="$@"
+	git diff $args --name-only | fzf -m --ansi --preview $preview
 }
 alias hackzor='git init'
 alias readyperfectoni='git commit -am'
 yolo() {
-    git commit -m "$(curl -s http://whatthecommit.com/index.txt)"
+	git commit -m "$(curl -s http://whatthecommit.com/index.txt)"
 }
 
 # Functions
@@ -514,38 +530,36 @@ yolo() {
 # the plugin, before being pulled in to core lib/git.zsh as git_current_branch()
 # to fix the core -> git plugin dependency.
 function current_branch() {
-  git_current_branch
+	git_current_branch
 }
 
 # Pretty log messages
-function _git_log_prettily(){
-  if ! [ -z $1 ]; then
-    git log --pretty=$1
-  fi
+function _git_log_prettily() {
+	if ! [ -z $1 ]; then
+		git log --pretty=$1
+	fi
 }
 compdef _git _git_log_prettily=git-log
 
 # Warn if the current branch is a WIP
 function work_in_progress() {
-  if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
-    echo "WIP!!"
-  fi
+	if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
+		echo "WIP!!"
+	fi
 }
 
 # Check if main exists and use instead of master
 function git_main_branch() {
-  if [[ -n "$(git branch --list main)" ]]; then
-    echo main
-  else
-    echo master
-  fi
+	if [[ -n "$(git branch --list main)" ]]; then
+		echo main
+	else
+		echo master
+	fi
 }
 
 #
 # Aliases
 # (sorted alphabetically)
-
-
 
 alias gF='git flow'
 alias gFf='git flow feature'
@@ -619,7 +633,7 @@ alias gauthor='git commit --amend --author="Juan Alejandro Bernal <jbernal@unal.
 alias gcld='git clone --depth=1'
 alias gcl='git clone'
 gclb() {
-    git clone --bare $1 $(basename $1)
+	git clone --bare $1 $(basename $1)
 }
 alias gclean='git clean -id'
 alias gpristine='git reset --hard && git clean -dffx'
@@ -635,8 +649,8 @@ alias gcpc='git cherry-pick --continue'
 alias ggcs='git commit -S'
 
 gcL() {
-    repo="$1"
-    git clone git@github.com:$1
+	repo="$1"
+	git clone git@github.com:$1
 }
 
 alias gd='git diff'
@@ -648,11 +662,13 @@ alias gdt='git diff-tree --no-commit-id --name-only -r'
 alias gdw='git diff --word-diff'
 
 function gdnolock() {
-  git diff "$@" ":(exclude)package-lock.json" ":(exclude)*.lock"
+	git diff "$@" ":(exclude)package-lock.json" ":(exclude)*.lock"
 }
 compdef _git gdnolock=git-diff
 
-function gdv() { git diff -w "$@" | view - }
+function gdv() {
+	git diff -w "$@" | view -
+}
 compdef _git gdv=git-diff
 
 alias gf='git fetch'
@@ -665,49 +681,49 @@ alias gg='git gui citool'
 alias gga='git gui citool --amend'
 
 function ggf() {
-  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
-  git push --force origin "${b:=$1}"
+	[[ "$#" != 1 ]] && local b="$(git_current_branch)"
+	git push --force origin "${b:=$1}"
 }
 compdef _git ggf=git-checkout
 function ggfl() {
-  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
-  git push --force-with-lease origin "${b:=$1}"
+	[[ "$#" != 1 ]] && local b="$(git_current_branch)"
+	git push --force-with-lease origin "${b:=$1}"
 }
 compdef _git ggfl=git-checkout
 
 function ggP() {
-  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-    git pull origin "${*}"
-  else
-    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
-    git pull origin "${b:=$1}"
-  fi
+	if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+		git pull origin "${*}"
+	else
+		[[ "$#" == 0 ]] && local b="$(git_current_branch)"
+		git pull origin "${b:=$1}"
+	fi
 }
 compdef _git ggP=git-checkout
 
 function ggp() {
-  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-    git push origin "${*}"
-  else
-    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
-    git push origin "${b:=$1}"
-  fi
+	if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+		git push origin "${*}"
+	else
+		[[ "$#" == 0 ]] && local b="$(git_current_branch)"
+		git push origin "${b:=$1}"
+	fi
 }
 compdef _git ggp=git-checkout
 
 # pull and push
 function ggpp() {
-  if [[ "$#" == 0 ]]; then
-    ggP && ggp
-  else
-    ggP "${*}" && ggp "${*}"
-  fi
+	if [[ "$#" == 0 ]]; then
+		ggP && ggp
+	else
+		ggP "${*}" && ggp "${*}"
+	fi
 }
 compdef _git ggpp=git-checkout
 
 function ggPr() {
-  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
-  git pull --rebase origin "${b:=$1}"
+	[[ "$#" != 1 ]] && local b="$(git_current_branch)"
+	git pull --rebase origin "${b:=$1}"
 }
 compdef _git ggPr=git-checkout
 
@@ -721,7 +737,7 @@ alias gpsup='git push --set-upstream origin $(git_current_branch)'
 
 alias ghh='git help'
 
-alias gignore='git update-index --assume-unchanged' # and your file <file>
+alias gignore='git update-index --assume-unchanged'     # and your file <file>
 alias gnignore='git update-index --no-assume-unchanged' # and your file <file>
 alias gignored='git ls-files -v | grep "^[[:lower:]]"'
 alias gignored2='git ls-files -v | grep "^h" | cut -c3-'
@@ -790,11 +806,11 @@ alias grbs='git rebase --skip'
 alias grev='git revert'
 alias gR='git reset'
 gRh() {
-    if [[ -n "$1" ]]; then
-        git reset --hard $1
-    else
-        git reset --hard HEAD
-    fi
+	if [[ -n "$1" ]]; then
+		git reset --hard $1
+	else
+		git reset --hard HEAD
+	fi
 }
 alias gRoh='git reset origin/$(git_current_branch) --hard'
 alias grm='git rm'
@@ -822,9 +838,9 @@ alias gt='git tag'
 
 # use the default stash push on git 2.13 and newer
 autoload -Uz is-at-least
-is-at-least 2.13 "$(git --version 2>/dev/null | awk '{print $3}')" \
-  && alias gsp='git stash push' \
-  || alias gsp='git stash save'
+is-at-least 2.13 "$(git --version 2>/dev/null | awk '{print $3}')" &&
+	alias gsp='git stash push' ||
+	alias gsp='git stash save'
 
 alias gS='git stash'
 alias gSa='git stash apply'
@@ -841,7 +857,10 @@ alias gswc='git switch -c'
 
 alias gts='git tag -s'
 alias gtv='git tag | sort -V'
-alias gtl='gtl(){ git tag --sort=-v:refname -n -l "${1}*" }; noglob gtl'
+gtl() {
+	noglob
+	git tag --sort=-v:refname -n -l "${1}*"
+}
 
 alias gunignore='git update-index --no-assume-unchanged'
 alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
@@ -862,119 +881,116 @@ alias gama='git am --abort'
 alias gamscp='git am --show-current-patch'
 
 function gbR() {
-  if [[ -z "$1" || -z "$2" ]]; then
-    echo "Usage: $0 old_branch new_branch"
-    return 1
-  fi
+	if [[ -z "$1" || -z "$2" ]]; then
+		echo "Usage: $0 old_branch new_branch"
+		return 1
+	fi
 
-  # Rename branch locally
-  git branch -m "$1" "$2"
-  # Rename branch in origin remote
-  if git push origin :"$1"; then
-    git push --set-upstream origin "$2"
-  fi
+	# Rename branch locally
+	git branch -m "$1" "$2"
+	# Rename branch in origin remote
+	if git push origin :"$1"; then
+		git push --set-upstream origin "$2"
+	fi
 }
 
-alias\
-    gse='git secret'\
-    gser='git secrets reveal'\
-    gseh='git secrets hide'\
-    gsels='git secrets list'\
-    gserm='git secrets remove'\
-    gsea='git secrets add'
-
-
+alias gse='git secret' \
+	gser='git secrets reveal' \
+	gseh='git secrets hide' \
+	gsels='git secrets list' \
+	gserm='git secrets remove' \
+	gsea='git secrets add'
 
 ggcam() {
-    if [[ -n "$1" ]]; then
-        ggc -am "$1"
-    else
-        echo "message:"
-        read message
-        ggc -am "$message"
-    fi
+	if [[ -n "$1" ]]; then
+		ggc -am "$1"
+	else
+		echo "message:"
+		read message
+		ggc -am "$message"
+	fi
 }
 
 ggap() {
-    if [[ -n "$1" ]]; then
-        git commit -am "$1" && ggp
-    else
-        echo "message:"
-        read message
-        git commit -am "$message" && ggp
-    fi
+	if [[ -n "$1" ]]; then
+		git commit -am "$1" && ggp
+	else
+		echo "message:"
+		read message
+		git commit -am "$message" && ggp
+	fi
 }
 
 #=====================================================
 #           Systemd
 #=====================================================
 user_commands=(
-  cat
-  get-default
-  help
-  is-active
-  is-enabled
-  is-failed
-  is-system-running
-  list-dependencies
-  list-jobs
-  list-sockets
-  list-timers
-  list-unit-files
-  list-units
-  show
-  show-environment
-  status)
+	cat
+	get-default
+	help
+	is-active
+	is-enabled
+	is-failed
+	is-system-running
+	list-dependencies
+	list-jobs
+	list-sockets
+	list-timers
+	list-unit-files
+	list-units
+	show
+	show-environment
+	status)
 
 sudo_commands=(
-  add-requires
-  add-wants
-  cancel
-  daemon-reexec
-  daemon-reload
-  default
-  disable
-  edit
-  emergency
-  enable
-  halt
-  hibernate
-  hybrid-sleep
-  import-environment
-  isolate
-  kexec
-  kill
-  link
-  list-machines
-  load
-  mask
-  poweroff
-  preset
-  preset-all
-  reboot
-  reenable
-  reload
-  reload-or-restart
-  reset-failed
-  rescue
-  restart
-  revert
-  set-default
-  set-environment
-  set-property
-  start
-  stop
-  suspend
-  switch-root
-  try-reload-or-restart
-  try-restart
-  unmask
-  unset-environment)
+	add-requires
+	add-wants
+	cancel
+	daemon-reexec
+	daemon-reload
+	default
+	disable
+	edit
+	emergency
+	enable
+	halt
+	hibernate
+	hybrid-sleep
+	import-environment
+	isolate
+	kexec
+	kill
+	link
+	list-machines
+	load
+	mask
+	poweroff
+	preset
+	preset-all
+	reboot
+	reenable
+	reload
+	reload-or-restart
+	reset-failed
+	rescue
+	restart
+	revert
+	set-default
+	set-environment
+	set-property
+	start
+	stop
+	suspend
+	switch-root
+	try-reload-or-restart
+	try-restart
+	unmask
+	unset-environment)
 
-for c in $user_commands; do; alias sc-$c="systemctl $c"; done
-for c in $sudo_commands; do; alias sc-$c="sudo systemctl $c"; done
-for c in $user_commands; do; alias scu-$c="systemctl --user $c"; done
-for c in $sudo_commands; do; alias scu-$c="systemctl --user $c"; done
+for c in $user_commands; do alias sc-$c="systemctl $c"; done
+for c in $sudo_commands; do alias sc-$c="sudo systemctl $c"; done
+for c in $user_commands; do alias scu-$c="systemctl --user $c"; done
+for c in $sudo_commands; do alias scu-$c="systemctl --user $c"; done
 
 alias sct="sc-status"
 alias sca="sc-start"
@@ -986,20 +1002,6 @@ alias sc-mask-now="sc-mask --now"
 alias scu-enable-now="scu-enable --now"
 alias scu-disable-now="scu-disable --now"
 alias scu-mask-now="scu-mask --now"
-
-function systemd_prompt_info {
-  local unit
-  for unit in $@; do
-    echo -n "$ZSH_THEME_SYSTEMD_PROMPT_PREFIX"
-    [[ -n "$ZSH_THEME_SYSTEMD_PROMPT_CAPS" ]] && echo -n "${(U)unit}:" || echo -n "$unit:"
-    if systemctl is-active $unit &>/dev/null; then
-        echo -n "$ZSH_THEME_SYSTEMD_PROMPT_ACTIVE"
-    else
-        echo -n "$ZSH_THEME_SYSTEMD_PROMPT_NOTACTIVE"
-    fi
-    echo -n "$ZSH_THEME_SYSTEMD_PROMPT_SUFFIX"
-  done
-}
 
 #=====================================================
 #           vscode
@@ -1047,27 +1049,20 @@ function systemd_prompt_info {
 # alias vscl="$VSCODE --log"
 # alias vscde="$VSCODE --disable-extensions"
 
-
 #=====================================================
 #           npm
 #=====================================================
 
-
-
-(( $+commands[npm] )) && {
-  rm -f "${ZSH_CACHE_DIR:-$ZSH/cache}/npm_completion"
-
-  _npm_completion() {
-    local si=$IFS
-    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-                 COMP_LINE=$BUFFER \
-                 COMP_POINT=0 \
-                 npm completion -- "${words[@]}" \
-                 2>/dev/null)
-    IFS=$si
-  }
-  compdef _npm_completion npm
+_npm_completion() {
+	local si=$IFS
+	compadd -- $(COMP_CWORD=$((CURRENT - 1)) \
+		COMP_LINE=$BUFFER \
+		COMP_POINT=0 \
+		npm completion -- "${words[@]}" \
+		2>/dev/null)
+	IFS=$si
 }
+compdef _npm_completion npm
 
 # Install dependencies globally
 alias npmg="npm i -g "
@@ -1120,60 +1115,45 @@ alias npmI="npm init"
 alias webgoat='docker run -p 127.0.0.1:8080:8080 -p 127.0.0.1:9090:9090 -e TZ=America/Bogota webgoat/goatandwolf'
 #https://github.com/akarzim/zsh-docker-aliases
 #
-# Defines Docker aliases.
-#
-# Author:
-#   François Vantomme <akarzim@gmail.com>
-#
-
-# Return if requirements are not found.
-if (( ! $+commands[docker] )); then
-    return 1
-fi
-
-#
-# Functions
-#
 
 # Set Docker Machine environment
 function dkme {
-    if (( ! $+commands[docker-machine] )); then
-        return 1
-    fi
+	if ((!$ + commands[docker - machine])); then
+		return 1
+	fi
 
-    eval $(docker-machine env $1)
+	eval $(docker-machine env $1)
 }
 
 # Set Docker Machine default machine
 function dkmd {
-    if (( ! $+commands[docker-machine] )); then
-        return 1
-    fi
+	if ((!$ + commands[docker - machine])); then
+		return 1
+	fi
 
-    pushd ~/.docker/machine/machines
+	pushd ~/.docker/machine/machines
 
-    if [[ ! -d $1 ]]; then
-        echo "Docker machine '$1' does not exists. Abort."
-        popd
-        return 1
-    fi
+	if [[ ! -d $1 ]]; then
+		echo "Docker machine '$1' does not exists. Abort."
+		popd
+		return 1
+	fi
 
-    if [[ -L default ]]; then
-        eval $(rm -f default)
-    elif [[ -d default ]]; then
-        echo "A default manchine already exists. Abort."
-        popd
-        return 1
-    elif [[ -e default ]]; then
-        echo "A file named 'default' already exists. Abort."
-        popd
-        return 1
-    fi
+	if [[ -L default ]]; then
+		eval $(rm -f default)
+	elif [[ -d default ]]; then
+		echo "A default manchine already exists. Abort."
+		popd
+		return 1
+	elif [[ -e default ]]; then
+		echo "A file named 'default' already exists. Abort."
+		popd
+		return 1
+	fi
 
-    eval $(ln -s $1 default)
-    popd
+	eval $(ln -s $1 default)
+	popd
 }
-
 
 #
 # Defines Docker aliases.
@@ -1383,19 +1363,22 @@ alias dkcul='docker-compose -f docker-compose.local.yml down'
 alias dkcel='docker-compose -f docker-compose.local.yml exec'
 
 dkcue() {
-    docker-compose --env-file=$1 up ${@:2}
+	args="${@:2}"
+	docker-compose --env-file=$1 up $args
 }
 
 dkcee() {
-    docker-compose --env-file=$1 exec -e COLUMNS=`tput cols` -e LINES=`tput lines` ${@:2}
+	args="${@:2}"
+	docker-compose --env-file=$1 exec -e COLUMNS=$(tput cols) -e LINES=$(tput lines) $args
 }
 
 dkcUe() {
-    docker-compose --env-file=$1 up  ${@:2} -d
+	args="${@:2}"
+	docker-compose --env-file=$1 up "$args" -d
 }
 
 dkceb() {
-    docker-compose exec -e COLUMNS=`tput cols` -e LINES=`tput lines` "$1" bash
+	docker-compose exec -e COLUMNS=$(tput cols) -e LINES=$(tput lines) "$1" bash
 }
 
 #=======
@@ -1437,29 +1420,35 @@ alias djl='python manage.py loadfixtures'
 alias djs='python manage.py shell'
 
 djsr() {
-    file=".misc/scripts/$1"
-    djs -c "exec(open(\"$file\").read())"
+	file=".misc/scripts/$1"
+	djs -c "exec(open(\"$file\").read())"
 }
 
 djp() {
-    project_name=$(basename $(gitRoot))
-    if [[ -n "$1" ]]; then
-        nvim "$(gitRoot)/${project_name}/$1"
-    else
-        cd "$(gitRoot)/${project_name}"
-    fi
+	project_name=$(basename $(gitRoot))
+	if [[ -n "$1" ]]; then
+		nvim "$(gitRoot)/${project_name}/$1"
+	else
+		cd "$(gitRoot)/${project_name}"
+	fi
 }
 djps() {
-    project_name=$(basename $(gitRoot))
-    nvim "$(gitRoot)/${project_name}/settings.py"
+	project_name=$(basename $(gitRoot))
+	nvim "$(gitRoot)/${project_name}/settings.py"
 }
 
-djR() {dkcD && sleep 0.1; dkcU && sleep 0.1; djm $1}
+djR() {
+	dkcD && sleep 0.1
+	dkcU && sleep 0.1
+	djm $1
+}
+djRl() {
+	djR $1 && dj loadfixtures
+}
 
-djRl() {djR $1 && dj loadfixtures}
-
-djS() {djRl && djs}
-
+djS() {
+	djRl && djs
+}
 
 #=======
 # REACT
@@ -1536,66 +1525,65 @@ alias k='kubectl'
 # -r recursive (folders)
 alias rplz='rsync -Puvr'
 alias rs="rsync -rlptzv "
- # same as --partial --progress, --rsh is ssh by default
+# same as --partial --progress, --rsh is ssh by default
 
- # DO ALL THESE FROM THE ROOT OF THE DOWNLOAD (where you did sshP)
+# DO ALL THESE FROM THE ROOT OF THE DOWNLOAD (where you did sshP)
 rsclone() {
-#https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client
-    rsync -rlptzv --progress --delete --exclude=.git $1 $2
+	#https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client
+	rsync -rlptzv --progress --delete --exclude=.git $1 $2
 }
 
 rsupload() {
-#https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client
-    rsync -rlptzv --progress --delete --exclude=.git $1 $2
+	#https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client
+	rsync -rlptzv --progress --delete --exclude=.git $1 $2
 }
 
 sshp() {
-    if [[ -n $1 ]]; then
-        echo $1 > .remote
-    fi
+	if [[ -n $1 ]]; then
+		echo $1 >.remote
+	fi
 
-    if [[ -f .remote ]]; then
-        folder="$(basename $(cat .remote))"
-        rsync -rlptzv --backup-dir=$PLAYGROUND/SSH_BACKUPS --backup --progress --exclude=.git --exclude=env --exclude=.venv --exclude=.remote * "$(cat .remote)"
-        exit
-    fi
-    echo "argument or .remote file found"
+	if [[ -f .remote ]]; then
+		folder="$(basename $(cat .remote))"
+		rsync -rlptzv --backup-dir=$PLAYGROUND/SSH_BACKUPS --backup --progress --exclude=.git --exclude=env --exclude=.venv --exclude=.remote * "$(cat .remote)"
+		exit
+	fi
+	echo "argument or .remote file found"
 }
 
 sshP() {
 
-    if [[ -n $1 ]]; then
-        echo $1 > .remote
-    fi
+	if [[ -n $1 ]]; then
+		echo $1 >.remote
+	fi
 
-    if [[ -f .remote ]]; then
-        folder="$(basename $(cat .remote))"
-        rsync -rlptzv --backup-dir=$PLAYGROUND/SSH_BACKUPS --backup --progress  --exclude=.git --exclude=env --exclude=.venv --exclude=.remote "$(cat .remote)/*" .
-        exit
-    fi
-    echo ".remote not found, add argument to create one"
+	if [[ -f .remote ]]; then
+		folder="$(basename $(cat .remote))"
+		rsync -rlptzv --backup-dir=$PLAYGROUND/SSH_BACKUPS --backup --progress --exclude=.git --exclude=env --exclude=.venv --exclude=.remote "$(cat .remote)/*" .
+		exit
+	fi
+	echo ".remote not found, add argument to create one"
 }
 
 sshcl() {
-    if [[ -n $1 ]]; then
-        folder="$(basename $1)"
-        rsync -rlptzv --backup-dir=$PLAYGROUND/SSH_BACKUPS --backup --progress  --exclude=.git --exclude=env --exclude=.venv --exclude=.remote "$1" .
-        echo $1 > $folder/.remote
-    fi
-    echo "$1 not found, change argument"
+	if [[ -n $1 ]]; then
+		folder="$(basename $1)"
+		rsync -rlptzv --backup-dir=$PLAYGROUND/SSH_BACKUPS --backup --progress --exclude=.git --exclude=env --exclude=.venv --exclude=.remote "$1" .
+		echo $1 >$folder/.remote
+	fi
+	echo "$1 not found, change argument"
 }
 
 vimr() {
-    vim rsync://$1:$2
+	vim rsync://$1:$2
 }
 vimR() {
-    # in case rsync is not installed in remote machine
-    vim scp://$1/$2
+	# in case rsync is not installed in remote machine
+	vim scp://$1/$2
 }
 
 #==================
 # EXPRESS
 #==================
-
 
 alias initexpress="npx express-generator"
