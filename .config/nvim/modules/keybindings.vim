@@ -68,7 +68,7 @@ noremap <silent><c-w>S :sp #<cr>
 " nnoremap <CR> o<Esc>
 " nnoremap <S-CR> O<Esc>
 " nnoremap [13;2u o
-"
+
 noremap - /
 vnoremap - /
 " noremap / -
@@ -112,56 +112,46 @@ endfunction
 
 " nnoremap <leader>Sd  :call GetNameDmenu("something")<cr>
 function! CreateFileTouch()
-  let l:filename = GetName("Enter File Name: ")
+  let l:filename = GetName('Enter File Name: ')
   if len(l:filename) == 0
       return
   endif
 
   if l:filename =~ '\v.*/.+'
-    exec system('filename=' . l:filename . '; mkdir -p ${filename%\/*}/')
+    exec system('cd ' . expand("%:p:h") . '; filename=' . l:filename . '; mkdir -p ${filename%\/*}/')
   endif
 
-  exe ":!touch " . l:filename
+  exe ':!touch '. expand('%:p:h'). '/' . l:filename
   if !SpecialWindow()
     w
   endif
-  " this condition works when nerdtree is open or closed
-  if exists("g:NERDTree") && g:NERDTree.IsOpen()
-    :NERDTreeRefreshRoot
-  endif
+
 endfunction
 
 function! CreateFileEnter()
-  let l:filename = GetName("Enter File Name: ")
+  let l:filename = GetName('Enter File Name: ')
   if len(l:filename) == 0
       return
   endif
 
   if l:filename =~ '\v.*/.+'
-    exec system('filename=' . l:filename . '; mkdir -p ${filename%\/*}/')
+    exec system('cd ' . expand("%:p:h") . '; filename=' . l:filename . '; mkdir -p ${filename%\/*}/')
   endif
 
-  exe ":e " . l:filename
-  " this condition works when nerdtree is open or closed
-  if exists("g:NERDTree") && g:NERDTree.IsOpen()
-    :NERDTreeRefreshRoot
-  endif
+  exe ':e '. expand('%:p:h'). '/' . l:filename
 endfunction
 
 function! CreateDir()
-  let l:dir_name = GetName("Enter Dir Name: ")
+  let l:dir_name = GetName('Enter Dir Name: ')
   if len(l:dir_name) == 0
       return
   endif
-  exe ":!mkdir -p " . l:dir_name
+  exe ':!mkdir -p '. expand('%:p:h'). '/' . l:dir_name
 
   if !SpecialWindow()
     w
   endif
 
-  if exists("g:NERDTree") && g:NERDTree.IsOpen()
-    :NERDTreeRefreshRoot
-  endif
 endfunction
 
 nnoremap <silent><leader>sn  :silent call CreateFileEnter()<cr>
@@ -242,8 +232,9 @@ vnoremap <a-k> <Esc>/<++><Enter>"_c4l
 "-----------------------
 
 nnoremap <leader>.vS :%s/<c-r>=expand("<cword>")<cr>//gI<Left><Left><Left>
-nnoremap <leader>.vs :%s///gI<Left><Left><Left><Left>
-vnoremap <leader>.vs :%s///gI<Left><Left><Left><Left>
+" nnoremap <leader>.vs :%s///gI<Left><Left><Left><Left>
+nnoremap <leader>.vs :%s/
+vnoremap <leader>.vs :s///gI<Left><Left><Left><Left>
 nnoremap <leader>.vg :%g//norm!<Left><Left><Left><Left><Left><Left>
 nnoremap <leader>.vn :%norm!<space>
 vnoremap <leader>.vg :g//norm!<Left><Left><Left><Left><Left><Left>

@@ -323,6 +323,12 @@ _G.packer_plugins = {
     path = "/home/kanon/.local/share/nvim/site/pack/packer/opt/one-small-step-for-vimkind",
     url = "https://github.com/jbyuki/one-small-step-for-vimkind"
   },
+  orgmode = {
+    config = { "\27LJ\1\0029\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\forgmode\frequire\0" },
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/orgmode",
+    url = "https://github.com/nvim-orgmode/orgmode"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/kanon/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -515,6 +521,11 @@ _G.packer_plugins = {
     path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-projectionist",
     url = "https://github.com/tpope/vim-projectionist"
   },
+  ["vim-python-pep8-indent"] = {
+    loaded = true,
+    path = "/home/kanon/.local/share/nvim/site/pack/packer/start/vim-python-pep8-indent",
+    url = "https://github.com/Vimjas/vim-python-pep8-indent"
+  },
   ["vim-rainbow"] = {
     commands = { "RainbowToggle" },
     config = { "\27LJ\1\0020\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\0\0:\1\2\0G\0\1\0\19rainbow_active\6g\bvim\0" },
@@ -651,6 +662,10 @@ time([[Config for which-key.nvim]], false)
 time([[Config for indentLine]], true)
 try_loadstring("\27LJ\1\2X\0\0\2\0\5\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0'\1\0\0:\1\4\0G\0\1\0\23indentLine_enabled\bâ”†\20indentLine_char\6g\bvim\0", "config", "indentLine")
 time([[Config for indentLine]], false)
+-- Config for: orgmode
+time([[Config for orgmode]], true)
+try_loadstring("\27LJ\1\0029\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\forgmode\frequire\0", "config", "orgmode")
+time([[Config for orgmode]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 require("core.autopairs2")
@@ -659,10 +674,10 @@ time([[Config for nvim-autopairs]], false)
 time([[Config for project.nvim]], true)
 require("lsp.project")
 time([[Config for project.nvim]], false)
--- Config for: vim-move
-time([[Config for vim-move]], true)
-try_loadstring("\27LJ\1\2S\0\0\2\0\5\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0'\1\0\0:\1\4\0G\0\1\0\18move_map_keys\6C\22move_key_modifier\6g\bvim\0", "config", "vim-move")
-time([[Config for vim-move]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("core.telescope")
+time([[Config for telescope.nvim]], false)
 -- Config for: targets.vim
 time([[Config for targets.vim]], true)
 try_loadstring("\27LJ\1\2Í\1\0\0\2\0\n\0\0174\0\0\0007\0\1\0003\1\3\0:\1\2\0004\0\0\0007\0\1\0003\1\5\0:\1\4\0004\0\0\0007\0\1\0003\1\a\0:\1\6\0004\0\0\0007\0\b\0%\1\t\0>\0\2\1G\0\1\0000source ~/.config/nvim/modules/visual-at.vim\bcmd\1\3\0\0\6n\6N\15targets_nl\1\5\0\0\6a\6i\6A\6I\24targets_mapped_aiAI\1\5\0\0\6a\6l\6A\6L\17targets_aiAI\6g\bvim\0", "config", "targets.vim")
@@ -671,22 +686,22 @@ time([[Config for targets.vim]], false)
 time([[Config for vim-textobj-entire]], true)
 try_loadstring("\27LJ\1\2H\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\1\0:\1\2\0G\0\1\0+textobj_entire_no_default_key_mappings\6g\bvim\0", "config", "vim-textobj-entire")
 time([[Config for vim-textobj-entire]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require("core.telescope")
-time([[Config for telescope.nvim]], false)
 -- Config for: tokyonight.nvim
 time([[Config for tokyonight.nvim]], true)
 require("config.appearance.themes.tokyonight")
 time([[Config for tokyonight.nvim]], false)
+-- Config for: vim-move
+time([[Config for vim-move]], true)
+try_loadstring("\27LJ\1\2S\0\0\2\0\5\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0'\1\0\0:\1\4\0G\0\1\0\18move_map_keys\6C\22move_key_modifier\6g\bvim\0", "config", "vim-move")
+time([[Config for vim-move]], false)
 -- Config for: vim-fugitive
 time([[Config for vim-fugitive]], true)
 try_loadstring("\27LJ\1\2M\0\0\2\0\4\0\0054\0\0\0007\0\1\0%\1\3\0:\1\2\0G\0\1\0&internal,vertical,closeoff,filler\fdiffopt\bopt\bvim\0", "config", "vim-fugitive")
 time([[Config for vim-fugitive]], false)
--- Config for: splitjoin.vim
-time([[Config for splitjoin.vim]], true)
-try_loadstring("\27LJ\1\2f\0\0\2\0\6\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0%\1\5\0:\1\4\0G\0\1\0\agS\27splitjoin_join_mapping\ags\28splitjoin_split_mapping\6g\bvim\0", "config", "splitjoin.vim")
-time([[Config for splitjoin.vim]], false)
+-- Config for: vim-textobj-line
+time([[Config for vim-textobj-line]], true)
+try_loadstring("\27LJ\1\2F\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\1\0:\1\2\0G\0\1\0)textobj_line_no_default_key_mappings\6g\bvim\0", "config", "vim-textobj-line")
+time([[Config for vim-textobj-line]], false)
 -- Config for: ultisnips
 time([[Config for ultisnips]], true)
 require("lsp.ultisnips")
@@ -703,10 +718,10 @@ time([[Config for Comment.nvim]], false)
 time([[Config for null-ls.nvim]], true)
 require("lsp.formatters")
 time([[Config for null-ls.nvim]], false)
--- Config for: vim-textobj-line
-time([[Config for vim-textobj-line]], true)
-try_loadstring("\27LJ\1\2F\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\1\0:\1\2\0G\0\1\0)textobj_line_no_default_key_mappings\6g\bvim\0", "config", "vim-textobj-line")
-time([[Config for vim-textobj-line]], false)
+-- Config for: splitjoin.vim
+time([[Config for splitjoin.vim]], true)
+try_loadstring("\27LJ\1\2f\0\0\2\0\6\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0%\1\5\0:\1\4\0G\0\1\0\agS\27splitjoin_join_mapping\ags\28splitjoin_split_mapping\6g\bvim\0", "config", "splitjoin.vim")
+time([[Config for splitjoin.vim]], false)
 -- Conditional loads
 time([[Conditional loading of editorconfig-vim]], true)
   require("packer.load")({"editorconfig-vim"}, {}, _G.packer_plugins)
@@ -740,17 +755,17 @@ pcall(vim.cmd, [[au CmdUndefined Obsession! ++once lua require"packer.load"({'vi
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Copilot lua require("packer.load")({'copilot.vim'}, { cmd = "Copilot", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSHighlightCapturesUnderCursor lua require("packer.load")({'playground'}, { cmd = "TSHighlightCapturesUnderCursor", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file GV lua require("packer.load")({'gv.vim'}, { cmd = "GV", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Far lua require("packer.load")({'far.vim'}, { cmd = "Far", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Octo lua require("packer.load")({'octo.nvim'}, { cmd = "Octo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Bclose lua require("packer.load")({'bclose.vim'}, { cmd = "Bclose", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Fardo lua require("packer.load")({'far.vim'}, { cmd = "Fardo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file HopChar1 lua require("packer.load")({'hop.nvim'}, { cmd = "HopChar1", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file VimApm lua require("packer.load")({'vim-apm'}, { cmd = "VimApm", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Obsession lua require("packer.load")({'vim-obsession'}, { cmd = "Obsession", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Octo lua require("packer.load")({'octo.nvim'}, { cmd = "Octo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Fardo lua require("packer.load")({'far.vim'}, { cmd = "Fardo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Dispatch lua require("packer.load")({'vim-dispatch'}, { cmd = "Dispatch", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Obsession lua require("packer.load")({'vim-obsession'}, { cmd = "Obsession", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Far lua require("packer.load")({'far.vim'}, { cmd = "Far", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Bclose lua require("packer.load")({'bclose.vim'}, { cmd = "Bclose", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file UndotreeToggle lua require("packer.load")({'undotree'}, { cmd = "UndotreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSPlaygroundToggle lua require("packer.load")({'playground'}, { cmd = "TSPlaygroundToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file HopChar1 lua require("packer.load")({'hop.nvim'}, { cmd = "HopChar1", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file RainbowToggle lua require("packer.load")({'vim-rainbow'}, { cmd = "RainbowToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Start lua require("packer.load")({'vim-dispatch'}, { cmd = "Start", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)

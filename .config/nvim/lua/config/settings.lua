@@ -28,6 +28,7 @@ vim.o.wildmode = "full"
 
 vim.o.backup = true
 vim.o.undofile = true
+vim.o.inccommand = "nosplit"
 --Make backup before overwriting the current buffer
 vim.o.writebackup = true
 -- Overwrite the original backup file

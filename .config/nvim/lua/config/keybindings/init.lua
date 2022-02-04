@@ -63,15 +63,25 @@ map(
 )
 map("n", "<leader>sP", ":Lex<cr>", nor_s)
 
+-- for pasting (no replacing of the register when pasting in visual mode)
+map("x", "p", "pgvy", nor_s)
+
 -- file path
 map("n", "<leader>sg", ":lua print(vim.fn.expand('%:p'))<cr>", nor)
 
-map("v", "<a-n>", ":m '>+1<cr>gv=gv", nor)
-map("v", "<a-e>", ":m '<-2<cr>gv=gv", nor)
-map("i", "<a-e>", "<esc>:m .-2<cr>==a", nor)
-map("i", "<a-n>", "<esc>:m .+1<cr>==a", nor)
-map("n", "<a-e>", ":m .-2<cr>==", nor)
-map("n", "<a-n>", ":m .+1<cr>==", nor)
+map("v", "<a-down>", ":m '>+1<cr>gv=gv", nor)
+map("v", "<a-up>", ":m '<-2<cr>gv=gv", nor)
+map("i", "<a-up>", "<esc>:m .-2<cr>==a", nor)
+map("i", "<a-down>", "<esc>:m .+1<cr>==a", nor)
+map("n", "<a-up>", ":m .-2<cr>==", nor)
+map("n", "<a-down>", ":m .+1<cr>==", nor)
+
+-- map("v", "<a-n>", ":m '>+1<cr>gv=gv", nor)
+-- map("v", "<a-e>", ":m '<-2<cr>gv=gv", nor)
+-- map("i", "<a-e>", "<esc>:m .-2<cr>==a", nor)
+-- map("i", "<a-n>", "<esc>:m .+1<cr>==a", nor)
+-- map("n", "<a-e>", ":m .-2<cr>==", nor)
+-- map("n", "<a-n>", ":m .+1<cr>==", nor)
 
 map("i", "<c-y>", "copilot#Accept('<CR>')", vim.tbl_extend("keep", s_e, { script = true }))
 map("", "<leader>cc", ":lua require('utils.lua.keybindings').toggle_copilot()<cr>", nor)
@@ -129,9 +139,6 @@ map("", "zD", "zE", nor)
 
 -- tagbar
 map("n", "<c-h>", ":TagbarToggle<cr>", nor_s)
-
-map("n", ",", ";", nor_s)
-map("n", ";", ",", nor_s)
 
 -- hop
 map("n", "s", ":HopChar1<cr>", nor_s)
@@ -262,3 +269,6 @@ nmap <leader>csr <Plug>SnipRun
 nmap <leader>cso <Plug>SnipRunOperator
 vmap <leader>csr <Plug>SnipRun
 ]])
+
+-- , configuration
+map("n", "<leader>,li", ":LspInfo<cr>", nor_s)

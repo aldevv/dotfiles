@@ -10,13 +10,20 @@
 -- " <
 
 -- " let test#strategy = "dispatch"
-vim.cmd([[let test#strategy = "neoterm"
+-- " let test#strategy = "harpoon" -- TODO check this
+
+-- let test#strategy = {
+--   \ 'nearest': 'neovim',
+--   \ 'file':    'dispatch',
+--   \ 'suite':   'basic',
+-- \}
+-- vim.cmd([[let test#strategy = "neovim"
+vim.cmd([[let test#strategy = "harpoon"
 
 autocmd BufReadPost * let test#project_root = git#find_current_root(1)
 
 augroup TestType
-" autocmd User ProjectionistActivate call <SID>choose_test_runner()
-autocmd User ProjectionistActivate call <SID>get_testrunner()
+    autocmd User ProjectionistActivate call <SID>get_testrunner()
 augroup END
 
 function s:get_testrunner()
@@ -67,12 +74,12 @@ function s:get_testrunner()
 endfunction
 
 function s:choose_test_runner()
-autocmd FileType python let g:test#python#runner = projectionist#query('testrunner')[1][1]
-autocmd FileType javascript,typescript let g:test#javascript#runner = projectionist#query('testrunner')[1][1]
-  autocmd FileType java let g:test#java#runner = projectionist#query('testrunner')[1][1]
-  autocmd FileType go let g:test#go#runner = projectionist#query('testrunner')[1][1]
-  autocmd FileType scala let g:test#scala#runner = projectionist#query('testrunner')[1][1]
-  autocmd FileType php let g:test#php#runner = projectionist#query('testrunner')[1][1]
+autocmd FileType python let g:test#python#runner = projectionist#query('testrunner')[0][1]
+autocmd FileType javascript,typescript let g:test#javascript#runner = projectionist#query('testrunner')[0][1]
+  autocmd FileType java let g:test#java#runner = projectionist#query('testrunner')[0][1]
+  autocmd FileType go let g:test#go#runner = projectionist#query('testrunner')[0][1]
+  autocmd FileType scala let g:test#scala#runner = projectionist#query('testrunner')[0][1]
+  autocmd FileType php let g:test#php#runner = projectionist#query('testrunner')[0][1]
 endfunction
 
 

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+files=$(fd '.' $WIKI -t f -e org)
+
+chosen_file=$(echo "$files" | xargs -n 1 basename | dmenu)
+
+chosen_filepath=$(echo "$files" | grep $chosen_file)
+
+nvim $chosen_filepath

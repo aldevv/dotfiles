@@ -52,7 +52,8 @@ super + alt + p
 	mpv "$($UTILITIES/anime/run_episode)"
 
 mode_switch + w
-    emacs $WIKI/wiki.org
+    st -e nvim $WIKI/wiki.org >/dev/null 2>&1
+    # emacs $WIKI/wiki.org
 
 super + r
     st -e  ranger >/dev/null 2>&1
@@ -93,8 +94,12 @@ mode_switch + minus
 # mode_switch + c
 # 	copyq toggle
 
+mode_switch + shift + c
+    flameshot gui --path "$HOME/Pictures/Screenshots/"
+
 mode_switch + c
-	clipcat-menu
+    copyq menu
+	# clipcat-menu
 
 button8
 	xdotool key ctrl+v
@@ -177,7 +182,7 @@ mode_switch + b
 mode_switch + shift + b
 	 $UTILITIES/search/searchBook
 
-mode_switch + C
+mode_switch + x
 	 $UTILITIES/classes/searchClass
 
 mode_switch + †

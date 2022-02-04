@@ -1,5 +1,15 @@
 #!/bin/bash
 
+alias csvviewer="visidata"
+
+# projectionist
+alias prje="prj edit"
+alias prj.="bat .projections.json"
+
+keys() {
+    xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
+}
+
 # arcolinux fix gpg
 #/usr/local/bin/arcolinux-fix-pacman-gpg-conf
 #
@@ -61,14 +71,7 @@ vman() {
 	nvim -c "Man $1" -c "silent only"
 }
 
-# tmux
-function tms() (
-	if [ -n "$1" ]; then
-		tmux switch -t $1
-	else
-		echo "no session name"
-	fi
-)
+
 
 alias openports="sudo netstat -putln | grep LISTEN"
 alias .a="pipenv shell"
@@ -96,6 +99,16 @@ alias serve="rclone serve dlna --addr=:9092 --name=HaganeMedia $1"
 alias cpP="pwd | xsel -b"
 
 # TMUX
+
+function tms() (
+	if [ -n "$1" ]; then
+		tmux switch -t $1
+	else
+		echo "no session name"
+	fi
+)
+alias tmS="tma \$(tmux list-sessions | sed -E 's/:.*$//' | fzf --no-preview)"
+
 alias tm="tmux"       # attach
 alias tmls="tmux ls"  # list sessions
 alias tmA="tmux a -t" # attach
@@ -138,6 +151,7 @@ fi
 #git init --bare $HOME/<repo_name>
 #dotrepo config --local status.showUntrackedFiles no
 
+alias g.='bat .gitignore'
 alias dotrepo="git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME"
 alias \
 	dst='dotrepo status' \
@@ -220,7 +234,6 @@ alias ___='sudo -E env "PATH=$PATH" '
 
 # yta="$UTILITIES/youtube/downloadAudio.sh"\
 # ytv="$UTILITIES/youtube/downloadVideo.sh"\
-alias vim=nvim
 alias \
 	pkg="sudo $PKG" \
 	m="mkdir" \
@@ -494,6 +507,16 @@ alias boosto='chmod +x'
 #           git
 #=====================================================
 
+grmsecret() {
+    # check https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository
+    # must be path from repo ex: ./core/etc.py
+    git filter-repo --invert-paths --path "$1"
+}
+ggrep() {
+    #look for strings in all commits
+    git rev-list --all | GIT_PAGER=cat xargs git grep "$1"
+}
+
 tobare() {
     # commit the initial structure!
     folder="$(basename $(pwd))"
@@ -615,6 +638,7 @@ alias gbsr='git bisect reset'
 alias gbss='git bisect start'
 
 alias ggc='git commit -v'
+alias ggcm='ggc -m'
 alias ggca='ggc -a'
 alias ggcA='git commit -v --amend'
 alias ggcAn='git commit -v --amend --no-edit'
@@ -633,7 +657,7 @@ alias gauthor='git commit --amend --author="Juan Alejandro Bernal <jbernal@unal.
 alias gcld='git clone --depth=1'
 alias gcl='git clone'
 gclb() {
-	git clone --bare $1 $(basename $1)
+	git clone --bare $1 ${$(basename $1)%.*}
 }
 alias gclean='git clean -id'
 alias gpristine='git reset --hard && git clean -dffx'
@@ -1390,15 +1414,22 @@ alias ovpnu='_ openvpn --config /etc/openvpn/ProtonVPN_server_configs/us-free-02
 alias ovpnd='_ killall openvpn'
 alias openconn="_ cat $WORK/vpn/pass | _ openconnect --config=$WORK/vpn/config --passwd-on-stdin -b vpn.unal.edu.co > $WORK/vpn/vpn-output.log 2>&1"
 alias ofv='_ openfortivpn'
-alias ofvc='ofv -c $MASTER/Work/local/covidalert-back/.vpn/config > $MASTER/Work/local/covidalert-back/.vpn/vpn.log 2>&1 &'
+alias ofvc='ofv -c $WORK/local/covidalert-back/.vpn/config > $WORK/local/covidalert-back/.vpn/vpn.log 2>&1 &'
 alias wvpn='openconn'
 
 #=======
 # GITHUB
 #=======
-alias ghprc='gh pr create'
+alias ghrc='gh repo create'
+alias ghrf='gh repo fork'
+alias ghpc='gh pr create'
 alias ghil='gh issue list'
 alias ghiv='gh issue view --comments $(gh issue list | fzf --no-preview | cut -f1)'
+
+#=======
+# PYTHON
+#=======
+alias bpy='[ -f Pipfile ] && b Pipfile || b requirements.txt'
 
 #=======
 # FLASK
@@ -1408,15 +1439,19 @@ alias fr="export FLASK_APP=app.py && flask run"
 #=======
 # DJANGO
 #=======
+
 alias dj='python manage.py'
 alias djd='python manage.py dumpdata'
-alias djc='python manage.py createsuperuser'
+alias djc='django-admin startproject'
+alias djca='python manage.py startapp'
+alias djcs='python manage.py createsuperuser'
 alias djtp= 'python manage.py test --parallel'
 alias djt='python manage.py test'
 alias djr='python manage.py runserver'
 alias djM='python manage.py makemigrations'
 alias djm='python manage.py migrate'
-alias djl='python manage.py loadfixtures'
+alias djl='python manage.py loaddata'
+alias djL='python manage.py loadfixtures'
 alias djs='python manage.py shell'
 
 djsr() {

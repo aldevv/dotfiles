@@ -41,3 +41,6 @@ rsync
 alacritty
 unzip
 shellcheck
+flameshot
+ripgrep
+ripgrep-all

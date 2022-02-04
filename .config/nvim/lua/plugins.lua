@@ -245,6 +245,7 @@ return require("packer").startup({
         -- use("inkarkat/vim-ReplaceWithRegister")
 
         use({ "preservim/tagbar", cmd = { "TagbarToggle" } })
+        -- --------------------
         use({
             "mattn/emmet-vim",
             config = function()
@@ -411,6 +412,16 @@ return require("packer").startup({
             cmd = "Octo",
             config = req("core.octo"),
         })
+
+        use({ "Vimjas/vim-python-pep8-indent" }) -- for indentation, treesitter not functional yet 23/01/2022
+        use({
+            "nvim-orgmode/orgmode",
+            config = function()
+                require("orgmode").setup({})
+            end,
+        })
+
+        -- check arpeggio https://github.com/kana/vim-arpeggio
 
         -- not working with sshconfig as of 13 jan 2021
         -- use({

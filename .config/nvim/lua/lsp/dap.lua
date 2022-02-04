@@ -1,7 +1,8 @@
 local dap_install = require("dap-install")
 local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
 local configs = require("lsp.dap-configs")
-local level = "ERROR" -- error, debug, info, warn?
+-- local level = "ERROR" -- error, debug, info, warn?
+local level = "trace" -- error, debug, info, warn?
 require("dap").set_log_level(level)
 
 dap_install.setup({
@@ -19,8 +20,7 @@ dap_install.setup({
 -- end
 -- for lua you need to run :lua require('osv').launch(), and then use
 -- require('osv').run_this(), since the debugger interface is not working
-local debuggers = { "python", "lua"}
-
+local debuggers = { "python", "lua" }
 
 for _, d in ipairs(debuggers) do
     -- TODO not working since it opens new terminal, check later 06/01/22
@@ -132,4 +132,3 @@ repl.commands = vim.tbl_extend("force", repl.commands, {
         [".restart"] = dap.restart,
     },
 })
-

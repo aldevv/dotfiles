@@ -25,7 +25,7 @@ local servers = {
     "sqlls",
     "hls", -- haskell
     "solargraph", -- ruby
-    "emmet_ls",
+    -- "emmet_ls",
     "graphql",
 }
 local lsp_installer_servers = require("nvim-lsp-installer.servers")

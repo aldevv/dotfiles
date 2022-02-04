@@ -196,13 +196,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  // OSL() layer for one keypress
  // TG() toggles layer
+ // KC_LEAD, for leader, enable it in rules.mk as well, also uncomment the leader sectio
 
  [_COLEMAK] = LAYOUT( \
   CAPS_EMU,   WK1,    WK2,     WK3,     WK4,      WK5,                     WK6,     WK7,       WK8,     WK9,      WK0,    LGUI(LCM_W), \
   KC_TAB,   LCM_Q,   LCM_W,    LCM_F,    LCM_P,    LCM_G,               LCM_J,    LCM_L,    LCM_U,    LCM_Y,    LCM_NTIL, KC_LBRC, \
   KC_ESC, LCM_A,   LCM_R,    LCM_S,    LCM_T,    LCM_D,                 LCM_H,    LCM_N,    LCM_E,    LCM_I,    LCM_O, LCM_QUOT, \
-  KC_LSPO,  LCM_Z,   LCM_X,    LCM_C,    LCM_V,    LCM_B, LCM_BSLS,   KC_LEAD, LCM_K,    LCM_M,    LCM_COMM, LCM_DOT,  LCM_MINS, KC_RSPC,\
-              KC_LGUI, OSL(_RAISE), LALT_T(KC_ENT), CTL_T(KC_DEL),   KC_BSPC, LT(_LOWER,KC_SPC), ROPT_T(KC_F5), TG(_RAISE) \
+  KC_LSPO,  LCM_Z,   LCM_X,    LCM_C,    LCM_V,    LCM_B, LCM_BSLS,   KC_AMPR, LCM_K,    LCM_M,    LCM_COMM, LCM_DOT,  LCM_MINS, KC_RSPC,\
+              KC_LGUI, OSL(_RAISE), LALT_T(KC_ENT), CTL_T(KC_DEL),   KC_BSPC, LT(_LOWER,KC_SPC), ROPT_T(KC_F5), OSL(_ADJUST) \
 ),
 
  /* /1* [_QWERTY] = LAYOUT( \ */
@@ -250,9 +251,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_RAISE] = LAYOUT( \
           _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______, \
-        KC_PSCREEN,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  LSFT(KC_PSCREEN), \
-           KC_CAPS, KC_BRID, KC_BRIU, KC_MUTE, KC_VOLD, KC_VOLU,                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,  KC_F11, KC_F12, \
-  _______, XXXXXXX, KC_MEDIA_SELECT, KC_MEDIA_PLAY_PAUSE, LALT(KC_F4),_______,_______,  _______, XXXXXXX, KC_LALT,  SCLN_END, COLN_END, _______, _______, \
+           XXXXXXX,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  XXXXXXX, \
+           XXXXXXX, XXXXXXX, XXXXXXX, KC_F11, KC_F12, LSFT(KC_PSCREEN),                         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, XXXXXXX, XXXXXXX, \
+  _______, XXXXXXX, KC_MEDIA_SELECT, KC_MEDIA_PLAY_PAUSE, LALT(KC_F4),_______,_______,  _______, XXXXXXX, XXXXXXX,  SCLN_END, COLN_END, _______, _______, \
                              _______, _______, _______,  _______,               _______, RCTL_T(KC_SPC),  LT(_ADJUST,KC_SPC), _______ \
 ),
 
@@ -270,10 +271,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
+// keycodes https://docs.qmk.fm/#/faq_keymap?id=what-keycodes-can-i-use
   [_ADJUST] = LAYOUT( \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, KC_POWER, KC_HELP, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, LCM_A, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         KC_HOME, KC_PGDOWN, KC_PGUP, KC_END, XXXXXXX, KC_LSFT, \
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  XXXXXXX, KC_SYSTEM_SLEEP, XXXXXXX, KC_BRID, KC_BRIU, XXXXXXX,             XXXXXXX, XXXXXXX, KC_INS, XXXXXXX, XXXXXXX, XXXXXXX, \
+  KC_CAPS, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, KC_HELP,         KC_HOME, KC_PGDOWN, KC_PGUP, KC_END, XXXXXXX, KC_LSFT, \
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,\
                              _______, _______, _______, _______, _______,  _______, _______, _______ \
   )
@@ -458,50 +460,50 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // LEADER KEY
 // ============
 // for colemak codes
-LEADER_EXTERNS();
-
-void matrix_scan_user(void) {
-    LEADER_DICTIONARY() {
-      leading = false;
-      leader_end();
-
-    SEQ_ONE_KEY(LCM_M) {
-        SEND_STRING("255.255.255.");
-    }
-
-    SEQ_ONE_KEY(LCM_H) {
-        SEND_STRING("https:" SS_LSFT("77"));
-    }
-    SEQ_TWO_KEYS(KC_LSPO, LCM_H) {
-        SEND_STRING("https:" SS_LSFT("77") "github.com" SS_LSFT("7"));
-    }
-
-      /* register_code(KC_LGUI); */
-      /* register_code(KC_S); */
-      /* unregister_code(KC_S); */
-      /* unregister_code(KC_LGUI) */
-    SEQ_ONE_KEY(KC_LEAD) {
-        /* SEND_STRING(); */
-        SEND_STRING("jbernal" SS_ALGR("2") "unal.edu.co");
-    }
-    SEQ_ONE_KEY(LCM_C) {
-        //TEMPORAL
-        // setxkbmap latam -variant colemak
-        SEND_STRING("rfgxebma" SS_TAP(X_P) " iagam " SS_TAP(X_MINS) "vapuakg cyifmae\n");
-
-    }
-    SEQ_TWO_KEYS(KC_RSPC, LCM_C) {
-        //PERMANENT
-        // sudo localectl set-x11-keymap latam pc104 colemak && sudo localectl set-keymap colemak
-        SEND_STRING("rlsy iycaifcgi rfg" SS_TAP(X_MINS) "x11" SS_TAP(X_MINS) "efjma" SS_TAP(X_P) " iagam " SS_TAP(X_P) "c104 cyifmae " SS_LSFT("77") " rlsy iycaifcgi rfg" SS_TAP(X_MINS) "efjma" SS_TAP(X_P) " cyifmae\n");
-    }
-    /* SEQ_TWO_KEYS(KC_E, KC_D) { */
-    /*   SEND_STRING(SS_LGUI("r") "cmd\n" SS_LCTL("c")); */
-      /* did_leader_succeed = true; */
-    /* } */
-    leader_end();
-  }
-}
+/* LEADER_EXTERNS(); */
+/**/
+/* void matrix_scan_user(void) { */
+/*     LEADER_DICTIONARY() { */
+/*       leading = false; */
+/*       leader_end(); */
+/**/
+/*     SEQ_ONE_KEY(LCM_M) { */
+/*         SEND_STRING("255.255.255."); */
+/*     } */
+/**/
+/*     SEQ_ONE_KEY(LCM_H) { */
+/*         SEND_STRING("https:" SS_LSFT("77")); */
+/*     } */
+/*     SEQ_TWO_KEYS(KC_LSPO, LCM_H) { */
+/*         SEND_STRING("https:" SS_LSFT("77") "github.com" SS_LSFT("7")); */
+/*     } */
+/**/
+/*       // register_code(KC_LGUI); */
+/*       // register_code(KC_S); */
+/*       // unregister_code(KC_S); */
+/*       // unregister_code(KC_LGUI) */
+/*     SEQ_ONE_KEY(KC_LEAD) { */
+/*         // SEND_STRING(); */
+/*         SEND_STRING("jbernal" SS_ALGR("2") "unal.edu.co"); */
+/*     } */
+/*     SEQ_ONE_KEY(LCM_C) { */
+/*         //TEMPORAL */
+/*         // setxkbmap latam -variant colemak */
+/*         SEND_STRING("rfgxebma" SS_TAP(X_P) " iagam " SS_TAP(X_MINS) "vapuakg cyifmae\n"); */
+/**/
+/*     } */
+/*     SEQ_TWO_KEYS(KC_RSPC, LCM_C) { */
+/*         //PERMANENT */
+/*         // sudo localectl set-x11-keymap latam pc104 colemak && sudo localectl set-keymap colemak */
+/*         SEND_STRING("rlsy iycaifcgi rfg" SS_TAP(X_MINS) "x11" SS_TAP(X_MINS) "efjma" SS_TAP(X_P) " iagam " SS_TAP(X_P) "c104 cyifmae " SS_LSFT("77") " rlsy iycaifcgi rfg" SS_TAP(X_MINS) "efjma" SS_TAP(X_P) " cyifmae\n"); */
+/*     } */
+/*     // SEQ_TWO_KEYS(KC_E, KC_D) { */
+/*      // SEND_STRING(SS_LGUI("r") "cmd\n" SS_LCTL("c")); */
+/*       // did_leader_succeed = true; */
+/*     // } */
+/*     leader_end(); */
+/*   } */
+/* } */
 
 /* void leader_start(void) { */
 /*   // sequence started */

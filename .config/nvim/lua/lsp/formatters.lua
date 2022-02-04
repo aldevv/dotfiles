@@ -37,8 +37,8 @@ null_ls.setup({
         -- formatting.clang_format,
         formatting.uncrustify,
         formatting.gofmt,
-        formatting.json_tool,
-        formatting.prettier,
+        -- formatting.json_tool, jsonls already has one
+        -- formatting.prettier,
         diagnostics.vint, --> for vim
         -- formatting.eslint_d,
         diagnostics.shellcheck.with({ extra_filetypes = { "zsh", "bash" } }),
@@ -51,7 +51,7 @@ null_ls.setup({
         -- formatting.eslint,
         -- diagnostics.eslint,
         -- formatting.prettier,
-        diagnostics.flake8.with({ filetypes = { "python" } }),
+        diagnostics.flake8.with({ extra_args = { "--ignore", "E203", "--max-line-length", "88" } }), -- extra args for black
         -- completion.spell,
         -- code_actions.gitsigns,
         code_actions.gitsigns,

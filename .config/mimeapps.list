@@ -72,6 +72,7 @@ x-scheme-handler/msteams=teams.desktop
 x-scheme-handler/postman=Postman.desktop
 x-scheme-handler/notion=notion-app.desktop
 x-scheme-handler/webcal=chromium.desktop
+x-scheme-handler/discord-668477264995811338=nuclear.desktop
 
 [Removed Associations]
 application/pdf=wine-extension-pdf.desktop;

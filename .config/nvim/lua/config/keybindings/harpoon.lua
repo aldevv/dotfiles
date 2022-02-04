@@ -22,28 +22,49 @@ M.load_mappings = function()
 
     map("n", "<leader>htc", ":lua require('harpoon.term').clear_all()<cr>", nor_s)
 
-    map("n", "<leader>!", ":lua require('harpoon.term').gotoTerminal(1)<cr>", nor_s)
-    map("n", "<leader>ht!", ":lua require('harpoon.term').sendCommand(1, 'ls -la')<cr>", nor_s)
-
-    map("n", '<leader>"', ":lua require('harpoon.term').gotoTerminal(2)<cr>", nor_s)
+    map("n", "<leader>ht!", ":lua require('harpoon.term').sendCommand(1, 1)<cr>", nor_s)
     map("n", '<leader>ht"', ":lua require('harpoon.term').sendCommand(1, 'ls -la')<cr>", nor_s)
+    -- map("n", "<leader>ht!", ":lua require('harpoon.term').sendCommand(1, 'ls -la')<cr>", nor_s)
 
-    map("n", "<leader>#", ":lua require('harpoon.term').gotoTerminal(3)<cr>", nor_s)
-    map("n", "<leader>$", ":lua require('harpoon.term').gotoTerminal(4)<cr>", nor_s)
-    map("n", "<leader>%", ":lua require('harpoon.term').gotoTerminal(5)<cr>", nor_s)
-    map("n", "<leader>&", ":lua require('harpoon.term').gotoTerminal(6)<cr>", nor_s)
-    map("n", "<leader>/", ":lua require('harpoon.term').gotoTerminal(7)<cr>", nor_s)
-    map("n", "<leader>(", ":lua require('harpoon.term').gotoTerminal(8)<cr>", nor_s)
-    map("n", "<leader>)", ":lua require('harpoon.term').gotoTerminal(9)<cr>", nor_s)
+    -- you can use <leader>1-9 for commands
+    if vim.fn.getenv("TMUX") ~= vim.NIL then
+        map("n", "<leader>hF", ":lua require('harpoon.tmux').sendCommand(1, 1)<cr>", nor_s)
+        map("n", "<leader>hP", ":lua require('harpoon.tmux').sendCommand(2, 1)<cr>", nor_s)
 
-    map("n", "<c-n>", ":lua require('harpoon.ui').nav_file(1)<cr>", nor_s)
-    map("n", "<c-e>", ":lua require('harpoon.ui').nav_file(2)<cr>", nor_s)
-    map("n", "<c-t>", ":lua require('harpoon.ui').nav_file(3)<cr>", nor_s)
-    map("n", "<c-s>", ":lua require('harpoon.ui').nav_file(4)<cr>", nor_s)
-    map("n", "<leader>5", ":lua require('harpoon.ui').nav_file(5)<cr>", nor_s)
-    map("n", "<leader>6", ":lua require('harpoon.ui').nav_file(6)<cr>", nor_s)
-    map("n", "<leader>7", ":lua require('harpoon.ui').nav_file(7)<cr>", nor_s)
-    map("n", "<leader>8", ":lua require('harpoon.ui').nav_file(8)<cr>", nor_s)
-    map("n", "<leader>9", ":lua require('harpoon.ui').nav_file(9)<cr>", nor_s)
+        map("n", "<leader>hf", ":lua require('harpoon.tmux').sendCommand(1, '')<left><left>", nor)
+        map("n", "<leader>hp", ":lua require('harpoon.tmux').sendCommand(2, '')<left><left>", nor)
+
+        map("n", "<leader>hs", ":lua require('harpoon.tmux').gotoTerminal(1)<cr>", nor_s)
+        map("n", "<leader>ht", ":lua require('harpoon.tmux').gotoTerminal(2)<cr>", nor_s)
+    else
+        map("n", "<leader>hF", ":lua require('harpoon.term').sendCommand(1, 1)<cr>", nor_s)
+        map("n", "<leader>hP", ":lua require('harpoon.term').sendCommand(2, 1)<cr>", nor_s)
+
+        map("n", "<leader>hf", ":lua require('harpoon.term').sendCommand(1, '')<Left><Left>", nor)
+        map("n", "<leader>hp", ":lua require('harpoon.term').sendCommand(2, '')<Left><Left>", nor)
+
+        map("n", "<leader>hs", ":lua require('harpoon.term').gotoTerminal(1)<cr>", nor_s)
+        map("n", "<leader>ht", ":lua require('harpoon.term').gotoTerminal(2)<cr>", nor_s)
+    end
+
+    -- map("n", "<c-8>", ":lua require('harpoon.term').gotoTerminal(2)<cr>", nor_s)
+    -- map("n", "<c-4>", ":lua require('harpoon.term').gotoTerminal(3)<cr>", nor_s)
+    -- map("n", "<c-3>", ":lua require('harpoon.term').gotoTerminal(4)<cr>", nor_s)
+
+    -- map("n", "<leader>%", ":lua require('harpoon.term').gotoTerminal(5)<cr>", nor_s)
+    -- map("n", "<leader>&", ":lua require('harpoon.term').gotoTerminal(6)<cr>", nor_s)
+    -- map("n", "<leader>/", ":lua require('harpoon.term').gotoTerminal(7)<cr>", nor_s)
+    -- map("n", "<leader>(", ":lua require('harpoon.term').gotoTerminal(8)<cr>", nor_s)
+    -- map("n", "<leader>)", ":lua require('harpoon.term').gotoTerminal(9)<cr>", nor_s)
+
+    map("n", "<c-s>", ":lua require('harpoon.ui').nav_file(1)<cr>", nor_s)
+    map("n", "<c-t>", ":lua require('harpoon.ui').nav_file(2)<cr>", nor_s)
+    map("n", "<c-n>", ":lua require('harpoon.ui').nav_file(3)<cr>", nor_s)
+    map("n", "<c-e>", ":lua require('harpoon.ui').nav_file(4)<cr>", nor_s)
+
+    map("n", "<leader><c-s>", ":lua require('harpoon.ui').nav_file(5)<cr>", nor_s)
+    map("n", "<leader><c-t>", ":lua require('harpoon.ui').nav_file(6)<cr>", nor_s)
+    map("n", "<leader><c-n>", ":lua require('harpoon.ui').nav_file(7)<cr>", nor_s)
+    map("n", "<leader><c-e>", ":lua require('harpoon.ui').nav_file(8)<cr>", nor_s)
 end
 return M

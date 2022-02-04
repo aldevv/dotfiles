@@ -3,6 +3,9 @@ if executable('zsh')
   set shell=/bin/zsh
 endif
 
+filetype plugin indent on
+filetype plugin on
+
 set updatetime=1500 " this is for autosave in tex files(every cursorhold event)
 set encoding=utf-8
 scriptencoding utf-8
@@ -12,8 +15,6 @@ set title
   set titlestring=\ %{expand(\"%:p:~\")}%a%r%m
 let g:yankring_clipboard_monitor=0
 set spelllang=en_us,es
-filetype plugin indent on
-filetype plugin on
 let &t_8f = '\<esc>[38;2;%lu;%lu;%lum'
 let &t_8b = '\<esc>[48;2;%lu;%lu;%lum'
 set textwidth=95
@@ -30,7 +31,6 @@ set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MA
 set listchars+=trail:•
 set listchars+=eol:↲
 
-set inccommand=split
 set wildmode=longest,list,full
 set expandtab "always use spaces and not tabs
 set noerrorbells
@@ -38,14 +38,15 @@ set ignorecase
 set smartcase
 set tabstop=4 softtabstop=4
 set shiftwidth=4
-
-set smartindent
 set nowrap
 set noswapfile
-set autoindent
 set incsearch
 set relativenumber
 set laststatus=0
+
+" make backspaces more powerfull
+set backspace=indent,eol,start
+
 set cmdheight=1
 " to  select and move cursor
 set mouse=a

@@ -23,6 +23,7 @@ export BAT_CONFIG_PATH="$XDG_CONFIG_HOME/bat/config"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/rg/.ripgreprc"
 # you can source sxhkd & here if you login from console
 export SXHKD_SHELL="/bin/zsh"
+export PMY_RULE_PATH="$XDG_CONFIG_HOME/pmy/"
 # export SI=https://meet.google.com/ixe-gxnu-ovp
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export BROWSER=firefox
@@ -141,16 +142,18 @@ export JDK_HOME="/usr/lib64/openjdk-11"
 export JAVA_HOME="$JDK_HOME"
 export PATH="$PATH:$JAVA_HOME/bin"
 
-export CARGO_HOME="$PROGRAMS/rust/cargo"
-export RUSTUP_HOME="$PROGRAMS/rust/rustup"
+export CARGO_HOME="$HOME/.local/share/rust/cargo"
+export RUSTUP_HOME="$HOME/.local/share/rust/rustup"
 
-export GOPATH=$PROGRAMS/go
+export GOPATH=$HOME/.local/share/go
+
+export GEM_HOME=$HOME/.local/share/gem
 
 export PYENV_ROOT="$HOME/.local/share/.pyenv"
 export PIPENV_VENV_IN_PROJECT="enabled"
 
 
-export PATH="$GOROOT/bin:$CARGO_HOME/bin:${PATH}:$JAVA_HOME/bin:$GOPATH/bin"
+export PATH="$GOROOT/bin:$CARGO_HOME/bin:${PATH}:$JAVA_HOME/bin:$GOPATH/bin:$GEM_HOME/ruby/3.0.0/bin"
 export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:${PATH}"
 #=============================================================================
 

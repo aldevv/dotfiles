@@ -259,4 +259,8 @@ fnml() {
     export PATH=/home/kanon/.fnm:$PATH
     eval "`fnm env`"
 }
+# install https://github.com/relastle/pmy
+# config
+#https://github.com/relastle/pmy/wiki/Gallery#git-cherry-pickcp
+eval "$(pmy init)"
 

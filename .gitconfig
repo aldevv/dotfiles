@@ -17,3 +17,5 @@
 	defaultBranch = main
 [commit]
 	gpgsign = true
+[pager]
+	show = less

@@ -9,19 +9,15 @@ local debug_opts = {
     -- if no adapter, it uses default config
     ["python"] = function()
         return {
-            -- --adapters don't have the ${} syntax
-            -- -- default python config:
+            --adapters don't have the ${} syntax
             -- adapters = {
-            --require("dap-install.config.settings").options["installation_path"]
-            -- type = "executable",
-            -- --these 2 are the same
-            -- command = db_path .. '/python',
-            -- -- command = "/home/kanon/.local/share/nvim/dapinstall/python/bin/python",
-            -- args = { "-m", "debugpy.adapter" },
-            -- options = {
-            --     env = {}, -- Set the environment variables for the command
-            --     cwd = vim.fn.getcwd(), -- Set the working directory for the command
-            -- },
+            --     type = "executable",
+            --     command = require("dap-install.config.settings").options["installation_path"] .. "python/bin/python",
+            --     args = { "-m", "debugpy.adapter" },
+            --     options = {
+            --         env = {}, -- Set the environment variables for the command
+            --         cwd = vim.fn.getcwd(), -- Set the working directory for the command
+            --     },
             -- },
             configurations = {
                 {
