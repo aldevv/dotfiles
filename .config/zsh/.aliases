@@ -533,6 +533,14 @@ tobare() {
 alias gw="git worktree"
 alias gwa="git worktree add"
 alias gwl="git worktree list"
+gww() {
+
+    chosen_wt=$(git worktree list | awk '{print $1}' | xargs -n 1 basename | sed 1d \
+        | fzf --preview='exa -a1 $(gitRoot)/../{}')
+    # echo $chosen_wt
+    [[ -z $chosen_wt ]] && exit
+    cd "$(gitRoot)/../$chosen_wt" || echo "a worktree named '$1' does not exist"
+}
 
 fzfgd() {
 	preview="git diff $@ --color=always -- {-1}"
@@ -1427,9 +1435,14 @@ alias ghil='gh issue list'
 alias ghiv='gh issue view --comments $(gh issue list | fzf --no-preview | cut -f1)'
 
 #=======
-# PYTHON
+# NPM
 #=======
-alias bpy='[ -f Pipfile ] && b Pipfile || b requirements.txt'
+alias npm.='b package.json'
+
+#=======
+# PIP
+#=======
+alias pip.='[ -f Pipfile ] && b Pipfile || b requirements.txt'
 
 #=======
 # FLASK

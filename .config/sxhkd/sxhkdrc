@@ -52,7 +52,8 @@ super + alt + p
 	mpv "$($UTILITIES/anime/run_episode)"
 
 mode_switch + w
-    st -e nvim $WIKI/wiki.org >/dev/null 2>&1
+    st -e $UTILITIES/wiki/browseWiki
+    # st -e nvim $WIKI/wiki.org >/dev/null 2>&1
     # emacs $WIKI/wiki.org
 
 super + r
