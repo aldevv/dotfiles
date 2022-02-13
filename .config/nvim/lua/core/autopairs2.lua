@@ -20,7 +20,7 @@ require("nvim-autopairs").setup({
 npairs.clear_rules() -- removes all config for creating pairs
 npairs.add_rules({
 
-    -- -- these are for only on enter
+    -- these are for only on enter
     -- Rule("{", "}"):end_wise(function()
     --     return true
     -- end),
@@ -36,7 +36,6 @@ npairs.add_rules({
     Rule("%(.*%)%s*%=>$", " {  }", { "typescript", "typescriptreact", "javascript", "vue", "svelte" })
         :use_regex(true)
         :set_end_pair_length(2),
-
     -- add spaces when you press space inside (|)
     Rule(" ", " "):with_pair(function(opts)
         local pair = opts.line:sub(opts.col - 1, opts.col)

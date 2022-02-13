@@ -1,14 +1,13 @@
 # vital
+noto-fonts-emoji
 base-devel
 cmake
 flatpak
 npm
 rclone
 autorandr
-fcitx
 picom
 sxhkd
-autorandr
 dunst
 noto-fonts-emoji
 sxiv

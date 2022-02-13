@@ -62,6 +62,7 @@ map(
     nor_s
 )
 map("n", "<leader>sP", ":Lex<cr>", nor_s)
+map("n", "<leader>ss", ":Ex<cr>", nor_s)
 
 -- for pasting (no replacing of the register when pasting in visual mode)
 map("x", "p", "pgvy", nor_s)
@@ -233,7 +234,8 @@ map("n", "<leader>sm", ":MaximizerToggle<CR>", nor_s)
 map("v", "<leader>sm", ":MaximizerToggle<CR>gv", nor_s)
 
 -- brightest
-map("n", "<leader>sb", ":BrightestToggle<cr>", nor)
+map("n", "<leader>sb", ":buffers<cr>", nor)
+map("n", "<leader>,b", ":BrightestToggle<cr>", nor)
 
 -- gv
 map("n", "<leader>gv", ":GVcr>", nor)

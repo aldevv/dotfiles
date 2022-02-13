@@ -98,6 +98,8 @@ alias addTr="ssh pi transmission-cli $(xsel -b)"
 alias serve="rclone serve dlna --addr=:9092 --name=HaganeMedia $1"
 alias cpP="pwd | xsel -b"
 
+# gww=
+
 # TMUX
 
 function tms() (
@@ -533,14 +535,6 @@ tobare() {
 alias gw="git worktree"
 alias gwa="git worktree add"
 alias gwl="git worktree list"
-gww() {
-
-    chosen_wt=$(git worktree list | awk '{print $1}' | xargs -n 1 basename | sed 1d \
-        | fzf --preview='exa -a1 $(gitRoot)/../{}')
-    # echo $chosen_wt
-    [[ -z $chosen_wt ]] && exit
-    cd "$(gitRoot)/../$chosen_wt" || echo "a worktree named '$1' does not exist"
-}
 
 fzfgd() {
 	preview="git diff $@ --color=always -- {-1}"
@@ -826,6 +820,7 @@ alias gpv='git push -v'
 alias gr='git remote'
 alias gra='git remote add'
 alias grao='git remote add origin'
+alias grro='git remote remove origin'
 alias grg='git remote get-url'
 alias grgo='git remote get-url origin'
 alias grb='git rebase'
@@ -1435,14 +1430,9 @@ alias ghil='gh issue list'
 alias ghiv='gh issue view --comments $(gh issue list | fzf --no-preview | cut -f1)'
 
 #=======
-# NPM
+# PYTHON
 #=======
-alias npm.='b package.json'
-
-#=======
-# PIP
-#=======
-alias pip.='[ -f Pipfile ] && b Pipfile || b requirements.txt'
+alias bpy='[ -f Pipfile ] && b Pipfile || b requirements.txt'
 
 #=======
 # FLASK

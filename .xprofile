@@ -58,8 +58,8 @@ rclone_mounts() {
     # rclone mount --daemon --dir-cache-time 3h --vfs-cache-mode full --drive-shared-with-me ugd: $ugd_shared
 }
 
-[[ -n $(command -v rclone) ]] \
-    && rclone_mounts &
+# [[ -n $(command -v rclone) ]] \
+#     && rclone_mounts &
 
 # 30 minutes, you can do dim or dimblur
 # this

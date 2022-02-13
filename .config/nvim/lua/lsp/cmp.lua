@@ -4,8 +4,9 @@
 local lspkind = require("lspkind")
 lspkind.init({
     -- preset: 'default' or  'codicons'
-    preset = "default",
-    with_text = true,
+    -- preset = "default",
+    -- with_text = true,
+    mode = 'symbol_text',
     symbol_map = {
         Text = "",
         Method = "ƒ",

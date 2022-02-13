@@ -629,12 +629,9 @@
     "vscode-neovim.mouseSelectionStartVisualMode": true,
     "vscode-neovim.useCtrlKeysForInsertMode": false,
     "editor.minimap.enabled": false,
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
     "editor.suggest.showStatusBar": true,
     "problems.showCurrentInStatus": true,
     "window.menuBarVisibility": "visible",
