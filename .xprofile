@@ -49,17 +49,22 @@ xrdb -merge ~/.Xresources
 rclone_mounts() {
     ugd="$REMOTES/ugd"
     ugd_starred="$REMOTES/ugd_starred"
+    # wiki="$REMOTES/wiki"
+    work="$REMOTES/globant"
     # ugd_shared="$REMOTES/ugd_shared"
     [ ! -d $ugd ] && mkdir $ugd
     [ ! -d $ugd_starred ] && mkdir $ugd_starred
+    [ ! -d $work ] && mkdir $work
     # [ ! -d $ugd_shared ] && mkdir $ugd_shared
     rclone mount ugd:Remote $ugd --daemon --dir-cache-time 3h --vfs-cache-mode writes --drive-use-trash
     rclone mount ugd: $ugd_starred --daemon --read-only --dir-cache-time 3h --vfs-cache-mode writes --drive-use-trash --drive-starred-only
+    rclone mount globant: $work --daemon --dir-cache-time 3h --vfs-cache-mode writes --drive-use-trash
+    # rclone mount gd:wiki $wiki --daemon --dir-cache-time 3h --vfs-cache-mode writes --drive-use-trash
     # rclone mount --daemon --dir-cache-time 3h --vfs-cache-mode full --drive-shared-with-me ugd: $ugd_shared
 }
 
-# [[ -n $(command -v rclone) ]] \
-#     && rclone_mounts &
+[[ -n $(command -v rclone) ]] \
+    && rclone_mounts &
 
 # 30 minutes, you can do dim or dimblur
 # this

@@ -98,7 +98,7 @@ alias addTr="ssh pi transmission-cli $(xsel -b)"
 alias serve="rclone serve dlna --addr=:9092 --name=HaganeMedia $1"
 alias cpP="pwd | xsel -b"
 
-# gww=
+
 
 # TMUX
 
@@ -535,6 +535,20 @@ tobare() {
 alias gw="git worktree"
 alias gwa="git worktree add"
 alias gwl="git worktree list"
+
+gww() {
+    prj_root=$(git worktree list | sed 1q | awk '{print $1}')
+    branches=$(git worktree list | sed 1d | awk '{print $1}')
+    branch_names=$(echo -n $branches | xargs -n 1 basename)
+    chosen_branch=$(echo -n $branch_names | fzf --preview="[ -f FETCH_HEAD ] && exa -1 {} ||
+        exa -1 $(git worktree list | sed 1q | awk '{print $1}' )/{}")
+    if [ -z $chosen_branch ]; then
+        return
+    fi
+
+    chosen_branch_path=$(echo $branches | grep "${chosen_branch}$")
+    cd $chosen_branch_path || return
+}
 
 fzfgd() {
 	preview="git diff $@ --color=always -- {-1}"
@@ -1409,7 +1423,7 @@ dkceb() {
 }
 
 #=======
-# VPN
+# OPENVPN
 #=======
 alias ovpn='_ openvpn'
 alias ovpnj='_ openvpn --config /etc/openvpn/ProtonVPN_server_configs/jp-free-01.protonvpn.com.udp.ovpn --auth-user-pass /etc/openvpn/protonvpn --daemon'
@@ -1418,7 +1432,11 @@ alias ovpnd='_ killall openvpn'
 alias openconn="_ cat $WORK/vpn/pass | _ openconnect --config=$WORK/vpn/config --passwd-on-stdin -b vpn.unal.edu.co > $WORK/vpn/vpn-output.log 2>&1"
 alias ofv='_ openfortivpn'
 alias ofvc='ofv -c $WORK/local/covidalert-back/.vpn/config > $WORK/local/covidalert-back/.vpn/vpn.log 2>&1 &'
-alias wvpn='openconn'
+
+#============
+# OPENCONNECT
+#============
+alias vpnw="openconnect-sso --server vpn-ar.globant.com --user juanalejandro.bernal@globant.com"
 
 #=======
 # GITHUB

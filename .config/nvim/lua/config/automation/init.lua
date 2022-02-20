@@ -48,3 +48,10 @@ function! ExecuteMacroOverVisualRange()
   execute ":'<,'>normal @".nr2char(getchar())
 endfunction
 ]])
+
+cmd([[
+    augroup Wiki
+        autocmd!
+        autocmd BufWritePost  *.org :!rclone sync $WIKI gd:wiki
+    augroup END
+    ]])

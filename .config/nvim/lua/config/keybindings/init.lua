@@ -160,15 +160,6 @@ map("n", "<leader>se", ":NvimTreeToggle<cr>", nor_s)
 map("n", "<leader>stt", ":TSPlaygroundToggle<cr>", nor_s)
 map("n", "<leader>sth", ":TSHighlightCapturesUnderCursor<cr>", nor_s)
 
--- prefix c --> core (plugin toggles)
-
--- packer
-map("n", "<leader>cps", ":PackerStatus<cr>", nor)
-map("n", "<leader>cpi", ":PackerInstall<cr>", nor)
-map("n", "<leader>cpC", ":PackerClean<cr>", nor)
-map("n", "<leader>cpu", ":PackerUpdate<cr>", nor)
-map("n", "<leader>cpc", ":PackerCompile<cr>", nor)
-
 -- harpoon
 require("config.keybindings.harpoon").load_mappings()
 
@@ -274,3 +265,10 @@ vmap <leader>csr <Plug>SnipRun
 
 -- , configuration
 map("n", "<leader>,li", ":LspInfo<cr>", nor_s)
+map("n", "<leader>,lI", ":LspInstallInfo<cr>", nor_s)
+
+map("n", "<leader>,ps", ":PackerStatus<cr>", nor)
+map("n", "<leader>,pi", ":PackerInstall<cr>", nor)
+map("n", "<leader>,pC", ":PackerClean<cr>", nor)
+map("n", "<leader>,pu", ":PackerUpdate<cr>", nor)
+map("n", "<leader>,pc", ":PackerCompile<cr>", nor)

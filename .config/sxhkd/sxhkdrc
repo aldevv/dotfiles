@@ -15,6 +15,9 @@ alt + shift + space
     "$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage" --profile "Futuristic" &>/dev/null
     # "$PROGRAMS/retro-terminal/Cool-Retro-Term-1.1.1-x86_64.AppImage" --profile "IBM 3278" &>/dev/null
 
+super + shift + w
+    openconnect-sso --server vpn-ar.globant.com --user juanalejandro.bernal@globant.com
+
 super + alt + w
 	"$UTILITIES/misc/toggle_chat"
 
@@ -91,10 +94,10 @@ mode_switch + minus
     xdotool search --onlyvisible --classname Navigator windowactivate --sync key shift+F10
 
 # XF86Launch1
-# mode_switch + c
-# 	copyq toggle
-
 mode_switch + shift + c
+	copyq toggle
+
+mode_switch + shift + x
     flameshot gui --path "$HOME/Pictures/Screenshots/"
 
 mode_switch + c
