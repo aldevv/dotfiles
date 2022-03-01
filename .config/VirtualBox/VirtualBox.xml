@@ -14,7 +14,7 @@
       <ExtraDataItem name="GUI/Input/HostKeyCombination" value="65027,65506"/>
       <ExtraDataItem name="GUI/Input/MachineShortcuts" value="FileManagerPaste=V,GuestAutoresize=Z"/>
       <ExtraDataItem name="GUI/LastItemSelected" value="n=GLOBAL"/>
-      <ExtraDataItem name="GUI/LastWindowPosition" value="0,15,1920,1065,max"/>
+      <ExtraDataItem name="GUI/LastWindowPosition" value="22,37,926,1021,max"/>
       <ExtraDataItem name="GUI/LogViewerOptions" value="monospace,noFontStyleName,9"/>
       <ExtraDataItem name="GUI/LogWindowGeometry" value="22,37,926,1021"/>
       <ExtraDataItem name="GUI/MaxGuestResolution" value="any"/>
@@ -26,7 +26,7 @@
       <ExtraDataItem name="GUI/SoftKeyboardDialogGeometry" value="23,41,924,1016"/>
       <ExtraDataItem name="GUI/SoftKeyboardSelectedColorTheme" value="Custom"/>
       <ExtraDataItem name="GUI/SoftKeyboardSelectedLayout" value="{25867c1e-0455-4303-bf76-1c3ae4cca042}"/>
-      <ExtraDataItem name="GUI/SplitterSizes" value="670,1249"/>
+      <ExtraDataItem name="GUI/SplitterSizes" value="323,602"/>
       <ExtraDataItem name="GUI/SuppressMessages" value="all"/>
       <ExtraDataItem name="GUI/Toolbar" value="false"/>
       <ExtraDataItem name="GUI/Toolbar/Text" value="false"/>

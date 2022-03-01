@@ -49,9 +49,9 @@ function! ExecuteMacroOverVisualRange()
 endfunction
 ]])
 
-cmd([[
-    augroup Wiki
-        autocmd!
-        autocmd BufWritePost  *.org :!rclone sync $WIKI gd:wiki
-    augroup END
-    ]])
+-- cmd([[
+--     augroup Wiki
+--         autocmd!
+--         autocmd BufWritePost  *.org :!rclone sync $WIKI gd:wiki
+--     augroup END
+--     ]])

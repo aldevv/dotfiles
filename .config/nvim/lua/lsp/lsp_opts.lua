@@ -18,7 +18,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 -- table.insert(runtime_path, "lua/?/init.lua")
 local enhance_server_opts = {
     ["bashls"] = function(opts)
-        opts.filetypes = {"sh", "zsh", "bash"}
+        opts.filetypes = { "sh", "zsh", "bash" }
     end,
     ["tsserver"] = function(opts)
         -- :h lspconfig-root-advanced
@@ -42,6 +42,9 @@ local enhance_server_opts = {
                 },
             },
         }
+    end,
+    ["clangd"] = function(opts)
+        opts.capabilities.offsetEncoding = { "utf-16" }
     end,
     ["sumneko_lua"] = function(opts)
         -- local runtime_path = vim.split(package.path, ";")

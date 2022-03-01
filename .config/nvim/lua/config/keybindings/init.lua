@@ -98,13 +98,7 @@ map("t", "<a-'>", "<c-\\><c-n>", nor_s)
 
 -- folders
 map("n", "<F1>", ":e " .. h .. "/lua/config/keybindings/init.lua<cr>", nor_s)
-map("n", "<F2>", ":e " .. h .. "/modules/keybindings.vim<cr>", nor_s)
-map("n", "<F3>", ":e " .. h .. "/modules/plugins-settings.vim<cr>", nor_s)
-map("n", "<F4>", ":e " .. h .. "/lua/plugins.lua<cr>", nor_s)
-map("n", "<F5>", ":e " .. h .. "/modules/plugins.vim<cr>", nor_s)
-map("n", "<F6>", ":e " .. h .. "/lua/lsp/init.lua<cr>", nor_s)
-map("n", "<F7>", ":e " .. h .. "/lua/lsp/formatters.lua<cr>", nor_s)
-map("n", "<F8>", ":e " .. h .. "/init.lua<cr>", nor_s)
+map("n", "<F5>", "<c-^>", nor_s)
 
 map("n", "<localleader>V.", ":e " .. h .. "/init.lua<cr>", nor_s)
 map("n", "<localleader>Vs", ":e " .. h .. "/lua/config/settings.lua<cr>", nor_s)

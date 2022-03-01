@@ -31,7 +31,8 @@ activateVerified() {
 # WORK
 #==============
 # alias mongodumpwork='ssh HORUS_BACKEND "mongodump -d VT  --archive" >'
-alias mongodumpwork='ssh HORUS_TESTING "mongodump -u mongo-root --archive" >'
+# alias mongodumpwork='ssh HORUS_TESTING "mongodump -u mongo-root --archive" >'
+alias mongodumpwork='ssh HORUS_DEPLOY "mongodump -u mongo-root --archive" >'
 alias mongorestorework='docker exec -i api-mongo-1 mongorestore -d VT --archive <'
 mongoupdatedb() {
 	# password is $2
@@ -87,7 +88,6 @@ alias cfh="_v /etc/hosts"
 alias NF="awk -F',' '{print NF;exit}'"
 alias srcp=". $ZDOTDIR/.zprofile"
 alias srcz=". $ZDOTDIR/.zshrc"
-alias teams="flatpak run com.microsoft.Teams"
 alias pe="pipenv"
 alias sshconfig="man ssh_config"
 alias picomr="DISPLAY=':0' picom -b --experimental-backend"
@@ -675,6 +675,14 @@ alias gcl='git clone'
 gclb() {
 	git clone --bare $1 ${$(basename $1)%.*}
 }
+
+# clean force and untracked folders
+alias gcL='git clean -fd'
+# clean except pattern
+alias gcLe='git clean -fde'
+# see what WOULD be deleted
+alias gcLn='git clean -fdn'
+
 alias gclean='git clean -id'
 alias gpristine='git reset --hard && git clean -dffx'
 alias gcm='git checkout $(git_main_branch)'
@@ -688,10 +696,6 @@ alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
 alias ggcs='git commit -S'
 
-gcL() {
-	repo="$1"
-	git clone git@github.com:$1
-}
 
 alias gd='git diff'
 alias gdca='git diff --cached'
@@ -1365,7 +1369,7 @@ alias dkmv='docker-machine version '
 alias dkmS='docker-machine stop '
 
 # Docker Compose (c)
-alias dkcl.='bat docker-compose.local.yml'
+alias dkc.l='bat docker-compose.local.yml'
 alias dkc.='bat docker-compose.yml'
 alias dkc='docker-compose '
 alias dkcC='docker-compose config '
@@ -1397,6 +1401,7 @@ alias dkcS='docker-compose stop '
 alias dkcz='docker-compose down && docker compose up -d '
 alias dkcR='docker-compose build && docker compose down && docker compose up -d '
 
+alias dkclgl='docker-compose -f docker-compose.local.yml logs --follow'
 alias dkcul='docker-compose -f docker-compose.local.yml up'
 alias dkcUl='docker-compose -f docker-compose.local.yml up -d'
 alias dkcDl='docker-compose -f docker-compose.local.yml down -v'
@@ -1643,3 +1648,13 @@ vimR() {
 #==================
 
 alias initexpress="npx express-generator"
+
+#==================
+# CHEZMOI
+#==================
+
+alias ch="chezmoi"
+alias cha="chezmoi add"
+alias chA="chezmoi -v apply"
+alias chst="chezmoi status"
+

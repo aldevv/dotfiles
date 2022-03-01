@@ -25,6 +25,7 @@ local servers = {
     "sqlls",
     "hls", -- haskell
     "solargraph", -- ruby
+    "ansiblels", -- ansible
     -- "emmet_ls",
     "graphql",
 }

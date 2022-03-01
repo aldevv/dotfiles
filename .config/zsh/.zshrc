@@ -80,7 +80,7 @@ preexec() { echo -ne '\e[5 q'; } # Use beam shape cursor for each new prompt.
 # docker adds completion for docker commands, same docker compose
 ##set history size
 export HISTSIZE=25000
-export HISTFILE="$ZDOTDIR/.zsh_history"
+export HISTFILE="$HOME/.cache/zsh/.zsh_history"
 # plugins=(copybuffer dirhistory jsontools)
 plugins=(
 	docker

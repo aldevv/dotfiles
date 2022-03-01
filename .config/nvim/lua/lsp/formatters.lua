@@ -35,7 +35,7 @@ null_ls.setup({
             extra_filetypes = { "zsh", "bash" },
         }),
         -- formatting.clang_format,
-        formatting.uncrustify,
+        -- formatting.uncrustify,
         formatting.gofmt,
         -- formatting.json_tool, jsonls already has one
         -- formatting.prettier,

@@ -11,6 +11,7 @@ cc      $CLASS/2021-2
 c1      $CLASS/2021-2/Metodología de investigación/propuesta/resources
 ci      $CLASS/2021-2/io2
 ll      $LEARN
+l1      $LEARN/c++/cmake_course
 lh      $LEARN/Hack
 tt      $TRASH
 T       $HOME/Downloads/torrents
@@ -79,7 +80,6 @@ ro      /opt
 rmn     /mnt
 sc      ~/Pictures/screenshots
 rtk     ~/Books/japanese/heisig
-l1      $LEARN/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
 l2      $LEARN/Rust/Learn Rust by Building Real Applications
 ld      $LEARN/Docker/Docker Mastery/Docker Mastery with Kubernetes +Swarm from a Docker Captain
 lr      $LEARN/Rust/Learn Rust by Building Real Applications
@@ -94,3 +94,4 @@ aa      $CLASS/2021-1/GERENCIA/imp
 zz      $CLASS/2021-1/GERENCIA/licitacion/licitaciones-2021-I/primera - ejercito (sensores de red)
 
 wf   $WINEPREFIX/drive_c
+cH   ~/.local/share/chezmoi

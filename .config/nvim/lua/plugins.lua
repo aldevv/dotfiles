@@ -422,6 +422,7 @@ return require("packer").startup({
         })
 
         -- check arpeggio https://github.com/kana/vim-arpeggio
+        -- check sideways https://github.com/AndrewRadev/sideways.vim
 
         -- not working with sshconfig as of 13 jan 2021
         -- use({
