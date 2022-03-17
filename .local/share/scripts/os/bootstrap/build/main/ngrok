@@ -6,5 +6,5 @@ sudo -u $SUDO_USER unzip ngrok.zip
 rm ngrok.zip
 folder=$(ls | grep ngrok)
 cd $folder
-ln -sf {$(pwd)/,/usr/local/bin/}ngrok
+ln -sf {$(pwd)/ /usr/local/bin/}ngrok
 

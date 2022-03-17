@@ -7,9 +7,7 @@ wO      $WORK/../local/covidalert-back/
 ws      $WORK/../server/
 bk      $BOOKS
 ba      $BACKUPS
-cc      $CLASS/2021-2
-c1      $CLASS/2021-2/Metodología de investigación/propuesta/resources
-ci      $CLASS/2021-2/io2
+cc      $CLASS/2022-1
 ll      $LEARN
 l1      $LEARN/c++/cmake_course
 lh      $LEARN/Hack
@@ -25,7 +23,7 @@ v,      $XDG_CONFIG_HOME/nvim/lua/config
 vu      $XDG_CONFIG_HOME/nvim/lua/utils
 vk      $XDG_CONFIG_HOME/nvim/lua/config/keybindings
 vc      $XDG_CONFIG_HOME/nvim/lua/core
-sp      ~/.local/share/nvim/my_snippets
+sp      ~/.config/nvim/my_snippets
 
 ms      $SCRIPTS
 mf      $FILES

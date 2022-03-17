@@ -1,4 +1,6 @@
 #!/bin/bash
+work="$HOME/galileo"
+[[ -d "$work" ]] && source "$work/.aliases"
 
 alias csvviewer="visidata"
 
@@ -156,6 +158,7 @@ fi
 alias g.='bat .gitignore'
 alias dotrepo="git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME"
 alias \
+    dfiles="dotrepo ls-tree --full-tree -r HEAD --name-only" \
 	dst='dotrepo status' \
 	daa='dotrepo add' \
 	dau='dotrepo add -u' \
@@ -357,7 +360,7 @@ alias \
 	pdfgrep="pdfgrep -n" \
 	Z="zathura" \
 	Z="setsid st zathura &>/dev/null" \
-	gpgpub="gpg --armor --export jbernal@unal.edu.co > kanon_pub_key" \
+	gpgpub="gpg --armor --export jbernal@unal.edu.co" \
 	gpgpubbinary="gpg --output kanon.gpg --export jbernal@unal.edu.co" \
 	gpgimp="gpg --import" \
 	gpgls="gpg --list-keys" \
@@ -1441,7 +1444,12 @@ alias ofvc='ofv -c $WORK/local/covidalert-back/.vpn/config > $WORK/local/covidal
 #============
 # OPENCONNECT
 #============
-alias vpnw="openconnect-sso --server vpn-ar.globant.com --user juanalejandro.bernal@globant.com"
+# for saml connections
+vpnw(){
+# $1 --> url
+# $2 --> email
+    openconnect-sso --server $1  --user $2
+}
 
 #=======
 # GITHUB
@@ -1653,8 +1661,29 @@ alias initexpress="npx express-generator"
 # CHEZMOI
 #==================
 
+alias chf="chezmoi cd"
+alias chd="chezmoi data"
 alias ch="chezmoi"
 alias cha="chezmoi add"
+alias che="chezmoi edit"
+alias chE="chezmoi execute-template"
+alias chat="chezmoi add --template"
+alias chaat="chezmoi add --autotemplate"
+# add the template attribute to a dotfile
+alias chch="chezmoi chattr +template"
 alias chA="chezmoi -v apply"
 alias chst="chezmoi status"
+alias chfr="chezmoi forget" # remove from repo
+alias chrm="chezmoi remove" # remove from repo and filesystem
 
+alias ans="ansible"
+alias ansi="ansible -i" # for inventory, can be an ip
+ansp() {
+    # a ping command
+    ansible $1 -m ping
+}
+
+anss() {
+    # a shell command
+    ansible $1 -m shell -a $2
+}

@@ -85,6 +85,8 @@ export HISTFILE="$HOME/.cache/zsh/.zsh_history"
 plugins=(
 	docker
 	docker-compose
+    zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 . $ZSH/oh-my-zsh.sh
 
@@ -222,10 +224,10 @@ _fzf_compgen_dir() {
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE
 #ZSH_AUTOSUGGEST_STRATEGY
 #
-[[ -d $PROGRAMS/zsh-plugins/zsh-syntax-highlighting ]] &&
-	. $PROGRAMS/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[[ -d $PROGRAMS/zsh-plugins/zsh-autosuggestions ]] &&
-	. $PROGRAMS/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+# [[ -d $PROGRAMS/zsh-plugins/zsh-syntax-highlighting ]] &&
+# 	. $PROGRAMS/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# [[ -d $PROGRAMS/zsh-plugins/zsh-autosuggestions ]] &&
+# 	. $PROGRAMS/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 # autosuggestions keybindings
 # autosuggest-accept: Accepts the current suggestion.

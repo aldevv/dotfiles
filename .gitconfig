@@ -1,6 +1,6 @@
 [user]
 	name = Juan Alejandro Bernal
-	email = jbernal@unal.edu.co
+	email = jbernalxyz@gmail.com
 
 [user]
 	hide = update-index --assume-unchanged
@@ -10,9 +10,9 @@
 	signingkey = B7A9B5574B12E12F271D6596F2BC4837D3501299
 [author]
 	name = Juan Alejandro Bernal
-	email = jbernal@unal.edu.co
+	email = jbernalxyz@gmail.com
 [email]
-	name = jbernal@unal.edu.co
+	name = jbernalxyz@gmail.com
 [init]
 	defaultBranch = main
 [commit]

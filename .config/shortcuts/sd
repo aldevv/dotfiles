@@ -3,7 +3,7 @@ sf      ~/.config/shortcuts/sf
 sd      ~/.config/shortcuts/sd
 fz     ~/.config/zsh/.zshrc
 fp     ~/.config/zsh/.zprofile
-fPi     ~/.config/picom/picom.conf
+fP     ~/.config/picom/picom.conf
 fr     ~/.config/ranger/rc.conf
 fb     ~/.bashrc
 fxx    ~/.Xresources
