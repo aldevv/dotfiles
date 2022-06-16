@@ -51,7 +51,7 @@ fi
 if [[ $DOWNLOAD_REPOS == 1 ]]; then
     install_ "git"
     sudo -u $user git clone https://github.com/aldevv/Wiki "$WIKI"
-    sudo -u $user git clone https://github.com/aldevv/suckless-configs "$SUCKLESS"
+    sudo -u $user git clone https://github.com/aldevv/suckless "$SUCKLESS"
     sudo -u $user git clone https://github.com/aldevv/wallpapers "$HOME/Pictures/Wallpapers"
 fi
 
